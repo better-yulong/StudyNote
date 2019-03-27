@@ -25,10 +25,10 @@ Centos7 安装hg：  yum install mercurial
                        enterTrees(stopIfError(CompileState.PARSE, 			
                            parseFiles(sourceFileObjects))),
                     classnames);
-		//parseFiles，过程1.1：词法分析、语法分析
-//enterTrees，过程1.2：输入到符号表
+	    //parseFiles，过程1.1：词法分析、语法分析
+	    //enterTrees，过程1.2：输入到符号表
 
-  delegateCompiler.compile2();  //过程3：分析及字节码生成
+  	    delegateCompiler.compile2();  //过程3：分析及字节码生成
             delegateCompiler.close();
             elapsed_msec = delegateCompiler.elapsed_msec;
 注：过程3内部核心代码：generate(desugar(flow(attribute(todo.remove()))));   
