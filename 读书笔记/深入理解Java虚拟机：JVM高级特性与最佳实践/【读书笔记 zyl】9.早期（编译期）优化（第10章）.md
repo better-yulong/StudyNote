@@ -15,17 +15,17 @@ Centos7 安装hg：  yum install mercurial
 	sh ./common/bin/hgforest.sh clone "$@"
 	while [ $? -ne 0 ]
 	do
-	sh ./common/bin/hgforest.sh clone "$@"
-done
+		sh ./common/bin/hgforest.sh clone "$@"
+	done
 
-# Update all existing repositories to the latest sources
- sh ./common/bin/hgforest.sh pull -u
-while [ $? -ne 0 ]
-do
-sh ./common/bin/hgforest.sh pull -u
-done
+	# Update all existing repositories to the latest sources
+ 	sh ./common/bin/hgforest.sh pull -u
+	while [ $? -ne 0 ]
+	do
+		sh ./common/bin/hgforest.sh pull -u
+	done
 
-######### modify end ,to download until succeed.
+	######### modify end ,to download until succeed.
 
 ```
 
