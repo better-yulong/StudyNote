@@ -155,6 +155,6 @@ Javac源码，插入式注解处理器的初始化过程是在 initProcessAnnota
  而下载JDK6，使用JDK6编译、运行则均可正确，结果如下
 ```
 	invoke method method1_1(ArrayList<String> list)
-	invoke method method1_1(ArrayList<String> list)
+	invoke method method1_1(ArrayList<Integer> list)
 ```
 - 对于如上
