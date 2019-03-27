@@ -104,6 +104,6 @@ Javac源码，插入式注解处理器的初始化过程是在 initProcessAnnota
 
 #### 三、语法糖的味道
 ##### 1、泛型与类型擦除
-泛型是JDK1.5新增的一项特性，其本质是参数化类型（Parametersized Type)的
+泛型是JDK1.5新增的一项特性，其本质是参数化类型（Parametersized Type)的应用，也就是说所操作的数据类型被指定为一个参数。这种
 
 
