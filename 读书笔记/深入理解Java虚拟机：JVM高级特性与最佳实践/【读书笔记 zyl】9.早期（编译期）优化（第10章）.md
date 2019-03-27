@@ -31,7 +31,7 @@ Centos7 安装hg：  yum install mercurial
   	    delegateCompiler.compile2();  //过程3：分析及字节码生成
             delegateCompiler.close();
             elapsed_msec = delegateCompiler.elapsed_msec;
-注：过程3内部核心代码：generate(desugar(flow(attribute(todo.remove()))));   
+	注：过程3内部核心代码：generate(desugar(flow(attribute(todo.remove()))));   
 
 ```
 
@@ -62,7 +62,7 @@ Javac源码，插入式注解处理器的初始化过程是在 initProcessAnnota
 标注检查包括诸如变量使用前是否已被声明、变量与赋值之间的数据类型是否匹配等，而其中还有一个重要的动作被称为常量折叠。
 常量折叠如  int a = 1+2，该行代码对应的插入式表达式会在语法树上直接标注为3，所以代码中的 int a =1+2  与 int a=3 在执行时没有区别。
 标注检查的实现在 com.sun.javac.comp.Attr 类和 com.sun.tools.javac.comp.Check 类。
-	数据兴高采烈
+	
 
 
 过程3.1 attribute方法：标注
