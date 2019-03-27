@@ -9,7 +9,10 @@ Centos7 安装hg：  yum install mercurial
          下载jdk8基础包：hg clone http://hg.openjdk.java.net/jdk8u/jdk8u/
          下载源码：进入基础包，./get_source.sh  下载完整源码包（其实也不包含受保护源码，如 com.misc包），因网络不稳定，常会报：stream ended unexpectedly (got 42241 bytes, expected 53431)
 故修改get_sourece.sh最后面的部分，调整循环下载直接成功为止。（仅需修改文件末尾modify 片段）
- 
+ ```language
+
+```
+
 新建compiler_javac 的 Java工程并新建com.sun pacakge，导入langtools/src/share/classes/com/sun 包下所有目录及文件（就3个文件夹：javadoc、source、tools）。（书中说会因为代码访问规则导致 AnnotationProxyMaker 报错，但我本地未报错。因我的本地环境默认无规则）
  
 虚拟机规范严格定义了Class文件格式，但对于把Java源码转变为Class编译过程并未严格定义，使得Class文件的编译与JDK具体实现相关，极端情况会出现同样源码Javac可编译通过但ECJ编译器无法编译（后续章节讲述）
