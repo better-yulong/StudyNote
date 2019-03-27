@@ -91,7 +91,7 @@ Javac源码，插入式注解处理器的初始化过程是在 initProcessAnnota
 		int var = 0 ;
 	}
 ```
-解读1：L1、L2两行代码若去年注释在IDE或javc编译时会直接报错，因final的局部变量不可再
+解读1：L1、L2两行代码若去年注释在IDE或javc编译时会直接报错，因final的局部变量不可再被赋值（或修改对象引用
 
 
 过程3.1 attribute方法：标注
