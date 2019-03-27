@@ -56,8 +56,7 @@ Centos7 安装hg：  yum install mercurial
 过程3说明：过程3.1 attribute方法：标注；过程3.2 flow方法：数据流分析；过程3.3 desugar方法：解语法糖；过程3.4 generate方法：生成字节码
 
 ##### 2、解析与填充符号表
-解析步骤由如上代码片段的 parseFiles()方法，即过程1.1完成 ，解析过程包括经典编译原理中的词法分析和语法分析。
-	词法、语法分析
+解析步骤由如上代码片段的 parseFiles()方法，即过程1.1完成 ，解析过程包括经典编译原理中的词法分析和语法分析。词法、语法分析
 词法分析是将源代码的字符流转变化标记（Token）集合，单个字符是程序编写过程的最小元素，而标记则是编译过程的最小元素，关键字、变量名、运算符都可以成为标记。如”int a=b+2“这句代码则包含了6个标记，分别是int、a、=、b、+、2。而关键字 int 由3个字符构成，但它不可拆分，其只是一个Token。词法分析过程由 com.sun.tools.javac.parser.Scanner类来实现，也叫做扫描 scanner.
 核心代码Scanner的实现为Scanner类的nextToken()中的间接引用的 JavaTokenizer 为的 readToken() 方法，其中即为逐行逐字符（真的是字符，如数字、大小写字母、空格、换行、美元、下划线）参考TokenKind类型（包含java中关键字、操作运算符列表、@符号、分号、逗号、各种括号等等，以此为分隔符来拆分Token）匹配并确认并设置每个Token的类型来将字符流转化为标记（Token)集合。通过源码，发现可通过调整 scannerDebug参数来显示词法分析的debug日志。
 语法分析是根据Token序列构造抽象语法树的过程，抽象语法树(Abstract Syntax Tree，AST）是一种用来描述程序代码语法结构的树形表示方式，语法树的第一个节点都程序代码中的一个语法结构（Construct），例如包、类型、修饰符、运算符、接口、返回值甚至代码注释都是一个语法结构），而语法分析过程则由 com.sun.tools.javac.parser.Parser 类实现，该阶段产生的抽象语法树由com.sun.tools.javac.tree.JCTree类表示。
