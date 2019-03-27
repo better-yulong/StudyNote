@@ -168,6 +168,8 @@ Javac源码，插入式注解处理器的初始化过程是在 initProcessAnnota
 		A temp = list.get(0);  
 }
 
+
+
   public <A> void testGenericTypeClear(A paramA) {
     System.out.println(paramA.toString());
     java.util.ArrayList localArrayList = new java.util.ArrayList();
