@@ -57,7 +57,7 @@ Centos7 安装hg：  yum install mercurial
 
 ##### 2、解析与填充符号表
 解析步骤由如上代码片段的 parseFiles()方法，即过程1.1完成 ，解析过程包括经典编译原理中的词法分析和语法分析。
-##### a、词法、语法分析
+a、词法、语法分析
 词法分析是将源代码的字符流转变化标记（Token）集合，单个字符是程序编写过程的最小元素，而标记则是编译过程的最小元素，关键字、变量名、运算符都可以成为标记。如”int a=b+2“这句代码则包含了6个标记，分别是int、a、=、b、+、2。而关键字 int 由3个字符构成，但它不可拆分，其只是一个Token。词法分析过程由 com.sun.tools.javac.parser.Scanner类来实现，也叫做扫描 scanner.
 核心代码Scanner的实现为Scanner类的nextToken()中的间接引用的 JavaTokenizer 为的 readToken() 方法，其中即为逐行逐字符（真的是字符，如数字、大小写字母、空格、换行、美元、下划线）参考TokenKind类型（包含java中关键字、操作运算符列表、@符号、分号、逗号、各种括号等等，以此为分隔符来拆分Token）匹配并确认并设置每个Token的类型来将字符流转化为标记（Token)集合。通过源码，发现可通过调整 scannerDebug参数来显示词法分析的debug日志。
 语法分析是根据Token序列构造抽象语法树的过程，抽象语法树(Abstract Syntax Tree，AST）是一种用来描述程序代码语法结构的树形表示方式，语法树的第一个节点都程序代码中的一个语法结构（Construct），例如包、类型、修饰符、运算符、接口、返回值甚至代码注释都是一个语法结构），而语法分析过程则由 com.sun.tools.javac.parser.Parser 类实现，该阶段产生的抽象语法树由com.sun.tools.javac.tree.JCTree类表示。
@@ -65,10 +65,10 @@ Centos7 安装hg：  yum install mercurial
 基于eclipse AST 插件显示示例部分代码的抽象语法树视图，可直接认识：
  
 核心代码parseFiles 的实现为为JavacParser类的parser方法---> JavacParser.parseCompilationUnit 方法：1、parser方法解析是否保留注册、debug调试行等参数初始化；2、parseCompilationUnit 方法则根据标记Token的类型循环遍历填充完成 ListBuffer<JCTree>。
-##### 填充符号表
+###### 六级标题b、填充符号表
 词法分析、语法分析之后即是填充符号表，对应 enterTrees 方法间接依赖的Enter类的complete方法。符号表（Synbol Table）是由一组符号地址和符号信息构成的表格（数据结构可以是哈希表、有序符号表、树状符号表、栈结构符号表等）
 符号表可用于语义检查、生产中间代码、地址分配等。
-##### c、注解处理器
+##### 注解处理器
 JDK 1.5 之后，Java语言提供了对注解（Annotation）的支持，即一组插入式注解处理器的标准API，可读取、修改、添加抽象语法树中的任意元素。语法树的每次修改均需重新加到解析及填充符号表的过程重新处理，每次循环称为Round，即回环过程。因其可直接干涉编译器的行为并操作任意元素，故基于插入式注解处理器实现的插件可有很大发挥。
 Javac源码，插入式注解处理器的初始化过程是在 initProcessAnnotations() 方法完成，而它的执行过程则是 processAnnotations()方法完成。
 ##### 4、语义分析与字节码生成
