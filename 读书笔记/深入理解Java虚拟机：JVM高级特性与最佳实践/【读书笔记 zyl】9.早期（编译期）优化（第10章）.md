@@ -98,5 +98,5 @@ Javac源码，插入式注解处理器的初始化过程是在 initProcessAnnota
 - 语法糖（Syntactic Sugar)也称糖衣语法，主要为增加程序可读性，从而减少程序代码出错的机会。而Java中最常用的语法糖主要是泛型（不同语言有差异，如C#的泛型则不一定是语法糖实现）、变长参数、自动装箱/拆箱。
 - 语法糖在编译阶段即被还原回简单的基础语法结构，该过程称为解语法糖；故语法糖仅编译支持，运行时不支持。对应过程由 desugar()方法触发，在 com.sun.tools.javac.comp.TtransTypes类和 com.sun.tools.javac.comp.Lower类完成。
 ###### d、字节码生成
-- 字
+字节码生成是Javac编译过程最后一个
 	
