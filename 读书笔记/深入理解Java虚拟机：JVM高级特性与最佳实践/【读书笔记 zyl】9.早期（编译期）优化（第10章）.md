@@ -21,10 +21,11 @@ Centos7 安装hg：  yum install mercurial
 
             // These method calls must be chained to avoid memory leaks
             delegateCompiler =
-  processAnnotations(   //过程2：执行注解处理
-                    enterTrees(stopIfError(CompileState.PARSE, parseFiles(sourceFileObjects))),
+  		    processAnnotations(   //过程2：执行注解处理
+                       enterTrees(stopIfError(CompileState.PARSE, 			
+                           parseFiles(sourceFileObjects))),
                     classnames);
-//parseFiles，过程1.1：词法分析、语法分析
+		//parseFiles，过程1.1：词法分析、语法分析
 //enterTrees，过程1.2：输入到符号表
 
   delegateCompiler.compile2();  //过程3：分析及字节码生成
@@ -70,3 +71,4 @@ Javac源码，插入式注解处理器的初始化过程是在 initProcessAnnota
 过程3.4 generate方法：生成字节码
 
 
+	
