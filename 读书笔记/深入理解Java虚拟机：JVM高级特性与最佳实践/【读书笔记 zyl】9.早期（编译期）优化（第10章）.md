@@ -143,7 +143,7 @@ Javac源码，插入式注解处理器的初始化过程是在 initProcessAnnota
 
 	}
 ```
-因IDE该测试工程的jdk版本为jdk7，IDE会直接报错（）
+因IDE该测试工程的jdk版本为jdk7，IDE会直接报错（Erasure of method method1_1(ArrayList<String>) is the same as another method in type GenericTypesTest）；而通过javac命令基于JDK1.7编译时则会报错：
 
 
 
