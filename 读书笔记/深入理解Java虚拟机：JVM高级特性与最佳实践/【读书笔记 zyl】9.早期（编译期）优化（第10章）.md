@@ -9,7 +9,23 @@ Centos7 安装hg：  yum install mercurial
          下载jdk8基础包：hg clone http://hg.openjdk.java.net/jdk8u/jdk8u/
          下载源码：进入基础包，./get_source.sh  下载完整源码包（其实也不包含受保护源码，如 com.misc包），因网络不稳定，常会报：stream ended unexpectedly (got 42241 bytes, expected 53431)
 故修改get_sourece.sh最后面的部分，调整循环下载直接成功为止。（仅需修改文件末尾modify 片段）
- ```language
+ ```
+	######### modify start by zyl ,to download until succeed.
+# Get clones of all absent nested repositories (harmless if already exist)
+sh ./common/bin/hgforest.sh clone "$@"
+while [ $? -ne 0 ]
+do
+sh ./common/bin/hgforest.sh clone "$@"
+done
+
+# Update all existing repositories to the latest sources
+ sh ./common/bin/hgforest.sh pull -u
+while [ $? -ne 0 ]
+do
+sh ./common/bin/hgforest.sh pull -u
+done
+
+######### modify end ,to download until succeed.
 
 ```
 
