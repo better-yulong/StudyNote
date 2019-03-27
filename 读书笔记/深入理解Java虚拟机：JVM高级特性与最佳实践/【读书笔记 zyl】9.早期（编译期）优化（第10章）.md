@@ -158,4 +158,4 @@ Javac源码，插入式注解处理器的初始化过程是在 initProcessAnnota
 	invoke method method1_1(ArrayList<Integer> list)
 ```
 - 对于public static Integer method1_1(ArrayList<Integer> list)、public static void method1_1(ArrayList<String> list) 两个方法，在JDK1.6 可重载成功，对以前重载仅以方法名和参数来判断而返回值不参与重载选择的认知确实是个挑战。其实JDK1.6 也不是根据返回值来确定重载，只是因为方法返回值不同才可并存在同一Class文件中。至于第6章介绍Class文件方法表（method_info）的数据结构提到的方法重载要求方法具备不同的特征签名（signature），而返回值并不在方法特殊签名但存在于方法描述。---即Class文件格式只要描述符不一致即可以共存（即使方法特征签名（方法名、参数）相同但返回值不同）。
-- 对于上面method1_1泛型在JDK1.6编译运行成功，而JDK1.7直接编译不通过的问题，顺便做了个有趣的测试，即JDK1.6编译通过的Class文件是否可在JDK1.8环境运行呢？结果还真如预期，运行成功。
+- 对于上面method1_1泛型在JDK1.6编译运行成功，而JDK1.7直接编译不通过的问题，顺便做了个有趣的测试，即JDK1.6编译通过的Class文件是否可在JDK1.8环境运行呢？结果还真如预期，运行成功。> 段落引用 至此有了比较清楚的理解。JRE运行时以
