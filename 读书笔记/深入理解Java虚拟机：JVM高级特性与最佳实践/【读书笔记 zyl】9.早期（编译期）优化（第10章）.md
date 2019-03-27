@@ -126,7 +126,8 @@ Javac源码，插入式注解处理器的初始化过程是在 initProcessAnnota
 		System.out.println("invoke method method1_1(ArrayList<String> list)");
 	}
 ```
-在IDE或javac编译时报错：Erasure of method method1_1(ArrayList<String>) is the same as another method in type GenericTypesTest 。初步来看，因为类型擦除后两个方法完全一样导致无法
+在IDE或javac编译时报错：Erasure of method method1_1(ArrayList<String>) is the same as another method in type GenericTypesTest 。初步来看，因为类型擦除后两个方法完全一样导致无法重载。但实际还有另一部分原因。
+
 
 
 
