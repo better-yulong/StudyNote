@@ -155,3 +155,8 @@ GenericTypesTest.java:17: 错误: 名称冲突: method1_1(ArrayList<Integer>)和
         public static Integer method1_1(ArrayList<Integer> list){
                               ^
 1 个错误     
+
+
+
+invoke method method1_1(ArrayList<String> list)
+invoke method method1_1(ArrayList<String> list)
