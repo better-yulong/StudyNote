@@ -11,11 +11,11 @@ Centos7 安装hg：  yum install mercurial
 故修改get_sourece.sh最后面的部分，调整循环下载直接成功为止。（仅需修改文件末尾modify 片段）
  ```
 	######### modify start by zyl ,to download until succeed.
-# Get clones of all absent nested repositories (harmless if already exist)
-sh ./common/bin/hgforest.sh clone "$@"
-while [ $? -ne 0 ]
-do
-sh ./common/bin/hgforest.sh clone "$@"
+	# Get clones of all absent nested repositories (harmless if already exist)
+	sh ./common/bin/hgforest.sh clone "$@"
+	while [ $? -ne 0 ]
+	do
+	sh ./common/bin/hgforest.sh clone "$@"
 done
 
 # Update all existing repositories to the latest sources
