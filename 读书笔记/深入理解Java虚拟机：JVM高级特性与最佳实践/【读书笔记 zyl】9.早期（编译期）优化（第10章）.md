@@ -2,9 +2,9 @@
 编译器可以分好几类，如前端编译器把*.java文件转变成 *.class 文件，即Sun的 Javac、Eclipse JDT 的增量式编译器（ECP）；又或者如后端运行期编译器把字节码转变成机器码，如HotSpot VM的C1、C2编译器；再者如静态提前编译器（AOT编译器）把*.java文件直接编译成本地机器代码。
 前端编译器的优化主要为使用使用“语法糖”来改善程序员的编码风格和提交编码效率；而针对性能的优化则集中在后台运行期编译期。
 
-二、Javac 的源码及调试
+### 二、Javac 的源码及调试
 javac源码位于 JDK_SCR_HOME/langtools/src/share/classes/com/sun/tools/javac/ 目录中，除JDK自身API外，仅调用了 com/sun 包内的代码。
-1、下载源码及工程导入：
+## 1、下载源码及工程导入：
 Centos7 安装hg：  yum install mercurial 
          下载jdk8基础包：hg clone http://hg.openjdk.java.net/jdk8u/jdk8u/
          下载源码：进入基础包，./get_source.sh  下载完整源码包（其实也不包含受保护源码，如 com.misc包），因网络不稳定，常会报：stream ended unexpectedly (got 42241 bytes, expected 53431)
