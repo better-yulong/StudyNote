@@ -16,7 +16,7 @@ Centos7 安装hg：  yum install mercurial
 从Sun Javac代码来看，核心是JavaCompiler.compile(fileObjects, classnames.toList(), processors)：
 可参考：【读书实践 zyl】10. Javac 实现研究
 核心代码：
-try {
+```try {
             initProcessAnnotations(processors);   //准备过程：初始化插入式注解处理器
 
             // These method calls must be chained to avoid memory leaks
@@ -31,6 +31,9 @@ try {
             delegateCompiler.close();
             elapsed_msec = delegateCompiler.elapsed_msec;
 注：过程3内部核心代码：generate(desugar(flow(attribute(todo.remove()))));   
+
+```
+
 过程3.1 attribute方法：标注
 过程3.2 flow方法：数据流分析
 过程3.3 desugar方法：解语法糖
