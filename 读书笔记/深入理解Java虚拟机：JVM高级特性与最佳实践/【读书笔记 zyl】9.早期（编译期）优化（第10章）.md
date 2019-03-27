@@ -144,15 +144,15 @@ Javac源码，插入式注解处理器的初始化过程是在 initProcessAnnota
 	}
 ```
 因IDE该测试工程的jdk版本为jdk7，IDE会直接报错（Erasure of method method1_1(ArrayList<String>) is the same as another method in type GenericTypesTest）；而通过javac命令基于JDK1.7编译时则会报错：
-```GenericTypesTest.java:17: 错误: 名称冲突: method1_1(ArrayList<Integer>)和method1_1(ArrayList<String>)具有相同疑符                                
+```
+	GenericTypesTest.java:17: 错误: 名称冲突: method1_1(ArrayList<Integer>)和method1_1(ArrayList<String>)具有相同疑符                                
         public static Integer method1_1(ArrayList<Integer> list){
-                              ^
+                            ^
 1 个错误   
 
 ```
- 而下载JDK6，使用JDK6编译、运行则均可正确，
-
-
-
-invoke method method1_1(ArrayList<String> list)
-invoke method method1_1(ArrayList<String> list)
+ 而下载JDK6，使用JDK6编译、运行则均可正确，结果如下
+```
+	invoke method method1_1(ArrayList<String> list)
+	invoke method method1_1(ArrayList<String> list)
+```
