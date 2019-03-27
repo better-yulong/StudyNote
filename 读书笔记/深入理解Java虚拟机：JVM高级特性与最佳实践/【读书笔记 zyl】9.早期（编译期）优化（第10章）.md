@@ -108,7 +108,12 @@ Javac源码，插入式注解处理器的初始化过程是在 initProcessAnnota
 - 泛型出现之前，只能基于Object是所有类的父类和类型强制转换配合实现泛型。如JDK1.5之前HashMap的get()方法，返回值为Object对象，然后基于强制类型转换可转换成任何对象，也同时这种无限可能性只有程序员和运行期的虚拟机才知道Objet具体是什么类型的对象（因编译期无法检查Object强制类型转换是否可成功），使得运行期会出现许多ClassCastException。
 - 而C#的泛型则是在编译期、运行期需存在对应的方法表和类型数据，这种实现称为类型膨胀，基于这种方法实现的泛型称为真实泛型。而Java语言的泛型仅存在源码，编译期检查通过，编译后的字节码文件即已经将原来的原生类型（Raw Type，也称作裸类型），同时在对应地方插入强制类型转换代码。即对于运行期的Java语言来说，Array<Integer>（书中原文是Array<int>,但实际因泛型不能基本类型会报语法错）与Array<String>是对应同一个类。Java语言的泛型实现方法称为类型擦除，基于这种方法实现的泛型称为伪泛型。
 ```language
-	如代码 ArrayList<Integer> a = new ArrayList<Integer>(); 编译后通过反编译工具查看
+	如源码：
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		list.add(Integer.valueOf(1));
+		Integer temp = list.get(0);
+	编译后通过反编译工具查看class文件如下：
+		
 ```
 
 
