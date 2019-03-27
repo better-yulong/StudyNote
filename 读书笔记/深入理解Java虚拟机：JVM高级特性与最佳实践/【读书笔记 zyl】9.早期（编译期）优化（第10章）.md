@@ -99,4 +99,4 @@ Javac源码，插入式注解处理器的初始化过程是在 initProcessAnnota
 - 语法糖在编译阶段即被还原回简单的基础语法结构，该过程称为解语法糖；故语法糖仅编译支持，运行时不支持。对应过程由 desugar()方法触发，在 com.sun.tools.javac.comp.TtransTypes类和 com.sun.tools.javac.comp.Lower类完成。
 ###### d、字节码生成
 字节码生成是Javac编译过程最后一个阶段，Javac源码则 com.sun.tools.javac.jvm.Gen类完成。字节码生成阶段不仅是把前面各阶段生成的信息（语法树、符号表）转化成字节码写到磁盘，同时还进行了少量的代码添加和转换工作。
-- 
+- 如之前章节提到的实例构造器方法和类构造器方法<c>
