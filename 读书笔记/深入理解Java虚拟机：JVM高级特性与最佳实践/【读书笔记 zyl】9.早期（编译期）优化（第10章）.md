@@ -65,7 +65,7 @@ Centos7 安装hg：  yum install mercurial
 基于eclipse AST 插件显示示例部分代码的抽象语法树视图，可直接认识：
  
 核心代码parseFiles 的实现为为JavacParser类的parser方法---> JavacParser.parseCompilationUnit 方法：1、parser方法解析是否保留注册、debug调试行等参数初始化；2、parseCompilationUnit 方法则根据标记Token的类型循环遍历填充完成 ListBuffer<JCTree>。
-	填充符号表
+填充符号表
 词法分析、语法分析之后即是填充符号表，对应 enterTrees 方法间接依赖的Enter类的complete方法。符号表（Synbol Table）是由一组符号地址和符号信息构成的表格（数据结构可以是哈希表、有序符号表、树状符号表、栈结构符号表等）
 符号表可用于语义检查、生产中间代码、地址分配等。
 ##### 3、注解处理器
