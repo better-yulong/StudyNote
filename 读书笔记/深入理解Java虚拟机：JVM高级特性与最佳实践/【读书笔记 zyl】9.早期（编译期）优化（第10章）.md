@@ -143,7 +143,7 @@ Javac源码，插入式注解处理器的初始化过程是在 initProcessAnnota
 
 	}
 ```
-因IDEAA
+因IDE该测试工程的jdk版本为jdk7，IDE会直接报错（）
 
 
 
