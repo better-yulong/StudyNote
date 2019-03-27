@@ -113,7 +113,9 @@ Javac源码，插入式注解处理器的初始化过程是在 initProcessAnnota
 		list.add(Integer.valueOf(1));
 		Integer temp = list.get(0);
 	编译后通过反编译工具查看class文件如下：
-		
+		ArrayList localArrayList = new ArrayList();
+    		localArrayList.add(Integer.valueOf(1));
+    		Integer localInteger = (Integer)localArrayList.get(0);	
 ```
 
 
