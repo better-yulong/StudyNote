@@ -78,6 +78,7 @@ Javac源码，插入式注解处理器的初始化过程是在 initProcessAnnota
 ###### b、数据及控制流分析
 数据及控制流分析是对程序上下文逻辑更进一步的验证，其可检查出诸如程序局部变量在使用前是否有赋值、方法的每条路径是否都有返回值、是否所有的受查异常都被正确处理等。编译时期的数据及控制流分析与类加载时间的数据及控制流分析目的基本一致，但校验范围有所区别，有一些校验只能在编译期或者运行期才能确定。以方法内final局部变量为例：
 ```language
+	//方法1
 	public void foo(final int arg){
 		final int var = 0 ;
 		//do something
@@ -85,12 +86,12 @@ Javac源码，插入式注解处理器的初始化过程是在 initProcessAnnota
 		//var = 3 ;
 	}
 	
-	//
+	//方法2
 	public void foo(int arg){
 		int var = 0 ;
 	}
 ```
-
+解读1：
 
 
 过程3.1 attribute方法：标注
