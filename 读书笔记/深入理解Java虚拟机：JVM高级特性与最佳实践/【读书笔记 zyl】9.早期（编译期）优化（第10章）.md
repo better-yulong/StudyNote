@@ -103,7 +103,6 @@ Javac源码，插入式注解处理器的初始化过程是在 initProcessAnnota
 - 完成对语法树的遍历及调整后，会把填充所有所需信息的符号表交给 com.sun.tools.javac.jvm.ClassWriter类，由该类的writeClass()方法输出字节码生成最终的Class文件。
 
 #### 三、语法糖的味道
-
 ##### 1、泛型与类型擦除
 
 
