@@ -117,7 +117,16 @@ Javac源码，插入式注解处理器的初始化过程是在 initProcessAnnota
     		localArrayList.add(Integer.valueOf(1));
     		Integer localInteger = (Integer)localArrayList.get(0);	
 ```
-- 那
+- 那当泛型遇到重载呢？
+```language
+	public static void method1_1(ArrayList<String> list){
+		System.out.println("invoke method method1_1(ArrayList<String> list)");
+	}
+	public static void method1_1(ArrayList<Integer> list){
+		System.out.println("invoke method method1_1(ArrayList<String> list)");
+	}
+```
+
 
 
 
