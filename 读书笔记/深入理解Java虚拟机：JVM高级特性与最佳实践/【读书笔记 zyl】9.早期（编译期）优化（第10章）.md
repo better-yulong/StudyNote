@@ -82,8 +82,8 @@ Javac源码，插入式注解处理器的初始化过程是在 initProcessAnnota
 	public void foo(final int arg){
 		final int var = 0 ;
 		//do something
-		//arg = 3 ;
-		//var = 3 ;
+		//arg = 3 ;  L1
+		//var = 3 ;  L2
 	}
 	
 	//方法2
