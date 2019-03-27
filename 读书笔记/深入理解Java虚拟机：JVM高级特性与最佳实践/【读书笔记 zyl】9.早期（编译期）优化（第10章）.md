@@ -157,4 +157,4 @@ Javac源码，插入式注解处理器的初始化过程是在 initProcessAnnota
 	invoke method method1_1(ArrayList<String> list)
 	invoke method method1_1(ArrayList<Integer> list)
 ```
-- 对于如上
+- 对于public static Integer method1_1(ArrayList<Integer> list)、
