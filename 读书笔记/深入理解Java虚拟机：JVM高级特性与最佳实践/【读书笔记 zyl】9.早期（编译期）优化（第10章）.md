@@ -157,4 +157,4 @@ Javac源码，插入式注解处理器的初始化过程是在 initProcessAnnota
 	invoke method method1_1(ArrayList<String> list)
 	invoke method method1_1(ArrayList<Integer> list)
 ```
-- 对于public static Integer method1_1(ArrayList<Integer> list)、public static void method1_1(ArrayList<String> list) 两个方法，在JDK1.5 可重载成功，对以前重载仅以方法名和参数来判断而返回值不参与重载选择的认知确实是个挑战。其实JDK1.6
+- 对于public static Integer method1_1(ArrayList<Integer> list)、public static void method1_1(ArrayList<String> list) 两个方法，在JDK1.6 (中用书)可重载成功，对以前重载仅以方法名和参数来判断而返回值不参与重载选择的认知确实是个挑战。其实JDK1.6
