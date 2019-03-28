@@ -259,7 +259,7 @@ Code属性详细说明是每个method的Code属性，而这个Code属性仅是�
 
 }
 ```如上运行结果理解需要依赖几点：
-1. Integer、Byte、Short、Integer、Long类都有缓存的范围，其中Byte，Short，Integer，Long为 -128 到 127，Character范围为 0 到 127；除了 Integer 可以通过参数改变范围外，其它的都不行（Integer的缓存上界high可以通过jvm参数-XX:AutoBoxCacheMax=size指定，取指定值与127的最大值并且不超过Integer表示范围，而下界low不能指定，只能为-128。）。缓存范围内，自动装箱
+1. Integer、Byte、Short、Integer、Long类都有缓存的范围，其中Byte，Short，Integer，Long为 -128 到 127，Character范围为 0 到 127；除了 Integer 可以通过参数改变范围外，其它的都不行（Integer的缓存上界high可以通过jvm参数-XX:AutoBoxCacheMax=size指定，取指定值与127的最大值并且不超过Integer表示范围，而下界low不能指定，只能为-128。）。缓存范围内，自动装箱时会取自常量池中的对象
 2. 包装类的“==”运算在没有遇到算术运算符的情况下不会自动拆箱、装箱。
 3. equals方法比较值，忽视类型。
 4. 
