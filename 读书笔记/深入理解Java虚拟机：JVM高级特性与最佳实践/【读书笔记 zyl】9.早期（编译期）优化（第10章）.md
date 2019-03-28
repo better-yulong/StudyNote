@@ -165,20 +165,19 @@ Javac源码，插入式注解处理器的初始化过程是在 initProcessAnnota
 	public class GenericTypesTest2<T> {
 	
 	
-	public <A> void testGenericTypeClear(A a){
-		System.out.println(a.toString());
-		ArrayList<Integer> list0 = new ArrayList<Integer>();
-		Integer temp0 = list0.get(0);  
-		ArrayList<T> list = new ArrayList<T>();
-		T temp = list.get(0);  //编译后反编译Class文件实际就是对get返回的Object对象做的强制转换成Integer对象。
-	}
+		public <A> void testGenericTypeClear(A a){
+			System.out.println(a.toString());
+			ArrayList<Integer> list0 = new ArrayList<Integer>();
+			Integer temp0 = list0.get(0);  
+			ArrayList<T> list = new ArrayList<T>();
+			T temp = list.get(0);  //编译后反编译Class文件实际就是对get返回的Object对象做的强制转换成Integer对象。
+		}
 	
-	public void testGenPass(T t){
-		System.out.println(t.hashCode());
-		
-	}
+		public void testGenPass(T t){
+			System.out.println(t.hashCode());
+		}
 
-}
+	}
 ```
 
 
