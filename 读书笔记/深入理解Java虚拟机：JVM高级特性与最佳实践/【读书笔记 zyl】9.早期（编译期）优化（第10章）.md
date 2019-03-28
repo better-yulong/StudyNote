@@ -230,7 +230,7 @@ public class GenericTypesTest2<T,M,N> {
 2. 泛型作用域：因泛型不同于已知类型，而变量通常包含类型、参数名。故规范确认为<A>声明泛型A,而其作用域与实例变量、局部变量、方法入参相同。即定义在class、interface 关键字后的泛型可使用于实例变量、方法入参、方法内、方法返回值；而定义在方法的泛型使用域则为方法入参、方法内、方法返回值 。重要的一点：因泛型是动态类型，故泛型参数均不能使用static修饰，但可使用final修饰。
 3. 这点即是Code属性类型擦除但元数据保留泛型信息的理解：元数据保存在JVM的方法区或元数据区，而每个Class的Objct对象则保存在堆（对应元数据区类的无数据信息）。那Code属性和元数据区究竟保存了什么呢？先看看的Class文件结构：
 ![Class文件结构](https://github.com/better-yulong/StudyNote-picture/blob/master/StudyNote-picgure/10-002.PNG)
-Class文件结构：基本信息（魔树、主次版本等）、
+Class文件结构：基本信息（魔树、主次版本等）、Class常量池、接口列表Interfaces、
 Code属性详细说明是Class文件中methods数组中每个method的属性，根据之前章节可知道Code属性可认为即是方法内部代码编译后的JAVA操作指令。
 
 
