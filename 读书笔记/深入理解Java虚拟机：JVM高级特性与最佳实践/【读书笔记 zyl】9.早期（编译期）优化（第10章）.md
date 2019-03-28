@@ -200,6 +200,8 @@ Javac源码，插入式注解处理器的初始化过程是在 initProcessAnnota
 ```language
 Bytecode viewer查看class文件二进制：
 testGenericTypeClear 方法Signature值：
+方法class格式为：
+
 ```
 
 
