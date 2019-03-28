@@ -284,6 +284,6 @@ Javac编译器无需使用预处理器，其并非一个个编译Java文件，�
 			System.out.println("while true");
 		}
 ```
-- 只有使用条件为常量为true、false的if语句才可达到该效果（表达示也不可以
+- 只有使用条件为常量的if语句才可达到该效果（true、false或者类似1==1这类全部基于常量的吞表达示也不可以
 
 	
