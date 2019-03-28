@@ -219,7 +219,7 @@ public class GenericTypesTest2<T> {
 	}
 }
 ```
-2. 泛型作用域：泛型的声明
+2. 泛型作用域：流
 
 
 
