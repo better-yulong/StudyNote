@@ -204,7 +204,7 @@ testGenericTypeClear 方法Signature值：<<A:Ljava/lang/Object;>(TA;TT)v>
 https://github.com/better-yulong/StudyNote-picture/blob/master/StudyNote-picgure/10-001.PNG
 ```
 - 通过如上GenericTypesTest2类源码及反编译、二进制示例相对理解比较清晰，泛型即为类型参数化。即然是参数，那么就涉及到参数的声明、作用域、类型信息。
-1. 泛型声明：泛型作为区别与Java运行存在且魂寺
+1. 泛型声明：泛型作为区别与Java运行存在且支持的类型，
 2. 
 
 
