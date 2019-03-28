@@ -202,6 +202,8 @@ Bytecode viewer查看class文件二进制：
 testGenericTypeClear 方法Signature值：<<A:Ljava/lang/Object;>(TA;TT)v> 
 方法class格式见图：
 https://github.com/better-yulong/StudyNote-picture/blob/master/StudyNote-picgure/10-001.PNG
+
+
 ```
 
 
