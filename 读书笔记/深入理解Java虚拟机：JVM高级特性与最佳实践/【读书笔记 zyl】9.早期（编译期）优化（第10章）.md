@@ -206,7 +206,8 @@ https://github.com/better-yulong/StudyNote-picture/blob/master/StudyNote-picgure
 - 通过如上GenericTypesTest2类源码及反编译、二进制示例相对理解比较清晰，泛型即为类型参数化。即然是参数，那么就涉及到参数的声明、作用域、类型信息。
 1. 泛型声明：泛型作为区别与Java运行存在且支持的类型，泛型对象及泛型集合对象声明使用<And>，如List<A>  或 A a。复杂点的如：
 ```language
-public class GenericTypesTest2<T> {
+public class GenericTypesTest2<T,M,N> {
+	
 	private T t ;
 	
 	public <A> T testGenericTypeClear(A a,ArrayList<T> b,ArrayList<A> c,T d){
@@ -217,6 +218,13 @@ public class GenericTypesTest2<T> {
 		T temp = list.get(0);  //编译后反编译Class文件实际就是对get返回的Object对象做的强制转换成Integer对象。
 		return temp;
 	}
+	
+	public void testGenPass(T t){
+		ArrayList<N> list = new ArrayList<N>();
+		System.out.println(list.hashCode());
+		
+	}
+
 }
 ```
 2. 泛型作用域：流
