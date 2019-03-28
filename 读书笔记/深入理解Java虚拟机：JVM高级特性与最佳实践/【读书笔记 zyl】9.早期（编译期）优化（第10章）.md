@@ -200,9 +200,9 @@ Javac源码，插入式注解处理器的初始化过程是在 initProcessAnnota
 ```language
 Bytecode viewer查看class文件二进制：
 testGenericTypeClear 方法Signature值：<<A:Ljava/lang/Object;>(TA;TT)v> 
+```
 方法class格式见图：
 ![方法class格式见图](https://github.com/better-yulong/StudyNote-picture/blob/master/StudyNote-picgure/10-001.PNG)
-```
 - 通过如上GenericTypesTest2类源码及反编译、二进制示例相对理解比较清晰，泛型即为类型参数化。即然是参数，那么就涉及到参数的声明、作用域、类型信息。而泛型就可以理解为可以动态指定实际类型的参数。对于很多地方理解的如泛型接口、泛型类、泛型方法的分类个人感觉只不过是泛型参数声明位置、使用域有区别布局，且并非排它而是可组合。
 1. 泛型声明：泛型作为区别与Java运行存在且支持的类型，泛型对象及泛型集合对象声明使用<And>，如List<A>  或 A a。再就是声明的位置只能是在class 类名、interface接口名之后，或者方法的修改符如private之后返回参数之前。同时若需同时声明多个泛型，可在<>内逗号分隔。复杂点示例如下：
 ```language
@@ -230,6 +230,7 @@ public class GenericTypesTest2<T,M,N> {
 2. 泛型作用域：因泛型不同于已知类型，而变量通常包含类型、参数名。故规范确认为<A>声明泛型A,而其作用域与实例变量、局部变量、方法入参相同。即定义在class、interface 关键字后的泛型可使用于实例变量、方法入参、方法内、方法返回值；而定义在方法的泛型使用域则为方法入参、方法内、方法返回值 。重要的一点：因泛型是动态类型，故泛型参数均不能使用static修饰，但可使用final修饰。
 3. 这点即是Code属性类型擦除但元数据保留泛型信息的理解：元数据保存在JVM的方法区或元数据区，而每个Class的Objct对象则保存在堆（对应元数据区类的无数据信息）。那Code属性和元数据区究竟保存了什么呢？先看看的Class文件结构：
 ![Class文件结构](https://github.com/better-yulong/StudyNote-picture/blob/master/StudyNote-picgure/10-002.PNG)
+
 
 
 
