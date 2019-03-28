@@ -207,7 +207,7 @@ https://github.com/better-yulong/StudyNote-picture/blob/master/StudyNote-picgure
 1. 泛型声明：泛型作为区别与Java运行存在且支持的类型，泛型对象及泛型集合对象声明使用<And>，如List<A>  或 A a。复杂点的如：
 ```language
 public class GenericTypesTest2<T> {
-	
+	private T t ;
 	
 	public <A> T testGenericTypeClear(A a,ArrayList<T> b,ArrayList<A> c,T d){
 		System.out.println(a.toString());
