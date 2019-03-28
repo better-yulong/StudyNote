@@ -203,7 +203,7 @@ testGenericTypeClear 方法Signature值：<<A:Ljava/lang/Object;>(TA;TT)v>
 方法class格式见图：
 https://github.com/better-yulong/StudyNote-picture/blob/master/StudyNote-picgure/10-001.PNG
 ```
-- 通过如下代码及反编译、二进制示例相对理解比较清晰，泛型即为类型参数化。即然也是参数那就
+- 通过如下代码及反编译、二进制示例相对理解比较清晰，泛型即为类型参数化。即然也是
 
 
 	
