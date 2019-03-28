@@ -217,16 +217,9 @@ public class GenericTypesTest2<T> {
 		T temp = list.get(0);  //编译后反编译Class文件实际就是对get返回的Object对象做的强制转换成Integer对象。
 		return temp;
 	}
-	
-	public void testGenPass(T t){
-		System.out.println(t.hashCode());
-		
-	}
-
 }
 ```
-
-2. 
+2. 泛型作用域：泛型的声明
 
 
 
