@@ -199,7 +199,7 @@ Javac源码，插入式注解处理器的初始化过程是在 initProcessAnnota
 ```
 ```language
 Bytecode viewer查看class文件二进制：
-testGenericTypeClear 方法Signature值： 
+testGenericTypeClear 方法Signature值：<<A:Ljava/lang/Object 
 方法class格式见图：
 https://github.com/better-yulong/StudyNote-picture/blob/master/StudyNote-picgure/10-001.PNG
 ```
