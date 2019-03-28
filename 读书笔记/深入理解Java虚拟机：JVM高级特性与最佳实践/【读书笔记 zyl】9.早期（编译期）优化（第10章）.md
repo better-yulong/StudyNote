@@ -236,7 +236,7 @@ Code属性详细说明是每个method的Code属性，而这个Code属性仅是�
 4. 那么更进一步，涉及到类与类型？注意区分类型（Type）与类（Class）的区别，这里Class是Type的一种是Type的子集，直接子类只有一个也就是Class，代表着类型中的原始类型以及基本类型，而像数组、枚举等“类型”是相对于Class来说。如method.getGenericReturnType() 可以理解获取源码定义的类型信息（如泛型A），method.getReturnType() 则为类型擦除后的类型信息（如class java.lang.Object)。
 ##### 2、自动装箱、拆箱与遍历循环
 先来看段示例代码：
-```language
+
 	public class AutoBoxTest {
 
 		public static void main(String[] args) {
@@ -258,7 +258,7 @@ Code属性详细说明是每个method的Code属性，而这个Code属性仅是�
 		}
 
 	}
-```
+
 如上运行结果理解需要依赖几点：
 1. Integer、Byte、Short、Integer、Long类都有缓存的范围，其中Byte，Short，Integer，Long为 -128 到 127，Character范围为 0 到 127；除了 Integer 可以通过参数改变范围外，其它的都不行（Integer的缓存上界high可以通过jvm参数-XX:AutoBoxCacheMax=size指定，取指定值与127的最大值并且不超过Integer表示范围，而下界low不能指定，只能为-128。）。缓存范围内，自动装箱时会取自常量池中的对象。
 2. 包装类的“==”运算在没有遇到算术运算符的情况下不会自动拆箱、装箱。
