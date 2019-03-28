@@ -231,7 +231,7 @@ public class GenericTypesTest2<T,M,N> {
 3. 这点即是Code属性类型擦除但元数据保留泛型信息的理解：元数据保存在JVM的方法区或元数据区，而每个Class的Objct对象则保存在堆（对应元数据区类的无数据信息）。那Code属性和元数据区究竟保存了什么呢？先看看的Class文件结构：
 ![Class文件结构](https://github.com/better-yulong/StudyNote-picture/blob/master/StudyNote-picgure/10-002.PNG)
 Class文件结构：基本信息（魔树、主次版本等）、Class常量池、接口列表Interfaces、Fields数组（实例变量、类变量，其中实例变量也有Signature属性）、Methods数组（各方法又包含Code属性、Signature属性）、Attributes数组（类的Signature属性、源java文件名）
-Code属性详细说明是每个method的Code属性，而这个Code属性仅是包含源码方法{}mw 根据之前章节可知道Code属性可认为即是方法内部代码编译后的JAVA操作指令。
+Code属性详细说明是每个method的Code属性，而这个Code属性仅是包含源码方法{}内的代码，而在根据之前章节可知道Code属性可认为即是方法内部代码编译后的JAVA操作指令。
 
 
 
