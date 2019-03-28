@@ -203,7 +203,7 @@ testGenericTypeClear 方法Signature值：<<A:Ljava/lang/Object;>(TA;TT)v>
 方法class格式见图：
 https://github.com/better-yulong/StudyNote-picture/blob/master/StudyNote-picgure/10-001.PNG
 ```
-- 通过如上GenericTypesTest2类源码及反编译、二进制示例相对理解比较清晰，泛型即为类型参数化。即然是参数，那么就涉及到参数的声明、作用域、类型信息。
+- 通过如上GenericTypesTest2类源码及反编译、二进制示例相对理解比较清晰，泛型即为类型参数化。即然是参数，那么就涉及到参数的声明、作用域、类型信息。而泛型就可以理解为可以动态指定实际
 1. 泛型声明：泛型作为区别与Java运行存在且支持的类型，泛型对象及泛型集合对象声明使用<And>，如List<A>  或 A a。复杂点的如：
 ```language
 public class GenericTypesTest2<T,M,N> {
