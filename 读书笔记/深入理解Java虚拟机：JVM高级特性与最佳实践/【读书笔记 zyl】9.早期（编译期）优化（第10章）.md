@@ -202,7 +202,7 @@ Bytecode viewer查看class文件二进制：
 testGenericTypeClear 方法Signature值：
 方法class格式为：
 ![Class文件方法格式（Code、Signature)](https://github.com/better-yulong/StudyNote-picture/blob/master/StudyNote-picgure/10-001.PNG)
-```
+```![10001.PNG](0)
 
 
 
