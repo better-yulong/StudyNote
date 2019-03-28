@@ -280,7 +280,7 @@ Javac编译器无需使用预处理器，其并非一个个编译Java文件，�
 			System.out.println("while true");
 		}
 		
-		while(false){//while(false）可正常编译运行
+		while(false){//while(false）编译报错：
 			System.out.println("while true");
 		}
 
