@@ -235,6 +235,28 @@ Code属性详细说明是每个method的Code属性，而这个Code属性仅是�
 那元数据又怎么理解呢？其实可以得意理解为Class的骨架信息，或者对我们而言就是可以通过反射机制操作的数据（Constructor类、Field类、Method类）。那接口、类字义的泛型信息在Attributes数组的Signature属性会保留，而方法的泛型信息则在method的Signature属性保留）。
 4. 那么更进一步，涉及到类与类型？注意区分类型（Type）与类（Class）的区别，这里Class是Type的一种是Type的子集，直接子类只有一个也就是Class，代表着类型中的原始类型以及基本类型，而像数组、枚举等“类型”是相对于Class来说。如method.getGenericReturnType() 可以理解获取源码定义的类型信息（如泛型A），method.getReturnType() 则为类型擦除后的类型信息（如class java.lang.Object)。
 ##### 2、自动装箱、拆箱与遍历循环
+先来看段示例代码：
+```language
+	public class AutoBoxTest {
+
+	public static void main(String[] args) {
+		Integer a = 1 ; 
+		Integer b = 2 ;
+		Integer c = 3 ;
+		Integer d = 3 ;
+		Integer e = 321 ;
+		Integer f = 321 ;
+		Long g= 3l;
+		System.out.println(c==d);//true
+		System.out.println(e==f);//false
+		System.out.println(c==(a+b));//true
+		System.out.println(c.equals(a+b));//true
+		System.out.println(g==(a+b));//true
+		System.out.println(g.equals(a+b));//false
+	}
+
+}
+```
 
 
 
