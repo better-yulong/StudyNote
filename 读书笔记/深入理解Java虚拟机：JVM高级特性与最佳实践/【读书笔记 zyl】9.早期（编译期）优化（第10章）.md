@@ -181,7 +181,21 @@ Javac源码，插入式注解处理器的初始化过程是在 initProcessAnnota
 ```
 ```language
 反编译Class文件后代码：
-
+	public class GenericTypesTest2<T>
+{
+  public <A> void testGenericTypeClear(A paramA)
+  {
+    System.out.println(paramA.toString());
+    java.util.ArrayList localArrayList1 = new java.util.ArrayList();
+    Integer localInteger = (Integer)localArrayList1.get(0);
+    java.util.ArrayList localArrayList2 = new java.util.ArrayList();
+    Object localObject = localArrayList2.get(0);
+  }
+  
+  public void testGenPass(T paramT) {
+    System.out.println(paramT.hashCode());
+  }
+}
 ```
 
 
