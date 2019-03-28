@@ -233,7 +233,7 @@ public class GenericTypesTest2<T,M,N> {
 Class文件结构：基本信息（魔树、主次版本等）、Class常量池、接口列表Interfaces、Fields数组（实例变量、类变量，其中实例变量也有Signature属性）、Methods数组（各方法又包含Code属性、Signature属性）、Attributes数组（类的Signature属性、源java文件名）
 Code属性详细说明是每个method的Code属性，而这个Code属性仅是包含源码方法{}内的代码（也可认为即是方法内部代码编译后的JAVA操作指令。），而在{}内部使用的泛型相关代码则只能使用Object替换（声明在接口、类、方法上）或者强制类型转换（如方法内容声明List<Integer>并调用get方法时）根据之前章节可知道Code属性可认为即是方法内部代码编译后的JAVA操作指令。
 那元数据又怎么理解呢？其实可以得意理解为Class的骨架信息，或者对我们而言就是可以通过反射机制操作的数据（Constructor类、Field类、Method类）。那接口、类字义的泛型信息在Attributes数组的Signature属性会保留，而方法的泛型信息则在method的Signature属性保留）。
-4. 那么更进一步，涉及到类与类型？注意区分类型（Type）与类（Class）的区别，这里Class是Type的一种是Type的子集，直接子类只有一个也就是Class，代表着类型中的原始类型以及基本类型，而像数组、枚举等“类型”是相对于Class来说。如method.getGenericReturnType() 可以理解获取源码定义的类型信息信息（如泛型A），method.getReturnType() 则则为类型擦除后的
+4. 那么更进一步，涉及到类与类型？注意区分类型（Type）与类（Class）的区别，这里Class是Type的一种是Type的子集，直接子类只有一个也就是Class，代表着类型中的原始类型以及基本类型，而像数组、枚举等“类型”是相对于Class来说。如method.getGenericReturnType() 可以理解获取源码定义的类型信息（如泛型A），method.getReturnType() 则则为类型擦除后的类型信息（如class java.lang.Object)
 
 
 
