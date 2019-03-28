@@ -285,6 +285,7 @@ Javac编译器无需使用预处理器，其并非一个个编译Java文件，�
 		}
 ```
 - 只有使用条件为常量的if语句才可达到该效果（true、false或者类似1==1这类全部基于常量可直接基于常量折叠为true、false的表达式才可以，其他复杂如表达式 Integer.valueOf(1)==Integer.valueOf(1) 都不可以）
-- Java的条件编译的实现也是一颗语法糖，根据布尔常量值的真假，编译器会把分支中不成立的代码块消除掉，该工作在编译喊叫解除语法糖阶段（com.sun.tools.javac.comp.Lower类)pfdn
+- Java的条件编译的实现也是一颗语法糖，根据布尔常量值的真假，编译器会把分支中不成立的代码块消除掉，该工作在编译喊叫解除语法糖阶段（com.sun.tools.javac.comp.Lower类)完成。
+-
 
 	
