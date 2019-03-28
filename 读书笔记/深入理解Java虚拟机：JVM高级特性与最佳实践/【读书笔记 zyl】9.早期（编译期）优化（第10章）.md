@@ -259,6 +259,7 @@ Code属性详细说明是每个method的Code属性，而这个Code属性仅是�
 
 }
 ```如上运行结果理解需要依赖几点：
-1. Integer、Byte、Short、Integer、Long类都有缓存的范围，其中Byte，Short，Integer，Long为 -128 到 127，Character范围为 0 到 127。除了 Integer 可以通过参数改变范围外，其它的都不行。
+1. Integer、Byte、Short、Integer、Long类都有缓存的范围，其中Byte，Short，Integer，Long为 -128 到 127，Character范围为 0 到 127；除了 Integer 可以通过参数改变范围外，其它的都不行。
+2. 包装类的“==”运算在没有遇到
 
 	
