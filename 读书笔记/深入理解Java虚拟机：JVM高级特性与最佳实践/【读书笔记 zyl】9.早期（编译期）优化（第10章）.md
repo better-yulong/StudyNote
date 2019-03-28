@@ -204,7 +204,7 @@ testGenericTypeClear 方法Signature值：<<A:Ljava/lang/Object;>(TA;TT)v>
 https://github.com/better-yulong/StudyNote-picture/blob/master/StudyNote-picgure/10-001.PNG
 ```
 - 通过如上GenericTypesTest2类源码及反编译、二进制示例相对理解比较清晰，泛型即为类型参数化。即然是参数，那么就涉及到参数的声明、作用域、类型信息。而泛型就可以理解为可以动态指定实际类型的参数。对于很多地方理解的如泛型接口、泛型类、泛型方法的分类其实不太苟同，个人感觉只不过是泛型参数声明位置的区别布局，并非排它而是可组合。
-1. 泛型声明：泛型作为区别与Java运行存在且支持的类型，泛型对象及泛型集合对象声明使用<And>，如List<A>  或 A a。再就是声明的位置只能是在class 类名、interface接口名之后，或者方法的修改符如private之后复杂点的如：
+1. 泛型声明：泛型作为区别与Java运行存在且支持的类型，泛型对象及泛型集合对象声明使用<And>，如List<A>  或 A a。再就是声明的位置只能是在class 类名、interface接口名之后，或者方法的修改符如private之后返回参数之前。同时若需同时声明多个泛型，复杂点的如：
 ```language
 public class GenericTypesTest2<T,M,N> {
 	
