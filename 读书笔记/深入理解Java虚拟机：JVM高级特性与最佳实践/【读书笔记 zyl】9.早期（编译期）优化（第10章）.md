@@ -275,5 +275,16 @@ Javac编译器无需使用预处理器，其并非一个个编译Java文件，�
 		}
 ```
 编译后反编译发现，只剩： System.out.println("true");同时IDE也会提示DeadCode。但：
+```language
+		while(true){
+			System.out.println("while true");
+		}
+
+		while(false){
+			System.out.println("while true");
+		}
+
+```
+
 
 	
