@@ -165,7 +165,7 @@ Javac源码，插入式注解处理器的初始化过程是在 initProcessAnnota
 	public class GenericTypesTest2<T> {
 	
 	
-		public <A> void testGenericTypeClear(A a){
+		public <A> void testGenericTypeClear(A a,T b){
 			System.out.println(a.toString());
 			ArrayList<Integer> list0 = new ArrayList<Integer>();
 			Integer temp0 = list0.get(0);  
