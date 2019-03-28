@@ -161,7 +161,23 @@ Javac源码，插入式注解处理器的初始化过程是在 initProcessAnnota
 - 对于上面method1_1泛型在JDK1.6编译运行成功，而JDK1.7直接编译不通过的问题，顺便做了个有趣的测试，即JDK1.6编译通过的Class文件是否可在JDK1.8环境运行呢？结果还真如预期，运行成功。> 段落引用 至此有了比较清楚的理解。JRE对Class文件的校验允许相同签名但符号描述不同的方法共存，即都可以运行成功。因Signature 是虚拟机规范中最重要的一项属性，它存储的是方法在字节字节码层面的特征签名，故虚拟机规范也有修改要求JDK1.7及以上版本需避免类型擦除对实际编码的影响，故在JDK1.7的Javac编译时对仅返回值不同方法描述符相同的源码在编译时做了验证；同时为了运行时兼容低版本生成的Class文件故运行时又可支持。
 - 书中提到：从Signature 属性得出结论：类型擦除仅是对方法的Code属性中字节码进行擦除，而实现元数据仍保留了泛型信息（这也是为何可以通过反射取得参数化类型的要本依据）。但关于Code属性字节码类型擦除而元数据保留泛型信息一开始并未理解，故决定深究，先看下面几段代码：
 ```language
+public class GenericTypesTest2<T> {
+	
+	
+	public <A> void testGenericTypeClear(A a){
+		System.out.println(a.toString());
+		ArrayList<Integer> list0 = new ArrayList<Integer>();
+		Integer temp0 = list0.get(0);  
+		ArrayList<T> list = new ArrayList<T>();
+		T temp = list.get(0);  //编译后反编译Class文件实际就是对get返回的Object对象做的强制转换成Integer对象。
+	}
+	
+	public void testGenPass(T t){
+		System.out.println(t.hashCode());
+		
+	}
 
+}
 ```
 
 
