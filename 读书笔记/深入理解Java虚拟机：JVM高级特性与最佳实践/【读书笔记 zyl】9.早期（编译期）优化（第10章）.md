@@ -202,23 +202,7 @@ Bytecode viewer查看class文件二进制：
 testGenericTypeClear 方法Signature值：<<A:Ljava/lang/Object;>(TA;TT)v> 
 方法class格式见图：
 https://github.com/better-yulong/StudyNote-picture/blob/master/StudyNote-picgure/10-001.PNG
-
-
 ```
 
 
 	
-	public <A> void testGenericTypeClear(A a){
-		System.out.println(a.toString());
-		ArrayList<A> list = new ArrayList<A>();
-		A temp = list.get(0);  
-}
-
-
-
-  public <A> void testGenericTypeClear(A paramA) {
-    System.out.println(paramA.toString());
-    java.util.ArrayList localArrayList = new java.util.ArrayList();
-    Object localObject = localArrayList.get(0);
-  }
-
