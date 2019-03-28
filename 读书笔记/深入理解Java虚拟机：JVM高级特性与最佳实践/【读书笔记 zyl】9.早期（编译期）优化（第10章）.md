@@ -263,6 +263,6 @@ Code属性详细说明是每个method的Code属性，而这个Code属性仅是�
 2. 包装类的“==”运算在没有遇到算术运算符的情况下不会自动拆箱、装箱。
 3. equals方法直接比较值，不处理数据类型转换，即不会触发装箱。
 4. new Integer()会忽略Integer缓存创建新对象，Integer.valueOf()则会优化取缓存数据。
-5. 自动装箱、拆箱实际为自动类型转换,如 g==(a+b) 涉及基本数据类型到Integer、Long的装箱，但  new Integer(2)==new Double(2) 这种比较会直接报错：不支持的操作数。
+5. 自动装箱、拆箱实际为自动类型转换,如 g==(a+b) 涉及基本数据类型到Integer、Long的装箱；但  new Integer(2)==new Double(2) 这种比较会直接报错：不支持的操作数运算。
 
 	
