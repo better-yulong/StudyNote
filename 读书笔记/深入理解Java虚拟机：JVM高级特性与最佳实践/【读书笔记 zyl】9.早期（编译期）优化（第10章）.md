@@ -296,7 +296,7 @@ Javac编译更多是检查程序是否有语法、语义等错误，但是否符
 - 方法：符合驼峰式命名法，首字母小写。
 - 字段：类或实例变量需符合驼峰式命名法首字母小写，常量需全部由大写字母或下划线构成且第一个字符不能是下线划。
 ###### 2、代码实现
-基于注解处理器API实现编译插件，需注解处理器的代码继承抽象类 javax.annotation.processing.AbstracetProssor，
+基于注解处理器API实现编译插件，需注解处理器的代码继承抽象类 javax.annotation.processing.AbstracetProcessor，其仅有一个必须
 
 
 
