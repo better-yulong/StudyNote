@@ -296,7 +296,7 @@ Javac编译更多是检查程序是否有语法、语义等错误，但是否符
 - 方法：符合驼峰式命名法，首字母小写。
 - 字段：类或实例变量需符合驼峰式命名法首字母小写，常量需全部由大写字母或下划线构成且第一个字符不能是下线划。
 ###### 2、代码实现
-基于注解处理器API实现编译插件，需注解处理器的代码继承抽象类 javax.annotation.processing.AbstracetProcessor，其仅有一个必须覆盖的abstrace方法：“process()”，其是Javac编译器执行注解处理器代码时调用的过程。该方法第一个参数"annotations"可获取此注解处理器所要处理的注解集合，第二个参数"roundEnv"可访问到当前Round中的语法树节点，每个语法树节点在这里表示为一个Element（JDK1.6新增的javx.lang.model包定义了16类Element，）
+基于注解处理器API实现编译插件，需注解处理器的代码继承抽象类 javax.annotation.processing.AbstracetProcessor，其仅有一个必须覆盖的abstrace方法：“process()”，其是Javac编译器执行注解处理器代码时调用的过程。该方法第一个参数"annotations"可获取此注解处理器所要处理的注解集合，第二个参数"roundEnv"可访问到当前Round中的语法树节点，每个语法树节点在这里表示为一个Element。JDK1.6新增的javx.lang.model包定义了16类Element，包括Java代码最常用的元素，如
 
 
 
