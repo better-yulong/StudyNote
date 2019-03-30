@@ -301,7 +301,7 @@ Javac编译更多是检查程序是否有语法、语义等错误，但是否符
 - 除了process()方法的传入参数外，还有一个很常用实例变量"processingEnv",它是AbstraceProcessor的一个protected变量，在注解处理器初始化方法init()执行进创建，继承的AbstraceProcessor的注解处理器可直接访问，它代码注解处理器框架提供的一个上下文环境，在创建新的代码、向编译器输出信息、获取其他工具类均需用到这个实例变量。
 - 注解处理器除process()方法及其参数外，还可配合使用Annotations：@SupportedAnnotationTypes和@SupportedSourceVersion。@SupportedAnnotationTypes代表该注解处理器对哪些注解有兴趣，可使用星号"*"通配符；@SupportedSourceVersion指定注解处理器可处理哪些版本的Java代码。
 - 每个注解处理器均是单例，若不需要改变或生成语法树内容，process()方法可直接返回一个值为false的布尔值，通知编译器Round中代码无变化且无需构造新的JavaCompiler实例。
-> 此次注解
+> 此次注解处理器仅对程序命名进行检查，无需改变其内容。
 
 
 
