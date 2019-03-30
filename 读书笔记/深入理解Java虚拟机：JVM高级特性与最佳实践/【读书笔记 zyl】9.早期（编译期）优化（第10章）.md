@@ -310,5 +310,69 @@ Javac编译更多是检查程序是否有语法、语义等错误，但是否符
 
 
 
-
+javac -encoding utf-8 com/test/jvm/javac/NameChecker.java
 javac -encoding utf-8 com/test/jvm/javac/NameCheckProcessor.java
+javac -encoding utf-8 -processor com.test.jvm.javac.NameCheckProcessor -XprintProcess
+orInfo com/test/jvm/javac/BADLY_NAMED_CODE.java
+
+D:\work\workspace\work2\JVMDemo\src>javac -encoding utf-8 -processor com.test.jvm.javac.NameCheckProcessor -XprintProcess
+orInfo com/test/jvm/javac/BADLY_NAMED_CODE.java
+处理程序com.test.jvm.javac.NameCheckProcessor与[]匹配并返回false。                                                       
+com\test\jvm\javac\BADLY_NAMED_CODE.java:5: 警告: 常量red应当全部以大写字母或下划线命名并且以字母开头                    
+                red,blue,green;
+                ^
+com\test\jvm\javac\BADLY_NAMED_CODE.java:5: 警告: 常量blue应当全部以大写字母或下划线命名并且以字母开头                   
+                red,blue,green;
+                    ^
+com\test\jvm\javac\BADLY_NAMED_CODE.java:5: 警告: 常量green应当全部以大写字母或下划线命名并且以字母开头                  
+                red,blue,green;
+                         ^
+com\test\jvm\javac\BADLY_NAMED_CODE.java:4: 警告: 名称colors应当以大写字母开头                                           
+        enum colors{
+        ^
+com\test\jvm\javac\BADLY_NAMED_CODE.java:5: 警告: 常量red应当全部以大写字母或下划线命名并且以字母开头                    
+                red,blue,green;
+                ^
+com\test\jvm\javac\BADLY_NAMED_CODE.java:5: 警告: 常量blue应当全部以大写字母或下划线命名并且以字母开头                   
+                red,blue,green;
+                    ^
+com\test\jvm\javac\BADLY_NAMED_CODE.java:5: 警告: 常量green应当全部以大写字母或下划线命名并且以字母开头                  
+                red,blue,green;
+                         ^
+com\test\jvm\javac\BADLY_NAMED_CODE.java:7: 警告: 常量_FORTY_TWO应当全部以大写字母或下划线命名并且以字母开头             
+        static final int _FORTY_TWO =42 ;
+                         ^
+com\test\jvm\javac\BADLY_NAMED_CODE.java:9: 警告: 名称NOT_A_CONSTANT应当以小写字母开头                                   
+        public static int NOT_A_CONSTANT = _FORTY_TWO ;
+                          ^
+com\test\jvm\javac\BADLY_NAMED_CODE.java:3: 警告: 名称BADLY_NAMED_CODE应当符合驼峰式命名法（Camel Case Names）           
+public class BADLY_NAMED_CODE {
+       ^
+com\test\jvm\javac\BADLY_NAMED_CODE.java:5: 警告: 常量red应当全部以大写字母或下划线命名并且以字母开头                    
+                red,blue,green;
+                ^
+com\test\jvm\javac\BADLY_NAMED_CODE.java:5: 警告: 常量blue应当全部以大写字母或下划线命名并且以字母开头                   
+                red,blue,green;
+                    ^
+com\test\jvm\javac\BADLY_NAMED_CODE.java:5: 警告: 常量green应当全部以大写字母或下划线命名并且以字母开头                  
+                red,blue,green;
+                         ^
+com\test\jvm\javac\BADLY_NAMED_CODE.java:4: 警告: 名称colors应当以大写字母开头                                           
+        enum colors{
+        ^
+com\test\jvm\javac\BADLY_NAMED_CODE.java:5: 警告: 常量red应当全部以大写字母或下划线命名并且以字母开头                    
+                red,blue,green;
+                ^
+com\test\jvm\javac\BADLY_NAMED_CODE.java:5: 警告: 常量blue应当全部以大写字母或下划线命名并且以字母开头                   
+                red,blue,green;
+                    ^
+com\test\jvm\javac\BADLY_NAMED_CODE.java:5: 警告: 常量green应当全部以大写字母或下划线命名并且以字母开头                  
+                red,blue,green;
+                         ^
+com\test\jvm\javac\BADLY_NAMED_CODE.java:7: 警告: 常量_FORTY_TWO应当全部以大写字母或下划线命名并且以字母开头             
+        static final int _FORTY_TWO =42 ;
+                         ^
+com\test\jvm\javac\BADLY_NAMED_CODE.java:9: 警告: 名称NOT_A_CONSTANT应当以小写字母开头                                   
+        public static int NOT_A_CONSTANT = _FORTY_TWO ;
+                          ^
+19 个警告   
