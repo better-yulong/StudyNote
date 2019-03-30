@@ -300,7 +300,7 @@ Javac编译更多是检查程序是否有语法、语义等错误，但是否符
 - 该方法第一个参数"annotations"可获取此注解处理器所要处理的注解集合，第二个参数"roundEnv"可访问到当前Round中的语法树节点，每个语法树节点在这里表示为一个Element。JDK1.6新增的javx.lang.model包定义了16类Element，包括Java代码最常用的元素，如：包（PACKAGE）、枚举（ENUM）、类（CLASS）、注解（ANNOTATION_TYPE)、接口（INTERFACE）、枚举值（ENUM_CONSTANT）、字段（FIELD）、参数（PARAMETER)、本地变量（LAOCAL_VARIABLE)、异常（EXCEPTION_PARAMETER）、方法（METHOD）、构造函数（CONSTRUCTOR)、静态语句块（STATIC_INIT,即static{}块）、实例语句块（INSTANCE_INIT，那{}块）、参数化类型（TYPE_PARAMETER,即泛型尖括号内的类型）和未定义的其他语法树节点（OTHER)。
 - 除了process()方法的传入参数外，还有一个很常用实例变量"processingEnv",它是AbstraceProcessor的一个protected变量，在注解处理器初始化方法init()执行进创建，继承的AbstraceProcessor的注解处理器可直接访问，它代码注解处理器框架提供的一个上下文环境，在创建新的代码、向编译器输出信息、获取其他工具类均需用到这个实例变量。
 - 注解处理器除process()方法及其参数外，还可配合使用Annotations：@SupportedAnnotationTypes和@SupportedSourceVersion。@SupportedAnnotationTypes代表该注解处理器对哪些注解有兴趣，可使用星号"*"通配符；@SupportedSourceVersion指定注解处理器可处理哪些版本的Java代码。
-- 每个注解处理器均是单例，
+- 每个注解处理器均是单例，若不需要改变或生成语法树内容，process()方法可直接返回一个值为
 
 
 
