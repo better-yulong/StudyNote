@@ -307,3 +307,8 @@ Javac编译更多是检查程序是否有语法、语义等错误，但是否符
 
 
 
+
+
+
+
+javac -encoding utf-8 com/test/jvm/javac/NameCheckProcessor.java
