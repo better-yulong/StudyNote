@@ -303,19 +303,12 @@ Javac编译更多是检查程序是否有语法、语义等错误，但是否符
 - 每个注解处理器均是单例，若不需要改变或生成语法树内容，process()方法可直接返回一个值为false的布尔值，通知编译器Round中代码无变化且无需构造新的JavaCompiler实例。
 > 此次注解处理器仅对程序命名进行检查，无需改变其内容。
 
-
-
-
-
-
-
-
-javac -encoding utf-8 com/test/jvm/javac/NameChecker.java
+> javac -encoding utf-8 com/test/jvm/javac/NameChecker.java
 javac -encoding utf-8 com/test/jvm/javac/NameCheckProcessor.java
 javac -encoding utf-8 -processor com.test.jvm.javac.NameCheckProcessor -XprintProcess
 orInfo com/test/jvm/javac/BADLY_NAMED_CODE.java
 
-D:\work\workspace\work2\JVMDemo\src>javac -encoding utf-8 -processor com.test.jvm.javac.NameCheckProcessor -XprintProcess
+> D:\work\workspace\work2\JVMDemo\src>javac -encoding utf-8 -processor com.test.jvm.javac.NameCheckProcessor -XprintProcess
 orInfo com/test/jvm/javac/BADLY_NAMED_CODE.java
 处理程序com.test.jvm.javac.NameCheckProcessor与[]匹配并返回false。                                                       
 com\test\jvm\javac\BADLY_NAMED_CODE.java:5: 警告: 常量red应当全部以大写字母或下划线命名并且以字母开头                    
