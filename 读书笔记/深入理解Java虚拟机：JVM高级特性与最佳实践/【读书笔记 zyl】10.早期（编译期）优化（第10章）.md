@@ -372,7 +372,8 @@ com\test\jvm\javac\BADLY_NAMED_CODE.java:9: 警告: 名称NOT_A_CONSTANT应当�
                           ^
 19 个警告  
 
-##### 4、其他应用
+##### 4、其他应用案例
+基于嵌入式注解处理器API实现的还有
 
 
 
