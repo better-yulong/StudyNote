@@ -18,7 +18,7 @@
 D:\>java -version
 java version "1.8.0_112"
 Java(TM) SE Runtime Environment (build 1.8.0_112-b15)
-Java HotSpot(TM) 64-Bit Server VM (build 25.112-b15, mixed mode)
+Java HotSpot(TM) 64-Bit Server VM (build 25.112-b15, ++mixed mode++)
 
 D:\>java -Xint -version
 java version "1.8.0_112"
@@ -28,5 +28,5 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.112-b15, ++interpreted mode++)
 D:\>java -Xcomp -version
 java version "1.8.0_112"
 Java(TM) SE Runtime Environment (build 1.8.0_112-b15)
-Java HotSpot(TM) 64-Bit Server VM (build 25.112-b15, compiled mode)
+Java HotSpot(TM) 64-Bit Server VM (build 25.112-b15, ++compiled mode++)
 ```
