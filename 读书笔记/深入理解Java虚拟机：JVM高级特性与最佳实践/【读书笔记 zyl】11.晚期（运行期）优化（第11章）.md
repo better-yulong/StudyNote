@@ -47,7 +47,7 @@
 ![JIT编译交互过程图](https://github.com/better-yulong/StudyNote-Resource/blob/master/StudyNote-Resource/10-003.PNG)
 - 如果不做任何设置，方法调用计数器并非该方法被调用的绝对次数，而是一段时间之内方法被调用的次数。当超过一定时间限度，如果方法的调用次数仍不足以提交即时编译器编译，那这个方法的调用计数器会被减少一半，该过程称为方法调用计数器热度的衰减（Counter Decay）。
 
-
+d
 
 
 
