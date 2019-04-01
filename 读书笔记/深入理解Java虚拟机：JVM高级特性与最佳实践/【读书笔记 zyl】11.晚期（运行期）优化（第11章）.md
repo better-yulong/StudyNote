@@ -67,7 +67,8 @@
 > Server Compiler则是专门面向服务端的典型应用并为服务端的性能配置特别调整过的编译器，也是一个充分优化过的高级编译器。它会执行所有经典的优化动作，如无用代码消除（Dead Code Elimination）、循环展开（Loop Unrolling）、循环表达式外提(Loop Expression Hoisting)、消除公共子表达式（Common Subexpression Elimination）、常量传播（Constant Propagation）、基本块重排序（Basic Block Reordering）等；同时，还会实施Java语言特性密切相关的，如范围检查消息（Range Check Elimination）、空值检查消除（Null Check　Elimination；并非所有空值检查消除都依赖编译器优化，其中部分是在代码运行过程中自动优化）。另外，还可能根据解释器或Client　Compiler提供的性能监控信息，进行不稳定的激进优化，如守护内联（Guarded Inlining)、分支频率预测（Branch Frequency Prediction）。
 > Server Compiler的寄存器分配器是一个全局图着色分配器，它可充分利用某些处理器架构（如RISC）上的大寄存器集合。以即时编译标准看，Server Compiler比较缓慢，但它的编译速度则远超过传统的静态优化编译器，相对于Client Compiler编译输出的代码以质量则有所提高，可减少本地代码的执行时间，从而抵消额外的编译时间开销，所以也有很多非服务端应用选择使用Server模式的虚拟机运行。
 
-##### 4、
+##### 4、查看及分析限时编译结果
+
 
 
 
