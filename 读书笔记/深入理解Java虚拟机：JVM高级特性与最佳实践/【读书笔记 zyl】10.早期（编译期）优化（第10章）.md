@@ -364,7 +364,8 @@ com\test\jvm\javac\BADLY_NAMED_CODE.java:5: 警告: 常量blue应当全部以大
 com\test\jvm\javac\BADLY_NAMED_CODE.java:5: 警告: 常量green应当全部以大写字母或下划线命名并且以字母开头                  
                 red,blue,green;
                          ^
-com\test\jvm\javac\BADLY_NAMED_CODE.java:7: 警告: 常量_FORTY_TWO应当全部以大写字母或下划线命名并且以字母开头             
+com\test\jvm\javac\BADLY_NAMED_CODE.java:7: 警告: 常量_FORTY_TWO应当全部以大写字母或下划线命名并且以字
+母开头             
         static final int _FORTY_TWO =42 ;
                          ^
 com\test\jvm\javac\BADLY_NAMED_CODE.java:9: 警告: 名称NOT_A_CONSTANT应当以小写字母开头                                   
