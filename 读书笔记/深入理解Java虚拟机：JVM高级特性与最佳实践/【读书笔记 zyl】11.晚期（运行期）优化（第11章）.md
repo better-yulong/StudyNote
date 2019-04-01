@@ -64,7 +64,7 @@
 - 最后阶段是在平台相关的后端使用线性扫描算法（Linear Scan Registere Allocation）在LIR上分配寄存器，并在LIR上做窥也（Reephloe）优化，然后生产机器代码。
 - Client Compiler大致执行过程：
 - ![Client Compiler执行过程](https://github.com/better-yulong/StudyNote-Resource/blob/master/StudyNote-Resource/11-003.PNG)
-> Server Compiler则是专门面向服务端的典型应用并为服务端的性能配置特别调整过
+> Server Compiler则是专门面向服务端的典型应用并为服务端的性能配置特别调整过的编译器，也是一个充分优化过的高级编译顺。
 
 
 
