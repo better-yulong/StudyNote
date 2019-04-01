@@ -307,7 +307,7 @@ javac -encoding utf-8 com/test/jvm/javac/NameChecker.java
 javac -encoding utf-8 com/test/jvm/javac/NameCheckProcessor.java
 javac -encoding utf-8 -processor com.test.jvm.javac.NameCheckProcessor -XprintProcess
 orInfo com/test/jvm/javac/BADLY_NAMED_CODE.java
-//基于此种方式模拟完成编译时按命名规范的检查，但无法dubug，
+//基于此种方式模拟完成编译时按命名规范的检查，但无法dubug暂未找到在eclipse中合适的编写和调试方法
 ```
 
 > D:\work\workspace\work2\JVMDemo\src>javac -encoding utf-8 -processor com.test.jvm.javac.NameCheckProcessor -XprintProcess
