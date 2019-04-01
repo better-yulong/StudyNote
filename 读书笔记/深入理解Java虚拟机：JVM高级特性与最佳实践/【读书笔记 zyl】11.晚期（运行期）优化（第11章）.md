@@ -58,12 +58,12 @@
 
 ##### 2、编译过程
 默认设置下，无论是方法调用产生的编译请求还是OSR请求，虚拟机代码编译未完成前都仍将按照解释方式继续执行，而编译动作则在后台编译线程中进行。可通过参数 -XX:-BackgroundCompilation 禁止后台编译；该参数设置后，一旦达到JIT编译条件，执行线程向虚拟机提交编译请求后会等待直到编译过程完成后再开始执行编译器输出的本地代码。Service Compiler和Client Compiler编译过程不一样。
-- Client Compiler 主要关注点是局部性的优化而放弃了许多耗时较长的全局优化优化手段，是一个简单快速的三段式编译器。
+> Client Compiler 主要关注点是局部性的优化而放弃了许多耗时较长的全局优化优化手段，是一个简单快速的三段式编译器。
 - 第一阶段：一个平台独立的前端将字节码构造成一种高级中间代码表示（High-Level Intermediate Representation，HIR）。HIR使用静态单分配（Static Single Assignment，SSA）的形式来代表代码值，可使得一些在HIR的构造过程之中和之后进行的优化运行更容易实现。在此之前编译器会完成一部分基础优化，如HIR之前完成方法内联（方法内联就是把调用方函数代码"复制"到调用方函数中,减少因函数调用开销的技术）、常量传播（编译优化时将能够计算出结果的变量直接替换为常量）等优化。
 - 第二阶段：一个平台独立的后端从HIR中产生低级中间代码表示（Low Level Intermediate Representation，LIR），在此之前会完成HIR上完成部分优化，如空值检查消除、范围检查消除等，以便让HIR达到更高效的代码表示形式。
 - 最后阶段是在平台相关的后端使用线性扫描算法（Linear Scan Registere Allocation）在LIR上分配寄存器，并在LIR上做窥也（Reephloe）优化，然后生产机器代码。
 - Client Compiler大致执行过程：
-
+![Client Compiler执行过程](https://github.com/better-yulong/StudyNote-Resource/blob/master/StudyNote-Resource/11-003.PNG)
 
 
 
