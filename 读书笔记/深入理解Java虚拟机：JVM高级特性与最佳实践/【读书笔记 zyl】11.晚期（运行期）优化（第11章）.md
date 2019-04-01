@@ -53,7 +53,7 @@
 方法调用计数器阈值（Compile Threshold)*（OSR比率（OnStackReplacePercentage）-解释器监控比率（InterpreterProfilePercentage）/100，其中OnStackReplacePercentage默认值为140,InterpreterProfilePercentage默认值为33；若都取默认值，那Client模式虚拟机的回边计数器阈值为 10700。
 > 当解释器遇到一条回边指令时，会先查找将要执行的代码片段是否已有编译好的版本；若有，则优先执行已编译的代码，否则将回边计数器值加1，然后判断方法调用计数器和回边计数器之和是否超过回边计数器的阈值。超过阈值则提交一个OSR编译请求并且把回边计数器的值降低一些以便继续在解释器中执行循环，等待编译器输出编译结果。执行过程如图：
 ![OSR编译交互](https://github.com/better-yulong/StudyNote-Resource/blob/master/StudyNote-Resource/11-002.PNG)
-> 与方法计数器不同，回边计数器没有计数热度衰减过程，因此该计数器统计的是方法循环执行的绝对次数。当计数器溢出，会同步把方法计数器的值也调整为溢出状态，这样下次进入该方法会执行标准编译过程。
+> 段落引用与方法计数器不同，回边计数器没有计数热度衰减过程，因此该计数器统计的是方法循环执行的绝对次数。当计数器溢出，会同步把方法计数器的值也调整为溢出状态，这样下次进入该方法会执行标准编译过程。
 > 上面两个图仅描述Client VM的即时编译方式，而Server VM 相对更复杂。JVM源码MethodOop.hpp（一个MethodOop对象个Java方法），其定义了Java方法在虚拟机的内存布局，其中明确定义了方法调用计数器和回边计数喊叫的位置和长度。
 
 ##### 2、编译过程
