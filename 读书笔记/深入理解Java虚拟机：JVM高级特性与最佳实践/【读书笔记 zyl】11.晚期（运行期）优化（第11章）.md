@@ -63,7 +63,8 @@
 - 第二阶段：一个平台独立的后端从HIR中产生低级中间代码表示（Low Level Intermediate Representation，LIR），在此之前会完成HIR上完成部分优化，如空值检查消除、范围检查消除等，以便让HIR达到更高效的代码表示形式。
 - 最后阶段是在平台相关的后端使用线性扫描算法（Linear Scan Registere Allocation）在LIR上分配寄存器，并在LIR上做窥也（Reephloe）优化，然后生产机器代码。
 - Client Compiler大致执行过程：
-![Client Compiler执行过程](https://github.com/better-yulong/StudyNote-Resource/blob/master/StudyNote-Resource/11-003.PNG)
+- ![Client Compiler执行过程](https://github.com/better-yulong/StudyNote-Resource/blob/master/StudyNote-Resource/11-003.PNG)
+> Server C
 
 
 
