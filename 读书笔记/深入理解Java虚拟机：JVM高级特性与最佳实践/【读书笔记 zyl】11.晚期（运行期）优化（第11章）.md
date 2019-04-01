@@ -15,18 +15,18 @@
 > HotSpot虚拟机内置两个限时编译器，分别称为Client Compiler和 Server Compiler，即简称为C1编译器和C2编译器（也叫Opto编译器）。主流HotSpot虚拟机默认采用解释器与其中一种编译器配合工作。程序使用的编译器取决于虚拟机运行模式，HotSpot虚拟机会根据自身版本及宿主机器的硬件性能自动选择，或者用户也可使用 "-client" 或 "-server" 参数强制指定运行在Client模式或者Server模式。
 > 解释器和编译器搭配使用的方式在虚拟机中称为"混合模式"(Mixed Mode),用户可使用参数"-Xint"强制虚拟机运行于"解释模式"（Interpreted Mode），此模式编译器不工作，全部代码都使用解释方式执行。另外，也可使用参数"-Xcomp"强制虚拟机运行于编译模式（Compiled Mode),该模式优化采用编译方式运行，但若编译方式无法进行则解释器需介入执行。
 ```
-D:\>java -version
-java version "1.8.0_112"
-Java(TM) SE Runtime Environment (build 1.8.0_112-b15)
-Java HotSpot(TM) 64-Bit Server VM (build 25.112-b15, ++mixed mode++)
+	D:\>java -version
+	java version "1.8.0_112"
+	Java(TM) SE Runtime Environment (build 1.8.0_112-b15)
+	Java HotSpot(TM) 64-Bit Server VM (build 25.112-b15, ++mixed mode++)
 
-D:\>java -Xint -version
-java version "1.8.0_112"
-Java(TM) SE Runtime Environment (build 1.8.0_112-b15)
-Java HotSpot(TM) 64-Bit Server VM (build 25.112-b15, ++interpreted mode++)
+	D:\>java -Xint -version
+	java version "1.8.0_112"
+	Java(TM) SE Runtime Environment (build 1.8.0_112-b15)
+	Java HotSpot(TM) 64-Bit Server VM (build 25.112-b15, ++interpreted mode++)
 
-D:\>java -Xcomp -version
-java version "1.8.0_112"
-Java(TM) SE Runtime Environment (build 1.8.0_112-b15)
-Java HotSpot(TM) 64-Bit Server VM (build 25.112-b15, ++compiled mode++)
+	D:\>java -Xcomp -version
+	java version "1.8.0_112"
+	Java(TM) SE Runtime Environment (build 1.8.0_112-b15)
+	Java HotSpot(TM) 64-Bit Server VM (build 25.112-b15, ++compiled mode++)
 ```
