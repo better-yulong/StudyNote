@@ -30,4 +30,4 @@
 	Java(TM) SE Runtime Environment (build 1.8.0_112-b15)
 	Java HotSpot(TM) 64-Bit Server VM (build 25.112-b15, ++compiled mode++)
 ```
-即时编译器编译本地代码
+即时编译器编译本地代码需占用程序运行时间，且依赖解释器收集性能监控信息以便编译出优化程序更高的代码
