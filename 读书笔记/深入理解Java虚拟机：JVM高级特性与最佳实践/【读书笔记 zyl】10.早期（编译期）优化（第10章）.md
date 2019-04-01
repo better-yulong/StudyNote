@@ -373,7 +373,7 @@ com\test\jvm\javac\BADLY_NAMED_CODE.java:9: 警告: 名称NOT_A_CONSTANT应当�
 19 个警告  
 
 ##### 4、其他应用案例
-基于嵌入式注解处理器API实现的有Hibernate标签验证、自动为字段生成getter
+基于嵌入式注解处理器API实现的有Hibernate标签验证、自动为字段生成getter和setter 方法的Project Lombok(sv
 
 
 
