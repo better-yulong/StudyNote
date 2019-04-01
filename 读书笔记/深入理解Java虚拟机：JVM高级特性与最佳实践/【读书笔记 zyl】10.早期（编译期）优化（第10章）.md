@@ -372,6 +372,7 @@ com\test\jvm\javac\BADLY_NAMED_CODE.java:9: 警告: 名称NOT_A_CONSTANT应当�
                           ^
 19 个警告  
 
+##### 4、其他应用
 
 
 
