@@ -309,7 +309,6 @@ javac -encoding utf-8 -processor com.test.jvm.javac.NameCheckProcessor -XprintPr
 orInfo com/test/jvm/javac/BADLY_NAMED_CODE.java
 //基于此种方式模拟完成编译时按命名规范的检查，但无法dubug暂未找到在eclipse中合适的编写和调试方法
 ```
-
 > D:\work\workspace\work2\JVMDemo\src>javac -encoding utf-8 -processor com.test.jvm.javac.NameCheckProcessor -XprintProcess
 orInfo com/test/jvm/javac/BADLY_NAMED_CODE.java
 处理程序com.test.jvm.javac.NameCheckProcessor与[]匹配并返回false。                                                       
@@ -371,4 +370,29 @@ com\test\jvm\javac\BADLY_NAMED_CODE.java:7: 警告: 常量_FORTY_TWO应当全部
 com\test\jvm\javac\BADLY_NAMED_CODE.java:9: 警告: 名称NOT_A_CONSTANT应当以小写字母开头                                   
         public static int NOT_A_CONSTANT = _FORTY_TWO ;
                           ^
-19 个警告   
+19 个警告  
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
