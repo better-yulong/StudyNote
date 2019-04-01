@@ -50,7 +50,7 @@
 > 虚拟机运行在Client模式，回边计数器阈值计算公式：
 方法调用计数器阈值（Compile Threshold)*OSR比率（OnStackReplacePercentage）/100，其中OnStackReplacePercentage默认值为933；若都取默认值，那Client模式虚拟机的回边计数器阈值为 13995。
 > 虚拟机运行在Server模式，回边计数器阈值计算公式：
-方法调用计数器阈值（Compile Threshold)*（OSR比率（OnStackReplacePercentage）-解释器监控比率（InterpreterProfilePercentage）/100，其中OnStackReplacePercentage默认值为140；若都取默认值，那Client模式虚拟机的回边计数器阈值为 13995。
+方法调用计数器阈值（Compile Threshold)*（OSR比率（OnStackReplacePercentage）-解释器监控比率（InterpreterProfilePercentage）/100，其中OnStackReplacePercentage默认值为140,InterpreterProfilePercentage默认值为33；若都取默认值，那Client模式虚拟机的回边计数器阈值为 10700。
 
 
 
