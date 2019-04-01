@@ -56,7 +56,7 @@
 > 与方法计数器不同，回边计数器没有计数热度衰减过程，因此该计数器统计的是方法循环执行的绝对次数。当计数器溢出，会同步把方法计数器的值也调整为溢出状态，这样下次进入该方法会执行标准编译过程。
 > 上面两个图仅描述Client VM的即时编译方式，而Server VM 相对更复杂。JVM源码MethodOop.hpp（一个MethodOop对象个Java方法），其定义了Java方法在虚拟机的内存布局，其中明确定义了方法调用计数器和回边计数喊叫的位置和长度。
 
-##### 2、编译过程
+##### 3、编译过程
 默认设置下，无论是方法调用产生的编译请求还是OSR请求，虚拟机代码编译未完成前都仍将按照解释方式继续执行，而编译动作则在后台编译线程中进行。可通过参数 -XX:-BackgroundCompilation 禁止后台编译；该参数设置后，一旦达到JIT编译条件，执行线程向虚拟机提交编译请求后会等待直到编译过程完成后再开始执行编译器输出的本地代码。Service Compiler和Client Compiler编译过程不一样。
 > Client Compiler 主要关注点是局部性的优化而放弃了许多耗时较长的全局优化优化手段，是一个简单快速的三段式编译器。
 - 第一阶段：一个平台独立的前端将字节码构造成一种高级中间代码表示（High-Level Intermediate Representation，HIR）。HIR使用静态单分配（Static Single Assignment，SSA）的形式来代表代码值，可使得一些在HIR的构造过程之中和之后进行的优化运行更容易实现。在此之前编译器会完成一部分基础优化，如HIR之前完成方法内联（方法内联就是把调用方函数代码"复制"到调用方函数中,减少因函数调用开销的技术）、常量传播（编译优化时将能够计算出结果的变量直接替换为常量）等优化。
@@ -67,8 +67,7 @@
 > Server Compiler则是专门面向服务端的典型应用并为服务端的性能配置特别调整过的编译器，也是一个充分优化过的高级编译器。它会执行所有经典的优化动作，如无用代码消除（Dead Code Elimination）、循环展开（Loop Unrolling）、循环表达式外提(Loop Expression Hoisting)、消除公共子表达式（Common Subexpression Elimination）、常量传播（Constant Propagation）、基本块重排序（Basic Block Reordering）等；同时，还会实施Java语言特性密切相关的，如范围检查消息（Range Check Elimination）、空值检查消除（Null Check　Elimination；并非所有空值检查消除都依赖编译器优化，其中部分是在代码运行过程中自动优化）。另外，还可能根据解释器或Client　Compiler提供的性能监控信息，进行不稳定的激进优化，如守护内联（Guarded Inlining)、分支频率预测（Branch Frequency Prediction）。
 > Server Compiler的寄存器分配器是一个全局图着色分配器，它可充分利用某些处理器架构（如RISC）上的大寄存器集合。以即时编译标准看，Server Compiler比较缓慢，但它的编译速度则远超过传统的静态优化编译器，相对于Client Compiler编译输出的代码以质量则有所提高，可减少本地代码的执行时间，从而抵消额外的编译时间开销，所以也有很多非服务端应用选择使用Server模式的虚拟机运行。
 
-
-
+##### 4、
 
 
 
