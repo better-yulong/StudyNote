@@ -30,4 +30,4 @@
 	Java(TM) SE Runtime Environment (build 1.8.0_112-b15)
 	Java HotSpot(TM) 64-Bit Server VM (build 25.112-b15, ++compiled mode++)
 ```
-即时编译器编译本地代码需占用程序运行时间，且依赖解释器收集性能监控信息以便编译出优化程序更高的代码。为在程序启动响应速度与运行效率之间达到平衡，HotSpot虚拟机采用逐渐启用分层编译（Tiered
+即时编译器编译本地代码需占用程序运行时间，且依赖解释器收集性能监控信息以便编译出优化程序更高的代码。为在程序启动响应速度与运行效率之间达到平衡，HotSpot虚拟机采用逐渐启用分层编译（Tiered Compilation)策略，其在JDK 1
