@@ -52,7 +52,7 @@
 > 虚拟机运行在Server模式，回边计数器阈值计算公式：
 方法调用计数器阈值（Compile Threshold)*（OSR比率（OnStackReplacePercentage）-解释器监控比率（InterpreterProfilePercentage）/100，其中OnStackReplacePercentage默认值为140,InterpreterProfilePercentage默认值为33；若都取默认值，那Client模式虚拟机的回边计数器阈值为 10700。
 > 当解释器遇到一条回边指令时，会先查找将要执行的代码片段是否已有编译好的版本；若有，则优先执行已编译的代码，否则将回边计数器值加1，然后判断方法调用计数器和回边计数器之和是否超过回边计数器的阈值。超过阈值则提交一个OSR编译请求并且把回边计数器的值降低一些以便继续在解释器中执行循环，等待编译器输出编译结果。执行过程如图：
-![OSR编译交互](https://github.com/better-yulong/StudyNote-Resource/blob/master/StudyNote-Resource/11-002.PNG)
+- ![OSR编译交互](https://github.com/better-yulong/StudyNote-Resource/blob/master/StudyNote-Resource/11-002.PNG)
 > 与方法计数器不同，回边计数器没有计数热度衰减过程，因此该计数器统计的是方法循环执行的绝对次数。当计数器溢出，会同步把方法计数器的值也调整为溢出状态，这样下次进入该方法会执行标准编译过程。
 > 上面两个图仅描述Client VM的即时编译方式，而Server VM 相对更复杂。JVM源码MethodOop.hpp（一个MethodOop对象个Java方法），其定义了Java方法在虚拟机的内存布局，其中明确定义了方法调用计数器和回边计数喊叫的位置和长度。
 
@@ -64,7 +64,8 @@
 - 最后阶段是在平台相关的后端使用线性扫描算法（Linear Scan Registere Allocation）在LIR上分配寄存器，并在LIR上做窥也（Reephloe）优化，然后生产机器代码。
 - Client Compiler大致执行过程：
 - ![Client Compiler执行过程](https://github.com/better-yulong/StudyNote-Resource/blob/master/StudyNote-Resource/11-003.PNG)
-> Server Compiler则是专门面向服务端的典型应用并为服务端的性能配置特别调整过的编译器，也是一个充分优化过的高级编译器。它会执行所有经典的优化动作，如无用代码消除（Dead Code Elimination）、循环展开（Loop Unrolling）、循环表达式外提(Loop Expression Hoisting)、消除公共子表达式（Common Subexpression Elimination）、常量传播（Constant Propagation）、基本块重排序（Basic Block Reordering）等；同时，还会实施Java语言特性密切相关的，如范围检查消息（Range Check Elimination）、空值检查消除（Null Check　Elimination；并非所有空值检查消除都依赖编译器优化，其中部分是在代码运行过程中自动优化）。另外，还可能根据解释器或Client　Compiler提供的性能监控信息，进行不稳定的激进优化，如守护内联（Guarded Inlining)、分支频率预测（Branch Frequency Prediction）
+> Server Compiler则是专门面向服务端的典型应用并为服务端的性能配置特别调整过的编译器，也是一个充分优化过的高级编译器。它会执行所有经典的优化动作，如无用代码消除（Dead Code Elimination）、循环展开（Loop Unrolling）、循环表达式外提(Loop Expression Hoisting)、消除公共子表达式（Common Subexpression Elimination）、常量传播（Constant Propagation）、基本块重排序（Basic Block Reordering）等；同时，还会实施Java语言特性密切相关的，如范围检查消息（Range Check Elimination）、空值检查消除（Null Check　Elimination；并非所有空值检查消除都依赖编译器优化，其中部分是在代码运行过程中自动优化）。另外，还可能根据解释器或Client　Compiler提供的性能监控信息，进行不稳定的激进优化，如守护内联（Guarded Inlining)、分支频率预测（Branch Frequency Prediction）。
+
 
 
 
