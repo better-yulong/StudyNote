@@ -208,8 +208,7 @@ SUPPORTED_OS_VERSION = 2.4% 2.5% 2.6% 2.7% 3.10%
 bootstrap jdk：进入 oracle jdk下载页面
     https://www.oracle.com/technetwork/java/javase/downloads/index.html
 ，选择最下方“Java Archive” 后的 DOWNLOAD即可下载历史版本jdk。遂下载 jdk 7u80的
-64位tar.gz包：jdk-7u80-linux-x64.tar.gz。
-    解压。
+64位tar.gz包：jdk-7u80-linux-x64.tar.gz,然后解压。
     
 ### 二、构建编译环境
 进入 openjdk8 源码目录
