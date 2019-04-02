@@ -27,8 +27,9 @@ ERROR: You do not have access to valid Cups header files.
 ```
 
 8. 编译shell如下：   
- #!/bin/bash
-        export ALT_BOOTDIR=/usr/local/java8
+```
+#!/bin/bash
+export ALT_BOOTDIR=/usr/local/java8
 export LANG=C
 export ALLOW_DOWNLOADS=true
 export ALT_JDK_IMPORT_PATH=/home/zyl/study/openjdk/target
@@ -87,6 +88,9 @@ make sanity
 46.	unset JAVA_HOME  
 47.	unset CLASSPATH 
 --------------------------------------------------------------------------------------------------------------
+
+```
+
 8、编译成功，结果如下：
     Sanity check passed.
 9、开始编译--参考（make all ARCH_DATA_MODEL=64 ALLOW_DOWNLOADS=true）
