@@ -215,10 +215,12 @@ SUPPORTED_OS_VERSION = 2.4% 2.5% 2.6% 2.7% 3.10%
 //生成配置信息并构建编译环境 
 > bash ./configure --with-target-bits=64 --with-boot-jdk=/home/zyl/soft/jdk1.7.0_80/ --with-debug-level=slowdebug --enable-debug-symbols ZIP_DEBUGINFO_FILES=0  
 以上的参数简单作一些说明: 
-–with-target-bits=64 :指定生成64位jdk; 
+```–with-target-bits=64 :指定生成64位jdk; 
 –with-boot-jdk=/usr/java/MYBOOTJDK_1.7/:启动jdk的路径; 
 –with-debug-level=slowdebug:编译时debug的级别,有release, fastdebug, slowdebug 三种级别; slowdebug 级别可以生成最多的调试信息 
 –enable-debug-symbols ZIP_DEBUGINFO_FILES=0:生成调试的符号信息,并且不压缩
+
+```
 
 若在configure过程中提示安装工具,则在安装完工具后执行make clean进行清理方可再次configure,否则会config不成功。
 
@@ -243,7 +245,7 @@ You might be able to fix this by running 'sudo yum install ccache'.
 注：其实如我之前尝试过编译 jdk7等，还会有其他依赖包缺失（如cups,freetype,alsa等）
 
 ### 三、编译
-make all ZIP_DEBUGINFO_FILES=0
+```make all ZIP_DEBUGINFO_FILES=0
 漫长等待之后，编译成功:花费了一个多小时
 ----- Build times -------
 Start 2018-09-04 10:12:59
@@ -261,6 +263,9 @@ End   2018-09-04 11:26:19
 01:13:20 TOTAL
 -------------------------
 Finished building OpenJDK for target 'all'
+
+```
+
 
 #### 四、验证
 通过日志或者在源码根目录下执行  find . -name java ，编译后的jdk 相对路径为：
