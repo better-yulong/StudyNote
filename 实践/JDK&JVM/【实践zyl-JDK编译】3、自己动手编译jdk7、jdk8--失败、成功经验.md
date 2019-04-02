@@ -1,6 +1,6 @@
-> 基于VMware Centos 7.5 64位DVD安装版编译JDK7（编译JDK7失败记录，文章后面有JDK8编译成功操作记录）：
+> 基于VMware Centos 7.5 64位DVD安装版编译JDK7（编译JDK7失败记录，之后会有JDK8编译成功记录）：
 #### 一、下载jdk7 源码
-> 段落引用jdk7下载地址:http://download.java.net/openjdk/jdk7/promoted/b147/openjdk-7-fcs-src-b147-27_jun_2011.zip:
+> jdk7下载地址:http://download.java.net/openjdk/jdk7/promoted/b147/openjdk-7-fcs-src-b147-27_jun_2011.zip:
 > 段落引用解析后，查看 README-builds.html 文件 Minimum Build Environments：
     Linux X64 (64-bit)  Fedora 9  gcc 4.3  JDK 6u18
 
