@@ -225,13 +225,13 @@ bash ./configure --with-target-bits=64 --with-boot-jdk=/home/zyl/soft/jdk1.7.0_8
 
 运行后报错：
 - 问题一：
-configure: error: Could not find all X11 headers (shape.h Xrender.h XTest.h Intrinsic.h). You might be able to fix this by running 'sudo yum install libXtst-devel libXt-devel libXrender-devel'.
+> configure: error: Could not find all X11 headers (shape.h Xrender.h XTest.h Intrinsic.h). You might be able to fix this by running 'sudo yum install libXtst-devel libXt-devel libXrender-devel'.
 configure exiting with result code 1
 解决：
     yum install libXtst-devel libXt-devel libXrender-devel
 
 搞定，配置成功：
-Build performance summary:
+```Build performance summary:
 * Cores to use:   1
 * Memory limit:   1821 MB
 * ccache status:  not installed (consider installing)
@@ -240,6 +240,7 @@ Build performance tip: ccache gives a tremendous speedup for C++ recompilations.
 You do not have ccache installed. Try installing it.
 You might be able to fix this by running 'sudo yum install ccache'.
 
+```
 注：其实如我之前尝试过编译 jdk7等，还会有其他依赖包缺失（如cups,freetype,alsa等）
 
 ### 三、编译
@@ -262,7 +263,7 @@ End   2018-09-04 11:26:19
 -------------------------
 Finished building OpenJDK for target 'all'
 
-四、验证
+#### 四、验证
 通过日志或者在源码根目录下执行  find . -name java ，编译后的jdk 相对路径为：
 ./build/linux-x86_64-normal-server-slowdebug/jdk  ，进入 bin 路径：
 [zyl@localhost bin]$ java -version
