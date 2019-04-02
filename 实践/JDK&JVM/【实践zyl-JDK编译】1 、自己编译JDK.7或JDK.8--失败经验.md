@@ -329,13 +329,15 @@ make[6]: Leaving directory '/home/zyl/source_jdk7/build/hotspot/outputdir/linux_
 
 ```
 
-想到之前有关于VERSION=8的设置，决定把配置还原为6
+- 想到之前有关于VERSION=8的设置，决定把配置还原为6
+```
 [zyl@localhost source_jdk7]$ vi openjdk/hotspot/make/linux/makefiles/rules.make
 # Settings for javac
 BOOT_SOURCE_LANGUAGE_VERSION = 6   
 BOOT_TARGET_CLASS_VERSION = 6 
 
-再次编译，报错如下：
+```
+- 再次编译，报错如下：
 Waning
 /usr/java/jdk1.7.0_80/bin/javac -g -encoding ascii -source 6 -target 6 -classpath /usr/java/jdk1.7.0_80/lib/tools.jar -sourcepath /home/zyl/source_jdk7/openjdk/hotspot/agent/src/share/classes -d /home/zyl/source_jdk7/build/hotspot/outputdir/linux_amd64_compiler2/product/../generated/saclasses @/home/zyl/source_jdk7/build/hotspot/outputdir/linux_amd64_compiler2/product/../generated/agent2.classes.list
 warning: [options] bootstrap class path not set in conjunction with -source 1.6
