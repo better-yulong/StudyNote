@@ -224,7 +224,7 @@ bash ./configure --with-target-bits=64 --with-boot-jdk=/home/zyl/soft/jdk1.7.0_8
 若在configure过程中提示安装工具,则在安装完工具后执行make clean进行清理方可再次configure,否则会config不成功。
 
 运行后报错：
-问题一：
+- 问题一：
 configure: error: Could not find all X11 headers (shape.h Xrender.h XTest.h Intrinsic.h). You might be able to fix this by running 'sudo yum install libXtst-devel libXt-devel libXrender-devel'.
 configure exiting with result code 1
 解决：
@@ -242,7 +242,7 @@ You might be able to fix this by running 'sudo yum install ccache'.
 
 注：其实如我之前尝试过编译 jdk7等，还会有其他依赖包缺失（如cups,freetype,alsa等）
 
-三、编译
+### 三、编译
 make all ZIP_DEBUGINFO_FILES=0
 漫长等待之后，编译成功:花费了一个多小时
 ----- Build times -------
