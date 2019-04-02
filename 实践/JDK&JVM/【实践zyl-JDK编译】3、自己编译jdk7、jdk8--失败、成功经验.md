@@ -299,6 +299,5 @@ hello world !
 ```
 喜大普奔，普天同庆。。。折腾了2周多，总算暂时编译成功了，虽然只是jdk8.
 
-Zhang Yulong
 邮箱：better.yulong@gmail.com
 
