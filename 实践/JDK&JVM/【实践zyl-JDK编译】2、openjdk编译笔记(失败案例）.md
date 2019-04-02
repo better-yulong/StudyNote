@@ -1,4 +1,4 @@
-1、jdk7+、Ant安装并设置JAVA_HOME、ANT_HOME变量
+1. jdk7+、Ant安装并设置JAVA_HOME、ANT_HOME变量
 2、下载安装Meurial
 3、下载openjdk，并执行get_soruce.sh
 4、yum安装gcc
