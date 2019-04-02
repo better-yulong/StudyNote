@@ -127,7 +127,7 @@ Creating the Build
 
 执行./build.sh，短时间没报错，之后就是等待。。。
 
-问题一，如期报错：
+- 问题一，如期报错：
     BUILD FAILED
     /home/zyl/jdk_source/openjdk7/jaxp/build-defs.xml:70: ERROR: Cannot find source for project jaxp.
     
@@ -135,10 +135,10 @@ Creating the Build
     解决(官方文档：Managing the Source Drops)：
     build.sh脚本添加 export  ALLOW_DOWNLOADS=true
     
-问题二：
+- 问题二：
     BUILD FAILED
     /home/zyl/jdk_source/openjdk7/build/linux-amd64/jaxws/build/xml_generated/build-drop-jaf_src.xml:96: Redirection detected from https to http. Protocol switch unsafe, not allowed.
-    解决：（参考01实践）
+解决：（参考01实践）
 下载依赖包：
   cd ......./openjdk/
 # 创建目录
@@ -161,7 +161,7 @@ export ALT_DROPS_DIR=/home/zyl/source_jdk7/openjdk/drop
     make sanity
     make all
 
-问题三：
+- 问题三：
     make[5]: Entering directory `/home/zyl/jdk_source/openjdk7/build/linux-amd64/hotspot/outputdir'
     >&2 echo "*** This OS is not supported:" `uname -a`; exit 1;
     解决：
@@ -171,7 +171,7 @@ export ALT_DROPS_DIR=/home/zyl/source_jdk7/openjdk/drop
     在这行最后加上当前的内核版本3.10%，如下：
 SUPPORTED_OS_VERSION = 2.4% 2.5% 2.6% 2.7% 3.10%
 
-问题四：
+- 问题四：
     头文件宏定义冲突
     /home/mengxiansen/openjdk/openjdk/hotspot/src/share/vm/runtime/interfaceSupport.hpp:430:0: error: "__LEAF" redefined [-Werror]
      #define __LEAF(result_type, header) 
@@ -189,7 +189,7 @@ SUPPORTED_OS_VERSION = 2.4% 2.5% 2.6% 2.7% 3.10%
 
 注：找到 #define __LEAF(result_type, header)      ,在上方加红色字体两行ifdef 、undef 。
 
-问题五：
+- 问题五：
     /home/zyl/jdk_source/openjdk7/hotspot/src/share/vm/runtime/interfaceSupport.hpp:25:0: error: unterminated #ifndef
      #ifndef SHARE_VM_RUNTIME_INTERFACESUPPORT_HPP
 解决：
