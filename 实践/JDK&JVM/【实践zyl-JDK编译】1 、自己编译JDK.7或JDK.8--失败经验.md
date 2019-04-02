@@ -459,19 +459,19 @@ You might be able to fix this by running 'sudo yum install ccache'.
 
 ```
 
-再次编译，仍然报错：
+- 再次编译，仍然报错：
     /home/zyl/jdk8_source/openjdk-8u/openjdk/hotspot/src/share/vm/memory/threadLocalAllocBuffer.inline.hpp:97:25: 错误：invalid suffix on literal; C++11 requires a space between literal and string macro [-Werror=literal-suffix]
 从报错来看，仍然还是与C++11的新特性有关，于是尝试c++降级。---同时网上也确实有类似安装指定c++版本以降级支持各版本编译的事情。----不要安装编译器版本高于5的，因为默认启用c++14 导致编译中断。
 
-补充：安装gcc4.6.4   http://mirror.hust.edu.cn/gnu/gcc/gcc-4.8.5/
+- 补充：安装gcc4.6.4   http://mirror.hust.edu.cn/gnu/gcc/gcc-4.8.5/
 据悉： gcc 4.7.1 开始支持C++11 特性；另参考jdk 源码目录中 build-readme.html如下资料：即编译 jdk7 至少需要 gcc 4.3 版本，最终选择的是  gcc  4.6.4。
 Minimum Build Environments：
  
 
-安装 gcc ：查询资料【强烈推荐zyl-实践-gcc】GCC 手动编译安装（gcc降级以支持jdk编译）
+- 安装 gcc ：查询资料【强烈推荐zyl-实践-gcc】GCC 手动编译安装（gcc降级以支持jdk编译）
 并将gcc 版本切换至 gcc  4.6.4.
 
-到此，再次编译jdk8，先configure 再执行build.sh 脚本。
+- 到此，再次编译jdk8，先configure 再执行build.sh 脚本。
 
 /home/zyl/jdk8_source/openjdk-8u/openjdk/hotspot/src/share/vm/memory/generation.hpp:425:17: 错误：invalid suffix on literal; C++11 requires a space between literal and string macro [-Werror=literal-suffix]
          warning("time warp: "INT64_FORMAT" to "INT64_FORMAT, (int64_t)_time_of_last_gc, (int64_t)now);
