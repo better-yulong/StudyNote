@@ -202,7 +202,7 @@ SUPPORTED_OS_VERSION = 2.4% 2.5% 2.6% 2.7% 3.10%
     https://www.aliyun.com/jiaocheng/781416.html
     https://www.linuxidc.com/Linux/2017-06/144713.htm
 > openjdk8跟之前的版本编译方式不一样,之前的版本是基于Ant 、ALT_*环境变量的编译方式,而openjdk8开始则是”configure &;&; make”模式。(详细说明可以阅览官方文档)
-### 一：jdk源码及bootstrap jdk 下载。
+#### 一：jdk源码及bootstrap jdk 下载。
 基于“【实践zyl 】openjdk 源码下载技巧” 下载openjdk 8 源码：
     openjdk-8-src-b132-03_mar_2014.zip
 > bootstrap jdk：进入 oracle jdk下载页面
@@ -210,7 +210,7 @@ SUPPORTED_OS_VERSION = 2.4% 2.5% 2.6% 2.7% 3.10%
 ，选择最下方“Java Archive” 后的 DOWNLOAD即可下载历史版本jdk。遂下载 jdk 7u80的
 64位tar.gz包：jdk-7u80-linux-x64.tar.gz,然后解压。
     
-### 二、构建编译环境
+#### 二、构建编译环境
 进入 openjdk8 源码目录
 //生成配置信息并构建编译环境 
 > bash ./configure --with-target-bits=64 --with-boot-jdk=/home/zyl/soft/jdk1.7.0_80/ --with-debug-level=slowdebug --enable-debug-symbols ZIP_DEBUGINFO_FILES=0  
@@ -244,7 +244,7 @@ You might be able to fix this by running 'sudo yum install ccache'.
 ```
 注：其实如我之前尝试过编译 jdk7等，还会有其他依赖包缺失（如cups,freetype,alsa等）
 
-### 三、编译
+#### 三、编译
 ```
 make all ZIP_DEBUGINFO_FILES=0
 漫长等待之后，编译成功:花费了一个多小时
