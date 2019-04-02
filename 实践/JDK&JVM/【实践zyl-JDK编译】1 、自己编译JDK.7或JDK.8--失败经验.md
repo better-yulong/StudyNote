@@ -374,7 +374,7 @@ make[5]: Leaving directory '/home/zyl/source_jdk7/build/hotspot/outputdir/linux_
 /home/zyl/source_jdk7/openjdk/hotspot/make/linux/Makefile:289: recipe for target 'product' failed
 
 ```
-literal-suffix——宏和字符串中间要加空格
+- literal-suffix——宏和字符串中间要加空格
 网上各种找资料，说是jdk 的 bug，因为C++11 对宏方法参数空格处理差异，说是新版本修复，但也可能通过手动修改源码，添加空格解决。但并没有其他可行的方法，所以决定尝试编译jdk 8.
 故卸载 jdk 1.7，重新安装jdk1.8，下载 jdk 1.8 源码。
 [root@localhost ~]# rpm -qa |grep jdk   --- 查看当前安装的jdk 版本。
