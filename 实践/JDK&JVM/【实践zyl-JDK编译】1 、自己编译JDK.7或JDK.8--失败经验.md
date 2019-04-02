@@ -275,7 +275,7 @@ Java HotSpot(TM) 64-Bit Server VM (build 24.80-b11, mixed mode)
 ```
 
 之后再次make ，终于终于不再报错，开始编译了，之后就等待。。。然，等待一段时间后再次报错。
-BUILD FAILED
+```BUILD FAILED
 /home/zyl/source_jdk7/openjdk/jaxp/build-defs.xml:70: ERROR: Cannot find source for project jaxp.
 
 HINT: Try setting drops.dir to indicate where the bundles can be found, or try setting the ant property allow.downloads=true to download the bundle from the URL.
@@ -283,6 +283,8 @@ e.g. ant -Dallow.downloads=true -OR- ant -Ddrops.dir=some_directory
 
 # 添加变量开关
 export ALLOW_DOWNLOADS=true
+
+```
 
 添加环境变量后，再次编译。
 build/linux-amd64/jaxws/build/xml_generated/build-drop-jaf_src.xml:96: Redirection detected from https to http. Protocol switch unsafe, not allowed.
