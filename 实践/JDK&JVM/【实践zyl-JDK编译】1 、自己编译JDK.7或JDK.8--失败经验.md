@@ -143,8 +143,7 @@ drwxr-xr-x. 3 root root     4096 3月  14 13:52 amd64
 
 ```
 
-
-2、编写编译shell脚本，完成编译配置
+2. 编写编译shell脚本，完成编译配置
 [zyl@localhost source_jdk7]$ pwd
 /home/zyl/source_jdk7/openjdk
 [zyl@localhost source_jdk7]$ dir
