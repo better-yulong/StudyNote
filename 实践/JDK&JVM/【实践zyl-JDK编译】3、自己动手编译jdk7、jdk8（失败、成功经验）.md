@@ -199,8 +199,9 @@ SUPPORTED_OS_VERSION = 2.4% 2.5% 2.6% 2.7% 3.10%
 
 ### **-----各种尝试，仍然无解；无奈之下，决定尝试编译jdk8（成功）**
 参考：
-    https://www.aliyun.com/jiaocheng/781416.html
-    https://www.linuxidc.com/Linux/2017-06/144713.htm
+    >https://www.aliyun.com/jiaocheng/781416.html
+    >https://www.linuxidc.com/Linux/2017-06/144713.htm
+    >https://www.songma.com/news/txtlist_i28869v.html
 > openjdk8跟之前的版本编译方式不一样,之前的版本是基于Ant 、ALT_*环境变量的编译方式,而openjdk8开始则是”configure &;&; make”模式。(详细说明可以阅览官方文档)
 #### 一：jdk源码及bootstrap jdk 下载。
 基于“【实践zyl 】openjdk 源码下载技巧” 下载openjdk 8 源码：
