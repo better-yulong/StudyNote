@@ -1,5 +1,5 @@
-背景：自己编译JDK，环境：Fedora 系统。
-可参考资料：https://www.cnblogs.com/zyx1314/p/5638596.html
+>背景：自己编译JDK，环境：Fedora 系统。
+- 可参考资料：https://www.cnblogs.com/zyx1314/p/5638596.html
             https://blog.csdn.net/lr222584/article/details/54882012
             http://www.bruceleeforever.org/#source-drops-download
             
