@@ -202,7 +202,6 @@ BUILD FAILED
 ```
 从上面来看，build.sh 脚本中  export  LANG=C 未生效，而BOOTDIR 值应该也有问题。
 - 解决方案：
-分析：
 1.设置环境变量方式有误： 永久环境变量（属于文件，比如profile以及home目录下的），临时环境变量（当前shell以及子线程），普通环境变量（当前shell） --- 如上LANG 环境变量警告问题
 解决：在当前shell执行相关export
 2. FreeType 没有安装
