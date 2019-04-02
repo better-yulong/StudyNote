@@ -287,16 +287,16 @@ export ALLOW_DOWNLOADS=true
 ```
 
 - 添加环境变量后，再次编译。
+```
 build/linux-amd64/jaxws/build/xml_generated/build-drop-jaf_src.xml:96: Redirection detected from https to http. Protocol switch unsafe, not allowed.
 下载依赖包：
   cd source_jdk7/openjdk/
-# 创建目录
   mkdir drop
   cd drop/
-# 下载plug
   wget http://download.java.net/jaxp/1.4.5/jaxp145_01.zip
-   wget https://netix.dl.sourceforge.net/project/jdk7src/input-archives/jdk7-jaf-2010_08_19.zip
+  wget https://netix.dl.sourceforge.net/project/jdk7src/input-archives/jdk7-jaf-2010_08_19.zip
   wget http://download.java.net/glassfish/components/jax-ws/openjdk/jdk7/jdk7-jaxws2_2_4-b03-2011_05_27.zip
+```
 
 - 在编译中添加环境变量：
 export ALT_DROPS_DIR=/home/zyl/source_jdk7/openjdk/drop
