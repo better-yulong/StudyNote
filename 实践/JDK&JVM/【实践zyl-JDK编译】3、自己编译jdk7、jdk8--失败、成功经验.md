@@ -1,13 +1,13 @@
 > 基于VMware Centos 7.5 64位DVD安装版编译JDK7：
 #### 一、下载jdk7 源码
-    >jdk7下载地址(http://download.java.net/openjdk/jdk7/promoted/b147/openjdk-7-fcs-src-b147-27_jun_2011.zip)
+    >jdk7下载地址:http://download.java.net/openjdk/jdk7/promoted/b147/openjdk-7-fcs-src-b147-27_jun_2011.zip:
     > 解析后，查看 README-builds.html 文件 Minimum Build Environments：
     Linux X64 (64-bit)  Fedora 9  gcc 4.3  JDK 6u18
 
 #### 二、下载 BOOT JDK：  JDK 6u18
 打开Oracle jdk的下载官方页面：
     http://www.oracle.com/technetwork/java/javase/downloads/index.html
-因jdk 6 版本较老，滑动页面至最下方：Java Archive，点击最后的download,即可进入归档的java 版本下载页面，找到对应的jdk，接受协议，点击下载（需登录oracle账号: 2*@*com/Asdqwe123!@#x) : jdk-6u18-linux-x64-rpm.bin
+因jdk 6 版本较老，滑动页面至最下方：Java Archive，点击最后的download,即可进入归档的java 版本下载页面，找到对应的jdk，接受协议，点击下载（需登录oracle账号: 2*@*com/****) : jdk-6u18-linux-x64-rpm.bin
 安装：添加x 权限，使用管理员权限执行：
      ./jdk-6u18-linux-x64-rpm.bin
     --- 命令行安装，输入q、yes  完成协议的同意；另因本机已默认安装jdk8,安装过程中需确认是否替换jdk8. 是否替换应该都可以，但我选择的替换。貌似也并没有什么卵用。
