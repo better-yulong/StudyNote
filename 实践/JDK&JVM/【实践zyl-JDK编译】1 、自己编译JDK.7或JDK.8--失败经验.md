@@ -286,7 +286,7 @@ export ALLOW_DOWNLOADS=true
 
 ```
 
-添加环境变量后，再次编译。
+- 添加环境变量后，再次编译。
 build/linux-amd64/jaxws/build/xml_generated/build-drop-jaf_src.xml:96: Redirection detected from https to http. Protocol switch unsafe, not allowed.
 下载依赖包：
   cd source_jdk7/openjdk/
@@ -298,10 +298,10 @@ build/linux-amd64/jaxws/build/xml_generated/build-drop-jaf_src.xml:96: Redirecti
    wget https://netix.dl.sourceforge.net/project/jdk7src/input-archives/jdk7-jaf-2010_08_19.zip
   wget http://download.java.net/glassfish/components/jax-ws/openjdk/jdk7/jdk7-jaxws2_2_4-b03-2011_05_27.zip
 
-在编译中添加环境变量：
+- 在编译中添加环境变量：
 export ALT_DROPS_DIR=/home/zyl/source_jdk7/openjdk/drop
 
-添加环境变量后，再次编译。
+- 添加环境变量后，再次编译。
 make[5]: Entering directory '/home/zyl/source_jdk7/build/hotspot/outputdir'
 >&2 echo "*** This OS is not supported:" `uname -a`; exit 1;
 *** This OS is not supported: Linux localhost.localdomain 4.8.6-300.fc25.x86_64 #1 SMP Tue Nov 1 12:36:38 UTC 2016 x86_64 x86_64 x86_64 GNU/Linux
