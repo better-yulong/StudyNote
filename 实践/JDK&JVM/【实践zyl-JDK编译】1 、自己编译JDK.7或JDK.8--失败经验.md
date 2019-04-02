@@ -396,7 +396,8 @@ Building the OpenJDK is now done with running a configure script which will try 
 ```
 
 于是执行 ./configure ，错误信息如下 ：
-```configure: Found potential Boot JDK using well-known locations (in /usr/lib/jvm/jre-openjdk)
+```
+configure: Found potential Boot JDK using well-known locations (in /usr/lib/jvm/jre-openjdk)
 configure: Potential Boot JDK found at /usr/lib/jvm/jre-openjdk did not contain bin/javac; ignoring
 configure: (This might be an JRE instead of an JDK)
 configure: Found potential Boot JDK using well-known locations (in /usr/lib/jvm/jre-1.8.0-openjdk-1.8.0.151-1.b12.fc25.x86_64)
@@ -422,7 +423,8 @@ configure exiting with result code 1
 ```
 
 添加参数再执行：./configure --with-boot-jdk=/home/zyl/soft/jdk1.8.0_181
-```checking for Mac OS X Java Framework... no
+```
+checking for Mac OS X Java Framework... no
 checking for X... no
 configure: error: Could not find X11 libraries. You might be able to fix this by running 'sudo yum install libXtst-devel libXt-devel libXrender-devel'.
 configure exiting with result code 1
@@ -430,7 +432,7 @@ configure exiting with result code 1
 ```
 执行    yum install libXtst-devel libXt-devel libXrender-devel  完成安装，再次 ./configure --with-boot-jdk=/home/zyl/soft/jdk1.8.0_181
 配置成功，执行结果如下：
-==================================================
+```==================================================
 A new configuration has been successfully created in
 /home/zyl/jdk8_source/openjdk-8u/openjdk/build/linux-x86_64-normal-server-release
 using configure arguments '--with-boot-jdk=/home/zyl/soft/jdk1.8.0_181'.
@@ -454,6 +456,8 @@ Build performance summary:
 Build performance tip: ccache gives a tremendous speedup for C++ recompilations.
 You do not have ccache installed. Try installing it.
 You might be able to fix this by running 'sudo yum install ccache'.
+
+```
 
 再次编译，仍然报错：
     /home/zyl/jdk8_source/openjdk-8u/openjdk/hotspot/src/share/vm/memory/threadLocalAllocBuffer.inline.hpp:97:25: 错误：invalid suffix on literal; C++11 requires a space between literal and string macro [-Werror=literal-suffix]
