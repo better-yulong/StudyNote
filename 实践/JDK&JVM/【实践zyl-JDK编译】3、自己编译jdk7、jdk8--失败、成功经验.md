@@ -11,7 +11,7 @@
 安装：添加x 权限，使用管理员权限执行：
      ./jdk-6u18-linux-x64-rpm.bin
     --- 命令行安装，输入q、yes  完成协议的同意；另因本机已默认安装jdk8,安装过程中需确认是否替换jdk8. 是否替换应该都可以，但我选择的替换。貌似也并没有什么卵用。
-安装完成后，默认java -version 仍然是1.8，但到  /usr/java/jdk1.6.0_18/bin 中执行./java -version  则是1.6
+安装完成后，默认java -version 仍然是1.8，但到  /usr/java/jdk1.6.0_18/bin 中执行./java -version，版本号为1.6。
 
 #### 三、检查依赖环境（阅读官方文档：README-builds.html)：
 ##### 1、-- The /usr/bin/make should be 3.81 or newer and should work fine for you.
