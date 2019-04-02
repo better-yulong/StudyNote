@@ -39,7 +39,7 @@ Basic Linux Check List
 查看 Build Dependencies ，应该还有部分依赖；但决定暂不处理，待编译报错再针对处理
 Bootstrap JDK、Optional Import JDK（可选）、Ant、gcc/binutils、Zip and Unzip、CUPS、 XRender、FreeType 2、ALSA
 
-四、编译检查
+#### 四、编译检查
 Creating the Build
 
     Once a machine is setup to build the OpenJDK, the steps to create the build are fairly simple. The various ALT settings can either be made into variables or can be supplied on the gmake command.
@@ -54,7 +54,7 @@ Creating the Build
 
     Solaris: Note that ARCH_DATA_MODEL is really only needed on Solaris to indicate you want to built the 64-bit version. And before the Solaris 64-bit binaries can be used, they must be merged with the binaries from a separate 32-bit build. The merged binaries may then be used in either 32-bit or 64-bit mode, with the selection occurring at runtime with the -d32 or -d64 options. 
 
-错误一：
+- 错误一：
 [zyl@localhost openjdk7]$ make sanity ALT_BOOTDIR= /usr/java/jdk1.6.0_18
 /bin/sh: /usr/bin/gcc: 没有那个文件或目录
 /bin/sh: /usr/bin/gcc: 没有那个文件或目录
@@ -69,7 +69,7 @@ Creating the Build
     yum list |grep alsa    ----- 确认需安装 alsa-lib-devel.x86_64
     yum install alsa-lib-devel.x86_64
 
-错误三：
+- 错误三：
 [zyl@localhost openjdk7]$ make sanity ALT_BOOTDIR= /usr/java/jdk1.6.0_18
     freetypecheck.c:32:22: 致命错误：ft2build.h：没有那个文件或目录
     
