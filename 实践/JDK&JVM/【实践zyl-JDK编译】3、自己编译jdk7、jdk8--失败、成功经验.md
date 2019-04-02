@@ -117,7 +117,7 @@ Creating the Build
     
 到此 ，Sanity check passed.
 
-#### 四级标题五、编译
+#### 五、编译
 遂修改脚本build.sh添加：make all
     export LANG=C
     export ALT_BOOTDIR=/usr/java/jdk1.6.0_18
