@@ -113,9 +113,9 @@ abort: stream ended unexpectedly (got 9391 bytes, expected 14295)
 参考资料：https://blog.csdn.net/baidu_19473529/article/details/76268765?locationNum=2&fps=1
 之后下载并解压。
 
-四、进行编译
-1、环境变量配置
-取消JAVA_HOME、CLASSPATH配置、设置LANG和ALT_BOOTDIR配置，其实还依赖其他很多环境变量，但都可使用默认值。ALT_BOOTDIR的值即是当前环境jdk 的路径。
+#### 四、进行编译
+1. 环境变量配置
+>取消JAVA_HOME、CLASSPATH配置、设置LANG和ALT_BOOTDIR配置，其实还依赖其他很多环境变量，但都可使用默认值。ALT_BOOTDIR的值即是当前环境jdk 的路径。
 虽然直接执行java 命令可用，但对于linux 系统很多已经默认安装了jdk，而java安装路径如何查找呢？
 [zyl@localhost jdk7u-dev]$ which java
 /usr/bin/java
