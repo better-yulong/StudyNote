@@ -275,6 +275,7 @@ Finished building OpenJDK for target 'all'
 openjdk version "1.8.0_181"
 OpenJDK Runtime Environment (build 1.8.0_181-b13)
 OpenJDK 64-Bit Server VM (build 25.181-b13, mixed mode)
+---------------------------------------------------------
 [zyl@localhost bin]$ ./java -version
 openjdk version "1.8.0-internal-debug"
 OpenJDK Runtime Environment (build 1.8.0-internal-debug-zyl_2018_09_04_10_11-b00)
