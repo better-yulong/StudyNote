@@ -310,11 +310,12 @@ make[5]: Entering directory '/home/zyl/source_jdk7/build/hotspot/outputdir'
 # 在编译中添加环境变量解决编译错误：OpenJDK7太新了，不在支持的操作系统列表里
 export DISABLE_HOTSPOT_OS_VERSION_CHECK=OK
 
-添加环境变量后，再次编译。
+- 添加环境变量后，再次编译。
 make[6]: g++: Command not found
 /home/zyl/source_jdk7/openjdk/hotspot/make/linux/makefiles/adlc.make:205: recipe for target '../generated/adfiles/adlparse.o' failed
 
-安装依赖软件：
+- 安装依赖软件：
+```
 yum install gcc-c++.x86_64 
 
 /home/zyl/source_jdk7/openjdk/hotspot/src/share/vm/code/dependencies.hpp:161:61: error: enumerator value for 'all_types' is not an integer constant
@@ -325,6 +326,8 @@ cc1plus: all warnings being treated as errors
 make[6]: *** [precompiled.hpp.gch] Error 1
 make[6]: Leaving directory '/home/zyl/source_jdk7/build/hotspot/outputdir/linux_amd64_compiler2/product'
 /home/zyl/source_jdk7/openjdk/hotspot/make/linux/makefiles/top.make:117: recipe for target 'the_vm' failed
+
+```
 
 想到之前有关于VERSION=8的设置，决定把配置还原为6
 [zyl@localhost source_jdk7]$ vi openjdk/hotspot/make/linux/makefiles/rules.make
