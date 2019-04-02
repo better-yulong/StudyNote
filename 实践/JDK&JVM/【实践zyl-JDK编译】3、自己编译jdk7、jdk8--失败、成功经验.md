@@ -205,7 +205,7 @@ SUPPORTED_OS_VERSION = 2.4% 2.5% 2.6% 2.7% 3.10%
 ### 一：jdk源码及bootstrap jdk 下载。
 基于“【实践zyl 】openjdk 源码下载技巧” 下载openjdk 8 源码：
     openjdk-8-src-b132-03_mar_2014.zip
-bootstrap jdk：进入 oracle jdk下载页面
+> bootstrap jdk：进入 oracle jdk下载页面
     https://www.oracle.com/technetwork/java/javase/downloads/index.html
 ，选择最下方“Java Archive” 后的 DOWNLOAD即可下载历史版本jdk。遂下载 jdk 7u80的
 64位tar.gz包：jdk-7u80-linux-x64.tar.gz,然后解压。
@@ -213,7 +213,7 @@ bootstrap jdk：进入 oracle jdk下载页面
 ### 二、构建编译环境
 进入 openjdk8 源码目录
 //生成配置信息并构建编译环境 
-bash ./configure --with-target-bits=64 --with-boot-jdk=/home/zyl/soft/jdk1.7.0_80/ --with-debug-level=slowdebug --enable-debug-symbols ZIP_DEBUGINFO_FILES=0  
+> bash ./configure --with-target-bits=64 --with-boot-jdk=/home/zyl/soft/jdk1.7.0_80/ --with-debug-level=slowdebug --enable-debug-symbols ZIP_DEBUGINFO_FILES=0  
 以上的参数简单作一些说明: 
 –with-target-bits=64 :指定生成64位jdk; 
 –with-boot-jdk=/usr/java/MYBOOTJDK_1.7/:启动jdk的路径; 
