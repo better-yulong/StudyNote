@@ -1,7 +1,7 @@
 > 基于VMware Centos 7.5 64位DVD安装版编译JDK7：
 #### 一、下载jdk7 源码
-    下载地址：[jdk7下载地址](http://download.java.net/openjdk/jdk7/promoted/b147/openjdk-7-fcs-src-b147-27_jun_2011.zip)
-    解析后，查看 README-builds.html 文件 Minimum Build Environments：
+    [jdk7下载地址](http://download.java.net/openjdk/jdk7/promoted/b147/openjdk-7-fcs-src-b147-27_jun_2011.zip)
+    > 解析后，查看 README-builds.html 文件 Minimum Build Environments：
     Linux X64 (64-bit)  Fedora 9  gcc 4.3  JDK 6u18
 
 #### 二、下载 BOOT JDK：  JDK 6u18
