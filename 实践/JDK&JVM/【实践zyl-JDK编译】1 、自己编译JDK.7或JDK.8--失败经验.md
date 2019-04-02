@@ -307,7 +307,7 @@ make[5]: Entering directory '/home/zyl/source_jdk7/build/hotspot/outputdir'
 *** This OS is not supported: Linux localhost.localdomain 4.8.6-300.fc25.x86_64 #1 SMP Tue Nov 1 12:36:38 UTC 2016 x86_64 x86_64 x86_64 GNU/Linux
 /home/zyl/source_jdk7/openjdk/hotspot/make/linux/Makefile:239: recipe for target 'check_os_version' failed
 
-# 在编译中添加环境变量解决编译错误：OpenJDK7太新了，不在支持的操作系统列表里
+- 在编译中添加环境变量解决编译错误：OpenJDK7太新了，不在支持的操作系统列表里
 export DISABLE_HOTSPOT_OS_VERSION_CHECK=OK
 
 - 添加环境变量后，再次编译。
