@@ -397,7 +397,7 @@ Building the OpenJDK is now done with running a configure script which will try 
 
 
 于是执行 ./configure ，错误信息如下 ：
-```configure: Found potential Boot JDK using well-known locations (in /usr/lib/jvm/jre-openjdk)
+configure: Found potential Boot JDK using well-known locations (in /usr/lib/jvm/jre-openjdk)
 configure: Potential Boot JDK found at /usr/lib/jvm/jre-openjdk did not contain bin/javac; ignoring
 configure: (This might be an JRE instead of an JDK)
 configure: Found potential Boot JDK using well-known locations (in /usr/lib/jvm/jre-1.8.0-openjdk-1.8.0.151-1.b12.fc25.x86_64)
@@ -452,9 +452,6 @@ Build performance summary:
 Build performance tip: ccache gives a tremendous speedup for C++ recompilations.
 You do not have ccache installed. Try installing it.
 You might be able to fix this by running 'sudo yum install ccache'.
-
-```
-
 
 再次编译，仍然报错：
     /home/zyl/jdk8_source/openjdk-8u/openjdk/hotspot/src/share/vm/memory/threadLocalAllocBuffer.inline.hpp:97:25: 错误：invalid suffix on literal; C++11 requires a space between literal and string macro [-Werror=literal-suffix]
