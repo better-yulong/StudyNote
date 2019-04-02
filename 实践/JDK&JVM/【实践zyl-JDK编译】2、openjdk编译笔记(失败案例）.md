@@ -1,9 +1,9 @@
 1. jdk7+、Ant安装并设置JAVA_HOME、ANT_HOME变量
-2、下载安装Meurial
-3、下载openjdk，并执行get_soruce.sh
-4、yum安装gcc
-5、找不到freeType ， 可确认已安装； 若无法找到，则用find / -name freetype 查找
-6、ALSA_VERSION处理   
+2. 下载安装Meurial
+3. 下载openjdk，并执行get_soruce.sh
+4. yum安装gcc
+5. 找不到freeType ， 可确认已安装； 若无法找到，则用find / -name freetype 查找
+6. ALSA_VERSION处理   
    ERROR: You seem to not have installed ALSA 0.9.1 or higher.
        Please install ALSA (drivers and lib). You can download the
        source distribution from http://www.alsa-project.org or go to
