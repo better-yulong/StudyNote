@@ -212,12 +212,14 @@ BUILD FAILED
 4：You do not have access to valid Cups header files. 
 解决：sudo yum install cups-devel.x86_64
 
-实践：
-[zyl@localhost openjdk]$ export LANG=C
+#### 四级标题实践：
+```[zyl@localhost openjdk]$ export LANG=C
 [zyl@localhost openjdk]$ export ALT_BOOTDIR=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.111-1.b16.fc25.x86_64
 [zyl@localhost openjdk]$ unset JAVA_HOME
 [zyl@localhost openjdk]$ unset CLASSPATH 
-    
+
+```
+   
 再次 make ，如上错误已经不存在，开始编译过程，编译过程中警告和报错：
 警告：
 warning: [options] bootstrap class path not set in conjunction with -source 1.6
