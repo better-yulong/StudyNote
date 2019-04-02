@@ -277,7 +277,7 @@ OpenJDK 64-Bit Server VM (build 25.0-b70-debug, mixed mode)
 
 从执行结果来看，一个是系统默认jdk8，一个是我自己编译的 jdk8 （有zyl标记及编译时间戳)
 
-五、编译：
+#### 五、编译：
 进入自己编译的jdk所在bin目录：
 [zyl@localhost bin]$ vi Test.java
 [zyl@localhost bin]$ cat Test.java
