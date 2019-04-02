@@ -201,8 +201,8 @@ SUPPORTED_OS_VERSION = 2.4% 2.5% 2.6% 2.7% 3.10%
 参考：
     https://www.aliyun.com/jiaocheng/781416.html
     https://www.linuxidc.com/Linux/2017-06/144713.htm
-> 段落引用openjdk8跟之前的版本编译方式不一样,之前的版本是基于Ant 、ALT_*环境变量的编译方式,而openjdk8开始则是”configure &;&; make”模式。(详细说明可以阅览官方文档)
-一：jdk源码及bootstrap jdk 下载。
+> openjdk8跟之前的版本编译方式不一样,之前的版本是基于Ant 、ALT_*环境变量的编译方式,而openjdk8开始则是”configure &;&; make”模式。(详细说明可以阅览官方文档)
+### 一：jdk源码及bootstrap jdk 下载。
 基于“【实践zyl 】openjdk 源码下载技巧” 下载openjdk 8 源码：
     openjdk-8-src-b132-03_mar_2014.zip
 bootstrap jdk：进入 oracle jdk下载页面
@@ -211,7 +211,7 @@ bootstrap jdk：进入 oracle jdk下载页面
 64位tar.gz包：jdk-7u80-linux-x64.tar.gz。
     解压。
     
-二、构建编译环境
+### 二、构建编译环境
 进入 openjdk8 源码目录
 //生成配置信息并构建编译环境 
 bash ./configure --with-target-bits=64 --with-boot-jdk=/home/zyl/soft/jdk1.7.0_80/ --with-debug-level=slowdebug --enable-debug-symbols ZIP_DEBUGINFO_FILES=0  
