@@ -174,8 +174,7 @@ ERROR: You do not have access to valid Cups header files.
 Exiting because of the above error(s). 
 
 ```
-
-根据如上报错，涉及3个错误，逐个解决：
+>根据如上报错，涉及3个错误，逐个解决：
 1、FreeType:  提示需要2.3.0以上版本，即yum 安装：yum install freetype.x86_64 
       然而，在修复2、3 ALS、CPUS问题后编译仍然报错。
     最终是采用：
