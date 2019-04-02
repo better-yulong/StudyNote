@@ -117,7 +117,7 @@ abort: stream ended unexpectedly (got 9391 bytes, expected 14295)
 1. 环境变量配置
 >取消JAVA_HOME、CLASSPATH配置、设置LANG和ALT_BOOTDIR配置，其实还依赖其他很多环境变量，但都可使用默认值。ALT_BOOTDIR的值即是当前环境jdk 的路径。
 虽然直接执行java 命令可用，但对于linux 系统很多已经默认安装了jdk，而java安装路径如何查找呢？
-[zyl@localhost jdk7u-dev]$ which java
+```[zyl@localhost jdk7u-dev]$ which java
 /usr/bin/java
 [zyl@localhost jdk7u-dev]$ ls /usr/bin/java -al
 lrwxrwxrwx. 1 root root 22 11月 16 2016 /usr/bin/java -> /etc/alternatives/java
@@ -140,6 +140,9 @@ drwxr-xr-x. 3 root root     4096 3月  14 13:52 amd64
 设置环境变量
 [zyl@localhost jdk7u-dev]$ export LANG=C
 [zyl@localhost jdk7u-dev]$ export ALT_BOOTDIR=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.111-1.b16.fc25.x86_64/
+
+```
+
 
 2、编写编译shell脚本，完成编译配置
 [zyl@localhost source_jdk7]$ pwd
