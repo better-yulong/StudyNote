@@ -250,7 +250,8 @@ BUILD FAILED
 初步分析来看，感觉与jdk版本有关，决定把把bootstrap jdk 换成oracle 的 jdk7，于是使用命令yum remove 卸载jdk1.8.0 :  yum remove java-1.8.0-openjdk.x86_64 
 http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase7-521261.html    
 下载：jdk-7u80-linux-x64.rpm     oracle账号：28*@*com/*****
-```[root@localhost soft]# rpm -ivh jdk-7u80-linux-x64.rpm 
+```
+[root@localhost soft]# rpm -ivh jdk-7u80-linux-x64.rpm 
 准备中...                          ################################# [100%]
 正在升级/安装...
    1:jdk-2000:1.7.0_80-fcs            ################################# [100%]
@@ -266,10 +267,13 @@ Java HotSpot(TM) 64-Bit Server VM (build 24.80-b11, mixed mode)
 
 ```
 退出shell 窗口重新进入，避免之前设置的环境变量冲突；需修改jdk路径。
+```
 [zyl@localhost openjdk]$ export LANG=C
 [zyl@localhost openjdk]$ export ALT_BOOTDIR=/usr/java/jdk1.7.0_80
 [zyl@localhost openjdk]$ unset JAVA_HOME
 [zyl@localhost openjdk]$ unset CLASSPATH 
+```
+
 之后再次make ，终于终于不再报错，开始编译了，之后就等待。。。然，等待一段时间后再次报错。
 BUILD FAILED
 /home/zyl/source_jdk7/openjdk/jaxp/build-defs.xml:70: ERROR: Cannot find source for project jaxp.
