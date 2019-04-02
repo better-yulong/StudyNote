@@ -386,14 +386,18 @@ yum install java --- 默认安装的版本即为1.8
 No configurations found for /home/zyl/jdk8_source/openjdk-8u/openjdk/! Please run configure to create a configuration.
 
 初步分析需要先行configure 操作，确实源码目录有configure 文件，具体呢？其实所有源码包文件均有 README-builds.html ，浏览器中打开：第一步是检查openjdk构建所需系统是否已有。
+```
 The very first step in building the OpenJDK is making sure the system itself has everything it needs to do OpenJDK builds. 
 Building the OpenJDK is now done with running a configure script which will try and find and verify you have everything you need, followed by running make, e.g.
 
     bash ./configure
     make all 
 
+```
+
+
 于是执行 ./configure ，错误信息如下 ：
-configure: Found potential Boot JDK using well-known locations (in /usr/lib/jvm/jre-openjdk)
+```configure: Found potential Boot JDK using well-known locations (in /usr/lib/jvm/jre-openjdk)
 configure: Potential Boot JDK found at /usr/lib/jvm/jre-openjdk did not contain bin/javac; ignoring
 configure: (This might be an JRE instead of an JDK)
 configure: Found potential Boot JDK using well-known locations (in /usr/lib/jvm/jre-1.8.0-openjdk-1.8.0.151-1.b12.fc25.x86_64)
@@ -448,6 +452,9 @@ Build performance summary:
 Build performance tip: ccache gives a tremendous speedup for C++ recompilations.
 You do not have ccache installed. Try installing it.
 You might be able to fix this by running 'sudo yum install ccache'.
+
+```
+
 
 再次编译，仍然报错：
     /home/zyl/jdk8_source/openjdk-8u/openjdk/hotspot/src/share/vm/memory/threadLocalAllocBuffer.inline.hpp:97:25: 错误：invalid suffix on literal; C++11 requires a space between literal and string macro [-Werror=literal-suffix]
