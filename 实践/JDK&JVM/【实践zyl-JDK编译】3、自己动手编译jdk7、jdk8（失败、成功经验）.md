@@ -270,7 +270,8 @@ Finished building OpenJDK for target 'all'
 #### 四、验证
 通过日志或者在源码根目录下执行  find . -name java ，编译后的jdk 相对路径为：
 ./build/linux-x86_64-normal-server-slowdebug/jdk  ，进入 bin 路径：
-```[zyl@localhost bin]$ java -version
+```
+[zyl@localhost bin]$ java -version
 openjdk version "1.8.0_181"
 OpenJDK Runtime Environment (build 1.8.0_181-b13)
 OpenJDK 64-Bit Server VM (build 25.181-b13, mixed mode)
