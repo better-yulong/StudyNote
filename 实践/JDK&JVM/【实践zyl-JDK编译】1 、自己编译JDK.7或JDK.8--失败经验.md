@@ -71,7 +71,7 @@ root@localhost ~]# gcc --help
 #### 四级标题三、jdk7 源码下载
 1. oracle jdk:
     http://jdk7.java.net 的oracle jdk，但发现明确源码下载互联网用户约束，仅部分地区可支持下载，其他地区用户暂不支持下载。
-2. openjdk7u:
+```2. openjdk7u:
 [zyl@localhost source_jdk7u]$ hg clone http://hg.openjdk.java.net/jdk7u/jdk7u-dev
 destination directory: jdk7u-dev
 requesting all changes
@@ -106,7 +106,8 @@ rollback completed
 abort: stream ended unexpectedly (got 9391 bytes, expected 14295)
 # exit code 255
 
-经排查，原因为  hg.openjdk.java.net  域名解析异常，尝试简单解决，但无果，除非可找到代理服务器。
+```
+> 经排查，原因为  hg.openjdk.java.net  域名解析异常，尝试简单解决，但无果，除非可找到代理服务器。
 故暂时采用另外的方案，即直接去下载。
 下载地址：http://download.java.net/openjdk/jdk7/promoted/b147/openjdk-7-fcs-src-b147-27_jun_2011.zip
 参考资料：https://blog.csdn.net/baidu_19473529/article/details/76268765?locationNum=2&fps=1
