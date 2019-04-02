@@ -338,7 +338,7 @@ BOOT_TARGET_CLASS_VERSION = 6
 
 ```
 - 再次编译，报错如下：
-Waning
+```Waning
 /usr/java/jdk1.7.0_80/bin/javac -g -encoding ascii -source 6 -target 6 -classpath /usr/java/jdk1.7.0_80/lib/tools.jar -sourcepath /home/zyl/source_jdk7/openjdk/hotspot/agent/src/share/classes -d /home/zyl/source_jdk7/build/hotspot/outputdir/linux_amd64_compiler2/product/../generated/saclasses @/home/zyl/source_jdk7/build/hotspot/outputdir/linux_amd64_compiler2/product/../generated/agent2.classes.list
 warning: [options] bootstrap class path not set in conjunction with -source 1.6
 Note: Some input files use unchecked or unsafe operations.
@@ -353,8 +353,10 @@ make[6]: *** [precompiled.hpp.gch] Error 1
 make[6]: Leaving directory '/home/zyl/source_jdk7/build/hotspot/outputdir/linux_amd64_compiler2/product'
 /home/zyl/source_jdk7/openjdk/hotspot/make/linux/makefiles/top.make:117: recipe for target 'the_vm' failed
 
-从日志来看，当前BOOTSTRAP jdk 版本为1.7，但是强制使用6来编译；遂尝试将VERSION=8的值修改为7，再次编译。
-/home/zyl/source_jdk7/openjdk/hotspot/src/share/vm/memory/threadLocalAllocBuffer.inline.hpp:97:25: error: invalid suffix on literal; C++11 requires a space between literal and string macro [-Werror=literal-suffix]
+```
+
+- 从日志来看，当前BOOTSTRAP jdk 版本为1.7，但是强制使用6来编译；遂尝试将VERSION=8的值修改为7，再次编译。
+```/home/zyl/source_jdk7/openjdk/hotspot/src/share/vm/memory/threadLocalAllocBuffer.inline.hpp:97:25: error: invalid suffix on literal; C++11 requires a space between literal and string macro [-Werror=literal-suffix]
      gclog_or_tty->print("TLAB: %s thread: "INTPTR_FORMAT" [id: %2d]"
 permissive]
      all_types      = ((1<<TYPE_LIMIT)-1) & ((-1)<<FIRST_TYPE),
@@ -371,6 +373,7 @@ make[5]: *** [the_vm] Error 2
 make[5]: Leaving directory '/home/zyl/source_jdk7/build/hotspot/outputdir/linux_amd64_compiler2/product'
 /home/zyl/source_jdk7/openjdk/hotspot/make/linux/Makefile:289: recipe for target 'product' failed
 
+```
 literal-suffix——宏和字符串中间要加空格
 网上各种找资料，说是jdk 的 bug，因为C++11 对宏方法参数空格处理差异，说是新版本修复，但也可能通过手动修改源码，添加空格解决。但并没有其他可行的方法，所以决定尝试编译jdk 8.
 故卸载 jdk 1.7，重新安装jdk1.8，下载 jdk 1.8 源码。
