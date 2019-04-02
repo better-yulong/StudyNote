@@ -219,12 +219,11 @@ BUILD FAILED
 [zyl@localhost openjdk]$ unset CLASSPATH 
 
 ```
-   
 再次 make ，如上错误已经不存在，开始编译过程，编译过程中警告和报错：
 警告：
 warning: [options] bootstrap class path not set in conjunction with -source 1.6
 解决方案（按如下操作再编译警告不在在）：
-[zyl@localhost source_jdk7]$ find . -name rules.make
+```[zyl@localhost source_jdk7]$ find . -name rules.make
 ./openjdk/hotspot/make/linux/makefiles/rules.make
 ./openjdk/hotspot/make/solaris/makefiles/rules.make
 ./openjdk/hotspot/make/windows/makefiles/rules.make
@@ -247,6 +246,7 @@ BUILD FAILED
 /home/zyl/source_jdk7/openjdk/langtools/make/build.xml:452: The following error occurred while executing this line:
 /home/zyl/source_jdk7/openjdk/langtools/make/build.xml:795: Compile failed; see the compiler error output for details.
 
+```
 初步分析来看，感觉与jdk版本有关，决定把把bootstrap jdk 换成oracle 的 jdk7，于是使用命令yum remove 卸载jdk1.8.0 :  yum remove java-1.8.0-openjdk.x86_64 
 http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase7-521261.html    
 下载：jdk-7u80-linux-x64.rpm     oracle账号：28*@*com/Asdqwe123!@#x
