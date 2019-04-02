@@ -68,7 +68,7 @@ root@localhost ~]# gcc --help
 
 ```
 
-#### 四级标题三、jdk7 源码下载
+#### 三、jdk7 源码下载
 1. oracle jdk:
     http://jdk7.java.net 的oracle jdk，但发现明确源码下载互联网用户约束，仅部分地区可支持下载，其他地区用户暂不支持下载。
 ```2. openjdk7u:
