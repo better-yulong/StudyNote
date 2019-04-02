@@ -4,13 +4,18 @@
 4. yum安装gcc
 5. 找不到freeType ， 可确认已安装； 若无法找到，则用find / -name freetype 查找
 6. ALSA_VERSION处理   
-   ERROR: You seem to not have installed ALSA 0.9.1 or higher.
+```   
+	ERROR: You seem to not have installed ALSA 0.9.1 or higher.
        Please install ALSA (drivers and lib). You can download the
        source distribution from http://www.alsa-project.org or go to
        http://www.freshrpms.net/docs/alsa/ for precompiled RPM packages.
       ---查看openjdk 包中的readme_build.html文件：Both alsa and alsa-devel packages are needed.
        确认是未安装alsa-lib-devel，yum 即可。
-6、CUPS问题
+
+```
+
+7. CUPS问题
+```
 ERROR: You do not have access to valid Cups header files.
        Please check your access to
            /usr/include/cups/cups.h
@@ -18,8 +23,11 @@ ERROR: You do not have access to valid Cups header files.
        CUPS is frequently pre-installed on many systems,
        or may be downloaded from http://www.cups.org
     yum install cups-devel
-7、编译shell如下：   
-       #!/bin/bash
+
+```
+
+8. 编译shell如下：   
+ #!/bin/bash
         export ALT_BOOTDIR=/usr/local/java8
 export LANG=C
 export ALLOW_DOWNLOADS=true
