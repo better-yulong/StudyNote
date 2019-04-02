@@ -197,7 +197,7 @@ SUPPORTED_OS_VERSION = 2.4% 2.5% 2.6% 2.7% 3.10%
 把这个文件拖下来看源码，c++ 不熟，但借助工具来看，貌似没有少这个东东。 
 
 
-### **-----各种尝试，仍然无解；无奈之下，决定尝试编译jdk8**
+### **-----各种尝试，仍然无解；无奈之下，决定尝试编译jdk8（成功）**
 参考：
     https://www.aliyun.com/jiaocheng/781416.html
     https://www.linuxidc.com/Linux/2017-06/144713.htm
