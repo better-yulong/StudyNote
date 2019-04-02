@@ -211,8 +211,9 @@ BUILD FAILED
 4：You do not have access to valid Cups header files. 
 解决：sudo yum install cups-devel.x86_64
 
-#### 四级标题实践：
-```[zyl@localhost openjdk]$ export LANG=C
+#### 实践：
+```
+[zyl@localhost openjdk]$ export LANG=C
 [zyl@localhost openjdk]$ export ALT_BOOTDIR=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.111-1.b16.fc25.x86_64
 [zyl@localhost openjdk]$ unset JAVA_HOME
 [zyl@localhost openjdk]$ unset CLASSPATH 
