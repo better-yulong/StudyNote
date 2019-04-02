@@ -39,7 +39,7 @@ Swap:          2.0G          0B        2.0G
 
 #### 二、检测编译工具
 JDK由各个组成部分（hotspot、JDK API、JAXWS等），各个部分涉及的语言有C++、Java；而jdk 编码中包含编译代码的Ant 脚本。所以需要安装gcc,ant等。
-[zyl@localhost ~]$ git
+```[zyl@localhost ~]$ git
 usage: git [--version] [--help] [-C <path>] [-c name=value]
            [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
            [-p | --paginate | --no-pager] [--no-replace-objects] [--bare]
@@ -66,7 +66,9 @@ root@localhost ~]# gcc --help
   -pass-exit-codes         在某一阶段退出时返回其中最高的错误码。
   --help                   显示此帮助说明。
 
-三、jdk7 源码下载
+```
+
+#### 四级标题三、jdk7 源码下载
 1、oracle jdk
     http://jdk7.java.net 的oracle jdk，但发现明确源码下载互联网用户约束，仅部分地区可支持下载，其他地区用户暂不支持下载。
 2、openjdk7u
