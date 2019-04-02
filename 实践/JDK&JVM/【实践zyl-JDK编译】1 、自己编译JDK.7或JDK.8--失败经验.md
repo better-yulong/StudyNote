@@ -356,7 +356,8 @@ make[6]: Leaving directory '/home/zyl/source_jdk7/build/hotspot/outputdir/linux_
 ```
 
 - 从日志来看，当前BOOTSTRAP jdk 版本为1.7，但是强制使用6来编译；遂尝试将VERSION=8的值修改为7，再次编译。
-```/home/zyl/source_jdk7/openjdk/hotspot/src/share/vm/memory/threadLocalAllocBuffer.inline.hpp:97:25: error: invalid suffix on literal; C++11 requires a space between literal and string macro [-Werror=literal-suffix]
+```
+/home/zyl/source_jdk7/openjdk/hotspot/src/share/vm/memory/threadLocalAllocBuffer.inline.hpp:97:25: error: invalid suffix on literal; C++11 requires a space between literal and string macro [-Werror=literal-suffix]
      gclog_or_tty->print("TLAB: %s thread: "INTPTR_FORMAT" [id: %2d]"
 permissive]
      all_types      = ((1<<TYPE_LIMIT)-1) & ((-1)<<FIRST_TYPE),
