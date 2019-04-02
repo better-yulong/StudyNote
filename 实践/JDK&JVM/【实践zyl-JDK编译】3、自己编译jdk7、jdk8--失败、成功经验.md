@@ -61,7 +61,7 @@ Creating the Build
     解决：（根据文档:README-builds.html)
     yum install gcc gcc-c++
 
-错误二：
+- 错误二：
 [zyl@localhost openjdk7]$ make sanity ALT_BOOTDIR= /usr/java/jdk1.6.0_18
     grep: /usr/include/alsa/version.h: 没有那个文件或目录
     解决：（根据文档:README-builds.html)
@@ -87,7 +87,7 @@ Creating the Build
     unset JAVA_HOME
     make sanity
     
-错误四：
+- 错误四：
 [zyl@localhost openjdk7]$ ./build.sh
     
     WARNING: LANG has been set to zh_CN.UTF-8, this can cause build failures. 
@@ -117,7 +117,7 @@ Creating the Build
     
 到此 ，Sanity check passed.
 
-五、编译
+#### 四级标题五、编译
 遂修改脚本build.sh添加：make all
     export LANG=C
     export ALT_BOOTDIR=/usr/java/jdk1.6.0_18
