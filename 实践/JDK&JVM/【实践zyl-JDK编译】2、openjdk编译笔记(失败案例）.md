@@ -91,11 +91,11 @@ make sanity
 
 ```
 
-8、编译成功，结果如下：
+9. 编译成功，结果如下：
     Sanity check passed.
-9、开始编译--参考（make all ARCH_DATA_MODEL=64 ALLOW_DOWNLOADS=true）
+10. 开始编译--参考（make all ARCH_DATA_MODEL=64 ALLOW_DOWNLOADS=true）
 --bug清单，编译问题可在这儿查找：https://bugs.openjdk.java.net/secure/RapidBoard.jspa?projectKey=JDK&useStoredSettings=true&rapidView=9
-10、 openJDK9 编译较简单，./configure  失败日志已提示失败信赖包，如：
+11. openJDK9 编译较简单，./configure  失败日志已提示失败信赖包，如：
         yum install gcc-c++.i686
         yum install libXtst-devel libXt-devel libXrender-devel libXi-devel
         yum install freetype-devel
