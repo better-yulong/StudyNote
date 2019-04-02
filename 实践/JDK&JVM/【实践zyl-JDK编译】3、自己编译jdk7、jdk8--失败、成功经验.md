@@ -141,11 +141,10 @@ Creating the Build
 解决：（参考01实践）
 下载依赖包：
   cd ......./openjdk/
-
   mkdir drop
   cd drop/
 下载plug
-  wget http://download.java.net/jaxp/1.4.5/jaxp145_01.zip
+   wget http://download.java.net/jaxp/1.4.5/jaxp145_01.zip
    wget https://netix.dl.sourceforge.net/project/jdk7src/input-archives/jdk7-jaf-2010_08_19.zip
   wget http://download.java.net/glassfish/components/jax-ws/openjdk/jdk7/jdk7-jaxws2_2_4-b03-2011_05_27.zip
 
@@ -198,7 +197,7 @@ SUPPORTED_OS_VERSION = 2.4% 2.5% 2.6% 2.7% 3.10%
 把这个文件拖下来看源码，c++ 不熟，但借助工具来看，貌似没有少这个东东。 
 
 
-### -----++各种尝试，仍然无解；无奈之下，决定尝试编译jdk 8吧。++
+### -----各种尝试，仍然无解；无奈之下，决定尝试编译jdk 8吧
 参考：
     https://www.aliyun.com/jiaocheng/781416.html
     https://www.linuxidc.com/Linux/2017-06/144713.htm
