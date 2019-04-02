@@ -141,10 +141,10 @@ Creating the Build
 解决：（参考01实践）
 下载依赖包：
   cd ......./openjdk/
-# 创建目录
+
   mkdir drop
   cd drop/
-# 下载plug
+下载plug
   wget http://download.java.net/jaxp/1.4.5/jaxp145_01.zip
    wget https://netix.dl.sourceforge.net/project/jdk7src/input-archives/jdk7-jaf-2010_08_19.zip
   wget http://download.java.net/glassfish/components/jax-ws/openjdk/jdk7/jdk7-jaxws2_2_4-b03-2011_05_27.zip
