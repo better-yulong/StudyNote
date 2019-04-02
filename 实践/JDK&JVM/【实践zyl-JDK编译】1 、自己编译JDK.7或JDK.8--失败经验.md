@@ -5,8 +5,8 @@
             
             http://www.oracle.com/technetwork/java/javase/archive-139210.html
             
-一、检测环境信息：操作系统位数、磁盘容量、Bootstrap JDK 版本、内存
-[zyl@localhost ~]$ uname -a
+#### 一、检测环境信息：操作系统位数、磁盘容量、Bootstrap JDK 版本、内存
+```[zyl@localhost ~]$ uname -a
 Linux localhost.localdomain 4.8.6-300.fc25.x86_64 #1 SMP Tue Nov 1 12:36:38 UTC 2016 x86_64 x86_64 x86_64 GNU/Linux
 
 zyl@localhost openjdk]$ cat /etc/fedora-release
@@ -35,7 +35,9 @@ OpenJDK 64-Bit Server VM (build 25.111-b16, mixed mode)
 Mem:           2.8G        1.3G        535M         14M        1.1G        1.4G
 Swap:          2.0G          0B        2.0G
 
-二、检测编译工具
+```
+
+#### 二、检测编译工具
 JDK由各个组成部分（hotspot、JDK API、JAXWS等），各个部分涉及的语言有C++、Java；而jdk 编码中包含编译代码的Ant 脚本。所以需要安装gcc,ant等。
 [zyl@localhost ~]$ git
 usage: git [--version] [--help] [-C <path>] [-c name=value]
