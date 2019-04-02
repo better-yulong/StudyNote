@@ -175,7 +175,7 @@ SUPPORTED_OS_VERSION = 2.4% 2.5% 2.6% 2.7% 3.10%
     /home/mengxiansen/openjdk/openjdk/hotspot/src/share/vm/runtime/interfaceSupport.hpp:430:0: error: "__LEAF" redefined [-Werror]
      #define __LEAF(result_type, header) 
     /usr/include/x86_64-linux-gnu/sys/cdefs.h:42:0: note: this is the location of the previous definition
-     #  define __LEAF , __leaf__
+      define __LEAF , __leaf__
     解决：
 在interfaceSupport.hpp增加
 #ifdef __LEAF
