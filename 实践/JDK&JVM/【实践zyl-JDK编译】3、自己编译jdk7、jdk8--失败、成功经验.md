@@ -245,7 +245,8 @@ You might be able to fix this by running 'sudo yum install ccache'.
 注：其实如我之前尝试过编译 jdk7等，还会有其他依赖包缺失（如cups,freetype,alsa等）
 
 ### 三、编译
-```make all ZIP_DEBUGINFO_FILES=0
+```
+make all ZIP_DEBUGINFO_FILES=0
 漫长等待之后，编译成功:花费了一个多小时
 ----- Build times -------
 Start 2018-09-04 10:12:59
