@@ -282,6 +282,7 @@ openjdk version "1.8.0-internal-debug"
 OpenJDK Runtime Environment (build 1.8.0-internal-debug-zyl_2018_09_04_10_11-b00)
 OpenJDK 64-Bit Server VM (build 25.0-b70-debug, mixed mode)
 ---默认java指向环境变量的java命令，使用 ./java则运行当前目录的java命令
+--- 编译模式的区别，编译后的JDK目录会非常大，如slowdebug模式
 ```
 
 从执行结果来看，一个是系统默认jdk8，一个是我自己编译的 jdk8 （有zyl标记及编译时间戳)
