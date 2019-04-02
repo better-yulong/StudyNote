@@ -473,9 +473,10 @@ Minimum Build Environments：
 
 - 到此，再次编译jdk8，先configure 再执行build.sh 脚本。
 
-/home/zyl/jdk8_source/openjdk-8u/openjdk/hotspot/src/share/vm/memory/generation.hpp:425:17: 错误：invalid suffix on literal; C++11 requires a space between literal and string macro [-Werror=literal-suffix]
+```/home/zyl/jdk8_source/openjdk-8u/openjdk/hotspot/src/share/vm/memory/generation.hpp:425:17: 错误：invalid suffix on literal; C++11 requires a space between literal and string macro [-Werror=literal-suffix]
          warning("time warp: "INT64_FORMAT" to "INT64_FORMAT, (int64_t)_time_of_last_gc, (int64_t)now);
 
+```
 最终，暂未找到解决办法，以失败结束本次尝试。
 
 
