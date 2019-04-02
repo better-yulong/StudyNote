@@ -284,7 +284,7 @@ OpenJDK 64-Bit Server VM (build 25.0-b70-debug, mixed mode)
 
 #### 五、编译：
 进入自己编译的jdk所在bin目录：
-[zyl@localhost bin]$ vi Test.java
+```[zyl@localhost bin]$ vi Test.java
 [zyl@localhost bin]$ cat Test.java
     public class Test{
     public static void main(String[] args){
@@ -295,6 +295,7 @@ OpenJDK 64-Bit Server VM (build 25.0-b70-debug, mixed mode)
 [zyl@localhost bin]$ ./java Test
 hello world !
 
+```
 喜大普奔，普天同庆。。。折腾了2周多，总算暂时编译成功了，虽然只是jdk8.
 
     
