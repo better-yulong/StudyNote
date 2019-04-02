@@ -14,12 +14,12 @@
 安装完成后，默认java -version 仍然是1.8，但到  /usr/java/jdk1.6.0_18/bin 中执行./java -version  则是1.6
 
 #### 三、检查依赖环境（阅读官方文档：README-builds.html)：
-1、-- The /usr/bin/make should be 3.81 or newer and should work fine for you.
+##### 1、-- The /usr/bin/make should be 3.81 or newer and should work fine for you.
 [zyl@localhost make]$ make --version
 GNU Make 3.82
 Built for x86_64-redhat-linux-gnu
 
-2、内存、磁盘、PATH、JAVA_HOME等
+##### 2、内存、磁盘、PATH、JAVA_HOME等
  X64 only: The minimum recommended hardware for building the Linux version is an AMD Opteron class processor, at least 512 MB of RAM, and approximately 4 GB of free disk space.
 
 The build will use the tools contained in /bin and /usr/bin of a standard installation of the Linux operating environment. You should ensure that these directories are in your PATH.
