@@ -150,7 +150,7 @@ public class JITTragerCondition1 {
                               @ 12   JITTragerCondition1::doubleValue (22 bytes)   inlining prohibited by policy
 
 ```
-通过输出，可看到方法doubleValue()被内联编译到calcSum()方法中（与书中示例有差异，书中main方法也被编译）。从示例可看出，doubleValue()、calcSum()运行是不会再被解释执行，而doubleValue()则不会被调用因其已被
+通过输出，可看到方法doubleValue()被内联编译到calcSum()方法中（与书中示例有差异，书中main方法也被编译）。从示例可看出，doubleValue()、calcSum()运行是不会再被解释执行，而doubleValue()则不会被调用因其已被内联编译到clacSum方法中了。
 
 
 
