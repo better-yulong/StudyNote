@@ -426,6 +426,6 @@ Java虚拟机在JDK1.3及之后几乎把对代码的所有优化措施集中在�
 - 逃逸分析论文较早发表，但直到Sun JDK 1.6 才实现了逃逸分析，且目前这项优化尚未足够成熟。主要原因为逃逸分析性能收益必须高于其消耗，否则适得其反，且因为其分析准确不足可能效果不稳定，
 
 
-通过 java -XX:+PintFlagsFinal -XX:+PrintFlagsInitial 查看sun jdk8 默认开启逃逸分析（-XX:+DoEscapeAnalysis），同时标量替换也默认开启（-XX:+EliminateAllocations）、，EliminateLocks
+通过 java -XX:+PintFlagsFinal -XX:+PrintFlagsInitial 查看sun jdk8 默认开启逃逸分析（-XX:+DoEscapeAnalysis），同时标量替换也默认开启（-XX:+EliminateAllocations）、，同步消除默认开启(-XX：+EliminateLocks）
 
 参考资料：[JIT晚期(运行期)](https://www.cnblogs.com/wade-luffy/p/6050483.html) 
