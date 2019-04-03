@@ -365,6 +365,8 @@ ITTragerCondition1
                               @ 12   com.test.jvm.jit.JITTragerCondition1::doubleValue (18 bytes)   inline (hot)
 ```
 
+./java -XX:+PrintCompilation -XX:+PrintInlining -XX:+PrintOptoAssembly -XX:PrintIdealGraphFile=ideal.xml -XX:PrintIdealGraphLevel=2 JITTragerCondition1
+
 
 
 
