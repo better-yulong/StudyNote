@@ -126,7 +126,7 @@ public class JITTragerCondition1 {
 
 ```
 ```
-添加参数 -XX:+PrintInlining 可打印JIT编译时内联信息
+添加参数 -XX:+PrintInlining 可打印JIT编译时方法内联信息：
  ./java -XX:+PrintCompilation -XX:+PrintInlining JITTragerCondition1
    2035    1       3       java.lang.String::equals (81 bytes)
    2105    2     n 0       java.lang.System::arraycopy (native)   (static)
