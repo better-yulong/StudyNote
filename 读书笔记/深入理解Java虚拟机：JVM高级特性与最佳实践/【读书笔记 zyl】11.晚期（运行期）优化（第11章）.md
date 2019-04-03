@@ -294,7 +294,7 @@ abababab
                               @ 12   JITTragerCondition1::doubleValue (18 bytes)   inline (hot)
 
 ```
-对于反汇编伪代码，pudouct版本的
+对于反汇编伪代码，pudouct版本的虚拟机也可打印：java -XX:+UnlockDiagnosticVMOptions -XX:+PrintCompilation -XX:+PrintInlining  com/test/jvm/jit/JITTragerCondition1 ,(wc)
 
 
 
