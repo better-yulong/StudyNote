@@ -368,7 +368,7 @@ ITTragerCondition1
 ./java -XX:+PrintCompilation -XX:+PrintInlining -XX:+PrintOptoAssembly -XX:PrintIdealGraphFile=ideal.xml -XX:PrintIdealGraphLevel=2 JITTragerCondition1 ），之后基于工具 Ideal Graph Visualizer 可具体查看（下载，配置jdk路径,打开ideal.xml文件即可）进行分析（即使是图形化界面，仍然较难理解，此处跳过）。
 
 #### 三. 编译优化技术
-虚拟机设计 团队
+虚拟机设计在JDK1.3及之后，
 
 
 
