@@ -125,7 +125,7 @@ public class JITTragerCondition1 {
    3554   15 %     4       JITTragerCondition1::calcSum @ 4 (26 bytes)
 
 ```
-添加参数 -XX:+PrintInlining 可打印JIT编译时方法内联信息：
+通过输出，可发现calcSum、double、添加参数 -XX:+PrintInlining 可打印JIT编译时方法内联信息：
 ```
  ./java -XX:+PrintCompilation -XX:+PrintInlining JITTragerCondition1
    2035    1       3       java.lang.String::equals (81 bytes)
