@@ -365,7 +365,7 @@ ITTragerCondition1
                               @ 12   com.test.jvm.jit.JITTragerCondition1::doubleValue (18 bytes)   inline (hot)
 ```
 如若还想进一步跟踪本地代码生成的具体过程，还可使用 -XX:PrintIdealGraphFile=ideal.xml -XX:PrintIdealGraphLevel=2 （Server模式，Client模式参数不一样）参数将编译过程各阶段数据输出到文件（
-./java -XX:+PrintCompilation -XX:+PrintInlining -XX:+PrintOptoAssembly -XX:PrintIdealGraphFile=ideal.xml -XX:PrintIdealGraphLevel=2 JITTragerCondition1 ），之后基于工具 Ideal Graph Visualizer 可具体查看（下载，配置jdk路径,
+./java -XX:+PrintCompilation -XX:+PrintInlining -XX:+PrintOptoAssembly -XX:PrintIdealGraphFile=ideal.xml -XX:PrintIdealGraphLevel=2 JITTragerCondition1 ），之后基于工具 Ideal Graph Visualizer 可具体查看（下载，配置jdk路径,打开ideal.xml文件即可）进行分析。
 
 
 
