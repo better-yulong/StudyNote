@@ -69,7 +69,7 @@
 
 ##### 4、查看及分析限时编译结果
 虚拟机的即时编译用户不知道也无感知，虽执行结果没影响但运行速度差别则很大。虚拟机提供了部分参数输出即时编译和某些优化手段（如方法内联）的执行状况。
-该节的运行参数部分需要Debug或FastDebug版的虚拟机支持，Product版本的虚拟机无法使用。即编译时需要指定调试信息级别（–with-debug-level=slowdebug:编译时debug的级别,有release, fastdebug, slowdebug 三种级别; slowdebug 级别可以生成最多的调试信息），而我编译时使用的slowdebug级别。（本想编译后上传github，但发现该级别编译整体编译后达到3.6
+该节的运行参数部分需要Debug或FastDebug版的虚拟机支持，Product版本的虚拟机无法使用。即编译时需要指定调试信息级别（–with-debug-level=slowdebug:编译时debug的级别,有release, fastdebug, slowdebug 三种级别; slowdebug 级别可以生成最多的调试信息），而我编译时使用的slowdebug级别。（本想编译后上传github，但发现该级别编译整体编译后达到3.6G，而jdk也达到560M，且复制迁移到windows之后
 
 
 
