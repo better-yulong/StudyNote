@@ -125,6 +125,30 @@ public class JITTragerCondition1 {
    3554   15 %     4       JITTragerCondition1::calcSum @ 4 (26 bytes)
 
 ```
+```
+[zyl@localhost bin]$ ./java -XX:+PrintCompilation -XX:+PrintInlining JITTragerCondition1
+   2035    1       3       java.lang.String::equals (81 bytes)
+   2105    2     n 0       java.lang.System::arraycopy (native)   (static)
+   2145    3       3       java.lang.String::charAt (29 bytes)
+                              @ 18  java/lang/StringIndexOutOfBoundsException::<init> (not loaded)   not inlineable
+   2178    4       3       java.lang.String::hashCode (55 bytes)
+   2187    5       3       java.lang.String::length (6 bytes)
+   2212    6       3       java.lang.Object::<init> (1 bytes)
+   2439    7       3       java.lang.String::indexOf (70 bytes)
+                              @ 66   java.lang.String::indexOfSupplementary (71 bytes)   callee is too large
+   2477    8       3       java.lang.Math::min (11 bytes)
+   2618    9       1       java.lang.Object::<init> (1 bytes)
+   2621    6       3       java.lang.Object::<init> (1 bytes)   made not entrant
+   2647   10 %     3       JITTragerCondition1::doubleValue @ 2 (22 bytes)
+   2708   11       3       JITTragerCondition1::doubleValue (22 bytes)
+   2741   12 %     4       JITTragerCondition1::doubleValue @ 2 (22 bytes)
+   2746   10 %     3       JITTragerCondition1::doubleValue @ -2 (22 bytes)   made not entrant
+   2768   13       4       JITTragerCondition1::doubleValue (22 bytes)
+   2773   11       3       JITTragerCondition1::doubleValue (22 bytes)   made not entrant
+   2816   14       2       JITTragerCondition1::calcSum (26 bytes)
+                              @ 12   JITTragerCondition1::doubleValue (22 bytes)   inlining prohibited by policy
+
+```
 
 
 
