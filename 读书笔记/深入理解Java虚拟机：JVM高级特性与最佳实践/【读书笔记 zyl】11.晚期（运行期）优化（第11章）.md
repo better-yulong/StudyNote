@@ -364,7 +364,7 @@ ITTragerCondition1
     750   28 %     4       com.test.jvm.jit.JITTragerCondition1::calcSum @ 4 (26 bytes)
                               @ 12   com.test.jvm.jit.JITTragerCondition1::doubleValue (18 bytes)   inline (hot)
 ```
-
+如若还想进一步跟踪本地代码生成的
 ./java -XX:+PrintCompilation -XX:+PrintInlining -XX:+PrintOptoAssembly -XX:PrintIdealGraphFile=ideal.xml -XX:PrintIdealGraphLevel=2 JITTragerCondition1
 
 
