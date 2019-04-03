@@ -295,6 +295,74 @@ abababab
 
 ```
 对于反汇编伪代码，pudouct版本的虚拟机也可打印：java -XX:+UnlockDiagnosticVMOptions -XX:+PrintCompilation -XX:+PrintInlining  com/test/jvm/jit/JITTragerCondition1 ,（仅参数：-XX:+UnlockDiagnosticVMOptions 无效，需三个参数配置使用）
+```
+java -XX:+UnlockDiagnosticVMOptions -XX:+PrintCompilation -XX:+PrintInlining  com/test/jvm/jit/J
+ITTragerCondition1
+    519    1       3       java.lang.String::equals (81 bytes)
+    522    2       3       java.lang.Object::<init> (1 bytes)
+    524    3       3       java.lang.Character::toLowerCase (9 bytes)
+                              @ 1   java.lang.CharacterData::of (120 bytes)   callee is too large
+                              @ 5   java.lang.CharacterData::toLowerCase (0 bytes)   no static binding
+    527    4       3       java.lang.CharacterData::of (120 bytes)
+    528    7       3       java.lang.String::indexOf (70 bytes)
+                              @ 66   java.lang.String::indexOfSupplementary (71 bytes)   callee is too large
+    531   11     n 0       java.lang.System::arraycopy (native)   (static)
+    531   10       1       java.lang.Object::<init> (1 bytes)
+    535    2       3       java.lang.Object::<init> (1 bytes)   made not entrant
+    536    8       3       java.lang.String::hashCode (55 bytes)
+    537    5       3       java.lang.CharacterDataLatin1::toLowerCase (39 bytes)
+                              @ 4      539   12       4       java.util.TreeMap::parentOf (13 bytes)
+    541   14       4       java.lang.String::length (6 bytes)
+ java.lang.CharacterDataLatin1::getProperties    544   13       4       java.lang.String::charAt (29 bytes)
+ (11 bytes)
+    546    6       3       java.lang.CharacterDataLatin1::getProperties (11 bytes)
+    548    9       3       java.lang.Math::min (11 bytes)
+    560   15       3       java.lang.Character::toUpperCase (6 bytes)
+                              @ 1   java.lang.Character::toUpperCase (9 bytes)
+                                @ 1   java.lang.CharacterData::of (120 bytes)   callee is too large
+                                @ 5   java.lang.CharacterData::toUpperCase (0 bytes)   no static binding
+    565   16       3       java.lang.Character::toUpperCase (9 bytes)
+                              @ 1   java.lang.CharacterData::of (120 bytes)   callee is too large
+                              @ 5   java.lang.CharacterData::toUpperCase (0 bytes)   no static binding
+    572   18       3       java.lang.AbstractStringBuilder::ensureCapacityInternal (27 bytes)
+                              @ 17   java.lang.AbstractStringBuilder::newCapacity (39 bytes)   callee is too large
+                              @ 20   java.util.Arrays::copyOf (19 bytes)
+                                @ 11   java.lang.Math::min (11 bytes)
+                                @ 14   java.lang.System::arraycopy (0 bytes)   intrinsic
+    581   19       3       java.lang.AbstractStringBuilder::append (29 bytes)
+                              @ 7   java.lang.AbstractStringBuilder::ensureCapacityInternal (27 bytes)
+                                @ 17   java.lang.AbstractStringBuilder::newCapacity (39 bytes)   callee is too large
+                                @ 20   java.util.Arrays::copyOf (19 bytes)
+                                  @ 11   java.lang.Math::min (11 bytes)
+                                  @ 14   java.lang.System::arraycopy (0 bytes)   intrinsic
+    640   21       3       java.io.WinNTFileSystem::isSlash (18 bytes)
+    641   22  s    3       java.lang.StringBuffer::append (13 bytes)
+                              @ 7   java.lang.AbstractStringBuilder::append (29 bytes)
+                                @ 7   java.lang.AbstractStringBuilder::ensureCapacityInternal (27 bytes)
+                                  @ 17   java.lang.AbstractStringBuilder::newCapacity (39 bytes)   callee is too large
+                                  @ 20   java.util.Arrays::copyOf (19 bytes)
+                                    @ 11   java.lang.Math::min (11 bytes)
+                                    @ 14   java.lang.System::arraycopy (0 bytes)   intrinsic
+    673   23 %     3       com.test.jvm.jit.JITTragerCondition1::doubleValue @ 2 (18 bytes)
+    675   20       3       java.lang.StringBuilder::append (8 bytes)
+                              @ 2   java.lang.AbstractStringBuilder::append (29 bytes)
+                                @ 7   java.lang.AbstractStringBuilder::ensureCapacityInternal (27 bytes)
+                                  @ 17   java.lang.AbstractStringBuilder::newCapacity (39 bytes)   callee is too large
+                                  @ 20   java.util.Arrays::copyOf (19 bytes)
+                                    @ 11   java.lang.Math::min (11 bytes)
+                                    @ 14   java.lang.System::arraycopy (0 bytes)   intrinsic
+    686   24       3       com.test.jvm.jit.JITTragerCondition1::doubleValue (18 bytes)
+    687   17       3       java.lang.CharacterDataLatin1::toUpperCase (53 bytes)
+    688   25 %     4       com.test.jvm.jit.JITTragerCondition1::doubleValue @ 2 (18 bytes)
+                              @ 4   java.lang.CharacterDataLatin1::getProperties (11 bytes)
+    707   23 %     3       com.test.jvm.jit.JITTragerCondition1::doubleValue @ -2 (18 bytes)   made not entrant
+    742   26       4       com.test.jvm.jit.JITTragerCondition1::doubleValue (18 bytes)
+    745   24       3       com.test.jvm.jit.JITTragerCondition1::doubleValue (18 bytes)   made not entrant
+    747   27       3       com.test.jvm.jit.JITTragerCondition1::calcSum (26 bytes)
+                              @ 12   com.test.jvm.jit.JITTragerCondition1::doubleValue (18 bytes)   inlining prohibited by policy
+    750   28 %     4       com.test.jvm.jit.JITTragerCondition1::calcSum @ 4 (26 bytes)
+                              @ 12   com.test.jvm.jit.JITTragerCondition1::doubleValue (18 bytes)   inline (hot)
+```
 
 
 
