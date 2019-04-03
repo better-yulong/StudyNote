@@ -154,7 +154,144 @@ public class JITTragerCondition1 {
 - 除了查看哪些方法被编译，还可进一步查看即时编译器生成的机器码，但全是0和1无法简单查看，必须反汇编成基本的汇编语言才可被阅读。可下载或编译反汇编适配器，并于运行时添加参数  -XX：+PrinterAssembly参数要求虚拟机打印编译方法的汇编代码。
 - 也可使用 -XX:+PrintOptoAssembly(用于Server VM)或-XX:+PrintLIR(用于Client VM）查看比较接近最终结果的中间代码（伪汇编代码）。如：
 ```
+[a@localhost bin]$ ./java -XX:+PrintCompilation -XX:+PrintInlining -XX:+PrintOptoAssembly JITTragerCondition1
+   2435    1       3       java.lang.String::equals (81 bytes)
+   2490    2     n 0       java.lang.System::arraycopy (native)   (static)
+   2528    3       3       java.lang.String::charAt (29 bytes)
+                              @ 18  java/lang/StringIndexOutOfBoundsException::<init> (not loaded)   not inlineable
+   2565    4       3       java.lang.String::hashCode (55 bytes)
+   2573    6       3       java.lang.Object::<init> (1 bytes)
+   2595    5       3       java.lang.String::length (6 bytes)
+   2733    7       3       java.lang.String::indexOf (70 bytes)
+                              @ 66   java.lang.String::indexOfSupplementary (71 bytes)   callee is too large
+   2759    8       3       java.lang.Math::min (11 bytes)
+   2877    9       1       java.lang.Object::<init> (1 bytes)
+   2881    6       3       java.lang.Object::<init> (1 bytes)   made not entrant
+   2882   10 %     3       JITTragerCondition1::doubleValue @ 2 (18 bytes)
+   2912   11       3       JITTragerCondition1::doubleValue (18 bytes)
+   2940   12 %     4       JITTragerCondition1::doubleValue @ 2 (18 bytes)
+{method}
+ - this oop:          0x00007f0a2d5012c0
+ - method holder:     'JITTragerCondition1'
+ - constants:         0x00007f0a2d501058 constant pool [29] {0x00007f0a2d501058} for 'JITTragerCondition1' cache=0x00007f0a2d5014e8
+ - access:            0xc1000009  public static 
+ - name:              'doubleValue'
+ - signature:         '(I)I'
+ - max stack:         3
+ - max locals:        2
+ - size of params:    1
+ - method size:       13
+ - highest level:     3
+ - vtable index:      -2
+ - i2i entry:         0x00007f0a19023be0
+ - adapters:          AHE@0x00007f0a280dcf68: 0xa0000000 i2c: 0x00007f0a19148520 c2i: 0x00007f0a19148659 c2iUV: 0x00007f0a1914862c
+ - compiled entry     0x00007f0a19231d40
+ - code size:         18
+ - code start:        0x00007f0a2d5012a8
+ - code end (excl):   0x00007f0a2d5012ba
+ - method data:       0x00007f0a2d5015b8
+ - checked ex length: 0
+ - linenumber start:  0x00007f0a2d5012ba
+ - localvar length:   0
+ - compiled code: nmethod   2948   11       3       JITTragerCondition1::doubleValue (18 bytes)
+#
+#  int ( rawptr:BotPTR )
+#
+#r018 rsi:rsi   : parm 0: rawptr:BotPTR
+# -- Old rsp -- Framesize: 32 --
+#r191 rsp+28: in_preserve
+#r190 rsp+24: return address
+#r189 rsp+20: in_preserve
+#r188 rsp+16: saved fp register
+#r187 rsp+12: pad2, stack alignment
+#r186 rsp+ 8: pad2, stack alignment
+#r185 rsp+ 4: Fixed slot 1
+#r184 rsp+ 0: Fixed slot 0
+#
+000   N28: #	B1 <- BLOCK HEAD IS JUNK   Freq: 1
+000   	# breakpoint
+      	nop 	# 11 bytes pad for loops and calls
 
+010   B1: #	N28 <- BLOCK HEAD IS JUNK   Freq: 1
+010   	# stack bang (32 bytes)
+	pushq   rbp	# Save rbp
+	subq    rsp, #16	# Create frame
+
+01c   	movl    RBP, [RSI + #8 (8-bit)]	# int
+01f   	movq    RDI, RSI	# spill
+022   	call_leaf,runtime  OSR_migration_end
+        No JVM State Info
+        # 
+02f   	sall    RBP, #1
+031   	movl    RAX, RBP	# spill
+033   	addq    rsp, 16	# Destroy frame
+	popq   rbp
+	testl  rax, [rip + #offset_to_poll_page]	# Safepoint: poll for GC
+
+03e   	ret
+03e
+
+   2949   10 %     3       JITTragerCondition1::doubleValue @ -2 (18 bytes)   made not entrant
+   2999   13       4       JITTragerCondition1::doubleValue (18 bytes)
+{method}
+ - this oop:          0x00007f0a2d5012c0
+ - method holder:     'JITTragerCondition1'
+ - constants:         0x00007f0a2d501058 constant pool [29] {0x00007f0a2d501058} for 'JITTragerCondition1' cache=0x00007f0a2d5014e8
+ - access:            0xc1000009  public static 
+ - name:              'doubleValue'
+ - signature:         '(I)I'
+ - max stack:         3
+ - max locals:        2
+ - size of params:    1
+ - method size:       13
+ - highest level:     3
+ - vtable index:      -2
+ - i2i entry:         0x00007f0a19023be0
+ - adapters:          AHE@0x00007f0a280dcf68: 0xa0000000 i2c: 0x00007f0a19148520 c2i: 0x00007f0a19148659 c2iUV: 0x00007f0a1914862c
+ - compiled entry     0x00007f0a19231d40
+ - code size:         18
+ - code start:        0x00007f0a2d5012a8
+ - code end (excl):   0x00007f0a2d5012ba
+ - method data:       0x00007f0a2d5015b8
+ - checked ex length: 0
+ - linenumber start:  0x00007f0a2d5012ba
+ - localvar length:   0
+ - compiled code: nmethod   3003   11       3       JITTragerCondition1::doubleValue (18 bytes)
+#
+#  int ( int )
+#
+#r018 rsi   : parm 0: int
+# -- Old rsp -- Framesize: 32 --
+#r191 rsp+28: in_preserve
+#r190 rsp+24: return address
+#r189 rsp+20: in_preserve
+#r188 rsp+16: saved fp register
+#r187 rsp+12: pad2, stack alignment
+#r186 rsp+ 8: pad2, stack alignment
+#r185 rsp+ 4: Fixed slot 1
+#r184 rsp+ 0: Fixed slot 0
+#
+abababab   N1: #	B1 <- B1  Freq: 1
+abababab
+000   B1: #	N1 <- BLOCK HEAD IS JUNK   Freq: 1
+000   	# stack bang (32 bytes)
+	pushq   rbp	# Save rbp
+	subq    rsp, #16	# Create frame
+
+00c   	movl    RAX, RSI	# spill
+00e   	sall    RAX, #1
+010   	addq    rsp, 16	# Destroy frame
+	popq   rbp
+	testl  rax, [rip + #offset_to_poll_page]	# Safepoint: poll for GC
+
+01b   	ret
+01b
+
+   3004   11       3       JITTragerCondition1::doubleValue (18 bytes)   made not entrant
+   3022   14       2       JITTragerCondition1::calcSum (26 bytes)
+                              @ 12   JITTragerCondition1::doubleValue (18 bytes)   inlining prohibited by policy
+   3048   15 %     4       JITTragerCondition1::calcSum @ 4 (26 bytes)
+                              @ 12   JITTragerCondition1::doubleValue (18 bytes)   inline (hot)
 
 ```
 
