@@ -101,7 +101,7 @@ public class JITTragerCondition1 {
 
 }
 ```
-编译并运行（-XX:+PrintCompilation 参数可要求虚拟机）:
+编译并运行（-XX:+PrintCompilation 参数可要求虚拟机在即时编译时将编译成本地代码的方法名称打印出来）:
 ```
 ./javac  JITTragerCondition1.java
 ./java -XX:+PrintCompilation JITTragerCondition1
