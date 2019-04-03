@@ -101,7 +101,31 @@ public class JITTragerCondition1 {
 
 }
 ```
+
+```
 ./javac  JITTragerCondition1.java
+./java -XX:+PrintCompilation JITTragerCondition1
+   2778    1       3       java.lang.String::equals (81 bytes)
+   2842    2     n 0       java.lang.System::arraycopy (native)   (static)
+   2901    3       3       java.lang.String::charAt (29 bytes)
+   2939    4       3       java.lang.String::hashCode (55 bytes)
+   2953    5       3       java.lang.String::length (6 bytes)
+   2984    6       3       java.lang.Object::<init> (1 bytes)
+   3207    7       3       java.lang.String::indexOf (70 bytes)
+   3223    8       3       java.lang.Math::min (11 bytes)
+   3350    9       1       java.lang.Object::<init> (1 bytes)
+   3353    6       3       java.lang.Object::<init> (1 bytes)   made not entrant
+   3371   10 %     3       JITTragerCondition1::doubleValue @ 2 (22 bytes)
+   3414   11       3       JITTragerCondition1::doubleValue (22 bytes)
+   3446   12 %     4       JITTragerCondition1::doubleValue @ 2 (22 bytes)
+   3457   10 %     3       JITTragerCondition1::doubleValue @ -2 (22 bytes)   made not entrant
+   3490   13       4       JITTragerCondition1::doubleValue (22 bytes)
+   3494   11       3       JITTragerCondition1::doubleValue (22 bytes)   made not entrant
+   3520   14       2       JITTragerCondition1::calcSum (26 bytes)
+   3554   15 %     4       JITTragerCondition1::calcSum @ 4 (26 bytes)
+
+```
+
 
 
 
