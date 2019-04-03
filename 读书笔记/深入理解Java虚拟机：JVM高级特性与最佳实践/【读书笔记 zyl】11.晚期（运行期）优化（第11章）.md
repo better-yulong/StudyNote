@@ -427,8 +427,8 @@ Java虚拟机在JDK1.3及之后几乎把对代码的所有优化措施集中在�
 > 通过 java -XX:+PintFlagsFinal -XX:+PrintFlagsInitial 查看sun jdk8 默认开启逃逸分析（-XX:+DoEscapeAnalysis），同时标量替换也默认开启（-XX:+EliminateAllocations）、，同步消除默认开启(-XX：+EliminateLocks）
 
 #### 4. Java与C/C++的编译器比较
-Java与C/C++的编译器比较
-1. 
+Java与C/C++的编译器比较实际代表最经典的即时编译器与静态编译器的对比：
+1. 编译器运行
 
 
 参考资料：[JIT晚期(运行期)](https://www.cnblogs.com/wade-luffy/p/6050483.html) 
