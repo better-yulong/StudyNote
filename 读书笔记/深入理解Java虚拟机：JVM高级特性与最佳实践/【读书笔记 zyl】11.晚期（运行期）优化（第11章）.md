@@ -55,6 +55,7 @@
 - ![OSR编译交互](https://github.com/better-yulong/StudyNote-Resource/blob/master/StudyNote-Resource/11-002.PNG)
 > 与方法计数器不同，回边计数器没有计数热度衰减过程，因此该计数器统计的是方法循环执行的绝对次数。当计数器溢出，会同步把方法计数器的值也调整为溢出状态，这样下次进入该方法会执行标准编译过程。
 > 上面两个图仅描述Client VM的即时编译方式，而Server VM 相对更复杂。JVM源码MethodOop.hpp（一个MethodOop对象个Java方法），其定义了Java方法在虚拟机的内存布局，其中明确定义了方法调用计数器和回边计数喊叫的位置和长度。
+- 
 
 ##### 3、编译过程
 默认设置下，无论是方法调用产生的编译请求还是OSR请求，虚拟机代码编译未完成前都仍将按照解释方式继续执行，而编译动作则在后台编译线程中进行。可通过参数 -XX:-BackgroundCompilation 禁止后台编译；该参数设置后，一旦达到JIT编译条件，执行线程向虚拟机提交编译请求后会等待直到编译过程完成后再开始执行编译器输出的本地代码。Service Compiler和Client Compiler编译过程不一样。
