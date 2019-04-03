@@ -68,9 +68,10 @@
 > Server Compiler的寄存器分配器是一个全局图着色分配器，它可充分利用某些处理器架构（如RISC）上的大寄存器集合。以即时编译标准看，Server Compiler比较缓慢，但它的编译速度则远超过传统的静态优化编译器，相对于Client Compiler编译输出的代码以质量则有所提高，可减少本地代码的执行时间，从而抵消额外的编译时间开销，所以也有很多非服务端应用选择使用Server模式的虚拟机运行。
 
 ##### 4、查看及分析限时编译结果
+> 该部分验证均
 虚拟机的即时编译用户不知道也无感知，虽执行结果没影响但运行速度差别则很大。虚拟机提供了部分参数输出即时编译和某些优化手段（如方法内联）的执行状况。
 该节的运行参数部分需要Debug或FastDebug版的虚拟机支持，Product版本的虚拟机无法使用。即编译时需要指定调试信息级别（–with-debug-level=slowdebug:编译时debug的级别,有release, fastdebug, slowdebug 三种级别; slowdebug 级别可以生成最多的调试信息），而我编译时使用的slowdebug级别。（本想编译后上传github，但发现该级别编译整体编译后达到3.6G，而jdk也达到560M，且复制迁移到windows之后无法正常使用）
-```language
+```
 public class JITTragerCondition1 {
 
 	public static final int NUM = 1500 ;
