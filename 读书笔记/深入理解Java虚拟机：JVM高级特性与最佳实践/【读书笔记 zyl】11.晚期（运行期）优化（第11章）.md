@@ -296,6 +296,7 @@ abababab
 ```
 对于反汇编伪代码，pudouct版本的虚拟机也可打印：java -XX:+UnlockDiagnosticVMOptions -XX:+PrintCompilation -XX:+PrintInlining  com/test/jvm/jit/JITTragerCondition1 ,（仅参数：-XX:+UnlockDiagnosticVMOptions 无效，需三个参数配置使用）
 ```
+----该示例使用官网下载标准版本的jdk验证：
 java -XX:+UnlockDiagnosticVMOptions -XX:+PrintCompilation -XX:+PrintInlining  com/test/jvm/jit/J
 ITTragerCondition1
     519    1       3       java.lang.String::equals (81 bytes)
