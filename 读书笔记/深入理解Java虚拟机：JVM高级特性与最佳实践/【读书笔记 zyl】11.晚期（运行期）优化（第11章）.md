@@ -101,7 +101,7 @@ public class JITTragerCondition1 {
 
 }
 ```
-
+编译并运行（-XX:+PrintCompilation 参数可要求虚拟机）:
 ```
 ./javac  JITTragerCondition1.java
 ./java -XX:+PrintCompilation JITTragerCondition1
