@@ -9,3 +9,5 @@
 ![处理器、高速缓存、主存之间的交互关系](https://github.com/better-yulong/StudyNote-Resource/blob/master/StudyNote-Resource/12-001.PNG)
 - 除增加高速缓存外，处理器内部也可能会对输入代码进行乱序执行（Out-Of-Order Execution）优化，仅保证同一处理结果与顺序执行一致，但若一个计算任务依赖中外一个计算任务的中间结果，则顺序性并不能靠代码先后顺序来保障（多线程明显，即不能单纯的代码顺序等价于执行顺序）。
 与此类似，Java虚拟机的即时编译器也有类似的指令重排序（Instruction Reorder）优化。
+
+#### 三、Java内存模型
