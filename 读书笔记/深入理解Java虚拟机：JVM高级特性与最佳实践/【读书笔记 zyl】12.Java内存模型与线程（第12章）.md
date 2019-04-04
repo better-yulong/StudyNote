@@ -11,3 +11,4 @@
 与此类似，Java虚拟机的即时编译器也有类似的指令重排序（Instruction Reorder）优化。
 
 #### 三、Java内存模型
+Java虚拟机规范定义一种Java内存模型
