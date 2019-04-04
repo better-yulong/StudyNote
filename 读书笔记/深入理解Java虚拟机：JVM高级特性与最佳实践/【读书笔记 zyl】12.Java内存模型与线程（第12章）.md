@@ -19,4 +19,5 @@ Java虚拟机规范定义一种Java内存模型（Java Memory Model，JMM）来�
 > ![JMM内存模型交互](https://github.com/better-yulong/StudyNote-Resource/blob/master/StudyNote-Resource/12-002.PNG)
 此处的主内存、工作内存与第2章Java内存区域的Java堆、栈、方法区等并非同一层次的内存划分，基本没有关系。
 1. 拷贝副本：对象引用、对象中某个线程访问一的字段有可能拷贝，但虚拟机不会实现整个对象拷贝。
-2. 根据Java虚拟机规范，volatitle变更依然有工作内存的拷贝，但由于它特殊的操作顺序性规定，
+2. 根据Java虚拟机规范，volatitle变更依然有工作内存的拷贝，但由于它特殊的操作顺序性规定，只是其看起来如同直接在主内存读写访问。
+3. 
