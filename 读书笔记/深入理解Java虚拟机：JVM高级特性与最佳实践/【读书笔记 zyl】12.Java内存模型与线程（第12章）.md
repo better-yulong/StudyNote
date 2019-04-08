@@ -47,4 +47,4 @@ Java虚拟机规范定义一种Java内存模型（Java Memory Model，JMM）来�
 
 ##### 3. volatile型变量的特殊规则
 volatile是Java虚拟机提供的最轻量级的同步机制，但其并不容易完全被正确、完整的理解，所以需处理多线程同步时一律使用synchronized实现。
-Java内存
+Java内存模型对volatile专门定义了特殊的访问规则，先
