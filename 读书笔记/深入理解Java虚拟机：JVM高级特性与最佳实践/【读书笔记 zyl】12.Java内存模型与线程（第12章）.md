@@ -133,4 +133,4 @@ Java提供了synchronized和volatile关键字来保证线程之间操作的有�
 先行发生是指Java内存模型中定义的两项操作之间的偏序关系。若两个操作的关系可基于下列规则推导白蘑菇则其执行有序，若无法推迟则顺序性无保障，虚拟机可对它们随意重排序：
 1. 程序次序规则（Program Order Rule）：在一个线程内，按照控制流顺序（代码先后顺序，结合分支、循环等）前面的操作执行先于后面的操作。
 2. 管程锁定规则（Monitor Lock Rule）：一个unlock操作先于发生于后面对同一个锁的lock操作。同一个锁，"后面是批时间上的先后顺序"
-3. volatile变量规则(Volatile Variable Rulee):
+3. volatile变量规则(Volatile Variable Rule):对一个volatile变量的写操作先行发生于后面这个
