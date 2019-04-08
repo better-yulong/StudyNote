@@ -138,5 +138,5 @@ Java提供了synchronized和volatile关键字来保证线程之间操作的有�
 5. 线程终止规则(Thread Termination Rule)：线程中所有的操作都先行发生于此线程的终止检测，我们可通过Thread.join()方法结束、Thread.isAlive()的返回值等手段检测到线程已终止执行。
 6. 线程中断规则(Thread Interruption Rule):对线程的interrupt()方法的调用先行发生于被中断线程的代码检测到中断事件的发生，可通过Thread.interrupted()方法检测到是否有中断发生。
 7. 对象终结规则(Finalizer Rule):一个对象的初始化完成（构造函数执行结束）先行于发生于它的finalizer()方法的开始。
-8. 传递性(Transitivity):如果操作A先行
+8. 传递性(Transitivity):如果操作A先行发生于操作B，操作B先行发生于操作C，那么可得出操作A
 
