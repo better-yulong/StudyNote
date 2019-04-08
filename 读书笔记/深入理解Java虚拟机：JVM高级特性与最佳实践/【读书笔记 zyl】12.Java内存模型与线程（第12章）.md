@@ -157,7 +157,7 @@ Java提供了synchronized和volatile关键字来保证线程之间操作的有�
 1.使用内核线程实现
 内核线程（Kernel-Level Thread，KLT）是直接由操作系统内核（Kernel，下称内核）支持的线程，这种线程由内核来完成线程切换，内核通过操作调度器（Scheduler）对线程进行调度，并负责将线程的任务映射到各处理器上。每个内核线程可视为内核的一个分身，这样操作系统就有能力同时处理多件事情，支持多线程的内核就叫做多线程内核（Multi-Treads Kernel）。
 程序不般不会直接使用内核线程，而是去使用内核线程的高级接口---轻量级里程（Light Weigth Process，LWP），轻量级进程即是我们通常意义所讲的线程。因每个轻量级进程都有一个内核线程支持，因此只有先支持内核线程，才能有轻量级进程。这种轻量级进程与内核线程之间1：1的关系称为一对一的线程模型。
-
+- ![轻量级进程与内核线程关系](https://github.com/better-yulong/StudyNote-Resource/blob/master/StudyNote-Resource/12-003.PNG)
 
 
 
