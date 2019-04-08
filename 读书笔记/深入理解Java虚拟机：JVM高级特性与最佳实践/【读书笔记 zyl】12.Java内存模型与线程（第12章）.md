@@ -140,5 +140,5 @@ Java提供了synchronized和volatile关键字来保证线程之间操作的有�
 7. 对象终结规则(Finalizer Rule):一个对象的初始化完成（构造函数执行结束）先行于发生于它的finalizer()方法的开始。
 8. 传递性(Transitivity):如果操作A先行发生于操作B，操作B先行发生于操作C，那么可得出操作A先行发生于操作C的结论。
 
-判断
+判定操作
 
