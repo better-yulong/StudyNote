@@ -103,7 +103,7 @@ public class VolatileCalTest {
         line 10: 8
 
 ```
-基于 主内存 <---> 工作内存  <---> 执行引擎，volatile类型变量 a++ fctf从字节码层面可以可分析得出：getstatic 指令把 
+基于 主内存 <---> 工作内存  <---> 执行引擎，volatile类型变量 a++ 运算从字节码层面可以可分析得出：getstatic 指令把a的值把a的值取到操作
 
 （客观说，其实并来严谨，即使编译出来只有一条字节码）
 
