@@ -87,7 +87,10 @@ public class VolatileCalTest {
 }
 
 ```
-20个线程，每个线程运行10000次，如a++线程安全则结果应该为200000，但实际每次运行结果不一样且均远远小于200000。原因即在a++。便于分析理解，将该类编译为class文件，之后使用javap命令：javap -p -l VolatileCalTest.class（客观说，其实并来严谨，即使编译出来只有一条字节码）
+20个线程，每个线程运行10000次，如a++线程安全则结果应该为200000，但实际每次运行结果不一样且均远远小于200000。原因即在a++。便于分析理解，将该类编译为class文件，之后使用javap命令：javap -p -l VolatileCalTest.class
+从
+
+
 
 
 
@@ -103,5 +106,5 @@ public class VolatileCalTest {
       LineNumberTable:
         line 9: 0
         line 10: 8
-
+（客观说，其实并来严谨，即使编译出来只有一条字节码）
 
