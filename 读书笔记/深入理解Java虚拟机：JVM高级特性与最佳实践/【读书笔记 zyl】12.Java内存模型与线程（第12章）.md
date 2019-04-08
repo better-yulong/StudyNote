@@ -136,5 +136,5 @@ Java提供了synchronized和volatile关键字来保证线程之间操作的有�
 3. volatile变量规则(Volatile Variable Rule):对一个volatile变量的写操作先行发生于后面这个变量的读操作，同样"后面是批时间上的先后顺序"。
 4. 线程启动规则(Thread Start Rule):Thread对象的start()方法先行发生于此线程的每一个动作。
 5. 线程终止规则(Thread Termination Rule)：线程中所有的操作都先行发生于此线程的终止检测，我们可通过Thread.join()方法结束、Thread.isAlive()的返回值等手段检测到线程已终止执行。
-6. 线程中断规则:
+6. 线程中断规则(Thread Interruption Rule):对线程的interrupt()
 
