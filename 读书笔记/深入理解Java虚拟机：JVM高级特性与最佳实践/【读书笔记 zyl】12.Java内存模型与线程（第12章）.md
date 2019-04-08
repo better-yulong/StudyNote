@@ -118,4 +118,4 @@ public class VolatileCalTest {
 ##### 5. 原子性、可见性与有序性
 Java内存模型主要围绕并发过程中原子性、可见性和有序性 3个特征建立：
 原子性（Atomicity）：由Java内存模型直接保证原子性变量操作包括read、load、use、assign、store和write，可认为所所有基本数据类型的访问读写均具备原子性（long、double虽然非原子协定例外，但几乎不会发生例外）。如若应用场景需更大范围的保证原子性，Java内存模型则提供lock和unlock操作满足需求。但虚拟机并未直接把lock和unlock操作直接开放给用户，但提供了更高层次的字节码指令 monitorenter和monitorexit 隐式使用这两个操作，这两个字节码指令反映到Java代码就是同步块---synchronized。因此,synchronized块之间的操作也具备原子性。
-可见性(Visibility）:可见性是指一个线程修改共享变量的值，其他线程能够立即得知这个修改。Java内存模型是通过变量修改后将新值同步回主内存，而变量读取前从主内存在于
+可见性(Visibility）:可见性是指一个线程修改共享变量的值，其他线程能够立即得知这个修改。Java内存模型是通过变量修改后将新值同步回主内存，而变量读取前从主内存刷新新值至工作内存的方式不实现可见性。
