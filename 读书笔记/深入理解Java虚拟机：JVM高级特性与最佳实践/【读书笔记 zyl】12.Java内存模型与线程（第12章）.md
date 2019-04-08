@@ -112,5 +112,5 @@ public class VolatileCalTest {
 - 个人理解：volatile变量涉及运运算、多线程执行时线程依赖volatile 修改控制线程运行逻辑时需谨慎使用。
 
 ##### 4. volatile型变量的特殊规则
-Java内存模型要求lock、unlock、read、load、assign、use、store、write这8个操作具有原子性，但对于64位数据类型(long和double)则规定相对宽松：允许虚拟机将没有被volatile修改的64位数据读写操作划分为2次操作进行，即允许虚拟机可不保证64位数据类型的load、store、read和write 4个操作的原子性，这就是 long和double的非原子协定。所以volatile类型变量
-
+- Java内存模型要求lock、unlock、read、load、assign、use、store、write这8个操作具有原子性，但对于64位数据类型(long和double)则规定相对宽松：允许虚拟机将没有被volatile修改的64位数据读写操作划分为2次操作进行，即允许虚拟机可不保证64位数据类型的load、store、read和write 4个操作的原子性，这就是 long和double的非原子协定。
+- 若多个线程共享一个并
