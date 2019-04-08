@@ -117,4 +117,4 @@ public class VolatileCalTest {
 
 ##### 5. 原子性、可见性与有序性
 Java内存模型主要围绕并发过程中原子性、可见性和有序性 3个特征建立：
-原子性：
+原子性（Atomacity）：
