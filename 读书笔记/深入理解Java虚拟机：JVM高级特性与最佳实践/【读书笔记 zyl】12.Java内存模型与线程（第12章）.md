@@ -129,3 +129,4 @@ Java提供了synchronized和volatile关键字来保证线程之间操作的有�
 > 然而，正是因为synchronized在需要这3种特性时需可支持，故被当成一种万能的方案，使得大部分并发控制操作都能使用synchronized来完成才间接造成乱用，因其万能通常也会伴随越大的性能影响。
 
 ##### 6. 先行发生原则
+若Java内存模型所有的有序性均依靠volatile和syn
