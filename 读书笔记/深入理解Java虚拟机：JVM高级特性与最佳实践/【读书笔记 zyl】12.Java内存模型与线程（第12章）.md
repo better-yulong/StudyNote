@@ -112,4 +112,5 @@ public class VolatileCalTest {
 - 个人理解：volatile变量涉及运运算、多线程执行时线程依赖volatile 修改控制线程运行逻辑时需谨慎使用。
 
 ##### 4. volatile型变量的特殊规则
+Java内存模型要求lock、unlock、read、load、assig
 
