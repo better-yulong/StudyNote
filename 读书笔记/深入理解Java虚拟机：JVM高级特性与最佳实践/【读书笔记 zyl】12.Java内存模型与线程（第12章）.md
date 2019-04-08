@@ -89,3 +89,19 @@ public class VolatileCalTest {
 ```
 20个线程，每个线程运行10000次，如a++线程安全则结果应该为200000，但实际每次运行结果不一样且均远远小于200000。原因即在a++
 
+
+
+  public static void increase();
+    flags: ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=0, args_size=0
+         0: getstatic     #2                  // Field a:I
+         3: iconst_1
+         4: iadd
+         5: putstatic     #2                  // Field a:I
+         8: return
+      LineNumberTable:
+        line 9: 0
+        line 10: 8
+
+
