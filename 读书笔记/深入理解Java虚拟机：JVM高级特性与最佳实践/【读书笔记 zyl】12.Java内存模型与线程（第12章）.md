@@ -188,4 +188,5 @@ Java语言语义了5种线程状态，在任意时间点，一个线程只能有
 LockSupport的park/unpark和Object的wait/notify:面向的对象不同；跟Object的wait/notify不同LockSupport的park/unpark不需要获取对象的监视器；实现的机制不同，因此两者没有交集。虽然两者用法不同，但是有一点， LockSupport 的park和Object的wait一样也能响应中断.
 4. 限期等待（Timed Waiting）:处于这种状态的线程也不会被分配CPU执行时间，不过无需等待被其他线程显示唤醒，在一定时间之后它们会由系统自由唤醒。以下方法会让线程进入限期等待状态：
   - Thread.sleep()方法。
-  - 设置了Timeout参数的
+  - 设置了Timeout参数的Object.wait()方法。
+  - 设置了Timeout参数的Thread.join()
