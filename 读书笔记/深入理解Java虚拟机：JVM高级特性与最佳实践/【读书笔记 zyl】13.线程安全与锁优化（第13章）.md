@@ -72,5 +72,5 @@ Exception in thread "Thread-49037" java.lang.ArrayIndexOutOfBoundsException: Arr
 	at java.lang.Thread.run(Thread.java:722)
 6
 ```
-原因分析源码可发现：Vector中主要有两个成员变量
+原因分析源码可发现：Vector中主要有两个重要的成员变量emelentData[]、elementCount，而
 
