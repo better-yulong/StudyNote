@@ -72,4 +72,4 @@ Exception in thread "Thread-49037" java.lang.ArrayIndexOutOfBoundsException: Arr
 	at java.lang.Thread.run(Thread.java:722)
 6
 ```
-原因分析源码可发现：Vector中主要有两个重要的成员变量emelentData[]、elementCount（其它如容量控制不暂时
+原因分析源码可发现：Vector中主要有两个重要的成员变量emelentData[]、elementCount（其它如容量控制不暂时忽略），可发现add、remove方法调用后会基于原
