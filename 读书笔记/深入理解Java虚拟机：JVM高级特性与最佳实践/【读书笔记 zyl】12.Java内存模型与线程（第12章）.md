@@ -190,5 +190,6 @@ LockSupport的park/unpark和Object的wait/notify:面向的对象不同；跟Obje
   - Thread.sleep()方法。
   - 设置了Timeout参数的Object.wait()方法。
   - 设置了Timeout参数的Thread.join()方法。
-  - LockSupport.parkNanos()
+  - LockSupport.parkNanos()方法。
+  - LockSupport.parkUntil()方法。
   - 
