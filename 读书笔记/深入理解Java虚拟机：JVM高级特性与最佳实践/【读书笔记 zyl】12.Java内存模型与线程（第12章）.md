@@ -194,4 +194,4 @@ LockSupport的park/unpark和Object的wait/notify:面向的对象不同；跟Obje
   - 设置了Timeout参数的Thread.join()方法。
   - LockSupport.parkNanos()方法。
   - LockSupport.parkUntil()方法。
-5. 阻塞（Blocked）:线程被阻塞，"阻塞状态"与"t"
+5. 阻塞（Blocked）:线程被阻塞，"阻塞状态"与"等待状态"的区别是："阻塞状态"在等待着获取到一个排他锁，
