@@ -186,4 +186,5 @@ Java语言语义了5种线程状态，在任意时间点，一个线程只能有
   - LockSupport.park()方法。
 > LockSupport是JDK中比较底层的类，用来创建锁和其他同步工具类的基本线程阻塞原语。Java锁和同步器框架的核心AQS:AbstractQueuedSynchronizer，就是通过调用LockSupport.park()和LockSupport.unpark()实现线程的阻塞和唤醒的。LockSupport很类似于二元信号量(只有1个许可证可供使用)，如果这个许可还没有被占用，当前线程获取许可并继续执行；如果许可已经被占用，当前线程阻塞，等待获取许可。LockSupport中的park() 和 unpark() 的作用分别是阻塞线程和解除阻塞线程，而且park()和unpark()不会遇到“Thread.suspend 和 Thread.resume所可能引发的死锁”问题。因为park() 和 unpark()有许可的存在；调用 park() 的线程和另一个试图将其 unpark() 的线程之间的竞争将保持活性。
 LockSupport的park/unpark和Object的wait/notify:面向的对象不同；跟Object的wait/notify不同LockSupport的park/unpark不需要获取对象的监视器；实现的机制不同，因此两者没有交集。虽然两者用法不同，但是有一点， LockSupport 的park和Object的wait一样也能响应中断.
-4. 限期等待（Timed Waiting）:处于这种状态的线程也不会被分配CPU执行时间，不过无需等待被其他线程显示唤醒，在一定时间之后它们会由系统自由唤醒。以下方法
+4. 限期等待（Timed Waiting）:处于这种状态的线程也不会被分配CPU执行时间，不过无需等待被其他线程显示唤醒，在一定时间之后它们会由系统自由唤醒。以下方法会让线程进入限期等待状态：
+5. 
