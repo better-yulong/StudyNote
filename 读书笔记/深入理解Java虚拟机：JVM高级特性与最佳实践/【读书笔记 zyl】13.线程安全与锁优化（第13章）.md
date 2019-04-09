@@ -119,4 +119,5 @@ public class VectorSafeTest {
 ```
 ###### 3. 相对线程安全
 1. 相对的线程是我们通常意义所讲的线程安全，它需保证对这个对象单独的操作是线程安全，我们在调用的时候不需要做额外的保障措施；但对于一些特定顺序的连续调用，则可能需要调用端使用额外的同步手段保证调用的正确性。
-2. Java语言中，大部分的线程安全类都属于相对线程安全，如Vector、HashTable、Collections的synchronizedCollection
+2. Java语言中，大部分的线程安全类都属于相对线程安全，如Vector、HashTable、Collections的synchronizedCollection()方法包装的集合。
+###### 4. 线程兼容
