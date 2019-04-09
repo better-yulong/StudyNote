@@ -122,4 +122,5 @@ public class VectorSafeTest {
 2. Java语言中，大部分的线程安全类都属于相对线程安全，如Vector、HashTable、Collections的synchronizedCollection()方法包装的集合。
 ###### 4. 线程兼容
 线程兼容是指对象本身并不是线程安全（即使单个操作也非线程安全），但可通过在调用端正确的使用同步手段来保证对象在并发环境中可安全使用。平常所说一个类线程不安全，大多数指此种情况。Java API中大部分类都是属于线程兼容，如Vector和HashTable对应的集合类ArrayList和HashMap等。
-###### 5. 线程兼容
+###### 5. 线程对立
+线程对立是指无论调用端是否采取同步措施，但
