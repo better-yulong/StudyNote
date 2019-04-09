@@ -189,4 +189,6 @@ LockSupport的park/unpark和Object的wait/notify:面向的对象不同；跟Obje
 4. 限期等待（Timed Waiting）:处于这种状态的线程也不会被分配CPU执行时间，不过无需等待被其他线程显示唤醒，在一定时间之后它们会由系统自由唤醒。以下方法会让线程进入限期等待状态：
   - Thread.sleep()方法。
   - 设置了Timeout参数的Object.wait()方法。
-  - 设置了Timeout参数的Thread.join()
+  - 设置了Timeout参数的Thread.join()方法。
+  - LockSupport.parkNanos()
+  - 
