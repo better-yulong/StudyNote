@@ -184,5 +184,10 @@ Java语言语义了5种线程状态，在任意时间点，一个线程只能有
   - 没有设置Timeout参数的Object.wait（）方法。
   - 没有设置Timeout参数的Thread.join()方法。（用于线程同步使得串行执行，底层实现也是基于wait方法。如main方法调用t.join()方法，则main线程放弃cpu控制权，并返回t1线程继续执行直到线程t1执行完毕再返回main线程执行）
   - LockSupport.park()方法。
+  > 段落引用
+  LockSupport的park/unpark和Object的wait/notify:
 
-
+面向的对象不同；
+跟Object的wait/notify不同LockSupport的park/unpark不需要获取对象的监视器；
+实现的机制不同，因此两者没有交集。
+虽然两者用法不同，但是有一点， LockSupport 的park和Object的wait一样也能响应中断.
