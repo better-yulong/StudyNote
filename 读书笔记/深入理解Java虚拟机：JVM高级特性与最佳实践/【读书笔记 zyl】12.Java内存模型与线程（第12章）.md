@@ -182,7 +182,7 @@ Java语言语义了5种线程状态，在任意时间点，一个线程只能有
 2. 运行(Runnable):Runnable包括了操作系统线程状态的Running和Ready，也就是处于此状态的线程有可能正在运行，也有可能正在等待CPU为它分配执行时间。
 3. 无限期等待(Waiting):处于这种状态的线程不会被分配CPU执行赶时间，需等待被其他线程显示唤醒。以睛Java方法会让线程陷入无限期的等待状态：
   - 没有设置Timeout参数的Object.wait（）方法。
-  - 没有设置Timeout参数的Thread.join()方法。（用于线程同步使得串行，实际实现也是wait方法。如main方法调用t.join()方法）
+  - 没有设置Timeout参数的Thread.join()方法。（用于线程同步使得串行执行，底层实现也是基于wait方法。如main方法调用t.join()方法，则main线程放弃cpu控制权，并返回t1线程继续执行直到线程t1执行完毕）
   - LockSupport.park()方法。
 
 
