@@ -17,14 +17,59 @@
 ###### 2. 绝对线程安全
 绝对线程安全完全满足"不管运行时环境如何，调用者都不需要任何额外的同步措施"，但需要付出很大且有时不切实际。Java API中标注自己是线程安全的类，大多数都不是绝对的线程安全。
 - 如java.util.Vector是一个线程安全的类（doc文档有说明该类是否线程安全），也许大家对此均不会有意义，因为其add()、get()和size()这类方法被synchronized修饰，虽然效率低但安全。
+```
+package com.test.jvm.concurrent;
 
+import java.util.Vector;
 
+public class VectorUnSafeTest {
+	
+	private static Vector<Integer> vector = new Vector<Integer>();
 
+	public static void main(String[] args) {
+		while(true){
+			for(int i=0 ; i<10; i++){
+				vector.add(i);
+			}
+			
+			Thread removeThread = new Thread(new Runnable(){
 
+				@Override
+				public void run() {
+					for(int i=0 ; i<10; i++){
+						vector.remove(i);
+					}
+				}
+				
+			});
+			
+			Thread printThread = new Thread(new Runnable(){
 
+				@Override
+				public void run() {
+					for(int i=0 ; i<10; i++){
+						System.out.println(vector.get(i));
+					}
+				}
+			});
+			
+			removeThread.start();
+			printThread.start();
+			
+			while(Thread.activeCount()>5);
+		}
+
+	}
+
+}
+
+```
+运行结果：
+```
 Exception in thread "Thread-49037" java.lang.ArrayIndexOutOfBoundsException: Array index out of range: 9
 	at java.util.Vector.get(Vector.java:744)
 	at com.test.jvm.concurrent.VectorSafeTest$2.run(VectorSafeTest.java:31)
 	at java.lang.Thread.run(Thread.java:722)
 6
+```
 
