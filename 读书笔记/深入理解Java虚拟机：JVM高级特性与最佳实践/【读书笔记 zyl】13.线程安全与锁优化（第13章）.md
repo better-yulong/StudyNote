@@ -14,5 +14,5 @@
 - Java语言中，若共享数据为基本数据类型，那么定义时使用final关键字修饰它就可保证不可变。若共享数据是一个对象，若可保证的行为不会对其本身的状态产生任何影响，可认为也其也不可变。（如java.lang.String，其不可变组线程安全，为什么呢？是因为String被定义为final且String内部存储字符串的char数组以及和char数组相关的信息都是final的）
 - 保证对象行为不影响自身状态的途径有多种，但最简单的则是把对象中带状态的变量均声明为final，这样构造函数执行结束它即不可变（此处的自身状态较难理解，个人理解即是上面说的数据及行为均未改变）。如java.lang.Integer则是通过构造函数，通过将Integer对象的字面量（内部状态变量）value字义为final来保障其不可变。
 - Java/API中不可变类型：String、Integer、Enum枚举、java.lang.Number部分子类（Long和Double等数值包装类型、BigInteger和BigDecimal等大数据类型不可变；但是Number的子类AtomicInteger、AtomicLong则非不可变---查看源码，个人理解可发现其对着状态变量并非final类型，如value仅是volatile类型的int)
-###### 2. 绝对线程
-- 
+###### 2. 绝对线程安全
+绝对线程安全完全满足
