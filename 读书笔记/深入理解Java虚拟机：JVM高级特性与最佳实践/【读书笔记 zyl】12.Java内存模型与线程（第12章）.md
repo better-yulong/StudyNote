@@ -169,6 +169,6 @@ Java提供了synchronized和volatile关键字来保证线程之间操作的有�
 ![用户线程与轻量级进程N:M关系](https://github.com/better-yulong/StudyNote-Resource/blob/master/StudyNote-Resource/12-005.PNG)
 4. Java线程的实现
 JDK1.2之前，Java线程是基于"绿色线程"的用户线程实现；JDK1.2开始，线程模型替换为基于操作系统原生线程模型实现。故当前JDK版本中，Java虚拟机的线程映射到操作系统线程，而这点依赖平台实现。而线程模型只对线程的并发规模和操作成本有影响，但对Java程序的编码和运行过过程则是无感知。
-SunJDK,其Windows版本与Linux版
+SunJDK,其Windows版本与Linux版均使用1对1线程模型
 
 
