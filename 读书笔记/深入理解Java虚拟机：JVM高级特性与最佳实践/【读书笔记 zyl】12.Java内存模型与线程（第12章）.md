@@ -195,4 +195,4 @@ LockSupport的park/unpark和Object的wait/notify:面向的对象不同；跟Obje
   - LockSupport.parkNanos()方法。
   - LockSupport.parkUntil()方法。
 5. 阻塞（Blocked）:线程被阻塞，"阻塞状态"与"等待状态"的区别是："阻塞状态"在等待着获取到一个排他锁，这个事件将在另外一个线程放弃这个锁的时候发生；而"等待状态"则是在等待一段时间，或者唤醒动作的发生。在程序等待进入同步区域，线程将进入阻塞状态。
-这5为师洋
+- 这5种状态去到特定事件会发生状态转换：
