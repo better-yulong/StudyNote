@@ -127,4 +127,4 @@ public class VectorSafeTest {
 其中如Thread.suspend()、Thread.resume() 持有同一对象锁而并发执行时则极容易发生死锁，因为suspend方法并不会释放锁,既然suspend和resume使用同一锁那么resume执行前需获得锁才可，即容易造成死锁。除此之外，常见的线程对立操作还有System.setIn()、System.setOut()和System.runFinalizersOnExit()等.
 - 既然说到这儿，那对于Thread相关常见的 wait、notify、notifyAll、sleep、suspend、resume、yield、join这些方法的作用进一步理解并汇总：
 1. wait、notify、notifyAll是Object类中的方法，而锁即所谓对象的 monitor，所以基于此也可以理解，wait、notify、notifyAll三个方法必须在同步方法(块)中调用，且wait时会释放锁而notify、 notifyAll之后优先获得锁的线程将重新执行。若在非同步方法(块)中调用wait、notify、notifyAll运行时，因当前线程不是对象锁的持有者，则该方法抛出一个java.lang.IllegalMonitorStateException 异常；因一切皆对象，理论上也意味着任何Java代码随时随地均可调用wait、notify、notifyAll方法。
-2. sleep是当将前被服务的线暂停一段时间之后可恢复继续服务。
+2. sleep、suspend、resume、yield、join这些方法均为Thread类的方法sleep是当将前被服务的线暂停一段时间之后可恢复继续服务。
