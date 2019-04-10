@@ -125,6 +125,87 @@ public class VectorSafeTest {
 ###### 5. 线程对立
 线程对立是指无论调用端是否采取同步措施，但都无法在多线程环境中并发使用。因Java语言天生具备多线程特性，线程对立这种排斥多线程的情况较少且通常有害应该避免。
 其中如Thread.suspend()、Thread.resume() 持有同一对象锁而并发执行时则极容易发生死锁，因为suspend方法并不会释放锁,既然suspend和resume使用同一锁那么resume执行前需获得锁才可，即容易造成死锁。除此之外，常见的线程对立操作还有System.setIn()、System.setOut()和System.runFinalizersOnExit()等.
+- 示例验证代码1：
+```language
+package com.test.jvm.concurrent;
+
+/***
+ * 验证同步情况下：
+ * 1、先suspend后resume线程：可正常唤醒
+ * 2、先suspend后不resume线程：线程阻塞
+ * 
+ * */
+public class ThreadLockTest {
+
+	public static void main(String[] args) {
+		final SynchronizedObject sobject = new SynchronizedObject();
+		try{
+			final Thread t1 = new Thread(new Runnable(){
+
+				@Override
+				public void run() {
+					sobject.printString();
+				}
+				
+			});
+			
+			t1.setName("t1");
+			t1.start();
+			Thread.sleep(2000);
+			
+			Thread t2 = new Thread(new Runnable(){
+
+				@Override
+				public void run() {
+					System.out.println("t2 start ...");
+					t1.resume();  
+					//若把 t1.resume();注释掉，则会因t1线程暂停，t2线程调用 sobject.printString（）会无法获取到锁被阻塞，通过jstack 根据线程栈分析可发现
+					//"Thread-1" prio=6 tid=0x04e56000 nid=0x174 waiting for monitor entry [0x0523f000]  ; java.lang.Thread.State: BLOCKED (on object monitor)
+					System.out.println("t2 start ,resume success ...");
+					sobject.printString();
+					
+				}
+				
+			});
+			t2.setName("t2");
+			t2.start();
+			
+		}catch(Exception e){
+			
+		}
+		
+	}
+
+}
+
+class SynchronizedObject{
+	synchronized public void printString(){
+		System.out.println("printString...");
+		if(Thread.currentThread().getName().equals("t1")){
+			System.out.println("t1 start...");
+			Thread.currentThread().suspend();
+			System.out.println("t1 resume...");
+
+		}
+	}
+}
+
+
+/***
+ * 运行结果（未注释：t1.resume()则方法正常线束；若注释t1.resume()则线程阻塞，通过jstack -l可发现t2为BLOCKED状态）：
+ * 
+printString...
+t1 start...
+t2 start ...
+t2 start ,resume success ...
+t1 resume...
+printString....
+
+ * 
+ * 
+ * */
+
+```
 
 
 - 既然说到这儿，那对于Thread相关常见的 wait、notify、notifyAll、sleep、suspend、resume、yield、join这些方法的作用进一步理解并汇总：
