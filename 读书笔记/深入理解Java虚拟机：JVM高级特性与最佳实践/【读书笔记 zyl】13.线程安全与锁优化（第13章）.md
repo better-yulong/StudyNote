@@ -124,4 +124,4 @@ public class VectorSafeTest {
 线程兼容是指对象本身并不是线程安全（即使单个操作也非线程安全），但可通过在调用端正确的使用同步手段来保证对象在并发环境中可安全使用。平常所说一个类线程不安全，大多数指此种情况。Java API中大部分类都是属于线程兼容，如Vector和HashTable对应的集合类ArrayList和HashMap等。
 ###### 5. 线程对立
 线程对立是指无论调用端是否采取同步措施，但都无法在多线程环境中并发使用。因Java语言天生具备多线程特性，线程对立这种排斥多线程的情况较少且通常有害应该避免。
-其中如Thread.suspend、Thread
+其中如Thread.suspend、Thread.resume若先执行
