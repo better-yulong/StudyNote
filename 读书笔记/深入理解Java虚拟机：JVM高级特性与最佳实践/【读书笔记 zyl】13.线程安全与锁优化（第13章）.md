@@ -290,10 +290,8 @@ printString...
  * */
 
 ```
-
-
 - 既然说到这儿，那对于Thread相关常见的 wait、notify、notifyAll、sleep、suspend、resume、yield、join这些方法的作用进一步理解并汇总：
 1. wait、notify、notifyAll是Object类中的方法，而锁即所谓对象的 monitor，所以基于此也可以理解，wait、notify、notifyAll三个方法必须在同步方法(块)中调用，且wait时会释放锁而notify、 notifyAll之后优先获得锁的线程将重新执行。若在非同步方法(块)中调用wait、notify、notifyAll运行时，因当前线程不是对象锁的持有者，则该方法抛出一个java.lang.IllegalMonitorStateException 异常；因一切皆对象，理论上也意味着任何Java代码随时随地均可调用wait、notify、notifyAll方法。
 2. sleep(long)、suspend、resume、yield、join这些方法均为Thread类的方法，并不要求必须运行于同步方法（代码块）
    - sleep是当将前被服务的线暂停一段时间之后可恢复继续服务，若当前线程持有锁也不会对锁进行任何操作。
-   - suspend、resume方法则对应当前被服务线程的暂停、恢复，若当前线程持有锁也不会对锁进行任何操作；所以会出现上面场景，持有同一锁并发可能造成死锁。
+   - suspend、resume方法则对应当前被服务线程的暂停、恢复，若当前线程持有锁也不会对锁进行任何操作；所以会出现上面场景，持有同一锁并发可能造成死锁（验证并未出现 ）。
