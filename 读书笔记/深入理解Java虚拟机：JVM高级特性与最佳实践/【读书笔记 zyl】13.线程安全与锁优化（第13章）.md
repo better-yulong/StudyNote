@@ -290,6 +290,87 @@ printString...
  * */
 
 ```
+```
+package com.test.jvm.concurrent;
+
+/***
+ * 验证同步发生死锁:
+ * 运行后发生无限等待，而通过jstack -l 输入线程栈，发现确实有 Found one Java-level deadlock
+ * 
+ * */
+public class ThreadDeadLockTest {
+	
+	public static Object obj1 = new Object();
+	
+	public static Object obj2 = new Object();
+	
+	public static boolean switchFlag1 = false ;
+	public static boolean switchFlag2 = false ;
+
+
+	public static void main(String[] args) {
+		final SynchronizedObject sobject = new SynchronizedObject();
+		
+		try{
+			final Thread t1 = new Thread(new Runnable(){
+
+				@Override
+				public void run() {
+					synchronized(obj1){
+						System.out.println(Thread.currentThread().getName() + "get obj1 lock....");
+						while(!switchFlag1);
+						synchronized(obj2){
+							System.out.println(Thread.currentThread().getName() + "get obj2 lock....");
+						}
+					}
+				}
+				
+			});
+			
+			t1.setName("t1");
+			t1.start();
+			Thread.currentThread().sleep(2000);
+			
+			Thread t2 = new Thread(new Runnable(){
+
+				@Override
+				public void run() {
+					synchronized(obj2){
+						switchFlag1 = true ;
+						System.out.println(Thread.currentThread().getName() + "get obj1 lock....");
+						synchronized(obj1){
+							System.out.println(Thread.currentThread().getName() + "get obj2 lock....");
+						}
+					}
+				}
+				
+			});
+			t2.setName("t2");
+			t2.start();
+			
+		}catch(Exception e){
+			
+		}
+		
+	}
+	
+
+}
+
+
+/***
+ * 运行结果：
+ * 
+t1get obj1 lock....
+t2get obj1 lock....
+之后无限等待...
+ * 
+ * 
+ * */
+
+```
+
+
 - 既然说到这儿，那对于Thread相关常见的 wait、notify、notifyAll、sleep、suspend、resume、yield、join这些方法的作用进一步理解并汇总：
 1. wait、notify、notifyAll是Object类中的方法，而锁即所谓对象的 monitor，所以基于此也可以理解，wait、notify、notifyAll三个方法必须在同步方法(块)中调用，且wait时会释放锁而notify、 notifyAll之后优先获得锁的线程将重新执行。若在非同步方法(块)中调用wait、notify、notifyAll运行时，因当前线程不是对象锁的持有者，则该方法抛出一个java.lang.IllegalMonitorStateException 异常；因一切皆对象，理论上也意味着任何Java代码随时随地均可调用wait、notify、notifyAll方法。
 2. sleep(long)、suspend、resume、yield、join这些方法均为Thread类的方法，并不要求必须运行于同步方法（代码块）
