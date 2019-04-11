@@ -385,7 +385,7 @@ public class ThreadWaitNotifyTest {
 							System.out.println("t1 wait start ....");
 							 //Thread.currentThread().wait(); 此处是尝试暂停是t1，而Thread.currentThread()获取的是t1对象的锁标记并未被任何线程持有，
 							//会抛出异常IllegalMonitorStateException
-							sobject.wait();
+							sobject.wait(100000);
 							System.out.println("t1 restart ....");
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
