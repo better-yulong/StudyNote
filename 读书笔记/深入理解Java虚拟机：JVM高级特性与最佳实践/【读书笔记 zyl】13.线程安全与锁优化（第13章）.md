@@ -468,3 +468,4 @@ t1 restart ....
 - 互斥同步（MutualExclusion & Synchronization）是常见的一种并发正确性保障手段。同步是指多个线程并发访问共享数据时，保证共享数据同一时刻只被一个（或者是一些，使用信号量的时候）线程使用。而互斥是实现同步的一种手段，临界区（Critical Section）、互斥量（Mutex）和信号量（Semaphore）都是主要的互斥实现方式。因此，互斥是因同步是果；互斥是方法，同步是目的。
 - Java中，最基本的互斥同步手段就是使用synchronized关键字，synchronized关键字经编译后，会在同步块前后分别形成monitorenter和monitorexit两个字节码指令，这两个字节码都需一个reference类型的参数来指明锁定和解锁的对象。若synchronized明确指定对象，则即为该对象的reference；若未明确指定，则根据synchronized所在方法是实例方法还是类方法，则取对应的实例对象或Class对象来作为锁对象。
 - 根据虚拟机规范，在执行monitorenter指令时，先需尝试获取对象的锁。如果对象未被锁定或者当前线程已经拥有了锁，则把锁的计数器加1；相应的在执行monitorexit指令时，则把锁的计数器减1，若计数器变为0则释放锁。若获取对象的锁失败，则当前线程要阻塞等待（jstack可看到对应等待锁的线程状态为BLOCKED）,直到对象锁被另一个线程释放并重新尝试获取锁成功。
+- 基于虚拟机规范对monitorenter
