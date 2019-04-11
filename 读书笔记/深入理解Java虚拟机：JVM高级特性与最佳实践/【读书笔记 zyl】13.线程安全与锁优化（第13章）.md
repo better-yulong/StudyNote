@@ -455,6 +455,6 @@ t1 restart ....
    - suspend、resume方法则对应当前被服务线程的暂停、恢复，若当前线程持有锁也不会对锁进行任何操作；所以会出现上面场景，持有同一锁并发可能造成死锁（验证并未出现 DeadLock，而是WAIT状态或BLOCK）。----（suspend、resume方法已废弃）
    - yield()让当前正在运行的线程回到可运行状态，以允许具有相同优先级的其他线程获得运行的机会。因此，使用yield()的目的是让具有相同优先级的线程之间能够适当的轮换执行。但是，实际中无法保证yield()达到让步的目的，因为让步的线程可能被线程调度程序再次选中。
    - join()定义在Thread.java类，join()的作用:让“主线程”等待“子线程”结束之后才能继续运行。
-   - interrupt 中断线程。若线程在调用 Object 类的 wait()、wait(long) 或 wait(long, int) 方法，或者该类的 join()、join(long)、join(long, int)、sleep(long) 或 sleep(long, int) 方法过程中受阻，则其中断状态将被清除，它还将收到一个 InterruptedException。
+   - interrupt 中断线程。若线程在调用 Object 类的 wait()、wait(long) 或 wait(long, int) 方法，或者该类的 join()、join(long)、join(long, int)、sleep(long) 或 sleep(long, int) 方法过程中受阻，则其中断状态将被清除，它还将收到一个 InterruptedException。若线程t1处于sleep状态，，
    - interrupted 返回当前线程是否已经中断，线程的中断状态由该方法清除。线程中断被忽略，因为在中断时不处于活动状态的线程将由此返回 false 的方法反映出来。
    - isInterrupted 测试线程是否已经中断。线程的中断状态 不受该方法的影响。线程中断被忽略，因为在中断时不处于活动状态的线程将由此返回 false 的方法反映出来。
