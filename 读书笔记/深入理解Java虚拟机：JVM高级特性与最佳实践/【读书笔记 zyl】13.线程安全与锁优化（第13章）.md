@@ -466,4 +466,4 @@ t1 restart ....
 该部分包含代码编写如何实现线程安全和虚拟机如何实现同步与锁两部分。
 ###### 1.互斥同步
 - 互斥同步（MutualExclusion & Synchronization）是常见的一种并发正确性保障手段。同步是指多个线程并发访问共享数据时，保证共享数据同一时刻只被一个（或者是一些，使用信号量的时候）线程使用。而互斥是实现同步的一种手段，临界区（Critical Section）、互斥量（Mutex）和信号量（Semaphore）都是主要的互斥实现方式。因此，互斥是因同步是果；互斥是方法，同步是目的。
-- Java中，最基本的互斥同步手段就是使用synchronized关键字，synchronized关键字
+- Java中，最基本的互斥同步手段就是使用synchronized关键字，synchronized关键字经编译后，会在同步块前后分别形成monitorenter和monitorexit两个字节码
