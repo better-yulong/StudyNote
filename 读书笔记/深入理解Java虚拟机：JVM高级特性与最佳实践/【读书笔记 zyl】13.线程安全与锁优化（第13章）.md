@@ -457,4 +457,4 @@ t1 restart ....
    - join()定义在Thread.java类，join()的作用:让“主线程”等待“子线程”结束之后才能继续运行。
    - interrupt 中断线程。若线程在调用 Object 类的 wait()、wait(long) 或 wait(long, int) 方法，或者该类的 join()、join(long)、join(long, int)、sleep(long) 或 sleep(long, int) 方法过程中受阻，则其中断状态将被清除，它还将收到一个 InterruptedException。
    - interrupted 返回当前线程是否已经中断，线程的中断状态由该方法清除。线程中断被忽略，因为在中断时不处于活动状态的线程将由此返回 false 的方法反映出来。
-   - isInterrupted
+   - isInterrupted 测试线程是否已经中断。线程的中断状态 不受该方法的影响。线程中断被忽略，因为在中断时不处于活动状态的线程将由此返回 false 的方法反映出来。
