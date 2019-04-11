@@ -469,4 +469,4 @@ t1 restart ....
 - Java中，最基本的互斥同步手段就是使用synchronized关键字，synchronized关键字经编译后，会在同步块前后分别形成monitorenter和monitorexit两个字节码指令，这两个字节码都需一个reference类型的参数来指明锁定和解锁的对象。若synchronized明确指定对象，则即为该对象的reference；若未明确指定，则根据synchronized所在方法是实例方法还是类方法，则取对应的实例对象或Class对象来作为锁对象。
 - 根据虚拟机规范，在执行monitorenter指令时，先需尝试获取对象的锁。如果对象未被锁定或者当前线程已经拥有了锁，则把锁的计数器加1；相应的在执行monitorexit指令时，则把锁的计数器减1，若计数器变为0则释放锁。若获取对象的锁失败，则当前线程要阻塞等待（jstack可看到对应等待锁的线程状态为BLOCKED）,直到对象锁被另一个线程释放并重新尝试获取锁成功。
 - 基于虚拟机规范对monitorenter和monitorexit的行为描述，有两点需注意：
-   - syn
+   - synchronized同步块对于同一线程来说可重入，不会出现把自己锁死的
