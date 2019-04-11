@@ -459,6 +459,6 @@ t1 restart ....
     1. 若线程t1处于sleep、wait状态，那么在线程t2中运行 t1.interrupt时，t2线程正常向后运行，而t1线程内部会抛出 InterruptedException。
     2. 若线程t1处于运行状态，则t2线程内运行 t1.interrupt时对t1无任何影响即t1会正常运行；但若之后出现t1.sleep、Obj.wait时，t1线程则会从内部会抛出 InterruptedException。
     3. 有资料说interrupt可中断join，但经验证线程t一旦进入join后只会先执行完t1线程的内容才会重新执行main.
-    4. 分析Thread.interrupt 方法只是修改线程的中断状态，而并不是正直断线线程，需要配合wait、sleep
+    4. 分析Thread.interrupt 方法只是修改线程的中断状态，而并不是正直断线线程，需要配合wait、sleep等才有效。
    - interrupted 返回当前线程是否已经中断，线程的中断状态由该方法清除。线程中断被忽略，因为在中断时不处于活动状态的线程将由此返回 false 的方法反映出来。
    - isInterrupted 测试线程是否已经中断。线程的中断状态不受该方法的影响。线程中断被忽略，因为在中断时不处于活动状态的线程将由此返回 false 的方法反映出来。
