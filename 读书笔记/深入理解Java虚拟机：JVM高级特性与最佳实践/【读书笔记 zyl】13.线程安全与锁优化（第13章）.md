@@ -465,4 +465,4 @@ t1 restart ....
 ##### 2.线程安全的实现方法
 该部分包含代码编写如何实现线程安全和虚拟机如何实现同步与锁两部分。
 ###### 1.互斥同步
-互斥同步（MutualExclusion & ）
+互斥同步（MutualExclusion & Synchronization）是常见的一种并发正确性保障的
