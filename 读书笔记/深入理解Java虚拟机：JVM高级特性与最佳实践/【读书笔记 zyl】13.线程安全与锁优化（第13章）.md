@@ -555,4 +555,4 @@ public class AtomicTest {
         }
     }
 ```
-比如简单，即重复获取-设置，叵
+比如简单，即重复获取-设置，compareAndSet方法
