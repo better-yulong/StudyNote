@@ -539,4 +539,20 @@ public class AtomicTest {
  * */
 
 ```
-- 通过对比结果那可发现 i++与 AtomicInteger 差异。而inter
+- 通过对比结果那可发现 i++与 AtomicInteger 差异。而icrementAndGet方法源码如下：
+```language
+    /**
+     * Atomically increments by one the current value.
+     *
+     * @return the updated value
+     */
+    public final int incrementAndGet() {
+        for (;;) {
+            int current = get();
+            int next = current + 1;
+            if (compareAndSet(current, next))
+                return next;
+        }
+    }
+```
+
