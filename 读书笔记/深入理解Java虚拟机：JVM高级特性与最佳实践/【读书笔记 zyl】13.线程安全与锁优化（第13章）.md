@@ -485,4 +485,58 @@ t1 restart ....
   4. 比较并交换（Compare-and-Swap,下文称CAS）
   5. 加载连接/条件存储（Load-Linked/Store-Conditional，下文称LL/SC）。
 - 其中前3条已存在于指令集，而后面两条则是现代处理器新增，且这两条指令的目的和功能类似（不同指令集会采用不同的指令实现）。
--CAS指令需3个操作数，分别是变量内存位置（Java中可简单理解为变量的内存地址，用V表示）、旧的预期值（用A表示）和新值（用B表示）。CAS指令执行时，当且仅当V符合旧预期值A时，处理器用新值B更新V的值，否则它就不执行更新。但无论是否更新了V的值，都会返回V的值，上述的处理过程是一个原子操作。
+-CAS指令需3个操作数，分别是变量内存位置（Java中可简单理解为变量的内存地址，用V表示）、旧的预期值（用A表示）和新值（用B表示）。CAS指令执行时，当且仅当V符合旧预期值A时，处理器用新值B更新V的值，否则它就不执行更新。但无论是否更新了V的值，都会返回V的旧值，上述的处理过程是一个原子操作。
+- JDK1.5之后，Java程序才可使用CAS操作，该操作由sun.misc.Unsafe类的compareAndSwapInt()和compareAndSwapLong()等几个方法包装提供，虚拟在内部对这些方法做了特殊处理，即时编译出来的结果是一条平台相关的CAS指令，无方法调用过程，可认为无条件内联（称为固有函数，Math.sin（）类似）。
+- 之前提到过jdk的保护机制，默认是不程序使用使用sun.misc包的接口，且因其平台相关性，Unsafe类并不直接提供给用户程序调用（Unsafe.getUnsafe()方法中限制仅启动类加载器加载的Class才能访问）。因此，若不采用反射手段，只能通过其他Java API间接访问，如JUC包的整数原子类，其中compareAndSet()和compareIncrement()等方法都使用Unsafe类的CAS操作。
+```language
+package com.test.jvm.concurrent;
+
+import java.util.concurrent.atomic.AtomicInteger;
+
+public class AtomicTest {
+	
+	public static int normao_i = 0 ;
+	
+	public static AtomicInteger atomic_i = new AtomicInteger(0);
+	
+	private final static int THREAD_COUNT = 20 ;	
+	
+	public static void increase(){
+		normao_i++;
+		atomic_i.incrementAndGet();
+	}
+	
+
+	public static void main(String[] args) {
+		Thread[] ts = new Thread[THREAD_COUNT];
+		for(int i=0;i<ts.length;i++){
+			ts[i] = new Thread(new Runnable(){
+
+				@Override
+				public void run() {
+					for(int i=0;i<1000;i++){
+						increase();
+					}
+				}
+				
+			});
+			ts[i].start();
+		}
+		
+		while(Thread.activeCount()>1){
+			Thread.yield();
+		}
+		
+		System.out.println("normao_i:" + normao_i);
+		System.out.println("atomic_i:" + atomic_i);
+	}
+}
+
+/***
+ * 运行结果：
+ *  normao_i:19931
+    atomic_i:20000
+ * */
+
+```
+
