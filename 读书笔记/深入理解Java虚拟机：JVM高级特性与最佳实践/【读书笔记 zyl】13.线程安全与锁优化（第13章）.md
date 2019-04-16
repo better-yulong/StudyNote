@@ -539,4 +539,4 @@ public class AtomicTest {
  * */
 
 ```
-- 通过对比结果那可发现 i++与 AtomicInteger 差异。而
+- 通过对比结果那可发现 i++与 AtomicInteger 差异。而inter
