@@ -539,4 +539,4 @@ public class AtomicTest {
  * */
 
 ```
-- 通过对比 i++ 与 AtomicInteger jsk 
+- 通过对比结果那可发现差异。
