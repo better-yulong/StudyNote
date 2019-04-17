@@ -597,4 +597,14 @@ public class ThrealLocalTest {
 
 }
 ```
-即ThreadLocal如何理解？先看看
+即ThreadLocal如何理解？先看看ThreadLocal的set方法：
+```language
+    public void set(T value) {
+        Thread t = Thread.currentThread();
+        ThreadLocalMap map = getMap(t);
+        if (map != null)
+            map.set(this, value);
+        else
+            createMap(t, value);
+    }
+```
