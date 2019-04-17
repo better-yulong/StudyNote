@@ -614,4 +614,4 @@ public class ThrealLocalTest {
 2. 判断 threadLocals 是否为空（对应ThreadLocalMap实例）；首次为空则调用 createMap(t, value)，该方法逻辑也简单，以当前ThreadLocal对象为key输入的参数为value，创建ThreadLocalMap（ThreadLocalMap底层是实际是一个Entry数组（Entry则是基于ThreadLocal对象及其value的封装））----该分支只会执行一次：每个线程对象均有一个实例变量 ThreadLocalMap
 3. 判断 threadLocals 不为空，即已完成ThreadLocalMap初始化，此时执行map.set(this, value)。之后set方法遍历Entry数组并逐个判断：
    1. 若匹配到ThreadLocal对象（即之前已设置值，此处非首次设置则是更新）则直接用新的value替换原值即可。
-   2. 若
+   2. 若存在ThreadLocal被设置为null的情况
