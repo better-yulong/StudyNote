@@ -608,4 +608,4 @@ public class ThrealLocalTest {
             createMap(t, value);
     }
 ```
-ThreadLocalMap是ThreadLocal类的一个static静态内部类(static可以修饰类，但只能修改
+ThreadLocalMap是ThreadLocal类的一个static静态内部类(不能static修饰顶级类（top level class）。只有内部类可以为static。
