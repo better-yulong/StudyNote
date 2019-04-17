@@ -581,7 +581,8 @@ public class ThrealLocalTest {
 				@Override
 				public void run() {
 					t1.set("t1");
-					t2.set("t2");
+					String t2s = new String("t2");
+					t2.set(t2s);
 					t3.set("t3");
 
 					System.out.println(Thread.currentThread().hashCode() + t1.get());
