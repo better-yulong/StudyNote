@@ -596,5 +596,5 @@ public class ThrealLocalTest {
 	}
 
 }
-
 ```
+即ThreadLocal如何理解？先看看
