@@ -608,4 +608,4 @@ public class ThrealLocalTest {
             createMap(t, value);
     }
 ```
-ThreadLocalMap是ThreadLocal类的一个static静态内部类(static不能修饰顶级类（top level class），只有内部类可以为static；静态内部类并非如静态变量是共享一份数据，实际其使用仍然是new 对象；但在）。ThreadLocal的set为首先取当前线程Thread对象t，根据对象t判断是否已有对应的ThreadLocalMap对象
+ThreadLocalMap是ThreadLocal类的一个static静态内部类(static不能修饰顶级类（top level class），只有内部类可以为static；静态内部类并非如静态变量是共享一份数据，实际其使用仍然是new 对象；static类和非static类的区别主要是在内部类与外部类变量）。ThreadLocal的set为首先取当前线程Thread对象t，根据对象t判断是否已有对应的ThreadLocalMap对象
