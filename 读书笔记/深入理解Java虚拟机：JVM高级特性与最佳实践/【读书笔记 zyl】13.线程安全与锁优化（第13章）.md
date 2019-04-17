@@ -609,4 +609,4 @@ public class ThrealLocalTest {
     }
 ```
 每个线程均有一个实例变量ThreadLocal.ThreadLocalMap inheritableThreadLocals ，默认为null（即默认可认为线程是无线程本地存储数据）。而ThreadLocalMap是ThreadLocal类的一个static静态内部类(static不能修饰顶级类（top level class），只有内部类可以为static；静态内部类并非如静态变量是共享一份数据，实际其使用仍然是new 对象；static类和非static类的区别主要是在内部类与外部类变量引用的差异）。ThreadLocal的set方法理解：
-1. 取当前线程Thread对象t，根据对象t判断是否已有对应的ThreadLocalMap对象（即判断）
+1. 取当前线程Thread对象t，根据对象t判断是否已有对应的ThreadLocalMap对象（getMap(t)）
