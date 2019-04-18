@@ -681,4 +681,4 @@ javac LockElimination.java ；javap -p -s -v LockElimination.class  编译后：
 
 ```
 - JDK1.5之前，+ 号连接字符串会转化为StringBuffer对象的连续append(); 而在JDK1.5之后版本则会转化为StringBuilder对象的连续append()操作。
-- StringBuffer.append()方法为同步块，锁即当前sb对象。运行时，虚拟机发现变量sb的动态
+- StringBuffer.append()方法为同步块，锁即当前sb对象。运行时，虚拟机发现变量sb的动态作用域被限制在contactString()方法内部。
