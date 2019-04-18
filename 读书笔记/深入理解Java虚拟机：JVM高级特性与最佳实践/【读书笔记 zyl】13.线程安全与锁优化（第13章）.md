@@ -624,3 +624,4 @@ public class ThrealLocalTest {
 - 说到ThrealLocal其因线程本地存储无线程安全问题，且还线程结束其所依赖对象若无其他地方仍被有效引用则会被回收。大部分用用户线程生产周期较短，但是如数据库、MQ或Redies之类的长连接呢？线程复用并不会被回收，而ThrealLocalMap是Thread的实例变量，而基于ThrealLocal、ThrealLocalMap及ThrealLocal保存的对象引用关系为：
 ![ThreadLocal引用示意图](https://github.com/better-yulong/StudyNote-Resource/blob/master/StudyNote-Resource/13-001.PNG)
 - 简单的说，如 ThreadLocal<String> t4 = new ThreadLocal<String>;String t2s = new String("t2");t2.set(t2s);这3行代码，基于set方法及Entry的类继承（Entry extends WeakReference<ThreadLocal>），ThrealLocal及value同时会作为Entry的两个属性保存在Entry对象。如若按平时，更多是将ThreadLocal对象t4置为null，而不会把value对应对象t2s指向的对象置为null。
+- 
