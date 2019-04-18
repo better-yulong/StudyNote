@@ -619,7 +619,8 @@ public class ThrealLocalTest {
 	1.2.2：	从staleSlot向后遍历整个Entry数组，并逐判断Entry对象的ThreadLocal。
 	> a:若匹配到待设置的ThreadLocal则更新value值并将该对象在数组的位置移动到下标staleSlot（之前判断该下标为第一个为null的下标），即把当前对象与staleSlot对象互换，然后调整slotToExpunge不当前下标（原本非null，但刚互换则该下标变为null）。之后调用expungeStaleEntry 擦除从slotToExpunge开始到len所有的元素。（此处关键：因Entry对象的ThreadLocal为null无需处理，此处主要两个操作：将Entry对象的value置为null并调整Entry数组中Entry实际数量，或者遇到Entry对象的key不为则则把其前移）----目标即将非空Entry对象ThreadLocal非空的元素前移，同时将Entry对象ThreadLocal为null的对象其在Entry对象value也设置为null（后面会补充，此处若不将value设置为null则可能会导致内泄漏），之后return。
 	> b:若获取到的ThreadLocal为null且slotToExpunge == staleSlot，则说明向前扫描无null元素，那么调整slotToExpunge为当前下标。
-	1.2.3：根据ThreadLocal在现Entry数组未匹配到，则在staleSlot处基于传入的插入新的Entry对象
+	1.2.3：根据ThreadLocal在现Entry数组未匹配到，则在staleSlot处基于传入的ThreadLocal和value插入新的Entry对象。
 		
 
 Entry extends WeakReference<ThreadLocal>
+和value
