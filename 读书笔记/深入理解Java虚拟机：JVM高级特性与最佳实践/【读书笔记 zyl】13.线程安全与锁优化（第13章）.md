@@ -636,4 +636,4 @@ public class ThrealLocalTest {
 
 ##### 三、锁优化
 高效并发是JDK1.5到JDK1.6的重要改进，融合了各种锁优化技术：如适应性自旋（Adaptive Spinning）、锁消除（Lock Elimination）、锁粗化（Lock Coarsening）、轻量级锁（Lightweight Locking）和偏向锁（Biased Locking）。
-###### 1.
+###### 1.自旋锁与自适应自旋
