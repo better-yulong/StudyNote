@@ -643,7 +643,18 @@ public class ThrealLocalTest {
 - 在JDK1.6中，Java虚拟机提供-XX:+UseSpinning参数来开启自旋锁，使用-XX:PreBlockSpin参数来设置自旋锁等待的次数。在JDK1.7开始，自旋锁的参数被取消，虚拟机不再支持由用户配置自旋锁，自旋锁总是会执行，自旋锁次数也由虚拟机自动调整。java.util.concurrent.atomic包中如AtomicInteger等类广泛基于自旋锁+CAS实现。
 ###### 2.锁消除
 锁消除是虚拟机即时编译编译运行时，对一些代码上要求同步但被检测不可能存在共享数据竞争的锁进行消除。锁消除的主要判断依据来源于逃逸分析的数据支持。如果判断一段代码中，堆上的所有数据都不会逃逸出去被其他线程访问，那就可以把它们当作线上数据对待，认为它们是线程私有的，同步加锁自然就无需进行。如示例：
-```language
-
 ```
+public class LockElimination {
 
+	public static void main(String[] args) {
+		contactString("a","b","c");
+
+	}
+	
+	public static String contactString(String s1, String s2 ,String s3){
+		return s1 + s2 + s3 ;
+	}
+
+}
+```
+javac LockElimination.java ；
