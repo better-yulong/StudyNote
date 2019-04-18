@@ -614,7 +614,7 @@ public class ThrealLocalTest {
 2. 判断 threadLocals 是否为空（对应ThreadLocalMap实例）；首次为空则调用 createMap(t, value)，该方法逻辑也简单，以当前ThreadLocal对象为key输入的参数为value，创建ThreadLocalMap（ThreadLocalMap底层是实际是一个Entry数组（Entry则是基于ThreadLocal对象及其value的封装））并return----该分支只会执行一次：每个线程对象均有一个实例变量 ThreadLocalMap
 3. 判断 threadLocals 不为空，即已完成ThreadLocalMap初始化，此时执行map.set(this, value)。之后set方法向后遍历Entry数组并逐个判断（基于ThreadLocal的threadLocalHashCode与数组长度的下标并向后遍历）：
    1.1 若匹配到ThreadLocal对象（即之前已设置值，此处非首次设置则是更新）则直接用新的value替换原值即可，然后return。
-   1.2 若存在ThreadLocal被设置为null的情况则调用replaceStaleEntry之后return，具体replaceStaleEntry（stale是陈旧、不新鲜的意思）：
+   1.2 若存在ThreadLocal被设置为null的情况则调用replaceStaleEntry之后return，具体replaceStaleEntry逻辑为（stale是陈旧、不新鲜的意思）：
 	1.2.1：从当前下标（staleSlot）向前遍历获取数组直至获取非空下标并设置为slotToExpunge（擦除位置，为啥？后面会讲到）
 	1.2.2：	从staleSlot向后遍历整个Entry数组，并逐判断Entry对象：
 		
