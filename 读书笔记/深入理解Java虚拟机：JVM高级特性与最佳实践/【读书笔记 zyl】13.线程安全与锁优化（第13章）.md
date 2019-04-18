@@ -629,4 +629,4 @@ public class ThrealLocalTest {
 - PS：Java为了最小化减少内存泄露的可能性和影响，在ThreadLocal的get,set的时候都会清除线程Map里所有key为null的value(get 方法会在遍历的时候如果遇到key为null，就调用expungeStaleEntry方法擦除，set方法在遍历的时候，如果遇到key为null，就调用replaceStaleEntry方法替换掉。具体如上面分析)。而这种处理方式 ，在ArrahList中也有类似，比如想释放ArrayList对象让其回收并不是简单将ArrayList对象t1=null，而是应该需先调用ArrayList的clear方法之后再将该 ArrayList设置为null；尤其是在长连接使用时需特别注意。
 - 补充JAVA的4中引用（强引用、弱引用、软引用、虚引用---http://www.cnblogs.com/gudi/p/6403953.html）
 	1. 强引用（StrongReference）：强引用是使用最普遍的引用。如果一个对象具有强引用，那垃圾回收器绝不会回收它。(Object o=new Object();   //  强引用)
-	2. 软引用（SoftReference）:如果一个对象只具有软引用，则内存空间足够，垃圾回收器就不会回收它；如果内存空间不足了，就会回收这些对象的内存。只要垃圾回收器没有回收它，该对象就可以被程序使用。软引用可用来实现内存敏感的高速缓存。
+	2. 软引用（SoftReference）:如果一个对象只具有软引用，则内存空间足够，垃圾回收器就不会回收它；如果内存空间不足了，就会回收这些对象的内存。只要垃圾回收器没有回收它，该对象就可以被程序使用。软引用可用来实现内存敏感的高速缓存。(SoftReference<String> softRef=new SoftReference<String>(str); )
