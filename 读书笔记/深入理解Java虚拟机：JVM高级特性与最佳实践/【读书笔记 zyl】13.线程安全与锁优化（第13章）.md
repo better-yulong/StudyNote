@@ -657,4 +657,8 @@ public class LockElimination {
 
 }
 ```
-javac LockElimination.java ；
+javac LockElimination.java ；javap -p -s -v LockElimination.class  编译后：
+```language
+
+```
+
