@@ -658,7 +658,26 @@ public class LockElimination {
 }
 ```
 javac LockElimination.java ；javap -p -s -v LockElimination.class  编译后：
-```language
+```
+ public static java.lang.String contactString(java.lang.String, java.lang.String, java.lang.String);
+    Signature: (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    flags: ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=3, args_size=3
+         0: new           #6                  // class java/lang/StringBuilder
+         3: dup
+         4: invokespecial #7                  // Method java/lang/StringBuilder."<init>":()V
+         7: aload_0
+         8: invokevirtual #8                  // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        11: aload_1
+        12: invokevirtual #8                  // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        15: aload_2
+        16: invokevirtual #8                  // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        19: invokevirtual #9                  // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+        22: areturn
+      LineNumberTable:
+        line 11: 0
+}
 
 ```
 
