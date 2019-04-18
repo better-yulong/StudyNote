@@ -616,7 +616,7 @@ public class ThrealLocalTest {
    1.1 若匹配到ThreadLocal对象（即之前已设置值，此处非首次设置则是更新）则直接用新的value替换原值即可，然后return。
    1.2 若存在ThreadLocal被设置为null的情况则调用replaceStaleEntry之后return，具体replaceStaleEntry逻辑为（stale是陈旧、不新鲜的意思）：
 	1.2.1：从当前下标（staleSlot）向前遍历获取数组直至获取非空下标并设置为slotToExpunge（擦除位置，为啥？后面会讲到）
-	1.2.2：	从staleSlot向后遍历整个Entry数组，并逐判断Entry对象的ThreadLocal，若匹配到待设置的ThreadLocal则更新value值并将该对象在数组的位置移动到下标staleSlot（之前判断该下标）
+	1.2.2：	从staleSlot向后遍历整个Entry数组，并逐判断Entry对象的ThreadLocal，若匹配到待设置的ThreadLocal则更新value值并将该对象在数组的位置移动到下标staleSlot（之前判断该下标为null），即
 		
 
 Entry extends WeakReference<ThreadLocal>
