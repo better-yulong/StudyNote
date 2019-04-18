@@ -630,4 +630,4 @@ public class ThrealLocalTest {
 - 补充JAVA的4中引用（强引用、弱引用、软引用、虚引用---http://www.cnblogs.com/gudi/p/6403953.html）
 	1. 强引用（StrongReference）：强引用是使用最普遍的引用。如果一个对象具有强引用，那垃圾回收器绝不会回收它。(Object o=new Object();   //  强引用)
 	2. 软引用（SoftReference）:如果一个对象只具有软引用，则内存空间足够，垃圾回收器就不会回收它；如果内存空间不足了，就会回收这些对象的内存。只要垃圾回收器没有回收它，该对象就可以被程序使用。软引用可用来实现内存敏感的高速缓存。(SoftReference<String> softRef=new SoftReference<String>(str); )
-	3. 弱引用（WeakReference）:
+	3. 弱引用（WeakReference）:引用与软引用的区别在于：只具有弱引用的对象拥有更短暂的生命周期。在垃圾回收器线程扫描它所管辖的内存区域的过程中，一旦发现了只具有弱引用的对象，不管当前内存空间足够与否，都会回收它的内存。不过，由于垃圾回收器是一个优先级很低的线程，因此不一定会很快发现那些只具有弱引用的对象。 (WeakReference<String> abcWeakRef = new WeakReference<String>(str);)
