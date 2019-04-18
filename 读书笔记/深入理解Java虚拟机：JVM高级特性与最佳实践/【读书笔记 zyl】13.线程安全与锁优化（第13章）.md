@@ -628,7 +628,7 @@ public class ThrealLocalTest {
 - 内存泄漏的情况：所以得出一个结论就是只要这个线程对象被gc回收，就不会出现内存泄露，但在threadLocal设为null和线程结束这段时间不会被回收的，就发生了我们认为的内存泄露。其实这是一个对概念理解的不一致，也没什么好争论的。最要命的是线程对象不被回收的情况，这就发生了真正意义上的内存泄露。比如使用线程池的时候，线程结束是不会销毁的，会再次使用的。就可能出现内存泄露.
 - PS：Java为了最小化减少内存泄露的可能性和影响，在ThreadLocal的get,set的时候都会清除线程Map里所有key为null的value(get 方法会在遍历的时候如果遇到key为null，就调用expungeStaleEntry方法擦除，set方法在遍历的时候，如果遇到key为null，就调用replaceStaleEntry方法替换掉。具体如上面分析)。而这种处理方式 ，在ArrahList中也有类似，比如想释放ArrayList对象让其回收并不是简单将ArrayList对象t1=null，而是应该需先调用ArrayList的clear方法之后再将该 ArrayList设置为null；尤其是在长连接使用时需特别注意。
 - 补充JAVA的4中引用（强引用、弱引用、软引用、虚引用---http://www.cnblogs.com/gudi/p/6403953.html）
-	1. 强引用（StrongReference）：强引用是使用最普遍的引用。如果一个对象具有强引用，那垃圾回收器绝不会回收它。(Object o=new Object();   //  强引用)
+	1. 强引用（StrongReference）：强引用是使用最普遍的引用。如果一个对象具有强引用，那垃圾回收器绝不会回收它。(Object o=new Object();   //强引用)
 	2. 软引用（SoftReference）:如果一个对象只具有软引用，则内存空间足够，垃圾回收器就不会回收它；如果内存空间不足了，就会回收这些对象的内存。只要垃圾回收器没有回收它，该对象就可以被程序使用。软引用可用来实现内存敏感的高速缓存。(SoftReference<String> softRef=new SoftReference<String>(str); )
 	3. 弱引用（WeakReference）:引用与软引用的区别在于：只具有弱引用的对象拥有更短暂的生命周期。在垃圾回收器线程扫描它所管辖的内存区域的过程中，一旦发现了只具有弱引用的对象，不管当前内存空间足够与否，都会回收它的内存。不过，由于垃圾回收器是一个优先级很低的线程，因此不一定会很快发现那些只具有弱引用的对象。 (String str=new String("abc"); WeakReference<String> abcWeakRef = new WeakReference<String>(str);str=null;)
 	4. 虚引用（PhantomReference）：在任何时候都可能被垃圾回收器回收。虚引用必须和引用队列 （ReferenceQueue）联合使用。当垃圾回收器准备回收一个对象时，如果发现它还有虚引用，就会在回收对象的内存之前，把这个虚引用加入到与之 关联的引用队列中。
