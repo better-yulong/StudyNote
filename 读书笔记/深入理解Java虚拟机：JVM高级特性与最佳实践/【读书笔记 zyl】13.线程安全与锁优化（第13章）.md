@@ -682,3 +682,5 @@ javac LockElimination.java ；javap -p -s -v LockElimination.class  编译后：
 ```
 - JDK1.5之前，+ 号连接字符串会转化为StringBuffer对象的连续append(); 而在JDK1.5之后版本则会转化为StringBuilder对象的连续append()操作。
 - StringBuffer.append()方法为同步块，锁即当前sb对象。运行时，虚拟机发现变量sb的动态作用域被限制在contactString()方法内部。即sb的所有引用永远不会"逃逸"到contactString()方法之外，其他线程无法访问到他，因此虽然有锁但即时编译之后会被安全消除掉。（实际JDK1.5之前不涉及逃逸分析，此处仅为为理解举例；另外个人感觉所有锁消除应该就是抹掉 monitorentry和monitorexit指令）
+###### 2.锁粗化
+原则上，编写代码总是
