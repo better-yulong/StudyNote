@@ -693,4 +693,4 @@ javac LockElimination.java ；javap -p -s -v LockElimination.class  编译后：
 - 轻量级锁的执行过程：在代码进入同步块的时候，如果此同步对象没有被锁定（锁标志位为"01"状态），虚拟机首先将在当前线程的栈帧中建立一个名为锁记录的（Lock Record）的空间，用于存储对象目前的Mark Word的拷贝（官方对拷贝添加前缀 Displaced前缀，即Displaced Mark Word）。然后，虚拟机将使用CAS操作尝试对象的Mark Word更新为指向Lock Record的指针；若更新成功则这个线程则这个线程就拥有该对象的锁，并且对象Mark Word的锁标志位（Mark Word的最后2bit）转变为"00",即表示此对象处于轻量级锁定状态，这时候线程堆栈与对象头的状态如图：
 ![轻量级锁&Mark Word](https://github.com/better-yulong/StudyNote-Resource/blob/master/StudyNote-Resource/13-002.PNG)
 - 若更新操作失败，虚拟机首先会检查对象的Mark Word是否指向当前线程的栈帧，如果是则说明当前线程已经拥有这个对象的锁那就可直接进入同步块继续执行，否则说明该对象已经被其他线程抢占。如果有两条以上的线程争用同一个锁，那轻量级锁就不再有效，要膨胀为重量级锁，锁标志的状态值变为"10"，Mark Word中存储的就是指向重量级锁（互斥量）的指针，后面等待锁的线程也要也要进入阻塞状态。
-- 那轻量级锁的解锁过程呢？它的解锁过程也是通过CAS操作来进行，如果对象的Mark Word仍指向线程的锁记录，那就用CASe操作把对象当前的Mark Word和线程中
+- 那轻量级锁的解锁过程呢？它的解锁过程也是通过CAS操作来进行，如果对象的Mark Word仍指向线程的锁记录，那就用CASe操作把对象当前的Mark Word和线程中复制的Displaced Mark Word 替换回来
