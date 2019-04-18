@@ -692,4 +692,4 @@ javac LockElimination.java ；javap -p -s -v LockElimination.class  编译后：
 - 对象头信息是与对象自身定义的数据无关的额外存储成本，考虑到虚拟机的空间效率，Mark Word被设计成一个非固定的数据结构以便在极小空间内存储尽量多的信息，它会根据对象的状态复用自己的存储空间。如在32位的HotSpot虚拟机中对象未被锁定的状态下，Mark Word的32bit的25bit用于存储对象哈希码（HashCode），4bit用于存储对象分代年龄，2bit用于存储锁标志位，1bit固定为0；在其他状态（轻量级锁定、重量级锁定、GC标记、可偏向）另行理解。
 - 轻量级锁的执行过程：在代码进入同步块的时候，如果此同步对象没有被锁定（锁标志位为"01"状态），虚拟机首先将在当前线程的栈帧中建立一个名为锁记录的（Lock Record）的空间，用于存储对象目前的Mark Word的拷贝（官方对拷贝添加前缀 Displaced前缀，即Displaced Mark Word）。然后，虚拟机将使用CAS操作尝试对象的Mark Word更新为指向Lock Record的指针；若更新成功则这个线程则这个线程就拥有该对象的锁，并且对象Mark Word的锁标志位（Mark Word的最后2bit）转变为"00",即表示此对象处于轻量级锁定状态，这时候线程堆栈与对象头的状态如图：
 ![轻量级锁&Mark Word](https://github.com/better-yulong/StudyNote-Resource/blob/master/StudyNote-Resource/13-002.PNG)
-若更新操作失败，虚拟机首先会检查对象的Mark Word是否指向当前线程的栈帧，如果是则说明当前线程已经拥有这个对象的锁
+若更新操作失败，虚拟机首先会检查对象的Mark Word是否指向当前线程的栈帧，如果是则说明当前线程已经拥有这个对象的锁那就可直接进入同步块继续执行，
