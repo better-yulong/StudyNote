@@ -680,4 +680,4 @@ javac LockElimination.java ；javap -p -s -v LockElimination.class  编译后：
 }
 
 ```
-
+JDK1.5之前，
