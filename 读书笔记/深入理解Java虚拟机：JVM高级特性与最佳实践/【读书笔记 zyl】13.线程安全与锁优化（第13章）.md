@@ -635,4 +635,5 @@ public class ThrealLocalTest {
 - 而ThreadLocal与Entry对象涉及虚引用，而与当前线程存在强引用，即若在线程看将ThreadLocal置为null之后GC为会ThreadLocal对象，但此时ThreadLocal关联的value仍在被Entry对象强引用，而在set方法中将其置为null之后才能真正被GC回收。
 
 ##### 三、锁优化
-高效并发是JDK1.5到JDK1.6的重要改进，融合了各种锁优化技术：如适应性自旋（Adaptive Spinning）、锁消除（Lock Elimination）、锁粗化（Lock Coarsening）、轻量级锁（Lightweight Locking）和偏向锁（Biased Locking）
+高效并发是JDK1.5到JDK1.6的重要改进，融合了各种锁优化技术：如适应性自旋（Adaptive Spinning）、锁消除（Lock Elimination）、锁粗化（Lock Coarsening）、轻量级锁（Lightweight Locking）和偏向锁（Biased Locking）。
+###### 1.
