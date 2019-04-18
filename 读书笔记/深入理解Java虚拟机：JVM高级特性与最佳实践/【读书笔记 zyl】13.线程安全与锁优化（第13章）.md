@@ -564,7 +564,7 @@ public class AtomicTest {
 2. 线程本地存储（Thread Local Storage）:如果一段代码执行所需要的数据必须与其他代码共享，需看看共享数据的代码是否可保证在同一线程执行？如能保证，则可把共享数据的可见范围限制为同一线程，这样无需同步也能保证线程之间不出现数据争用问题。
 - 符合该特点的场景较多，大部分使用消费队列的架构模式(如"生产者-消费者"模式)均会将产品的消费过程尽量在一个线程中消费完。而其中最重要的一个应用实例就是Web交互模型中"一个请求对应一个服务线程"（Thread-Per-Request）的处理方式，可以使用本地存储来解决线程
 - Java语言中，若一个变量要被多个线程访问，则可以使用volatile关键字声明它为"易变的"。如果一个变量要被某个线程独享，则可通过java.lang.ThreadLocal类来实现线程本地存储的功能。每个线程的Thread对象都有一个ThreadLocalMap对象，这个对象存储一组以ThreadLocal.threadLocalHashCode为键，本地线程变量为值的K-V键值对，ThreadLocal对象就是当前线程的ThreadLocalMap的访问入口，每一个ThreadLocal对象都包含了个独一无二的ThreadLocalHashCode值。
-- ```language
+```
 public class ThrealLocalTest {
 	
 	static final ThreadLocal<String> t1 = new ThreadLocal<String> ();
@@ -595,7 +595,6 @@ public class ThrealLocalTest {
 			ts[i].start();
 		}
 	}
-
 }
 ```
 
