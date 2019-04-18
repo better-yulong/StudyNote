@@ -632,4 +632,4 @@ public class ThrealLocalTest {
 	2. 软引用（SoftReference）:如果一个对象只具有软引用，则内存空间足够，垃圾回收器就不会回收它；如果内存空间不足了，就会回收这些对象的内存。只要垃圾回收器没有回收它，该对象就可以被程序使用。软引用可用来实现内存敏感的高速缓存。(SoftReference<String> softRef=new SoftReference<String>(str); )
 	3. 弱引用（WeakReference）:引用与软引用的区别在于：只具有弱引用的对象拥有更短暂的生命周期。在垃圾回收器线程扫描它所管辖的内存区域的过程中，一旦发现了只具有弱引用的对象，不管当前内存空间足够与否，都会回收它的内存。不过，由于垃圾回收器是一个优先级很低的线程，因此不一定会很快发现那些只具有弱引用的对象。 (String str=new String("abc"); WeakReference<String> abcWeakRef = new WeakReference<String>(str);str=null;)
 	4. 虚引用（PhantomReference）：在任何时候都可能被垃圾回收器回收。虚引用必须和引用队列 （ReferenceQueue）联合使用。当垃圾回收器准备回收一个对象时，如果发现它还有虚引用，就会在回收对象的内存之前，把这个虚引用加入到与之 关联的引用队列中。
-- 而ThreadLocal与Entry对象涉及虚引用，而与当前线程存在强引用，即若在线程看将ThreadLocal置为null之后GC为会ThreadLocal对象，但此时ThreadLocal关联的value仍在被Entry对象强引用，而在set方法中将其置为null之后才能真正被GC回收。基于此方式，其实集合内对象都会存在对类似问题
+- 而ThreadLocal与Entry对象涉及虚引用，而与当前线程存在强引用，即若在线程看将ThreadLocal置为null之后GC为会ThreadLocal对象，但此时ThreadLocal关联的value仍在被Entry对象强引用，而在set方法中将其置为null之后才能真正被GC回收。
