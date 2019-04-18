@@ -701,4 +701,4 @@ javac LockElimination.java ；javap -p -s -v LockElimination.class  编译后：
 - 基于轻量级锁来理解：假设当前虚拟机启动用偏向锁（启用参数-XX:+UseBiasedLocking,其为JDK1.6的默认值），那么当锁对象第一次被线程获取时，虚拟机会把对象头标志位设为"01"，即偏向模式。同时使用CAS操作把获取到这个锁的线程ID记录在对象的Mark Word中；如果CAS操作成功，持有偏向锁的线程以后每次进入这个锁相关的同步块时，虚拟机都可以不再进行任何同步操作（例如Locking、Unlocking及对Mark Word的Update等）。
 - 当另外一个线程尝试去获取这个锁时，偏向锁模式则宣告结束。根据锁对象目前是否处于被锁定状态，撤销偏向(Revoke Bias)后恢复到未锁定（标志位为"01"）或轻量级锁定（标志位为"00"）的状态，后续的同步操作即会如轻量级锁那样执行。偏向锁、轻量级锁的状态转化及对象Mark Word的关系如图：
 ![偏向锁、轻量级锁的状态转化及对象Mark Word关系](https://github.com/better-yulong/StudyNote-Resource/blob/master/StudyNote-Resource/13-003.PNG)
-- 偏向锁可提高带有同步但无竞争的程序性能。它是一个带有效益权衡（Trade Off）性能的优化；其并不一定
+- 偏向锁可提高带有同步但无竞争的程序性能。它是一个带有效益权衡（Trade Off）性能的优化；其并不一定总对程序有利。即如果程序中大
