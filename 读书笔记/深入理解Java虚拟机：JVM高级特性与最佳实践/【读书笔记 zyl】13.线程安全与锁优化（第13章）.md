@@ -628,4 +628,4 @@ public class ThrealLocalTest {
 - 内存泄漏的情况：所以得出一个结论就是只要这个线程对象被gc回收，就不会出现内存泄露，但在threadLocal设为null和线程结束这段时间不会被回收的，就发生了我们认为的内存泄露。其实这是一个对概念理解的不一致，也没什么好争论的。最要命的是线程对象不被回收的情况，这就发生了真正意义上的内存泄露。比如使用线程池的时候，线程结束是不会销毁的，会再次使用的。就可能出现内存泄露.
 - PS：Java为了最小化减少内存泄露的可能性和影响，在ThreadLocal的get,set的时候都会清除线程Map里所有key为null的value(get 方法会在遍历的时候如果遇到key为null，就调用expungeStaleEntry方法擦除，set方法在遍历的时候，如果遇到key为null，就调用replaceStaleEntry方法替换掉。具体如上面分析)。而这种处理方式 ，在ArrahList中也有类似，比如想释放ArrayList对象让其回收并不是简单将ArrayList对象t1=null，而是应该需先调用ArrayList的clear方法之后再将该 ArrayList设置为null；尤其是在长连接使用时需特别注意。
 - 补充JAVA的4中引用（强引用、弱引用、软引用、虚引用---http://www.cnblogs.com/gudi/p/6403953.html）
-	1. 
+	1. 强引用（StrongReference）：强引用是使用最普遍的引用。如果一个对象具有强引用，那垃圾回收器绝不会回收它。(Object o=new Object();   //  强引用)
