@@ -621,6 +621,6 @@ public class ThrealLocalTest {
 		- b. 若获取到的ThreadLocal为null且slotToExpunge == staleSlot，则说明向前扫描无null元素，那么调整slotToExpunge为当前下标。
 	- C. 根据ThreadLocal在现Entry数组未匹配到，则在staleSlot处基于传入的ThreadLocal和value插入新的Entry对象。最后再次对Entry对象ThreadLocal为null元素进行擦除。
 - 了解完ThreadLocal的set方法，再来看get()方法，其实比较简单：1、从ThrealLocalMap（即Entry[]）匹配到直接返回Entry的value值；2、未匹配到则说明未初始化，则初步化value为null并调用set方法（set方法即为上面分析的过程）
-- 说到ThrealLocal其因线程本地存储无线程安全问题，且还线程结束其所依赖对象若无其他地方仍被有效引用则会被回收。大部分用用户线程生产周期较短，但是如数据库、MQ或Redies之类的长连接呢？线程复用并不会被回收，而ThrealLocalMap是
+- 说到ThrealLocal其因线程本地存储无线程安全问题，且还线程结束其所依赖对象若无其他地方仍被有效引用则会被回收。大部分用用户线程生产周期较短，但是如数据库、MQ或Redies之类的长连接呢？线程复用并不会被回收，而ThrealLocalMap是Thread的实例变量，即
 Entry extends WeakReference<ThreadLocal>
 和value
