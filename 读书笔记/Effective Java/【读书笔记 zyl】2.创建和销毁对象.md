@@ -111,4 +111,4 @@ public static <E extends Enum<E>> EnumSet<E> noneOf(Class<E> elementType) {
             return new JumboEnumSet<>(elementType, universe);
     }
 ```
-  - 
+  - 而底层根据元素长度的不同实现用户无感知且无需
