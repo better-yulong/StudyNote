@@ -113,4 +113,4 @@ public static <E extends Enum<E>> EnumSet<E> noneOf(Class<E> elementType) {
 ```
   - 而底层根据元素长度的不同实现用户无感知且无需关注，而在后期的版本则轻易去除其中一种实现或添加其他更好的实现，而使用时不用关注实际对象的类类型，因其都是EnumSet的子类。
   - 静态工厂方法返回的对象所属的实际类，在编写包含该静态工厂方法的类时可不必存在，这种灵活的静态工厂方法构成了服务提供者框架（Service Provider Framework），如JDBC API。服务提供者框架指的是一个系统：多个服务提供者实现一个服务，系统为服务提供者的客户端提供多个实现，并把他们从多个实现中解耦出来。
-  - 服务提供者框架有三个重要组件：服务接口(Service Interface），提供给服务提供者实现的；提供者注册API（Provider Registration API），系统用来注册实现，让客户端访问；服务访问API（Service Access API）
+  - 服务提供者框架有三个重要组件：服务接口(Service Interface），提供给服务提供者实现的；提供者注册API（Provider Registration API），系统用来注册实现，让客户端访问；服务访问API（Service Access API），用户用来获取服务实例。
