@@ -132,3 +132,10 @@ public static <E extends Enum<E>> EnumSet<E> noneOf(Class<E> elementType) {
 		p:maxActive="50" p:logAbandoned="true"
 		p:removeAbandoned="true"
 		p:removeAbandonedTimeout="180" />
+
+
+
+
+https://blog.csdn.net/zhangshaoqiangchn/article/details/65442234
+http://www.cnblogs.com/fireway/p/7215845.html
+https://blog.csdn.net/lemon89/article/details/79189475
