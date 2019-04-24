@@ -120,21 +120,7 @@ public static <E extends Enum<E>> EnumSet<E> noneOf(Class<E> elementType) {
 
 ###### 3.1 因服务提供者框架（SPF）及服务提供者接口(SPI):
 因其非常实用 ，故该篇深入研究，SPF 包括以下组件:
-
-|column1|column2|column3|
-|-|-|a|
-|content1|content2|content3|
-
-
-
-|组件|说明|
-|-|-|-|
-|服务接口(Service Interface )|这是提供者实现的|
-|提供者注册API(Provider Registration API)|这是系统用来注册实现，让客户端访问|
-|服务访问API(Service Access API)|是客户端用来获取服务的实例的
-服务访问API一般允许但是不要求客户端指定某种选择提供者的条件，如果没有这样的规定，API就会返回默认实现的一个实例
-服务访问API是“灵活的静态工厂”，它构成了SPF的基础|
-|服务提供者接口(Service Provider Interface)|负责创建其服务实现的实例|
+ ![SFP组件](https://github.com/better-yulong/StudyNote-Resource/blob/master/StudyNote-Resource/effective-java-pic/2-001.PNG)
 
 
 
