@@ -121,8 +121,8 @@ public static <E extends Enum<E>> EnumSet<E> noneOf(Class<E> elementType) {
 ###### 3.1 因服务提供者框架（SPF）及服务提供者接口(SPI):
 因其非常实用 ，故该篇深入研究，SPF 包括以下组件:
  ![SFP组件](https://github.com/better-yulong/StudyNote-Resource/blob/master/StudyNote-Resource/effective-java-pic/2-001.PNG)
-> 可参考理解：https://www.jianshu.com/p/72d1b41f7cde
-
+> 可参考理解：https://www.jianshu.com/p/72d1b41f7cde![地](https://github.com/better-yulong/StudyNote-Resource/blob/master/StudyNote-Resource/effective-java-pic/2-002.PNG)
+SFP组件交互图：
 
 <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close" p:driverClassName="oracle.jdbc.driver.OracleDriver" p:url="jdbc:oracle:thin:@127.0.0.1:1521:coredb"
