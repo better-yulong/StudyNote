@@ -123,7 +123,7 @@ public static <E extends Enum<E>> EnumSet<E> noneOf(Class<E> elementType) {
  ![SFP组件](https://github.com/better-yulong/StudyNote-Resource/blob/master/StudyNote-Resource/effective-java-pic/2-001.PNG)
 可参考理解：https://www.jianshu.com/p/72d1b41f7cde
  ![SFP组件交互图](https://github.com/better-yulong/StudyNote-Resource/blob/master/StudyNote-Resource/effective-java-pic/2-002.PNG)
-
+如何理解呢
 
 
 
