@@ -139,7 +139,7 @@ public static <E extends Enum<E>> EnumSet<E> noneOf(Class<E> elementType) {
 
 
 <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
-		destroy-method="close" p:driverClassName="oracle.jdbc.driver.OracleDriver" p:url="jdbc:oracle:thin:@127..0.1:1521:coredb"
+		destroy-method="close" p:driverClassName="oracle.jdbc.driver.OracleDriver" p:url="jdbc:oracle:thin:@127.0.0.1:1521:coredb"
 		p:username="username" p:password="password"
 		p:initialSize="10" p:minIdle="5"
 		p:maxIdle="20" p:maxWait="2000"
