@@ -123,6 +123,9 @@ public static <E extends Enum<E>> EnumSet<E> noneOf(Class<E> elementType) {
  ![SFP组件](https://github.com/better-yulong/StudyNote-Resource/blob/master/StudyNote-Resource/effective-java-pic/2-001.PNG)
 
 https://blog.csdn.net/zhangshaoqiangchn/article/details/65442234
+http://www.cnblogs.com/fireway/p/7215845.html
+https://blog.csdn.net/lemon89/article/details/79189475
+
 
 <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close" p:driverClassName="oracle.jdbc.driver.OracleDriver" p:url="jdbc:oracle:thin:@127.0.0.1:1521:coredb"
