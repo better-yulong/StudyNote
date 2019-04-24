@@ -26,9 +26,8 @@ public class ConstructorMulitTest {
 }
 ```
 ```language
-/*
- * 通过javap 命令可发现虽然有三个构造函数，但实际class常量池只有一个Object类init对应的Methodref，
- * 而三个构造函数实际在字节码指令中均指向该符号引用
+ //通过javap 命令可发现虽然有三个构造函数，但实际class常量池只有一个Object类init对应的Methodref，
+ //而三个构造函数实际在字节码指令中均指向该符号引用
  * 
 D:\work\workspace\work2\effective-demo\src\main\java\com\zyl\effective\demo>javap -s -v -p ConstructorMulitTest.class
 Classfile /D:/work/workspace/work2/effective-demo/src/main/java/com/zyl/effective/demo/ConstructorMulitTest.class
