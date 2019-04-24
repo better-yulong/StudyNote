@@ -122,7 +122,7 @@ public static <E extends Enum<E>> EnumSet<E> noneOf(Class<E> elementType) {
 因其非常实用 ，故该篇深入研究，SPF 包括以下组件:
  ![SFP组件](https://github.com/better-yulong/StudyNote-Resource/blob/master/StudyNote-Resource/effective-java-pic/2-001.PNG)
 
-
+https://blog.csdn.net/zhangshaoqiangchn/article/details/65442234
 
 <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close" p:driverClassName="oracle.jdbc.driver.OracleDriver" p:url="jdbc:oracle:thin:@127.0.0.1:1521:coredb"
