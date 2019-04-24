@@ -119,6 +119,13 @@ public static <E extends Enum<E>> EnumSet<E> noneOf(Class<E> elementType) {
   - 服务提供者框架都着无数种变体。如服务访问API可利用适配器(Adapter)模式，返回比提供者更丰富的服务接口。
 ######3.1 因服务提供者框架（SPF）及服务提供者接口(SPI):
 因其非常实用 ，故该篇深入研究，SPF 包括以下组件:
+|column1|column2|column3|
+|-|-|-|
+|-|-|-|
+|content1|content2|content3|
+
+
+
 |组件|说明|
 |-|-|-|
 |服务接口(Service Interface )|这是提供者实现的|
