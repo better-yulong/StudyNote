@@ -126,6 +126,9 @@ public static <E extends Enum<E>> EnumSet<E> noneOf(Class<E> elementType) {
 如何理解呢？
 
 
+https://cloud.tencent.com/developer/article/1148381
+
+
 
 <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close" p:driverClassName="oracle.jdbc.driver.OracleDriver" p:url="jdbc:oracle:thin:@127.0.0.1:1521:coredb"
