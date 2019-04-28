@@ -9,4 +9,4 @@
   <packaging>pom</packaging>
 ```
 ##### 2、创建子模块
-右键 framework-aoe-parent-->new-->Project,选择maven Module,点击 Next>
+右键 framework-aoe-parent-->new-->Project,选择maven Module,点击 Next> l
