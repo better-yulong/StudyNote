@@ -124,8 +124,8 @@ public static <E extends Enum<E>> EnumSet<E> noneOf(Class<E> elementType) {
 可参考理解：https://www.jianshu.com/p/72d1b41f7cde、https://juejin.im/post/59ffbe8ef265da4309448ae2
  ![SFP组件交互图](https://github.com/better-yulong/StudyNote-Resource/blob/master/StudyNote-Resource/effective-java-pic/2-002.PNG)
 如何理解呢？
-- 服务接口：服务接口中定义一些提供具体服务的方法，如java.sql.Connection，其中提供了熟悉的createStatement()、prepareStatement()、commit()等方法（使用过jdbcTemplate会比较熟悉））（对应Oracle数据库的OracleConnection）
-- 服务提供者接口：即服务提供者的接口。按服务接口理解，那就是Connection提供者接口，即可以提供Connection实例，可理解为java.sql.Driver,其方法(String url, java.util.Properties info)可通过指定的数据库连接URL及属性配置返回Connection实例（对应Oracle数据库的OracleDriver）
+- 服务接口（指interface）：服务接口中定义一些提供具体服务的方法，如java.sql.Connection，其中提供了熟悉的createStatement()、prepareStatement()、commit()等方法（使用过jdbcTemplate会比较熟悉））（对应Oracle数据库的OracleConnection）
+- 服务提供者接口(指interface)：即服务提供者的接口。按服务接口理解，那就是Connection提供者接口，即可以提供Connection实例，可理解为java.sql.Driver,其方法(String url, java.util.Properties info)可通过指定的数据库连接URL及属性配置返回Connection实例（对应Oracle数据库的OracleDriver）
 - 提供者注册API（指方法）：服务提供者接口的具体实现类里面去注册这个API，如java.sql.DriverManager的registeredDriver方法。既然服务服务提供者接口是Driver，那用来注册和管理的类自然就是DriverManager，其中registeredDriver()方法即将当前第三方服务的服务提供者的实现OracleDriver注册到服务列表registeredDrivers。而第三方服务实现可同时支持多个，所以registeredDrivers为列表。
 - 服务访问API（指方法）：
 
