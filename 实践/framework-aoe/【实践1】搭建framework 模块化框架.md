@@ -8,7 +8,7 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
 ```
-##### 2、创建子模块
+##### 2、创建子模块（后续第一示例基于SPI&Logger示例）
 1. 右键 framework-aoe-parent-->new-->Project,选择maven Module,点击 Next> 输入名称：framework-aoe-spi-logger ,之后next（其中仍选择maven-archetype-quickstart），最后完成。
 2. 此时可发现相邻工程：framework-aoe-parent、framework-aoe-spi-m1，其中两个工程重点pom.xml内容：
 ```language
@@ -20,7 +20,7 @@
   <groupId>com.aoe.framework</groupId>
   <artifactId>framework-aoe-spi-logger</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>framework-aoe-spi-m1</name>
+  <name>framework-aoe-spi-logger</name>
 ```
 ```language
   <groupId>com.aoe.framework</groupId>
@@ -34,7 +34,7 @@
   </properties>
 
   <modules>
-    <module>framework-aoe-spi-m1</module>
+    <module>framework-aoe-spi-logger</module>
   </modules>
 ```
 
