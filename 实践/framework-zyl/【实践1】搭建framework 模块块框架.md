@@ -23,7 +23,19 @@
   <name>framework-aoe-spi-m1</name>
 ```
 ```language
+  <groupId>com.aoe.framework</groupId>
+  <artifactId>framework-aoe-parent</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
 
+  <name>framework-parent</name>
+   <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <modules>
+    <module>framework-aoe-spi-m1</module>
+  </modules>
 ```
 
 
