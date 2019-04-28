@@ -1,4 +1,4 @@
 - 目标：搭建模块化的业务开发框架
 ####  一、搭建framework 框架
 ##### 1、创建框架父项目
-基于eclipse 创建 
+基于eclipse 创建 Maven Project （maven-quickstart-）
