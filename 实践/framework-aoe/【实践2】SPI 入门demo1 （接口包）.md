@@ -1,2 +1,2 @@
 - 很多框架都使用了java的SPI机制，如java.sql.Driver的SPI实现（mysql驱动、oracle驱动等）、common-logging的日志接口实现、dubbo的扩展实现等等框架；
-- 当前示例以
+- 当前示例以日志接口实现为例。
