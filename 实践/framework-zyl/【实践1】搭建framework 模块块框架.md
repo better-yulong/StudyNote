@@ -9,4 +9,5 @@
   <packaging>pom</packaging>
 ```
 ##### 2、创建子模块
-右键 framework-aoe-parent-->new-->Project,选择maven Module,点击 Next> 输入名称：framework-aoe-spi-m1 ,之后next（其中仍选择maven-archetype-quickstart）
+1. 右键 framework-aoe-parent-->new-->Project,选择maven Module,点击 Next> 输入名称：framework-aoe-spi-m1 ,之后next（其中仍选择maven-archetype-quickstart），最后完成。
+2. 
