@@ -139,7 +139,6 @@ DriverManager的 getConnection()方法。
 		p:removeAbandoned="true"
 		p:removeAbandonedTimeout="180" />
 ```
-
 > 参考1 dubbo SPI讲解：https://cloud.tencent.com/developer/article/1148381
 
 
