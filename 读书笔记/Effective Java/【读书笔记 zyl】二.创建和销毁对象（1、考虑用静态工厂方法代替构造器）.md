@@ -124,7 +124,7 @@ public static <E extends Enum<E>> EnumSet<E> noneOf(Class<E> elementType) {
 可参考理解：https://www.jianshu.com/p/72d1b41f7cde、https://juejin.im/post/59ffbe8ef265da4309448ae2
  ![SFP组件交互图](https://github.com/better-yulong/StudyNote-Resource/blob/master/StudyNote-Resource/effective-java-pic/2-002.PNG)
 如何理解呢？
-
+- 服务接口：服务接口中定义一些提供具体服务的方法
 
 https://cloud.tencent.com/developer/article/1148381
 
