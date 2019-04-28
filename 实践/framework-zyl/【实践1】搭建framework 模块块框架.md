@@ -2,8 +2,10 @@
 ####  一、搭建framework 框架
 ##### 1、创建框架父项目
 基于eclipse 创建 Maven Project （maven-archetype-quickstart）,之后把pom文件中的packing标签改成pom.
-
+```language
 <groupId>com.aoe.framework</groupId>
 <artifactId>framework-parent</artifactId>
 <version>0.0.1-SNAPSHOT</version>
 <packaging>pom</packaging>
+```
+
