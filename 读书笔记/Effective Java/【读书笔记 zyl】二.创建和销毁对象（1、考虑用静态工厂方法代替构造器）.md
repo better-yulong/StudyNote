@@ -125,7 +125,7 @@ public static <E extends Enum<E>> EnumSet<E> noneOf(Class<E> elementType) {
  ![SFP组件交互图](https://github.com/better-yulong/StudyNote-Resource/blob/master/StudyNote-Resource/effective-java-pic/2-002.PNG)
 如何理解呢？
 - 服务接口：服务接口中定义一些提供具体服务的方法，如java.sql.Connection，其中提供了熟悉的createStatement()、prepareStatement()、commit()等方法（使用过jdbcTemplate会比较熟悉））
-- 服务提供者接口：即服务提供者的接口。按服务接口理解，那就是Connection
+- 服务提供者接口：即服务提供者的接口。按服务接口理解，那就是Connection提供者接口，即可以提供Connection实例，可理解为Driver
 
 https://cloud.tencent.com/developer/article/1148381
 
