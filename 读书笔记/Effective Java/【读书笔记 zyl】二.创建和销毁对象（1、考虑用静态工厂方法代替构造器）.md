@@ -145,4 +145,4 @@ public static <K,V> HashMap<K,V> newInstance(){
 
 使用调整为：Map<Sting,List<String>> m = HashMap.newInstance();
 ```
-但是实际HashMap 并未提供 newInstance
+实际HashMap 并未提供 newInstance方法哈，仅用于举例哈。但是
