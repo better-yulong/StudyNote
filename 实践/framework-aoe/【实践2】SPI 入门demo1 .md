@@ -204,7 +204,7 @@ ALogger-->info: logAllInfo:logger list test
 BLogger-->info: logAllInfo:logger list test
 
 ```
-
+5. 如若有多个实现
 
 
  
