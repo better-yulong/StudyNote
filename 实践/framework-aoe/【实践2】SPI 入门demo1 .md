@@ -204,7 +204,7 @@ ALogger-->info: logAllInfo:logger list test
 BLogger-->info: logAllInfo:logger list test
 
 ```
-6. 对于服务接口实现类实例化及注册，可依赖于如上的
+6. 对于服务接口实现类实例化及注册，可依赖于如上的META-INF/services及ServiceLoader自动完成；其实也可参考数据库
 
 
  
