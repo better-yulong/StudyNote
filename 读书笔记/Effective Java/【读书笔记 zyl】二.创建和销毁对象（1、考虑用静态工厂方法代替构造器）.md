@@ -142,5 +142,7 @@ Map<Sting,List<String>> m = new HashMap<Sting,List<String>>();
 public static <K,V> HashMap<K,V> newInstance(){
  	return new HashMap<K,V>();
 }
+
+使用调整为：Map<Sting,List<String>> m = HashMap.new
 ```
 
