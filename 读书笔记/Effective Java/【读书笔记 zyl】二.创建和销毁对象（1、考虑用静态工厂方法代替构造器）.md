@@ -131,4 +131,4 @@ public static <E extends Enum<E>> EnumSet<E> noneOf(Class<E> elementType) {
 DriverManager的 getConnection()方法。
 - 具体demo示例可参考"【实践2】SPI 入门demo1 "
 ###### 3.2 SPI原理深究
-在SPI示例中，提到需在服务
+在SPI示例中，提到需在服务接口具体实现
