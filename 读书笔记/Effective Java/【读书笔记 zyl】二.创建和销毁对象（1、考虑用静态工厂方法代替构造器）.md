@@ -139,6 +139,7 @@ Map<Sting,List<String>> m = new HashMap<Sting,List<String>>();
 ```
 但若HashMap有提供静态工厂方法，即编译器可帮忙找到类型，可理解为类型推导（type inference），假设HashMap提供如下静态工厂方法，则使用会更简单：
 ```language
-public static <K,V> HashMap<K,V> newInsta
+public static <K,V> HashMap<K,V> newInstance(){
+return 
 ```
 
