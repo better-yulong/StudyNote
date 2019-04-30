@@ -131,4 +131,5 @@ public static <E extends Enum<E>> EnumSet<E> noneOf(Class<E> elementType) {
 DriverManager的 getConnection()方法。
 - 具体demo示例可参考"【实践2】SPI 入门demo1 "
 ###### 3.2 SPI原理深究
-在SPI示例中，提到需在服务接口具体实现类所在jar的资源目录META-INF/services中放置提供者配置文件 来标识服务提供者。而对于为何使用y
+在SPI示例中，提到需在服务接口具体实现类所在jar的资源目录META-INF/services中放置提供者配置文件 来标识服务提供者。而对于为何简单配置即可？
+- 
