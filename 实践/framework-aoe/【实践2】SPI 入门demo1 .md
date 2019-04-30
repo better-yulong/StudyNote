@@ -153,6 +153,10 @@ ALogger-->warn: this is use warn...
 ALogger-->error: this is use error... 
 ```
 4. pom.xml中同时引入两套日志实现，但当前默认是按pom.xml中顺序加载，即先加载ALogger后加载BLogger，而服务访问API LoggerFactory.getLogger()方法默认返回第1个，所以调用ALogger的方法日志中打印为ALogger；若注释掉pom.xml中 ALogger jar的依赖或者调整先后顺序，由会打印BLogger。
-5. 如若有多个实现，可在META-INF/services/的对应服务接口文件中配置多行，每行为一个服务接口实现类的全限定名。对于该文件中配置的多个服务接口实现类，基于ServiceLoader会依次实例化类。部分涉及到我分支或者组合的
+5. 如若有多个实现，可在META-INF/services/的对应服务接口文件中配置多行，每行为一个服务接口实现类的全限定名。对于该文件中配置的多个服务接口实现类，基于ServiceLoader会依次实例化类。部分涉及到我分支或者组合情况，若基于类责任模式：
+```language
+
+```
+
 
  
