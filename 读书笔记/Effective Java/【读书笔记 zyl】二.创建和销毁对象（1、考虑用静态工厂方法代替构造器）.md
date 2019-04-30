@@ -118,8 +118,8 @@ public static <E extends Enum<E>> EnumSet<E> noneOf(Class<E> elementType) {
   - 服务提供者框架的第四个组件是可选的：服务提供者接口（Service Prodiver Interface，SPI），这些提供者负责创建其服务实现的实例。如果没有服务提供者接口，实现就按类名称注册，并通过反射方式进行实例化。对于JDBC而言，Connection是它的服务接口，DriverManager.registerDrive是提供者注册API，DriverManger.Connection是服务访问API，Driver就是服务提供者接口。
   - 服务提供者框架都着无数种变体。如服务访问API可利用适配器(Adapter)模式，返回比提供者更丰富的服务接口。
 
-###### 3.1 因服务提供者框架（SPF）及服务提供者接口(SPI):
-因其非常实用 ，故该篇深入研究，SPF 包括以下组件:
+###### 3.1 深入研究服务提供者框架（SPF）及服务提供者接口(SPI):
+因服务提供者框架（SPF）及服务提供者接口(SPI)其非常实用 ，故该篇深入研究，SPF 包括以下组件:
  ![SFP组件](https://github.com/better-yulong/StudyNote-Resource/blob/master/StudyNote-Resource/effective-java-pic/2-001.PNG)
 可参考理解：https://www.jianshu.com/p/72d1b41f7cde、https://juejin.im/post/59ffbe8ef265da4309448ae2
  ![SFP组件交互图](https://github.com/better-yulong/StudyNote-Resource/blob/master/StudyNote-Resource/effective-java-pic/2-002.PNG)
