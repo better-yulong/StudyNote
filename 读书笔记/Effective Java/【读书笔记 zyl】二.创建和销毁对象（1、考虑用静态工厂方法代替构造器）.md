@@ -129,4 +129,5 @@ public static <E extends Enum<E>> EnumSet<E> noneOf(Class<E> elementType) {
 - 提供者注册API（指方法）：服务提供者接口的具体实现类里面去注册这个API，如java.sql.DriverManager的registerDriver()。既然服务服务提供者接口是Driver，那用来注册和管理的类自然就是DriverManager，其中registeredDriver()方法即将当前第三方服务的服务提供者的实现OracleDriver注册到服务列表registeredDrivers。而第三方服务实现可同时支持多个，所以registeredDrivers为列表。
 - 服务访问API（指方法）：服务访问API是“灵活的静态工厂”，它构成了服务提供者框架的基础; 获得具体服务的实例。即对应
 DriverManager的 getConnection()方法。
+- 具体demo示例可参考"【实践2】SPI 入门demo1 "
 
