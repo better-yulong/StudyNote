@@ -130,4 +130,5 @@ public static <E extends Enum<E>> EnumSet<E> noneOf(Class<E> elementType) {
 - 服务访问API（指方法）：服务访问API是“灵活的静态工厂”，它构成了服务提供者框架的基础; 获得具体服务的实例。即对应
 DriverManager的 getConnection()方法。
 - 具体demo示例可参考"【实践2】SPI 入门demo1 "
-- 
+###### 3.2 SPI原理深究
+在SPI示例中，提到需在服务
