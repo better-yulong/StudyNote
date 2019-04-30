@@ -137,4 +137,4 @@ DriverManager的 getConnection()方法。
 ```language
 Map<Sting,List<String>> m = new HashMap<Sting,List<String>>();
 ```
-但有
+但若HashMap有提供静态工厂方法，即编译器可帮忙找到
