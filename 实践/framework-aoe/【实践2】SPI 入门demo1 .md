@@ -204,7 +204,7 @@ ALogger-->info: logAllInfo:logger list test
 BLogger-->info: logAllInfo:logger list test
 
 ```
-5. 如若有多个实现
+6. 对于服务接口实现类实例化及注册，可依赖于如上的
 
 
  
