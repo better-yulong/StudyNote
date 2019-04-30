@@ -143,6 +143,6 @@ public static <K,V> HashMap<K,V> newInstance(){
  	return new HashMap<K,V>();
 }
 
-使用调整为：Map<Sting,List<String>> m = HashMap.new
+使用调整为：Map<Sting,List<String>> m = HashMap.newInstance();
 ```
-
+但是实际HashMap 并未提供 newInstance
