@@ -135,6 +135,6 @@ DriverManager的 getConnection()方法。
 ##### 4.创建参数化类型实例，代码更简洁
 如大家常用的创建HashMap的代码：
 ```language
-Map<Sting,List<String>> m = new HashM
+Map<Sting,List<String>> m = new HashMap<Sting,List<String>>();
 ```
-
+实际还有
