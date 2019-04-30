@@ -183,7 +183,28 @@ public class LoggerFactory {
 	}
 }
 ```
-应用中
+应用测试方法：
+```language
+	public static void main(String[] args) {
+		logger.debug("this is use debug... ");
+		logger.info("this is use info... ");
+		logger.warn("this is use warn... ");
+		logger.error("this is use error... ");
+		LoggerFactory.logAllInfo("logger list test");
+	}
+```
+运行结果：
+```language
+Tue Apr 30 17:42:57 CST 2019
+ALogger-->debug: this is use debug... 
+ALogger-->info: this is use info... 
+ALogger-->warn: this is use warn... 
+ALogger-->error: this is use error... 
+ALogger-->info: logAllInfo:logger list test
+BLogger-->info: logAllInfo:logger list test
+
+```
+
 
 
  
