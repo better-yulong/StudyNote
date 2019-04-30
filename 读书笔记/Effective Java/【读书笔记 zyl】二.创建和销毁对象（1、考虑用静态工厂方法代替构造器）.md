@@ -149,4 +149,4 @@ public static <K,V> HashMap<K,V> newInstance(){
 实际HashMap 并未提供 newInstance方法哈，仅用于举例哈。但是从JDK 1.7开始，基于类型推导与泛型方法的改进，如上的实例化代码可简化为：Map<Sting,List<String>> m = new HashMap<>(); 注意后面的<>必须，否则认为是默认无泛型的实例化。
 
 #### 静态工厂方法缺点
-##### 1.类没有公有或受保护的
+##### 1.类如果没有公有或受保护的构造器，则不能被子类化
