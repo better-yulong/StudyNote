@@ -26,4 +26,4 @@ public class SingletonTest2 {
 	}
 }
 ```
-对于SingletonTest2.
+对于SingletonTest2.getInstance()的所有调用都会返回同一个对象，正
