@@ -11,3 +11,4 @@ public class SingletonTest1 {
 
 }
 ```
+私有构造器仅被调用一次，用来实例化公有的静态final域 
