@@ -88,4 +88,4 @@ public class NutritionFacts {
 ```
 - builder类似于构造器，可对参数强加约束条件，build方法可检验这些约束条件。将参数从builder拷贝到对象中之后，并在对象域而不是builder域对它们进行检验。如上注释三个地方"optional: add paremeter check"，但建议最优的是是对象构造函数最后检查参数，且若参数不合法，需显示报出IllegalStateException（且异常信息应该显示出违反了哪个约束条件，见第63条）；另一个对参数强加约束的方法则是在setter方法中对参数进行检查。若约束条件未满足，则setter方法抛出IllegalStateException，好处是一旦传递参数无效可立即发现约束失败，而不是调用builder方法才抛出。
 - 与构造器相比，builder微略优势在于，builder 可有多个可变(varargs)参数；而构造器只能有一个可变参数。因为builder方法利用单独的方法设置参数，甚至每个setter方法均可有一个可变参数。
-- Builder模式十分灵活，可利用单个Builder构建多个对象；builder参数可在创建对象期间进行调整，也可随着不同对象而改变。
+- Builder模式十分灵活，可利用单个Builder构建多个对象；builder参数可在创建对象期间进行调整，也可随着不同对象而改变。builder可自动填充某些域，例如每次创建对象时自动
