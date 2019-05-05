@@ -42,7 +42,7 @@ public class SingletonTest2 implements Serializable{
 		return st2 ;
 	}
 	
-	//实现了Serializable接口的单例，为避免反序列化
+	//实现了Serializable接口的单例，为避免反序列化破坏单例，需添加该方法
 	private Object readResolve(){
 		return st2 ;
 	}
