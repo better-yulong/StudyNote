@@ -92,5 +92,7 @@ public class NutritionFacts {
 - 设置了参数的builder生成一个很好的抽象工厂。换种说法，客户端可将builder对象传给方法，而该方法可根据需要需要创建一个或多个。如基于泛型：
 ```language
 	// A Builder for objects of type T
-	public interface Builder<T>
+	public interface Builder<T>{
+		public T build();
+	}
 ```
