@@ -63,7 +63,7 @@ public class NutritionFacts {
 		this.fat = builder.fat ;
 		this.sodium = builder.sodium ;
 		this.carbohydrate = builder.carbohydrate ;
-
+		//optional: add paremeter check --- 正确（参考第39条：）
 
 	}
 	
