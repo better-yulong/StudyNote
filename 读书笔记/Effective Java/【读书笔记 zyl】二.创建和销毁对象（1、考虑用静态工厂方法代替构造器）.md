@@ -150,4 +150,4 @@ public static <K,V> HashMap<K,V> newInstance(){
 
 #### 静态工厂方法缺点
 ##### 1.类如果没有公有或受保护的构造器，则不能被子类化
-具体怎么理解呢？即若类的默认构造函数为private，则子类无法继承：Implicit super constructor ExtendPrivateTest() is not visible for default constructor. Must define an explicit constructor
+具体怎么理解呢？即若类的默认构造函数为private，则子类无法继承：Implicit super constructor ConstructorPrivateTest() is not visible for default constructor. Must define an explicit constructor
