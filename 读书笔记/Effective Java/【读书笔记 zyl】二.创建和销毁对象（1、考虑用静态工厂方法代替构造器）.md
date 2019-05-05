@@ -152,4 +152,4 @@ public static <K,V> HashMap<K,V> newInstance(){
 ##### 1.类如果没有公有或受保护的构造器，则不能被子类化
 具体怎么理解呢？即若类的默认构造函数为private，则子类无法继承：Implicit super constructor ConstructorPrivateTest() is not visible for default constructor. Must define an explicit constructor。
 这个地方需要注意，是指默认的无参构造函数为私有则无法继承。虽然基于多态可有多个有参的构造函数，但影响继承的仅默认无参构造函数。
-##### 2.类如果没有公有或受保护的构造器，则不能被子类化
+##### 2.用于控制实例生成，但与其他静态
