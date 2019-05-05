@@ -63,6 +63,8 @@ public class NutritionFacts {
 		this.fat = builder.fat ;
 		this.sodium = builder.sodium ;
 		this.carbohydrate = builder.carbohydrate ;
+
+
 	}
 	
 	public static void main(String[] args){
