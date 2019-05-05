@@ -26,4 +26,4 @@ public class SingletonTest2 {
 	}
 }
 ```
-对于SingletonTest2.getInstance()的所有调用都会返回同一个对象，正
+对于SingletonTest2.getInstance()的所有调用都会返回同一个对象，不会合建新的实例（但上述AccessibleObjet.setAccessible 依然存在 ）
