@@ -56,14 +56,14 @@ public class NutritionFacts {
 	}
 	
 	private NutritionFacts(Builder builder){
-		//optional: add paremeter check
+		//optional: add paremeter check --- 错误
 		this.servingSize = builder.servingSize ;
 		this.servings = builder.servings ;
 		this.calories = builder.calories ;
 		this.fat = builder.fat ;
 		this.sodium = builder.sodium ;
 		this.carbohydrate = builder.carbohydrate ;
-		//optional: add paremeter check --- 正确（参考第39条：）
+		//optional: add paremeter check --- 正确（参考第39条：Time-Of-Check）
 
 	}
 	
@@ -86,4 +86,4 @@ public class NutritionFacts {
  * */
 
 ```
-- builder类似于构造器，可对参数强加约束条件，build方法可检验这些约束条件。将参数从builder拷贝到对象中之后，并在对象域而不是builder域对它们进行检验
+- builder类似于构造器，可对参数强加约束条件，build方法可检验这些约束条件。将参数从builder拷贝到对象中之后，并在对象域而不是builder域对它们进行检验。如上注释三个地方 
