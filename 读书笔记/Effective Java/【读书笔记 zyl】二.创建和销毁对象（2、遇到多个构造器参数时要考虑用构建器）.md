@@ -96,5 +96,5 @@ public class NutritionFacts {
 		public T build();
 	}
 ```
-- Builder实例方法通常利用有限制的通配符类型来约束构建器的类型参数。
+- Builder实例方法通常利用有限制的通配符类型来约束构建器的类型参数。如 tree buildTree(Builder<？ extends Node> nodeBu)
 - 
