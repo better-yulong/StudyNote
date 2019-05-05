@@ -1,1 +1,1 @@
-Singleton指仅仅被实例化一次的类。
+Singleton指仅仅被实例化一次的类。Singleton通常被用来代表那些本质上唯一的系统组件，
