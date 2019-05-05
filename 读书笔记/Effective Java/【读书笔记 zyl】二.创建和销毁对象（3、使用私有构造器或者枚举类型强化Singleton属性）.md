@@ -26,5 +26,5 @@ public class SingletonTest2 {
 	}
 }
 ```
-对于SingletonTest2.getInstance()的所有调用都会返回同一个对象，不会合建新的实例（但上述AccessibleObjet.setAccessible 也同样存在）。公有域方法的好处是组成类的成员声明表明该类是一个Singleton：final的静态域，所以该域总是包含相同的对象引用。公有域方法在性能上不再有任何优势：现代JVM实现都能够将静态工厂方法的调用内联化。
-
+- 对于SingletonTest2.getInstance()的所有调用都会返回同一个对象，不会合建新的实例（但上述AccessibleObjet.setAccessible 也同样存在）。公有域方法的好处是组成类的成员声明表明该类是一个Singleton：final的静态域，所以该域总是包含相同的对象引用。公有域方法在性能上不再有任何优势：现代JVM实现都能够将静态工厂方法的调用内联化。
+- 但工厂方法优势之一是
