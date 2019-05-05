@@ -25,5 +25,5 @@ public class SingletonTest2 {
 		return st2 ;
 	}
 }
-
 ```
+对于SingletonTest2.
