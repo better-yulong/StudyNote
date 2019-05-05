@@ -84,4 +84,4 @@ public class NutritionFacts {
  * */
 
 ```
-- builder类似于构造器，可对参数强加约束条件，build方法可检验这些约束条件。将参数从builder拷贝到对象中之后，并在对象域
+- builder类似于构造器，可对参数强加约束条件，build方法可检验这些约束条件。将参数从builder拷贝到对象中之后，并在对象域而不是builder域对它们进行
