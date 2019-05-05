@@ -97,4 +97,4 @@ public class NutritionFacts {
 	}
 ```
 - Builder实例方法通常利用有限制的通配符类型来约束构建器的类型参数。如 tree buildTree(Builder<？ extends Node> nodeBuilder){...}
-- Java传统的抽象工厂实现是Class对象，利用其newInstance方法充当build方法的一部分，但隐含诸多问题：newInstance方法总是企图调用类的无参构造器，而该构造器可能都不存在，
+- Java传统的抽象工厂实现是Class对象，利用其newInstance方法充当build方法的一部分，但隐含诸多问题：newInstance方法总是企图调用类的无参构造器，而该构造器可能都不存在，同时也不会收到编译错误。客户端代码必须
