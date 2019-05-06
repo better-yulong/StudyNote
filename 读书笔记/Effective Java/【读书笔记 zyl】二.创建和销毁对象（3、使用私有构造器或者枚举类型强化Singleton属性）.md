@@ -51,5 +51,32 @@ public class SingletonTest2 implements Serializable{
 }
 ```
 2. Singleton 实现方法三（Java 1.5开始） ：枚举
+```language
+public enum SingletonEnum {
+	
+	INSTANCE_SUCC("00","SUCCESS"),
+	INSTANCE_FAIL("99","FAIL");
+	
+	private String key ;
+	private String value;
+	
+	SingletonEnum(String key,String value){
+		this.key = key;
+		this.value = value;
+	}
+	
+	static String getValue(String key){
+		for(SingletonEnum se:SingletonEnum.values()){
+			if(se.key.equals(key))
+					return se.value;
+		}
+		return null;
+	}
+
+}
+```
+```language
+
+```
 
 
