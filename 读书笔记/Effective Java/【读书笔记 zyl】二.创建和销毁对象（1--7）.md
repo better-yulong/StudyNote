@@ -621,6 +621,6 @@ public class HashMap<K,V>
         return e;
     }
 ```
-- 至于上面ArrayList、HashMap将elementData、table 定义为transient 类型后面分析。此处代码
+- 至于上面ArrayList、HashMap将elementData、table 定义为transient 类型后面分析。通过ArrayList、HashMap代码可以发现与上面的
 
  
