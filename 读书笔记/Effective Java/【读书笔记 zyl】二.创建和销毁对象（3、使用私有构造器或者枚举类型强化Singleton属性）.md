@@ -51,3 +51,5 @@ public class SingletonTest2 implements Serializable{
 }
 ```
 2. Singleton 实现方法三（Java 1.5开始） ：枚举
+
+
