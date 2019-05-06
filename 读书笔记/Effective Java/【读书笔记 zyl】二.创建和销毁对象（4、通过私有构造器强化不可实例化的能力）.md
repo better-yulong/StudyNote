@@ -20,7 +20,7 @@ class PrivateConstructorParent {
 
 }
 
-//此处在IDE
+//此处在IDE会提示错误：Implicit super constructor PrivateConstructorParent() is not visible for default constructor. Must define an explicit 
 class PrivateConstructorChild extends PrivateConstructorParent{
 	
 }
