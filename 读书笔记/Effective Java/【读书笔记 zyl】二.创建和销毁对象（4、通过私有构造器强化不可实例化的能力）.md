@@ -25,3 +25,5 @@ class PrivateConstructorChild extends PrivateConstructorParent{
 	
 }
 ```
+
+
