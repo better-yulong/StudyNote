@@ -7,3 +7,4 @@
 ```language
 	String s = "string temp" ; //改进版本，基于字面量、字符串常量池。String.intern()也可避免多次创建新String对象，但若对其了解不充分则不建议使用。
 ```
+此种方式只生成一个String实例，
