@@ -547,7 +547,15 @@ public class ArrayList<E> extends AbstractList<E>
         implements List<E>, RandomAccess, Cloneable, java.io.Serializable
 {
 	    private transient Object[] elementData;
-		private int size;
+	    private int size;
+
+	public ArrayList(int initialCapacity) {
+        	super();
+        	if (initialCapacity < 0)
+            		throw new IllegalArgumentException("Illegal Capacity: "+
+                                               initialCapacity);
+        	this.elementData = new Object[initialCapacity];
+    	}
 ```
 
  
