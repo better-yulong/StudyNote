@@ -57,7 +57,7 @@ public enum SingletonEnumSimple {
 }
 
 ```
-枚举方式相对更加简洁，
+枚举方式相对更加简洁，可防范如上实现序列化或者
 ```language
 public enum SingletonEnum {
 	
