@@ -46,3 +46,12 @@ public class BoxPerformTest {
 
 }
 ```
+运行结果：
+```language
+start: 1557132832635
+sum:2305843005992468481
+first: 32906
+sum2:2305843005992468481
+end: 5906
+
+```
