@@ -5,7 +5,7 @@
 public class PrivateConstructor {
 
 	private PrivateConstructor(){
-		//防止通过序列化或反射实例化
+		//防止通过序列化或反射实例化或类内部其他方法调用该构造器
 		throw new AssertionError();
 	}
 }
