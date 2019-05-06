@@ -3,4 +3,4 @@
 	//反面示例
 	String s = new String("string temp"); //DON'T DO THIS
 ```
-该语句会使得每次执行时都创建一
+该语句会使得每次执行时都创建一个新的String实例，但是这些创建动作全都是不必要。传递给String构造器的参数（“”）
