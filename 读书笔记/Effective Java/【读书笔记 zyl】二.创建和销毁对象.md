@@ -259,4 +259,93 @@ public class NutritionFacts {
 - Java传统的抽象工厂实现是Class对象，利用其newInstance方法充当build方法的一部分，但隐含诸多问题：newInstance方法总是企图调用类的无参构造器，而该构造器可能都不存在，同时也不会收到编译错误；客户端代码必须运行时处理InstantiationException或者IllegalAccessException，不雅观也不方便；newInstance方法还会传播无参构造器抛出的所有异常，即使newInstance缺乏相应throws子句。总的来说，Class.newInstance 破坏了编译时的异常检查，而Builder模式可弥补这些不足。
 - 但Builder模式也有不足。为了创建对象，必须先创建其构造器；该部分开销一般不明显，但在十分注重性能的情况下，可能成为问题。Builder模式与重叠构造器模式更加冗长，其只适合在参数很多的场景使用，比如4个或更多。但参数可能未来会增加，所以需要权衡是否一开始就使用构造器。
 
-### 第3条：遇到多个构造器参数时要考虑用构建器
+### 第3条：使用私有构造器或者枚举类型强化Singleton属性
+Singleton指仅仅被实例化一次的类。Singleton通常被用来代表那些本质上唯一的系统组件，比如窗口管理器或文件系统。使类成为Singleton会使它的客户端测试变得相对困难，因为无法给Singleton替换模拟实现，除非它实现一个充当其类型的接口。
+1. Singleton 实现方法一：私有构造器+final static 成员
+```language
+public class SingletonTest1 {
+	
+	public final static SingletonTest1 st1 = new SingletonTest1();
+	
+	private SingletonTest1(){
+		
+	}
+
+}
+```
+私有构造器仅被调用一次，用来实例化公有的静态final域  SingletonTest1.st1 。因缺少公有或受保护的构造器，可保证SingletonTest1全局唯一性：一旦SingletonTest1 类被实例化只会存在一个SingletonTest1实例。但是客户端仍有可能借助 AccessibleObjet.setAccessible方法，通过反射机制调用私有构造器，即破坏单例模式。如若想抵御此种攻击，则可修改构造器，使其在被要求第二次创建实例时抛出异常。
+2. Singleton 实现方法二：私有构造器 + 私有final static成员 + 公有静态工厂方法
+```language
+public class SingletonTest2 {
+	
+	private final static SingletonTest2 st2 =  new SingletonTest2();
+	
+	private SingletonTest2(){
+	}
+
+	public SingletonTest2 getInstance(){
+		return st2 ;
+	}
+}
+```
+- 对于SingletonTest2.getInstance()的所有调用都会返回同一个对象，不会合建新的实例（但上述AccessibleObjet.setAccessible 也同样存在）。公有域方法的好处是组成类的成员声明表明该类是一个Singleton：final的静态域，所以该域总是包含相同的对象引用。公有域方法在性能上不再有任何优势：现代JVM实现都能够将静态工厂方法的调用内联化。
+- 但工厂方法优势之一是提供了灵活性：在不改变API的前提下，可改变该类是否应该为Singleton的想法，即工厂方法返回该类的唯一实例，但也可容易修改为每个调用方法的线程返回一个唯一实例，这点在实现方法一基于公有fianl的静态域则很难做到。优势二与泛型相关（后续再理解）
+- 为了确保Singleton类是可序列化的（Serializable),仅仅在声明中加上"implements Serializable"是不够的。为了维护并保证Singleton，必须声明所有实例域都是瞬时(transient)，并提供一个readResolve方法。否则，每次反序列化一个序列化的实例时，都会创建一个新的实例。即为了解决该序列化导致的单例破坏，需在类中加入readResolve方法：
+```language
+
+public class SingletonTest2 implements Serializable{
+	
+	private final static SingletonTest2 st2 =  new SingletonTest2();
+	
+	private SingletonTest2(){
+	}
+
+	public SingletonTest2 getInstance(){
+		return st2 ;
+	}
+	
+	//实现了Serializable接口的单例，为避免反序列化破坏单例，需添加该方法
+	private Object readResolve(){
+		return st2 ;
+	}
+	
+	
+}
+```
+2. Singleton 实现方法三（Java 1.5开始） ：枚举
+```language
+public enum SingletonEnumSimple {
+	INSTANCE;
+}
+
+```
+枚举方式相对更加简洁，可防范如上实现序列化或者反射攻击导致的单例破坏。可以说，单元素的枚举类型已经成为Singleton的最佳方法。至于如下相对复杂的枚举实现，具体合理性等还有待后面理解，先示例：
+```language
+public enum SingletonEnum {
+	
+	INSTANCE_SUCC("00","SUCCESS"),
+	INSTANCE_FAIL("99","FAIL");
+	
+	private String key ;
+	private String value;
+	
+	SingletonEnum(String key,String value){
+		this.key = key;
+		this.value = value;
+	}
+	
+	static String getValue(String key){
+		for(SingletonEnum se:SingletonEnum.values()){
+			if(se.key.equals(key))
+					return se.value;
+		}
+		return null;
+	}
+
+}
+```
+```language
+
+```
+
+
