@@ -52,6 +52,13 @@ public class SingletonTest2 implements Serializable{
 ```
 2. Singleton 实现方法三（Java 1.5开始） ：枚举
 ```language
+public enum SingletonEnumSimple {
+	INSTANCE;
+}
+
+```
+枚举方式相对更加简洁，
+```language
 public enum SingletonEnum {
 	
 	INSTANCE_SUCC("00","SUCCESS"),
