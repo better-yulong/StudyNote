@@ -621,6 +621,7 @@ public class HashMap<K,V>
         return e;
     }
 ```
-- 至于上面ArrayList、HashMap将elementData、table 定义为transient 类型后面分析。通过ArrayList、HashMap代码可以发现与上面的例子何其相似，那其如
+- 至于上面ArrayList、HashMap将elementData、table 定义为transient 类型后面分析。通过ArrayList、HashMap代码可以发现与上面的例子何其相似，那其如如何解决上面例子pop方法后内存并未如预期回收的呢？
+- 
 
  
