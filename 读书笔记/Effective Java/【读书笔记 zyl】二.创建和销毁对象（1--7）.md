@@ -584,7 +584,7 @@ public class HashMap<K,V>
 	 static final int DEFAULT_INITIAL_CAPACITY = 16;
 	 transient Entry[] table;
 	 transient int size;
-
+       recordRemoval
 ```
 
  
