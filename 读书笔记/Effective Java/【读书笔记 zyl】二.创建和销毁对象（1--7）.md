@@ -505,5 +505,5 @@ public class ObjectExpireStackMemoryLeakTest {
 	}
 
 }
-
 ```
+运行ObjectExpireStackMemoryLeakTest ，并打开jvm内存监控：
