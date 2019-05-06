@@ -576,6 +576,14 @@ public class ArrayList<E> extends AbstractList<E>
 }
 ```
 ```language
+HashMap源码片段：
+public class HashMap<K,V>
+    extends AbstractMap<K,V>
+    implements Map<K,V>, Cloneable, Serializable
+{
+	 static final int DEFAULT_INITIAL_CAPACITY = 16;
+
+
 
 ```
 
