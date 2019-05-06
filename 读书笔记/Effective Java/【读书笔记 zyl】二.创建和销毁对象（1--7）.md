@@ -506,4 +506,9 @@ public class ObjectExpireStackMemoryLeakTest {
 
 }
 ```
-运行ObjectExpireStackMemoryLeakTest ，并打开jvm内存监控：
+运行ObjectExpireStackMemoryLeakTest ，并打开jvm内存监控：jstat -gcutil 8524 1000 1000000 ，生成日志片断如下：
+```language
+
+```
+
+ 
