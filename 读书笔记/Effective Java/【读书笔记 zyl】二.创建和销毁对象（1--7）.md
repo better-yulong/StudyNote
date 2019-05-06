@@ -611,7 +611,7 @@ public class HashMap<K,V>
                     table[i] = next;
                 else
                     prev.next = next;
-                e.recordRemoval(this);  // ---
+                e.recordRemoval(this);  
                 return e;
             }
             prev = e;
@@ -620,7 +620,7 @@ public class HashMap<K,V>
 
         return e;
     }
-
+	//remove方法间接由上面的recordRemoval
        private void remove() {
             before.after = after;
             after.before = before;
