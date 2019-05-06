@@ -621,6 +621,6 @@ public class HashMap<K,V>
         return e;
     }
 ```
-- 至于上面ArrayList、HashMap将
+- 至于上面ArrayList、HashMap将elementData、table 定义为
 
  
