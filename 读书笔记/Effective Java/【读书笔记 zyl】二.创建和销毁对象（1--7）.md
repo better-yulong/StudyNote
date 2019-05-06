@@ -611,7 +611,7 @@ public class HashMap<K,V>
                     table[i] = next;
                 else
                     prev.next = next;
-                e.recordRemoval(this);
+                e.recordRemoval(this);  // ---
                 return e;
             }
             prev = e;
@@ -620,6 +620,11 @@ public class HashMap<K,V>
 
         return e;
     }
+
+       private void remove() {
+            before.after = after;
+            after.before = before;
+        }
 ```
 - 至于上面ArrayList、HashMap将elementData、table 定义为transient 类型后面分析。通过ArrayList、HashMap代码可以发现与上面的例子何其相似，那其如如何解决上面例子pop方法后内存并未如预期回收的呢？
 - ArrayList中对应 elementData[--size] = null; // Let gc do its work ；而HashMap则对应
