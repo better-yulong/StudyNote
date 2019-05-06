@@ -18,3 +18,31 @@
 - 例如Map接口的keySet()方法返回该Map对象的Set视图，其中包含该Map中所有的键(key），而实际每次调用keySet()方法都会返回同一个Set实例（Set实例对象本身可能随操作发生变化，但对象始终为同一个）
 #### 3.自动装箱（Java 1.5开始）
 自动装箱使得程序员可将基本类型与装箱基本类型（Boxed Primitive Type）混用，从语义上使得基本类型与装箱基本类型差别更模糊，但在性能上则可能有明显的差别（第49条）
+```language
+public class BoxPerformTest {
+
+	public static void main(String[] args) {
+		Date startDate = new Date();
+		System.out.println("start: " + startDate.getTime());
+		
+		Long sum = 0L ;
+		for(long i=0 ;i<Integer.MAX_VALUE;i++){
+			sum += i ;
+		}
+		System.out.println("sum:" + sum);
+		Date middleDate = new Date();
+		System.out.println("first: " + (middleDate.getTime() - startDate.getTime()));
+		
+		
+		long sum2 = 0L ;
+		for(long j=0 ;j<Integer.MAX_VALUE;j++){
+			sum2 += j ;
+		}
+		System.out.println("sum2:" + sum2);
+		
+		Date endDate = new Date();
+		System.out.println("end: " + (endDate.getTime() - middleDate.getTime()));
+	}
+
+}
+```
