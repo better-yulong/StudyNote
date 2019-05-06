@@ -582,8 +582,8 @@ public class HashMap<K,V>
     implements Map<K,V>, Cloneable, Serializable
 {
 	 static final int DEFAULT_INITIAL_CAPACITY = 16;
-
-
+	 transient Entry[] table;
+	 transient int size;
 
 ```
 
