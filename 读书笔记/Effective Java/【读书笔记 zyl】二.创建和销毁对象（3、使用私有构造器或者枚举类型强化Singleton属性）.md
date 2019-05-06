@@ -50,4 +50,4 @@ public class SingletonTest2 implements Serializable{
 	
 }
 ```
-2. Singleton 实现方法三（） ：私有构造器 + 私有final static成员 + 公有静态工厂方法
+2. Singleton 实现方法三（Java 1.5开始） ：枚举
