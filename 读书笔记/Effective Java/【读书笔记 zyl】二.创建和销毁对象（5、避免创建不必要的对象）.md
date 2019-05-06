@@ -5,5 +5,5 @@
 ```
 该语句会使得每次执行时都创建一个新的String实例，但是这些创建动作全都是不必要。传递给String构造器的参数（"string temp"）本身就是一个String实例，功能方面等同于构造器所创建的所有对象。如果这种方法在一个循环或者是在一个被频繁调用的方法中，就会创建出成千上万不必要的String实例，可考虑改进为：
 ```language
-	String s = "string temp" ; //改进版本，基于字面量、字符串常量池，String.valueOf()应该也可。
+	String s = "string temp" ; //改进版本，基于字面量、字符串常量池
 ```
