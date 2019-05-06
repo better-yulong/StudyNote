@@ -57,7 +57,7 @@ public enum SingletonEnumSimple {
 }
 
 ```
-枚举方式相对更加简洁，可防范如上实现序列化或者
+枚举方式相对更加简洁，可防范如上实现序列化或者反射攻击导致的单例破坏。
 ```language
 public enum SingletonEnum {
 	
