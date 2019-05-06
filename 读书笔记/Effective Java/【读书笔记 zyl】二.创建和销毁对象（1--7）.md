@@ -443,5 +443,67 @@ end: 5906
 ### 第6条：消除过期的对象引用
 先看简单的示例：
 ```language
+import java.util.Arrays;
+import java.util.EmptyStackException;
+
+public class ObjectExpireStackMemoryLeak {
+	
+	private Object[] elements ;
+	
+	private final static int CAPACITY_INITIAL = 16 ;
+	
+	private static int size = 0 ;
+	
+	public ObjectExpireStackMemoryLeak(){
+		elements = new Object[CAPACITY_INITIAL];
+	}
+	
+	public Object pop(){
+		if(size ==0 ){
+			throw new EmptyStackException();
+		}
+		return elements[--size] ;
+	}
+	
+	public void push(Object obj){
+		ensureCapacity();
+		elements[size++] = obj ;
+	}
+	
+	
+	/**
+	 * ensure space for at least one more element,roughly doubling the capacity each time the array needs to grow
+	 * */
+	private void ensureCapacity(){
+		if(elements.length == size){
+			elements  = Arrays.copyOf(elements, 2*size + 1);
+		}
+		
+	}
+
+}
+```
+```language
+public class ObjectExpireStackMemoryLeakTest {
+
+	public static void main(String[] args) throws Exception {
+		Thread.currentThread().sleep(1000*50l);
+		ObjectExpireStackMemoryLeak stack = new ObjectExpireStackMemoryLeak();
+		System.out.println("start push.......");
+		for(int i=0 ; i<10000000; i++){
+			 stack.push(new Object());
+		}
+		System.out.println("end push.......");
+		Thread.currentThread().sleep(1000*10l);
+		System.out.println("start pop.......");
+		for(int i=0 ; i<10000000-1; i++){
+			 stack.pop();
+		}
+		System.out.println("end pop.......");
+		Thread.currentThread().sleep(1000*1000l);
+
+	}
+
+}
 
 ```
