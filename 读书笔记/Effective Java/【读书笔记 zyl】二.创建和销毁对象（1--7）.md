@@ -802,5 +802,5 @@ private void readObject(java.io.ObjectInputStream s)throws java.io.IOException, 
 hashCode：
 public native int hashCode();
 ```
-- 但是，对于每个对象引用一旦程序不
+- 但是，对于每个对象引用一旦程序不使用用它即将置为null也并非必要，因为会
 
