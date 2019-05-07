@@ -802,5 +802,5 @@ private void readObject(java.io.ObjectInputStream s)throws java.io.IOException, 
 hashCode：
 public native int hashCode();
 ```
-- 但是，对于每个对象引用一旦程序不使用用它即将置为null也并非必要，因为会导致程序代码混乱。清空对象引用应该是一种例外，而不是一种规范行为。消就去除过期引用最好的y
+- 但是，对于每个对象引用一旦程序不使用用它即将置为null也并非必要，因为会导致程序代码混乱。清空对象引用应该是一种例外，而不是一种规范行为。消除过期引用最好的方法是让包含该引用的变量结束其生命周期，只要在最
 
