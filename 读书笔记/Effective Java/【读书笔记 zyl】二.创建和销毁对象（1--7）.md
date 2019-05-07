@@ -709,8 +709,8 @@ public class ObjectExpireStackMemoryLeakTest {
 ```
 1. 调整1：ObjectExpireStackMemoryLeak 类两个pop方法，一个如原示例，另一个则是在pop之后置空数组下标指向为null。
 2. ObjectExpireStackMemoryLeakTest main方法新增while(true）循环强制system.gc()。
-- 运行结果1（）：
-1. 注释要点a处stack.push，分别调用ObjectExpireStackMemoryLeak 的两个pop方法，根据jstat -gcutil查看最终堆内存都被回收未如预期明显发生内存泄漏，即System，gc触发FullGC回收掉了。--- 初步分析时因while循环及之后main方法中的对象stack 再无使用，JVM基于某种优化策略直接将stack回收，间接导致stack的实例变量elements数组及其数组内元素被回收。即无论pop方法内部是否将弹出元素置为null，都会回收，效果一样。
+- 运行结果1（注释要点a处stack.push）：
+1. 分别调用ObjectExpireStackMemoryLeak 的两个pop方法，根据jstat -gcutil查看最终堆内存都被回收未如预期明显发生内存泄漏，即System，gc触发FullGC回收掉了。--- 初步分析时因while循环及之后main方法中的对象stack 再无使用，JVM基于某种优化策略直接将stack回收，间接导致stack的实例变量elements数组及其数组内元素被回收。即无论pop方法内部是否将弹出元素置为null，都会回收，效果一样。
 ```language
 //Correctly pop
 //while(true) + 注释掉push
@@ -747,5 +747,5 @@ public class ObjectExpireStackMemoryLeakTest {
   0.00   0.00   0.00   3.25   1.09     12    1.182     9    1.626    2.808
   ```
 为什么上面分析会认为FullGC后main方法的stack局部变量被提前回收（一般习惯性认为stack作为域为当前main方法，在未离开当前作用域而stack并没有置为null，是不应该会被回收的）？1、两个pop方法支持结果一致；2、根据gc日志可发现最终年轻代使用率为0，而仅老年代、持久代使用率极低。（这个在后面对比可明显发现）
-- 运行结果1：
+- 运行结果2（不注释要点a处stack.push，即）：
  
