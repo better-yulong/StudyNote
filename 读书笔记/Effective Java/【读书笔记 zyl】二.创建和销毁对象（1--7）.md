@@ -628,7 +628,7 @@ public class HashMap<K,V>
 ```
 - 至于上面ArrayList、HashMap将elementData、table 定义为transient 类型后面分析。通过ArrayList、HashMap代码可以发现与上面的例子何其相似，那其如如何解决上面例子pop方法后内存并未如预期回收的呢？
 - ArrayList中对应 elementData[--size] = null; // Let gc do its work ；而HashMap则对应 remove() 方法移除指针的引用（HashMap基于数组+链表方式实现），那该如何修改上面示例可解决内存泄漏呢？看懂了ArrayList源码应该就知道相当简单了（但实际验证还是尝试了多次修改才达到预期）
-- 说明：基于hotspoh jdk1.7, main方法中p
+- 说明：基于hotspoh jdk1.7, main方法中pop的元素个数是小于push元素的：
 ```language
 import java.util.Arrays;
 import java.util.EmptyStackException;
@@ -785,4 +785,4 @@ public class ObjectExpireStackMemoryLeakTest {
 ```
 - 可看出在while(true)循环中未调用stack.push()方法时最终FullGC后内存使用率远低于调用了stack.push()的情况，故认为未调用stack.push()时JVM内部优化分析stack后续未使用直接回收了整个对象。
 - 而在while(true)中调用stack.push()后，System.gc()触发FullGC时因后续stack.push()仍有引用，故不会回收stack对象，则使得stack对象的实例变量elements数组依然存在有效引用。
-  1. 若调用Correctly pop方法，即pop后将过期元素置为null，当System.gc()触发FullGC后会把elements数组过期元素实例对象回收，
+  1. 若调用Correctly pop方法，即pop后将过期元素置为null，当System.gc()触发FullGC后会把elements数组过期元素实例对象回收，因elements数组
