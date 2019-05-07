@@ -788,4 +788,4 @@ public class ObjectExpireStackMemoryLeakTest {
   1. 若调用Correctly pop方法，即pop后将过期元素置为null，当System.gc()触发FullGC后会把elements数组过期元素实例对象回收，因pop元素个数远小于push元素。最终回收后年轻代几乎不再使用（while循环会间歇性新增元素），老年代有40%被使用。
   2. 若调用 Memory Leak pop，并未在pop后将elements数组对应的元素引用置为null，使得System.gc()触发FullGC并不会回收这部分对象，所以最终回收后年轻代几乎不再使用（while循环会间歇性新增元素），老年代有85%被使用。
 - 引申分析（线程安全、transient修饰）
-  1. 参考之前阅读"深入理解Java虚拟机"的理解，大家会常用ArrayList与Vector、HashMap与HashTable来对比线程安全，其实关于是否线程安全，实际就是数据的变化与size的变化是否一致。怎么理解呢
+  1. 参考之前阅读"深入理解Java虚拟机"的理解，大家会常用ArrayList与Vector、HashMap与HashTable来对比线程安全，其实关于是否线程安全，实际就是数据的变化与size的变化是否一致。怎么理解呢？ArrayList、HashMap在多线程并发情况下，可能导致并发的操作实例数据数组，但在一
