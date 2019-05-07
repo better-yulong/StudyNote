@@ -793,7 +793,7 @@ public class ObjectExpireStackMemoryLeakTest {
     - 若类的实例需序列化，则必须实现serilizebal接口，否则会报java.io.NotSerializableException 异常。若某个类需自定义实现序列化、反序列化，则在该类中添加如下方法（writeObject、readObject），可参考ArrayList、HashMap源码。另外在单例模式为避免因序列化破坏单例，经常看到private Object readResolve()方法：
     - 那为何ArrayList的private transient Object[] elementData、及HashMap的transient Entry[] table、transient int size 属性会被transient 修饰呢？
 	1. ArrayList相对简单，writeObject源码发现其序列化时并非直接序列化ArrayList实例对象，而是单独实例化elementData的长度、elementData的有效数据（null），目的只是因为数组扩容类似于乘以2，可避免将过多无效的null元素序列化。
-	2. HashMap则因为 int hash = hash(key.hashCode());int i = indexFor(hash, table.length);即HashMap调用put方法时，元素在数组中的下标依赖key的hashCode方法
+	2. HashMap则因为 int hash = hash(key.hashCode());int i = indexFor(hash, table.length);即HashMap调用put方法时，元素在数组中的下标依赖key的hashCode()方法计算，而hashCode()可查看下面源码，其为native方法即说明
 
 ```language
 writeObject、readObject：
