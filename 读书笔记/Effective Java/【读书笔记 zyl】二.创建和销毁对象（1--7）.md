@@ -787,4 +787,4 @@ public class ObjectExpireStackMemoryLeakTest {
 - 而在while(true)中调用stack.push()后，System.gc()触发FullGC时因后续stack.push()仍有引用，故不会回收stack对象，则使得stack对象的实例变量elements数组依然存在有效引用。
   1. 若调用Correctly pop方法，即pop后将过期元素置为null，当System.gc()触发FullGC后会把elements数组过期元素实例对象回收，因pop元素个数远小于push元素。最终回收后年轻代几乎不再使用（while循环会间歇性新增元素），老年代有40%被使用。
   2. 若调用 Memory Leak pop，并未在pop后将elements数组对应的元素引用置为null，使得System.gc()触发FullGC并不会回收这部分对象，所以最终回收后年轻代几乎不再使用（while循环会间歇性新增元素），老年代有85%被使用。
-- 引申
+- 引申分析
