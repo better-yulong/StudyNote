@@ -746,6 +746,6 @@ public class ObjectExpireStackMemoryLeakTest {
   0.00   0.00   0.00   3.25   1.09     12    1.182     9    1.626    2.808
   0.00   0.00   0.00   3.25   1.09     12    1.182     9    1.626    2.808
   ```
-为什么上面分析会认为FullGC后main方法的stack局部变量被提前回收（一般习惯性认为stack作为域为当前main方法，在未离开当前作用域而stack并没有置为null，是不应该会被回收的）？1、两个po
+为什么上面分析会认为FullGC后main方法的stack局部变量被提前回收（一般习惯性认为stack作为域为当前main方法，在未离开当前作用域而stack并没有置为null，是不应该会被回收的）？1、两个pop方法支持结果一致；2、根据gc日志可发现最终年轻代使用率为
 
  
