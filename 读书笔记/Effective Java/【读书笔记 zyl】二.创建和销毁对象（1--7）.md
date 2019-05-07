@@ -796,4 +796,5 @@ private void writeObject(java.io.ObjectOutputStream s)throws java.io.IOException
 private void readObject(java.io.ObjectInputStream s)throws java.io.IOException, ClassNotFoundException
 ```
     2.那为何ArrayList的private transient Object[] elementData、及HashMap的transient Entry[] table、transient int size 属性会被transient 修饰呢？
-	ArrayList相对简单，writeObject源码发现其序列化时并非直接序列化ArrayList实例对象，而是单独实例化elementData的长度、elementData的有效数据（null），目的只是因为数组扩容类似于乘以2，可避免将过多无效的null元素序列化。
+	1. ArrayList相对简单，writeObject源码发现其序列化时并非直接序列化ArrayList实例对象，而是单独实例化elementData的长度、elementData的有效数据（null），目的只是因为数组扩容类似于乘以2，可避免将过多无效的null元素序列化。
+	2. 
