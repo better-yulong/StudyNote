@@ -706,6 +706,8 @@ public class ObjectExpireStackMemoryLeak {
 
 }
 ```
-1. 调整1：ObjectExpireStackMemoryLeak 类两个pop方法，一个如原示例，另一个则是在pop之后
+1. 调整1：ObjectExpireStackMemoryLeak 类两个pop方法，一个如原示例，另一个则是在pop之后置空数组下标指向为null。
+2. 
+
 
  
