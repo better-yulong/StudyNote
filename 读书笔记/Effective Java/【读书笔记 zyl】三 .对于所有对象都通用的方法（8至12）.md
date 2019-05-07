@@ -6,7 +6,7 @@ Object所有的非final方法(equals、hashCode、toString、clone和finalize)�
 2. 不关心类是否提供了"逻辑相等"(logical equality)的测试功能。
 3. 超类已经覆盖了equals，从超类继承过来的行为对子类也是合适的。如大多数Set实现都是AbstraceSet继承Set实现，List实现从AbstractList继承equals实现，Map实现从AbstractMap继承equals实现。另外发现个新知识点，Set、List、Map这些继承了equals方法，而其实实现并非与默认理解是根据当前对象hashcode来比较，这几个均是比较内部存储的对象是否相对。
 ```language
-
+    AbstractList代码示例：
     public boolean equals(Object o) {
         if (o == this)
             return true;
