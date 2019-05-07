@@ -849,3 +849,4 @@ public native int hashCode();
         }
     }
 ```
+1. 显示终结方法可充当
