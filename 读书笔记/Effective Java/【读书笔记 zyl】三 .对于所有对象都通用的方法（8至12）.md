@@ -24,5 +24,4 @@ Object所有的非final方法(equals、hashCode、toString、clone和finalize)�
         return !(e1.hasNext() || e2.hasNext());
     }
 ```
-
 4. 
