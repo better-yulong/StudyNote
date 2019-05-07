@@ -627,6 +627,59 @@ public class HashMap<K,V>
         }
 ```
 - 至于上面ArrayList、HashMap将elementData、table 定义为transient 类型后面分析。通过ArrayList、HashMap代码可以发现与上面的例子何其相似，那其如如何解决上面例子pop方法后内存并未如预期回收的呢？
-- ArrayList中对应 elementData[--size] = null; // Let gc do its work ；而HashMap则对应 remove() 方法移除指针的引用（HashMap基于数组+链表方式实现），那该如何修改上面示例可解决内存泄漏呢？看懂了ArrayList源码应该就知道相当简单了。但实际验证还是尝试了多次修改才达到预期。
+- ArrayList中对应 elementData[--size] = null; // Let gc do its work ；而HashMap则对应 remove() 方法移除指针的引用（HashMap基于数组+链表方式实现），那该如何修改上面示例可解决内存泄漏呢？看懂了ArrayList源码应该就知道相当简单了（但实际验证还是尝试了多次修改才达到预期）
+```language
+import java.util.Arrays;
+import java.util.EmptyStackException;
+
+public class ObjectExpireStackMemoryLeak {
+	
+	private Object[] elements ;
+	
+	private final static int CAPACITY_INITIAL = 16 ;
+	
+	private static int size = 0 ;
+	
+	public ObjectExpireStackMemoryLeak(){
+		elements = new Object[CAPACITY_INITIAL];
+	}
+	
+	//Correctly
+	public Object pop(){
+		if(size ==0 ){
+			throw new EmptyStackException();
+		}
+		Object oldValue = elements[size-1];
+		elements[--size] = null; // Let gc do its work
+    	return oldValue;
+	}
+	
+	/*// Memory Leak
+	 * public Object pop(){
+		if(size ==0 ){
+			throw new EmptyStackException();
+		}
+		return elements[--size] ;
+	}*/
+	
+	public void push(Object obj){
+		ensureCapacity();
+		elements[size++] = obj ;
+	}
+	
+	
+	/**
+	 * ensure space for at least one more element,roughly doubling the capacity each time the array needs to grow
+	 * */
+	private void ensureCapacity(){
+		if(elements.length == size){
+			elements  = Arrays.copyOf(elements, 2*size + 1);
+		}
+		
+	}
+
+}
+
+```
 
  
