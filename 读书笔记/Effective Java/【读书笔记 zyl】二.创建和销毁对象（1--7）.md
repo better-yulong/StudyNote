@@ -751,7 +751,7 @@ public class ObjectExpireStackMemoryLeakTest {
 - 运行结果2（不注释要点a处stack.push，即System.gc（）后仍向stack对象新增元素）：
   1. Correctly pop（即pop中返回元素后将elements数组中对应下标置为null）
   ```language
-	//Correctly pop
+//Correctly pop
 //while(true) + push
   S0     S1     E      O      P     YGC     YGCT    FGC    FGCT     GCT   
   0.00   0.00  11.65   0.00   1.08      0    0.000     0    0.000    0.000
