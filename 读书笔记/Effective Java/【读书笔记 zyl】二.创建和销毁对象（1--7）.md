@@ -746,7 +746,7 @@ public class ObjectExpireStackMemoryLeakTest {
   0.00   0.00   0.00   3.25   1.09     12    1.182     9    1.626    2.808
   0.00   0.00   0.00   3.25   1.09     12    1.182     9    1.626    2.808
   ```
-为什么上面分析会认为FullGCc后
+为什么上面分析会认为FullGC后main方法的stack局部变量被提前回收（一般习惯性认为只有在）
 
 
  
