@@ -49,5 +49,6 @@ public class EqualsTest {
 }
 
 ```
+4. 类是私有的或是包级私有的，可以确定它的equals方法永远不会被调用。
 
 4. 
