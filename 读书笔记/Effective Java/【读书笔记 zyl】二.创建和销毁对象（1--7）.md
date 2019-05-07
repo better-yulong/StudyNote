@@ -782,4 +782,4 @@ public class ObjectExpireStackMemoryLeakTest {
   0.00   0.00   0.84  84.74   1.09     12    1.327     9    5.423    6.750
   0.00   0.00   0.00  84.74   1.09     12    1.327     9    6.584    7.910
 ```
-- 可看出在while(true)循环中若
+- 可看出在while(true)循环中未调用stack.push()方法时最终FullGC后内存使用率真
