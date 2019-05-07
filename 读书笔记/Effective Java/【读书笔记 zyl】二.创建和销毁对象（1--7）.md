@@ -793,7 +793,7 @@ public class ObjectExpireStackMemoryLeakTest {
     - 若类的实例需序列化，则必须实现serilizebal接口，否则会报java.io.NotSerializableException 异常。若某个类需自定义实现序列化、反序列化，则在该类中添加如下方法（writeObject、readObject），可参考ArrayList、HashMap源码。另外在单例模式为避免因序列化破坏单例，经常看到private Object readResolve()方法：
     - 那为何ArrayList的private transient Object[] elementData、及HashMap的transient Entry[] table、transient int size 属性会被transient 修饰呢？
 	1. ArrayList相对简单，writeObject源码发现其序列化时并非直接序列化ArrayList实例对象，而是单独实例化elementData的长度、elementData的有效数据（null），目的只是因为数组扩容类似于乘以2，可避免将过多无效的null元素序列化。
-	2. HashMap则因为 int hash = hash(key.hashCode());int i = indexFor(hash, table.length);即HashMap调用put方法时，元素在数组中的下标依赖key的hashCode()方法计算，而hashCode()可查看下面源码，其为native方法即说明该方法的返回与平台相关，平台不同则可能返回hashcode值不同，这样即会导致跨平台时，根据同一key计算出来的index不同，那么序列化前和反序列化之后的map对象的数据的内存分布不同（类似于序列化前key1在JVM1通过hashcode计算出来在数组中的位置为3，而序列化后key1在JVM2通过hashcode计算出来在数组中的位置为6）。如果单纯的采用序列化方式即将整个map对象序列化然后原样反序列化，虽然确保了对象的数据内存布局一样，即key在JVM2反序列化时也被放到index 3位置，但问题来了？反序列化后因平台不同，当调用get（key1）时计算出来的index是5，会导致无法取到数据对象。
+	2. HashMap则因为 int hash = hash(key.hashCode());int i = indexFor(hash, table.length);即HashMap调用put方法时，元素在数组中的下标依赖key的hashCode()方法计算，而hashCode()可查看下面源码，其为native方法即说明该方法的返回与平台相关，平台不同则可能返回hashcode值不同，这样即会导致跨平台时，根据同一key计算出来的index不同，那么序列化前和反序列化之后的map对象的数据的内存分布不同（类似于序列化前key1在JVM1通过hashcode计算出来在数组中的位置为3，而序列化后key1在JVM2通过hashcode计算出来在数组中的位置为6）。如果单纯的采用序列化方式即将整个map对象序列化然后原样反序列化，虽然确保了对象的数据内存布局一样，即key在JVM2反序列化时也被放到index 3位置，但问题来了？反序列化后因平台不同，当调用get（key1）时计算出来的index是5，会导致无法取到数据对象。于是呼，
 
 ```language
 writeObject、readObject：
