@@ -710,7 +710,7 @@ public class ObjectExpireStackMemoryLeakTest {
 1. 调整1：ObjectExpireStackMemoryLeak 类两个pop方法，一个如原示例，另一个则是在pop之后置空数组下标指向为null。
 2. ObjectExpireStackMemoryLeakTest main方法新增while(true）循环强制system.gc()。
 - 运行结果1：
-  1. 注释要点a处stack.push，分别调用ObjectExpireStackMemoryLeak 的两个pop方法，根据jstat -gcutil查看最终堆内存都被回收未如预期明显发生内存泄漏。--- 初步分析时因while循环及之后main方法中的对象stack 再无使用，JVM基于某种优化策略直接将stack回收，间接导致stack的实例变量elements数组及其数组内元素被回收。即无论pop方法内部是否将弹出元素置为null，都会回收，效果一样。
+  1. 注释要点a处stack.push，分别调用ObjectExpireStackMemoryLeak 的两个pop方法，根据jstat -gcutil查看最终堆内存都被回收未如预期明显发生内存泄漏，即System，gc触发FullGC。--- 初步分析时因while循环及之后main方法中的对象stack 再无使用，JVM基于某种优化策略直接将stack回收，间接导致stack的实例变量elements数组及其数组内元素被回收。即无论pop方法内部是否将弹出元素置为null，都会回收，效果一样。
 
 
  
