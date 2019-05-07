@@ -795,4 +795,4 @@ public class ObjectExpireStackMemoryLeakTest {
 private void writeObject(java.io.ObjectOutputStream s)throws java.io.IOException
 private void readObject(java.io.ObjectInputStream s)throws java.io.IOException, ClassNotFoundException
 ```
-    2.那为何ArrayList的private transient Object[] elementData、及HashMap的transient Entry[] table、transient int size 属性会被transient 修饰呢？ArrayList相对简单，writeObject源码即
+    2.那为何ArrayList的private transient Object[] elementData、及HashMap的transient Entry[] table、transient int size 属性会被transient 修饰呢？ArrayList相对简单，writeObject源码发现其序列化时并非直接
