@@ -784,4 +784,4 @@ public class ObjectExpireStackMemoryLeakTest {
 ```
 - 可看出在while(true)循环中未调用stack.push()方法时最终FullGC后内存使用率远低于调用了stack.push()的情况，故认为未调用stack.push()时JVM内部优化分析stack后续未使用直接回收了整个对象。
 - 而在while(true)中调用stack.push()后，System.gc()触发FullGC时因后续stack.push()仍有引用，故不会回收stack对象，则使得stack对象的实例变量elements数组依然存在有效引用。
-  1. 若调用Correctly pop方法，即pop后将
+  1. 若调用Correctly pop方法，即pop后将过期元素置为null，当System.gc()触发FullGC后会
