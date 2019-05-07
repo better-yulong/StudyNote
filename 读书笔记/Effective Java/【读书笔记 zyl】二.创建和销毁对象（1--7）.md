@@ -700,7 +700,7 @@ public class ObjectExpireStackMemoryLeakTest {
 		while(true){
 			System.gc();
 			Thread.currentThread().sleep(1000*10l);
-			stack.push(new Object()); //要点a
+			//stack.push(new Object()); //要点a
 		}
 		
 	}
@@ -710,7 +710,7 @@ public class ObjectExpireStackMemoryLeakTest {
 1. 调整1：ObjectExpireStackMemoryLeak 类两个pop方法，一个如原示例，另一个则是在pop之后置空数组下标指向为null。
 2. ObjectExpireStackMemoryLeakTest main方法新增while(true）循环强制system.gc()。
 - 运行结果1：
-  1. 分别调用ObjectExpireStackMemoryLeak 的两个pop方法，根据jstat -gcutil查看最终堆内存都被回收未如预期明显发生内存泄漏。--- 初步分析时
+  1. 要点a处stack.push注释分别调用ObjectExpireStackMemoryLeak 的两个pop方法，根据jstat -gcutil查看最终堆内存都被回收未如预期明显发生内存泄漏。--- 初步分析时
 
 
  
