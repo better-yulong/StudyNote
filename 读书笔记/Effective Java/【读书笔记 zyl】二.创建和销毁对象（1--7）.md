@@ -766,5 +766,5 @@ public class ObjectExpireStackMemoryLeakTest {
   0.00   0.00   0.00  40.07   1.10     12    1.285     9    2.285    3.570
 
   ```
-
+2. Memory Leak pop（即pop中返回元素后新elements数组中对应下标置为null）
  
