@@ -748,7 +748,7 @@ public class ObjectExpireStackMemoryLeakTest {
   ```
 为什么上面分析会认为FullGC后main方法的stack局部变量被提前回收（一般习惯性认为stack作为域为当前main方法，在未离开当前作用域而stack并没有置为null，是不应该会被回收的）？1、两个pop方法支持结果一致；2、根据gc日志可发现最终年轻代使用率为0，而仅老年代、持久代使用率极低。（这个在后面对比可明显发现）
 - 运行结果2（不注释要点a处stack.push，即System.gc（）后仍向stack对象新增元素）：
-  1. Correctly pop（即pop中返回元素后新elements数组中对应下标置为null）
+  1. Correctly pop（即pop中返回元素后将elements数组中对应下标置为null）
   ```language
 	//Correctly pop
 //while(true) + push
@@ -766,5 +766,5 @@ public class ObjectExpireStackMemoryLeakTest {
   0.00   0.00   0.00  40.07   1.10     12    1.285     9    2.285    3.570
 
   ```
-2. Memory Leak pop（即pop中返回元素后新elements数组中对应下标置为null）
+2. Memory Leak pop（即pop中返回元素后不将elements数组中对应下标置为null）
  
