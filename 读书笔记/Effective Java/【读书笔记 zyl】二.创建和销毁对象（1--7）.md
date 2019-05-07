@@ -768,7 +768,7 @@ public class ObjectExpireStackMemoryLeakTest {
 
 ```
 2. Memory Leak pop（即pop中返回元素后不将elements数组中对应下标置为null）
- ```language
+```language
   // Memory Leak pop
   // while(true) + push
   S0     S1     E      O      P     YGC     YGCT    FGC    FGCT     GCT   
