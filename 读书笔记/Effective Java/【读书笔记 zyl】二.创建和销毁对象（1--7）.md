@@ -791,9 +791,9 @@ public class ObjectExpireStackMemoryLeakTest {
   1. 线程安全：参考之前阅读"深入理解Java虚拟机"的理解，大家会常用ArrayList与Vector、HashMap与HashTable来对比线程安全，其实关于是否线程安全，实际就是数据的变化与size的变化是否一致。怎么理解呢？ArrayList、HashMap在多线程并发情况下，可能导致并发操作使得实例数组、size值 更新交叉执行或覆盖执行导致实例数组实际有效数据个数与size并不相同，将导致部分get或者其他操作指向的元素已被其他线程无效。而ArrayList、HashMap呢？其实就是对方法加synchornized锁，保持对实例数组、size值的操作始终作为原子操作整体完成，强制串行化。
   2. ArrayList与HashMap的transient修饰（参考：https://my.oschina.net/u/1027043/blog/1627441）：
     1. 若类的实例需序列化，则必须实现serilizebal接口，否则会报java.io.NotSerializableException 异常。若某个类需自定义实现序列化、反序列化，则在该类中添加如下方法（writeObject、readObject），可参考ArrayList、HashMap源码。另外在单例模式为避免因序列化破坏单例，经常看到private Object readResolve()方法：
-```language
-private void writeObject(java.io.ObjectOutputStream s)throws java.io.IOException
-private void readObject(java.io.ObjectInputStream s)throws java.io.IOException, ClassNotFoundException
+```language 
+	private void writeObject(java.io.ObjectOutputStream s)throws java.io.IOException
+	private void readObject(java.io.ObjectInputStream s)throws java.io.IOException, ClassNotFoundException
 ```
     2.那为何ArrayList的private transient Object[] elementData、及HashMap的transient Entry[] table、transient int size 属性会被transient 修饰呢？
 	1. ArrayList相对简单，writeObject源码发现其序列化时并非直接序列化ArrayList实例对象，而是单独实例化elementData的长度、elementData的有效数据（null），目的只是因为数组扩容类似于乘以2，可避免将过多无效的null元素序列化。
