@@ -56,4 +56,4 @@ public boolean equals(Object o){
 	throw new AssertionError();// Method is nerver called
 }
 ```
-- 那么，什么时候应该覆盖Object.e
+- 那么，什么时候应该覆盖Object.equals呢？如果类具有自己特有的"逻辑相等"概念（
