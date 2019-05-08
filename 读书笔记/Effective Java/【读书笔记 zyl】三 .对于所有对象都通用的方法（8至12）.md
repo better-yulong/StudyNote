@@ -56,4 +56,5 @@ public boolean equals(Object o){
 	throw new AssertionError();// Method is nerver called
 }
 ```
-- 那么，什么时候应该覆盖Object.equals呢？如果类具有自己特有的"逻辑相等"概念（不等同于对象相等的概念），而且超类还没有覆盖equals以实现预期的行为（如上面说的AbstractList、AbstractMap、AbstractSet类），此时我们就需要覆盖equals方法，这通常属于"值类（value class）"的情形。值类仅仅是一个表示值的类，例如Integer或者Date（个人理解大部分集合类也是）。即程序员利用equals方法比较对象时，希望知道它们在逻辑上是否相等（内部存储的数据）而不是想知道它们是否指向同一对象
+- 那么，什么时候应该覆盖Object.equals呢？如果类具有自己特有的"逻辑相等"概念（不等同于对象相等的概念），而且超类还没有覆盖equals以实现预期的行为（如上面说的AbstractList、AbstractMap、AbstractSet类），此时我们就需要覆盖equals方法，这通常属于"值类（value class）"的情形。值类仅仅是一个表示值的类，例如Integer或者Date（个人理解大部分集合类也是）。即程序员利用equals方法比较对象时，希望知道它们在逻辑上是否相等（内部存储的数据）而不是想知道它们是否指向同一对象。
+- 
