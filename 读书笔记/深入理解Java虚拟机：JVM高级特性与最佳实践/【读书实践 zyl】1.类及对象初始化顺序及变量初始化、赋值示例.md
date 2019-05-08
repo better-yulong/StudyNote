@@ -93,7 +93,7 @@ public class ObjectStaticInitTest
 
 ```
 ```language
-javap -v -l -c -s ObjectStaticInitTest.clas
+javap -v -l -c -s ObjectStaticInitTest.class结果：
 Classfile /D:/work/workspace/work2/effective-demo/src/main/java/com/zyl/effective/demo/other/ObjectStaticInitTest.class
   Last modified 2019-5-8; size 1053 bytes
   MD5 checksum 44653e2b8f3cec8358b9c41c36bb91f3
