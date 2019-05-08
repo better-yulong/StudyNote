@@ -49,4 +49,8 @@ public class EqualsTest {
 }
 
 ```
-4. 当你确定类是私有的或包私有的,且可确定它的equals方法不被调用时，为防止意外调用产生，无疑是应该覆盖equals方法
+4. 当你确定类是私有的或包私有的,且可确定它的equals方法不被调用时，为防止意外调用产生风险，无疑是应该覆盖equals方法。
+```language
+@Override
+public boolean equals(Object o)
+```
