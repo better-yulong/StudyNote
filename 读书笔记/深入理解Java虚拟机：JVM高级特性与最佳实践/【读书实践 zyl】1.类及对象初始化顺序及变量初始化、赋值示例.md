@@ -58,3 +58,40 @@ a=110,b=0
 - 类的准备阶段需要做的是为类变量分配内存并设置默认值，因此类变量st为null、b为0；（需要注意的是如果类变量为final，编译时javac将会为value生成ConstantValue属性，在准备阶段虚拟机就会根据ConstantValue的设置将变量设置为指定的值，如果这里定义:static final int b = 112,那么在准备阶段b的值就是112,而不再是0了）
 - 类的初始化阶段要做的是执行类构造器（类构造器是编译器收集所有静态语句块和类变量的赋值语句按在源码中的顺序合并生成类构造器
 
+
+
+
+
+
+
+
+```language
+反编译class文件：
+
+public class ObjectStaticInitTest
+{
+  static ObjectStaticInitTest os = new ObjectStaticInitTest();
+  int a;
+  
+  static { System.out.println("1"); }
+  
+  ObjectStaticInitTest()
+  {
+    System.out.println("2");
+    
+    this.a = 110;System.out.println("3");System.out.println("a=" + this.a + ",b=" + b);
+  }
+  
+  public static void staticFunction() {
+    System.out.println("4");
+  }
+  
+  static int b = 112;
+  
+  public static void main(String[] paramArrayOfString) {}
+}
+
+```
+
+
+
