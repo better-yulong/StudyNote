@@ -49,4 +49,4 @@ public class EqualsTest {
 }
 
 ```
-4. 当你确定类是私有的或包私有的,可确定它的equals方法不被调用时，无需覆盖equals。
+4. 当你确定类是私有的或包私有的,且可确定它的equals方法不被调用。
