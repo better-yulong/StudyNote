@@ -30,3 +30,4 @@ public class ObjectStaticInitTest {
 	static int b = 112;
 }
 ```
+基于之前的理解，
