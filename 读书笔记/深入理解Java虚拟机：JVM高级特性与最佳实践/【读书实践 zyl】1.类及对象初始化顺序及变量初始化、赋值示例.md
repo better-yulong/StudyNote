@@ -30,4 +30,10 @@ public class ObjectStaticInitTest {
 	static int b = 112;
 }
 ```
-基于之前的理解，
+基于之前的理解，分析运行结果应该是：
+```language
+1
+2
+3
+a=
+```
