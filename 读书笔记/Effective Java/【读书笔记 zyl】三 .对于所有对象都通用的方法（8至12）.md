@@ -56,3 +56,4 @@ public boolean equals(Object o){
 	throw new AssertionError();// Method is nerver called
 }
 ```
+- 那么，什么时候应该覆盖Object.e
