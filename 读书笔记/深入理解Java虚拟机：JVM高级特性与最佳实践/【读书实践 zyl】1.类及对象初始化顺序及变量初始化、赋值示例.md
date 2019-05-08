@@ -92,6 +92,213 @@ public class ObjectStaticInitTest
 }
 
 ```
+```language
+javap -v -l -c -s ObjectStaticInitTest.clas
+Classfile /D:/work/workspace/work2/effective-demo/src/main/java/com/zyl/effective/demo/other/ObjectStaticInitTest.class
+  Last modified 2019-5-8; size 1053 bytes
+  MD5 checksum 44653e2b8f3cec8358b9c41c36bb91f3
+  Compiled from "ObjectStaticInitTest.java"
+public class com.zyl.effective.demo.other.ObjectStaticInitTest
+  SourceFile: "ObjectStaticInitTest.java"
+  minor version: 0
+  major version: 51
+  flags: ACC_PUBLIC, ACC_SUPER
+
+Constant pool:
+   #1 = Methodref          #17.#37        //  com/zyl/effective/demo/other/ObjectStaticInitTest.staticFunction:()V
+   #2 = Methodref          #21.#38        //  java/lang/Object."<init>":()V
+   #3 = Fieldref           #39.#40        //  java/lang/System.out:Ljava/io/PrintStream;
+   #4 = String             #41            //  2
+   #5 = Methodref          #42.#43        //  java/io/PrintStream.println:(Ljava/lang/String;)V
+   #6 = Fieldref           #17.#44        //  com/zyl/effective/demo/other/ObjectStaticInitTest.a:I
+   #7 = String             #45            //  3
+   #8 = Class              #46            //  java/lang/StringBuilder
+   #9 = Methodref          #8.#38         //  java/lang/StringBuilder."<init>":()V
+  #10 = String             #47            //  a=
+  #11 = Methodref          #8.#48         //  java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+  #12 = Methodref          #8.#49         //  java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+  #13 = String             #50            //  ,b=
+  #14 = Fieldref           #17.#51        //  com/zyl/effective/demo/other/ObjectStaticInitTest.b:I
+  #15 = Methodref          #8.#52         //  java/lang/StringBuilder.toString:()Ljava/lang/String;
+  #16 = String             #53            //  4
+  #17 = Class              #54            //  com/zyl/effective/demo/other/ObjectStaticInitTest
+  #18 = Methodref          #17.#38        //  com/zyl/effective/demo/other/ObjectStaticInitTest."<init>":()V
+  #19 = Fieldref           #17.#55        //  com/zyl/effective/demo/other/ObjectStaticInitTest.os:Lcom/zyl/effective/demo/other/ObjectStaticInitTest;
+  #20 = String             #56            //  1
+  #21 = Class              #57            //  java/lang/Object
+  #22 = Utf8               os
+  #23 = Utf8               Lcom/zyl/effective/demo/other/ObjectStaticInitTest;
+  #24 = Utf8               a
+  #25 = Utf8               I
+  #26 = Utf8               b
+  #27 = Utf8               main
+  #28 = Utf8               ([Ljava/lang/String;)V
+  #29 = Utf8               Code
+  #30 = Utf8               LineNumberTable
+  #31 = Utf8               <init>
+  #32 = Utf8               ()V
+  #33 = Utf8               staticFunction
+  #34 = Utf8               <clinit>
+  #35 = Utf8               SourceFile
+  #36 = Utf8               ObjectStaticInitTest.java
+  #37 = NameAndType        #33:#32        //  staticFunction:()V
+  #38 = NameAndType        #31:#32        //  "<init>":()V
+  #39 = Class              #58            //  java/lang/System
+  #40 = NameAndType        #59:#60        //  out:Ljava/io/PrintStream;
+  #41 = Utf8               2
+  #42 = Class              #61            //  java/io/PrintStream
+  #43 = NameAndType        #62:#63        //  println:(Ljava/lang/String;)V
+  #44 = NameAndType        #24:#25        //  a:I
+  #45 = Utf8               3
+  #46 = Utf8               java/lang/StringBuilder
+  #47 = Utf8               a=
+  #48 = NameAndType        #64:#65        //  append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+  #49 = NameAndType        #64:#66        //  append:(I)Ljava/lang/StringBuilder;
+  #50 = Utf8               ,b=
+  #51 = NameAndType        #26:#25        //  b:I
+  #52 = NameAndType        #67:#68        //  toString:()Ljava/lang/String;
+  #53 = Utf8               4
+  #54 = Utf8               com/zyl/effective/demo/other/ObjectStaticInitTest
+  #55 = NameAndType        #22:#23        //  os:Lcom/zyl/effective/demo/other/ObjectStaticInitTest;
+  #56 = Utf8               1
+  #57 = Utf8               java/lang/Object
+  #58 = Utf8               java/lang/System
+  #59 = Utf8               out
+  #60 = Utf8               Ljava/io/PrintStream;
+  #61 = Utf8               java/io/PrintStream
+  #62 = Utf8               println
+  #63 = Utf8               (Ljava/lang/String;)V
+  #64 = Utf8               append
+  #65 = Utf8               (Ljava/lang/String;)Ljava/lang/StringBuilder;
+  #66 = Utf8               (I)Ljava/lang/StringBuilder;
+  #67 = Utf8               toString
+  #68 = Utf8               ()Ljava/lang/String;
+{
+  static com.zyl.effective.demo.other.ObjectStaticInitTest os;
+    Signature: Lcom/zyl/effective/demo/other/ObjectStaticInitTest;
+    flags: ACC_STATIC
+
+
+
+  int a;
+    Signature: I
+    flags: 
+
+
+
+  static int b;
+    Signature: I
+    flags: ACC_STATIC
+
+
+
+  public static void main(java.lang.String[]);
+    Signature: ([Ljava/lang/String;)V
+    flags: ACC_PUBLIC, ACC_STATIC
+
+    LineNumberTable:
+      line 6: 0
+      line 7: 3
+    Code:
+      stack=0, locals=1, args_size=1
+         0: invokestatic  #1                  // Method staticFunction:()V
+         3: return        
+      LineNumberTable:
+        line 6: 0
+        line 7: 3
+
+  com.zyl.effective.demo.other.ObjectStaticInitTest();
+    Signature: ()V
+    flags: 
+
+    LineNumberTable:
+      line 19: 0
+      line 16: 4
+      line 29: 12
+      line 20: 18
+      line 21: 26
+      line 22: 65
+    Code:
+      stack=3, locals=1, args_size=1
+         0: aload_0       
+         1: invokespecial #2                  // Method java/lang/Object."<init>":()V
+         4: getstatic     #3                  // Field java/lang/System.out:Ljava/io/PrintStream;
+         7: ldc           #4                  // String 2
+         9: invokevirtual #5                  // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+        12: aload_0       
+        13: bipush        110
+        15: putfield      #6                  // Field a:I
+        18: getstatic     #3                  // Field java/lang/System.out:Ljava/io/PrintStream;
+        21: ldc           #7                  // String 3
+        23: invokevirtual #5                  // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+        26: getstatic     #3                  // Field java/lang/System.out:Ljava/io/PrintStream;
+        29: new           #8                  // class java/lang/StringBuilder
+        32: dup           
+        33: invokespecial #9                  // Method java/lang/StringBuilder."<init>":()V
+        36: ldc           #10                 // String a=
+        38: invokevirtual #11                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        41: aload_0       
+        42: getfield      #6                  // Field a:I
+        45: invokevirtual #12                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+        48: ldc           #13                 // String ,b=
+        50: invokevirtual #11                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        53: getstatic     #14                 // Field b:I
+        56: invokevirtual #12                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+        59: invokevirtual #15                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+        62: invokevirtual #5                  // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+        65: return        
+      LineNumberTable:
+        line 19: 0
+        line 16: 4
+        line 29: 12
+        line 20: 18
+        line 21: 26
+        line 22: 65
+
+  public static void staticFunction();
+    Signature: ()V
+    flags: ACC_PUBLIC, ACC_STATIC
+
+    LineNumberTable:
+      line 25: 0
+      line 26: 8
+    Code:
+      stack=2, locals=0, args_size=0
+         0: getstatic     #3                  // Field java/lang/System.out:Ljava/io/PrintStream;
+         3: ldc           #16                 // String 4
+         5: invokevirtual #5                  // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+         8: return        
+      LineNumberTable:
+        line 25: 0
+        line 26: 8
+
+  static {};
+    Signature: ()V
+    flags: ACC_STATIC
+
+    LineNumberTable:
+      line 9: 0
+      line 12: 10
+      line 30: 18
+    Code:
+      stack=2, locals=0, args_size=0
+         0: new           #17                 // class com/zyl/effective/demo/other/ObjectStaticInitTest
+         3: dup           
+         4: invokespecial #18                 // Method "<init>":()V
+         7: putstatic     #19                 // Field os:Lcom/zyl/effective/demo/other/ObjectStaticInitTest;
+        10: getstatic     #3                  // Field java/lang/System.out:Ljava/io/PrintStream;
+        13: ldc           #20                 // String 1
+        15: invokevirtual #5                  // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+        18: bipush        112
+        20: putstatic     #14                 // Field b:I
+        23: return        
+      LineNumberTable:
+        line 9: 0
+        line 12: 10
+        line 30: 18
+}
+
+```
 
 
 
