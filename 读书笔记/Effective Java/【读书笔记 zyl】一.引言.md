@@ -5,5 +5,5 @@
 5. 第三版在线阅读：
   - https://jiapengcai.gitbooks.io/effective-java/content/
   - https://sjsdfg.github.io/effective-java-3rd-chinese/#/README
-6. 首次阅读基于第二版本，后续重读时基于第三
+6. 首次阅读基于第二版本，后续重读时基于第三版本来完善，以便比对差异加深理解。
 
