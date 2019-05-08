@@ -35,5 +35,10 @@ public class ObjectStaticInitTest {
 1
 2
 3
-a=
+a=0,b=112
+4
+```
+然而实际呢？
+```language
+
 ```
