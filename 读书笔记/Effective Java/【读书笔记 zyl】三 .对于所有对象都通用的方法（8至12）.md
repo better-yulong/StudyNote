@@ -75,7 +75,9 @@ public boolean equals(Object o){
 #### 最后的告诫
 - 覆盖equals方法时总要覆盖hashCode（见第9条）
 - 不要企图让equals方法过于智能
-- 不要将equals声明中的Object对象替换为其他的类型，如：
+- 不要将equals声明中的Object对象替换为其他的类型，因为equals方法默认参数应该是如：
 ```language
-	public boolean equals（MyClass o)
+	public boolean equals（MyClass o){
+		...
+	}
 ```
