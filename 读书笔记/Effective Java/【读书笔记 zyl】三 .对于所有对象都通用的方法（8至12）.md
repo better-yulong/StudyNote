@@ -61,4 +61,4 @@ public boolean equals(Object o){
 #### 覆盖equals方法时必须遵守它的通用约定
 - equals方法实现了等价关系(equivalence relation):
 1. 自反性(reflexive):对于任何非null的引用值x，x.equals（x）必须返回为true
-2. 对称性(symmetric)：对于 
+2. 对称性(symmetric)：对于任何非null的引用值x和y，s.equ
