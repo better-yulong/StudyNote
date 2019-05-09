@@ -60,4 +60,4 @@ public boolean equals(Object o){
 - 有一种"值类"不需要覆盖equals方法，即用实例受控确保"每个值至多只存在一个对象"的类，枚举类型即属于这种类。对于这种类而言，逻辑相同与对象等同是一回事，因此Object的equals方法等同于逻辑意义上的equals方法。怎么理解呢？可以理解为安全的单例场景（注意是完全，即绝对不会发生单例破坏），通过静态工厂方法或枚举返回的始终是同一个对象，即无需担忧同一个类会存在多个实例对象，所以无需覆盖equals方法。
 #### 覆盖equals方法时必须遵守它的通用约定
 - equals方法实现了等价关系(equivalence relation):
-1. 自反性(reflex)
+1. 自反性(reflexive):对于任何非null的引用值x，x.equals（x）必须返回为true
