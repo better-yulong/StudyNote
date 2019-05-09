@@ -63,4 +63,4 @@ public boolean equals(Object o){
 1. 自反性(reflexive):对于任何非null的引用值x，x.equals（x）必须返回为true
 2. 对称性(symmetric)：对于任何非null的引用值x和y，x.equals(y)与y.equals(x）的结果必须始终保持一致，同时为true或同时为false。
 3. 传递性(transitive):对于任何非null的引用值x、y和z，如果x.equals(y)为true且y.equals(z)也为true,那么x.equals(z)也必须为true。
-4. 一致性(consistent):对于任何非null的引用值x和y，只要equals的比较操作在对象中所用的信息没有被修改，多次调用x.equals()
+4. 一致性(consistent):对于任何非null的引用值x和y，只要equals的比较操作在对象中所用的信息没有被修改，多次调用x.equals(y)结果必须返回一致，即多次全部为true或者多次全部为false.
