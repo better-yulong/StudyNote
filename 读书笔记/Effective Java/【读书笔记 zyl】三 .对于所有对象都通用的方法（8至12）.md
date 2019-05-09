@@ -65,4 +65,4 @@ public boolean equals(Object o){
 3. 传递性(transitive):对于任何非null的引用值x、y和z，如果x.equals(y)为true且y.equals(z)也为true,那么x.equals(z)也必须为true。
 4. 一致性(consistent):对于任何非null的引用值x和y，只要equals的比较操作在对象中所用的信息没有被修改，多次调用x.equals(y)结果必须返回一致，即多次全部为true或者多次全部为false.
 5. 对于任何非null的引用x，x.equals(null)必须返回false。
-- 涉及继承时，若子类增加值组件，父子类的实例或同一父类不同的实例，若在使用equals方法可能会违背里式替换原则，则可能会违背如上通用约定。而为解决该问题，则可考虑建议：复合优先于继承。但实际中确实有部分类违反如对称性，例如java.sql.Timestamp对java.util.Date进行了扩展，并增加了nanoseconds域，Timestamp的equals实际违反了对称性，如果Timestamp和Date对象被用于同一集合，或者以其他方式被混合，则可能引起不正确的行为。Timestamp为在有一个免责声明，
+- 涉及继承时，若子类增加值组件，父子类的实例或同一父类不同的实例，若在使用equals方法可能会违背里式替换原则，则可能会违背如上通用约定。而为解决该问题，则可考虑建议：复合优先于继承。但实际中确实有部分类违反如对称性，例如java.sql.Timestamp对java.util.Date进行了扩展，并增加了nanoseconds域，Timestamp的equals实际违反了对称性，如果Timestamp和Date对象被用于同一集合，或者以其他方式被混合，则可能引起不正确的行为。Timestamp为在有一个免责声明，告诫不要混合使用，但实际此种实现并不推荐。
