@@ -62,4 +62,4 @@ public boolean equals(Object o){
 - equals方法实现了等价关系(equivalence relation):
 1. 自反性(reflexive):对于任何非null的引用值x，x.equals（x）必须返回为true
 2. 对称性(symmetric)：对于任何非null的引用值x和y，x.equals(y)与y.equals(x）的结果必须始终保持一致，同时为true或同时为false。
-3. 
+3. 传递性(transitive):对于任何非null的引用值x、y、
