@@ -85,7 +85,7 @@ public boolean equals(Object o){
 
 ### 第8条：覆盖equals时总要覆盖hashCode
 - 原则：每个覆盖了equals方法的类中也必覆盖hashCode方法。如若违反该规则，会使得该类无法结合所有基于散列的集合一起正常运行，如HashMap、HashSet和Hashtable.
-- 同样hashCode覆盖也需新遵循规范：
+- 同样hashCode覆盖也需新遵循规范（第二版翻译有些晦涩，此处采用第三）：
   1. 应用程序执行期间，只要对象的equals方法的比较操作所用到的信息没有被修改，那么对同一对象调用多次hashCode方法都必须始终如一返回同一个整数；但在同一程序的多次执行过程中，每次执行所返回整数可以不一致。
   2. 如果两个对象根据 equals(Object) 方法比较是相等的，那么在两个对象上调用 hashCode 就必须产生的结果是相同的整数。
   3. 如果两个对象根据 equals(Object) 方法比较并不相等，则不要求在每个对象上调用 hashCode 都必须产生不同的结果。 但是，程序员应该意识到，为不相等的对象生成不同的结果可能会提高散列表（hash tables）的性能。
