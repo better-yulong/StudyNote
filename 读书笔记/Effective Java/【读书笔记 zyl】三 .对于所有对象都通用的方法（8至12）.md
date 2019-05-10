@@ -128,4 +128,7 @@ public boolean equals(Object o){
         }
         return h;
     }
+
+    /** Cache the hash code for the string */
+    private int hash; // Default to 0
 ```
