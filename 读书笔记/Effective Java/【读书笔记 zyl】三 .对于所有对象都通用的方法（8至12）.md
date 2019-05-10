@@ -91,3 +91,28 @@ public boolean equals(Object o){
   3. 如果两个对象根据 equals(Object) 方法比较并不相等，则不要求在每个对象上调用 hashCode 都必须产生不同的结果。 但是，程序员应该意识到，为不相等的对象生成不同的结果可能会提高散列表（hash tables）的性能。
  
 
+```language
+    public boolean equals(Object anObject) {
+        if (this == anObject) {
+            return true;
+        }
+        if (anObject instanceof String) {
+            String anotherString = (String)anObject;
+            int n = count;
+            if (n == anotherString.count) {
+                char v1[] = value;
+                char v2[] = anotherString.value;
+                int i = offset;
+                int j = anotherString.offset;
+                while (n-- != 0) {
+                    if (v1[i++] != v2[j++])
+                        return false;
+                }
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+```
