@@ -84,4 +84,4 @@ public boolean equals(Object o){
 
 
 ### 第8条：覆盖equals时总要覆盖hashCode
-每个覆盖了equals方法的类中也必须
+- 原则：每个覆盖了equals方法的类中也必覆盖hashCode方法。- 
