@@ -140,4 +140,4 @@ public boolean equals(Object o){
 	System.out.println(a.hashCode());//49
 	System.out.println(a.hashCode()==b.hashCode());//true
 ```
-- 对于
+- 对于hashCode散列码除了遵循如下规则，也也需考虑
