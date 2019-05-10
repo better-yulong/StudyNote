@@ -140,4 +140,4 @@ public boolean equals(Object o){
 	System.out.println(a.hashCode());//49
 	System.out.println(a.hashCode()==b.hashCode());//true
 ```
-
+- 对于
