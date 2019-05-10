@@ -84,4 +84,5 @@ public boolean equals(Object o){
 
 
 ### 第8条：覆盖equals时总要覆盖hashCode
-- 原则：每个覆盖了equals方法的类中也必覆盖hashCode方法。如若违反该规则，会使得该类无法结合所有基于散列的集合一起正常运行，如HashMap、HashSet和Hashtable 
+- 原则：每个覆盖了equals方法的类中也必覆盖hashCode方法。如若违反该规则，会使得该类无法结合所有基于散列的集合一起正常运行，如HashMap、HashSet和Hashtable.
+- 
