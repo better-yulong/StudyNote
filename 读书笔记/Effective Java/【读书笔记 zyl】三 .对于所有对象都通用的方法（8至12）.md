@@ -89,7 +89,7 @@ public boolean equals(Object o){
   1. 应用程序执行期间，只要对象的equals方法的比较操作所用到的信息没有被修改，那么对同一对象调用多次hashCode方法都必须始终如一返回同一个整数；但在同一程序的多次执行过程中，每次执行所返回整数可以不一致。
   2. 如果两个对象根据 equals(Object) 方法比较是相等的，那么在两个对象上调用 hashCode 就必须产生的结果是相同的整数。
   3. 如果两个对象根据 equals(Object) 方法比较并不相等，则不要求在每个对象上调用 hashCode 都必须产生不同的结果。 但是，程序员应该意识到，为不相等的对象生成不同的结果可能会提高散列表（hash tables）的性能。
- - 如若没有覆盖hashCode方法而违反的关键约定是第二条：相等的对象必须具有相等的散列码(hashCode)。根据类的equals方法，两个截然不同的实例在逻辑上有可能是相等的；但是根据Object的
+ - 如若没有覆盖hashCode方法而违反的关键约定是第二条：相等的对象必须具有相等的散列码(hashCode)。根据类的equals方法，两个截然不同的实例在逻辑上有可能是相等的；但是根据Object类的hashCode方法，它们仅仅是两个没有任何共同之处的对象。
 
 ```language
     public boolean equals(Object anObject) {
