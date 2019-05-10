@@ -173,4 +173,4 @@ Cloneable接口的目的是作为对象的一个mixin接口（mixin interface，
     }
 
 ```
-2、clone方法的使用需注意
+2、clone方法的使用需注意几点：a、避免在构造过程中调用对象方
