@@ -178,4 +178,4 @@ Cloneable接口的目的是作为对象的一个mixin接口（mixin interface，
 - 总的来说，强烈不建议通过clone方法来实现对象拷贝。
 
 ### 第12条：考虑实现Comparable接口
-与之前的方法不同，compareTo方法并没有声明在Object，
+与之前的方法不同，compareTo方法并没有声明在Object，而Comparable接口唯一的方法。
