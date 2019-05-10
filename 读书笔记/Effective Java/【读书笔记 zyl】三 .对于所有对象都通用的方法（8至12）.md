@@ -149,4 +149,4 @@ public boolean equals(Object o){
 
 ### 第11条：谨慎覆盖clone
 Cloneable接口的目的是作为对象的一个mixin接口（mixin interface，后续会讲到），表明这样的对象允许克隆(clone)。但实际其并未达到该目的，其主要缺陷在缺少一个clone方法，Object的clone方法是受保护的（protected native Object clone()），如果不借助于反射就不仅仅因为实现了Cloneable就可调用clone方法。即使反射也可能会失败，因为无法保证该对象一定具有可访问的clone方法。虽然如此，但该方法仍一直被保留，所以也需值得进一步了解，以便知道如何实现一个行为良好的clone方法，并知道何时适合这样做，是否有可替换做法。
-- Cloneable接口并没有包含任何方法，那么它的作用是什么呢？它决定了Object受保护的clone方法实现的行为：如果一个类实现了Cloneable，Object的clone方法就返回该对象的逐域拷贝，否则抛出CloneSupportedException
+- Cloneable接口并没有包含任何方法，那么它的作用是什么呢？它决定了Object受保护的clone方法实现的行为：如果一个类实现了Cloneable，Object的clone方法就返回该对象的逐域拷贝，否则抛出CloneSupportedException，这是接口的一种极端非典型的用法
