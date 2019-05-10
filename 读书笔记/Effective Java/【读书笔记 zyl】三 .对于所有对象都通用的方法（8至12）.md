@@ -90,7 +90,7 @@ public boolean equals(Object o){
   2. 如果两个对象根据 equals(Object) 方法比较是相等的，那么在两个对象上调用 hashCode 就必须产生的结果是相同的整数。
   3. 如果两个对象根据 equals(Object) 方法比较并不相等，则不要求在每个对象上调用 hashCode 都必须产生不同的结果。 但是，程序员应该意识到，为不相等的对象生成不同的结果可能会提高散列表（hash tables）的性能。
  - 如若没有覆盖hashCode方法而违反的关键约定是第二条：相等的对象必须具有相等的散列码(hashCode)。根据类的equals方法，两个截然不同的实例在逻辑上有可能是相等的；但是根据Object类的hashCode方法，它们仅仅是两个没有任何共同之处的对象。
-- 基于如上理角提到的逻辑相等，个人也想到==是否可认为物理相等。那==对于引用类型的比较一定是只有指向同一个
+- 基于如上理角提到的逻辑相等，个人也想到==是否可认为物理相等。那==对于引用类型的比较一定是只有指向同一个对象才会返回true；而
 ```language
     public boolean equals(Object anObject) {
         if (this == anObject) {
