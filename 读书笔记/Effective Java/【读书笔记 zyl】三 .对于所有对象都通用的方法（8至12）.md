@@ -148,4 +148,4 @@ public boolean equals(Object o){
 - 遵守toString的约定并不像遵守equals和hashCode的约定那么重要，但是 提供好的toString实现可以使类用起来更加舒适。实际应用中，toString方法应该返回对象中包含的所有值得关注的信息，如若对象太大包含信息难以简单表达可考虑返回摘要信息。同时也存在问题，即可能toString的格式可能被用来作为解析使用，而后续格式的变化则可能破坏原有的代码和数据。故无论是否指定指定格式，均应该在文档中明确说明。
 
 ### 第11条：谨慎覆盖clone
-Cloneable接口的目的是作为对象的一个mixin接口（mixin interface，后续会讲到），表明这样的对象允许克隆(clone)。但实际其并未达到该目的，其主要缺陷在缺少一个clone方法，Object的clone方法是受保护的。
+Cloneable接口的目的是作为对象的一个mixin接口（mixin interface，后续会讲到），表明这样的对象允许克隆(clone)。但实际其并未达到该目的，其主要缺陷在缺少一个clone方法，Object的clone方法是受保护的（）。
