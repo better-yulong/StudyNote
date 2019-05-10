@@ -81,3 +81,6 @@ public boolean equals(Object o){
 		...
 	}
 ```
+
+
+### 第8条：覆盖equals时总要覆盖
