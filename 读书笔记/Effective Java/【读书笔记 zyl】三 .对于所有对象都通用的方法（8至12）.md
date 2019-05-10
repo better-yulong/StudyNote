@@ -186,5 +186,5 @@ public interface Comparable<T> {
 ```
 而对于实现了Comparable接口的对象数组进行排序则很简单： 
 ```language
-Arrays.sort(a);
+	Arrays.sort(a);
 ```
