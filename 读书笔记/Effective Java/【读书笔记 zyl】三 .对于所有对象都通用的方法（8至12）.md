@@ -132,3 +132,10 @@ public boolean equals(Object o){
     /** Cache the hash code for the string */
     private int hash; // Default to 0
 ```
+```language
+	String a = new String("1");
+	String b = new String("1");
+	System.out.println(a==b); //false
+	System.out.println(a.equals(b));//true
+```
+
