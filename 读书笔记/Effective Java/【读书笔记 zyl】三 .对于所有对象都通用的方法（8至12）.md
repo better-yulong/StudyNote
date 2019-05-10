@@ -144,4 +144,4 @@ public boolean equals(Object o){
 - 不要试图从散列码计算中排除一个对象的关键部分来提高性能。虽然可能导致散列码计算更快，但可能导致散列表缓慢不利于查找。
 
 ### 第10条：始终要覆盖toString
-虽然java.lang.Object 提供了toString方法的一个实现，但它返回的字符串
+虽然java.lang.Object 提供了toString方法的一个实现，但它返回的字符串通常并不是类的用户所期望看到的，
