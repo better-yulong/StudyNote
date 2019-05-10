@@ -140,4 +140,4 @@ public boolean equals(Object o){
 	System.out.println(a.hashCode());//49
 	System.out.println(a.hashCode()==b.hashCode());//true
 ```
-- 对于hashCode散列码除了遵循如上规则，但也需考虑避免hashCode避免每个对象具有相同的散列码。如HashMap中，若所有对象散列码均相同，则所有对象被映射到同一散列桶中，使散列
+- 对于hashCode散列码除了遵循如上规则，但也需考虑避免hashCode避免每个对象具有相同的散列码。如HashMap中，若所有对象散列码均相同，则所有对象被映射到同一散列桶中使散列退化为链表，这样会导致
