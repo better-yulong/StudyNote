@@ -174,4 +174,4 @@ Cloneable接口的目的是作为对象的一个mixin接口（mixin interface，
 
 ```
 2、clone方法的使用需注意几点：a、避免在构造过程中调用新对象的非final方法，以避免新对象与原对象不一致；b、clone方法代价有可能比较高，需谨慎使用；3、Ojbect类的clone方法默认非线程安全，若希望线程安全的使用，需考虑编写同步的clone方法不调用super.clone（）
-- 简而言之，所有实现了Cloneable接口的类都应该用一个公有的方法覆盖clone。
+- 简而言之，所有实现了Cloneable接口的类都应该用一个公有的方法覆盖clone。但实际并不推荐去
