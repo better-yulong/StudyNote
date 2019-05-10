@@ -135,7 +135,9 @@ public boolean equals(Object o){
 ```language
 	String a = new String("1");
 	String b = new String("1");
-	System.out.println(a==b); //false
-	System.out.println(a.equals(b));//true
+	System.out.println(a==b);
+	System.out.println(a.equals(b));
+	System.out.println(a.hashCode());
+	System.out.println(a.hashCode()==b.hashCode());
 ```
 
