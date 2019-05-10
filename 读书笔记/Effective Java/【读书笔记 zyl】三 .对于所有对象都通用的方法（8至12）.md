@@ -145,4 +145,4 @@ public boolean equals(Object o){
 
 ### 第10条：始终要覆盖toString
 - 虽然java.lang.Object 提供了toString方法的一个实现，但它返回的字符串通常并不是类的用户所期望看到的:类名@散列码16进制。而toString的通用约定指出：被返回的字符串应该是一个简洁的，但信息丰富，并且易于阅读的表达形式，故建议所有的子类都覆盖这个方法。
-- 遵守toString的约定并不像遵守equals和hashCode的约定那么重要，但是 提供好的toString实现可以使类用起来更加舒适。实际
+- 遵守toString的约定并不像遵守equals和hashCode的约定那么重要，但是 提供好的toString实现可以使类用起来更加舒适。实际应用中，toString方法应该返回对象中包含的所有值得关注的信息。
