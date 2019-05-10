@@ -183,5 +183,5 @@ Cloneable接口的目的是作为对象的一个mixin接口（mixin interface，
 public interface Comparable<T> {
     public int compareTo(T o);
 }
-
 ```
+而对于实现了Comparable接口的对象数组进行排序则很简单：
