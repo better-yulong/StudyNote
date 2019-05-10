@@ -184,7 +184,12 @@ public interface Comparable<T> {
     public int compareTo(T o);
 }
 ```
-而对于实现了Comparable接口的对象数组进行排序则很简单： 
+而对于实现了Comparable接口的对象数组进行排序则很简单： Arrays.sort(a); Arrays类的sort方法源码：
 ```language
-	Arrays.sort(a);
+	 public static void sort(Object[] a) {
+        if (LegacyMergeSort.userRequested)
+            legacyMergeSort(a);
+        else
+            ComparableTimSort.sort(a);
+    }
 ```
