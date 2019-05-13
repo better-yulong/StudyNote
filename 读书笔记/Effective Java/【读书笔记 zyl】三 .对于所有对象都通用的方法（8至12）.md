@@ -219,5 +219,4 @@ public class WordList {
 - compareTo 方法的通用约定与 equals 相似：将此对象与指定的对象按照排序进行比较。 返回值可能为负整数，零或正整数，因为此对象对应小于，等于或大于指定的对象。 如果指定对象的类型与此对象不能进行比较，则引发 ClassCastException 异常。
 -  与 equals 方法不同，equals 方法在所有对象上施加了全局等价关系（并不要求对象类型相同，只认hashcode结果）；而compareTo 不必跨越不同类型的对象：当遇到不同类型的对象时，compareTo 被允许抛出 ClassCastException 异常。涉及相关类：排序后的集合 TreeSet 和 TreeMap 类，以及包含搜索和排序算法的实用程序类 Collections 和 Arrays。
 - compareTo 约定的最后一段是一个强烈的建议而并非真正要求，只是声明 compareTo 方法施加的相等性测试，通常应该返回与 equals 方法相同的结果。（如BigDeimal类其compareTo方法与equals不一致）
-- 本书第二版中，曾经推荐如果比较整型基本类型的属性，使用关系运算符“<” 和 “>”，对于浮点类型基本类型的属性，使用 Double.compare 和 Float.compare 静态方法。在 Java 7 中，静态比较方法被添加到 Java 的所有包装类中。 在 compareTo 方法中使用关系运算符“<” 和“>”是冗长且容易出错的，不再推荐。--建议全部使用compareTo方法。
-- 
+- 总而言之，无论何时实现具有合理排序的值类，你都应该让该类实现 Comparable 接口，以便在基于比较的集合中轻松对其实例进行排序，搜索和使用。 比较 compareTo 方法的实现中的字段值时，请避免使用"<"和">"运算符。 相反，使用包装类中的静态 compare 方法或 Comparator 接口（可用于）中的构建方法。
