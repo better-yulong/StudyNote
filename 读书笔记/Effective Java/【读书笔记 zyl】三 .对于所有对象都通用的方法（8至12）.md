@@ -196,3 +196,4 @@ public interface Comparable<T> {
             ComparableTimSort.sort(a);
     }
 ```
+> java.util.ComparableTimSort中的sort()方法简单分析:
