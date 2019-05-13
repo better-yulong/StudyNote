@@ -215,3 +215,4 @@ public class WordList {
  * */
 
 ```
+通过实现Comparable接口，可使类与所依赖该 类
