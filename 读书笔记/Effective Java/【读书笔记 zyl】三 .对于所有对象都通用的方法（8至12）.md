@@ -218,4 +218,4 @@ public class WordList {
 通过实现Comparable接口，可使类与所依赖该类的集合进行操作；几乎Java平台类的所有值类及所有枚举类型都实现了Comparable接口。如若正在编写的类有明显自然顺序(如字母顺序，数字顺序或时间顺序)的值类，则应该实现Comparable接口。
 - compareTo 方法的通用约定与 equals 相似：将此对象与指定的对象按照排序进行比较。 返回值可能为负整数，零或正整数，因为此对象对应小于，等于或大于指定的对象。 如果指定对象的类型与此对象不能进行比较，则引发 ClassCastException 异常。
 -  与 equals 方法不同，equals 方法在所有对象上施加了全局等价关系（并不要求对象类型相同，只认hashcode结果）；而compareTo 不必跨越不同类型的对象：当遇到不同类型的对象时，compareTo 被允许抛出 ClassCastException 异常。涉及相关类：排序后的集合 TreeSet 和 TreeMap 类，以及包含搜索和排序算法的实用程序类 Collections 和 Arrays。
-- compareTo 约定的最后一段是一个强烈的建议，而不是一个真正的要求，只是声明 compareTo 方法施加的相等性测试，通常应该返回与 equals 方法相同的结果。
+- compareTo 约定的最后一段是一个强烈的建议而并非真正要求，只是声明 compareTo 方法施加的相等性测试，通常应该返回与 equals 方法相同的结果。
