@@ -191,7 +191,7 @@ public interface Comparable<T> {
 ```language
     public static void sort(Object[] a) {
         if (LegacyMergeSort.userRequested)
-            legacyMergeSort(a);
+            legacyMergeSort(a); //
         else
             ComparableTimSort.sort(a);
     }
