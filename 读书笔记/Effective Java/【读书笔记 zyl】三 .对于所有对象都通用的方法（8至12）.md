@@ -199,3 +199,6 @@ public interface Comparable<T> {
 > java.util.ComparableTimSort中的sort()方法简单分析:TimSort 是一个归并排序做了大量优化的版本。对归并排序排在已经反向排好序的输入时表现O(n2)的特点做了特别优化。对已经正向排好序的输入减少回溯。对两种情况混合（一会升序，一会降序）的输入处理比较好。
 > 在jdk1.7之后，Arrays类中的sort方法有一个分支判断，当LegacyMergeSort.userRequested为true的情况下，采用legacyMergeSort，否则采用ComparableTimSort。并且在legacyMergeSort的注释上标明了该方法会在以后的jdk版本中废弃，因此以后Arrays类中的sort方法将采用ComparableTimSort类中的sort方法。(https://blog.csdn.net/bruce_6/article/details/38299199)
 - 归并排序后序研究算法时针对理解。
+- 示例1：```language
+
+```
