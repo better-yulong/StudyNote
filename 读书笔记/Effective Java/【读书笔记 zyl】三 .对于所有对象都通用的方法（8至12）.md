@@ -215,4 +215,4 @@ public class WordList {
  * */
 
 ```
-通过实现Comparable接口，可使类与所依赖该 类
+通过实现Comparable接口，可使类与所依赖该类的集合进行操作；几乎Java平台类的所有值类及所有
