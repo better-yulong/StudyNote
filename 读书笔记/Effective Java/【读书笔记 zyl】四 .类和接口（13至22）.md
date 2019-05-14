@@ -48,5 +48,6 @@ public class AccessTest2 {
   1. private -- 该成员只能在声明它的顶级类内访问
   2. package-private -- 成员可以从被声明的包中任何类中访问（子包不可以；其实可认为每个package都是独立的package）。如果没有指定访问修饰符（接口若未指定默认是public），则默认是包级私有访问级别。
   3. protected -- 成员可以从被声明的类和子类访问（有特殊情况 JSL 6.6.2，Java语言规范）以及它声明的包中的任何类。
-  4. public -- 该成员可从任何地方
+  4. public -- 该成员可从任何地方被访问
+- 在仔细设计你的类
 
