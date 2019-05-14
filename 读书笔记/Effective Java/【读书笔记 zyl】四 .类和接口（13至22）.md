@@ -6,16 +6,19 @@
 1. 第一规则：尽可能使每个类或者成员不被外界访问，即尽可能最小的访问级别。
 对于顶层（非嵌套的）的类和接口，保有两个可能的访问级别:包级私有(package-private)和公共的(public）（外部类不能用private修饰，不然直接就报错，private只能修饰内部类）。----(顶层类如何理解？即是当前java文件名对应的类；其实在eclipse中通过界面新建class、interface 时会发现可选的访问修饰符只有public和package(即默认default)，对于protected、private是无法选中的；也就是class、interface说要么public要么啥也不用即默认包级私有)
 ```language
-public class AccessTest1 {
-	 //can private/protected/public or empty, if private ,just can be used in this file.
-	 static class InnerClass{
+//顶层（非嵌套的）的类，只允许包级私有(package-private)和公共的(public）
+public class AccessTest1 { 
+	
+	 //内部类
+	 //can private/protected/public or default(package), if private ,just be used in this file.
+	 static class InnerClass{ 
 		public void a(){
 		}
 	}
 
 }
 
-// can't private/protected/public,only empty
+//can't private/protected/public,only default(package)--只允许默认包级私有
 class PackageClass{ 
 	
 }
