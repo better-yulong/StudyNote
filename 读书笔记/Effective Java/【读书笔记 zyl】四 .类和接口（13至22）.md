@@ -42,5 +42,5 @@ public class AccessTest2 {
 }
 
 ```
-- 
+- 类修改为包级私有，则说明其仅作为
 
