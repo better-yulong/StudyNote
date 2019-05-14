@@ -18,7 +18,7 @@ public class AccessTest1 {
 
 }
 
-//can't private/protected/public,only default(package)--只允许默认包级私有，其实可以把 PackageClass看作是一个与
+//can't private/protected/public,only default(package)--只允许默认包级私有，其实可以把 PackageClass看作是一个与 AccessTest1  同包的修饰符为默认包级私有的类；即其实际与 AccessTest1  没有关系。
 class PackageClass{ 
 	
 }
