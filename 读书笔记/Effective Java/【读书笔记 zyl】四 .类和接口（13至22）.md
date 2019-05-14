@@ -5,3 +5,39 @@
 - 封装之所以重要，是因为：它可以有效的解除组成系统的各模块之间的耦合关系，使得模块可独立的开发、测试、优化、使用、理解和修改；可提供软件的可重用性，降低系统风险。
 1. 第一规则：尽可能使每个类或者成员不被外界访问，即尽可能最小的访问级别。
 对于顶层（非嵌套的）的类和接口，保有两个可能的访问级别:包级私有(package-private)和公共的(public）（外部类不能用private修饰，不然直接就报错，private只能修饰内部类）。
+```language
+public class AccessTest1 {
+	 //can private/protected/public or empty, if private ,just can be used in this file.
+	 static class InnerClass{
+		public void a(){
+		}
+	}
+
+}
+
+// can't private/protected/public,only empty
+class PackageClass{ 
+	
+}
+
+```
+```language
+public class AccessTest2 {
+	
+	public  class InnerClass{
+		public void a(){
+			// 1. InnerClass must be static .else： if not No enclosing instance of type AccessTest1 is accessible.
+			//即只有内部类为static，才可使用外部类AccessTest1.直接访问，类似于静态变量
+			// 2. AccessTest1.InnerClass 必须为public或者默认或者明确标明protected，若其为private此处无法访问。
+			//private 修改符修饰类时，只能作用于内部内
+			AccessTest1.InnerClass a = new AccessTest1.InnerClass(); 
+			
+			PackageClass pc = new PackageClass();
+		}
+	}
+
+}
+
+```
+
+
