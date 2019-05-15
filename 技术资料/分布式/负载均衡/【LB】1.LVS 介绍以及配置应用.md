@@ -14,20 +14,12 @@
 - b 根据软硬件划分：
 - 硬件负载均衡：
 1. F5 的 BIG-IP
-
 2. Citrix 的 NetScaler
-
-3.这类硬件负载均衡器通常能同时提供四层和七层负载均衡，但同时也价格不菲
-
+3. 这类硬件负载均衡器通常能同时提供四层和七层负载均衡，但同时也价格不菲
 - 软件负载均衡：
-
-1.TCP 层：LVS，HaProxy，Nginx
-
-2.基于 HTTP 协议：Haproxy，Nginx，ATS（Apache Traffic Server），squid，varnish
-
-3.基于 MySQL 协议：mysql-proxy
-
- 
+1. TCP 层：LVS，HaProxy，Nginx
+2. 基于 HTTP 协议：Haproxy，Nginx，ATS（Apache Traffic Server），squid，varnish
+3. 基于 MySQL 协议：mysql-proxy
 
 2、LVS（Linux Virtual Server）介绍
 　Internet的快速增长使多媒体网络服务器面对的访问数量快速增加，服务器需要具备提供大量并发访问服务的能力，因此对于大负载的服务器来讲， CPU、I/O处理能力很快会成为瓶颈。由于单台服务器的性能总是有限的，简单的提高硬件性能并不能真正解决这个问题。为此，必须采用多服务器和负载均衡技术才能满足大量并发访问的需要。Linux 虚拟服务器(Linux Virtual Servers,LVS) 使用负载均衡技术将多台服务器组成一个虚拟服务器。它为适应快速增长的网络访问需求提供了一个负载能力易于扩展，而价格低廉的解决方案。
