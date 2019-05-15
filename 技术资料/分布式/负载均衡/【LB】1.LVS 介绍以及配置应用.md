@@ -27,12 +27,7 @@
 ![LVS-01](https://github.com/better-yulong/StudyNote-Resource/blob/master/StudyNote-Resource/tech/LB/LB-1-01.png)
 LVS负载均衡调度技术是在LINUX内核中实现的，因此被称之为LINUX虚拟服务器。我们使用该软件配置LVS时候，不能直接配置内核中的IPVS，而需要使用IPVS的管理工具ipvsadm进行管理，当然我们也可以通过keepalived软件直接管理IPVS，并不是通过ipvsadm来管理ipvs。
 
-LVS项目介绍
-http://www.linuxvirtualserver.org/zh/lvs1.html 
-LVS集群的体系结构
-http://www.linuxvirtualserver.org/zh/lvs2.html 
-
-LVS集群中的IP负载均衡技术 http://www.linuxvirtualserver.org/zh/lvs3.html
-LVS集群的负载调度
-
-http://www.linuxvirtualserver.org/zh/lvs4.html 
+- LVS项目介绍 http://www.linuxvirtualserver.org/zh/lvs1.html 
+- LVS集群的体系结构 http://www.linuxvirtualserver.org/zh/lvs2.html 
+- LVS集群中的IP负载均衡技术 http://www.linuxvirtualserver.org/zh/lvs3.html
+LVS集群的负载调度 http://www.linuxvirtualserver.org/zh/lvs4.html 
