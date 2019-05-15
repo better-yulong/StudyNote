@@ -30,3 +30,10 @@
 - LVS集群的体系结构 http://www.linuxvirtualserver.org/zh/lvs2.html 
 - LVS集群中的IP负载均衡技术 http://www.linuxvirtualserver.org/zh/lvs3.html
 - LVS集群的负载调度 http://www.linuxvirtualserver.org/zh/lvs4.html 
+
+#### LVS技术点小结：
+1、真正实现调度的工具是IPVS，工作在LINUX内核层面。
+2、LVS自带的IPVS管理工具是ipvsadm。
+3、keepalived实现管理IPVS及负载均衡器的高可用。
+
+4、Red hat 工具Piranha WEB管理实现调度的工具IPVS（不常用）。
