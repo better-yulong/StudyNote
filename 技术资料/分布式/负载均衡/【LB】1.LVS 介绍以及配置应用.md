@@ -26,8 +26,7 @@
 - LVS (Linux Virtual Server)其实是一种集群(Cluster)技术，采用IP负载均衡技术（LVS 的 IP 负载均衡技术是通过 IPVS 模块来实现的，linux内核2.6版本以上是默认安装IPVS的）和基于内容请求分发技术。调度器具有很好的吞吐率，将请求均衡地转移到不同的服务器上执行，且调度器自动屏蔽掉服务器的故障，从而将一组服务器构成一个高性能的、高可用的虚拟服务器。整个服务器集群的结构对客户是透明的，而且无需修改客户端和服务器端的程序。
 ![LVS-01](https://github.com/better-yulong/StudyNote-Resource/blob/master/StudyNote-Resource/tech/LB/LB-1-01.png)
 LVS负载均衡调度技术是在LINUX内核中实现的，因此被称之为LINUX虚拟服务器。我们使用该软件配置LVS时候，不能直接配置内核中的IPVS，而需要使用IPVS的管理工具ipvsadm进行管理，当然我们也可以通过keepalived软件直接管理IPVS，并不是通过ipvsadm来管理ipvs。
-
 - LVS项目介绍 http://www.linuxvirtualserver.org/zh/lvs1.html 
 - LVS集群的体系结构 http://www.linuxvirtualserver.org/zh/lvs2.html 
 - LVS集群中的IP负载均衡技术 http://www.linuxvirtualserver.org/zh/lvs3.html
-LVS集群的负载调度 http://www.linuxvirtualserver.org/zh/lvs4.html 
+- LVS集群的负载调度 http://www.linuxvirtualserver.org/zh/lvs4.html 
