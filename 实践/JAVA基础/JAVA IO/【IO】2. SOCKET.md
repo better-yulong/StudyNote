@@ -68,4 +68,4 @@ hello...1557995541663hello...1557995541663hello...1557995541663 中间还有无�
    public void flush() throws IOException {
    }
 ```
-3. 如若未先运行SocketServer而直接执行SocketClient报错：Connection refused: connect ；如若如SocketClient正在运行的若SocketServer突然关闭，此时SocketClient抛出异常：
+3. 如若未先运行SocketServer而直接执行SocketClient报错：Connection refused: connect ；如若如SocketClient正在运行的请求已达到SocketServer请求队列长度，报错：Connection refused: connect； 若SocketServer突然关闭，此时SocketClient抛出异常：
