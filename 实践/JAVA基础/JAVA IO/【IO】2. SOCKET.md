@@ -49,4 +49,5 @@ public class SocketServer {
 
 }
 ```
-运行SocketServer后，依次分别运行3次SocketClient 
+运行SocketServer后，依次分别运行3次SocketClient 结果分析下几点：
+1. 
