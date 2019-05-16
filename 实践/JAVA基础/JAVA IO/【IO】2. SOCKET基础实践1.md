@@ -108,7 +108,7 @@ public class SocketServer {
 }
 
 ```
-如若 SocketClient 异常client exception:1311053135
+如若 SocketClient 异常中断，则服务端报错： client exception:1311053135，但仍正常运行。
 #### 粘包（半包）问题
 那么针对上面的示例，在实际应用场景中，常有如长连接，一旦连接建立可分多次传送数据且希望服务可正常识别，不会出现示例1的所有数据拼接成一行的情况？其实就是粘包。
 
