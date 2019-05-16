@@ -50,4 +50,4 @@ public class SocketServer {
 }
 ```
 运行SocketServer后，依次分别运行3次SocketClient 结果分析下几点：
-1. 
+1. SocketServer连接请求队列的长度设为 2（new ServerSocket(9005,2)，第二个参数）
