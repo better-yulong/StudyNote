@@ -60,5 +60,5 @@ Exception in thread "main" java.net.ConnectException: Connection refused: connec
 ```
 2. SocketClient每次写入后均flush，SocketServer打印为System.out.println，预期是期望SocketServer每次打印"hello...1557996285019"能自动换行，并在最后一行打印出"EOF"; 然而实际呢？实际SocketServer会把同一SocketClient的所有输入的"hello...1557996285019"及最后的"EOF"合并一行输出，类似：
 ```language
-hello...1557995541663hello...1557995541663hello...1557995541663 中间还有无数个hello。EOF
+hello...1557995541663hello...1557995541663hello...1557995541663 中间还有无数个hello....EOF
 ```
