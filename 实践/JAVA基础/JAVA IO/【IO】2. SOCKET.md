@@ -76,6 +76,6 @@ hello...1557995541663hello...1557995541663hello...1557995541663 中间还有无�
    3. 如若SocketClient在write循环执行（还未执行到close()方法）， SocketServer突然关闭SocketClient会报错：Connection reset by peer: socket write error；但若相反是SocketClient突然关闭SocketServer则会报错java.net.SocketException: Connection reset。
  
 那么针对上面的示例，在实际应用场景中，常有如长连接，一旦连接建立可分多次传送数据且希望服务可正常识别，不会出现示例1的所有数据拼接成一行的情况？而该情况具体怎么理解呢，
-针对异常场景第2点，如菲
+针对异常场景第2点，SocketClient与SocketServer 仍一方中断均会导致另一方中断；考虑实际
 #### 示例2：
 
