@@ -77,5 +77,38 @@ hello...1557995541663hello...1557995541663hello...1557995541663 中间还有无�
  
 那么针对上面的示例，在实际应用场景中，常有如长连接，一旦连接建立可分多次传送数据且希望服务可正常识别，不会出现示例1的所有数据拼接成一行的情况？而该情况具体怎么理解呢，
 针对异常场景第2点，SocketClient与 SocketServer 仍一方中断均会导致另一方中断；考虑实际场景，若SocketServer 突然关闭SocketClient异常中断正常；但SocketClient异常中断而SocketServer 则不可接受。其实愿意很简单，就是SocketServer 在获取SocketClient后目前若有异常是直接往外抛的，适当调整加上异常捕获处理即可。
+```language
+public class SocketServer {
+
+	public static void main(String[] args) throws Exception {
+		SocketServer socketServer =  new SocketServer();
+		socketServer.init();
+	}
+	
+	public void init() throws Exception{
+		ServerSocket serverSocket = new ServerSocket(9006,2);
+		serverSocket.setReuseAddress(true);
+		while(true){
+			Socket client = serverSocket.accept();
+			try{
+				
+				InputStream in= client.getInputStream();
+				Reader reader = new InputStreamReader(in);
+				BufferedReader br = new BufferedReader(reader);
+				String line ;
+				while((line=br.readLine())!=null){
+					System.out.println(line);
+				}
+			}catch(Exception e){
+				System.out.println("client exception:" + client.hashCode());
+		}
+		}
+
+	}
+
+}
+
+```
+
 #### 示例2：
 
