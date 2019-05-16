@@ -3,7 +3,7 @@ Socket类代表一个客户端套接字;ServerSocket是等待客户端的请求�
 	ServerSocket serverSocket = new ServerSocket(port,3); 	
 ```
 把连接请求队列的长度设为 3。这意味着当队列中有了 3 个连接请求时，如果 Client 再请求连接，就会被 Server拒绝，因为服务器队列已满。
-#### 示例1：
+#### 基础示例：
 ```language
 public class SocketClient {
 
@@ -75,5 +75,6 @@ hello...1557995541663hello...1557995541663hello...1557995541663 中间还有无�
    2. 如若如SocketClient正在运行的请求已达到SocketServer请求队列长度，报错：Connection refused: connect；
    3. 如若SocketClient在write循环执行（还未执行到close()方法）， SocketServer突然关闭SocketClient会报错：Connection reset by peer: socket write error；但若相反是SocketClient突然关闭SocketServer则会报错java.net.SocketException: Connection reset。
  
+
 #### 示例2：
 
