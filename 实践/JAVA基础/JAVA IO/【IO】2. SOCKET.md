@@ -70,3 +70,6 @@ hello...1557995541663hello...1557995541663hello...1557995541663 中间还有无�
 ```
 合并一行输出呢？其实是因为SocketClient缓冲，直到close方法调用时flush才会作为一个完整的数据包发送到SocketServer。
 3. 如若未先运行SocketServer而直接执行SocketClient报错：Connection refused: connect ；如若如SocketClient正在运行的请求已达到SocketServer请求队列长度，报错：Connection refused: connect；如若SocketClient在write循环执行（还未执行到close()方法）， SocketServer突然关闭SocketClient不会有任何异常； 若SocketServer突然关闭，此时SocketClient抛出异常：
+
+ java.net.SocketException: Connection reset
+
