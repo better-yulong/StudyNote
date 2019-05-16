@@ -11,16 +11,51 @@ public class SocketClient {
 		Socket socket = new Socket("127.0.0.1",9005);
 		OutputStream out = socket.getOutputStream();
 		long times = System.currentTimeMillis();
-		for(int i=0;i<3;i++){
+		for(int i=0;i<1000000;i++){
 			out.write(("hello..." + times).getBytes());
 			System.out.println("hello..." + times);
-			//out.flush();
-		}
+					}
 		out.write(("EOF").getBytes());
-		//out.flush();
 		out.close();
 		socket.close();
 	}
 
 }
 ```
+
+public class SocketServer {
+
+	public static void main(String[] args) throws Exception {
+		SocketServer socketServer =  new SocketServer();
+		socketServer.init();
+	}
+	
+	public void init() throws Exception{
+		ServerSocket serverSocket = new ServerSocket(9005,2);
+		serverSocket.setReuseAddress(true);
+		boolean eof = false ;
+		while(true){
+			Socket client = serverSocket.accept();
+			InputStream in= client.getInputStream();
+			Reader reader = new InputStreamReader(in);
+			BufferedReader br = new BufferedReader(reader);
+			String line ;
+			while((line=br.readLine())!=null){
+				System.out.println(line);
+				if("EOF".equals(line)){
+					eof = true;
+					break;
+				}
+				
+			}
+			if(eof){
+				br.close();
+				break;
+			}
+		}
+		System.out.println("close");
+		serverSocket.close();
+
+	}
+
+}
