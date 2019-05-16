@@ -62,4 +62,4 @@ Exception in thread "main" java.net.ConnectException: Connection refused: connec
 ```language
 hello...1557995541663hello...1557995541663hello...1557995541663 中间还有无数个hello....EOF
 ```
-其原因呢？时OutputStream为abstract 抽象类，其flush()默认
+其原因呢？时OutputStream为abstract 抽象类，其flush()默认为空方法，即调用没有任何作用；而只有SocketClient的
