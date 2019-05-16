@@ -63,7 +63,7 @@ Exception in thread "main" java.net.ConnectException: Connection refused: connec
 ```language
 hello...1557995541663hello...1557995541663hello...1557995541663 中间还有无数个hello....EOF
 ```
-其原因呢？时OutputStream为abstract 抽象类，而通过debug发现SocketClient类的socket.getOutputStream()实际返回的是 java.net.SocketOutputStream实例， 查看源码发现SocketOutputStream类及其父类并没有重写 OutputStream类的flush()方法（空方法实现）；最终只有SocketClient的out.close()方法：会自动刷新缓冲区然后关闭流对象。（flush方法会将缓存中的数据立即强制刷新，而这些被强制刷新的数据会交给操作系统，至于操作系统什么时候讲这些输入写到管道中，这并不是我们能控制的。）
+其原因呢？时OutputStream为abstract 抽象类，而通过debug发现SocketClient类的socket.getOutputStream()实际返回的是 java.net.SocketOutputStream实例， 查看源码发现SocketOutputStream类及其父类并没有重写 OutputStream类的flush()方法（空方法实现）；最终只有SocketClient的out.close()方法：会自动刷新缓冲区然后关闭流对象。（官文解释：flush方法会将缓存中的数据立即强制刷新，而这些被强制刷新的数据会交给操作系统，至于操作系统什么时候讲这些输入写到管道中，这并不是我们能控制的。）
 ```language
    OutputStream类flush默认空实现
    public void flush() throws IOException {
