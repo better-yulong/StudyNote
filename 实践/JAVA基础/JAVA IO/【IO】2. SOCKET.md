@@ -17,6 +17,7 @@ public class SocketClient {
 			out.flush();
 		}
 		out.write(("EOF").getBytes());
+		out.flush();
 		out.close();
 		socket.close();
 	}
