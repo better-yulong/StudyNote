@@ -22,6 +22,7 @@ public class SocketClient {
 
 }
 ```
+```language
 
 public class SocketServer {
 
@@ -49,3 +50,5 @@ public class SocketServer {
 	}
 
 }
+```
+运行
