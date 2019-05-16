@@ -62,4 +62,4 @@ Exception in thread "main" java.net.ConnectException: Connection refused: connec
 ```language
 hello...1557995541663hello...1557995541663hello...1557995541663 中间还有无数个hello....EOF
 ```
-其原因呢？时因为置信
+其原因呢？时OutputStream为abstract 抽象类，其flush()默认
