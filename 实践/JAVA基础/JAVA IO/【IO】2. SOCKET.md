@@ -33,7 +33,6 @@ public class SocketServer {
 	public void init() throws Exception{
 		ServerSocket serverSocket = new ServerSocket(9005,2);
 		serverSocket.setReuseAddress(true);
-		boolean eof = false ;
 		while(true){
 			Socket client = serverSocket.accept();
 			InputStream in= client.getInputStream();
@@ -42,17 +41,8 @@ public class SocketServer {
 			String line ;
 			while((line=br.readLine())!=null){
 				System.out.println(line);
-				if("EOF".equals(line)){
-					eof = true;
-					break;
-				}
-				
 			}
-			if(eof){
-				br.close();
-				break;
-			}
-		}
+		    }
 		System.out.println("close");
 		serverSocket.close();
 
