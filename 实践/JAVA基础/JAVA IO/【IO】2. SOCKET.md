@@ -58,5 +58,5 @@ Exception in thread "main" java.net.ConnectException: Connection refused: connec
 	at java.net.DualStackPlainSocketImpl.socketConnect(Unknown Source)
 	at java.net.AbstractPlainSocketImpl.doConnect(Unknown Source)
 ```
-2. SocketClient每次写入后均flush，
+2. SocketClient每次写入后均flush，SocketServer打印为System.out.println，预期是期望SocketServer每次
 
