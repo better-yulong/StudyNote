@@ -14,7 +14,8 @@ public class SocketClient {
 		for(int i=0;i<1000000;i++){
 			out.write(("hello..." + times).getBytes());
 			System.out.println("hello..." + times);
-					}
+			out.flush();
+		}
 		out.write(("EOF").getBytes());
 		out.close();
 		socket.close();
@@ -57,5 +58,5 @@ Exception in thread "main" java.net.ConnectException: Connection refused: connec
 	at java.net.DualStackPlainSocketImpl.socketConnect(Unknown Source)
 	at java.net.AbstractPlainSocketImpl.doConnect(Unknown Source)
 ```
-2. 
+2. 客户
 
