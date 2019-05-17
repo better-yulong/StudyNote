@@ -23,8 +23,7 @@ MyBatis框架和其他绝大部分框架一样，需要一个配置文件，其�
     </typeAliases>
 
     
-
-    <mappers>
+   <mappers>
         <mapper resource="userMapper.xml"/>
     </mappers>
 
