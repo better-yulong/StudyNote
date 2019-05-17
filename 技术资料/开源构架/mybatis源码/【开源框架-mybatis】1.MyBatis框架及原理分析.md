@@ -15,11 +15,11 @@ MyBatis框架和其他绝大部分框架一样，需要一个配置文件，其�
     <settings>
         <setting name="cacheEnabled" value="true"/>
         <setting name="lazyLoadingEnabled" value="false"/>
-        <!--<setting name="logImpl" value="STDOUT_LOGGING"/> &lt;!&ndash; 打印日志信息 &ndash;&gt;-->
+        <!--<setting name="logImpl" value="STDOUT_LOGGING"/>
     </settings>
 
     <typeAliases>
-        <typeAlias type="com.luo.dao.UserDao" alias="User"/>
+        <typeAlias type="com.test.dao.UserDao" alias="User"/>
     </typeAliases>
 
     <environments default="development">
@@ -29,7 +29,7 @@ MyBatis框架和其他绝大部分框架一样，需要一个配置文件，其�
                 <property name="username" value="name"/>
                 <property name="password" value="pwd"/>
                 <property name="driver" value="com.mysql.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://127.0.0.1/ssh_study"/>
+                <property name="url" value="jdbc:mysql://127.0.0.1/core"/>
             </dataSource>
         </environment>
     </environments>
