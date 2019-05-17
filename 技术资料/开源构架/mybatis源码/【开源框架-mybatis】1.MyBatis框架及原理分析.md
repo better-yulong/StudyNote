@@ -26,10 +26,10 @@ MyBatis框架和其他绝大部分框架一样，需要一个配置文件，其�
         <environment id="development">
             <transactionManager type="JDBC"/> <!--事务管理类型-->
             <dataSource type="POOLED">
-                <property name="username" value="luoxn28"/>
-                <property name="password" value="123456"/>
+                <property name="username" value="name"/>
+                <property name="password" value="pwd"/>
                 <property name="driver" value="com.mysql.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://192.168.1.150/ssh_study"/>
+                <property name="url" value="jdbc:mysql://127.0.0.1/ssh_study"/>
             </dataSource>
         </environment>
     </environments>
