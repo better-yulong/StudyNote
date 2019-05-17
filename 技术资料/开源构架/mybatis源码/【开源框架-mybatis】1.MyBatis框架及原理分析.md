@@ -8,6 +8,13 @@
 ### MyBatis的配置
 MyBatis框架和其他绝大部分框架一样，需要一个配置文件，其配置文件大致如下：
 ```language
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"
+		p:dataSource-ref="dataSource" p:configLocation="classpath:config/mybatis-config.xml"
+		p:mapperLocations="classpath*:mapper/*.xml" />
+```
+
+```language
+--mybatis-config.xml文件
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
@@ -22,8 +29,7 @@ MyBatis框架和其他绝大部分框架一样，需要一个配置文件，其�
         <typeAlias type="com.test.dao.UserDao" alias="User"/>
     </typeAliases>
 
-    
-   <mappers>
+     <mappers>
         <mapper resource="userMapper.xml"/>
     </mappers>
 
