@@ -1,4 +1,6 @@
 转自：https://www.cnblogs.com/luoxn28/p/6417892.html
+https://my.oschina.net/zudajun/blog/666223
+
 ### MyBatis简介
 - MyBatis 是支持定制化 SQL、存储过程以及高级映射的优秀的持久层框架，其主要就完成2件事情：
 1. 封装JDBC操作
