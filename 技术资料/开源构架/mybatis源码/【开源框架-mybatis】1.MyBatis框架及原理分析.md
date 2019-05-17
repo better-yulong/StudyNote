@@ -22,17 +22,7 @@ MyBatis框架和其他绝大部分框架一样，需要一个配置文件，其�
         <typeAlias type="com.test.dao.UserDao" alias="User"/>
     </typeAliases>
 
-    <environments default="development">
-        <environment id="development">
-            <transactionManager type="JDBC"/> <!--事务管理类型-->
-            <dataSource type="POOLED">
-                <property name="username" value="name"/>
-                <property name="password" value="pwd"/>
-                <property name="driver" value="com.mysql.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://127.0.0.1/core"/>
-            </dataSource>
-        </environment>
-    </environments>
+    
 
     <mappers>
         <mapper resource="userMapper.xml"/>
