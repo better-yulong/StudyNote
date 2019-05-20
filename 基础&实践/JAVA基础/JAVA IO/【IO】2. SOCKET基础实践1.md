@@ -234,5 +234,51 @@ public class SocketClient3 {
 
 ```
 ```language
+package com.zyl.base.io;
 
+import java.io.InputStream;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+public class SocketServer3 {
+
+	public static void main(String[] args) throws Exception {
+		SocketServer3 socketServer =  new SocketServer3();
+		socketServer.init();
+	}
+	
+	public void init() throws Exception{
+		ServerSocket serverSocket = new ServerSocket(9006,2);
+		serverSocket.setReuseAddress(true);
+		while(true){
+			Socket client = serverSocket.accept();
+			InputStream in= client.getInputStream();
+			byte[] inLen = null ;
+			byte[] inByte = null ;
+			for(;;){
+				inLen = new byte[4];
+				int readCount = in.read(inLen);
+				if(readCount == -1){
+					continue;
+				}
+				int length = bytes2Int(inLen);
+				inByte = new byte[length];
+				in.read(inByte);
+				String inData = new String(inByte,"UTF-8");
+				System.out.println("length:" + length + ",String:" + inData);
+			}
+			
+		}
+	}
+	
+	private final static int bytes2Int(byte[] bytes){
+         int num=bytes[3] & 0xFF;
+         num |=((bytes[2] <<8)& 0xFF00);
+         num |=((bytes[1] <<16)& 0xFF0000);
+         num |=((bytes[0] <<24)& 0xFF0000);
+         return num;
+	}
+
+}
 ```
+如上示例求借
