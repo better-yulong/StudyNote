@@ -249,11 +249,11 @@ public class SocketServer3 {
 			InputStream in= client.getInputStream();
 			byte[] inLen = null ;
 			byte[] inByte = null ;
-			for(;;){
+			for(;;){//点1
 				inLen = new byte[4];
 				int readCount = in.read(inLen);
 				if(readCount == -1){
-					break;//咪开始错写成continue
+					break;//点2：开始错写成continue
 				}
 				int length = bytes2Int(inLen);
 				inByte = new byte[length];
@@ -283,4 +283,4 @@ length:21,String:hello...1558335696449
  * 
  * */
 ```
-如上示例求借
+点1：开始闭幕式
