@@ -118,7 +118,69 @@ https://blog.csdn.net/m0_37739193/article/details/78738253
 - TCP是个“流”协议，所谓流，就是没有界限的一串数据。大家可以想象河里的流水，他们是连成一片的，其间并没有分界线。TCP底层并不了解上层业务数据的具体含义，他会根据TCP缓冲区的实际情况进行包的划分，所以在业务上认为，一个完整的包可能会被TCP拆分成多个包进行发送，也有可能把多个小的包封装成一个大的数据包发送。这就是TCP所谓的拆包和粘包的问题。
 - 1.特殊字符串/n 分隔
 ```language
+/*
+ * 解决粘包：通过/n分隔
+ * **/
+public class SocketClient2 {
 
+	public static void main(String[] args) throws Exception, IOException {
+		Socket socket = new Socket("127.0.0.1",9006);
+		OutputStream out = socket.getOutputStream();
+		BufferedOutputStream bop = new BufferedOutputStream(out);
+		long times = System.currentTimeMillis();
+		for(int i=0;i<30;i++){
+			if(i>0 && i%1000==0) Thread.sleep(30000l);
+			System.out.println("hello..." + times);
+			System.out.println("/n");
+		}
+		bop.close();
+		socket.close();
+	}
+
+}
+
+```
+```language
+/*解决粘包：通过/n分隔
+ * 
+ * **/
+public class SocketServer2 {
+
+	public static void main(String[] args) throws Exception {
+		SocketServer2 socketServer =  new SocketServer2();
+		socketServer.init();
+	}
+	
+	public void init() throws Exception{
+		ServerSocket serverSocket = new ServerSocket(9006,2);
+		serverSocket.setReuseAddress(true);
+		/*boolean eof = false ;*/
+		while(true){
+			Socket client = serverSocket.accept();
+			InputStream in= client.getInputStream();
+			Reader reader = new InputStreamReader(in);
+			BufferedReader br = new BufferedReader(reader);
+			String line ;
+			while((line=br.readLine())!=null){
+				String[] lines = line.split("/n");
+				for(String str:lines)
+					System.out.println(str);
+			}
+		}
+	}
+
+}
+
+/***
+ * 运行结果：
+hello...1558332560890
+/n
+hello...1558332560890
+/n
+hello...1558332560890
+/n
+hello...1558332560890
+ */
 ```
 
 
