@@ -282,5 +282,5 @@ length:21,String:hello...1558335696449
  * 
  * */
 ```
-点1：SocketServer3的while(true)循环简单是否有新的客户端请求；而客户端SocketClient3 每次请求完数据就会close即可认为客户端关闭的连接；此处是忙等。SocketClient3 每执行一次SocketServer3的Socket client = serverSocket.accept();就会检测到，然后等待输入。一次InputStream in= client.getInputStream();对应SocketClient3一次完整
+点1：SocketServer3的while(true)循环简单是否有新的客户端请求；而客户端SocketClient3 每次请求完数据就会close即可认为客户端关闭的连接；此处是忙等。SocketClient3 每执行一次SocketServer3的Socket client = serverSocket.accept();就会检测到，然后等待输入。一次InputStream in= client.getInputStream();对应SocketClient3一次完整的所有数据。--可认为client.getInputStream()会一次性读取到客户端讨还的
 点2：开始未添加for循环，验证时发现server端仅读取到一行就不再输出，原来是因为
