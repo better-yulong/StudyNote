@@ -253,7 +253,7 @@ public class SocketServer3 {
 				inLen = new byte[4];
 				int readCount = in.read(inLen);
 				if(readCount == -1){
-					break;
+					break;//咪开始错写成continue
 				}
 				int length = bytes2Int(inLen);
 				inByte = new byte[length];
