@@ -245,15 +245,15 @@ public class SocketServer3 {
 		ServerSocket serverSocket = new ServerSocket(9006,2);
 		serverSocket.setReuseAddress(true);
 		while(true){
-			Socket client = serverSocket.accept();
+			Socket client = serverSocket.accept();//点1
 			InputStream in= client.getInputStream();
 			byte[] inLen = null ;
 			byte[] inByte = null ;
-			for(;;){//点1
+			for(;;){//点2
 				inLen = new byte[4];
 				int readCount = in.read(inLen);
 				if(readCount == -1){
-					break;//点2：开始错写成continue
+					break;//点3：开始错写成continue
 				}
 				int length = bytes2Int(inLen);
 				inByte = new byte[length];
@@ -282,4 +282,5 @@ length:21,String:hello...1558335696449
  * 
  * */
 ```
-点1：开始未添加for循环，验证时发现server端仅读取到一行就不再输出，原来是因为
+点1：
+开始未添加for循环，验证时发现server端仅读取到一行就不再输出，原来是因为
