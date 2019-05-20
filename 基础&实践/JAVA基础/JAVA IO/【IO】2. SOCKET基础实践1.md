@@ -234,12 +234,6 @@ public class SocketClient3 {
 
 ```
 ```language
-package com.zyl.base.io;
-
-import java.io.InputStream;
-import java.net.ServerSocket;
-import java.net.Socket;
-
 public class SocketServer3 {
 
 	public static void main(String[] args) throws Exception {
@@ -280,8 +274,13 @@ public class SocketServer3 {
 	}
 
 }
-/*
-
-/
+/**
+ * 
+length:21,String:hello...1558335696449
+length:21,String:hello...1558335696449
+length:21,String:hello...1558335696449
+..........
+ * 
+ * */
 ```
 如上示例求借
