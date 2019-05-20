@@ -282,5 +282,5 @@ length:21,String:hello...1558335696449
  * 
  * */
 ```
-点1：while(true)循环简单是否有新的客户端请求；而客户端SocketClient3 每次请求完数据就会close即可
+点1：while(true)循环简单是否有新的客户端请求；而客户端SocketClient3 每次请求完数据就会close即可认为客户端关闭的连接；此处是忙
 开始未添加for循环，验证时发现server端仅读取到一行就不再输出，原来是因为
