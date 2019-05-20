@@ -261,7 +261,6 @@ public class SocketServer3 {
 				String inData = new String(inByte,"UTF-8");
 				System.out.println("length:" + length + ",String:" + inData);
 			}
-			
 		}
 	}
 	
