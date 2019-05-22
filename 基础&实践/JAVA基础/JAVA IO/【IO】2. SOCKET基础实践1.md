@@ -306,7 +306,7 @@ Exception in thread "main" java.lang.UnsupportedOperationException
 	at com.zyl.base.io.NIOServer.main(NIOServer.java:55)
 
 ```
-3. 修改fix：iteratorKeys.remove();// 点1：
+3. 修改 fix-2(注释掉 fix-1 )：iteratorKeys.remove();// fix-2
 ```language
 Exception in thread "main" java.lang.UnsupportedOperationException
 	at java.util.Collections$UnmodifiableCollection$1.remove(Unknown Source)
