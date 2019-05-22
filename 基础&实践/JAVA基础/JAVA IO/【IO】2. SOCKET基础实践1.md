@@ -313,7 +313,7 @@ Exception in thread "main" java.lang.UnsupportedOperationException
 	at com.zyl.base.io.NIOServer.main(NIOServer.java:43)
 
 ```
-该问题从报划来看，问题始终于remove方法，而根据之前的理解，对于集合如List、Set、Map需要remove元素时，有两种方式：1.集合自身
+该问题从报划来看，问题始终于remove方法，而根据之前的理解，对于集合如List、Set、Map需要remove元素时，有两种方式：1.集合自身的remove方法；2.集合迭代器Iterator的remove方法（remove前需调用Iterator.）
 
 
 
