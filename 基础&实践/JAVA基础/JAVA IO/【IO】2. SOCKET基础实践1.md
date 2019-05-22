@@ -298,7 +298,7 @@ java.lang.NullPointerException
 	at com.zyl.base.io.NIOServer.main(NIOServer.java:47)
 
 ```
-2. 修改点：iteratorKeys.remove();// 点1：
+2. ：iteratorKeys.remove();// 1：
 ```language
 client accept....
 Exception in thread "main" java.lang.UnsupportedOperationException
@@ -306,8 +306,11 @@ Exception in thread "main" java.lang.UnsupportedOperationException
 	at com.zyl.base.io.NIOServer.main(NIOServer.java:55)
 
 ```
-
+2. 修改点：iteratorKeys.remove();// 点1：
 ```language
+Exception in thread "main" java.lang.UnsupportedOperationException
+	at java.util.Collections$UnmodifiableCollection$1.remove(Unknown Source)
+	at com.zyl.base.io.NIOServer.main(NIOServer.java:43)
 
 ```
 
