@@ -331,3 +331,42 @@ selectedKeys方法返回Selector的已选择键集合，它包含相关通道被
 已取消的键的集合，包含了调用cancel方法的选择键的集合，但还没有被注销，是已注册的键的集合的子集，它是selector对象的私有成员，无法直接访问。
 
 
+
+
+```language
+public abstract class SelectorImpl extends AbstractSelector {
+	protected Set<SelectionKey> selectedKeys = new HashSet();
+	protected HashSet<SelectionKey> keys = new HashSet();
+	private Set<SelectionKey> publicKeys;
+	private Set<SelectionKey> publicSelectedKeys;
+
+	protected SelectorImpl(SelectorProvider arg0) {
+		super(arg0);
+		if (Util.atBugLevel("1.4")) {
+			this.publicKeys = this.keys;
+			this.publicSelectedKeys = this.selectedKeys;
+		} else {
+			this.publicKeys = Collections.unmodifiableSet(this.keys);
+			this.publicSelectedKeys = Util.ungrowableSet(this.selectedKeys);
+		}
+
+	}
+
+	public Set<SelectionKey> keys() {
+		if (!this.isOpen() && !Util.atBugLevel("1.4")) {
+			throw new ClosedSelectorException();
+		} else {
+			return this.publicKeys;
+		}
+	}
+
+	public Set<SelectionKey> selectedKeys() {
+		if (!this.isOpen() && !Util.atBugLevel("1.4")) {
+			throw new ClosedSelectorException();
+		} else {
+			return this.publicSelectedKeys;
+		}
+	}
+
+
+```
