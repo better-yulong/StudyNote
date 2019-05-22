@@ -298,7 +298,7 @@ java.lang.NullPointerException
 	at com.zyl.base.io.NIOServer.main(NIOServer.java:47)
 
 ```
-2. 修改点1：
+2. 修改点：iteratorKeys.remove();// 点1：
 ```language
 client accept....
 Exception in thread "main" java.lang.UnsupportedOperationException
