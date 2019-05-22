@@ -290,3 +290,11 @@ length:21,String:hello...1558335696449
 
 
 
+1. 测试一
+```language
+client accept....
+Exception in thread "main" client accept....
+java.lang.NullPointerException
+	at com.zyl.base.io.NIOServer.main(NIOServer.java:47)
+
+```
