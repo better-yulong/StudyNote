@@ -313,7 +313,7 @@ Exception in thread "main" java.lang.UnsupportedOperationException
 	at com.zyl.base.io.NIOServer.main(NIOServer.java:43)
 
 ```
-
+该问题从报划来看，问题始终于remove方法，而根据之前的理解，
 
 
 
