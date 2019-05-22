@@ -298,3 +298,12 @@ java.lang.NullPointerException
 	at com.zyl.base.io.NIOServer.main(NIOServer.java:47)
 
 ```
+2. 修改点1：
+```language
+client accept....
+Exception in thread "main" java.lang.UnsupportedOperationException
+	at java.util.Collections$UnmodifiableCollection$1.remove(Unknown Source)
+	at com.zyl.base.io.NIOServer.main(NIOServer.java:55)
+
+```
+
