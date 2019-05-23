@@ -286,10 +286,120 @@ length:21,String:hello...1558335696449
 点2：开始未添加for循环，验证时发现server端仅读取到一行就不再输出，是因为client.getInputStream()会一次性读取到客户端请求的所有数据，没有for循环则发现仅分别读取了一次int和data后就待待再一次客户端输入了。
 点3：开始错写成continue，发现SocketClient3 第一次执行SocketServer3可完整获取到请求的输入，但SocketClient3 第二次执行时发现SocketServer3没有任何反应。原来是因为该处如果是continue会导致始终在for循环处无限等待；而实际如果需要获SocketClient3 第二次请求的数据则需要跳出for去执行while循环中的accept和getInputStream。
 
+#### 三. 基于Selector&Channel实现
+```language
+/*
+ * 解决粘包：自定义协议  数据包 =  数据包长度+数据包内容
+ * **/
+public class NIOClient {
 
+	public static void main(String[] args) throws Exception, IOException {
+		Socket socket = new Socket("127.0.0.1",9006);
+		OutputStream out = socket.getOutputStream();
+		BufferedOutputStream bop = new BufferedOutputStream(out);
+		long times = System.currentTimeMillis();
+		for(int i=0;i<5;i++){
+			if(i>0 && i%1000==0) Thread.sleep(30000l);
+			String inStr = "hello..." + times ;
+			byte[] inByte = inStr.getBytes("UTF-8");
+			byte[] inLen = int2ByteArray(inByte.length);
+			bop.write(inLen);
+			bop.write(inByte);
+			System.out.println(inStr);
+		}
+		bop.close();
+		socket.close();
+	}
+	
+	private final static byte[] int2ByteArray(int i){
+         byte[] result=new byte[4];
+         result[0]=(byte)((i >> 24)& 0xFF);
+         result[1]=(byte)((i >> 16)& 0xFF);
+         result[2]=(byte)((i >> 8)& 0xFF);
+         result[3]=(byte)(i & 0xFF);
+         return result;
+     }
 
+}
+```
+```language
+/***
+ * NIO必须由Selector和Channel（ServerSocketChannel、SocketChannel）配合使用
+ * jdk class api: https://docs.oracle.com/javase/7/docs/api/allclasses-noframe.html
+ * 三个重要概念：
+ * 	 Selector ： https://docs.oracle.com/javase/7/docs/api/java/nio/channels/Selector.html
+ * 	 ServerSocket：
+ * 	 SelectionKey : https://docs.oracle.com/javase/7/docs/api/java/nio/channels/SelectionKey.html
+ * 
+ * */
+public class NIOServer {
 
+	public static void main(String[] args) throws Exception {
+		Selector selector= Selector.open();
+		//Selector selector2= SelectorProvider.provider().openSelector();
+		
+		ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();
+		serverSocketChannel.configureBlocking(false);
+		serverSocketChannel.register(selector,SelectionKey.OP_ACCEPT); 
+		
+		ServerSocket serverSocket = serverSocketChannel.socket();
+		SocketAddress socketAddress = new InetSocketAddress(9006);
+		serverSocket.bind(socketAddress);
+		while(true){
+			selector.select(); //没有客户端socket请求进来之前会阻塞
+			//此行错误，具体见selector的keys、selectKeys方法返回结果集  https://www.cnblogs.com/xianyijun/p/5422727.html
+			//Set<SelectionKey> selectionKeys = selector.keys(); ////fix-3 , debug返回示例为： Collections$UnmodifiableSet<E> 
+			Set<SelectionKey> selectionKeys = selector.selectedKeys(); //fix-3 , debug返回示例为： HashSet
+			Iterator<SelectionKey> iteratorKeys = selectionKeys.iterator();
+			while(iteratorKeys.hasNext()){
+				SelectionKey selectionKey = iteratorKeys.next();
+				iteratorKeys.remove();// fix-2
+				if(selectionKey.isAcceptable()){
+					 System.out.println("client accept....");
+					ServerSocketChannel clientSocket = (ServerSocketChannel) selectionKey.channel();
+					 SocketChannel clientSocketChannel = clientSocket.accept();
+					 clientSocketChannel.configureBlocking(false);
+					 clientSocketChannel.register(selector, SelectionKey.OP_READ);
+				}else if(selectionKey.isReadable()){
+					 System.out.println("client read....");
+					SocketChannel clientSocketChannel = (SocketChannel) selectionKey.channel();
+					System.out.println(readData(clientSocketChannel));
+					clientSocketChannel.close();
+				}
+				//iteratorKeys.remove();// fix-1
+			}
+		}
+	}
 
+	private static  String readData(SocketChannel socketChannel) throws IOException{
+		ByteBuffer byteBuffer = ByteBuffer.allocateDirect(1024);
+		StringBuilder builder = new StringBuilder();
+		while(true){
+			byteBuffer.clear();
+			int n = socketChannel.read(byteBuffer);
+			if(n==-1){
+				break;
+			}
+			byteBuffer.flip();
+			int limit = byteBuffer.limit();
+			char[] dst = new char[limit];
+			for(int i=0 ; i<limit; i++){
+				dst[i] = (char) byteBuffer.get(i);
+			}
+			builder.append(dst);
+			byteBuffer.clear();
+		}
+		return builder.toString();
+	}
+}
+
+多次修改后的执行成功：
+client accept....
+client read....
+hello...1558503625136??hello...1558503625136??hello...1558503625136??hello...1558503625136??
+
+```
+##### 具体验证及修改过程：
 1. 测试一
 ```language
 client accept....
@@ -313,26 +423,13 @@ Exception in thread "main" java.lang.UnsupportedOperationException
 	at com.zyl.base.io.NIOServer.main(NIOServer.java:43)
 
 ```
-- 该问题从报划来看，问题始终于remove方法，而根据之前的理解，对于集合如List、Set、Map需要remove元素时，有两种方式：1.集合自身的remove方法；2.集合迭代器Iterator的remove方法（remove前需调用Iterator.next()移动下标，否则会报IllegalStateException）。
-- 但是如果对于同一集合并发线程操作时，
-
-
-
-
-```language
-结果：
-client accept....
-client read....
-hello...1558503625136??hello...1558503625136??hello...1558503625136??hello...1558503625136??
-```
+- 该问题从报错来看，问题出在remove方法，而根据之前的理解，对于集合如List、Set、Map需要remove元素时，有两种方式：1.集合自身的remove方法；2.集合迭代器Iterator的remove方法（remove前需调用Iterator.next()移动下标，否则会报IllegalStateException）。但不能并发线程调用List(set、map）的add、remove方法，会提示IllegalStateException，但可同时调用List的add方法和Iterator的remvoe方法。
+- 而此处的原因呢？开始一直很纠结，之后各种百度发现：
 > Selector包含了三个选择键的集合，在刚创建的时候都是空的。
-keys方法返回与selector关联的选择键集合。该集合包括当前通道在selector上注册的选择键。
-selectedKeys方法返回Selector的已选择键集合，它包含相关通道被选择器判断已经准备好的，并且包含于key的interest集合中的操作，它是已注册的键集合的子集合，每个键都关联一个已经准备好至少一个操作的通道，每个键都持有一个内嵌的ready集合，指示了所关联的通道已经准备好的操作。
-已取消的键的集合，包含了调用cancel方法的选择键的集合，但还没有被注销，是已注册的键的集合的子集，它是selector对象的私有成员，无法直接访问。
-
-
-
-
+1. keys方法返回与selector关联的选择键集合。该集合包括当前通道在selector上注册的选择键。
+2. selectedKeys方法返回Selector的已选择键集合，它包含相关通道被选择器判断已经准备好的，并且包含于key的interest集合中的操作，它是已注册的键集合的子集合，每个键都关联一个已经准备好至少一个操作的通道，每个键都持有一个内嵌的ready集合，指示了所关联的通道已经准备好的操作。
+3. 已取消的键的集合，包含了调用cancel方法的选择键的集合，但还没有被注销，是已注册的键的集合的子集，它是selector对象的私有成员，无法直接访问。
+- 上面示例我最先使用的是 Selector的keys方法，根据debug发现keys返回实例Collections$UnmodifiableSet（不可修改的set视图）；而selectKeys返回则是普通的HashSet（可修改），具体可查询资料：https://blog.csdn.net/iteye_11587/article/details/82681489，结合Selector抽象类的实现类SelectorImpl 源码：
 ```language
 public abstract class SelectorImpl extends AbstractSelector {
 	protected Set<SelectionKey> selectedKeys = new HashSet();
@@ -368,5 +465,204 @@ public abstract class SelectorImpl extends AbstractSelector {
 		}
 	}
 
+```
 
+- 修改4. 保留一行remove方法，并将Selector的keys方法修改为selectKeys方法即可正常运行。但有两个问题：
+1. 注释掉iteratorKeys.remove()执行报错， 原因是循环时会重复获得同一client请求的事件，重复获取socket异常：可理解为，Selector的selectKeys返回的是一个事件集合，使用完需手动移除。
+2. 结果Server打印出来的有乱码：经分析系请求时写入的数据长度 inLen 为 int的byte格式直接显示异常，可考虑注释掉这块代码，但也可针对修改完善（粘包）：
+```language
+/*
+ * 解决粘包：自定义协议  数据包 =  数据包长度+数据包内容
+ * **/
+public class NIOClient {
+
+	public static void main(String[] args) throws Exception, IOException {
+		Socket socket = new Socket("127.0.0.1",9006);
+		OutputStream out = socket.getOutputStream();
+		BufferedOutputStream bop = new BufferedOutputStream(out);
+		long times = System.currentTimeMillis();
+		for(int i=0;i<5;i++){
+			if(i>0 && i%1000==0) Thread.sleep(30000l);
+			String inStr = "hello..." + times ;
+			byte[] inByte = inStr.getBytes("UTF-8");
+			byte[] inLen = int2ByteArray(inByte.length);
+			bop.write(inLen);
+			bop.write(inByte);
+			System.out.println(inStr);
+		}
+		bop.close();
+		socket.close();
+	}
+	
+	private final static byte[] int2ByteArray(int i){
+         byte[] result=new byte[4];
+         result[0]=(byte)((i >> 24)& 0xFF);
+         result[1]=(byte)((i >> 16)& 0xFF);
+         result[2]=(byte)((i >> 8)& 0xFF);
+         result[3]=(byte)(i & 0xFF);
+         return result;
+     }
+
+}
+```
+```language
+
+/***
+ * NIO必须由Selector和Channel（ServerSocketChannel、SocketChannel）配合使用
+ * jdk class api: https://docs.oracle.com/javase/7/docs/api/allclasses-noframe.html
+ * 三个重要概念：
+ * 	 Selector ： https://docs.oracle.com/javase/7/docs/api/java/nio/channels/Selector.html
+ * 	 ServerSocket：
+ * 	 SelectionKey : https://docs.oracle.com/javase/7/docs/api/java/nio/channels/SelectionKey.html
+ * 
+ * */
+public class NIOServer {
+
+	public static void main(String[] args) throws Exception {
+		Selector selector= Selector.open();
+		//Selector selector2= SelectorProvider.provider().openSelector();
+		
+		ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();
+		serverSocketChannel.configureBlocking(false);
+		serverSocketChannel.register(selector,SelectionKey.OP_ACCEPT); 
+		
+		ServerSocket serverSocket = serverSocketChannel.socket();
+		SocketAddress socketAddress = new InetSocketAddress(9006);
+		serverSocket.bind(socketAddress);
+		while(true){
+			selector.select(); //没有客户端socket请求进来之前会阻塞
+			//此行错误，具体见selector的keys、selectKeys方法返回结果集  https://www.cnblogs.com/xianyijun/p/5422727.html
+			//Set<SelectionKey> selectionKeys = selector.keys(); ////fix-3 , debug返回示例为： Collections$UnmodifiableSet<E> 
+			Set<SelectionKey> selectionKeys = selector.selectedKeys(); //fix-3 , debug返回示例为： HashSet
+			Iterator<SelectionKey> iteratorKeys = selectionKeys.iterator();
+			while(iteratorKeys.hasNext()){
+				SelectionKey selectionKey = iteratorKeys.next();
+				iteratorKeys.remove();// fix-2
+				if(selectionKey.isAcceptable()){
+					 System.out.println("client accept....");
+					ServerSocketChannel clientSocket = (ServerSocketChannel) selectionKey.channel();
+					 SocketChannel clientSocketChannel = clientSocket.accept();
+					 clientSocketChannel.configureBlocking(false);
+					 clientSocketChannel.register(selector, SelectionKey.OP_READ);
+				}else if(selectionKey.isReadable()){
+					 System.out.println("client read....");
+					SocketChannel clientSocketChannel = (SocketChannel) selectionKey.channel();
+					readData(clientSocketChannel);
+					clientSocketChannel.close();
+				}
+				//iteratorKeys.remove();// fix-1
+			}
+		}
+	}
+
+	private static  void readData(SocketChannel socketChannel) throws IOException{
+		ByteBuffer byteBuffer = ByteBuffer.allocateDirect(1024);
+		StringBuilder builder = null;
+		List<Entry> list = new ArrayList<Entry>();
+		
+		while(true){
+			byteBuffer.clear();
+			int n = socketChannel.read(byteBuffer);
+			if(n==-1){
+				break;
+			}
+			byteBuffer.flip();
+			int limit = byteBuffer.limit();
+			int len_index = 0 ;
+			int data_index = 0 ;
+			int entry_index = 0 ;
+			boolean lenFlag = true;
+			
+			for(int i=0 ; i<limit; i++){
+				if(len_index<4&&lenFlag){
+					if(len_index==0){
+						Entry entry = new Entry();
+						list.add(entry);
+					}
+					list.get(entry_index).getLenByte()[len_index]= byteBuffer.get(i);
+					if(len_index==3){
+						int len = bytes2Int(list.get(entry_index).getLenByte());
+						list.get(entry_index).setLenInt(len);
+						list.get(entry_index).initDataByte(len);
+						lenFlag = false ;
+						len_index = 0 ;
+					}else{
+						len_index++;
+					}
+					
+				}else{
+					if(data_index<list.get(entry_index).getDataByte().length){
+						list.get(entry_index).getDataByte()[data_index] = (char) byteBuffer.get(i);
+						if(data_index== list.get(entry_index).getDataByte().length-1){
+							list.get(entry_index).setDataStr(String.valueOf(list.get(entry_index).getDataByte()));
+							data_index = 0 ;
+							entry_index++;
+							lenFlag = true ;
+						}else{
+							data_index++;
+						}
+					}
+						
+				}
+			}
+			byteBuffer.clear();
+		}
+		for(Entry entry: list){
+			builder = new StringBuilder();
+			System.out.println(builder.append("length:").append(entry.lenInt).append(",String:").append(entry.dataStr));
+		}
+	}
+	
+	
+	private final static int bytes2Int(byte[] bytes){
+         int num=bytes[3] & 0xFF;
+         num |=((bytes[2] <<8)& 0xFF00);
+         num |=((bytes[1] <<16)& 0xFF0000);
+         num |=((bytes[0] <<24)& 0xFF0000);
+         return num;
+	}
+	
+	private static class Entry{
+		 byte[] lens = new byte[4];
+		 char[] data;
+		 
+		 int lenInt = 0 ;
+		 String dataStr ;
+		 
+		 
+		 private byte[] getLenByte(){
+			 return this.lens;
+		 }
+		 
+		private char[] initDataByte(int len){
+			data = new char[len];
+			return data;
+		}
+		
+		private char[] getDataByte(){
+			return this.data;
+		}
+		
+		private void setLenInt(int lenInt){
+			this.lenInt = lenInt ;
+		}
+		
+		private void setDataStr(String dataStr){
+			this.dataStr = dataStr ;
+		}
+		
+	}
+}
+
+/**
+ * 运行结果：
+client accept....
+client read....
+length:21,String:hello...1558607281166
+length:21,String:hello...1558607281166
+length:21,String:hello...1558607281166
+length:21,String:hello...1558607281166
+length:21,String:hello...1558607281166
+ * 
+ * */
 ```

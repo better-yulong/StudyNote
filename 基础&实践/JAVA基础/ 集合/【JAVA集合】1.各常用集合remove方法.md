@@ -54,7 +54,7 @@ public class CollectionRemoveTest {
 }
 ```
 - Iterator 支持从源集合中安全地删除对象，只需在 Iterator 上调用 remove() 即可。这样做的好处是可以避免 ConcurrentModifiedException ，这个异常顾名思意：当打开 Iterator 迭代集合时，同时又在对集合进行修改。有些集合不允许在迭代时删除或添加元素，但是调用 Iterator 的remove() 方法是个安全的做法。
-但如果多线程同时并发调用List的add和remove方法，则会抛出ConcurrentModifiedException，因为如果该集合 迭代器就不再合法
+但如果多线程同时并发调用List的add和remove方法，则会抛出ConcurrentModifiedException，因为如果该集合迭代器就不再合法（即并发调用list的add和remove会异常，但可并发调用list的add和Iterator的remove方法）
 - 循环中用下标删除多个元素的时候，它并不会正常的生效，如下示例：
 ```language
 ArrayList<String> list = new ArrayList<String>(Arrays.asList("a","b","c","d"));
@@ -63,3 +63,4 @@ for(int i=0;i<list.size();i++){
 }
 System.out.println(list); //结果：[b,d]
 ```
+- 另外有两个ArrayList：java.util.ArrayList、java.util.Arrays.ArrayList，有差异需注意。
