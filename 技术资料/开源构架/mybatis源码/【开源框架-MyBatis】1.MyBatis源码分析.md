@@ -17,6 +17,15 @@ java.lang.NullPointerException
 ![1-1](https://github.com/better-yulong/StudyNote-Resource/blob/master/StudyNote-Resource/tech/framework/mybatis/mybatis-1-1.PNG)
 ![1-2](https://github.com/better-yulong/StudyNote-Resource/blob/master/StudyNote-Resource/tech/framework/mybatis/mybatis-1-2.PNG)
 - 单独运行 shouldSelectAllAuthors 单元测试方法，结果：
+```language
+	DEBUG [main] - ooo Connection Opened
+	DEBUG [main] - ==>  Executing: select * from author 
+	DEBUG [main] - ==> Parameters: 
+	DEBUG [main] - <==    Columns: ID, USERNAME, PASSWORD, EMAIL, BIO, FAVOURITE_SECTION
+	DEBUG [main] - <==        Row: 101, jim, ********, jim@ibatis.apache.org, , NEWS
+	DEBUG [main] - <==        Row: 102, sally, ********, sally@ibatis.apache.org, null, VIDEOS
+DEBUG [main] - xxx Connection Closed
+```
 
 
 
