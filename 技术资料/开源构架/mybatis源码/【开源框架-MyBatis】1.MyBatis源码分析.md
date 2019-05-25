@@ -16,3 +16,4 @@ java.lang.NullPointerException
 尝试通过debug但并未找到原因，无奈借助度娘，发现与junit jar有关系。因为junit单元测试依赖eclipse的Junit插件（自带Junit jar包），但该工程为方便测试其pom.xml有依赖Junit jar包，因工程中自带jar而buildpath指定顺序会使得test时默认优先加载工程中自带的 junit 包，而其恰好又与版本新的eclipse的Junit插件不兼容，故根据网上提示，修改BuildPath：引入默认的Junit jar包（右击项目名：config buildpath-->Libraries-->add library-->JUnit）并调整排序至最上面，优先加载：
 
 
+
