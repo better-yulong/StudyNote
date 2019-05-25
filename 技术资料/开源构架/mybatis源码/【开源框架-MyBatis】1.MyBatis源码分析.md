@@ -1,2 +1,2 @@
 - 基于首次阅读框架源码尽量选择早期版本，因为更接近到原始设计思路，易于理解，支持mybatis3.0.1版本（mybatis与ibatis有较大差别，做了比较大的重写）。近期版本的mybatis源码可在github中搜索mybatis-3查找，但前期的已无github可用，在mybatis官网可找到早期mybatis的源码zip包。（已下载并上传至github:https://github.com/better-yulong/StudyNote-Resource/blob/master/StudyNote-Resource/source-zip/mybatis-3-mybatis-3.0.1.zip）。
-- 解压并import至eclipse，工程各种报错，发现该工程导入build path关联的jre1.5，初步
+- 解压并import至eclipse，工程各种报错，发现该工程导入build path关联的jre1.5，初步怀疑与jdk版本有关系，查看mybatis.iml文件其中提到LANGUAGE_LEVEL="JDK_1_5" 
