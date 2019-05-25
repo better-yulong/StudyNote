@@ -2,4 +2,4 @@
 - 解压并import至eclipse，工程各种报错，发现该工程导入build path关联的jre1.5，初步怀疑与jdk版本有关系，查看mybatis.iml文件其中提到LANGUAGE_LEVEL="JDK_1_5"，尝试将JDK切换至1.6，再次构建工程错误消失。
 
 ### 一. Mybatis 源码单元测试及入口分析
-工程导入之后其实是一筹莫展，根本无从下手，考虑到工程自带 src/test/jav
+工程导入之后其实是一筹莫展，根本无从下手，考虑到工程自带 src/test/java中各种代码，比如数据表建表脚本、数据insert脚本，大致
