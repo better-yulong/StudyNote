@@ -14,6 +14,7 @@ java.lang.NullPointerException
 	at org.junit.internal.requests.FilterRequest.getRunner(FilterRequest.java:34)
 ```
 - 尝试通过debug但并未找到原因，无奈借助度娘，发现与junit jar有关系。因为junit单元测试依赖eclipse的Junit插件（自带Junit jar包），但该工程为方便测试其pom.xml有依赖Junit jar包，因工程中自带jar而buildpath指定顺序会使得test时默认优先加载工程中自带的 junit 包，而其恰好又与版本新的eclipse的Junit插件不兼容，故根据网上提示，修改BuildPath：引入默认的Junit jar包（右击项目名：config buildpath-->Libraries-->add library-->JUnit）并调整排序至最上面，优先加载：
+- 
 ![1-1](https://github.com/better-yulong/StudyNote-Resource/blob/master/StudyNote-Resource/tech/framework/mybatis/mybatis-1-1.PNG)
 ![1-2](https://github.com/better-yulong/StudyNote-Resource/blob/master/StudyNote-Resource/tech/framework/mybatis/mybatis-1-2.PNG)
 - 单独运行 shouldSelectAllAuthors 单元测试方法，结果：
@@ -24,7 +25,7 @@ java.lang.NullPointerException
 	DEBUG [main] - <==    Columns: ID, USERNAME, PASSWORD, EMAIL, BIO, FAVOURITE_SECTION
 	DEBUG [main] - <==        Row: 101, jim, ********, jim@ibatis.apache.org, , NEWS
 	DEBUG [main] - <==        Row: 102, sally, ********, sally@ibatis.apache.org, null, VIDEOS
-DEBUG [main] - xxx Connection Closed
+	DEBUG [main] - xxx Connection Closed
 ```
 
 
