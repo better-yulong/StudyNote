@@ -13,4 +13,4 @@ java.lang.NullPointerException
 	at org.junit.runner.manipulation.Filter.apply(Filter.java:47)
 	at org.junit.internal.requests.FilterRequest.getRunner(FilterRequest.java:34)
 ```
-尝试通过debug但并未找到原因，无奈借助度娘，发现与junit jar有关系。因为junit单元测试依赖eclipse的Junit插件（自带Junit jar包），但该工程为方便测试其p
+尝试通过debug但并未找到原因，无奈借助度娘，发现与junit jar有关系。因为junit单元测试依赖eclipse的Junit插件（自带Junit jar包），但该工程为方便测试其pom.xml有依赖Junit jar包，因工程中自带jar
