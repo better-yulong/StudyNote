@@ -4,3 +4,13 @@
 ### 一. Mybatis 源码单元测试及入口分析
 工程导入之后其实是一筹莫展，根本无从下手，考虑到工程自带 src/test/java中各种代码，比如数据表建表脚本、数据insert脚本，初步分析这应该就是用来初始化单元测试依赖环境的。但继续查看，类过多且并未找到真实可运行的测试类。无奈之举（后面发现误打误撞对了），在 src/test/java 中搜索Junit关键字，查找可运行的单元测试方法，一搜还果然不少，再结合junit关键字及select关键字，确实找到了@Test注解标识可可执行单元测试类：SqlSessionTest。
 1. 初步过了下SqlSessionTest代码尝试直接执行单元测试方法: shouldSelectAllAuthors（不是运行该类所有单元测试方法），发现直接报错：
+```language
+java.lang.NullPointerException
+	at org.eclipse.jdt.internal.junit4.runner.SubForestFilter.shouldRun(SubForestFilter.java:81)
+	at org.junit.internal.runners.TestClassMethodsRunner.filter(TestClassMethodsRunner.java:84)
+	at org.junit.runner.manipulation.Filter.apply(Filter.java:47)
+	at org.junit.internal.runners.TestClassRunner.filter(TestClassRunner.java:64)
+	at org.junit.runner.manipulation.Filter.apply(Filter.java:47)
+	at org.junit.internal.requests.FilterRequest.getRunner(FilterRequest.java:34)
+```
+尝试通过debug但并
