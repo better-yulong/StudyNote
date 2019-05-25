@@ -17,7 +17,7 @@ java.lang.NullPointerException
 
 ![1-1](https://github.com/better-yulong/StudyNote-Resource/blob/master/StudyNote-Resource/tech/framework/mybatis/mybatis-1-1.PNG)
 ![1-2](https://github.com/better-yulong/StudyNote-Resource/blob/master/StudyNote-Resource/tech/framework/mybatis/mybatis-1-2.PNG)
-单独运行 shouldSelectAllAuthors 单元测试方法，结果：
+> 单独运行 shouldSelectAllAuthors 单元测试方法，结果：
 ```language
 	DEBUG [main] - ooo Connection Opened
 	DEBUG [main] - ==>  Executing: select * from author 
