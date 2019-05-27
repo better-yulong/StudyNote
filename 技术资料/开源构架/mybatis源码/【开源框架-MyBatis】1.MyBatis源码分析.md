@@ -36,7 +36,7 @@ Error executing: INSERT INTO node (id, parent_id) VALUES (1,null)
 	DEBUG [main] - <==        Row: 102, sally, ********, sally@ibatis.apache.org, null, VIDEOS
 	DEBUG [main] - xxx Connection Closed
 ```
-从运行结果来看，select测试通过；
+从运行结果来看，CREATE TABLE node但select测试通过；暂时
 ### 二. 单元测试源码分析
 基于测试通过的单元测试方法：shouldSelectAllAuthors，结合源码分析：
 ```language
