@@ -140,6 +140,7 @@ public class BaseDataTest {
     sqlMapper = new SqlSessionFactoryBuilder().build(reader);
   }
 ```
+##### 2.1.1 BeforeClass分析
 
 
 
