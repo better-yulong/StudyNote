@@ -219,4 +219,4 @@ password=
     }
   }
 ```
-从上面代码看，逻辑相对简单：1.基于database
+从上面代码看，逻辑相对简单：1.读取database配置并创建DataSource；2.
