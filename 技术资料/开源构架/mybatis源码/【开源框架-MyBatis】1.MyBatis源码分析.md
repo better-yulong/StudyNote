@@ -20,6 +20,14 @@ java.lang.NullPointerException
 ![1-2](https://github.com/better-yulong/StudyNote-Resource/blob/master/StudyNote-Resource/tech/framework/mybatis/mybatis-1-2.PNG)
 - 单独运行 shouldSelectAllAuthors 单元测试方法，结果：
 ```language
+Error executing: CREATE TABLE node (
+id  INT NOT NULL,
+parent_id INT,
+PRIMARY KEY(id)
+)
+.  Cause: java.sql.SQLException: Table/View 'NODE' already exists in Schema 'APP'.
+Error executing: INSERT INTO node (id, parent_id) VALUES (1,null)
+.  Cause: java.sql.SQLIntegrityConstraintViolationException: The statement was aborted because it would have caused a duplicate key value in a unique or primary key constraint or unique index identified by 'SQL190527132731780' defined on 'NODE'.
 	DEBUG [main] - ooo Connection Opened
 	DEBUG [main] - ==>  Executing: select * from author 
 	DEBUG [main] - ==> Parameters: 
