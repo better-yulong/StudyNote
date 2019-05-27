@@ -151,6 +151,17 @@ public class BaseDataTest {
 ```
 从方法名可知道该方法用于创建数据源，涉及两个子方法：createUnpooledDataSource、runScript
 ###### 2.1.1.1 BeforeClass --> createBlogDataSource() -->createUnpooledDataSource
+```language
+  public static UnpooledDataSource createUnpooledDataSource(String resource) throws IOException {
+    Properties props = Resources.getResourceAsProperties(resource);
+    UnpooledDataSource ds = new UnpooledDataSource();
+    ds.setDriver(props.getProperty("driver"));
+    ds.setUrl(props.getProperty("url"));
+    ds.setUsername(props.getProperty("username"));
+    ds.setPassword(props.getProperty("password"));
+    return ds;
+  }
+```
 
 
 
