@@ -130,6 +130,17 @@ public class BaseDataTest {
 
 }
 ```
+#### 四级标题
+
+```language
+  @BeforeClass
+  public static void setup() throws Exception {
+    createBlogDataSource();
+    final String resource = "org/apache/ibatis/builder/MapperConfig.xml";
+    final Reader reader = Resources.getResourceAsReader(resource);
+    sqlMapper = new SqlSessionFactoryBuilder().build(reader);
+  }
+```
 
 
 
