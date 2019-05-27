@@ -185,4 +185,13 @@ password=
       connection.close();
     }
   }
+
+  public static void runScript(ScriptRunner runner, String resource) throws IOException, SQLException {
+    Reader reader = Resources.getResourceAsReader(resource);
+    try {
+      runner.runScript(reader);
+    } finally {
+      reader.close();
+    }
+  }
 ```
