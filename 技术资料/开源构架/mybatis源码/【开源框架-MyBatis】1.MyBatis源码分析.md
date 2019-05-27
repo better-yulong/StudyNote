@@ -140,7 +140,16 @@ public class BaseDataTest {
     sqlMapper = new SqlSessionFactoryBuilder().build(reader);
   }
 ```
-##### 2.1.1 BeforeClass分析
+##### 2.1.1 BeforeClass --> createBlogDataSource() 分析
+```language
+  public static DataSource createBlogDataSource() throws IOException, SQLException {
+    DataSource ds = createUnpooledDataSource(BLOG_PROPERTIES);
+    runScript(ds, BLOG_DDL);
+    runScript(ds, BLOG_DATA);
+    return ds;
+  }
+```
+可发现
 
 
 
