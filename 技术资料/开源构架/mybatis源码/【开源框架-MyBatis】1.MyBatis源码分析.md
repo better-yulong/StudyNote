@@ -30,6 +30,106 @@ java.lang.NullPointerException
 ```
 
 ### 二. 单元测试源码分析
-基于测试通过的单元测试方法：shouldSelectAllAuthors
+基于测试通过的单元测试方法：shouldSelectAllAuthors，结合源码分析：
+```language
+public class SqlSessionTest extends BaseDataTest {
+  private static SqlSessionFactory sqlMapper;
+
+  @BeforeClass
+  public static void setup() throws Exception {
+    createBlogDataSource();
+    final String resource = "org/apache/ibatis/builder/MapperConfig.xml";
+    final Reader reader = Resources.getResourceAsReader(resource);
+    sqlMapper = new SqlSessionFactoryBuilder().build(reader);
+  }
+
+   //引得省略......
+   
+  @Test
+  public void shouldSelectAllAuthors() throws Exception {
+    SqlSession session = sqlMapper.openSession(TransactionIsolationLevel.SERIALIZABLE);
+    try {
+      List<Author> authors = session.selectList("domain.blog.mappers.AuthorMapper.selectAllAuthors");
+      assertEquals(2, authors.size());
+    } finally {
+      session.close();
+    }
+  }
+```
+SqlSessionTest父类：
+```language
+public class BaseDataTest {
+
+  public static final String BLOG_PROPERTIES = "databases/blog/blog-derby.properties";
+  public static final String BLOG_DDL = "databases/blog/blog-derby-schema.sql";
+  public static final String BLOG_DATA = "databases/blog/blog-derby-dataload.sql";
+
+  public static final String JPETSTORE_PROPERTIES = "databases/jpetstore/jpetstore-hsqldb.properties";
+  public static final String JPETSTORE_DDL = "databases/jpetstore/jpetstore-hsqldb-schema.sql";
+  public static final String JPETSTORE_DATA = "databases/jpetstore/jpetstore-hsqldb-dataload.sql";
+
+  public static UnpooledDataSource createUnpooledDataSource(String resource) throws IOException {
+    Properties props = Resources.getResourceAsProperties(resource);
+    UnpooledDataSource ds = new UnpooledDataSource();
+    ds.setDriver(props.getProperty("driver"));
+    ds.setUrl(props.getProperty("url"));
+    ds.setUsername(props.getProperty("username"));
+    ds.setPassword(props.getProperty("password"));
+    return ds;
+  }
+
+  public static PooledDataSource createPooledDataSource(String resource) throws IOException {
+    Properties props = Resources.getResourceAsProperties(resource);
+    PooledDataSource ds = new PooledDataSource();
+    ds.setDriver(props.getProperty("driver"));
+    ds.setUrl(props.getProperty("url"));
+    ds.setUsername(props.getProperty("username"));
+    ds.setPassword(props.getProperty("password"));
+    return ds;
+  }
+
+  public static void runScript(DataSource ds, String resource) throws IOException, SQLException {
+    Connection connection = ds.getConnection();
+    try {
+      ScriptRunner runner = new ScriptRunner(connection);
+      runner.setAutoCommit(true);
+      runner.setStopOnError(false);
+      runner.setLogWriter(null);
+      runScript(runner, resource);
+    } finally {
+      connection.close();
+    }
+  }
+
+  public static void runScript(ScriptRunner runner, String resource) throws IOException, SQLException {
+    Reader reader = Resources.getResourceAsReader(resource);
+    try {
+      runner.runScript(reader);
+    } finally {
+      reader.close();
+    }
+  }
+
+  public static DataSource createBlogDataSource() throws IOException, SQLException {
+    DataSource ds = createUnpooledDataSource(BLOG_PROPERTIES);
+    runScript(ds, BLOG_DDL);
+    runScript(ds, BLOG_DATA);
+    return ds;
+  }
+
+  public static DataSource createJPetstoreDataSource() throws IOException, SQLException {
+    DataSource ds = createUnpooledDataSource(JPETSTORE_PROPERTIES);
+    runScript(ds, JPETSTORE_DDL);
+    runScript(ds, JPETSTORE_DATA);
+    return ds;
+  }
+
+  @Test
+  public void dummy() {
+  }
+
+}
+```
+
 
 
