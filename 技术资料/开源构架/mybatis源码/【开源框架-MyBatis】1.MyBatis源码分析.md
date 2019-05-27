@@ -194,4 +194,19 @@ password=
       reader.close();
     }
   }
+
+
+  public void runScript(Reader reader) {
+    setAutoCommit();
+
+    try {
+      if (sendFullScript) {
+        executeFullScript(reader);
+      } else {
+        executeLineByLine(reader);
+      }
+    } finally {
+      rollbackConnection();
+    }
+  }
 ```
