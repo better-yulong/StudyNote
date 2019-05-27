@@ -220,4 +220,4 @@ password=
   }
 ```
 - 从上面代码看，逻辑相对简单：1.读取database配置并创建DataSource；2.获取connection并初始化相关参数；3.执行sript（分别执行创建表ddl、初始话数据dml语句）。
-- 结合上面代码及blog-derby-schema.sql 建表脚本，就
+- 结合上面代码及blog-derby-schema.sql 建表脚本，明确单元测试时
