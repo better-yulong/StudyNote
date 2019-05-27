@@ -149,7 +149,9 @@ public class BaseDataTest {
     return ds;
   }
 ```
-从方法名可知道该方法用于创建数据源，
+从方法名可知道该方法用于创建数据源，涉及两个子方法：createUnpooledDataSource、runScript
+###### 2.1.1 BeforeClass --> createBlogDataSource() 分析
+
 
 
 
