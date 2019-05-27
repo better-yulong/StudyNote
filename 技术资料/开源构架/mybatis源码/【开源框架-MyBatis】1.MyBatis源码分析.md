@@ -169,9 +169,23 @@ url=jdbc:derby:ibderby;create=true
 username=
 password=
 ```
-1. derby是apache的一个开源数据库产品，有丰富的特性;它支持client/server模式外，也支持embedded模式.
+1. derby是apache的一个开源数据库产品，有丰富的特性。它支持client/server模式外，也支持embedded模式.
 2. MyBatis内置了两个DataSource的实现：UnpooledDataSource，该数据源对于每次获取请求都简单的打开和关闭连接。PooledDataSource，该数据源在Unpooled的基础上构建了连接池。
 
 
 
 
+```language
+  public static void runScript(DataSource ds, String resource) throws IOException, SQLException {
+    Connection connection = ds.getConnection();
+    try {
+      ScriptRunner runner = new ScriptRunner(connection);
+      runner.setAutoCommit(true);
+      runner.setStopOnError(false);
+      runner.setLogWriter(null);
+      runScript(runner, resource);
+    } finally {
+      connection.close();
+    }
+  }
+```
