@@ -220,4 +220,4 @@ password=
   }
 ```
 - 从上面代码看，逻辑相对简单：1.读取database配置并创建DataSource；2.获取connection并初始化相关参数；3.执行sript（分别执行创建表ddl、初始话数据dml语句）。
-- 结合上面代码及blog-derby-schema.sql 建表脚本，明确单元测试时 CREATE TABLE node 系该建表脚本中遗漏了该表的drop语句
+- 结合上面代码及blog-derby-schema.sql 建表脚本，明确单元测试时 CREATE TABLE node 系该建表脚本中遗漏了该表的drop语句使得该表不支持重复初始化，补充drop脚本重新验证。
