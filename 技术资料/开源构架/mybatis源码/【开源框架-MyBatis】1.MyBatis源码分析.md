@@ -162,6 +162,13 @@ public class BaseDataTest {
     return ds;
   }
 ```
+其中数据库连接配置文件：
+```language
+driver=org.apache.derby.jdbc.EmbeddedDriver
+url=jdbc:derby:ibderby;create=true
+username=
+password=
+```
 
 
 
