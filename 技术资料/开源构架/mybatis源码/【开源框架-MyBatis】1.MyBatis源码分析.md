@@ -173,7 +173,7 @@ password=
 2. MyBatis内置了两个DataSource的实现：UnpooledDataSource，该数据源对于每次获取请求都简单的打开和关闭连接。PooledDataSource，该数据源在Unpooled的基础上构建了连接池。
 ###### 2.1.1.2 BeforeClass --> createBlogDataSource() -->runScript
 ```language
-
+  //BaseDataTest类：
   public static void runScript(DataSource ds, String resource) throws IOException, SQLException {
     Connection connection = ds.getConnection();
     try {
