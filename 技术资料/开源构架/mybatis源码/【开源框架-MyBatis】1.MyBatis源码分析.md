@@ -30,6 +30,6 @@ java.lang.NullPointerException
 ```
 
 ### 二. 单元测试源码分析
-基于测试通过的单元测试方法：shouldSelectAllAuthors 
+基于测试通过的单元测试方法：shouldSelectAllAuthors
 
 
