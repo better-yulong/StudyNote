@@ -169,7 +169,8 @@ url=jdbc:derby:ibderby;create=true
 username=
 password=
 ```
-
+1. derby
+2. MyBatis内置了两个DataSource的实现：UnpooledDataSource，该数据源对于每次获取请求都简单的打开和关闭连接。PooledDataSource，该数据源在Unpooled的基础上构建了连接池。
 
 
 
