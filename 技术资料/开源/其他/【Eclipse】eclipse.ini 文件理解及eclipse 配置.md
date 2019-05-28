@@ -57,3 +57,13 @@ line.separator=
 com.collabnet.subversion.merge.feature (4.1.0) "CollabNet Subversion Merge Client"
 de.loskutov.BytecodeOutline.feature (2.5.0.201711011753-5a57fdf) "Bytecode Outline"
 ```
+其中这三行：
+```language
+-Djava.io.tmpdir:D:/tmp
+
+java.home=C:\Program Files\Java\jre1.8.0_112
+java.io.tmpdir=C:\Users\483879\AppData\Local\Temp\
+java.io.tmpdir:D:/tmp=
+
+```
+可看到eclipse.ini的修改有
