@@ -16,4 +16,14 @@
   }
 ```
 在如上assertEquals行添加断点，以Debugg方式运行Junit测试，运行至断点处后，执行jps -lvm:
+```language
+8308 sun.tools.jps.Jps -lvm -Denv.class.path=.;D:\profiles;D:\work\java\jdklib;D:\work\java\jdklib\tools.jar;E:\study\apache-jmeter-2.9\lib\ext\ApacheJMeter_core.jar;E:\study\apa
+che-jmeter-2.9\lib\jorphan.jar; -Dapplication.home=D:\work\java\jdk -Xms8m
+7772 org.eclipse.jdt.internal.junit.runner.RemoteTestRunner -version 3 -port 53059 -testLoaderClass org.eclipse.jdt.internal.junit4.runner.JUnit4TestLoader -loaderpluginname org.
+eclipse.jdt.junit4.runtime -test org.apache.ibatis.session.SqlSessionTest:shouldSelectAllAuthors -agentlib:jdwp=transport=dt_socket,suspend=y,address=localhost:53061 -ea -Dfile.e
+ncoding=UTF-8
+7132  -Dosgi.requiredJavaVersion=1.7 -XX:+UseStringDeduplication -Dosgi.requiredJavaVersion=1.7 -Xverify:none -XX:+DisableExplicitGC -Xnoclassgc -XX:+UseParNewGC -XX:+UseConcMark
+SweepGC -XX:CMSInitiatingOccupancyFraction=85 -XX:-UseGCOverheadLimit -Dhttps.protocols=TLSv1,TLSv1.1,TLSv1.2 -Djava.io.tmpdir=D:\tmp -Dfile.encoding=UTF-8 -Duser.home=D:\tmp -Xm
+s256m -Xmx1024m -XX:MaxPermSize=256M -XX:PermSize=128m -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCDateStamps -Xloggc:D:/tmp/eclipse-jee-gc.log
+```
 
