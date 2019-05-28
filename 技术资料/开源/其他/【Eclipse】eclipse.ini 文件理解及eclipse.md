@@ -104,7 +104,7 @@ java.io.tmpdir=D:\tmp -Dfile.encoding=UTF-8 -Duser.home=D:\tmp -Xms256m -Xmx1024
 	-XX:+PrintGCDateStamps
 	-Xloggc:D:/tmp/eclipse-jee-gc.log
 ```
-如预期，D:/tmp/eclipse-jee-gc.log 片段，完整日志已上传（https://github.com/better-yulong/StudyNote-Resource/blob/master/StudyNote-Resource/tech/eclipse/eclipse-jee-gc.log）：
+- 如预期，D:/tmp/eclipse-jee-gc.log 片段，完整日志已上传（https://github.com/better-yulong/StudyNote-Resource/blob/master/StudyNote-Resource/tech/eclipse/eclipse-jee-gc.log）：
 ```language
 Java HotSpot(TM) 64-Bit Server VM (25.112-b15) for windows-amd64 JRE (1.8.0_112-b15), built on Sep 22 2016 21:31:56 by "java_re" with MS VC++ 10.0 (VS2010)
 Memory: 4k page, physical 8292272k(3383360k free), swap 16582644k(11422056k free)
@@ -113,6 +113,6 @@ CommandLine flags: -XX:-BytecodeVerificationLocal -XX:-BytecodeVerificationRemot
 2019-05-28T14:30:03.233+0800: 5.410: [Full GC (Metadata GC Threshold) 2019-05-28T14:30:03.233+0800: 5.410: [CMS: 8250K->23873K(174784K), 0.1700451 secs] 48654K->23873K(253440K), [Metaspace: 19172K->19172K(1069056K)], 0.1702597 secs] [Times: user=0.33 sys=0.02, real=0.17 secs] 
 2019-05-28T14:30:06.169+0800: 8.346: [GC (Allocation Failure) 2019-05-28T14:30:06.169+0800: 8.346: [ParNew: 70016K->8704K(78720K), 0.0283742 secs] 93889K->41658K(253504K), 0.0285333 secs] [Times: user=0.11 sys=0.00, real=0.03 secs] 
 ```
-结合easy.gc工具在线分析（https://gceasy.io/），可查看详细报告：
+- 结合easy.gc工具在线分析（https://gceasy.io/），可查看详细报告：https://github.com/better-yulong/StudyNote-Resource/blob/master/StudyNote-Resource/tech/eclipse/GC-Analysis-Report.pdf
 
 
