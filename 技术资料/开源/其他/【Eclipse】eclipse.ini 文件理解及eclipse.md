@@ -1,4 +1,4 @@
-### Eclipse初步
+### Eclipse初步了解
 之前，只简单的理解eclipse是基于Java语言开发的集成开发工具，了解到可通过修改eclipse.ini文件来指定eclipse启动使用的jdk、堆内存Xmx等来优化。但具体并未深入发解，而近期在研究Mybatis源码时发现在windows7平台使用jps -l 命令无法查看到主类名：
 ```language
 C:\>jps -l
@@ -95,6 +95,8 @@ gOccupancyFraction=85 -XX:-UseGCOverheadLimit -Dhttps.protocols=TLSv1,TLSv1.1,TL
 -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:CMSInitiatingOccupancyFraction=85 -XX:-UseGCOverheadLimit -Dhttps.protocols=TLSv1,TLSv1.1,TLSv1.2 -D
 java.io.tmpdir=D:\tmp -Dfile.encoding=UTF-8 -Duser.home=D:\tmp -Xms256m -Xmx1024m -XX:MaxPermSize=256M -XX:PermSize=128m
 ```
-此时虽然jps命令未打印出主类名，但可完全确认该进程即为eclipse的 jvm进程；
+此时虽然jps命令未打印出主类名，但可完全确认该进程即为eclipse的 jvm进程。
+### Eclipse 调优
+在eclipse.ini
 
 
