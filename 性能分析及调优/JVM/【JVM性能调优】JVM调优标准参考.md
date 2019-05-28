@@ -1,6 +1,6 @@
 接自：http://www.importnew.com/3146.html
-### 三级标题GC合理标准（并非绝对）：
-Minor GC执行的很快（小于50ms）
+### GC合理的标准（并非绝对）：
+- Minor GC执行的很快（小于50ms）
 Minor GC执行的并不频繁（大概10秒一次）
 Full GC执行的很快（小于1s）
 Full GC执行的并不频繁（10分钟一次）
