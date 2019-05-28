@@ -127,6 +127,6 @@ Thread [main] (Suspended (breakpoint at line 97 in SqlSessionTest))
 SweepGC -XX:CMSInitiatingOccupancyFraction=85 -XX:-UseGCOverheadLimit -Dhttps.protocols=TLSv1,TLSv1.1,TLSv1.2 -Djava.io.tmpdir=D:\tmp -Dfile.encoding=UTF-8 -Duser.home=D:\tmp -Xm
 s256m -Xmx1024m -XX:MaxPermSize=256M -XX:PermSize=128m -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCDateStamps -Xloggc:D:/tmp/eclipse-jee-gc.log
 ```
-至此，最初的疑问应该可以解答了，因为单元测试业务方法实际是在
+至此，最初的疑问应该可以解答了，因为单元测试业务方法实际是在eclipse自身对应的JVM运行，而缓存
 
 
