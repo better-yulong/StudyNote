@@ -114,7 +114,7 @@ Thread [main] (Suspended (breakpoint at line 97 in SqlSessionTest))
 	RemoteTestRunner.run() line: 382	
 	RemoteTestRunner.main(String[]) line: 192	
 ```
-整体来看，Junit单元测试实际是
+整体来看，Junit单元测试实际是启动新的Java进程，并
 
 
 
