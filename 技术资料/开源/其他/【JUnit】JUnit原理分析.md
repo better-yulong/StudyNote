@@ -109,12 +109,7 @@ Thread [main] (Suspended (breakpoint at line 97 in SqlSessionTest))
 	FrameworkMethod.invokeExplosively(Object, Object...) line: 47	
 	InvokeMethod.evaluate() line: 17	
 	BlockJUnit4ClassRunner(ParentRunner<T>).runLeaf(Statement, Description, RunNotifier) line: 325	
-	BlockJUnit4ClassRunner.runChild(FrameworkMethod, RunNotifier) line: 78	
-	BlockJUnit4ClassRunner.runChild(Object, RunNotifier) line: 57	
-	ParentRunner$3.run() line: 290	
-	ParentRunner$1.schedule(Runnable) line: 71	
-	BlockJUnit4ClassRunner(ParentRunner<T>).runChildren(RunNotifier) line: 288	
-	ParentRunner<T>.access$000(ParentRunner, RunNotifier) line: 58	
+	
 	ParentRunner$2.evaluate() line: 268	
 	RunBefores.evaluate() line: 26	
 	BlockJUnit4ClassRunner(ParentRunner<T>).run(RunNotifier) line: 363	
