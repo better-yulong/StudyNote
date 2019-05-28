@@ -79,7 +79,14 @@ gOccupancyFraction=85 -XX:-UseGCOverheadLimit -Dhttps.protocols=TLSv1,TLSv1.1,TL
 ```
 如果还觉得不完全确认，则可以修改eclipse.ini文件，根据参数来确认是否确实为eclise 自身Java进程（添加或修改参数 ）：
 ```language
--Dfile.encoding=UTF-8
+	-Djava.io.tmpdir=D:\tmp
+	-Dfile.encoding=UTF-8
+	-Duser.home=D:\tmp
+	-Xms256m
+	-Xmx1024m
+	-XX:MaxPermSize=256M
+	-XX:PermSize=128m
+	
 ```
 
 
