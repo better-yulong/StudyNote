@@ -14,28 +14,10 @@ C:\>jps -l
 [eclipse-configure](https://github.com/better-yulong/StudyNote-Resource/blob/master/StudyNote-Resource/tech/eclipse/eclipse-configure.PNG)
 配置信息版本：
 ```language
-*** Date: 2019年5月28日星期二 中国标准时间 上午10:44:08
-
-*** Platform Details:
-
-*** System properties:
-eclipse.commands=-os
-win32
--ws
-win32
--arch
-x86_64
--showsplash
-D:\work\ide\eclipse-jee-neon\eclipse\\plugins\org.eclipse.platform_4.6.3.v20170301-0400\splash.bmp
 -launcher
 D:\work\ide\eclipse-jee-neon\eclipse\eclipse.exe
 -name
 Eclipse
---launcher.library
-D:\work\ide\eclipse-jee-neon\eclipse\\plugins/org.eclipse.equinox.launcher.win32.win32.x86_64_1.1.401.v20161122-1740\eclipse_1617.dll
--startup
-D:\work\ide\eclipse-jee-neon\eclipse\\plugins/org.eclipse.equinox.launcher_1.3.201.v20161025-1711.jar
---launcher.appendVmargs
 -XX:+UseStringDeduplication
 -Dosgi.requiredJavaVersion=1.7
 -XX:MaxPermSize=1024M
