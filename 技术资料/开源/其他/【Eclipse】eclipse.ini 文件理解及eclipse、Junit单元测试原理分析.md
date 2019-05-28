@@ -94,6 +94,6 @@ gOccupancyFraction=85 -XX:-UseGCOverheadLimit -Dhttps.protocols=TLSv1,TLSv1.1,TL
 -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:CMSInitiatingOccupancyFraction=85 -XX:-UseGCOverheadLimit -Dhttps.protocols=TLSv1,TLSv1.1,TLSv1.2 -D
 java.io.tmpdir=D:\tmp -Dfile.encoding=UTF-8 -Duser.home=D:\tmp -Xms256m -Xmx1024m -XX:MaxPermSize=256M -XX:PermSize=128m
 ```
-
+此时虽然jps命令未打印出主类名，但可完全确认该进程即为eclipse的 jvm进程。
 
 
