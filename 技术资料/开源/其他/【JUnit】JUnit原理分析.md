@@ -121,5 +121,11 @@ Thread [main] (Suspended (breakpoint at line 97 in SqlSessionTest))
 ```language
  TCP    0.0.0.0:53059          0.0.0.0:0              LISTENING       7132
 ```
-最后一列为PID，即对应 7132 的Java进程，
+最后一列为PID，即对应 7132 的Java进程，结合上面 jps -lvm 的日志可发现实际为ECLIP：
+```language
+7132  -Dosgi.requiredJavaVersion=1.7 -XX:+UseStringDeduplication -Dosgi.requiredJavaVersion=1.7 -Xverify:none -XX:+DisableExplicitGC -Xnoclassgc -XX:+UseParNewGC -XX:+UseConcMark
+SweepGC -XX:CMSInitiatingOccupancyFraction=85 -XX:-UseGCOverheadLimit -Dhttps.protocols=TLSv1,TLSv1.1,TLSv1.2 -Djava.io.tmpdir=D:\tmp -Dfile.encoding=UTF-8 -Duser.home=D:\tmp -Xm
+s256m -Xmx1024m -XX:MaxPermSize=256M -XX:PermSize=128m -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCDateStamps -Xloggc:D:/tmp/eclipse-jee-gc.log
+```
+
 
