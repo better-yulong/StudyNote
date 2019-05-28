@@ -67,7 +67,4 @@ java.io.tmpdir:D:/tmp=
 user.home=C:\Users\483879
 ```
 可看到eclipse.ini的修改有读取到新增配置，但貌似没生效，于修改
-
-
 -Djava.io.tmpdir=D:\tmp
-java.io.tmpdir=D:\tmp
