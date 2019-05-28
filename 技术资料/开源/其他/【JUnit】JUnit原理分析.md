@@ -31,5 +31,5 @@ s256m -Xmx1024m -XX:MaxPermSize=256M -XX:PermSize=128m -verbose:gc -XX:+PrintGCD
 2. PID 7772 为RemoteTestRunner，即是单元测试进程。
 3. PID 7312 为Eclipse 的JVM进程，具体怎么确认可根据笔记"【Eclipse】eclipse.ini 文件理解及eclipse GC分析示例"。
 
-- 如果单纯从上面的日志来看，仍然无法解释多次运行缓存可复用的问题，于是乎度娘对RemoteTestRunner 做下了解：
+- 如果单纯从上面的日志来看，仍然无法解释多次运行缓存可复用的问题，于是乎度娘对RemoteTestRunner 做下了解，但没有太多可用信息，于是乎尝试分析RemoteTestRunner 源码。
 
