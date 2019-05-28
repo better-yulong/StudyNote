@@ -19,11 +19,6 @@ C:\>jps -l
 *** Platform Details:
 
 *** System properties:
-applicationXMI=org.eclipse.ui.workbench/LegacyIDE.e4xmi
-awt.toolkit=sun.awt.windows.WToolkit
-bytes_display=Bytes
-eclipse.application=org.eclipse.ui.ide.workbench
-eclipse.buildId=4.6.3.M20170301-0400
 eclipse.commands=-os
 win32
 -ws
