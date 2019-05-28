@@ -113,6 +113,7 @@ CommandLine flags: -XX:-BytecodeVerificationLocal -XX:-BytecodeVerificationRemot
 2019-05-28T14:30:03.233+0800: 5.410: [Full GC (Metadata GC Threshold) 2019-05-28T14:30:03.233+0800: 5.410: [CMS: 8250K->23873K(174784K), 0.1700451 secs] 48654K->23873K(253440K), [Metaspace: 19172K->19172K(1069056K)], 0.1702597 secs] [Times: user=0.33 sys=0.02, real=0.17 secs] 
 2019-05-28T14:30:06.169+0800: 8.346: [GC (Allocation Failure) 2019-05-28T14:30:06.169+0800: 8.346: [ParNew: 70016K->8704K(78720K), 0.0283742 secs] 93889K->41658K(253504K), 0.0285333 secs] [Times: user=0.11 sys=0.00, real=0.03 secs] 
 ```
+结合easy.gc工具在线分析（https://gceasy.io/）
 
 
 
