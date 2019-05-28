@@ -6,4 +6,4 @@ C:\>jps -l
 	6716 sun.tools.jps.Jps
 	5920 com.zyl.base.io.SocketServer
 ```
-查找度忍受
+查找度娘，网上主要有两类问题：1.jps命令无法查看到 pi
