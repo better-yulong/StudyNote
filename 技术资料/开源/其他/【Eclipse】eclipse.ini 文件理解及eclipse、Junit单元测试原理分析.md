@@ -73,3 +73,4 @@ user.home=C:\Users\483879
 ```
 但是仍然无法通过jps -l命令确认到主类名，其实是想确认哪个进程是eclispe的java进程，无奈选择中办法：1. jps -l 确认无其他Java进程；2.启动Eclipse; 3.jps -lmv 命令查看除jps之外的Java进程.
 
+
