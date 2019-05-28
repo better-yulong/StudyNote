@@ -26,7 +26,10 @@ ncoding=UTF-8
 SweepGC -XX:CMSInitiatingOccupancyFraction=85 -XX:-UseGCOverheadLimit -Dhttps.protocols=TLSv1,TLSv1.1,TLSv1.2 -Djava.io.tmpdir=D:\tmp -Dfile.encoding=UTF-8 -Duser.home=D:\tmp -Xm
 s256m -Xmx1024m -XX:MaxPermSize=256M -XX:PermSize=128m -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCDateStamps -Xloggc:D:/tmp/eclipse-jee-gc.log
 ```
-从日志来看：
+- 从日志来看：
 1. PID 8308 为jps运行时进程，可忽略。
 2. PID 7772 为RemoteTestRunner，即是单元测试进程。
-3. PID 7312 为Eclipse 的JVM进程，具体怎么确认可根据笔记：
+3. PID 7312 为Eclipse 的JVM进程，具体怎么确认可根据笔记"【Eclipse】eclipse.ini 文件理解及eclipse GC分析示例"。
+
+- 如果
+
