@@ -77,5 +77,6 @@ user.home=C:\Users\483879
 mx1024m -Xverify:none -Xmn128m -XX:+DisableExplicitGC -Xnoclassgc -Dfile.encoding=UTF-8 -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:CMSInitiatin
 gOccupancyFraction=85 -XX:-UseGCOverheadLimit -Dhttps.protocols=TLSv1,TLSv1.1,TLSv1.2 
 ```
-如果还觉得不完全确认，则可以修改eclipse.ini文件，根据参数来确认是否确实为eclise
+如果还觉得不完全确认，则可以修改eclipse.ini文件，根据参数来确认是否确实为eclise 自身Java进程：
+
 
