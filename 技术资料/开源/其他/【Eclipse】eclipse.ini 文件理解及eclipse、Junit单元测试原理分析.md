@@ -71,4 +71,4 @@ user.home=C:\Users\483879
 	-Djava.io.tmpdir=D:\tmp
 	-Duser.home=D:\tmp
 ```
-但是仍然无法通过jps -l命令确认到
+但是仍然无法通过jps -l命令确认到主类名，其实是想确认哪个进程是eclispe的java进程，无奈
