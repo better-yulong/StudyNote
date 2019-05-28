@@ -66,9 +66,9 @@ java.io.tmpdir=C:\Users\483879\AppData\Local\Temp\
 java.io.tmpdir:D:/tmp=
 user.home=C:\Users\483879
 ```
-可看到eclipse.ini的修改有读取到新增配置，但貌似没生效，于修改
+可看到eclipse.ini的修改有读取到新增配置，但貌似没生效；于是修改eclipse.ini文件重新Eclipse生效：
 ```language
 	-Djava.io.tmpdir=D:\tmp
 	-Duser.home=D:\tmp
 ```
-修
+但是仍然无法通过jps -l命令确认到
