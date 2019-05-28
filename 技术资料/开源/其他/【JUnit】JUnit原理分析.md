@@ -29,4 +29,4 @@ s256m -Xmx1024m -XX:MaxPermSize=256M -XX:PermSize=128m -verbose:gc -XX:+PrintGCD
 从日志来看：
 1. PID 8308 为jps运行时进程，可忽略。
 2. PID 7772 为RemoteTestRunner，即是单元测试进程。
-3. PID 
+3. PID 7312 为Eclipse 的JVM进程，具体怎么确认可根据笔记：
