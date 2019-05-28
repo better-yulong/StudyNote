@@ -68,7 +68,23 @@ s256m -Xmx1024m -XX:MaxPermSize=256M -XX:PermSize=128m -verbose:gc -XX:+PrintGCD
 		}
 	}
 
-	
+	protected void run() {
+		if (!connect())
+			return;
+		if (fRerunTest != null) {
+			rerunTest(new RerunRequest(Integer.parseInt(fRerunTest), fTestClassNames[0], fTestName));
+			return;
+		}
+
+		FirstRunExecutionListener listener= firstRunExecutionListener();
+		fExecution= new TestExecution(listener, getClassifier());
+		runTests(fExecution);
+		if (fKeepAlive)
+			waitForReruns();
+
+		shutDown();
+
+	}
 
 ```
 ```language
