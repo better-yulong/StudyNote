@@ -66,4 +66,4 @@ java.io.tmpdir=C:\Users\483879\AppData\Local\Temp\
 java.io.tmpdir:D:/tmp=
 
 ```
-可看到eclipse.ini的修改有
+可看到eclipse.ini的修改有读取到新增配置，但三
