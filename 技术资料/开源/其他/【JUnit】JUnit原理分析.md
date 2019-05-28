@@ -34,7 +34,17 @@ s256m -Xmx1024m -XX:MaxPermSize=256M -XX:PermSize=128m -verbose:gc -XX:+PrintGCD
 - 如果单纯从上面的日志来看，仍然无法解释多次运行缓存可复用的问题，于是乎度娘对RemoteTestRunner 做下了解，但没有太多可用信息，于是乎尝试分析RemoteTestRunner 源码。正好，发现了部分有用的信息：
 ```language
 源码：
-	
+	/**
+	 * Host to connect to, default is the localhost
+	 */
+	private String fHost= ""; //$NON-NLS-1$
+	/**
+	 * Port to connect to.
+	 */
+	private int fPort= -1;
+
+
+
 ```
 ```language
 API接口文档：
