@@ -43,7 +43,32 @@ s256m -Xmx1024m -XX:MaxPermSize=256M -XX:PermSize=128m -verbose:gc -XX:+PrintGCD
 	 */
 	private int fPort= -1;
 
+		/**
+	 * The main entry point.
+	 *
+	 * @param args Parameters:
+	 * <pre>-classnames: the name of the test suite class
+	 * -testfilename: the name of a file containing classnames of test suites
+	 * -test: the test method name (format classname testname)
+	 * -host: the host to connect to default local host
+	 * -port: the port to connect to, mandatory argument
+	 * -keepalive: keep the process alive after a test run
+     * </pre>
+     */
+	public static void main(String[] args) {
+		try {
+			RemoteTestRunner testRunServer= new RemoteTestRunner();
+			testRunServer.init(args);
+			testRunServer.run();
+		} catch (Throwable e) {
+			e.printStackTrace(); // don't allow System.exit(0) to swallow exceptions
+		} finally {
+			// fix for 14434
+			System.exit(0);
+		}
+	}
 
+	
 
 ```
 ```language
