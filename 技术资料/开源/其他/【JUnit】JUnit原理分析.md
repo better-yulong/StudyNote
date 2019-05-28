@@ -28,4 +28,5 @@ s256m -Xmx1024m -XX:MaxPermSize=256M -XX:PermSize=128m -verbose:gc -XX:+PrintGCD
 ```
 从日志来看：
 1. PID 8308 为jps运行时进程，可忽略。
-2. PID 7772 为RemoteTestRunner 
+2. PID 7772 为RemoteTestRunner，即是单元测试进程。
+3. PID 
