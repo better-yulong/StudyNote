@@ -104,7 +104,7 @@ java.io.tmpdir=D:\tmp -Dfile.encoding=UTF-8 -Duser.home=D:\tmp -Xms256m -Xmx1024
 	-XX:+PrintGCDateStamps
 	-Xloggc:D:/tmp/eclipse-jee-gc.log
 ```
-如预期，D:/tmp/eclipse-jee-gc.log 片段，完整日志已上传（：
+如预期，D:/tmp/eclipse-jee-gc.log 片段，完整日志已上传（）：
 ```language
 Java HotSpot(TM) 64-Bit Server VM (25.112-b15) for windows-amd64 JRE (1.8.0_112-b15), built on Sep 22 2016 21:31:56 by "java_re" with MS VC++ 10.0 (VS2010)
 Memory: 4k page, physical 8292272k(3383360k free), swap 16582644k(11422056k free)
