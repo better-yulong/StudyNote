@@ -71,6 +71,11 @@ user.home=C:\Users\483879
 	-Djava.io.tmpdir=D:\tmp
 	-Duser.home=D:\tmp
 ```
-但是仍然无法通过jps -l命令确认到主类名，其实是想确认哪个进程是eclispe的java进程，无奈选择中办法：1. jps -l 确认无其他Java进程；2.启动Eclipse; 3.jps -lmv 命令查看除jps之外的Java进程.
-
+但是仍然无法通过jps -l命令确认到主类名，其实是想确认哪个进程是eclispe的java进程，无奈选择中办法：1. jps -l 确认无其他Java进程；2.启动Eclipse; 3.jps -lmv 命令查看除jps之外的Java进程:
+```language
+5076  -Dosgi.requiredJavaVersion=1.7 -XX:+UseStringDeduplication -Dosgi.requiredJavaVersion=1.7 -XX:MaxPermSize=256M -XX:PermSize=96m -Xms512m -X
+mx1024m -Xverify:none -Xmn128m -XX:+DisableExplicitGC -Xnoclassgc -Dfile.encoding=UTF-8 -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:CMSInitiatin
+gOccupancyFraction=85 -XX:-UseGCOverheadLimit -Dhttps.protocols=TLSv1,TLSv1.1,TLSv1.2 
+```
+如果还觉得不完全确认，则可以考虑在ec
 
