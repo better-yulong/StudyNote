@@ -97,6 +97,12 @@ java.io.tmpdir=D:\tmp -Dfile.encoding=UTF-8 -Duser.home=D:\tmp -Xms256m -Xmx1024
 ```
 此时虽然jps命令未打印出主类名，但可完全确认该进程即为eclipse的 jvm进程。
 ### Eclipse 调优
-在eclipse.ini
+在eclipse.ini文件添加GC日志参数，并：
+```language
+	-verbose:gc
+	-XX:+PrintGCDetails
+	-XX:+PrintGCDateStamps
+	-Xloggc:D:/tmp/eclipse-jee-gc.log
+```
 
 
