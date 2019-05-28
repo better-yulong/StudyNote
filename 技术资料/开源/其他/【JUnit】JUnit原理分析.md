@@ -104,13 +104,7 @@ Eclipse 调试调用栈：
 Thread [main] (Suspended (breakpoint at line 97 in SqlSessionTest))	
 	SqlSessionTest.shouldSelectAllAuthors() line: 97	
 	NativeMethodAccessorImpl.invoke0(Method, Object, Object[]) line: not available [native method]	
-	NativeMethodAccessorImpl.invoke(Object, Object[]) line: not available	
-	FrameworkMethod$1(ReflectiveCallable).run() line: 12	
-	FrameworkMethod.invokeExplosively(Object, Object...) line: 47	
-	InvokeMethod.evaluate() line: 17	
 	BlockJUnit4ClassRunner(ParentRunner<T>).runLeaf(Statement, Description, RunNotifier) line: 325	
-	
-	ParentRunner$2.evaluate() line: 268	
 	RunBefores.evaluate() line: 26	
 	BlockJUnit4ClassRunner(ParentRunner<T>).run(RunNotifier) line: 363	
 	JUnit4TestReference.run(TestExecution) line: 86	
