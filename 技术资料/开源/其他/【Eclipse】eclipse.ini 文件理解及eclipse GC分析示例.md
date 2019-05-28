@@ -96,7 +96,8 @@ gOccupancyFraction=85 -XX:-UseGCOverheadLimit -Dhttps.protocols=TLSv1,TLSv1.1,TL
 java.io.tmpdir=D:\tmp -Dfile.encoding=UTF-8 -Duser.home=D:\tmp -Xms256m -Xmx1024m -XX:MaxPermSize=256M -XX:PermSize=128m
 ```
 此时虽然jps命令未打印出主类名，但可完全确认该进程即为eclipse的 jvm进程。
-### Eclipse 调优
+
+### Eclipse GC
 在eclipse.ini文件添加GC日志参数，并重启Eclipse：
 ```language
 	-verbose:gc
