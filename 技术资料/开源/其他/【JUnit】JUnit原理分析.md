@@ -118,5 +118,8 @@ Thread [main] (Suspended (breakpoint at line 97 in SqlSessionTest))
 
 #### 2. 基于端口确认远程执行的JVM进程
 既然已经知道端口53059，而host未指定即默认为localhost，那么首先需要确认开放53059端口对应的PID，使用netstat -ano命令：
-
+```language
+ TCP    0.0.0.0:53059          0.0.0.0:0              LISTENING       7132
+```
+最后一列为PID，即对应 7132 的Java进程，
 
