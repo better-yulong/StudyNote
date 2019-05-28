@@ -89,15 +89,7 @@ java.ext.dirs=C:\Program Files\Java\jre1.8.0_112\lib\ext;C:\Windows\Sun\Java\lib
 java.home=C:\Program Files\Java\jre1.8.0_112
 java.io.tmpdir=C:\Users\483879\AppData\Local\Temp\
 java.io.tmpdir:D:/tmp=
-java.library.path=D:\work\ide\eclipse-jee-neon\eclipse;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:/Program Files/Java/jre1.8.0_112/bin/server;C:/Program Files/Java/jre1.8.0_112/bin;C:/Program Files/Java/jre1.8.0_112/lib/amd64;C:\ProgramData\Oracle\Java\javapath;D:\work\java\jdk;/bin;D:\work\java\jdk;/lib;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\TortoiseSVN\bin;d:\Program Files (x86)\Oracle\odac_client;d:\Program Files (x86)\Oracle\odac_client\bin;C:\Program Files\MySQL\MySQL Utilities 1.6\;D:\Program Files\PuTTY\;.;D:\work\java\jdk\bin;D:\work\maven3\bin;E:\Git\cmd;D:\work\ide\eclipse-jee-neon\eclipse;;.
-java.runtime.name=Java(TM) SE Runtime Environment
-java.runtime.version=1.8.0_112-b15
-java.specification.name=Java Platform API Specification
-java.specification.vendor=Oracle Corporation
-java.specification.version=1.8
-java.vendor=Oracle Corporation
-java.vendor.url=http://java.oracle.com/
-java.vendor.url.bug=http://bugreport.sun.com/bugreport/
+
 java.version=1.8.0_112
 java.vm.info=mixed mode
 java.vm.name=Java HotSpot(TM) 64-Bit Server VM
