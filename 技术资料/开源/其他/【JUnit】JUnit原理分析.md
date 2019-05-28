@@ -114,7 +114,7 @@ Thread [main] (Suspended (breakpoint at line 97 in SqlSessionTest))
 	RemoteTestRunner.run() line: 382	
 	RemoteTestRunner.main(String[]) line: 192	
 ```
-整体来看，Junit单元测试实际是启动新的Java进程，然后远程执行单元测试对应的实际测试方法，结果上面源码及jps的进程日志：
+整体来看，Junit单元测试实际是启动新的Java进程，然后远程执行单元测试对应的实际测试方法，结果上面源码及jps的进程日志：7772 org.eclipse.jdt.internal.junit.runner.RemoteTestRunner -version 3 -port 53059 。可发现远程连接的端口号是5305
 
 
 
