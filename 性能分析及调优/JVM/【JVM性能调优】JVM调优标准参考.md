@@ -1,4 +1,4 @@
-接自：http://www.importnew.com/3146.html
+接自：http://www.importnew.com/2057.html  http://www.importnew.com/3146.html
 ### GC合理的标准（并非绝对）---适用于响应时间优先场景（即高并发）：
 1. Minor GC执行的很快（小于50ms）
 2. Minor GC执行的并不频繁（大概10秒一次）
