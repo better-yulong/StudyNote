@@ -70,3 +70,4 @@ java.io.tmpdir:D:/tmp=
 
 
 -Djava.io.tmpdir=D:\tmp
+java.io.tmpdir=D:\tmp
