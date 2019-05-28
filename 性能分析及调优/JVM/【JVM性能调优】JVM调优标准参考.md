@@ -1,5 +1,5 @@
 - 接自：http://www.importnew.com/2057.html  http://www.importnew.com/3146.html http://www.pianshen.com/article/2178378771/
-- gceasy：https://blog.gceasy.io/ https://blog.gceasy.io/2016/06/18/garbage-collection-log-analysis-api/
+- gceasy：https://blog.gceasy.io/ https://blog.gceasy.io/2016/06/18/garbage-collection-log-analysis-api/  https://gceasy.io/
 ### GC合理的标准（并非绝对）---适用于响应时间优先场景（即高并发）：
 1. Minor GC执行的很快（小于50ms）---（G1收集器默认MinorGC 停顿时间是200ms，很多场景可考虑控制在100ms以内）
 2. Minor GC执行的并不频繁（大概10秒一次）
