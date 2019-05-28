@@ -36,20 +36,6 @@ D:\work\ide\eclipse-jee-neon\eclipse\\plugins/org.eclipse.equinox.launcher.win32
 -startup
 D:\work\ide\eclipse-jee-neon\eclipse\\plugins/org.eclipse.equinox.launcher_1.3.201.v20161025-1711.jar
 --launcher.appendVmargs
--product
-org.eclipse.epp.package.jee.product
--vm
-C:\Program Files\Java\jre1.8.0_112\bin\server\jvm.dll
-eclipse.home.location=file:/D:/work/ide/eclipse-jee-neon/eclipse/
-eclipse.launcher=D:\work\ide\eclipse-jee-neon\eclipse\eclipse.exe
-eclipse.launcher.name=Eclipse
-eclipse.p2.data.area=@config.dir/../p2/
-eclipse.p2.profile=epp.package.jee
-eclipse.product=org.eclipse.epp.package.jee.product
-eclipse.startTime=1559011068981
-eclipse.stateSaveDelayInterval=30000
-eclipse.vm=C:\Program Files\Java\jre1.8.0_112\bin\server\jvm.dll
-eclipse.vmargs=-Dosgi.requiredJavaVersion=1.7
 -XX:+UseStringDeduplication
 -Dosgi.requiredJavaVersion=1.7
 -XX:MaxPermSize=1024M
@@ -69,23 +55,7 @@ eclipse.vmargs=-Dosgi.requiredJavaVersion=1.7
 -XX:-UseGCOverheadLimit
 -Dhttps.protocols=TLSv1,TLSv1.1,TLSv1.2
 -Djava.io.tmpdir:D:/tmp
--Djava.class.path=D:\work\ide\eclipse-jee-neon\eclipse\\plugins/org.eclipse.equinox.launcher_1.3.201.v20161025-1711.jar
-equinox.init.uuid=true
-equinox.use.ds=true
-file.encoding=UTF-8
-file.encoding.pkg=sun.io
-file.separator=\
-findbugs.cloud.default=edu.umd.cs.findbugs.cloud.doNothingCloud
-findbugs.home=/D:/work/ide/eclipse-jee-neon/eclipse/plugins/edu.umd.cs.findbugs.plugin.eclipse_3.0.1.20150306-5afe4d1/
-gosh.args=--nointeractive
-guice.disable.misplaced.annotation.check=true
-https.protocols=TLSv1,TLSv1.1,TLSv1.2
-java.awt.graphicsenv=sun.awt.Win32GraphicsEnvironment
-java.awt.printerjob=sun.awt.windows.WPrinterJob
-java.class.path=D:\work\ide\eclipse-jee-neon\eclipse\\plugins/org.eclipse.equinox.launcher_1.3.201.v20161025-1711.jar
-java.class.version=52.0
-java.endorsed.dirs=C:\Program Files\Java\jre1.8.0_112\lib\endorsed
-java.ext.dirs=C:\Program Files\Java\jre1.8.0_112\lib\ext;C:\Windows\Sun\Java\lib\ext
+
 java.home=C:\Program Files\Java\jre1.8.0_112
 java.io.tmpdir=C:\Users\483879\AppData\Local\Temp\
 java.io.tmpdir:D:/tmp=
