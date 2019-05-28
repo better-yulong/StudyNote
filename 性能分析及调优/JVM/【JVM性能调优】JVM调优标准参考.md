@@ -1,5 +1,5 @@
 接自：http://www.importnew.com/2057.html  http://www.importnew.com/3146.html http://www.pianshen.com/article/2178378771/
-https://blog.gceasy.io/2016/10/01/garbage-collection-kpi/
+
 ### GC合理的标准（并非绝对）---适用于响应时间优先场景（即高并发）：
 1. Minor GC执行的很快（小于50ms）---（G1收集器默认MinorGC 停顿时间是200ms，很多场景可考虑控制在100ms以内）
 2. Minor GC执行的并不频繁（大概10秒一次）
@@ -10,3 +10,5 @@ https://blog.gceasy.io/2016/10/01/garbage-collection-kpi/
 - HPJMeter 是用于分析-verbosegc 日志的工具；易于使用和分析结果；通过HPJmeter你可以很轻易查看GC执行时间以及GC发生频率。
 
 ### JVM GC调优：关键性能指标
+https://blog.csdn.net/xiaocszn/article/details/83108058 
+https://blog.gceasy.io/2016/10/01/garbage-collection-kpi/
