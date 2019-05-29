@@ -5,7 +5,7 @@ GC调优标准量化参考：https://blog.csdn.net/dabokele/article/category/676
 https://blog.csdn.net/dabokele/article/details/59794040 
 
 JVC调优思维导图：https://blog.csdn.net/u011683530/article/details/51013219
-
+https://img-blog.csdn.net/20160330122115344?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast
 
 ### GC合理的标准（并非绝对）---适用于响应时间优先场景（即高并发）：
 1. Minor GC执行的很快（小于50ms）---（G1收集器默认MinorGC 停顿时间是200ms，很多场景可考虑控制在100ms以内）
