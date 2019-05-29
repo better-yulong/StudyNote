@@ -309,5 +309,5 @@ password=
     }
   }
 ```
-- 重点几乎都在MapperConfig.xml
+- 重点就是将MapperConfig.xml解析的实例化成Congiguration对象，并基于该
 
