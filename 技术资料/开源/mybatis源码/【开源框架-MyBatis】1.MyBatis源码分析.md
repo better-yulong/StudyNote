@@ -223,7 +223,7 @@ password=
 - 结合上面代码及blog-derby-schema.sql 建表脚本，明确单元测试时 CREATE TABLE node 系该建表脚本中遗漏了该表的drop语句使得该表不支持重复初始化，补充drop脚本重新验证。果不其然，运行shouldSelectAllAuthors OK，不再扫错（这还算是首次基于开源框架找bug成功）。
 - 但从上面的drop报错也引身另外一个问题，即是重复执行时必须先执行drop说明上次执行初始化的表及数据仍存在于内存。这块儿有些不太理解，原本认为每次Junit执行均会创建新的JVM进程，故每次理应都是新环境，但实际不是？可参考笔记"【JUnit】JUnit原理分析",实际JUnite对应的业务方法在eclipse 自身的JVM中执行，故首次运行时即已缓存至JVM，后续执行需先行drop表。
 > 总的来说，createBlogDataSource() 主要操作为：1.基于database配置创建数据源；2.基于数据源获得Connection；3.顺序读取解析ddl语句（comment、drop、create表等; 涉及SQL脚本解析）并执行；4.顺序读取解析dml语句（多行insert语句）并执行。
-##### 2.1.2 
+##### 2.1.2 mybatis MapperConfig文件读取并初始化
 
 
 
