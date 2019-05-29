@@ -51,7 +51,7 @@ MySQL的默认事务隔离级别
 - 该隔离级别可能导致大量的超时现象和锁竞争。
 
 ##### 2.2 深入理解ACID、事务隔离及锁
-ACID主要针对于事务本身及事务性操作之间的约束；而事务隔离则是事务性之间的操作与非事务性操作（select）。而读提交（Read Committed）与可重复读（Repeated Red）的区别就在于事务中select查询（不包含select * for update）
+ACID主要针对于事务本身及事务性操作之间的约束；而事务隔离则是事务性之间的操作与非事务性操作（select）。而读提交（Read Committed）与可重复读（Repeated Red）的区别就在于事务中select查询（不包含select * for update）处理的区别。
 总结一下
   - 为什么会出现“脏读”？因为没有“select”操作没有规矩。
   - 为什么会出现“不可重复读”？因为“update”操作没有规矩。
