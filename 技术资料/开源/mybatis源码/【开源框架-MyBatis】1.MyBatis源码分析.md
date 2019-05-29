@@ -291,7 +291,22 @@ password=
 ```
 
 ```language
-
+  public SqlSessionFactory build(Reader reader, String environment, Properties props) {
+    try {
+      XMLConfigBuilder parser = new XMLConfigBuilder(reader, environment, props);
+      Configuration config = parser.parse();
+      return build(config);
+    } catch (Exception e) {
+      throw ExceptionFactory.wrapException("Error building SqlSession.", e);
+    } finally {
+      ErrorContext.instance().reset();
+      try {
+        reader.close();
+      } catch (IOException e) {
+        // Intentionally ignore.  Prefer previous error.
+      }
+    }
+  }
 ```
 
 
