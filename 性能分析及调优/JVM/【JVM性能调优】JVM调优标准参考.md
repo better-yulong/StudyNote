@@ -4,7 +4,7 @@
 GC调优标准量化参考：https://blog.csdn.net/dabokele/article/category/6762404
 https://blog.csdn.net/dabokele/article/details/59794040 
 
-JVChttps://blog.csdn.net/u011683530/article/details/51013219
+JVC调优思维导图：https://blog.csdn.net/u011683530/article/details/51013219
 
 
 ### GC合理的标准（并非绝对）---适用于响应时间优先场景（即高并发）：
