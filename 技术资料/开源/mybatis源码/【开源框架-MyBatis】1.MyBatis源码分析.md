@@ -309,5 +309,5 @@ password=
     }
   }
 ```
-- 
+- 重点几乎都在MapperConfig.xml
 
