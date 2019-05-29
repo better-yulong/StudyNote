@@ -58,7 +58,7 @@ ACID主要针对于事务本身及事务性操作之间的约束；而事务隔�
 - 对于insert、update、delete，InnoDB会自动给涉及的数据加排他锁（X）；
 - 对于一般的Select语句，InnoDB不会加任何锁，事务可以通过以下语句给显示加共享锁或排他锁。
     1. 共享锁：SELECT ... LOCK IN SHARE MODE;
-    排他锁：SELECT ... FOR UPDATE;
+    2. 排他锁：SELECT ... FOR UPDATE;
 
 ### 三. CAP定理
 CAP理论主要是针对分布式存储系统的，C是指Consistency一致性，A是指Availability可用性，P是指Partition tolerance分区容忍性。CAP定理认为分布式系统中这三个特性最多只能同时满足两个特性。下面我们来分别看下这三个特性究竟是什么意思。
