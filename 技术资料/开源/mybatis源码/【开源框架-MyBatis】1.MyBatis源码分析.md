@@ -225,5 +225,73 @@ password=
 > 总的来说，createBlogDataSource() 主要操作为：1.基于database配置创建数据源；2.基于数据源获得Connection；3.顺序读取解析ddl语句（comment、drop、create表等; 涉及SQL脚本解析）并执行；4.顺序读取解析dml语句（多行insert语句）并执行。
 ##### 2.1.2 mybatis MapperConfig文件读取并初始化
 读取MapperConfig.xml文件
+```language
+<configuration>
+
+  <properties resource="org/apache/ibatis/builder/mapper.properties">
+    <property name="driver" value="org.apache.derby.jdbc.EmbeddedDriver"/>
+  </properties>
+
+  <settings>
+    <setting name="cacheEnabled" value="true"/>
+    <setting name="lazyLoadingEnabled" value="false"/>
+    <setting name="multipleResultSetsEnabled" value="true"/>
+    <setting name="useColumnLabel" value="true"/>
+    <setting name="useGeneratedKeys" value="false"/>
+    <setting name="defaultExecutorType" value="SIMPLE"/>
+    <setting name="defaultStatementTimeout" value="25000"/>
+  </settings>
+
+  <typeAliases>
+    <typeAlias alias="Author" type="domain.blog.Author"/>
+    <typeAlias alias="Blog" type="domain.blog.Blog"/>
+    <typeAlias alias="Comment" type="domain.blog.Comment"/>
+    <typeAlias alias="Post" type="domain.blog.Post"/>
+    <typeAlias alias="Section" type="domain.blog.Section"/>
+    <typeAlias alias="Tag" type="domain.blog.Tag"/>
+  </typeAliases>
+
+  <typeHandlers>
+    <typeHandler javaType="String" jdbcType="VARCHAR" handler="org.apache.ibatis.builder.ExampleTypeHandler"/>
+  </typeHandlers>
+
+  <objectFactory type="org.apache.ibatis.builder.ExampleObjectFactory">
+    <property name="objectFactoryProperty" value="100"/>
+  </objectFactory>
+
+  <plugins>
+    <plugin interceptor="org.apache.ibatis.builder.ExamplePlugin">
+      <property name="pluginProperty" value="100"/>
+    </plugin>
+  </plugins>
+
+  <environments default="development">
+    <environment id="development">
+      <transactionManager type="JDBC">
+        <property name="" value=""/>
+      </transactionManager>
+      <dataSource type="UNPOOLED">
+        <property name="driver" value="${driver}"/>
+        <property name="url" value="${url}"/>
+        <property name="username" value="${username}"/>
+        <property name="password" value="${password}"/>
+      </dataSource>
+    </environment>
+  </environments>
+
+  <mappers>
+    <mapper resource="org/apache/ibatis/builder/AuthorMapper.xml"/>
+    <mapper resource="org/apache/ibatis/builder/BlogMapper.xml"/>
+    <mapper resource="org/apache/ibatis/builder/CachedAuthorMapper.xml"/>
+    <mapper resource="org/apache/ibatis/builder/PostMapper.xml"/>
+    <mapper resource="org/apache/ibatis/builder/NestedBlogMapper.xml"/>
+  </mappers>
+
+</configuration>
+```
+
+```language
+
+```
 
 
