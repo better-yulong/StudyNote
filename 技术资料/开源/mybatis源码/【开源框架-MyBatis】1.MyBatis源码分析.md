@@ -309,5 +309,5 @@ password=
     }
   }
 ```
-- 重点就是将MapperConfig.xml解析的实例化成Congiguration对象，并基于该
+- 重点就是将MapperConfig.xml解析的实例化成Congiguration对象，并基于该对象创建SqlSessionFactory实例。
 
