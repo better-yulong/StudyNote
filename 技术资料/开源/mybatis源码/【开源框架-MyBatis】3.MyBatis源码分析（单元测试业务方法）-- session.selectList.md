@@ -38,13 +38,7 @@ protected final Map<String, MappedStatement> mappedStatements = new StrictMap<St
 
 
  
-  <mappers>
-    <mapper resource="org/apache/ibatis/builder/AuthorMapper.xml"/>
-    <mapper resource="org/apache/ibatis/builder/BlogMapper.xml"/>
-    <mapper resource="org/apache/ibatis/builder/CachedAuthorMapper.xml"/>
-    <mapper resource="org/apache/ibatis/builder/PostMapper.xml"/>
-    <mapper resource="org/apache/ibatis/builder/NestedBlogMapper.xml"/>
-  </mappers>
+
  sqlMapper = new SqlSessionFactoryBuilder().build(reader);
 ```
     //XMLMapperBuilder类解析MapperConfig.xml
@@ -80,4 +74,14 @@ protected final Map<String, MappedStatement> mappedStatements = new StrictMap<St
 
   }
 
+```
+```language
+  MapperConfig.xml文件：
+  <mappers>
+    <mapper resource="org/apache/ibatis/builder/AuthorMapper.xml"/>
+    <mapper resource="org/apache/ibatis/builder/BlogMapper.xml"/>
+    <mapper resource="org/apache/ibatis/builder/CachedAuthorMapper.xml"/>
+    <mapper resource="org/apache/ibatis/builder/PostMapper.xml"/>
+    <mapper resource="org/apache/ibatis/builder/NestedBlogMapper.xml"/>
+  </mappers>
 ```
