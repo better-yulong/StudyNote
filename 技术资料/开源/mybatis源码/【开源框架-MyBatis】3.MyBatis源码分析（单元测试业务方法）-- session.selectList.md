@@ -3,7 +3,7 @@
  List<Author> authors = session.selectList("domain.blog.mappers.AuthorMapper.selectAllAuthors");
 ```
 ```language
-   //其中parameter为null，rowBounds值为
+   //其中parameter为null，rowBounds值为默认
   public List selectList(String statement, Object parameter, RowBounds rowBounds) {
     try {
       MappedStatement ms = configuration.getMappedStatement(statement);
