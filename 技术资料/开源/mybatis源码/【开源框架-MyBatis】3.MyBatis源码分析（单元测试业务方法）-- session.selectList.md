@@ -34,5 +34,11 @@ protected final Map<String, MappedStatement> mappedStatements = new StrictMap<St
     mappedStatements.put(ms.getId(), ms);
   }
 
-
+  <mappers>
+    <mapper resource="org/apache/ibatis/builder/AuthorMapper.xml"/>
+    <mapper resource="org/apache/ibatis/builder/BlogMapper.xml"/>
+    <mapper resource="org/apache/ibatis/builder/CachedAuthorMapper.xml"/>
+    <mapper resource="org/apache/ibatis/builder/PostMapper.xml"/>
+    <mapper resource="org/apache/ibatis/builder/NestedBlogMapper.xml"/>
+  </mappers>
 
