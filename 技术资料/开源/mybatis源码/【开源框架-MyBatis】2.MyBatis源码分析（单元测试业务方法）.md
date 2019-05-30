@@ -83,7 +83,7 @@ Transaction tx = transactionFactory.newTransaction(connection, autoCommit);
   }
 
 ```
-基于executorType为ExecutorType.SIMPLE，MappingConfigure.xml中配置 <setting name="cacheEnabled" value="true"/>
+基于executorType为ExecutorType.SIMPLE，MappingConfigure.xml中配置 <setting name="cacheEnabled" value="true"/>，上面方法返回的是一个CachingExecutor实例（CachingExecutor实例主要是在正常的Executor
 ```language
   //InterceptorChain类：
   public Object pluginAll(Object target) {
