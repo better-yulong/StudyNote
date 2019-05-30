@@ -181,7 +181,7 @@ Class[] interfaces = getAllInterfaces(type, signatureMap);获取的interfaces实
       return Proxy.newProxyInstance(
           type.getClassLoader(),
           interfaces,
-          new Plugin(target, interceptor, signatureMap));//JDK动态代理
+          new Plugin(target, interceptor, signatureMap));//JDK动态代理包装interfaces实现类的方法
     }
     return target;
   }
