@@ -157,17 +157,19 @@ public class ExamplePlugin implements Interceptor {
 - 那么如若要理解另外一个分支，即是@Intercepts({})有配置又该如何走呢？准备工作比较简单，只需将原MapperConfig.xml的
 ```language
   <plugins>
-<!--     <plugin interceptor="org.apache.ibatis.builder.ExamplePlugin"> -->
+     <plugin interceptor="org.apache.ibatis.builder.ExamplePlugin"> 
       <property name="pluginProperty" value="100"/>
     </plugin>
   </plugins>
 ```
-
+替换为：
 ```language
-
+  <plugins>
+    <plugin interceptor="com.ibatis.sqlmap.engine.builder.FlushCacheInterceptor">
+      <property name="pluginProperty" value="100"/>
+    </plugin>
+  </plugins>
 ```
-
-
 
 比如FlushCacheInterceptor类就有如下注解：
 ```language
