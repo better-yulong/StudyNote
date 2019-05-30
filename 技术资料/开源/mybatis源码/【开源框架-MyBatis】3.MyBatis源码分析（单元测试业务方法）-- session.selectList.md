@@ -35,7 +35,7 @@ protected final Map<String, MappedStatement> mappedStatements = new StrictMap<St
   }
 
 
-sqlMapper = new SqlSessionFactoryBuilder().build(reader);
+
 
  
   <mappers>
@@ -45,9 +45,9 @@ sqlMapper = new SqlSessionFactoryBuilder().build(reader);
     <mapper resource="org/apache/ibatis/builder/PostMapper.xml"/>
     <mapper resource="org/apache/ibatis/builder/NestedBlogMapper.xml"/>
   </mappers>
-
+ sqlMapper = new SqlSessionFactoryBuilder().build(reader);
 ```
-    //XMLMapperBuilder类解析MapperConfig.xml并初始化
+    //XMLMapperBuilder类解析MapperConfig.xml
     private void parseConfiguration(XNode root) {
     try {
       typeAliasesElement(root.evalNode("typeAliases"));
