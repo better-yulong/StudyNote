@@ -154,7 +154,7 @@ public class ExamplePlugin implements Interceptor {
   }
 ```
 通过代码码比较好理解，即是针对拦截器Inteceptor列表（而默认MapperConfig.xml仅配置了一个Inteceptor:ExamplePlugin, 而Plugin.wrap 会获取ExamplePlugin类的@Intercepts({})配置中的Signature值列表并放入signatureMap ；由于ExamplePlugin的@Intercepts({})无任何配置，实际就直接返回原target对象CachingExecutor实例，并未做任何处理。
-- 那么如若要理解另外一个分支，即是@Intercepts({})有配置
+- 那么如若要理解另外一个分支，即是@Intercepts({})有配置又该如何走呢？准备工作比较简单，只需将原M
 
 比如FlushCacheInterceptor类就有如下注解：
 ```language
