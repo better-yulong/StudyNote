@@ -153,8 +153,7 @@ public class ExamplePlugin implements Interceptor {
   }
 ```
 
-通过代码码比较好理解，即是针对拦截器Inteceptor列表（而默认MapperConfig.xml仅配置了一个Inteceptor:ExamplePlugin, 而Plugin.wrap 会获取ExamplePlugin类的@Intercepts({})配置中的Signature值列表；
-而根据ExamplePlugin获取的 signatureMap 数组为空；故直接返回
+通过代码码比较好理解，即是针对拦截器Inteceptor列表（而默认MapperConfig.xml仅配置了一个Inteceptor:ExamplePlugin, 而Plugin.wrap 会获取ExamplePlugin类的@Intercepts({})配置中的Signature值列表并放入signatureMap ；由于ExamplePlugin
 比如AlwaysMapPlugin类就有如下注解：
 ```language
 // @Signature可配置多个
