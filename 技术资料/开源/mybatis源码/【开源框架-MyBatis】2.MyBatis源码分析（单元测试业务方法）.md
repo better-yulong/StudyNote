@@ -216,9 +216,9 @@ public abstract java.util.List org.apache.ibatis.executor.Executor.query(org.apa
 
 ##### 5. 实例化session
 ```
-return new DefaultSqlSession(configuration, executor, autoCommit);
+	return new DefaultSqlSession(configuration, executor, autoCommit);
 ```
-
+根据xmo解析的configuration对象、执行器对象
 
 
  
