@@ -3,6 +3,7 @@
  List<Author> authors = session.selectList("domain.blog.mappers.AuthorMapper.selectAllAuthors");
 ```
 ```language
+   //DefaultSqlSession类：
    //其中parameter为null，rowBounds值为默认RowBounds.DEFAULT(行边界；可用于分页)
   public List selectList(String statement, Object parameter, RowBounds rowBounds) {
     try {
