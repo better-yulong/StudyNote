@@ -46,6 +46,8 @@ sqlMapper = new SqlSessionFactoryBuilder().build(reader);
     <mapper resource="org/apache/ibatis/builder/NestedBlogMapper.xml"/>
   </mappers>
 
+```
+    
     private void parseConfiguration(XNode root) {
     try {
       typeAliasesElement(root.evalNode("typeAliases"));
@@ -61,3 +63,21 @@ sqlMapper = new SqlSessionFactoryBuilder().build(reader);
       throw new BuilderException("Error parsing SQL Mapper Configuration. Cause: " + e, e);
     }
   }
+
+    private void configurationElement(XNode context) {
+    try {
+      String namespace = context.getStringAttribute("namespace");
+      builderAssistant.setCurrentNamespace(namespace);
+      cacheRefElement(context.evalNode("cache-ref"));
+      cacheElement(context.evalNode("cache"));
+      parameterMapElement(context.evalNodes("/mapper/parameterMap"));
+      resultMapElements(context.evalNodes("/mapper/resultMap"));
+      sqlElement(context.evalNodes("/mapper/sql"));
+      buildStatementFromContext(context.evalNodes("select|insert|update|delete"));
+    } catch (Exception e) {
+      throw new RuntimeException("Error parsing Mapper XML. Cause: " + e, e);
+    }
+
+  }
+
+```
