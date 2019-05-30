@@ -135,6 +135,12 @@ public class ExamplePlugin implements Interceptor {
 ```
 
 通过代码码比较好理解，即是针对拦截器Inteceptor列表（而默认MapperConfig.xml仅配置了一个Inteceptor:ExamplePlugin, 而Plugin.wrap 会获取ExamplePlugin类的@Intercepts({})配置，
+比如
+```language
+@Intercepts({
+      @Signature(type = Map.class, method = "get", args = {Object.class})})
+```
+
 
 
 
