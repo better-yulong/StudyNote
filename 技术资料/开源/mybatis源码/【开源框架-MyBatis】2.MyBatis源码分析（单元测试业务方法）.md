@@ -170,16 +170,14 @@ public class ExamplePlugin implements Interceptor {
     </plugin>
   </plugins>
 ```
-
-比如FlushCacheInterceptor类就有如下注解：
+而FlushCacheInterceptor类就有如下注解：
 ```language
-// @Signature可配置多个
 @Intercepts({
   @Signature(type = Executor.class, method = "update", args = {MappedStatement.class, Object.class}),
   @Signature(type = Executor.class, method = "query", args = {MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class})
     })
 ```
-
+那么同样的，在执行完成上面的
 Executor.class
 public abstract int org.apache.ibatis.executor.Executor.update(org.apache.ibatis.mapping.MappedStatement,java.lang.Object) throws java.sql.SQLException
 public abstract java.util.List org.apache.ibatis.executor.Executor.query(org.apache.ibatis.mapping.MappedStatement,java.lang.Object,org.apache.ibatis.session.RowBounds,org.apache.ibatis.session.ResultHandler) throws java.sql.SQLException
