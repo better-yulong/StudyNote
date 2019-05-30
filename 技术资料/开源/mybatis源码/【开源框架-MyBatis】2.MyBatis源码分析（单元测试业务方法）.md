@@ -177,12 +177,12 @@ public class ExamplePlugin implements Interceptor {
   @Signature(type = Executor.class, method = "query", args = {MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class})
     })
 ```
-那么同样的，在执行完成Plugin类的 getSignatureMap 方法返回的是一个以 Executor.class 为key，而以
+那么同样的，在执行完成Plugin类的 getSignatureMap 方法返回的是一个以 Executor.class 为key，以
 ```
 public abstract int org.apache.ibatis.executor.Executor.update(org.apache.ibatis.mapping.MappedStatement,java.lang.Object) throws java.sql.SQLException; 
 public abstract java.util.List org.apache.ibatis.executor.Executor.query(org.apache.ibatis.mapping.MappedStatement,java.lang.Object,org.apache.ibatis.session.RowBounds,org.apache.ibatis.session.ResultHandler) throws java.sql.SQLException
 ```
-u
+Executor.update、Executor.query为
 
 
 Class[] interfaces = getAllInterfaces(type, signatureMap);获取的interfaces实际就会type的列表
