@@ -47,7 +47,7 @@ sqlMapper = new SqlSessionFactoryBuilder().build(reader);
   </mappers>
 
 ```
-    
+    //XMLMapperBuilder类解析MapperConfig.xml并初始化
     private void parseConfiguration(XNode root) {
     try {
       typeAliasesElement(root.evalNode("typeAliases"));
