@@ -2,3 +2,17 @@
 ```language
  List<Author> authors = session.selectList("domain.blog.mappers.AuthorMapper.selectAllAuthors");
 ```
+```language
+  
+  public List selectList(String statement, Object parameter, RowBounds rowBounds) {
+    try {
+      MappedStatement ms = configuration.getMappedStatement(statement);
+      return executor.query(ms, wrapCollection(parameter), rowBounds, Executor.NO_RESULT_HANDLER);
+    } catch (Exception e) {
+      throw ExceptionFactory.wrapException("Error querying database.  Cause: " + e, e);
+    } finally {
+      ErrorContext.instance().reset();
+    }
+  }
+```
+
