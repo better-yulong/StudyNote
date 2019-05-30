@@ -26,6 +26,13 @@
     	return mappedStatements.get(id);
     }
 ```
-从如上代码来看，暂时不太确定其中的逻辑，需要具体了解mappedStatements的set方法调用逻辑：
+从如上代码来看，暂时不太确定其中的逻辑，需要具体了解mappedStatements的设置值的逻辑：
 
 protected final Map<String, MappedStatement> mappedStatements = new StrictMap<String, MappedStatement>("Mapped Statements collection");
+
+  public void addMappedStatement(MappedStatement ms) {
+    mappedStatements.put(ms.getId(), ms);
+  }
+
+
+
