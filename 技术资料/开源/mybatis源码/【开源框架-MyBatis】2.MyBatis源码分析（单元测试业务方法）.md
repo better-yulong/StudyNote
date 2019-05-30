@@ -170,7 +170,7 @@ public abstract int org.apache.ibatis.executor.Executor.update(org.apache.ibatis
 public abstract java.util.List org.apache.ibatis.executor.Executor.query(org.apache.ibatis.mapping.MappedStatement,java.lang.Object,org.apache.ibatis.session.RowBounds,org.apache.ibatis.session.ResultHandler) throws java.sql.SQLException
 
 
-interfaces
+Class[] interfaces = getAllInterfaces(type, signatureMap);获取的interfaces实际就会type的列表
 
 
  
