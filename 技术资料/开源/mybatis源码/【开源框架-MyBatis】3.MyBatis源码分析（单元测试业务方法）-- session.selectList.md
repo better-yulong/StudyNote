@@ -34,6 +34,10 @@ protected final Map<String, MappedStatement> mappedStatements = new StrictMap<St
     mappedStatements.put(ms.getId(), ms);
   }
 
+
+sqlMapper = new SqlSessionFactoryBuilder().build(reader);
+
+ 
   <mappers>
     <mapper resource="org/apache/ibatis/builder/AuthorMapper.xml"/>
     <mapper resource="org/apache/ibatis/builder/BlogMapper.xml"/>
@@ -42,3 +46,18 @@ protected final Map<String, MappedStatement> mappedStatements = new StrictMap<St
     <mapper resource="org/apache/ibatis/builder/NestedBlogMapper.xml"/>
   </mappers>
 
+    private void parseConfiguration(XNode root) {
+    try {
+      typeAliasesElement(root.evalNode("typeAliases"));
+      pluginElement(root.evalNode("plugins"));
+      objectFactoryElement(root.evalNode("objectFactory"));
+      objectWrapperFactoryElement(root.evalNode("objectWrapperFactory"));
+      propertiesElement(root.evalNode("properties"));
+      settingsElement(root.evalNode("settings"));
+      environmentsElement(root.evalNode("environments"));
+      typeHandlerElement(root.evalNode("typeHandlers"));
+      mapperElement(root.evalNode("mappers"));
+    } catch (Exception e) {
+      throw new BuilderException("Error parsing SQL Mapper Configuration. Cause: " + e, e);
+    }
+  }
