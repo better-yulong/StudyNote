@@ -93,7 +93,7 @@ Transaction tx = transactionFactory.newTransaction(connection, autoCommit);
 ```
 ```language
   //InterceptorChain类：
-  //InterceptorChain类的属性
+  //InterceptorChain类的属性拦截器集合interceptors会在解析MapperConfig.xml时根据配置初始化
   public Object pluginAll(Object target) {
     for (Interceptor interceptor : interceptors) {
       target = interceptor.plugin(target); //底层实现仍然是JDK动态代理:Proxy
