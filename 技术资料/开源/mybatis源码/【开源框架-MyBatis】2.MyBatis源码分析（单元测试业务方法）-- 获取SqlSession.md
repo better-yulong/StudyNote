@@ -12,7 +12,7 @@
   }
 ```
 
-#### 一.基于SqlSessionFactory实例sqlMapper获取SqlSession
+#### 基于SqlSessionFactory实例sqlMapper获取SqlSession
 默认 SqlSession session = sqlMapper.openSession(TransactionIsolationLevel.SERIALIZABLE)；指定事务级别：序列化隔离级别（实际生产关系数据库极少使用该级别）。个人理解是因为全量单元测试时，不同的测试执行互相有影响（比如删表、建表、查询等均依赖特定的测试表、数据），故指定序列化隔离级别。
 - DefaultSqlSessionFactory类创建session源码：
 ```language
