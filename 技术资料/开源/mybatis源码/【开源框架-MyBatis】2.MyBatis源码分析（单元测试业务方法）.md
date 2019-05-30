@@ -172,6 +172,19 @@ public abstract java.util.List org.apache.ibatis.executor.Executor.query(org.apa
 
 Class[] interfaces = getAllInterfaces(type, signatureMap);获取的interfaces实际就会type的列表
 ```language
+  //Plugin类
+  public static Object wrap(Object target, Interceptor interceptor) {
+    Map<Class, Set<Method>> signatureMap = getSignatureMap(interceptor);
+    Class type = target.getClass();
+    Class[] interfaces = getAllInterfaces(type, signatureMap);
+    if (interfaces.length > 0) {
+      return Proxy.newProxyInstance(
+          type.getClassLoader(),
+          interfaces,
+          new Plugin(target, interceptor, signatureMap));
+    }
+    return target;
+  }
 
   public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
     try {
