@@ -118,7 +118,23 @@ public class ExamplePlugin implements Interceptor {
 
 }
 ```
-通过代码码比较好理解，即是针对拦截器Inteceptor列表（而默认MapperConfig.xml仅配置了一个Inteceptor:ExamplePlugin,v
+```language
+
+  public static Object wrap(Object target, Interceptor interceptor) {
+    Map<Class, Set<Method>> signatureMap = getSignatureMap(interceptor);
+    Class type = target.getClass();
+    Class[] interfaces = getAllInterfaces(type, signatureMap);
+    if (interfaces.length > 0) {
+      return Proxy.newProxyInstance(
+          type.getClassLoader(),
+          interfaces,
+          new Plugin(target, interceptor, signatureMap));
+    }
+    return target;
+  }
+```
+
+通过代码码比较好理解，即是针对拦截器Inteceptor列表（而默认MapperConfig.xml仅配置了一个Inteceptor:ExamplePlugin,
 
 
 
