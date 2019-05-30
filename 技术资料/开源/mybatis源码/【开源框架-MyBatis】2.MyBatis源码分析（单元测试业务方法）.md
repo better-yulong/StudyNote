@@ -218,7 +218,7 @@ public abstract java.util.List org.apache.ibatis.executor.Executor.query(org.apa
 ```
 	return new DefaultSqlSession(configuration, executor, autoCommit);
 ```
-根据xmo解析的configuration对象、执行器对象（原始的Execure实例或者基于JDK Proxy动态代理的
+根据xmo解析的configuration对象、执行器对象（原始的Executor实例或者基于JDK Proxy动态代理的 Executor实例）、事务
 
 
  
