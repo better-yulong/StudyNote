@@ -154,6 +154,8 @@ public class ExamplePlugin implements Interceptor {
   }
 ```
 通过代码码比较好理解，即是针对拦截器Inteceptor列表（而默认MapperConfig.xml仅配置了一个Inteceptor:ExamplePlugin, 而Plugin.wrap 会获取ExamplePlugin类的@Intercepts({})配置中的Signature值列表并放入signatureMap ；由于ExamplePlugin的@Intercepts({})无任何配置，实际就直接返回原target对象CachingExecutor实例，并未做任何处理。
+
+
 - 那么如若要理解另外一个分支，即是@Intercepts({})有配置又该如何走呢？准备工作比较简单，只需将原MapperConfig.xml的
 ```language
   <plugins>
@@ -183,7 +185,7 @@ public abstract int org.apache.ibatis.executor.Executor.update(org.apache.ibatis
 public abstract java.util.List org.apache.ibatis.executor.Executor.query(org.apache.ibatis.mapping.MappedStatement,java.lang.Object,org.apache.ibatis.session.RowBounds,org.apache.ibatis.session.ResultHandler) throws java.sql.SQLException
 ```
 - Executor.update、Executor.query组合的set为value的Map；那下面的代码：Class[] interfaces = getAllInterfaces(type, signatureMap);获取的interfaces实际就会type的列表；因FlushCacheInterceptor的两个Signature配置的type均为Execute.class，所以此处的interfaces数据就一个元素：Executor。
-- 基于JDK Proxy动态代理，可知当调用Execute的实例时会被代理调用Plugin的invoke方法，而从invoke方法源码可发现如若当前方法在
+- 基于JDK Proxy动态代理，可知当调用Execute的实例时会被代理调用Plugin的invoke方法，而从invoke方法源码可发现如若当前方法
 FlushCacheInterceptor
 
 ```language
