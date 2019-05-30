@@ -132,10 +132,29 @@ public class ExamplePlugin implements Interceptor {
     }
     return target;
   }
+
+  private static Map<Class, Set<Method>> getSignatureMap(Interceptor interceptor) {
+    Signature[] sigs = interceptor.getClass().getAnnotation(Intercepts.class).value();
+    Map<Class, Set<Method>> signatureMap = new HashMap<Class, Set<Method>>();
+    for (Signature sig : sigs) {
+      Set<Method> methods = signatureMap.get(sig.type());
+      if (methods == null) {
+        methods = new HashSet<Method>();
+        signatureMap.put(sig.type(), methods);
+      }
+      try {
+        Method method = sig.type().getMethod(sig.method(), sig.args());
+        methods.add(method);
+      } catch (NoSuchMethodException e) {
+        throw new PluginException("Could not find method on " + sig.type() + " named " + sig.method() + ". Cause: " + e, e);
+      }
+    }
+    return signatureMap;
+  }
 ```
 
 通过代码码比较好理解，即是针对拦截器Inteceptor列表（而默认MapperConfig.xml仅配置了一个Inteceptor:ExamplePlugin, 而Plugin.wrap 会获取ExamplePlugin类的@Intercepts({})配置中的Signature值列表；
-而根据ExamplePlugin获取的
+而根据ExamplePlugin获取的 sigs 数组为空
 比如AlwaysMapPlugin类就有如下注解：
 ```language
 // @Signature可配置多个
@@ -147,3 +166,4 @@ public class ExamplePlugin implements Interceptor {
 
 
 
+ 
