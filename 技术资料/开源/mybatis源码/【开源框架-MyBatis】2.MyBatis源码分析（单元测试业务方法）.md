@@ -215,4 +215,6 @@ public abstract java.util.List org.apache.ibatis.executor.Executor.query(org.apa
 ```
 
 
+return new DefaultSqlSession(configuration, executor, autoCommit);
+
  
