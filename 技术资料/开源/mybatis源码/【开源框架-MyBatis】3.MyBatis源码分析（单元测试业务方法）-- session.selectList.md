@@ -35,7 +35,7 @@ protected final Map<String, MappedStatement> mappedStatements = new StrictMap<St
   }
 
 ```
-于是乎通过断点确认，
+于是乎通过断点确认，Mybatis在初始化SqlSessionFactory实例时会解析MapperConfig.xml
 
 
 
