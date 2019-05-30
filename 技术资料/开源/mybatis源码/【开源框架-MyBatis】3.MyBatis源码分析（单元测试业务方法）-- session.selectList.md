@@ -35,7 +35,7 @@ protected final Map<String, MappedStatement> mappedStatements = new StrictMap<St
   }
 
 ```
-于是乎通过断点确认，Mybatis在初始化SqlSessionFactory实例时会解析MapperConfig.xml以及其关联的Mapper文件：
+于是乎通过断点确认，Mybatis在初始化SqlSessionFactory实例时（ sqlMapper = new SqlSessionFactoryBuilder().build(reader);）会解析MapperConfig.xml以及其关联的Mapper文件：
 ```language
   MapperConfig.xml文件：
   <mappers>
@@ -46,8 +46,7 @@ protected final Map<String, MappedStatement> mappedStatements = new StrictMap<St
     <mapper resource="org/apache/ibatis/builder/NestedBlogMapper.xml"/>
   </mappers>
 ```
-
-
+核心代码片段：
 ```
     //XMLMapperBuilder类解析MapperConfig.xml
     private void parseConfiguration(XNode root) {
@@ -81,6 +80,5 @@ protected final Map<String, MappedStatement> mappedStatements = new StrictMap<St
     }
 
   }
-
 ```
 
