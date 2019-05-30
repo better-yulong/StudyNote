@@ -94,7 +94,22 @@ Transaction tx = transactionFactory.newTransaction(connection, autoCommit);
   }
 ```
 ```language
+@Intercepts({})
+public class ExamplePlugin implements Interceptor {
 
+  public Object intercept(Invocation invocation) throws Throwable {
+    return invocation.proceed();
+  }
+
+  public Object plugin(Object target) {
+    return Plugin.wrap(target, this);
+  }
+
+  public void setProperties(Properties properties) {
+
+  }
+
+}
 ```
 
 通过代码码比较好理解，即是针对拦截器Inteceptor列表
