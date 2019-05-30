@@ -83,7 +83,7 @@ Transaction tx = transactionFactory.newTransaction(connection, autoCommit);
   }
 
 ```
-基于executorType为ExecutorType.SIMPLE，MappingConfigure.xml中配置 <setting name="cacheEnabled" value="true"/>，上面方法返回的是一个CachingExecutor实例（CachingExecutor实例主要是在正常的Executor对数据库的更新操作之前先刷新缓存；查询时会优先根据查询有效
+基于executorType为ExecutorType.SIMPLE，MappingConfigure.xml中配置 <setting name="cacheEnabled" value="true"/>，上面方法返回的是一个CachingExecutor实例（CachingExecutor实例主要是在正常的Executor对数据库的更新操作之前先刷新缓存；查询时会优先根据查询有效缓存数据，源码后续分析）
 ```language
   //InterceptorChain类：
   public Object pluginAll(Object target) {
@@ -93,6 +93,10 @@ Transaction tx = transactionFactory.newTransaction(connection, autoCommit);
     return target;
   }
 ```
+```language
+
+```
+
 通过代码码比较好理解，即是针对拦截器Inteceptor列表
 
 
