@@ -214,8 +214,11 @@ public abstract java.util.List org.apache.ibatis.executor.Executor.query(org.apa
   }
 ```
 
-##### 5. 实例妈
-
+##### 5. 实例化session
+```
 return new DefaultSqlSession(configuration, executor, autoCommit);
+```
+
+
 
  
