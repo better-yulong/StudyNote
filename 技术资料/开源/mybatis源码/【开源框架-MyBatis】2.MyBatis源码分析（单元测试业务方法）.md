@@ -119,7 +119,7 @@ public class ExamplePlugin implements Interceptor {
 }
 ```
 ```language
-  // Plugin 类（继承自InvocationHandler
+  // Plugin 类（继承自InvocationHandler）
   public static Object wrap(Object target, Interceptor interceptor) {
     Map<Class, Set<Method>> signatureMap = getSignatureMap(interceptor);
     Class type = target.getClass();
