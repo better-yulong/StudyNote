@@ -171,6 +171,20 @@ public abstract java.util.List org.apache.ibatis.executor.Executor.query(org.apa
 
 
 Class[] interfaces = getAllInterfaces(type, signatureMap);获取的interfaces实际就会type的列表
+```language
+
+  public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+    try {
+      Set<Method> methods = signatureMap.get(method.getDeclaringClass());
+      if (methods != null && methods.contains(method)) {
+        return interceptor.intercept(new Invocation(target, method, args));
+      }
+      return method.invoke(target, args);
+    } catch (Exception e) {
+      throw ExceptionUtil.unwrapThrowable(e);
+    }
+  }
+```
 
 
  
