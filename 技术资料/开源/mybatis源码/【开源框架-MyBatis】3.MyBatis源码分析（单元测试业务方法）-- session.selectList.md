@@ -22,5 +22,7 @@
 ```
 ```language
     //Configuration类
-
+    public MappedStatement getMappedStatement(String id) {
+    	return mappedStatements.get(id);
+    }
 ```
