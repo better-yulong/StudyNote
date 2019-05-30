@@ -182,10 +182,7 @@ public class ExamplePlugin implements Interceptor {
 public abstract int org.apache.ibatis.executor.Executor.update(org.apache.ibatis.mapping.MappedStatement,java.lang.Object) throws java.sql.SQLException; 
 public abstract java.util.List org.apache.ibatis.executor.Executor.query(org.apache.ibatis.mapping.MappedStatement,java.lang.Object,org.apache.ibatis.session.RowBounds,org.apache.ibatis.session.ResultHandler) throws java.sql.SQLException
 ```
-Executor.update、Executor.query为
-
-
-Class[] interfaces = getAllInterfaces(type, signatureMap);获取的interfaces实际就会type的列表
+Executor.update、Executor.query组合的set为value的Map；那下面的代码：Class[] interfaces = getAllInterfaces(type, signatureMap);获取的interfaces实际就会type的列表
 ```language
   //Plugin类
   public static Object wrap(Object target, Interceptor interceptor) {
