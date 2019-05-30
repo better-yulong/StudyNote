@@ -165,7 +165,7 @@ public class ExamplePlugin implements Interceptor {
     })
 ```
 
-
+Executor.class
 public abstract int org.apache.ibatis.executor.Executor.update(org.apache.ibatis.mapping.MappedStatement,java.lang.Object) throws java.sql.SQLException
 public abstract java.util.List org.apache.ibatis.executor.Executor.query(org.apache.ibatis.mapping.MappedStatement,java.lang.Object,org.apache.ibatis.session.RowBounds,org.apache.ibatis.session.ResultHandler) throws java.sql.SQLException
 
