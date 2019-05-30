@@ -18,5 +18,6 @@
 ```
 ### MappedStatement 获取
 ```language
+        //Configuration
 	MappedStatement ms = configuration.getMappedStatement(statement);
 ```
