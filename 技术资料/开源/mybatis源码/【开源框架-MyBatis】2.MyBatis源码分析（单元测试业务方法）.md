@@ -83,6 +83,7 @@ Transaction tx = transactionFactory.newTransaction(connection, autoCommit);
   }
 
 ```
+基于executorType
 ```language
   //InterceptorChain类：
   public Object pluginAll(Object target) {
