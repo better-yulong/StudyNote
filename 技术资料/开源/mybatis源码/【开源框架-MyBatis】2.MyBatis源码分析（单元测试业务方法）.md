@@ -183,7 +183,7 @@ public abstract int org.apache.ibatis.executor.Executor.update(org.apache.ibatis
 public abstract java.util.List org.apache.ibatis.executor.Executor.query(org.apache.ibatis.mapping.MappedStatement,java.lang.Object,org.apache.ibatis.session.RowBounds,org.apache.ibatis.session.ResultHandler) throws java.sql.SQLException
 ```
 - Executor.update、Executor.query组合的set为value的Map；那下面的代码：Class[] interfaces = getAllInterfaces(type, signatureMap);获取的interfaces实际就会type的列表；因FlushCacheInterceptor的两个Signature配置的type均为Execute.class，所以此处的interfaces数据就一个元素：Executor。
-- 基于JDK Proxy动态代理，可知当调用Execute的实例时会被代理调用Plugin的invoke方法，而从invoke方法源码
+- 基于JDK Proxy动态代理，可知当调用Execute的实例时会被代理调用Plugin的invoke方法，而从invoke方法源码可发现
 ```language
   //Plugin类
   public static Object wrap(Object target, Interceptor interceptor) {
