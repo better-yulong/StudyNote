@@ -354,7 +354,7 @@ configuration.setCacheEnabled(booleanValueOf(props.getProperty("cacheEnabled"), 
   
   	<cache/>
 ```
-
+至此重新梳理全局MapperConfig.xml中的
 
 
 
