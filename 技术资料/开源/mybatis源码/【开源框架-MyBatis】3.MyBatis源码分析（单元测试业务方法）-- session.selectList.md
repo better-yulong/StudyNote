@@ -322,6 +322,30 @@ configuration.setCacheEnabled(booleanValueOf(props.getProperty("cacheEnabled"), 
 
   }
 ```
+```language
+
+  public Cache useNewCache(Class typeClass,
+                           Class evictionClass,
+                           Long flushInterval,
+                           Integer size,
+                           boolean readWrite,
+                           Properties props) {
+    typeClass = valueOrDefault(typeClass, PerpetualCache.class);
+    evictionClass = valueOrDefault(evictionClass, LruCache.class);
+    Cache cache = new CacheBuilder(currentNamespace)
+        .implementation(typeClass)
+        .addDecorator(evictionClass)
+        .clearInterval(flushInterval)
+        .size(size)
+        .readWrite(readWrite)
+        .properties(props)
+        .build();
+    configuration.addCache(cache);
+    currentCache = cache;
+    return cache;
+  }
+```
+发现需要
 
 
 
