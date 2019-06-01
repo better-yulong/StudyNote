@@ -354,7 +354,8 @@ configuration.setCacheEnabled(booleanValueOf(props.getProperty("cacheEnabled"), 
   
   	<cache/>
 ```
-至此重新梳理全局MapperConfig.xml中的 <setting name="cacheEnabled" value="false"/> 与业务Mapper.xml的<cache/>的关系，终于理解了但其实也发
+至此重新梳理全局MapperConfig.xml中的 <setting name="cacheEnabled" value="false"/> 与业务Mapper.xml的<cache/>的关系，终于理解了但其实也发现了框架的问题。
+
 
 
 
