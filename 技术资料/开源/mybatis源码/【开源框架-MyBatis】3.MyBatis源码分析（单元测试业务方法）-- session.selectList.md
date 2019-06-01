@@ -128,4 +128,5 @@ return executor.query(ms, wrapCollection(parameter), rowBounds, Executor.NO_RESU
     return delegate.query(ms, parameterObject, rowBounds, resultHandler);
   }
 ```
-#### 2.1.1  cachethg
+#### 2.1.1  cache处理
+
