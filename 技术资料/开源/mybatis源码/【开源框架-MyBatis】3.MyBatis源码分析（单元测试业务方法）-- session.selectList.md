@@ -345,7 +345,18 @@ configuration.setCacheEnabled(booleanValueOf(props.getProperty("cacheEnabled"), 
     return cache;
   }
 ```
-发现需有对应Mappe.xml中添加
+发现需有对应Mappe.xml中添加 <cache/> 即可按默认配置为基于
+```language
+<mapper namespace="domain.blog.mappers.AuthorMapper">
+
+  <parameterMap id="selectAuthor"
+                type="domain.blog.Author">
+    <parameter property="id"/>
+  </parameterMap>
+  
+  <cache/>
+```
+
 
 
 
