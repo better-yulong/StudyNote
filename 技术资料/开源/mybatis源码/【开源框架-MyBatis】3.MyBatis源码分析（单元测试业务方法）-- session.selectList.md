@@ -82,3 +82,10 @@ protected final Map<String, MappedStatement> mappedStatements = new StrictMap<St
   }
 ```
 
+```language
+    builderAssistant.addMappedStatement(id, sqlSource, statementType, sqlCommandType,
+        fetchSize, timeout, parameterMap, parameterTypeClass, resultMap, resultTypeClass,
+        resultSetTypeEnum, flushCache, useCache, keyGenerator, keyProperty);
+  }
+```
+
