@@ -255,5 +255,6 @@ return executor.query(ms, wrapCollection(parameter), rowBounds, Executor.NO_RESU
   }
 ```
 ```language
-
+configuration.setCacheEnabled(booleanValueOf(props.getProperty("cacheEnabled"), true));
 ```
+从如上代码来看，当前版本的Mybatis默认开启二级
