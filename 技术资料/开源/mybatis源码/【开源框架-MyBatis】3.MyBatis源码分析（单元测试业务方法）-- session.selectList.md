@@ -354,7 +354,7 @@ configuration.setCacheEnabled(booleanValueOf(props.getProperty("cacheEnabled"), 
   
   	<cache/>
 ```
-通过如下代码也可发现，实际只要在Mapper中配置的<cache/>，即使将MapperConfig.xml的
+
 
 
 
