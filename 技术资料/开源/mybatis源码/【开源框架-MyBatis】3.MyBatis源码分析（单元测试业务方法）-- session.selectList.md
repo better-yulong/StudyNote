@@ -347,12 +347,12 @@ configuration.setCacheEnabled(booleanValueOf(props.getProperty("cacheEnabled"), 
 ```
 发现需有对应Mappe.xml中添加 <cache/> 即可。而cache对象是以每个Mapper文件的 Namespace为 id存放在全局公用对象Configuration。
 ```language
-	<mapper namespace="domain.blog.mappers.AuthorMapper">
+ <mapper namespace="domain.blog.mappers.AuthorMapper">
  	<parameterMap id="selectAuthor"  type="domain.blog.Author">
-    <parameter property="id"/>
-  </parameterMap>
+            <parameter property="id"/>
+        </parameterMap>
   
-  <cache/>
+  	<cache/>
 ```
 
 
