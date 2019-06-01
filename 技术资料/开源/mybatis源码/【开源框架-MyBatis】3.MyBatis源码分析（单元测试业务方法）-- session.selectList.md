@@ -259,10 +259,13 @@ configuration.setCacheEnabled(booleanValueOf(props.getProperty("cacheEnabled"), 
 ```
 从如上代码来看，当前版本的Mybatis默认开启二级缓存，即cacheEnabled除非显示指定的false否则只会为true; 然而Builder时却并没有获取 cacheEnabled的值，在整个代码中搜索也未找到；无论是否配置cacheEnabled或者说cacheEnabled无论为true或false，在构建MappedStatement时均默认使用二级缓存。但是实际在调试 ms.getCache()时却发现Cache为null，那是为什么呢？
 ```language
+    //XmlSqlStatementParser类：
+    String cacheModelName = context.getStringAttribute("cacheModel");
     if (cacheModelName != null) {
       cacheModelName = mapParser.applyNamespace(cacheModelName);
       Cache cache = configuration.getCache(cacheModelName);
       builder.cache(cache);
     }
 ```
+d
 
