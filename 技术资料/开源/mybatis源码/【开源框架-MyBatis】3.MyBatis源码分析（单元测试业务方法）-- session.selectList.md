@@ -97,4 +97,35 @@ Mapper文件解析及MappedStatement创建示例：
 ```language
 return executor.query(ms, wrapCollection(parameter), rowBounds, Executor.NO_RESULT_HANDLER);
 ```
-根据之前笔记分析，创建SelSession时即已初始化executor实例(实际类型为CachingExecutor(BaseExecutor)），参数：ms为上一步获取的MappedStatement实例；wrapCollection(parameter)最终结果为null（因为当前select没有参数）；rowBounds为默认值（默认查询所有行）；最后一个通过名称先暂时理解为查询无结果处理器
+根据之前笔记分析，创建SelSession时即已初始化executor实例(实际类型为CachingExecutor(BaseExecutor)），参数：ms为上一步获取的MappedStatement实例；wrapCollection(parameter)最终结果为null（因为当前select没有参数）；rowBounds为默认值（默认查询所有行）；最后一个通过名称先暂时理解为查询无结果处理器。
+#### 2. executor.query分析（）
+```language
+  public List query(MappedStatement ms, Object parameterObject, RowBounds rowBounds, ResultHandler resultHandler) throws SQLException {
+    if (ms != null) {
+      Cache cache = ms.getCache();
+      if (cache != null) {
+        flushCacheIfRequired(ms);
+        cache.getReadWriteLock().readLock().lock();
+        try {
+          if (ms.isUseCache()) {
+            CacheKey key = createCacheKey(ms, parameterObject, rowBounds);
+            final List cachedList = (List) cache.getObject(key);
+            if (cachedList != null) {
+              return cachedList;
+            } else {
+              List list = delegate.query(ms, parameterObject, rowBounds, resultHandler);
+              tcm.putObject(cache, key, list);
+              return list;
+            }
+          } else {
+            return delegate.query(ms, parameterObject, rowBounds, resultHandler);
+          }
+        } finally {
+          cache.getReadWriteLock().readLock().unlock();
+        }
+      }
+    }
+    return delegate.query(ms, parameterObject, rowBounds, resultHandler);
+  }
+```
+
