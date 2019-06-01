@@ -267,5 +267,5 @@ configuration.setCacheEnabled(booleanValueOf(props.getProperty("cacheEnabled"), 
       builder.cache(cache);
     }
 ```
-d
+原来虽然默认开启开级缓存，但如若没有显示配置cacheModelName
 
