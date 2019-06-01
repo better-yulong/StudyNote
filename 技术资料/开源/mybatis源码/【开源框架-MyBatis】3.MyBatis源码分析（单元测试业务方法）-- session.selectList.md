@@ -90,6 +90,5 @@ Mapper文件解析及MappedStatement创建示例：
 ```
 - select * from author where id = #{id}
 > id:selectAuthorWithInlineParams ; sqlSource:Configuration实例和rootSqlNode实例（对应mapper的sql节点,其中就有完整的sql）； statementType：PREPARED（STATEMENT, PREPARED, CALLABLE ； sqlCommandType:SELECT(UNKNOWN, INSERT, UPDATE, DELETE, SELECT) ; fetchSize:null ; timeout:null ; parameterMap:null ; parameterTypeClass:class java.lang.Integer ; resultMap:null ; resultTypeClass:class domain.blog.Author ; resultSetTypeEnum:null ; flushCache:false ; useCache:true ; keyGenerator:NoKeyGenerator ; keyProperty:null .
-
 - select * from author where id = #{id}
 > id:selectBlogWithPostsUsingSubSelect ; sqlSource:Configuration实例和rootSqlNode实例（对应mapper的sql节点,其中就有完整的sql）； statementType：PREPARED（STATEMENT, PREPARED, CALLABLE ； sqlCommandType:SELECT(UNKNOWN, INSERT, UPDATE, DELETE, SELECT) ; fetchSize:null ; timeout:null ; parameterMap:null ; parameterTypeClass:class java.lang.Integer ; resultMap:blogWithPosts ; resultTypeClass:null ; resultSetTypeEnum:null ; flushCache:false ; useCache:true ; keyGenerator:NoKeyGenerator ; keyProperty:null .
