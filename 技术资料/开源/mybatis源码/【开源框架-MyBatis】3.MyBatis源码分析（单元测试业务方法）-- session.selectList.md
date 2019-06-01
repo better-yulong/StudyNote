@@ -88,5 +88,5 @@ protected final Map<String, MappedStatement> mappedStatements = new StrictMap<St
         resultSetTypeEnum, flushCache, useCache, keyGenerator, keyProperty);
   }
 ```
-id:selectAllAuthors ; sqlSource:Configuration实例和rootSqlNode实例（对应mapper的sql节点）； statementType：PREPARED（） ； sqlCommandType:SELECT ; fetchSize:null ; timeout:null ; parameterMap:null ; parameterTypeClass:null ; resultMap:null ; resultTypeClass:class domain.blog.Author ; resultSetTypeEnum:null ; flushCache:false ; useCache:true ; keyGenerator:NoKeyGenerator ; keyProperty:null .
+id:selectAllAuthors ; sqlSource:Configuration实例和rootSqlNode实例（对应mapper的sql节点）； statementType：PREPARED（） ； sqlCommandType:SELECT(UNKNOWN, INSERT, UPDATE, DELETE, SELECT) ; fetchSize:null ; timeout:null ; parameterMap:null ; parameterTypeClass:null ; resultMap:null ; resultTypeClass:class domain.blog.Author ; resultSetTypeEnum:null ; flushCache:false ; useCache:true ; keyGenerator:NoKeyGenerator ; keyProperty:null .
 
