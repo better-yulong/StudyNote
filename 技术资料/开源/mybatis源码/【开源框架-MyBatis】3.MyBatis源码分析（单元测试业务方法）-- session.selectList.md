@@ -345,7 +345,7 @@ configuration.setCacheEnabled(booleanValueOf(props.getProperty("cacheEnabled"), 
     return cache;
   }
 ```
-发现需有对应Mappe.xml中添加 <cache/> 即可按默认配置为基于每个人
+发现需有对应Mappe.xml中添加 <cache/> 即可。而cache对象是以每个Mapper文件的 Namespace为 id,
 ```language
 <mapper namespace="domain.blog.mappers.AuthorMapper">
 
