@@ -194,7 +194,7 @@ return executor.query(ms, wrapCollection(parameter), rowBounds, Executor.NO_RESU
 
     MappedStatement.Builder builder = new MappedStatement.Builder(configuration, id, sqlSource,sqlCommandType);
 
-    builder.useCache(true);
+    builder.useCache(true);//为什么直接设置为true,dm
     if (!"select".equals(context.getNode().getNodeName())) {
       builder.flushCacheRequired(true);
     }
@@ -253,4 +253,7 @@ return executor.query(ms, wrapCollection(parameter), rowBounds, Executor.NO_RESU
 
     configuration.addMappedStatement(builder.build());
   }
+```
+```language
+
 ```
