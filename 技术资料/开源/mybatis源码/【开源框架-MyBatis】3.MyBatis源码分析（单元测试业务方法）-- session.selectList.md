@@ -345,7 +345,7 @@ configuration.setCacheEnabled(booleanValueOf(props.getProperty("cacheEnabled"), 
     return cache;
   }
 ```
-发现
+发现需有对应Mappe.xml中添加
 
 
 
