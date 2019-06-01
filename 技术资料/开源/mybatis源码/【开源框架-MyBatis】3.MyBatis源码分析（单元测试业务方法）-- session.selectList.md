@@ -81,7 +81,7 @@ protected final Map<String, MappedStatement> mappedStatements = new StrictMap<St
 
   }
 ```
-Mapper文件解析及
+Mapper文件解析及MappedStatement创建示例：
 ```language
     builderAssistant.addMappedStatement(id, sqlSource, statementType, sqlCommandType,
         fetchSize, timeout, parameterMap, parameterTypeClass, resultMap, resultTypeClass,
