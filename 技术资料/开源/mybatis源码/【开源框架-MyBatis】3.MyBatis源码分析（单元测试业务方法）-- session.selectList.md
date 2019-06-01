@@ -97,6 +97,4 @@ Mapper文件解析及MappedStatement创建示例：
 ```language
 return executor.query(ms, wrapCollection(parameter), rowBounds, Executor.NO_RESULT_HANDLER);
 ```
-根据之前笔记分析，
-
-CachingExecutor(executor)
+根据之前笔记分析，创建SelSession时即已初始化executor实例(CachingExecutor(executor)
