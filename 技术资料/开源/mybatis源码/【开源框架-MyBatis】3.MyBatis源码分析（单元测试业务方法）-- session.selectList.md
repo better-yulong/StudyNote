@@ -88,5 +88,5 @@ protected final Map<String, MappedStatement> mappedStatements = new StrictMap<St
         resultSetTypeEnum, flushCache, useCache, keyGenerator, keyProperty);
   }
 ```
-id:selectAllAuthors ; sqlSource:Configuration
+id:selectAllAuthors ; sqlSource:Configuration实例和rootSqlNode实例（对应mapper的sql
 
