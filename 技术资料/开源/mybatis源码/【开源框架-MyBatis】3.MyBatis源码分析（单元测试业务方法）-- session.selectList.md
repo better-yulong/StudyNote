@@ -257,4 +257,4 @@ return executor.query(ms, wrapCollection(parameter), rowBounds, Executor.NO_RESU
 ```language
 configuration.setCacheEnabled(booleanValueOf(props.getProperty("cacheEnabled"), true));
 ```
-从如上代码来看，当前版本的Mybatis默认开启二级缓存，即cacheEnabled除非显示指定的fals
+从如上代码来看，当前版本的Mybatis默认开启二级缓存，即cacheEnabled除非显示指定的false否则只会为true; 然而Builder时却并
