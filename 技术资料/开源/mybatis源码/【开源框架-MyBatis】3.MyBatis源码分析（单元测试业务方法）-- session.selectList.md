@@ -303,5 +303,5 @@ configuration.setCacheEnabled(booleanValueOf(props.getProperty("cacheEnabled"), 
       builder.cache(cache);
     }
 ```
-原来虽然默认开启开级缓存，但如若没有显示配置cacheModelName那么也不会为其创建Cache对象，于是乎在该单元测试的Mapper.xml中添加下cacheModel属性看看是否可初始化缓存对象。然而并没有什么用，因为尝试添加cacheModel时xml直接显示属性非法，故感觉不太对。debug
+原来虽然默认开启开级缓存，但如若没有显示配置cacheModelName那么也不会为其创建Cache对象，于是乎在该单元测试的Mapper.xml中添加下cacheModel属性看看是否可初始化缓存对象。然而并没有什么用，因为尝试添加cacheModel时xml直接显示属性非法，故感觉不太对。debug发现并未运行上面的方法，于是乎重新分析。
 
