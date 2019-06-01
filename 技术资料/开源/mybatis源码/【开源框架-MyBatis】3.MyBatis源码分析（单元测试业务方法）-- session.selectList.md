@@ -130,12 +130,127 @@ return executor.query(ms, wrapCollection(parameter), rowBounds, Executor.NO_RESU
 ```
 #### 2.1.1  cache处理
 首先获取MappedStatement的缓存Cache对象，若不为空则根据flushCache值确认是否清空缓存（当前为false即为不清空），此处既然要使用Cache实例，那就需同步了解下cache实例初始化的逻辑：
-
-
 ```language
+
+  public void parseGeneralStatement(XNode context) {
+    // get attributes
+    String id = context.getStringAttribute("id");
+    String parameterMapName = context.getStringAttribute("parameterMap");
+    String parameterClassName = context.getStringAttribute("parameterClass");
+    String resultMapName = context.getStringAttribute("resultMap");
+    String resultClassName = context.getStringAttribute("resultClass");
+    String cacheModelName = context.getStringAttribute("cacheModel");
+    String resultSetType = context.getStringAttribute("resultSetType");
+    String fetchSize = context.getStringAttribute("fetchSize");
+    String timeout = context.getStringAttribute("timeout");
+    // 2.x -- String allowRemapping = context.getStringAttribute("remapResults");
+
+    if (context.getStringAttribute("xmlResultName") != null) {
+      throw new UnsupportedOperationException("xmlResultName is not supported by iBATIS 3");
+    }
+
+    if (mapParser.getConfigParser().isUseStatementNamespaces()) {
+      id = mapParser.applyNamespace(id);
+    }
+
+    String[] additionalResultMapNames = null;
+    if (resultMapName != null) {
+      additionalResultMapNames = getAllButFirstToken(resultMapName);
+      resultMapName = getFirstToken(resultMapName);
+      resultMapName = mapParser.applyNamespace(resultMapName);
+      for (int i = 0; i < additionalResultMapNames.length; i++) {
+        additionalResultMapNames[i] = mapParser.applyNamespace(additionalResultMapNames[i]);
+      }
+    }
+
+    String[] additionalResultClassNames = null;
+    if (resultClassName != null) {
+      additionalResultClassNames = getAllButFirstToken(resultClassName);
+      resultClassName = getFirstToken(resultClassName);
+    }
+    Class[] additionalResultClasses = null;
+    if (additionalResultClassNames != null) {
+      additionalResultClasses = new Class[additionalResultClassNames.length];
+      for (int i = 0; i < additionalResultClassNames.length; i++) {
+        additionalResultClasses[i] = resolveClass(additionalResultClassNames[i]);
+      }
+    }
+
+    Integer timeoutInt = timeout == null ? null : new Integer(timeout);
+    Integer fetchSizeInt = fetchSize == null ? null : new Integer(fetchSize);
+
+    // 2.x -- boolean allowRemappingBool = "true".equals(allowRemapping);
+
+    SqlSource sqlSource = new SqlSourceFactory(mapParser).newSqlSourceIntance(mapParser, context);
+
+    String nodeName = context.getNode().getNodeName();
+    SqlCommandType sqlCommandType;
+    try {
+      sqlCommandType = SqlCommandType.valueOf(nodeName.toUpperCase());
+    } catch (Exception e) {
+      sqlCommandType = SqlCommandType.UNKNOWN; 
+    }
+
+
+    MappedStatement.Builder builder = new MappedStatement.Builder(configuration, id, sqlSource,sqlCommandType);
+
+    builder.useCache(true);
+    if (!"select".equals(context.getNode().getNodeName())) {
+      builder.flushCacheRequired(true);
+    }
+
+    if (parameterMapName != null) {
+      parameterMapName = mapParser.applyNamespace(parameterMapName);
+      builder.parameterMap(configuration.getParameterMap(parameterMapName));
+    } else if (parameterClassName != null) {
+      Class parameterClass = resolveClass(parameterClassName);
+      List<ParameterMapping> parameterMappings = new ArrayList<ParameterMapping>();
+      if (sqlSource instanceof SimpleSqlSource) {
+        parameterMappings = sqlSource.getBoundSql(null).getParameterMappings();
+      }
+      ParameterMap.Builder parameterMapBuilder = new ParameterMap.Builder(configuration, id + "-ParameterMap", parameterClass, parameterMappings);
+      builder.parameterMap(parameterMapBuilder.build());
+    }
+
+    List<ResultMap> resultMaps = new ArrayList<ResultMap>();
+    if (resultMapName != null) {
+      resultMaps.add(configuration.getResultMap(resultMapName));
+      if (additionalResultMapNames != null) {
+        for (String additionalResultMapName : additionalResultMapNames) {
+          resultMaps.add(configuration.getResultMap(additionalResultMapName));
+        }
+      }
+    } else if (resultClassName != null) {
+      Class resultClass = resolveClass(resultClassName);
+      ResultMap.Builder resultMapBuilder = new ResultMap.Builder(configuration, id + "-ResultMap", resultClass, new ArrayList<ResultMapping>());
+      resultMaps.add(resultMapBuilder.build());
+      if (additionalResultClasses != null) {
+        for (Class additionalResultClass : additionalResultClasses) {
+          resultMapBuilder = new ResultMap.Builder(configuration, id + "-ResultMap", additionalResultClass, new ArrayList<ResultMapping>());
+          resultMaps.add(resultMapBuilder.build());
+        }
+      }
+    }
+    builder.resultMaps(resultMaps);
+
+    builder.fetchSize(fetchSizeInt);
+
+    builder.timeout(timeoutInt);
+
     if (cacheModelName != null) {
       cacheModelName = mapParser.applyNamespace(cacheModelName);
       Cache cache = configuration.getCache(cacheModelName);
       builder.cache(cache);
     }
+
+    if (resultSetType != null) {
+      builder.resultSetType(ResultSetType.valueOf(resultSetType));
+    }
+
+    // allowRemappingBool -- silently ignored
+
+    findAndParseSelectKey(id, context);
+
+    configuration.addMappedStatement(builder.build());
+  }
 ```
