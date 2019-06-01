@@ -194,7 +194,7 @@ return executor.query(ms, wrapCollection(parameter), rowBounds, Executor.NO_RESU
 
     MappedStatement.Builder builder = new MappedStatement.Builder(configuration, id, sqlSource,sqlCommandType);
 
-    builder.useCache(true);//为什么直接设置为true,dm
+    builder.useCache(true);//为什么直接设置为true，而不是获取Configuration的cache配置
     if (!"select".equals(context.getNode().getNodeName())) {
       builder.flushCacheRequired(true);
     }
