@@ -133,5 +133,9 @@ return executor.query(ms, wrapCollection(parameter), rowBounds, Executor.NO_RESU
 
 
 ```language
-
+    if (cacheModelName != null) {
+      cacheModelName = mapParser.applyNamespace(cacheModelName);
+      Cache cache = configuration.getCache(cacheModelName);
+      builder.cache(cache);
+    }
 ```
