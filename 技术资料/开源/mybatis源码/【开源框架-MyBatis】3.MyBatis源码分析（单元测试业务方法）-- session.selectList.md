@@ -129,4 +129,4 @@ return executor.query(ms, wrapCollection(parameter), rowBounds, Executor.NO_RESU
   }
 ```
 #### 2.1.1  cache处理
-首先获取MappedStatement的缓存Cache对象，若不为空则根据flushCache值确认是否清空缓存
+首先获取MappedStatement的缓存Cache对象，若不为空则根据flushCache值确认是否清空缓存（当前为false即为不清空）
