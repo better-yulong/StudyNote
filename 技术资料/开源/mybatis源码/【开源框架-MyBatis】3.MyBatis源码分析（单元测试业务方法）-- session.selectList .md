@@ -440,4 +440,19 @@ BaseExecutor.query方法：
 整体来看，是根据当前sql的参数封装cachekey实例，并从当前Exeutor实例变量使用cacheKey从localCache获取缓存信息：
 1. 如获得缓存数据，则获取缓存数据，后续不再查询数据库
 2. 如未获得缓存数据，则将localCache中对应cacheKey的value值设置为临时占位符（EXECUTION_PLACEHOLDER），然后调用底层查询方法
-##### 2.2.3 
+
+##### 2.2.3 数据查询
+```language
+  public List doQuery(MappedStatement ms, Object parameter, RowBounds rowBounds, ResultHandler resultHandler) throws SQLException {
+    Statement stmt = null;
+    try {
+      Configuration configuration = ms.getConfiguration();
+      StatementHandler handler = configuration.newStatementHandler(this, ms, parameter, rowBounds, resultHandler);
+      stmt = prepareStatement(handler);
+      return handler.query(stmt, resultHandler);
+    } finally {
+      closeStatement(stmt);
+    }
+  }
+```
+
