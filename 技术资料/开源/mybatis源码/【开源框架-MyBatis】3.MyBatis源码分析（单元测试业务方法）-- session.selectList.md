@@ -164,7 +164,7 @@ return executor.query(ms, wrapCollection(parameter), rowBounds, Executor.NO_RESU
     return delegate.query(ms, parameterObject, rowBounds, resultHandler);
   }
 ```
-#### 2.1.1  cache处理
+#### 2.1.1  cache业务
 首先获取MappedStatement的缓存Cache对象，若不为空则根据flushCache值确认是否清空缓存（当前为false即为不清空），此处既然要使用Cache实例，那就需同步了解下cache实例初始化的逻辑：
 ```language
 
