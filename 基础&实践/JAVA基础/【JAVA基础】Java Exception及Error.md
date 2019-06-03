@@ -19,7 +19,7 @@
    11. NullPointerException ： 对象引用参考值为 null所产生的异常。
    12. SecurityException ： 违反安全所产生的异常。
 2. 受检查的异常（IOException等）：这类异常如果没有try……catch也没有throws抛出，编译是通不过的。这类异常一般是外部错误，例如文件找不到、试图从文件尾后读取数据等，这并不是程序本身的错误，而是在应用环境中出现的外部错误。
-Exception的直接子类，除RuntimeExcepiton子类外，其他全部为受检查的异常，它们都在 java.lang 类库内定义。 Java 编译器要求程序必须捕获或者声明抛弃这种异常。下面列出了主要的检查异常。
+Exception的直接子类，除RuntimeExcepiton子类外，其他全部为受检查的异常，它们都在 java.lang 类库内定义；Java 编译器要求程序必须捕获或者声明抛弃这种异常（其实直接理解为有IDE如Eclipse编码时未显示try catch不会直接提示错误，编译可正常）。下面列出了主要的检查异常。
 
 
 Exception可能可通过编码解决；而Error极少数可通过编码解决，如内存泄漏、递归过深导致栈溢出）
