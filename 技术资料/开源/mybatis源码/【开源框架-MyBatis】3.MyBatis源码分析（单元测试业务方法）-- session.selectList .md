@@ -508,7 +508,7 @@ BaseExecutor.query方法：
     this.resultSetHandler = configuration.newResultSetHandler(executor, mappedStatement, rowBounds, parameterHandler, resultHandler, boundSql);
   }
 ```
-其中就比较关注的是请求参数、响应结果处理逻辑，比如
+其中就比较关注的是请求参数、响应结果处理逻辑，即解析全局MpaaerConfig.xml时
 ```language
 public class DefaultParameterHandler implements ParameterHandler {
 
