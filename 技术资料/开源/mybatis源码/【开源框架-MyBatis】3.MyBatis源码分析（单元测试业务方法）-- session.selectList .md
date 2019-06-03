@@ -596,6 +596,6 @@ public class DefaultParameterHandler implements ParameterHandler {
     return resultSetHandler;
   }
 ```
-从如上结果看，如果查询结果为Map则创建NestedResultSetHandler，否则即
+从如上结果看，如果查询结果为Map则创建NestedResultSetHandler，否则即结果为bean方式返回创建FastResultSetHandler。
 
 
