@@ -405,7 +405,7 @@ BaseExecutor.query方法：
 ##### 2.2.1 closed用于标识单个executor执行状态，初始为false，而在executor的close方法中会更新为true; queryStack默认为0，稍后分析。
 ##### 2.2.2 缓存：一开始没想起来此处为何会有缓存？当注意到调用的是localCache是突然明白此处应该是二级缓存，而之前基于ms对象（MappedStatement）则是二级缓存.
 ```language
-	CacheKey key = createCacheKey(ms, parameter, rowBounds);
+     CacheKey key = createCacheKey(ms, parameter, rowBounds);
       final List cachedList = (List) localCache.getObject(key);
 ```
 
