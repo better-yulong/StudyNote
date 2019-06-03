@@ -460,4 +460,5 @@ BaseExecutor.query方法：
 ```language
   Configuration configuration = ms.getConfiguration();
 ```
-2.获取
+2.获取处理器
+
