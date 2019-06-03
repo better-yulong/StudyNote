@@ -364,4 +364,4 @@ configuration.setCacheEnabled(booleanValueOf(props.getProperty("cacheEnabled"), 
 则直接查询数据库并返回list（缓存为空，只做数据库查询不作任何处理）
 #### 2.1.3  锁释放
 finally方法释放锁：cache.getReadWriteLock().readLock().unlock();
-#### 2.1.3  锁释放
+#### 2.1.4  ms（MappedStatement对象）为null处理----此处开始有质疑
