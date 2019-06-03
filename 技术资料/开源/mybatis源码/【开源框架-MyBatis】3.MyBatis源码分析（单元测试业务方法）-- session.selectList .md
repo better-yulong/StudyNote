@@ -472,4 +472,41 @@ BaseExecutor.query方法：
     return statementHandler;
   }
 ```
+```language
+
+  public RoutingStatementHandler(Executor executor, MappedStatement ms, Object parameter, RowBounds rowBounds, ResultHandler resultHandler) {
+
+    switch (ms.getStatementType()) {
+      case STATEMENT:
+        delegate = new SimpleStatementHandler(executor, ms, parameter, rowBounds, resultHandler);
+        break;
+      case PREPARED:
+        delegate = new PreparedStatementHandler(executor, ms, parameter, rowBounds, resultHandler);
+        break;
+      case CALLABLE:
+        delegate = new CallableStatementHandler(executor, ms, parameter, rowBounds, resultHandler);
+        break;
+      default:
+        throw new ExecutorException("Unknown statement type: " + ms.getStatementType());
+    }
+
+  }
+```
+```language
+  protected BaseStatementHandler(Executor executor, MappedStatement mappedStatement, Object parameterObject, RowBounds rowBounds, ResultHandler resultHandler) {
+    this.configuration = mappedStatement.getConfiguration();
+    this.executor = executor;
+    this.mappedStatement = mappedStatement;
+    this.rowBounds = rowBounds;
+
+    this.typeHandlerRegistry = configuration.getTypeHandlerRegistry();
+    this.objectFactory = configuration.getObjectFactory();
+
+    this.boundSql = mappedStatement.getBoundSql(parameterObject);
+
+    this.parameterHandler = configuration.newParameterHandler(mappedStatement, parameterObject, boundSql);
+    this.resultSetHandler = configuration.newResultSetHandler(executor, mappedStatement, rowBounds, parameterHandler, resultHandler, boundSql);
+  }
+```
+
 
