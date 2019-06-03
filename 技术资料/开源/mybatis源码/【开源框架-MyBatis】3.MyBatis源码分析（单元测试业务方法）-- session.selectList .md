@@ -597,5 +597,5 @@ public class DefaultParameterHandler implements ParameterHandler {
   }
 ```
 从如上结果看，如果查询结果为Map则创建NestedResultSetHandler（ResultMapId不为空），否则即结果为bean方式返回创建FastResultSetHandler（即bean返回）。
-###### 2.2.3.1 数据查询
-
+###### 2.2.3.2 StatementHandler对象
+StatementHandler对象包含属性
