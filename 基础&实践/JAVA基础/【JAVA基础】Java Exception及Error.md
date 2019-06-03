@@ -36,4 +36,3 @@ LinkageError 类的子类表示一个类信赖于另一个类，但是，在前�
 
 ### 四. 个人理解
 1. 并非以Error结尾的都是Error错误，很多Exception类仍是以及Error结尾
-2. Exception更多是需要从业务层面分析解决；而Error更多则是从
