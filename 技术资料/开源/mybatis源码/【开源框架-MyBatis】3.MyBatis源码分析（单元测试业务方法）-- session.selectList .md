@@ -362,4 +362,5 @@ configuration.setCacheEnabled(booleanValueOf(props.getProperty("cacheEnabled"), 
 2. 根据MappedStatement、parameterObject、rowBounds参数获取CacheKey实例，从caceh根据CacheKey获取cachedList，如若获取到缓存数据则直接返回cachedList（不真实查询数据库）；若cachedList为null,则真实调用delegate.query查询，并调用TransactionalCacheManager的putObject(cache, key, list);更新cache数据，然后返回查询结果list
 #### 2.1.2.2 cache为空
 则直接查询数据库并返回list（缓存为空，只做数据库查询不作任何处理）
-#### 2.1.3  
+#### 2.1.3  锁释放
+finally方法释放锁：cache
