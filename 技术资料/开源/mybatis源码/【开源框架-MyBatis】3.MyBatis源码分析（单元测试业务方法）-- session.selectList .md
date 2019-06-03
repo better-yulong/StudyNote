@@ -402,4 +402,5 @@ BaseExecutor.query方法：
     return list;
   }
 ```
-1. closed用于标识单个executor执行状态，初始为false，而在executor的close方法中会更新为true; queryStack默认为0，稍后分析
+1. closed用于标识单个executor执行状态，初始为false，而在executor的close方法中会更新为true; queryStack默认为0，稍后分析。
+2. 缓存：一开始觉得此处为何会有缓存
