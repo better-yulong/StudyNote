@@ -7,21 +7,17 @@
 1. RuntimeException：其特点是Java编译器不去检查它，也就是说，当程序中可能出现这类异常时，即使没有用try……catch捕获，也没有用throws抛出，还是会编译通过，如除数为零的ArithmeticException、错误的类型转换、数组越界访问和试图访问空指针等。处理RuntimeException的原则是：如果出现RuntimeException，那么一定是程序员的错误。
 运行时异常，继承于 Runtime Exception 。 Java 编译器允许程序不对它们做出处理。下面列出了主要的运行时异常。
    1. ArithmeticException ： 一个非法算术运算产生的异常。
-   1.  ArrayStoreException ： 存入数组的内容数据类型不一致所产生的异常。
-   1. ArrayIndexOutOfBoundsException ： 数组索引超出范围所产生的异常。
-   1. ClassCastException ： 类对象强迫转换造成不当类对象所产生的异常。
-   1. IllegalArgumentException ： 程序调用时，返回错误自变量的数据类型。
-   1. IllegalThreadStateException ： 线程在不合理状态下运行所产生的异常。
-   1. NumberFormatException ： 字符串转换为数值所产生的异常。
-   1. IllegalMonitorStateException ： 线程等候或通知对象时所产生的异常。
-
-   1. IndexOutOfBoundsException ： 索引超出范围所产生的异常。
-
-   1. NegativeException ： 数组建立负值索引所产生的异常。
-
-   1. NullPointerException ： 对象引用参考值为 null所产生的异常。
-
-·     SecurityException ： 违反安全所产生的异常。
+   2.  ArrayStoreException ： 存入数组的内容数据类型不一致所产生的异常。
+   3. ArrayIndexOutOfBoundsException ： 数组索引超出范围所产生的异常。
+   4. ClassCastException ： 类对象强迫转换造成不当类对象所产生的异常。
+   5. IllegalArgumentException ： 程序调用时，返回错误自变量的数据类型。
+   6. IllegalThreadStateException ： 线程在不合理状态下运行所产生的异常。
+   7. NumberFormatException ： 字符串转换为数值所产生的异常。
+   8. IllegalMonitorStateException ： 线程等候或通知对象时所产生的异常。
+   9. IndexOutOfBoundsException ： 索引超出范围所产生的异常。
+   10. NegativeException ： 数组建立负值索引所产生的异常。
+   11. NullPointerException ： 对象引用参考值为 null所产生的异常。
+   12. SecurityException ： 违反安全所产生的异常。
 2. 受检查的异常（IOException等）：这类异常如果没有try……catch也没有throws抛出，编译是通不过的。这类异常一般是外部错误，例如文件找不到、试图从文件尾后读取数据等，这并不是程序本身的错误，而是在应用环境中出现的外部错误。
 
 
