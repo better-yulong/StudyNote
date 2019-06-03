@@ -605,4 +605,13 @@ StatementHandler对象包含属性configuration、executor、mappedStatement、r
    SimpleExecutor类的doQuery方法
    stmt = prepareStatement(handler);
 ```
+```language
+  private Statement prepareStatement(StatementHandler handler) throws SQLException {
+    Statement stmt;
+    Connection connection = transaction.getConnection();
+    stmt = handler.prepare(connection);
+    handler.parameterize(stmt);
+    return stmt;
+  }
+```
 
