@@ -5,7 +5,7 @@
 ### 二. 异常Exception
 - Exception又分为运行时异常（Runtime Exception）和受检查的异常(Checked Exception )，但所有的的Excepiton都继承自Exception类，RuntimeException类只是Exception的其中一个直接子类。
 1. RuntimeException：其特点是Java编译器不去检查它，也就是说，当程序中可能出现这类异常时，即使没有用try……catch捕获，也没有用throws抛出，还是会编译通过，如除数为零的ArithmeticException、错误的类型转换、数组越界访问和试图访问空指针等。处理RuntimeException的原则是：如果出现RuntimeException，那么一定是程序员的错误。
-- 运行时异常：继承于 Runtime Exception ，Java 编译器允许程序不对它们做出处理（其实直接理解为有IDE如Eclipse编码时未显示try catch会直接提示错误；而编译时也会直接编译失败），下面列出了主要的运行时异常。
+- 运行时异常：继承于 Runtime Exception ，Java 编译器允许程序不对它们做出处理（其实直接理解为有IDE如Eclipse编码时未显示try catch会直接提示错误；而编译时也会直接编译失败），下面列出了主要的运行时异常：
    1. ArithmeticException ： 一个非法算术运算产生的异常。
    2.  ArrayStoreException ： 存入数组的内容数据类型不一致所产生的异常。
    3. ArrayIndexOutOfBoundsException ： 数组索引超出范围所产生的异常。
@@ -19,7 +19,12 @@
    11. NullPointerException ： 对象引用参考值为 null所产生的异常。
    12. SecurityException ： 违反安全所产生的异常。
 2. 受检查的异常（IOException等）：这类异常如果没有try……catch也没有throws抛出，编译是通不过的。这类异常一般是外部错误，例如文件找不到、试图从文件尾后读取数据等，这并不是程序本身的错误，而是在应用环境中出现的外部错误。
-Exception的直接子类，除RuntimeExcepiton子类外，其他全部为受检查的异常，它们都在 java.lang 类库内定义；Java 编译器要求程序必须捕获或者声明抛弃这种异常（其实直接理解为有IDE如Eclipse编码时未显示try catch不会直接提示错误，编译可正常通过；即可显示try catch 也可不 try catch）。下面列出了主要的检查异常。
+Exception的直接子类，除RuntimeExcepiton子类外，其他全部为受检查的异常，它们都在 java.lang 类库内定义；Java 编译器要求程序必须捕获或者声明抛弃这种异常（其实直接理解为有IDE如Eclipse编码时未显示try catch不会直接提示错误，编译可正常通过；即可显示try catch 也可不显示 try catch），下面列出了主要的检查异常：
+   1. ClassNotFoundException ： 找不到类或接口所产生的异常。
+   1. CloneNotSupportedException ： 使用对象的 clone( )方法但无法执行 Cloneable所产生的异常。
+   1.  IllegalAccessException ： 类定义不明确所产生的异常。
+   1. InstantiationException ： 使用 newInstance( )方法试图建立一个类 instance时所产生的异常。
 
+·     InterruptedException ： 目前线程等待执行，另一线程中断目前线程所产生的异常。
 
 Exception可能可通过编码解决；而Error极少数可通过编码解决，如内存泄漏、递归过深导致栈溢出）
