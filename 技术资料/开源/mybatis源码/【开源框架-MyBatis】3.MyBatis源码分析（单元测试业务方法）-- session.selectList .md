@@ -437,4 +437,5 @@ BaseExecutor.query方法：
     return cacheKey;
   }
 ```
-整体来看，是根据当前sql的参数封装cachekey实例，并从当前Exeutor实例变量localCache获取缓存信息，
+整体来看，是根据当前sql的参数封装cachekey实例，并从当前Exeutor实例变量localCache获取缓存信息：
+
