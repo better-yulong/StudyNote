@@ -515,6 +515,7 @@ BaseExecutor.query方法：
     <typeHandler javaType="String" jdbcType="VARCHAR" handler="org.apache.ibatis.builder.ExampleTypeHandler"/>
   </typeHandlers>
 ```
+3. ParametersHandler
 ```language
 //Configuration类：
 public ParameterHandler newParameterHandler(MappedStatement mappedStatement, Object parameterObject, BoundSql boundSql) {
@@ -523,7 +524,7 @@ public ParameterHandler newParameterHandler(MappedStatement mappedStatement, Obj
     return parameterHandler;
   }
 ```
-ParametersHandler源码：
+源码：
 ```language
 public class DefaultParameterHandler implements ParameterHandler {
 
