@@ -598,4 +598,6 @@ public class DefaultParameterHandler implements ParameterHandler {
 ```
 从如上结果看，如果查询结果为Map则创建NestedResultSetHandler（ResultMapId不为空），否则即结果为bean方式返回创建FastResultSetHandler（即bean返回）。
 ###### 2.2.3.2 StatementHandler对象
-StatementHandler对象包含属性configuration、executor、mappedStatement、rowBounds、typeHandlerRegistry、objectFactory、boundSql
+StatementHandler对象包含属性configuration、executor、mappedStatement、rowBounds、typeHandlerRegistry、objectFactory、boundSql、parameterHandler、resultSetHandler，从这儿来看，其已经包括了执行查询所需的全部信息
+
+###### 2.2.3.2 StatementHandler对象
