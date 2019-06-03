@@ -363,4 +363,5 @@ configuration.setCacheEnabled(booleanValueOf(props.getProperty("cacheEnabled"), 
 #### 2.1.2.2 cache为空
 则直接查询数据库并返回list（缓存为空，只做数据库查询不作任何处理）
 #### 2.1.3  锁释放
-finally方法释放锁：cache
+finally方法释放锁：cache.getReadWriteLock().readLock().unlock();
+#### 2.1.3  锁释放
