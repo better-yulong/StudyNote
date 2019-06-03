@@ -596,6 +596,6 @@ public class DefaultParameterHandler implements ParameterHandler {
     return resultSetHandler;
   }
 ```
-从如上结果看，，
+从如上结果看，如果查询结果为Map则创建NestedResultSetHandler，否则即
 
 
