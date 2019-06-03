@@ -34,5 +34,4 @@ LinkageError 类的子类表示一个类信赖于另一个类，但是，在前�
 当 Java 虚拟机崩溃了或用尽了它继续操作所需的资源时，抛出该错误：
 > VitualmachineError 包含 InternalError 、 OutOfMemoryError 、 StackOverflow Error 和 UnknownError 。这些类所代表的意义如下所述。
 
-### 四. 个人理解
-1. 并非以Error结尾的都是Error错误，很多Exception类仍是以及Error结尾
+- 注意. 并非以Error结尾的都是Error错误，很多Exception类仍是以及Error结尾
