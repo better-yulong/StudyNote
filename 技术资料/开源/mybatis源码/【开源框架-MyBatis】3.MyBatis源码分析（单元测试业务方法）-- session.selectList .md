@@ -510,10 +510,20 @@ BaseExecutor.query方法：
 ```
 其中就比较关注的是请求参数、响应结果处理逻辑，即解析全局MpaaerConfig.xml时如若有配置
 ```language
+  全局MpaaerConfig.xml
   <typeHandlers>
     <typeHandler javaType="String" jdbcType="VARCHAR" handler="org.apache.ibatis.builder.ExampleTypeHandler"/>
   </typeHandlers>
 ```
+```language
+//Configuration类：
+public ParameterHandler newParameterHandler(MappedStatement mappedStatement, Object parameterObject, BoundSql boundSql) {
+    ParameterHandler parameterHandler = new DefaultParameterHandler(mappedStatement, parameterObject, boundSql);
+    parameterHandler = (ParameterHandler) interceptorChain.pluginAll(parameterHandler);
+    return parameterHandler;
+  }
+```
+
 ```language
 public class DefaultParameterHandler implements ParameterHandler {
 
