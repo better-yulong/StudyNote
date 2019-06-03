@@ -508,5 +508,6 @@ BaseExecutor.query方法：
     this.resultSetHandler = configuration.newResultSetHandler(executor, mappedStatement, rowBounds, parameterHandler, resultHandler, boundSql);
   }
 ```
+其中就涉及
 
 
