@@ -602,7 +602,7 @@ StatementHandler对象包含属性configuration、executor、mappedStatement、r
 
 ###### 2.2.4 执行准备
 ```language
-   SimpleExecutor类的
+   SimpleExecutor类的doQuery方法
+   stmt = prepareStatement(handler);
 ```
 
- stmt = prepareStatement(handler);
