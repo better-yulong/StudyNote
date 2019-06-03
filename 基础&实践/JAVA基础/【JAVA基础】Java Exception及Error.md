@@ -35,4 +35,4 @@ LinkageError 类的子类表示一个类信赖于另一个类，但是，在前�
 > VitualmachineError 包含 InternalError 、 OutOfMemoryError 、 StackOverflow Error 和 UnknownError 。这些类所代表的意义如下所述。
 
 ### 四. 个人理解
-并非以Error结尾
+并非以Error结尾的都是Error错误，如
