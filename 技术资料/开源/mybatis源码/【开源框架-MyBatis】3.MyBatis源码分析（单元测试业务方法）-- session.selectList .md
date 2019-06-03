@@ -358,5 +358,5 @@ configuration.setCacheEnabled(booleanValueOf(props.getProperty("cacheEnabled"), 
 - 业务Mapper.xml中的<cache/>标签决定了有解析xml时否根据namespace创建Cache对象；而全局MapperConfig.xml中的 <setting name="cacheEnabled" value="false"/>则决定了创建Executor是否创建CachingExecutor还是SimpleExecutor。
 #### 2.1.2  cache使用
 获取Cache实例后，判断若cahe不为空则根据flushCache值确认是否清空缓存（当前为false即为不清空），同时获取获取cache的读锁。
-- 根据MappedStatement、parameterObject、rowBounds参数获取CacheKey实例，从caceh根据CacheKey获取cachedList，如若获取到缓存数据则直接返回cachedList（不真实查询数据库）；若cachedList为null;,则真实调用查询delegate.query
+- 根据MappedStatement、parameterObject、rowBounds参数获取CacheKey实例，从caceh根据CacheKey获取cachedList，如若获取到缓存数据则直接返回cachedList（不真实查询数据库）；若cachedList为null;,则真实调用delegate.query查询
 
