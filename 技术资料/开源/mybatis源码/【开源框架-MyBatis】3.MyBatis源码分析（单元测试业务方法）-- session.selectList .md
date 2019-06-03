@@ -508,7 +508,12 @@ BaseExecutor.query方法：
     this.resultSetHandler = configuration.newResultSetHandler(executor, mappedStatement, rowBounds, parameterHandler, resultHandler, boundSql);
   }
 ```
-其中就比较关注的是请求参数、响应结果处理逻辑，即解析全局MpaaerConfig.xml时
+其中就比较关注的是请求参数、响应结果处理逻辑，即解析全局MpaaerConfig.xml时如若有配置
+```language
+  <typeHandlers>
+    <typeHandler javaType="String" jdbcType="VARCHAR" handler="org.apache.ibatis.builder.ExampleTypeHandler"/>
+  </typeHandlers>
+```
 ```language
 public class DefaultParameterHandler implements ParameterHandler {
 
