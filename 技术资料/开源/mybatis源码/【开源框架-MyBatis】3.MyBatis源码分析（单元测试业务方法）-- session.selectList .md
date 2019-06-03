@@ -407,5 +407,34 @@ BaseExecutor.query方法：
 ```language
      CacheKey key = createCacheKey(ms, parameter, rowBounds);
       final List cachedList = (List) localCache.getObject(key);
+    
+   //以及createCacheKey源码：
+	 public CacheKey createCacheKey(MappedStatement ms, Object parameterObject, RowBounds rowBounds) {
+    if (closed) throw new ExecutorException("Executor was closed.");
+    BoundSql boundSql = ms.getBoundSql(parameterObject);
+    CacheKey cacheKey = new CacheKey();
+    cacheKey.update(ms.getId());
+    cacheKey.update(rowBounds.getOffset());
+    cacheKey.update(rowBounds.getLimit());
+    cacheKey.update(boundSql.getSql());
+    List<ParameterMapping> parameterMappings = boundSql.getParameterMappings();
+    if (parameterMappings.size() > 0 && parameterObject != null) {
+      TypeHandlerRegistry typeHandlerRegistry = ms.getConfiguration().getTypeHandlerRegistry();
+      if (typeHandlerRegistry.hasTypeHandler(parameterObject.getClass())) {
+        cacheKey.update(parameterObject);
+      } else {
+        MetaObject metaObject = configuration.newMetaObject(parameterObject);
+        for (ParameterMapping parameterMapping : parameterMappings) {
+          String propertyName = parameterMapping.getProperty();
+          if (metaObject.hasGetter(propertyName)) {
+            cacheKey.update(metaObject.getValue(propertyName));
+          } else if (boundSql.hasAdditionalParameter(propertyName)) {
+            cacheKey.update(boundSql.getAdditionalParameter(propertyName));
+          }
+        }
+      }
+    }
+    return cacheKey;
+  }
 ```
 
