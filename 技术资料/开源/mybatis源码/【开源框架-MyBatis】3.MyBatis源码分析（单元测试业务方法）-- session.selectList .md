@@ -403,4 +403,4 @@ BaseExecutor.query方法：
   }
 ```
 1. closed用于标识单个executor执行状态，初始为false，而在executor的close方法中会更新为true; queryStack默认为0，稍后分析。
-2. 缓存：一开始觉得此处为何会有缓存
+2. 缓存：一开始没想起来此处为何会有缓存？当注意到调用的是localCache是
