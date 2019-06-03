@@ -366,3 +366,5 @@ configuration.setCacheEnabled(booleanValueOf(props.getProperty("cacheEnabled"), 
 finally方法释放锁：cache.getReadWriteLock().readLock().unlock();
 #### 2.1.4  ms（MappedStatement对象）为null处理----此处有点质疑
 此处有分支，若ms不为null则如上面cache逻辑；而ms为null，并未做大家常做的非空判断，而是调用delegate.query(ms, parameterObject, rowBounds, resultHandler);而通过继续深入了解，发现所有方法均未对ms做非空判断。验证：尝试传入ms为null，则发现为抛出null指针异常
+
+#### 2.2 executor.query分析（CachingExecutor类）
