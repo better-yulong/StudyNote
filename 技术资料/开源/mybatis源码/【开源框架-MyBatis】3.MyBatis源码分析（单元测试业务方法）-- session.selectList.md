@@ -164,7 +164,7 @@ return executor.query(ms, wrapCollection(parameter), rowBounds, Executor.NO_RESU
     return delegate.query(ms, parameterObject, rowBounds, resultHandler);
   }
 ```
-#### 2.1.1  cache业务
+#### 2.1.1  cache生成及获取
 首先获取MappedStatement的缓存Cache对象，此处既然要使用Cache实例，那就需同步了解下cache实例初始化的逻辑：
 ```language
 
@@ -356,6 +356,6 @@ configuration.setCacheEnabled(booleanValueOf(props.getProperty("cacheEnabled"), 
 ```
 - 至此重新梳理全局MapperConfig.xml中的 <setting name="cacheEnabled" value="true"/> 与业务Mapper.xml的<cache/>的关系，终于理解了但其实也发现了框架的问题。
 - 业务Mapper.xml中的<cache/>标签决定了有解析xml时否根据namespace创建Cache对象；而全局MapperConfig.xml中的 <setting name="cacheEnabled" value="false"/>则决定了创建Executor是否创建CachingExecutor还是SimpleExecutor。
-#### 2.1.2  cache处理
-若不为空则根据flushCache值确认是否清空缓存（当前为false即为不清空），
+#### 2.1.2  cache使用
+不为空则根据flushCache值确认是否清空缓存（当前为false即为不清空），
 
