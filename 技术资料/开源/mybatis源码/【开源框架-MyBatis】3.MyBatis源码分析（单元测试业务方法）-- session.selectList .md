@@ -360,5 +360,5 @@ configuration.setCacheEnabled(booleanValueOf(props.getProperty("cacheEnabled"), 
 #### 2.1.2.1 cache不为空
 1. 获取Cache实例后，判断若cahe不为空则根据flushCache值确认是否清空缓存（当前为false即为不清空），同时获取获取cache的读锁。
 2. 根据MappedStatement、parameterObject、rowBounds参数获取CacheKey实例，从caceh根据CacheKey获取cachedList，如若获取到缓存数据则直接返回cachedList（不真实查询数据库）；若cachedList为null,则真实调用delegate.query查询，并调用TransactionalCacheManager的putObject(cache, key, list);更新cache数据，然后返回查询结果list
-#### 2.1.2.2 cache为空，则直接查询数据库并返回
+#### 2.1.2.2 cache为空，则直接查询数据库并返回list（缓存为空，只做数据库查询不作
 
