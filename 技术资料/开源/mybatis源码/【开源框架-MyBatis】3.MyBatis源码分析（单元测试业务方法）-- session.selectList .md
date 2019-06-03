@@ -600,4 +600,5 @@ public class DefaultParameterHandler implements ParameterHandler {
 ###### 2.2.3.2 StatementHandler对象
 StatementHandler对象包含属性configuration、executor、mappedStatement、rowBounds、typeHandlerRegistry、objectFactory、boundSql、parameterHandler、resultSetHandler，从这儿来看，其已经包括了执行查询所需的全部信息
 
-###### 2.2.3.2 StatementHandler对象
+###### 2.2.4 
+ stmt = prepareStatement(handler);
