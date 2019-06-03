@@ -369,4 +369,37 @@ finally方法释放锁：cache.getReadWriteLock().readLock().unlock();
 
 #### 2.2 BaseExecutor.query分析
 如上真实查询数据库代码： delegate.query(ms, parameterObject, rowBounds, resultHandler);即对应
-BaseExecutor.query方法。
+BaseExecutor.query方法：
+```language
+  //BaseExecutor.query方法
+  public List query(MappedStatement ms, Object parameter, RowBounds rowBounds, ResultHandler resultHandler) throws SQLException {
+    ErrorContext.instance().resource(ms.getResource()).activity("executing a query").object(ms.getId());
+    if (closed) throw new ExecutorException("Executor was closed.");
+    List list;
+    try {
+      queryStack++;
+      CacheKey key = createCacheKey(ms, parameter, rowBounds);
+      final List cachedList = (List) localCache.getObject(key);
+      if (cachedList != null) {
+        list = cachedList;
+      } else {
+        localCache.putObject(key, EXECUTION_PLACEHOLDER);
+        try {
+          list = doQuery(ms, parameter, rowBounds, resultHandler);
+        } finally {
+          localCache.removeObject(key);
+        }
+        localCache.putObject(key, list);
+      }
+    } finally {
+      queryStack--;
+    }
+    if (queryStack == 0) {
+      for (DeferredLoad deferredLoad : deferredLoads) {
+        deferredLoad.load();
+      }
+    }
+    return list;
+  }
+```
+
