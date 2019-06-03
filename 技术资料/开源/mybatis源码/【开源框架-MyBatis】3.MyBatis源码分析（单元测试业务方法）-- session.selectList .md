@@ -515,7 +515,7 @@ BaseExecutor.query方法：
     <typeHandler javaType="String" jdbcType="VARCHAR" handler="org.apache.ibatis.builder.ExampleTypeHandler"/>
   </typeHandlers>
 ```
-3. ParametersHandler
+3. ParametersHandler源码
 ```language
 //Configuration类：
 public ParameterHandler newParameterHandler(MappedStatement mappedStatement, Object parameterObject, BoundSql boundSql) {
@@ -524,7 +524,6 @@ public ParameterHandler newParameterHandler(MappedStatement mappedStatement, Obj
     return parameterHandler;
   }
 ```
-源码：
 ```language
 public class DefaultParameterHandler implements ParameterHandler {
 
@@ -587,7 +586,7 @@ public class DefaultParameterHandler implements ParameterHandler {
 
 }
 ```
-ResultSetHandler
+4. ParametersHandler源码
 ```language
   public ResultSetHandler newResultSetHandler(Executor executor, MappedStatement mappedStatement, RowBounds rowBounds, ParameterHandler parameterHandler, ResultHandler resultHandler, BoundSql boundSql) {
     ResultSetHandler resultSetHandler = mappedStatement.hasNestedResultMaps() ?
