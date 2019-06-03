@@ -365,4 +365,4 @@ configuration.setCacheEnabled(booleanValueOf(props.getProperty("cacheEnabled"), 
 #### 2.1.3  锁释放
 finally方法释放锁：cache.getReadWriteLock().readLock().unlock();
 #### 2.1.4  ms（MappedStatement对象）为null处理----此处开始有质疑,后双觉得合理
-此处有分支，若ms不为空则如上面cache逻辑，
+此处有分支，若ms不为null则如上面cache逻辑；而ms为null，并未做大家常做的非空判断，而是
