@@ -461,4 +461,15 @@ BaseExecutor.query方法：
   Configuration configuration = ms.getConfiguration();
 ```
 2. 获取处理器
+```language
+
+```
+```language
+  //Configuration
+  public StatementHandler newStatementHandler(Executor executor, MappedStatement mappedStatement, Object parameterObject, RowBounds rowBounds, ResultHandler resultHandler) {
+    StatementHandler statementHandler = new RoutingStatementHandler(executor, mappedStatement, parameterObject, rowBounds, resultHandler);
+    statementHandler = (StatementHandler) interceptorChain.pluginAll(statementHandler);
+    return statementHandler;
+  }
+```
 
