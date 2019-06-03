@@ -463,7 +463,6 @@ BaseExecutor.query方法：
 2. 获取处理器
 ```language
    StatementHandler handler = configuration.newStatementHandler(this, ms, parameter, rowBounds, resultHandler);
-
 ```
 ```language
   //Configuration类
