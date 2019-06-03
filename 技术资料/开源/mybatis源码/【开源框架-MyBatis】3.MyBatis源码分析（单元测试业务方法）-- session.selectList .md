@@ -441,7 +441,7 @@ BaseExecutor.query方法：
 1. 如获得缓存数据，则获取缓存数据，后续不再查询数据库
 2. 如未获得缓存数据，则将localCache中对应cacheKey的value值设置为临时占位符（EXECUTION_PLACEHOLDER），然后调用底层查询方法
 
-##### 2.2.3 数据查询
+##### 2.2.3 数据查询（）
 ```language
   public List doQuery(MappedStatement ms, Object parameter, RowBounds rowBounds, ResultHandler resultHandler) throws SQLException {
     Statement stmt = null;
