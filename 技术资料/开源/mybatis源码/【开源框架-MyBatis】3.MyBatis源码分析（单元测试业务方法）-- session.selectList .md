@@ -462,10 +462,11 @@ BaseExecutor.query方法：
 ```
 2. 获取处理器
 ```language
+   StatementHandler handler = configuration.newStatementHandler(this, ms, parameter, rowBounds, resultHandler);
 
 ```
 ```language
-  //Configuration
+  //Configuration类
   public StatementHandler newStatementHandler(Executor executor, MappedStatement mappedStatement, Object parameterObject, RowBounds rowBounds, ResultHandler resultHandler) {
     StatementHandler statementHandler = new RoutingStatementHandler(executor, mappedStatement, parameterObject, rowBounds, resultHandler);
     statementHandler = (StatementHandler) interceptorChain.pluginAll(statementHandler);
