@@ -28,6 +28,9 @@ Exception的直接子类，除RuntimeExcepiton子类外，其他全部为受检�
 
 ### 三. 错误Error
 Error 类与异常一样，它们都是继承自 java.lang.Throwable 类。 Error 类对象由 Java 虚拟机生成并抛出。 Error 类包括 LinkageError （结合错误）与 VitualmanchineError （虚拟机错误）两种子类。
-#### LinkageError 类：
+#### LinkageError 类
 LinkageError 类的子类表示一个类信赖于另一个类，但是，在前一个类编译之后，后一个类的改变会与它不兼容。常见的有 NoSuchMethodError
+#### VitualmachineError类
+当 Java 虚拟机崩溃了或用尽了它继续操作所需的资源时，抛出该错误：
+VitualmachineError 包含 InternalError 、 OutOfMemoryError 、 StackOverflow Error 和 UnknownError 。这些类所代表的意义如下所述。
 Exception可能可通过编码解决；而Error极少数可通过编码解决，如内存泄漏、递归过深导致栈溢出）
