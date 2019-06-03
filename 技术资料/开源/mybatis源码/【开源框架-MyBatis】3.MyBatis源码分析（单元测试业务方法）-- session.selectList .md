@@ -439,4 +439,4 @@ BaseExecutor.query方法：
 ```
 整体来看，是根据当前sql的参数封装cachekey实例，并从当前Exeutor实例变量localCache获取缓存信息：
 1. 如若localCache有缓存数据，则获取缓存数据，后续不再查询数据库
-2. 如若localCache无缓存数据，则当
+2. 如若localCache无缓存数据，则当localCache中
