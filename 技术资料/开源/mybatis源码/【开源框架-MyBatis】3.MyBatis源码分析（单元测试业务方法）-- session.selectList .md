@@ -164,7 +164,7 @@ return executor.query(ms, wrapCollection(parameter), rowBounds, Executor.NO_RESU
     return delegate.query(ms, parameterObject, rowBounds, resultHandler);
   }
 ```
-#### 2.1.1  cache生成及获取
+#### 2.1.1  cache生成及获取（ms对象不为null）
 首先获取MappedStatement的缓存Cache对象，此处既然要使用Cache实例，那就需同步了解下cache实例初始化的逻辑：
 ```language
 
@@ -364,4 +364,4 @@ configuration.setCacheEnabled(booleanValueOf(props.getProperty("cacheEnabled"), 
 则直接查询数据库并返回list（缓存为空，只做数据库查询不作任何处理）
 #### 2.1.3  锁释放
 finally方法释放锁：cache.getReadWriteLock().readLock().unlock();
-#### 2.1.4  ms（MappedStatement对象）为null处理----此处开始有质疑
+#### 2.1.4  ms（MappedStatement对象）为null处理----此处开始有质疑,
