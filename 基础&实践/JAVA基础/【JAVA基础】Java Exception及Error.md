@@ -26,5 +26,7 @@ Exception的直接子类，除RuntimeExcepiton子类外，其他全部为受检�
    4. InstantiationException ： 使用 newInstance( )方法试图建立一个类 instance时所产生的异常。
    5.  InterruptedException ： 目前线程等待执行，另一线程中断目前线程所产生的异常。
 
-### 三. 异常Exception
+### 三. 错误Error
+Error 类与异常一样，它们都是继承自 java.lang.Throwable 类。 Error 类对象由 Java 虚拟机生成并抛出。 Error 类包括 LinkageError （结合错误）与 VitualmanchineError （虚拟机错误）两种子类。
+
 Exception可能可通过编码解决；而Error极少数可通过编码解决，如内存泄漏、递归过深导致栈溢出）
