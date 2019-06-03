@@ -456,8 +456,8 @@ BaseExecutor.query方法：
   }
 ```
 ###### 2.2.3.1 数据查询
-代码：
+1. 获取全局的Configuration
 ```language
   Configuration configuration = ms.getConfiguration();
 ```
-用于获取全局的Configuration
+2.获取
