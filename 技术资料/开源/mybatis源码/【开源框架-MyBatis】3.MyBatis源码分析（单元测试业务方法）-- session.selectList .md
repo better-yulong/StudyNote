@@ -600,7 +600,7 @@ public class DefaultParameterHandler implements ParameterHandler {
 ###### 2.2.3.2 StatementHandler对象
 StatementHandler对象包含属性configuration、executor、mappedStatement、rowBounds、typeHandlerRegistry、objectFactory、boundSql、parameterHandler、resultSetHandler，从这儿来看，其已经包括了执行查询所需的全部信息
 
-###### 2.2.4 执行准备
+##### 2.2.4 执行准备
 ```language
    SimpleExecutor类的doQuery方法
    stmt = prepareStatement(handler);
@@ -667,7 +667,9 @@ StatementHandler对象包含属性configuration、executor、mappedStatement、r
 当前单元测试查询SQL相对简单：select * from author; debug模式，Connection实例在初始化时已被ConnectionLogger，故进入ConnectionLogger的invoke方法.
 SimpleExecutor.doQuery --> SimpleExecutor.prepareStatement --> BaseStatementHandler.prepare --->
 PreparedStatementHandler.instantiateStatement --> 返回 EmbedPreparedStatement 实例。
-###### 2.2.5 参数处理
+
+##### 2.2.5 参数处理
 SimpleExecutor.prepareStatement --> handler.parameterize(stmt); -->PreparedStatementHandler.parameterize
 
+##### 2.2.5.1 
 
