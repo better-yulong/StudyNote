@@ -645,4 +645,4 @@ StatementHandler对象包含属性configuration、executor、mappedStatement、r
     }
   }
 ```
-因当前单元测试查询SQL相对简单，此次
+因当前单元测试查询SQL相对简单：select * from author，此次
