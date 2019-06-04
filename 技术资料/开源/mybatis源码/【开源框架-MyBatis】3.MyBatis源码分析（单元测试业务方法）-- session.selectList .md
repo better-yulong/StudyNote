@@ -668,5 +668,5 @@ StatementHandler对象包含属性configuration、executor、mappedStatement、r
 SimpleExecutor.doQuery --> SimpleExecutor.prepareStatement --> BaseStatementHandler.prepare --->
 PreparedStatementHandler.instantiateStatement --> 返回 EmbedPreparedStatement 实例。
 ###### 2.2.5 参数处理
-SimpleExecutor
+SimpleExecutor.prepareStatement --> handler.parameterize(stmt); -->PreparedStatementHandler.
 
