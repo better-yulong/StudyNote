@@ -664,8 +664,9 @@ StatementHandler对象包含属性configuration、executor、mappedStatement、r
     }
   }
 ```
+当前单元测试查询SQL相对简单：select * from author; debug模式，Connection实例在初始化时已被ConnectionLogger，故进入ConnectionLogger的invoke方法.
 SimpleExecutor.doQuery --> SimpleExecutor.prepareStatement --> BaseStatementHandler.prepare --->
-PreparedStatementHandler.instantiateStatement -->
-因当前单元测试查询SQL相对简单：select * from author，由于是debug模式，Connection实例在初始化时已被ConnectionLogger，故进入ConnectionLogger的invoke方法，最终 instantiateStatement(connection) 返回 EmbedPreparedStatement 实例。
+PreparedStatementHandler.instantiateStatement --> 返回 EmbedPreparedStatement 实例。
+
 
 
