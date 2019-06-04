@@ -683,4 +683,5 @@ SimpleExecutor.prepareStatement --> handler.parameterize(stmt); -->PreparedState
 ```
 
 ##### 2.2.5.1 keyGenerator执行
+如若有内嵌
 
