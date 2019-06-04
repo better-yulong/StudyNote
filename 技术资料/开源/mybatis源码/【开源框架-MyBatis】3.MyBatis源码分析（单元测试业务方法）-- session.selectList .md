@@ -713,5 +713,6 @@ SimpleExecutor.prepareStatement --> handler.parameterize(stmt); -->PreparedState
     }
   }
 ```
-相对比较简单，即基于当前的MappedStatement、Executor等发起query操作并返回并记录到
+相对比较简单，即基于当前的MappedStatement、Executor等发起query操作并返回并记录到当前ms的MetaObject对象
+
 
