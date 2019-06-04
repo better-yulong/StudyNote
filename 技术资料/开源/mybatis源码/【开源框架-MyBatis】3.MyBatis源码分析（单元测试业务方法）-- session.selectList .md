@@ -652,3 +652,23 @@ StatementHandler对象包含属性configuration、executor、mappedStatement、r
 
 PreparedStatementLogger
 
+
+```language
+  public Statement prepare(Connection connection)
+      throws SQLException {
+    ErrorContext.instance().sql(boundSql.getSql());
+    Statement statement = null;
+    try {
+      statement = instantiateStatement(connection);
+      setStatementTimeout(statement);
+      setFetchSize(statement);
+      return statement;
+    } catch (SQLException e) {
+      closeStatement(statement);
+      throw e;
+    } catch (Exception e) {
+      closeStatement(statement);
+      throw new ExecutorException("Error preparing statement.  Cause: " + e, e);
+    }
+  }
+```
