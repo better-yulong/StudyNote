@@ -713,5 +713,5 @@ SimpleExecutor.prepareStatement --> handler.parameterize(stmt); -->PreparedState
     }
   }
 ```
-
+相对比较简单，即基于当前
 
