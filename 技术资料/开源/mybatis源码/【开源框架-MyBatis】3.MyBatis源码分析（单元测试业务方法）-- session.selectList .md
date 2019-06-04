@@ -683,5 +683,5 @@ SimpleExecutor.prepareStatement --> handler.parameterize(stmt); -->PreparedState
 ```
 
 ##### 2.2.5.1 keyGenerator执行
-如若有内嵌
+如若Mapper.xml文件中有内嵌select语句（如insert的key）
 
