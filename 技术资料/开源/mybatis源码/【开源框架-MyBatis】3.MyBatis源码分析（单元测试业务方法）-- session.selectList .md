@@ -670,6 +670,17 @@ PreparedStatementHandler.instantiateStatement --> 返回 EmbedPreparedStatement 
 
 ##### 2.2.5 参数处理
 SimpleExecutor.prepareStatement --> handler.parameterize(stmt); -->PreparedStatementHandler.parameterize
+```language
+  public void parameterize(Statement statement)
+      throws SQLException {
+    KeyGenerator keyGenerator = mappedStatement.getKeyGenerator();
+    ErrorContext.instance().store();
+    keyGenerator.processBefore(executor, mappedStatement, statement, boundSql.getParameterObject());
+    ErrorContext.instance().recall();
+    rebindGeneratedKey();
+    parameterHandler.setParameters((PreparedStatement) statement);
+  }
+```
 
-##### 2.2.5.1 
+##### 2.2.5.1 keyGenerator执行
 
