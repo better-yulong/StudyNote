@@ -614,4 +614,35 @@ StatementHandler对象包含属性configuration、executor、mappedStatement、r
     return stmt;
   }
 ```
+```language
+  public Statement prepare(Connection connection)
+      throws SQLException {
+    ErrorContext.instance().sql(boundSql.getSql());
+    Statement statement = null;
+    try {
+      statement = instantiateStatement(connection);
+      setStatementTimeout(statement);
+      setFetchSize(statement);
+      return statement;
+    } catch (SQLException e) {
+      closeStatement(statement);
+      throw e;
+    } catch (Exception e) {
+      closeStatement(statement);
+      throw new ExecutorException("Error preparing statement.  Cause: " + e, e);
+    }
+  }
+```
+```language
+  protected Statement instantiateStatement(Connection connection) throws SQLException {
+    String sql = boundSql.getSql();
+    if (mappedStatement.getKeyGenerator() instanceof Jdbc3KeyGenerator) {
+      return connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+    } else if (mappedStatement.getResultSetType() != null) {
+      return connection.prepareStatement(sql, mappedStatement.getResultSetType().getValue(), ResultSet.CONCUR_READ_ONLY);
+    } else {
+      return connection.prepareStatement(sql);
+    }
+  }
+```
 
