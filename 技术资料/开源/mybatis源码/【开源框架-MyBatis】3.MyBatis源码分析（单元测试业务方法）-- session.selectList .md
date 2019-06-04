@@ -713,5 +713,5 @@ SimpleExecutor.prepareStatement --> handler.parameterize(stmt); -->PreparedState
     }
   }
 ```
-相对比较简单，即基于当前
+相对比较简单，即基于当前的MappedStatement、Executor等发起query操作并返回
 
