@@ -670,3 +670,4 @@ PreparedStatementHandler.instantiateStatement --> 返回 EmbedPreparedStatement 
 ###### 2.2.5 参数处理
 SimpleExecutor.prepareStatement --> handler.parameterize(stmt); -->PreparedStatementHandler.parameterize
 
+
