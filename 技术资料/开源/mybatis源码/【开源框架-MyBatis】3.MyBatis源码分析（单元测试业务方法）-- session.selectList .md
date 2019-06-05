@@ -840,6 +840,10 @@ public class ResultMapping {
   ...
 }
 ```
-从上面可看出对应关系： ResultMaps --1对1或1对多--> ResultMap --1对多--> ResultMapping . ResultMap可对等理解为Mapper.xml中的结果集定义ResultMap，而ResultMapping则可简单理解为行：<result property="username" column="username"/>.(分析发现 ResultMaps可1对多ResultMap，ResultMap可内嵌collection实现类似关联查询 --- 该部分后续理解)
+```language
+
+```
+从上面可看出对应关系： ResultMaps --1对1或1对多--> ResultMap --1对多--> ResultMapping . ResultMap可对等理解为Mapper.xml中的结果集定义ResultMap，而ResultMapping则可简单理解为行：<result property="username" column="username"/>.(分析发现 ResultMaps可1对多ResultMap、ResultMap可内嵌collection实现类似关联查询、typeHandler使用 --- 该部分后续理解)
+
 
 
