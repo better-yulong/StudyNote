@@ -842,7 +842,6 @@ public class ResultMapping {
 ```
 - 从上面可看出对应关系： ResultMaps --1对1或1对多--> ResultMap --1对多--> ResultMapping . ResultMap可对等理解为Mapper.xml中的结果集定义ResultMap，而ResultMapping则可简单理解为行：<result property="username" column="username"/>.(分析发现 ResultMaps可1对多ResultMap、ResultMap可内嵌collection实现类似关联查询、typeHandler使用 --- 该部分后续理解)
 - 同一<select>标签可同时存储ResultMap和ResultType，但默认ResultMap优先级更高。ResultMap、ResultType最终都会封装成ResultMap对象，但有差异。
-- 
 2. 继续回到FastResultSetHandler的handleResultSets方法
 - 当前示例直接将结果集回返映射为ResultType bean，即根据结果集元数据信息（ResultSetMetaData）获取coloumName名称并添加至unmappedColumnNames
 ```language
