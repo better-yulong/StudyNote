@@ -858,7 +858,8 @@ public class ResultMapping {
       if (mappedColumns.contains(upperColumnName)) {
         mappedColumnNames.add(upperColumnName);
         mappedColumnNames.add(columnName);
-      } else {
+      } else {  
+        //当前示例直接将结果集回返映射为ResultType bean，所以
         unmappedColumnNames.add(upperColumnName);
         unmappedColumnNames.add(columnName);
       }
