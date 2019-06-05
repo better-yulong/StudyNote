@@ -842,7 +842,28 @@ public class ResultMapping {
 ```
 - 从上面可看出对应关系： ResultMaps --1对1或1对多--> ResultMap --1对多--> ResultMapping . ResultMap可对等理解为Mapper.xml中的结果集定义ResultMap，而ResultMapping则可简单理解为行：<result property="username" column="username"/>.(分析发现 ResultMaps可1对多ResultMap、ResultMap可内嵌collection实现类似关联查询、typeHandler使用 --- 该部分后续理解)
 - 同一<select>标签可同时存储ResultMap和ResultType，但默认ResultMap优先级更高。ResultMap、ResultType最终都会封装成ResultMap对象，但有差异。
+- 
 2. 继续回到FastResultSetHandler的handleResultSets方法
 
+```language
+  protected void loadMappedAndUnmappedColumnNames(ResultSet rs, ResultMap resultMap, List<String> mappedColumnNames, List<String> unmappedColumnNames) throws SQLException {
+    mappedColumnNames.clear();
+    unmappedColumnNames.clear();
+    final ResultSetMetaData rsmd = rs.getMetaData();
+    final int columnCount = rsmd.getColumnCount();
+    final Set<String> mappedColumns = resultMap.getMappedColumns();
+    for (int i = 1; i <= columnCount; i++) {
+      final String columnName = configuration.isUseColumnLabel() ? rsmd.getColumnLabel(i) : rsmd.getColumnName(i);
+      final String upperColumnName = columnName.toUpperCase(Locale.ENGLISH);
+      if (mappedColumns.contains(upperColumnName)) {
+        mappedColumnNames.add(upperColumnName);
+        mappedColumnNames.add(columnName);
+      } else {
+        unmappedColumnNames.add(upperColumnName);
+        unmappedColumnNames.add(columnName);
+      }
+    }
+  }
+```
 
 
