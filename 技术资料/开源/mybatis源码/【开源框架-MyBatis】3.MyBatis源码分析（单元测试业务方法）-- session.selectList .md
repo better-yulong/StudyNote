@@ -614,6 +614,8 @@ StatementHandler对象包含属性configuration、executor、mappedStatement、r
     return stmt;
   }
 ```
+###### 2.2.4.1 handler.prepare(connection) 分析
+- instantiateStatement 方法
 ```language
   public Statement prepare(Connection connection)
       throws SQLException {
@@ -634,6 +636,7 @@ StatementHandler对象包含属性configuration、executor、mappedStatement、r
   }
 ```
 ```language
+  //BaseStatementHandle类
   protected Statement instantiateStatement(Connection connection) throws SQLException {
     String sql = boundSql.getSql();
     if (mappedStatement.getKeyGenerator() instanceof Jdbc3KeyGenerator) {
@@ -667,8 +670,52 @@ StatementHandler对象包含属性configuration、executor、mappedStatement、r
 当前单元测试查询SQL相对简单：select * from author; debug模式，Connection实例在初始化时已被ConnectionLogger，故进入ConnectionLogger的invoke方法.
 SimpleExecutor.doQuery --> SimpleExecutor.prepareStatement --> BaseStatementHandler.prepare --->
 PreparedStatementHandler.instantiateStatement --> 返回 EmbedPreparedStatement 实例。
+- setStatementTimeout方法
+定位代码发现，Mybatis对Dao支持注解配置超时时间、缓存时间、缓存刷新、自增键ID等，可在Dao添加注解@Options(time=10)来设置某个Dao方法的超时时间，其实还可通过如下方式来设置超时时间（单位：秒，默认为：-1，即永不超时）：
+1. 全局配置（MapperConfig.xml配置）
+```language
+		<settings>
+		<setting name="defaultStatementTimeout" value="25"/>
+</settings>
+```
+2. SQL级别配置（等同于注解@Options）
+```language
+<insert
+  id="insertAuthor"
+  parameterType="domain.blog.Author"
+  flushCache="true"
+  statementType="PREPARED"
+  keyProperty=""
+  keyColumn=""
+  useGeneratedKeys=""
+  timeout="20">
+```
+2. @Options注解
+```language
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.METHOD)
+public @interface Options {
+  public abstract boolean useCache() default true;
 
-##### 2.2.5 参数处理
+  public abstract boolean flushCache() default false;
+
+  public abstract ResultSetType resultSetType() default ResultSetType.FORWARD_ONLY;
+
+  public abstract StatementType statementType() default StatementType.PREPARED;
+
+  public abstract int fetchSize() default -1;
+
+  public abstract int timeout() default -1;
+
+  public abstract boolean useGeneratedKeys() default false;
+
+  public abstract String keyProperty() default "id";
+}
+```
+- setFetchSize(statement)方法
+   fetchSize默认值为Integer.MaxValue，即数据库查询完所有数据后再全部返回到client。因不同数据库不同的驱动实现对fetchSize有不同的处理；MySql不支持，而Oracle则可通过设置fetchSize使得数据分批返回，避免Oracle一时返回全量数据内存溢出，同时也可使网线的开锁更平滑，减少过大数据导致网络陡增.(个人理解：一般在线业务不太实用；但涉及如批量导出、报表平台等查询结果集较大的场景应该可考虑使用)
+
+###### 2.2.4.2 handler.parameterize(stmt) 分析
 SimpleExecutor.prepareStatement --> handler.parameterize(stmt); -->PreparedStatementHandler.parameterize
 ```language
   public void parameterize(Statement statement)
@@ -681,8 +728,7 @@ SimpleExecutor.prepareStatement --> handler.parameterize(stmt); -->PreparedState
     parameterHandler.setParameters((PreparedStatement) statement);
   }
 ```
-
-##### 2.2.5.1 keyGenerator执行
+- keyGenerator执行
 如若Mapper.xml文件中有内嵌select语句（如insert的key:selectKey）,则在此处处理，源码见SelectKeyGenerator类：
 ```language
   private void processGeneratedKeys(Executor executor, MappedStatement ms, Statement stmt, Object parameter) {
@@ -714,5 +760,69 @@ SimpleExecutor.prepareStatement --> handler.parameterize(stmt); -->PreparedState
   }
 ```
 相对比较简单，即基于当前的MappedStatement、Executor等发起query操作并返回并记录到当前ms的MetaObject对象
+
+##### 2.2.5 查询
+```language
+   SimpleExecutor类的doQuery方法
+   handler.query(stmt, resultHandler)
+```
+```language
+  //PreparedStatementHandler类
+  public List query(Statement statement, ResultHandler resultHandler)
+      throws SQLException {
+    PreparedStatement ps = (PreparedStatement) statement;
+    ps.execute();
+    return resultSetHandler.handleResultSets(ps);
+  }
+```
+###### 2.2.5.1 查询 ps.execute()
+调试发现EmbedPreparedStatement为derby jar包自身实现，执行完成会将查询结果赋值给 ps实例，所以需根据后续结果集的处理来分析
+###### 2.2.5.1 查询结果集处理 resultSetHandler.handleResultSets(ps)
+调试发现EmbedPreparedStatement为derby jar包自身实现，执行完成会将查询结果赋值给 ps实例。根据之前的返回，因当前单元测试的查询结果直接赋值给Bean对象，故此处的resultSetHandler是FastResultSetHandler类的实例。
+```language
+  //FastResultSetHandler类
+  public List handleResultSets(Statement stmt) throws SQLException {
+    final List multipleResults = new ArrayList();
+    final List<ResultMap> resultMaps = mappedStatement.getResultMaps();
+    int resultMapCount = resultMaps.size();
+    int resultSetCount = 0;
+    ResultSet rs = stmt.getResultSet();
+    validateResultMapsCount(rs,resultMapCount);
+    while (rs != null && resultMapCount > resultSetCount) {
+      final ResultMap resultMap = resultMaps.get(resultSetCount);
+      handleResultSet(rs, resultMap, multipleResults);
+      rs = getNextResultSet(stmt);
+      cleanUpAfterHandlingResultSet();
+      resultSetCount++;
+    }
+    return collapseSingleResultList(multipleResults);
+  }
+```
+结合xml配置（直接映射对象）
+```language
+  <select id="selectAllAuthors"
+          resultType="domain.blog.Author">
+    select * from author
+  </select>
+```
+这里还有如下类需关注：
+```language
+public class ResultMap {
+
+  private String id;
+  private Class type;
+  private List<ResultMapping> resultMappings;
+  private List<ResultMapping> idResultMappings;
+  private List<ResultMapping> constructorResultMappings;
+  private List<ResultMapping> propertyResultMappings;
+  private Set<String> mappedColumns;
+  private Discriminator discriminator;
+  private boolean hasNestedResultMaps;
+
+  private ResultMap() {
+  }
+  ...
+}
+```
 
 
