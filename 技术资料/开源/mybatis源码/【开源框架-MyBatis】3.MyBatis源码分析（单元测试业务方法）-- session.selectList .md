@@ -890,6 +890,6 @@ public class ResultMapping {
 ```
 - autoMappingBehavior是<settings>里面的，是全局总开关。autoMapping是<resultMap>里面的，是局部select语句映射开关。
 局部开关优先级大于全局开关。
-若在resultMap配置了autoMapping， 那么mybatis会自动把查询出来的name、id、cartid都赋值给customer， 如果autoMappng设为false， 则不会自动映射， 需要你在resultMap中手动配置result
+若在resultMap配置了autoMapping， 那么mybatis会自动把查询出来的columnValue值直接赋值给Bean对象， 如果autoMappng设为false， 则不会自动映射， 需要你在resultMap中手动配置result
 ， 它的作用在collection和association标签中作用是一样的。
 -
