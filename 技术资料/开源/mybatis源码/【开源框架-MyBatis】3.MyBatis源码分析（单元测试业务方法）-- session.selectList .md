@@ -840,6 +840,6 @@ public class ResultMapping {
   ...
 }
 ```
-从上面可看出对应关系： ResultMaps ---> ResultMap
+从上面可看出对应关系： ResultMaps --1对1或1对多--> ResultMap ----> ResultMapping
 
 
