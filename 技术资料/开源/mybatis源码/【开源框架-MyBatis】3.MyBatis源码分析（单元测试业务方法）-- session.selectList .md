@@ -888,4 +888,4 @@ public class ResultMapping {
     return resultObject;
   }
 ```
-- 这里有一点：AutoMappingBehavior. 即Mybatis是否支持结果集到Bean对象的自动映射，默认开户；但可
+- 这里有一点：AutoMappingBehavior. 即Mybatis是否支持结果集到Bean对象的自动映射，默认开户；但可通过settings全局开关、resultMap配置了autoMapping来调整（局部优先于）
