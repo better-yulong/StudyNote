@@ -824,5 +824,22 @@ public class ResultMap {
   ...
 }
 ```
+```language
+public class ResultMapping {
+
+  private Configuration configuration;
+  private String property;
+  private String column;
+  private Class javaType;
+  private JdbcType jdbcType;
+  private TypeHandler typeHandler;
+  private String nestedResultMapId;
+  private String nestedQueryId;
+  private List<ResultFlag> flags;
+  private List<ResultMapping> composites;
+  ...
+}
+```
+```
 
 
