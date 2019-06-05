@@ -888,4 +888,4 @@ public class ResultMapping {
     return resultObject;
   }
 ```
-- 这里有一点：AutoMappingBehavior. 即Mybatis是否支持结果集到Bean对象的自动映射，默认ra；但可通过settings全局开关、resultMap配置了autoMapping来调整（局部优先于全局，即全局关闭，针对个别resultMap单独配置）。如若关闭则只能支持结果集基于ResultMap的映射.
+- 这里有一点：AutoMappingBehavior. 即Mybatis是否支持结果集到Bean对象的自动映射，默认打开；但可通过settings全局开关、resultMap配置了autoMapping来调整（局部优先于全局，即全局关闭，针对个别resultMap单独配置）。如若关闭则只能支持结果集基于ResultMap的映射.----注意这个是
