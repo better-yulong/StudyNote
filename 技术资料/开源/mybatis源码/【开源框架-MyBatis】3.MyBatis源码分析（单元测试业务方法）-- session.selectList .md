@@ -866,7 +866,7 @@ public class ResultMapping {
   }
 ```
 - a. createResultObject方法为根据resultType值实例化resultObject对象； b. loadMappedAndUnmappedColumnNames方法如上用于获取列名columnNames; c. 将resultObject包装为MetaObject； 
-- applyAutomaticMappings
+- applyAutomaticMappings参数为unmappedColumnNames即可看出其用于完成resultType类型的结果
 ```language
   protected Object getRowValue(ResultSet rs, ResultMap resultMap, CacheKey rowKey) throws SQLException {
     final List<String> mappedColumnNames = new ArrayList<String>();
