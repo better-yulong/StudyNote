@@ -844,7 +844,7 @@ public class ResultMapping {
 - 同一<select>标签可同时存储ResultMap和ResultType，但默认ResultMap优先级更高。ResultMap、ResultType最终都会封装成ResultMap对象，但有差异。
 - 
 2. 继续回到FastResultSetHandler的handleResultSets方法
-
+- 当前示例直接将结果集回返映射为ResultType bean，即根据
 ```language
   protected void loadMappedAndUnmappedColumnNames(ResultSet rs, ResultMap resultMap, List<String> mappedColumnNames, List<String> unmappedColumnNames) throws SQLException {
     mappedColumnNames.clear();
@@ -859,7 +859,6 @@ public class ResultMapping {
         mappedColumnNames.add(upperColumnName);
         mappedColumnNames.add(columnName);
       } else {  
-        //当前示例直接将结果集回返映射为ResultType bean，所以
         unmappedColumnNames.add(upperColumnName);
         unmappedColumnNames.add(columnName);
       }
