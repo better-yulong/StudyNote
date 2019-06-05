@@ -888,11 +888,8 @@ public class ResultMapping {
     return resultObject;
   }
 ```
-- 这里有一点：AutoMappingBehavior. 即Mybatis是否支持结果集到Bean对象的自动映射，默认打开；但可通过settings全局开关、resultMap配置了autoMapping来调整（局部优先于全局，即全局关闭，针对个别resultMap单独配置）。如若关闭则只能支持结果集基于ResultMap的映射.----注意这个是针对每个mappedSatement的ResultMap中的嵌套结果集，类似于association结果集是否自动映射赋值（若不允许，则直接返回默认初始化的IdCard实例，并不对cardId赋值）：
-```<resultMap type="cn.edu.huel.po.Customer" autoMapping="true" id="CustomerResultMap">
-		<id column="id" property="id"/>
-		<association  property="card" autoMapping="true"  javaType="cn.edu.huel.po.IdCard">
-			<id column="cardId" property="cardId"/>
-		</association>
-</resultMap>
-```
+- autoMappingBehavior是<settings>里面的，是全局总开关。autoMapping是<resultMap>里面的，是局部select语句映射开关。
+局部开关优先级大于全局开关。
+若在resultMap配置了autoMapping， 那么mybatis会自动把查询出来的name、id、cartid都赋值给customer， 如果autoMappng设为false， 则不会自动映射， 需要你在resultMap中手动配置result
+， 它的作用在collection和association标签中作用是一样的。
+-
