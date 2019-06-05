@@ -865,5 +865,25 @@ public class ResultMapping {
     }
   }
 ```
-
+- createResultObject方法为根据resultType
+```language
+  protected Object getRowValue(ResultSet rs, ResultMap resultMap, CacheKey rowKey) throws SQLException {
+    final List<String> mappedColumnNames = new ArrayList<String>();
+    final List<String> unmappedColumnNames = new ArrayList<String>();
+    final ResultLoaderMap lazyLoader = instantiateResultLoaderMap();
+    Object resultObject = createResultObject(rs, resultMap, lazyLoader);
+    if (resultObject != null && !typeHandlerRegistry.hasTypeHandler(resultMap.getType())) {
+      final MetaObject metaObject = configuration.newMetaObject(resultObject);
+      loadMappedAndUnmappedColumnNames(rs, resultMap, mappedColumnNames, unmappedColumnNames);
+      boolean foundValues = resultMap.getConstructorResultMappings().size() > 0;
+      if (!AutoMappingBehavior.NONE.equals(configuration.getAutoMappingBehavior())) {
+        foundValues = applyAutomaticMappings(rs, unmappedColumnNames, metaObject) || foundValues;
+      }
+      foundValues = applyPropertyMappings(rs, resultMap, mappedColumnNames, metaObject, lazyLoader) || foundValues;
+      resultObject = foundValues ? resultObject : null;
+      return resultObject;
+    }
+    return resultObject;
+  }
+```
 
