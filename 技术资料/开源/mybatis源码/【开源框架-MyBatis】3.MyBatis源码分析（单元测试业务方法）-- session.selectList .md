@@ -865,7 +865,7 @@ public class ResultMapping {
     }
   }
 ```
-- createResultObject方法为根据resultType
+- createResultObject方法为根据resultType值实例化Author对象；
 ```language
   protected Object getRowValue(ResultSet rs, ResultMap resultMap, CacheKey rowKey) throws SQLException {
     final List<String> mappedColumnNames = new ArrayList<String>();
