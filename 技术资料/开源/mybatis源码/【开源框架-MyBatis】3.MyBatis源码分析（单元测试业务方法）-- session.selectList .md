@@ -777,8 +777,8 @@ SimpleExecutor.prepareStatement --> handler.parameterize(stmt); -->PreparedState
 ```
 ###### 2.2.5.1 查询 ps.execute()
 调试发现EmbedPreparedStatement为derby jar包自身实现，执行完成会将查询结果赋值给 ps实例，所以需根据后续结果集的处理来分析
-###### 2.2.5.1 查询结果集处理 resultSetHandler.handleResultSets(ps)
-调试发现EmbedPreparedStatement为derby jar包自身实现，执行完成会将查询结果赋值给 ps实例。根据之前的返回，因当前单元测试的查询结果直接赋值给Bean对象，故此处的resultSetHandler是FastResultSetHandler类的实例。
+###### 2.2.5.2 查询结果集处理 resultSetHandler.handleResultSets(ps)
+1. 调试发现EmbedPreparedStatement为derby jar包自身实现，执行完成会将查询结果赋值给 ps实例。根据之前的返回，因当前单元测试的查询结果直接赋值给Bean对象，故此处的resultSetHandler是FastResultSetHandler类的实例。
 ```language
   //FastResultSetHandler类
   public List handleResultSets(Statement stmt) throws SQLException {
@@ -842,7 +842,7 @@ public class ResultMapping {
 ```
 - 从上面可看出对应关系： ResultMaps --1对1或1对多--> ResultMap --1对多--> ResultMapping . ResultMap可对等理解为Mapper.xml中的结果集定义ResultMap，而ResultMapping则可简单理解为行：<result property="username" column="username"/>.(分析发现 ResultMaps可1对多ResultMap、ResultMap可内嵌collection实现类似关联查询、typeHandler使用 --- 该部分后续理解)
 - 同一<select>标签可同时存储ResultMap和ResultType，但默认ResultMap优先级更高。ResultMap、ResultType最终都会封装成ResultMap对象，但有差异。
-- 
+2. 继续回到FastResultSetHandler
 
 
 
