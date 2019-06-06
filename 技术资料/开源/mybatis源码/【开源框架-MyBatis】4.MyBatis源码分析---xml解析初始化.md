@@ -61,7 +61,38 @@
 ```
 即完成如事务、数据源、缓存策略别名的注册
 2. 解析器对象初始化：new XPathParser(reader, true, new XMLMapperEntityResolver(), props);
-重点在
+重点XMLMapperEntityResolver，源码如下用于xml格式及文件头
 ```language
+public class XMLMapperEntityResolver implements EntityResolver {
 
+  private static final Map<String, String> doctypeMap = new HashMap<String, String>();
+
+  private static final String IBATIS_CONFIG_DOCTYPE = "-//ibatis.apache.org//DTD Config 3.0//EN".toUpperCase(Locale.ENGLISH);
+  private static final String IBATIS_CONFIG_URL = "http://ibatis.apache.org/dtd/ibatis-3-config.dtd".toUpperCase(Locale.ENGLISH);
+
+  private static final String IBATIS_MAPPER_DOCTYPE = "-//ibatis.apache.org//DTD Mapper 3.0//EN".toUpperCase(Locale.ENGLISH);
+  private static final String IBATIS_MAPPER_URL = "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd".toUpperCase(Locale.ENGLISH);
+
+  private static final String MYBATIS_CONFIG_DOCTYPE = "-//mybatis.org//DTD Config 3.0//EN".toUpperCase(Locale.ENGLISH);
+  private static final String MYBATIS_CONFIG_URL = "http://mybatis.org/dtd/mybatis-3-config.dtd".toUpperCase(Locale.ENGLISH);
+
+  private static final String MYBATIS_MAPPER_DOCTYPE = "-//mybatis.org//DTD Mapper 3.0//EN".toUpperCase(Locale.ENGLISH);
+  private static final String MYBATIS_MAPPER_URL = "http://mybatis.org/dtd/mybatis-3-mapper.dtd".toUpperCase(Locale.ENGLISH);
+
+  private static final String IBATIS_CONFIG_DTD = "org/apache/ibatis/builder/xml/mybatis-3-config.dtd";
+  private static final String IBATIS_MAPPER_DTD = "org/apache/ibatis/builder/xml/mybatis-3-mapper.dtd";
+
+  static {
+    doctypeMap.put(IBATIS_CONFIG_URL, IBATIS_CONFIG_DTD);
+    doctypeMap.put(IBATIS_CONFIG_DOCTYPE, IBATIS_CONFIG_DTD);
+
+    doctypeMap.put(IBATIS_MAPPER_URL, IBATIS_MAPPER_DTD);
+    doctypeMap.put(IBATIS_MAPPER_DOCTYPE, IBATIS_MAPPER_DTD);
+
+    doctypeMap.put(MYBATIS_CONFIG_URL, IBATIS_CONFIG_DTD);
+    doctypeMap.put(MYBATIS_CONFIG_DOCTYPE, IBATIS_CONFIG_DTD);
+
+    doctypeMap.put(MYBATIS_MAPPER_URL, IBATIS_MAPPER_DTD);
+    doctypeMap.put(MYBATIS_MAPPER_DOCTYPE, IBATIS_MAPPER_DTD);
+  }
 ```
