@@ -172,5 +172,6 @@ public class ExamplePlugin implements Interceptor {
 }
 ```
 之前有分析过，在创建Executor的实例时，会执行 executor = (Executor) interceptorChain.pluginAll(executor) 代码，用于对原始的executro实例拦截并基于动态代理生成其代理对象。
+每个Plugin可配置
 
 
