@@ -43,7 +43,7 @@
     this.parser = new XPathParser(reader, true, new XMLMapperEntityResolver(), props);
   }
 ```
-1.全局配置Configuration实例初始化：super(new Configuration());
+1. 全局配置Configuration实例初始化：super(new Configuration());
 ```language
   public Configuration() {
     typeAliasRegistry.registerAlias("JDBC", JdbcTransactionFactory.class.getName());
@@ -60,3 +60,4 @@
   }
 ```
 即完成如事务、数据源、缓存策略别名的注册
+2. 解析器对象初始化： this.parser = new XPathParser(reader, true, new XMLMapperEntityResolver(), props);
