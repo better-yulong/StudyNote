@@ -380,4 +380,7 @@ DEBUG [main] - xxx Connection Closed
   username=
   password=
 ```
-properties标签只有两个属性:resource、url，且只能二选一. 其实该方法也比较简单，即是把url或resource指向的properties文件和MapperConfig.xml中properties里的properties属性全部解析合并到Properties并设置到parse对象、configurati
+properties标签只有两个属性:resource、url，且只能二选一. 其实该方法也比较简单，即是把url或resource指向的properties文件和MapperConfig.xml中properties里的properties属性全部解析合并到Properties并设置到parse对象、configuration对象
+
+#### 2.6 settings 
+settingsElement
