@@ -260,3 +260,16 @@ public class ExamplePlugin implements Interceptor {
 重新分析后新理解：
 1. 动态代理是基于接口，对其实现类的对象进行动态代理封装；
 2. Plugin的war封装会获取当前运行对象的接口列表并与拦截器Interceptor的Signature的type值匹配，只有匹配上才会生成动态代理对象；若未匹配成功则返回原对象（此处正好解决了之后的误解：未注意到这段匹配逻辑时认为所有的对象都会生成动态代理对象，只是在运行时再根据Interceptor判断是否执行默认逻辑还是先执行拦截器逻辑；当时还怀疑此种会导致过多动态代理对象生成影响性能，看来是想多了）
+- 
+```language
+
+@Intercepts({
+    @Signature(type = Executor.class, method = "query", args = {MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class})})
+public class ExamplePlugin implements Interceptor {
+
+  public Object intercept(Invocation invocation) throws Throwable {
+	System.out.println("ExamplePlugin intercept...........");
+    return invocation.proceed();
+  }
+
+```
