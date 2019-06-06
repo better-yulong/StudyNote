@@ -306,8 +306,12 @@ DEBUG [main] - xxx Connection Closed
 
 #### 2.3 objectFactory解析
 ```language
+      objectFactoryElement(root.evalNode("objectFactory"));
+```
+```language
   <objectFactory type="org.apache.ibatis.builder.ExampleObjectFactory">
     <property name="objectFactoryProperty" value="100"/>
   </objectFactory>
 ```
+
 所有的自定义ObjectFactory均需继承 org.apache.ibatis.builder.DefaultObjectFactory
