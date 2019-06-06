@@ -203,5 +203,5 @@ public class ExamplePlugin implements Interceptor {
   }
 
 ```
-之前了解过动态代理实现的原理，即所有原始executor方法的调用都会调用Plugin的invoke方法，而invode方法则是根据当每个Plugin对象关联一个Inteceptor实例，
+之前了解过动态代理实现的原理，即所有原始executor方法的调用都会调用Plugin的invoke方法，而invode方法则是根据当前方法名匹配该Plugin对象关联一个Inteceptor实例
 
