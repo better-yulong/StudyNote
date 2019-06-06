@@ -273,11 +273,24 @@ public class ExamplePlugin implements Interceptor {
   }
 
 ```
-ParameterHandler、ResultSetHandler、StatementHandler
+pParameterHandler、ResultSetHandler、StatementHandler
 
 
 ```language
+@Intercepts({
+    @Signature(type = Executor.class, method = "query", args = {MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class})
+    ,@Signature(type = ParameterHandler.class, method = "setParameters", args = {PreparedStatement.class})
+    ,@Signature(type = ResultSetHandler.class, method = "handleResultSets", args = {Statement.class})
+    ,@Signature(type = StatementHandler.class, method = "query", args = {Statement.class,ResultHandler.class})
+    })
+public class ExamplePlugin implements Interceptor { 
 
+  public Object intercept(Invocation invocation) throws Throwable {
+	System.out.println("ExamplePlugin intercept:" + invocation.getTarget().getClass().getName() + ":" + invocation.getMethod().getName());
+    return invocation.proceed();
+  }
+   ....
+}
 
 //运行结果：
 DEBUG [main] - ooo Connection Opened
