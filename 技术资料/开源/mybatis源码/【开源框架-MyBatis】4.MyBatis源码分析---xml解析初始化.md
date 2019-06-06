@@ -100,7 +100,7 @@ public class XMLMapperEntityResolver implements EntityResolver {
 
 ### 二. 创建解析器对象parse实例
 ```language
- 	XMLConfigBuilder parser = new XMLConfigBuilder(reader, environment, props);
+ 	Configuration config = parser.parse();
 ```
 ```language
   public XMLConfigBuilder(Reader reader, String environment, Properties props) {
