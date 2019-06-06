@@ -153,6 +153,7 @@ parser.evalNode("/configuration")返回MapperConfig.xml文件configuration对应
     </plugin>
   </plugins>
 ```
+所有的自定义Plugin均需实现org.apache.ibatis.plugin.Interceptor
 ```language
 @Intercepts({})
 public class ExamplePlugin implements Interceptor {
@@ -309,3 +310,4 @@ DEBUG [main] - xxx Connection Closed
     <property name="objectFactoryProperty" value="100"/>
   </objectFactory>
 ```
+所有的自定义Plugin均需实现org.apache.ibatis.plugin.Interceptor
