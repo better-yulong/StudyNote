@@ -202,10 +202,29 @@ public class ExamplePlugin implements Interceptor {
     }
   }
 
+  private static Map<Class, Set<Method>> getSignatureMap(Interceptor interceptor) {
+    Signature[] sigs = interceptor.getClass().getAnnotation(Intercepts.class).value();
+    Map<Class, Set<Method>> signatureMap = new HashMap<Class, Set<Method>>();
+    for (Signature sig : sigs) {
+      Set<Method> methods = signatureMap.get(sig.type());
+      if (methods == null) {
+        methods = new HashSet<Method>();
+        signatureMap.put(sig.type(), methods);
+      }
+      try {
+        Method method = sig.type().getMethod(sig.method(), sig.args());
+        methods.add(method);
+      } catch (NoSuchMethodException e) {
+        throw new PluginException("Could not find method on " + sig.type() + " named " + sig.method() + ". Cause: " + e, e);
+      }
+    }
+    return signatureMap;
+  }
+
 ```
 - 之前了解过动态代理实现的原理，即所有原始executor方法的调用都会调用Plugin的invoke方法，而invode方法则是根据当前方法名匹配该Plugin对象关联的Inteceptor实例的@Intercepts、Signature，来确定是否先行执行Interceptor实例的intercept方法（此处如若配置有多个Interceptor，则会对executor的实例多次动态代理）。在执行完所有Interceptor的intercetp方法之后，才会调用原始executor的对应方法（method.invoke(target, args);）
 - 开始针对Signature的配置不太理解，具体type、method、args参数的意义不及明白，实际发现signatureMap的定义为Map<Class, Set<Method>>，即每个class对应其的Method集合，比如如下的配置即可理解为拦截Map的get方法
 ```language
   {@Signature(type = Map.class, method = "get", args = {Object.class})}
 ```
-而通过实际源码分析，除了Executor实例外，也会对ParameterHandler、ResultSetHandler、StatementHandler的方法调用生成动态代理对象。
+而通过实际源码分析，除了Executor实例外，也会对ParameterHandler、ResultSetHandler、StatementHandler的方法调用生成动态代理对象；但
