@@ -153,5 +153,24 @@ parser.evalNode("/configuration")返回MapperConfig.xml文件configuration对应
     </plugin>
   </plugins>
 ```
-ExamplePlugin
+```language
+@Intercepts({})
+public class ExamplePlugin implements Interceptor {
+
+  public Object intercept(Invocation invocation) throws Throwable {
+    return invocation.proceed();
+  }
+
+  public Object plugin(Object target) {
+    return Plugin.wrap(target, this);
+  }
+
+  public void setProperties(Properties properties) {
+
+  }
+
+}
+```
+之前有分析过，在创建Executor的实例时，会
+
 
