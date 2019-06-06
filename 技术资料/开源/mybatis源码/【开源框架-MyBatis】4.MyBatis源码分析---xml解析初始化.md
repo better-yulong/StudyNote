@@ -139,5 +139,6 @@ parser.evalNode("/configuration")返回MapperConfig.xml文件configuration对应
     <typeAlias alias="Blog" type="domain.blog.Blog"/>
   </typeAliases>  
 ```
-通过root.evalNode("typeAliases") 获取typeAliases节点对象
+通过root.evalNode("typeAliases") 获取typeAliases节点对象,之后调用typeAliasesElement()方法解析
+
 
