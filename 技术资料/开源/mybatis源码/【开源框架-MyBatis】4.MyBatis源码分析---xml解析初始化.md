@@ -242,4 +242,5 @@ public class ExamplePlugin implements Interceptor {
     return target;
   }
 ```
-重新分析后新理解几
+重新分析后新理解：
+1. 动态动态是基于接口的
