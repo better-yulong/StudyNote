@@ -325,4 +325,4 @@ DEBUG [main] - xxx Connection Closed
     }
   }
 ```
-从代码来看比较简单，即实例化对象工厂实例，设置Properties并赋值给
+从代码来看比较简单，即实例化对象工厂实例，设置Properties并赋值给全局的configuration实例.
