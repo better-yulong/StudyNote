@@ -171,6 +171,6 @@ public class ExamplePlugin implements Interceptor {
 
 }
 ```
-之前有分析过，在创建Executor的实例时，会
+之前有分析过，在创建Executor的实例时，会执行 executor = (Executor) interceptorChain.pluginAll(executor) 代码，用于对原始的executro实例
 
 
