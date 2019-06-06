@@ -386,4 +386,38 @@ properties标签只有两个属性:resource、url，且只能二选一. 其实�
 ```language
   settingsElement(root.evalNode("settings"));
 ```
+```language
+  <settings>
+    <setting name="cacheEnabled" value="true"/>
+    <setting name="lazyLoadingEnabled" value="false"/>
+    <setting name="multipleResultSetsEnabled" value="true"/>
+    <setting name="useColumnLabel" value="true"/>
+    <setting name="useGeneratedKeys" value="false"/>
+    <setting name="defaultExecutorType" value="SIMPLE"/>
+    <setting name="defaultStatementTimeout" value="25000"/>
+  </settings>
+```
+```language
+ private void settingsElement(XNode context) throws Exception {
+    if (context != null) {
+      Properties props = context.getChildrenAsProperties();
+      // Check that all settings are known to the configuration class
+      for (Map.Entry entry : props.entrySet()) {
+        MetaClass metaConfig = MetaClass.forClass(Configuration.class);
+        if (!metaConfig.hasSetter((String) entry.getKey())) {
+          throw new BuilderException("The setting " + entry.getKey() + " is not known.  Make sure you spelled it correctly (case sensitive).");
+        }
+      }
+      configuration.setAutoMappingBehavior(AutoMappingBehavior.valueOf(stringValueOf(props.getProperty("autoMappingBehavior"), "PARTIAL")));
+      configuration.setCacheEnabled(booleanValueOf(props.getProperty("cacheEnabled"), true));
+      configuration.setLazyLoadingEnabled(booleanValueOf(props.getProperty("lazyLoadingEnabled"), safeCglibCheck()));
+      configuration.setAggressiveLazyLoading(booleanValueOf(props.getProperty("aggressiveLazyLoading"), true));
+      configuration.setMultipleResultSetsEnabled(booleanValueOf(props.getProperty("multipleResultSetsEnabled"), true));
+      configuration.setUseColumnLabel(booleanValueOf(props.getProperty("useColumnLabel"), true));
+      configuration.setUseGeneratedKeys(booleanValueOf(props.getProperty("useGeneratedKeys"), false));
+      configuration.setDefaultExecutorType(ExecutorType.valueOf(stringValueOf(props.getProperty("defaultExecutorType"), "SIMPLE")));
+      configuration.setDefaultStatementTimeout(integerValueOf(props.getProperty("defaultStatementTimeout"), null));
+    }
+  }
+```
 
