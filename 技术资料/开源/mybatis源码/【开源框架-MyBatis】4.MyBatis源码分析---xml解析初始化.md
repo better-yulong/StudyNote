@@ -153,5 +153,5 @@ parser.evalNode("/configuration")返回MapperConfig.xml文件configuration对应
     </plugin>
   </plugins>
 ```
-
+ExamplePlugin
 
