@@ -61,3 +61,7 @@
 ```
 即完成如事务、数据源、缓存策略别名的注册
 2. 解析器对象初始化：new XPathParser(reader, true, new XMLMapperEntityResolver(), props);
+重点在
+```language
+
+```
