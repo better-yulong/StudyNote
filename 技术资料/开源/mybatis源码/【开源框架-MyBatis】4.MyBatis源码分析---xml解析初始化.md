@@ -274,3 +274,20 @@ public class ExamplePlugin implements Interceptor {
 
 ```
 ParameterHandler、ResultSetHandler、StatementHandler
+
+
+```language
+
+
+//运行结果：
+DEBUG [main] - ooo Connection Opened
+ExamplePlugin intercept:org.apache.ibatis.executor.CachingExecutor:query
+ExamplePlugin intercept:org.apache.ibatis.executor.parameter.DefaultParameterHandler:setParameters
+ExamplePlugin intercept:org.apache.ibatis.executor.statement.RoutingStatementHandler:query
+DEBUG [main] - ==>  Executing: select id, username, password, email, bio, favourite_section from author where id = ? 
+DEBUG [main] - ==> Parameters: 101(Integer)
+ExamplePlugin intercept:org.apache.ibatis.executor.resultset.FastResultSetHandler:handleResultSets
+DEBUG [main] - <==    Columns: ID, USERNAME, PASSWORD, EMAIL, BIO, FAVOURITE_SECTION
+DEBUG [main] - <==        Row: 101, jim, ********, jim@ibatis.apache.org, , NEWS
+DEBUG [main] - xxx Connection Closed
+```
