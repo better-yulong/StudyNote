@@ -325,4 +325,4 @@ DEBUG [main] - xxx Connection Closed
     }
   }
 ```
-从代码来看比较简单，即实例化对象工厂实例，设置Properties并赋值给全局的configuration实例;但从代码看怎么感觉只能配置了个ObjectFactory呢？经验证，原来还真是.
+从代码来看比较简单，即实例化对象工厂实例，设置Properties并赋值给全局的configuration实例;但从代码看怎么感觉只能配置了个ObjectFactory呢？经验证，原来还真是。至于ObjectFactory何时被使用，适用场景后面再理解分析
