@@ -340,4 +340,4 @@ DEBUG [main] - xxx Connection Closed
     }
   }
 ```
-从代码来看，解析也相对简单，即初始化objectWrapperFactor实例并赋值给全局的configuration实例，
+从代码来看，解析也相对简单，即初始化objectWrapperFactor实例并赋值给全局的configuration实例，从源码来看也只能配置一个。其何时被使用，适用场景后面再理解分析.
