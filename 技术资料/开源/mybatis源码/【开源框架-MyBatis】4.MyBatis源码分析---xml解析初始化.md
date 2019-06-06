@@ -113,6 +113,7 @@ public class XMLMapperEntityResolver implements EntityResolver {
     return configuration;
   }
 ```
+parser.evalNode("/configuration")返回
 ```language
   //XMLConfigBuilder类
   private void parseConfiguration(XNode root) {
