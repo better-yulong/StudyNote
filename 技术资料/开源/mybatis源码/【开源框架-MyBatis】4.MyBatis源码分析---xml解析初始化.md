@@ -382,5 +382,8 @@ DEBUG [main] - xxx Connection Closed
 ```
 properties标签只有两个属性:resource、url，且只能二选一. 其实该方法也比较简单，即是把url或resource指向的properties文件和MapperConfig.xml中properties里的properties属性全部解析合并到Properties并设置到parse对象、configuration对象
 
-#### 2.6 settings 
-settingsElement
+#### 2.6 settings解析
+```language
+  settingsElement(root.evalNode("settings"));
+```
+
