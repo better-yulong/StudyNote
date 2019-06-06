@@ -203,5 +203,5 @@ public class ExamplePlugin implements Interceptor {
   }
 
 ```
-之前了解过动态代理实现的原理，
+之前了解过动态代理实现的原理，即所有对
 
