@@ -227,4 +227,4 @@ public class ExamplePlugin implements Interceptor {
 ```language
   {@Signature(type = Map.class, method = "get", args = {Object.class})}
 ```
-而通过实际源码分析，除了Executor实例外，也会对ParameterHandler、ResultSetHandler、StatementHandler的方法调用生成动态代理对象；但
+而通过实际源码分析，除了Executor实例外，也会对ParameterHandler、ResultSetHandler、StatementHandler的方法调用生成动态代理对象；但同时也有局限性（个人理解，稍后验证：type对应的应该是当前执行的对象的实际类型，而对于接口或
