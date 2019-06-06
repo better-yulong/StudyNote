@@ -174,7 +174,7 @@ public class ExamplePlugin implements Interceptor {
 - 之前有分析过，在创建Executor的实例时，会执行 executor = (Executor) interceptorChain.pluginAll(executor) 代码，用于对原始的executro实例拦截并基于动态代理生成其代理对象。
 每个Interceptor的实现类可使用注解@Intercepts({})根据需要配置拦截信息（Signature可支持多个），如：
 > @Intercepts({@Signature(type = Map.class, method = "get", args = {Object.class})})
-- Plugin类，会先判断该Interceptor的实现类的Intercepts配置并解析后存储至signatureMap，然后基于
+- Plugin类：先解析Interceptor的实现类的Intercepts配置并解析后存储至signatureMap，然后基于
 ```language
   // public class Plugin implements InvocationHandler 
   public static Object wrap(Object target, Interceptor interceptor) {
