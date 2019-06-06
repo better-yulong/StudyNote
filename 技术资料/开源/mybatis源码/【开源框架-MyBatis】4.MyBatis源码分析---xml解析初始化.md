@@ -133,6 +133,7 @@ parser.evalNode("/configuration")返回MapperConfig.xml文件configuration对应
   }
 ```
 #### 2.1 typeAliases解析
+typeAliasesElement(root.evalNode("typeAliases")); 获取typeAliases
 ```language
   <typeAliases>
     <typeAlias alias="Author" type="domain.blog.Author"/>
