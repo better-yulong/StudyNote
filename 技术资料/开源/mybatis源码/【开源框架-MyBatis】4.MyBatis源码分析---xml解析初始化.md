@@ -113,7 +113,7 @@ public class XMLMapperEntityResolver implements EntityResolver {
   }
 ```
 ```language
-
+  //XMLConfigBuilder类
   private void parseConfiguration(XNode root) {
     try {
       typeAliasesElement(root.evalNode("typeAliases"));
