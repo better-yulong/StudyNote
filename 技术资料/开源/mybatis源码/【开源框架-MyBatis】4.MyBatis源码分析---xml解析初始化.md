@@ -303,4 +303,9 @@ DEBUG [main] - <==        Row: 101, jim, ********, jim@ibatis.apache.org, , NEWS
 DEBUG [main] - xxx Connection Closed
 ```
 
-#### 2.3 objectFactoryElement(root.evalNode("objectFactory"));
+#### 2.3 objectFactory解析
+```language
+  <objectFactory type="org.apache.ibatis.builder.ExampleObjectFactory">
+    <property name="objectFactoryProperty" value="100"/>
+  </objectFactory>
+```
