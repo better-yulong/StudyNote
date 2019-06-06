@@ -103,12 +103,30 @@ public class XMLMapperEntityResolver implements EntityResolver {
  	Configuration config = parser.parse();
 ```
 ```language
-  public XMLConfigBuilder(Reader reader, String environment, Properties props) {
-    super(new Configuration());
-    ErrorContext.instance().resource("SQL Mapper Configuration");
-    this.configuration.setVariables(props);
-    this.parsed = false;
-    this.environment = environment;
-    this.parser = new XPathParser(reader, true, new XMLMapperEntityResolver(), props);
+    public Configuration parse() {
+    if (parsed) {
+      throw new BuilderException("Each MapperConfigParser can only be used once.");
+    }
+    parsed = true;
+    parseConfiguration(parser.evalNode("/configuration"));
+    return configuration;
+  }
+```
+```language
+
+  private void parseConfiguration(XNode root) {
+    try {
+      typeAliasesElement(root.evalNode("typeAliases"));
+      pluginElement(root.evalNode("plugins"));
+      objectFactoryElement(root.evalNode("objectFactory"));
+      objectWrapperFactoryElement(root.evalNode("objectWrapperFactory"));
+      propertiesElement(root.evalNode("properties"));
+      settingsElement(root.evalNode("settings"));
+      environmentsElement(root.evalNode("environments"));
+      typeHandlerElement(root.evalNode("typeHandlers"));
+      mapperElement(root.evalNode("mappers"));
+    } catch (Exception e) {
+      throw new BuilderException("Error parsing SQL Mapper Configuration. Cause: " + e, e);
+    }
   }
 ```
