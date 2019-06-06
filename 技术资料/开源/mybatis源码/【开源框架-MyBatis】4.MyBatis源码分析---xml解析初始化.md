@@ -375,9 +375,9 @@ DEBUG [main] - xxx Connection Closed
   }
 ```
 ```language
-//mapper.properties内容
-url=jdbc:derby:ibderby;create=true
-username=
-password=
+  //mapper.properties内容
+  url=jdbc:derby:ibderby;create=true
+  username=
+  password=
 ```
-properties标签只有两个属性:resource、url，且只能二选一. 
+properties标签只有两个属性:resource、url，且只能二选一. 其实该方法也比较简单，即是把url或resource指向的properties文件
