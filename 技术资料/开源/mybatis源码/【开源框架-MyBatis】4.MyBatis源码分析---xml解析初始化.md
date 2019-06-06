@@ -258,4 +258,4 @@ public class ExamplePlugin implements Interceptor {
   }
 ```
 重新分析后新理解：
-1. 动态
+1. 动态代理是基于接口，对其实现类的对象进行动态代理
