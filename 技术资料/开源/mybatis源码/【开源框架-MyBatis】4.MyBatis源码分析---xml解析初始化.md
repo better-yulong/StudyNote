@@ -303,4 +303,4 @@ DEBUG [main] - <==        Row: 101, jim, ********, jim@ibatis.apache.org, , NEWS
 DEBUG [main] - xxx Connection Closed
 ```
 
-#### 2.3 plugins解
+#### 2.3 objectFactoryElement(root.evalNode("objectFactory"));
