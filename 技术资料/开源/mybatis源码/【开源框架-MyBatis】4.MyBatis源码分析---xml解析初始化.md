@@ -134,5 +134,8 @@ parser.evalNode("/configuration")返回MapperConfig.xml文件configuration对应
 ```
 #### 2.1 typeAliases解析
 ```language
-
+  <typeAliases>
+    <typeAlias alias="Author" type="domain.blog.Author"/>
+    <typeAlias alias="Blog" type="domain.blog.Blog"/>
+  </typeAliases>  
 ```
