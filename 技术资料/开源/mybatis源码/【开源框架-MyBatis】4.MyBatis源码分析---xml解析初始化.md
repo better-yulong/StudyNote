@@ -204,7 +204,7 @@ public class ExamplePlugin implements Interceptor {
 
 ```
 - 之前了解过动态代理实现的原理，即所有原始executor方法的调用都会调用Plugin的invoke方法，而invode方法则是根据当前方法名匹配该Plugin对象关联的Inteceptor实例的@Intercepts、Signature，来确定是否先行执行Interceptor实例的intercept方法（此处如若配置有多个Interceptor，则会对executor的实例多次动态代理）。在执行完所有Interceptor的intercetp方法之后，才会调用原始executor的对应方法（method.invoke(target, args);）
-- 开始针对Signature的配置不太理解，具体type、method、args参数的 
+- 开始针对Signature的配置不太理解，具体type、method、args参数的意义不及明白，实际发现
 ```language
   {@Signature(type = Map.class, method = "get", args = {Object.class})}
 ```
