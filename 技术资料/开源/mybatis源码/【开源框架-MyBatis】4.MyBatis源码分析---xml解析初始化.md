@@ -331,3 +331,13 @@ DEBUG [main] - xxx Connection Closed
 ```language
    objectWrapperFactoryElement(root.evalNode("objectWrapperFactory"));
 ```
+```language
+  private void objectWrapperFactoryElement(XNode context) throws Exception {
+    if (context != null) {
+      String type = context.getStringAttribute("type");
+      ObjectWrapperFactory factory = (ObjectWrapperFactory) resolveClass(type).newInstance();
+      configuration.setObjectWrapperFactory(factory);
+    }
+  }
+```
+从代码来看，解析也相对简单，即初始化wrap
