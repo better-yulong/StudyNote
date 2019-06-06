@@ -228,7 +228,9 @@ public class ExamplePlugin implements Interceptor {
   {@Signature(type = Map.class, method = "get", args = {Object.class})}
 ```
 而通过实际源码分析，除了Executor实例外，也会对ParameterHandler、ResultSetHandler、StatementHandler的方法调用生成动态代理对象；但同时也有局限性（个人理解，稍后验证：type对应的应该是当前执行的对象的实际类型，而如若Signature配置的是当前拦截对象的父类或接口是无法拦截的）
-- 经验证，发现如此理解是基于type的实际类型拦截理解错误，因为漏看Plugin类war方法中生成动态对象的判断逻辑： ```language
+- 经验证，发现如此理解是基于type的实际类型拦截理解错误，因为漏看Plugin类wrap方法中生成动态对象的判断逻辑： 
+```language
+  //Plugin类
   public static Object wrap(Object target, Interceptor interceptor) {
     Map<Class, Set<Method>> signatureMap = getSignatureMap(interceptor);
     Class type = target.getClass();
@@ -240,6 +242,19 @@ public class ExamplePlugin implements Interceptor {
           new Plugin(target, interceptor, signatureMap));
     }
     return target;
+  }
+
+  private static Class[] getAllInterfaces(Class type, Map<Class, Set<Method>> signatureMap) {
+    Set<Class> interfaces = new HashSet<Class>();
+    while (type != null) {
+      for (Class c : type.getInterfaces()) {
+        if (signatureMap.containsKey(c)) {
+          interfaces.add(c);
+        }
+      }
+      type = type.getSuperclass();
+    }
+    return interfaces.toArray(new Class[interfaces.size()]);
   }
 ```
 重新分析后新理解：
