@@ -258,4 +258,5 @@ public class ExamplePlugin implements Interceptor {
   }
 ```
 重新分析后新理解：
-1. 动态代理是基于接口，对其实现类的对象进行动态代理
+1. 动态代理是基于接口，对其实现类的对象进行动态代理封装；
+2. Plugin的war封装会获取当前运行对象的接口列表并与拦截器
