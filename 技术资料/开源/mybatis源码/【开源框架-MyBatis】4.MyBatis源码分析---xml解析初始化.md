@@ -208,4 +208,4 @@ public class ExamplePlugin implements Interceptor {
 ```language
   {@Signature(type = Map.class, method = "get", args = {Object.class})}
 ```
-而通过实际源码分析，除了Executor实例外，还会在ParameterHandler、ResultSetHandler、
+而通过实际源码分析，除了Executor实例外，也会对ParameterHandler、ResultSetHandler、StatementHandler的方法调用
