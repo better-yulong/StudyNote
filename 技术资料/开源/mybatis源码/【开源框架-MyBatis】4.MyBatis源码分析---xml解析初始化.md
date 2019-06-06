@@ -103,6 +103,7 @@ public class XMLMapperEntityResolver implements EntityResolver {
  	Configuration config = parser.parse();
 ```
 ```language
+    //XMLConfigBuilder类
     public Configuration parse() {
     if (parsed) {
       throw new BuilderException("Each MapperConfigParser can only be used once.");
