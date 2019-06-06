@@ -310,4 +310,4 @@ DEBUG [main] - xxx Connection Closed
     <property name="objectFactoryProperty" value="100"/>
   </objectFactory>
 ```
-所有的自定义Plugin均需实现org.apache.ibatis.plugin.Interceptor
+所有的自定义ObjectFactory均需继承 org.apache.ibatis.plugin.DefaultObjectFactory
