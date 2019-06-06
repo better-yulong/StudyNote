@@ -259,4 +259,4 @@ public class ExamplePlugin implements Interceptor {
 ```
 重新分析后新理解：
 1. 动态代理是基于接口，对其实现类的对象进行动态代理封装；
-2. Plugin的war封装会获取当前运行对象的接口列表并与拦截器Signature的type值匹配，只有匹配上才会生成动态代理对象；若未匹配成功则返回原对象（）
+2. Plugin的war封装会获取当前运行对象的接口列表并与拦截器Signature的type值匹配，只有匹配上才会生成动态代理对象；若未匹配成功则返回原对象（此处正好解决了之后的误解：未注意到这）
