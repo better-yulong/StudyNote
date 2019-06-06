@@ -313,5 +313,16 @@ DEBUG [main] - xxx Connection Closed
     <property name="objectFactoryProperty" value="100"/>
   </objectFactory>
 ```
-
 所有的自定义ObjectFactory均需继承 org.apache.ibatis.builder.DefaultObjectFactory
+```language
+  private void objectFactoryElement(XNode context) throws Exception {
+    if (context != null) {
+      String type = context.getStringAttribute("type");
+      Properties properties = context.getChildrenAsProperties();
+      ObjectFactory factory = (ObjectFactory) resolveClass(type).newInstance();
+      factory.setProperties(properties);
+      configuration.setObjectFactory(factory);
+    }
+  }
+```
+从如下
