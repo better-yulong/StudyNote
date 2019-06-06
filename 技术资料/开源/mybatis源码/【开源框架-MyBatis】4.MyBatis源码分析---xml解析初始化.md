@@ -273,9 +273,7 @@ public class ExamplePlugin implements Interceptor {
   }
 
 ```
-pParameterHandler、ResultSetHandler、StatementHandler
-
-
+之前分析时发现拦截对应ParameterHandler、ResultSetHandler、StatementHandler均可生效，故做进一步的验证
 ```language
 @Intercepts({
     @Signature(type = Executor.class, method = "query", args = {MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class})
