@@ -258,4 +258,4 @@ public class ExamplePlugin implements Interceptor {
   }
 ```
 重新分析后新理解：
-1. Plugin生成动态代理时会基于对应Interceptor类的拦截配置与当前类的
+1. 动态
