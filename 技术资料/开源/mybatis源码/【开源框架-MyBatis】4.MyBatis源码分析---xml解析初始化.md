@@ -374,4 +374,4 @@ DEBUG [main] - xxx Connection Closed
     }
   }
 ```
-properties标签只有两个属性：
+properties标签只有两个属性:resource、url，且只能二选一. 
