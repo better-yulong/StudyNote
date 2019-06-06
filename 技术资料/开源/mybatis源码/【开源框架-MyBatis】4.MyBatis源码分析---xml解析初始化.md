@@ -97,3 +97,18 @@ public class XMLMapperEntityResolver implements EntityResolver {
     doctypeMap.put(MYBATIS_MAPPER_DOCTYPE, IBATIS_MAPPER_DTD);
   }
 ```
+
+### 二. 创建解析器对象parse实例
+```language
+ 	XMLConfigBuilder parser = new XMLConfigBuilder(reader, environment, props);
+```
+```language
+  public XMLConfigBuilder(Reader reader, String environment, Properties props) {
+    super(new Configuration());
+    ErrorContext.instance().resource("SQL Mapper Configuration");
+    this.configuration.setVariables(props);
+    this.parsed = false;
+    this.environment = environment;
+    this.parser = new XPathParser(reader, true, new XMLMapperEntityResolver(), props);
+  }
+```
