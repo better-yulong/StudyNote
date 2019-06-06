@@ -374,4 +374,11 @@ DEBUG [main] - xxx Connection Closed
     }
   }
 ```
+```language
+
+url=jdbc:derby:ibderby;create=true
+username=
+password=
+```
+
 properties标签只有两个属性:resource、url，且只能二选一. 
