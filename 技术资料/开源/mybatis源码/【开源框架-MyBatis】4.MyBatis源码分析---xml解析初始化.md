@@ -208,4 +208,4 @@ public class ExamplePlugin implements Interceptor {
 ```language
   {@Signature(type = Map.class, method = "get", args = {Object.class})}
 ```
-而通过实际源码分析，只会对executor的实例才
+而通过实际源码分析，只会对executor的实例才会基于拦截器进行动态代理封装，而上面的Signature仅作为
