@@ -130,4 +130,4 @@ public class XMLMapperEntityResolver implements EntityResolver {
     }
   }
 ```
-#### 二. 创建解析器对象parse实例
+#### 2.1 typeAliases解析
