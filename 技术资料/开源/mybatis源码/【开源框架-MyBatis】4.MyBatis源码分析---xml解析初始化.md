@@ -302,3 +302,5 @@ DEBUG [main] - <==    Columns: ID, USERNAME, PASSWORD, EMAIL, BIO, FAVOURITE_SEC
 DEBUG [main] - <==        Row: 101, jim, ********, jim@ibatis.apache.org, , NEWS
 DEBUG [main] - xxx Connection Closed
 ```
+
+#### 2.3 plugins解
