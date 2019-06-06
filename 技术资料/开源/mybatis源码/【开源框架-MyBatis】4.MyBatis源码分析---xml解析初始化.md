@@ -142,7 +142,11 @@ parser.evalNode("/configuration")返回MapperConfig.xml文件configuration对应
 通过root.evalNode("typeAliases") 获取typeAliases节点对象,之后调用typeAliasesElement()方法解析交存储alias信息：底层为Map存储，以alias的String为key，type对应的class为value。alias可如上显示指定，也可不指定则默认会取类名（如上面的Author、Blog）
 #### 2.2 plugins解
 ```language
-
+<plugins>
+    <plugin interceptor="org.apache.ibatis.builder.ExamplePlugin">
+      <property name="pluginProperty" value="100"/>
+    </plugin>
+  </plugins>
 ```
 
 
