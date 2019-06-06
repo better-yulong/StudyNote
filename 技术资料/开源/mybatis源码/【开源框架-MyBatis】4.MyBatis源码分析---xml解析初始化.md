@@ -351,3 +351,27 @@ DEBUG [main] - xxx Connection Closed
        <property name="driver" value="org.apache.derby.jdbc.EmbeddedDriver"/>
   </properties>
 ```
+```language
+  private void propertiesElement(XNode context) throws Exception {
+    if (context != null) {
+      Properties defaults = context.getChildrenAsProperties();
+      String resource = context.getStringAttribute("resource");
+      String url = context.getStringAttribute("url");
+      if (resource != null && url != null) {
+        throw new BuilderException("The properties element cannot specify both a URL and a resource based property file reference.  Please specify one or the other.");
+      }
+      if (resource != null) {
+        defaults.putAll(Resources.getResourceAsProperties(resource));
+      } else if (url != null) {
+        defaults.putAll(Resources.getUrlAsProperties(url));
+      }
+      Properties vars = configuration.getVariables();
+      if (vars != null) {
+        defaults.putAll(vars);
+      }
+      parser.setVariables(defaults);
+      configuration.setVariables(defaults);
+    }
+  }
+```
+properties标签只有两个属性：
