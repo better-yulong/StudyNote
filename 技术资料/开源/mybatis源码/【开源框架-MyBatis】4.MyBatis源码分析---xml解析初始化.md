@@ -208,4 +208,4 @@ public class ExamplePlugin implements Interceptor {
 ```language
   {@Signature(type = Map.class, method = "get", args = {Object.class})}
 ```
-
+而通过实际源码分析，只会对executor的实例才
