@@ -105,4 +105,23 @@ reader是对应第一个单独的业务Mapper.xml文件的IO对象
 
 </mapper>
 ```
-而解析mapper.xml节点各子节点标签的逻辑
+而解析mapper.xml节点各子节点标签的源码为：
+```language
+  //XMLMapperBuilder.xml类
+  private void configurationElement(XNode context) {
+    try {
+      String namespace = context.getStringAttribute("namespace");
+      builderAssistant.setCurrentNamespace(namespace);
+      cacheRefElement(context.evalNode("cache-ref"));
+      cacheElement(context.evalNode("cache"));
+      parameterMapElement(context.evalNodes("/mapper/parameterMap"));
+      resultMapElements(context.evalNodes("/mapper/resultMap"));
+      sqlElement(context.evalNodes("/mapper/sql"));
+      buildStatementFromContext(context.evalNodes("select|insert|update|delete"));
+    } catch (Exception e) {
+      throw new RuntimeException("Error parsing Mapper XML. Cause: " + e, e);
+    }
+
+  }
+```
+
