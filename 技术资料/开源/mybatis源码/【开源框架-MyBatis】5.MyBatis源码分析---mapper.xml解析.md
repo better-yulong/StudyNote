@@ -125,4 +125,5 @@ reader是对应第一个单独的业务Mapper.xml文件的IO对象
   }
 ```
 
-#### 2.1.namespace
+#### 2.1.namespace解析
+获取mapper节点的namespace
