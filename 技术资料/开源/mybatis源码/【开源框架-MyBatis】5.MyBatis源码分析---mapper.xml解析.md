@@ -15,3 +15,13 @@ Mapper.xml文件解析重点分析XMLMapperBuilder，在解析MapperConfig.xml�
     this.resource = resource;
   }
 ```
+```language
+  public XPathParser(Reader reader, boolean validation, EntityResolver entityResolver, Properties variables) {
+    this.validation = validation;
+    this.entityResolver = entityResolver;
+    this.variables = variables;
+    this.document = createDocument(reader);
+    XPathFactory factory = XPathFactory.newInstance();
+    this.xpath = factory.newXPath();
+  }
+```
