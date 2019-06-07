@@ -177,7 +177,7 @@ useNewCache会完成cache实例化，并将其存入configuration实例；该实
 ```language
    parameterMapElement(context.evalNodes("/mapper/parameterMap"));
 ```
-此处
+此处/mapper/parameterMap解析返回结果为List<XNode> ，即说明可有多个List<XNode> 
 ```language
   private void parameterMapElement(List<XNode> list) throws Exception {
     for (XNode parameterMapNode : list) {
