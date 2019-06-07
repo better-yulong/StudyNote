@@ -441,7 +441,8 @@ properties标签只有两个属性:resource、url，且只能二选一. 其实�
     </environment>
   </environments>
 ```
-
+```language
+  //XMLConfigBuilder类
   private void environmentsElement(XNode context) throws Exception {
     if (context != null) {
       if (environment == null) {
@@ -458,3 +459,5 @@ properties标签只有两个属性:resource、url，且只能二选一. 其实�
       }
     }
   }
+```
+即将environment
