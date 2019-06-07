@@ -273,7 +273,7 @@ javaTypeClass值：javaType不为空则直接返回。若为空,jdbcType为CURSO
     return javaType;
   }
 ```
-typeHandler若为null则直接返回，否则基于typeHandler调用期newInstance方法.注意此处有强制类型转换为TypeHandler，即说明必须实现TypeHandler
+typeHandler若为null则直接返回，否则基于typeHandler调用期newInstance方法.注意此处有强制类型转换为TypeHandler，即说明必须实现TypeHandler接口，但其要在MapperConfig.xml配置也可不配置而在AuthorMappe
 ```language
 TypeHandler typeHandlerInstance = (TypeHandler) resolveInstance(typeHandler);
 ```
