@@ -247,6 +247,7 @@ useNewCache会完成cache实例化，并将其存入configuration实例；该实
     return builder.build();
   }
 ```
+resultMa名称通过当前applyCurrentNamespace
 ```language
   public String applyCurrentNamespace(String base) {
     if (base == null) return null;
@@ -255,7 +256,23 @@ useNewCache会完成cache实例化，并将其存入configuration实例；该实
   }
 
 ```
-
+resultMap 
+```language
+  private Class resolveParameterJavaType(Class resultType, String property, Class javaType, JdbcType jdbcType) {
+    if (javaType == null) {
+      if (JdbcType.CURSOR.equals(jdbcType)) {
+        javaType = java.sql.ResultSet.class;
+      } else {
+        MetaClass metaResultType = MetaClass.forClass(resultType);
+        javaType = metaResultType.getGetterType(property);
+      }
+    }
+    if (javaType == null) {
+      javaType = Object.class;
+    }
+    return javaType;
+  }
+```
 
 
 
