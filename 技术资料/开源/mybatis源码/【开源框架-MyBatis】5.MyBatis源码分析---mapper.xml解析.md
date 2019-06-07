@@ -45,4 +45,38 @@ reader是对应第一个单独的业务Mapper.xml文件的IO对象
     }
   }
 ```
-后续以AuthorMapper.xml文件为例分析解读： parser.evalNode("/mapper")获取AuthorMapper.xml的mapper节点对象.
+后续以AuthorMapper.xml文件为例分析解读： parser.evalNode("/mapper")获取AuthorMapper.xml的mapper节点对象.AuthorMapper.xml格式如下（节选，删除部分）
+```language
+<mapper namespace="domain.blog.mappers.AuthorMapper">
+
+  <parameterMap id="selectAuthor"
+                type="domain.blog.Author">
+    <parameter property="id"/>
+  </parameterMap>
+
+  <resultMap id="selectAuthor" type="domain.blog.Author">
+    <id column="id" property="id"/>
+    <result property="username" column="username"/>
+    <result property="password" column="password"/>
+    <result property="email" column="email"/>
+    <result property="bio" column="bio"/>
+    <result property="favouriteSection" column="favourite_section"/>
+  </resultMap>
+
+  <resultMap id="selectImmutableAuthor" type="domain.blog.ImmutableAuthor">
+    <constructor>
+      <idArg column="id" javaType="_int"/>
+      <arg column="username" javaType="string"/>
+      <arg column="password" javaType="string"/>
+      <arg column="email" javaType="string"/>
+      <arg column="bio" javaType="string"/>
+      <arg column="favourite_section" javaType="domain.blog.Section"/>
+    </constructor>
+  </resultMap>
+
+  <select id="selectAllAuthors"
+          resultType="domain.blog.Author">
+    select * from author
+  </select>
+```
+
