@@ -314,6 +314,22 @@ typeHandler若为null则直接返回，否则基于typeHandler调用期newInstan
     }
 ```
 ```language
+  //TypeHandlerRegistry类
+  public TypeHandler getTypeHandler(Class type, JdbcType jdbcType) {
+    Map jdbcHandlerMap = TYPE_HANDLER_MAP.get(type);
+    TypeHandler handler = null;
+    if (jdbcHandlerMap != null) {
+      handler = (TypeHandler) jdbcHandlerMap.get(jdbcType);
+      if (handler == null) {
+        handler = (TypeHandler) jdbcHandlerMap.get(null);
+      }
+    }
+    if (handler == null && type != null && Enum.class.isAssignableFrom(type)) {
+      handler = new EnumTypeHandler(type);
+    }
+    return handler;
+  }
+ 
   private final Map<JdbcType, TypeHandler> JDBC_TYPE_HANDLER_MAP = new HashMap<JdbcType, TypeHandler>();
   private final Map<Class, Map<JdbcType, TypeHandler>> TYPE_HANDLER_MAP = new HashMap<Class, Map<JdbcType, TypeHandler>>();
 ```
