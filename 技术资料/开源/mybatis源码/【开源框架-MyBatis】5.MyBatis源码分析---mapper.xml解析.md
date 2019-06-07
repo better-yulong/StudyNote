@@ -8,6 +8,7 @@ Mapper.xml文件解析重点分析XMLMapperBuilder，在解析MapperConfig.xml�
 ```
 
 ### 一.XMLMapperBuilder实例化
+reader
 ```language
   public XMLMapperBuilder(Reader reader, Configuration configuration, String resource, Map<String, XNode> sqlFragments) {
     super(configuration);
@@ -30,11 +31,10 @@ Mapper.xml文件解析重点分析XMLMapperBuilder，在解析MapperConfig.xml�
 解析验证xml文件格式并获取document节点对象，初始化XML文件的Parser对象
 
 ### 二.parse解析
-基于上面分析已实例化XMLMapperBuilder对象mapperParser，之后即调用parse
+基于上面分析已实例化XMLMapperBuilder对象mapperParser，之后即调用parse方法
 ```language
    mapperParser.parse();
 ```
-
 ```language
 
   public void parse() {
