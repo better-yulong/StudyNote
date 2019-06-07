@@ -422,4 +422,20 @@ properties标签只有两个属性:resource、url，且只能二选一. 其实�
 ```
 即逐个解析setting配置并设置给configuration对象的对应字段
 
-#### 2.7 settings解析
+#### 2.7 environments解析
+
+```language
+  <environments default="development">
+    <environment id="development">
+      <transactionManager type="JDBC">
+        <property name="" value=""/>
+      </transactionManager>
+      <dataSource type="UNPOOLED">
+        <property name="driver" value="${driver}"/>
+        <property name="url" value="${url}"/>
+        <property name="username" value="${username}"/>
+        <property name="password" value="${password}"/>
+      </dataSource>
+    </environment>
+  </environments>
+```
