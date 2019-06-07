@@ -313,6 +313,10 @@ typeHandler若为null则直接返回，否则基于typeHandler调用期newInstan
       }
     }
 ```
+```language
+  private final Map<JdbcType, TypeHandler> JDBC_TYPE_HANDLER_MAP = new HashMap<JdbcType, TypeHandler>();
+  private final Map<Class, Map<JdbcType, TypeHandler>> TYPE_HANDLER_MAP = new HashMap<Class, Map<JdbcType, TypeHandler>>();
+```
 
 
 
