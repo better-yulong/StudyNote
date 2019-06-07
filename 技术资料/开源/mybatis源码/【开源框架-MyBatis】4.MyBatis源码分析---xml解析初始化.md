@@ -441,3 +441,20 @@ properties标签只有两个属性:resource、url，且只能二选一. 其实�
     </environment>
   </environments>
 ```
+
+  private void environmentsElement(XNode context) throws Exception {
+    if (context != null) {
+      if (environment == null) {
+        environment = context.getStringAttribute("default");
+      }
+      for (XNode child : context.getChildren()) {
+        String id = child.getStringAttribute("id");
+        if (isSpecifiedEnvironment(id)) {
+          TransactionFactory txFactory = transactionManagerElement(child.evalNode("transactionManager"));
+          DataSourceFactory dsFactory = dataSourceElement(child.evalNode("dataSource"));
+          Environment.Builder environmentBuilder = new Environment.Builder(id, txFactory, dsFactory.getDataSource());
+          configuration.setEnvironment(environmentBuilder.build());
+        }
+      }
+    }
+  }
