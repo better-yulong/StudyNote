@@ -78,5 +78,19 @@ reader是对应第一个单独的业务Mapper.xml文件的IO对象
           resultType="domain.blog.Author">
     select * from author
   </select>
+  
+    <select id="selectAuthor"
+          parameterMap="selectAuthor"
+          resultMap="selectAuthor">
+    select id, username, password, email, bio, favourite_section
+    from author where id = ?
+  </select>
+
+    <insert id="insertAuthor"
+          parameterType="domain.blog.Author">
+    insert into Author (id,username,password,email,bio)
+    values (#{id},#{username},#{password},#{email},#{bio})
+  </insert>
+
 ```
 
