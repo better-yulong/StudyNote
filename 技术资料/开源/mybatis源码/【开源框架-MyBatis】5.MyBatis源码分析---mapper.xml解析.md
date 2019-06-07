@@ -148,3 +148,26 @@ cache-ref从名称可理解为缓存引用，而此处同样是取namespace值�
   }
 ```
 从代码来看，<cache> 标签可配置属性为：type(不配置默认PERPETUAL)、eviction（不配置默认LRU)、flushInterval(不配置默认返回nul)、size(不配置默认返回nul)、readOnly(不配置默认false);同时会根据type、eviction匹配对应的class类。稍后则调用MapperBuilderAssistant实例的useNewCache方法初始化缓存对象
+```language
+  //MapperBuilderAssistant类
+  public Cache useNewCache(Class typeClass,
+                           Class evictionClass,
+                           Long flushInterval,
+                           Integer size,
+                           boolean readWrite,
+                           Properties props) {
+    typeClass = valueOrDefault(typeClass, PerpetualCache.class);
+    evictionClass = valueOrDefault(evictionClass, LruCache.class);
+    Cache cache = new CacheBuilder(currentNamespace)
+        .implementation(typeClass)
+        .addDecorator(evictionClass)
+        .clearInterval(flushInterval)
+        .size(size)
+        .readWrite(readWrite)
+        .properties(props)
+        .build();
+    configuration.addCache(cache);
+    currentCache = cache;
+    return cache;
+  }
+```
