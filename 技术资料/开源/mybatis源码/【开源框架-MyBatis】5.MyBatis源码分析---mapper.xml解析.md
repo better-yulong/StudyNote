@@ -248,4 +248,12 @@ useNewCache会完成cache实例化，并将其存入configuration实例；该实
     }
   }
 ```
-既然select语句时（其他insert、udpate、delete语句类似），会获取select查询的标签的
+```language
+  <select id="selectAuthor"
+          parameterMap="selectAuthor"
+          resultMap="selectAuthor">
+    select id, username, password, email, bio, favourite_section
+    from author where id = ?
+  </select>
+```
+既然select语句时（其他insert、udpate、delete语句类似），会获取select查询的标签的parameterMap值，然后从
