@@ -105,4 +105,4 @@ reader是对应第一个单独的业务Mapper.xml文件的IO对象
 
 </mapper>
 ```
-
+而解析mapper.xml节点各子节点标签的逻辑
