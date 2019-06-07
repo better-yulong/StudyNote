@@ -204,3 +204,4 @@ useNewCache会完成cache实例化，并将其存入configuration实例；该实
     }
   }
 ```
+##### 2.4.
