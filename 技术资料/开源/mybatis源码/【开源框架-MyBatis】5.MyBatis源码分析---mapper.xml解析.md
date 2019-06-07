@@ -86,11 +86,23 @@ reader是对应第一个单独的业务Mapper.xml文件的IO对象
     from author where id = ?
   </select>
 
-    <insert id="insertAuthor"
+  <insert id="insertAuthor"
           parameterType="domain.blog.Author">
     insert into Author (id,username,password,email,bio)
     values (#{id},#{username},#{password},#{email},#{bio})
   </insert>
 
+   <update id="updateAuthor"
+          parameterType="domain.blog.Author">
+    update Author
+    set username=#{username,
+                 javaType=String},
+        password=#{password},
+        email=#{email},
+        bio=#{bio}
+    where id=#{id}
+  </update>
+
+</mapper>
 ```
 
