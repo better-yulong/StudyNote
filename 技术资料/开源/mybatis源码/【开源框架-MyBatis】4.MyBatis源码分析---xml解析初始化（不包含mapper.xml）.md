@@ -501,3 +501,4 @@ properties标签只有两个属性:resource、url，且只能二选一. 其实�
   }
 ```
 - mapper.xml文件可使用resource相对于类路径的资源引用；亦可采用资源定位符资源定位符（URL）。（据悉，后续也支持映射器接口实现类的完全限定类名，即Dao名称（class="org.mybatis.builder.AuthorMapper),还可使用诸如<package name="org.mybatis.builder"/>包名批量引用。
+- 而Mapper.xml的解析
