@@ -127,3 +127,6 @@ reader是对应第一个单独的业务Mapper.xml文件的IO对象
 
 #### 2.1.namespace解析
 获取mapper节点的namespace值并赋值给MapperBuilderAssistant实例对象
+
+#### 2.2.cache-ref解析
+获取mapper节点的namespace值并赋值给MapperBuilderAssistant实例对象
