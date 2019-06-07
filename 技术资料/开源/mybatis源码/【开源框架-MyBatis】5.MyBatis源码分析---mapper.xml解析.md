@@ -247,6 +247,14 @@ useNewCache会完成cache实例化，并将其存入configuration实例；该实
     return builder.build();
   }
 ```
+```language
+  public String applyCurrentNamespace(String base) {
+    if (base == null) return null;
+    if (base.contains(".")) return base;
+    return currentNamespace + "." + base;
+  }
+
+```
 
 
 
