@@ -390,7 +390,7 @@ typeHandler若为null则直接返回，否则基于typeHandler调用期newInstan
    String id = resultMapNode.getStringAttribute("id",
         resultMapNode.getValueBasedIdentifier());
 ```
-即是获取resultMap的id属性，若没有则根据
+即是获取resultMap的id属性，若没有则根据当前resultMap的其他标签或父节点等生成（个人感觉 ）
 
 
 
