@@ -1,1 +1,1 @@
-Mapper.xml文件解析重点分析XMLMapperBuilder
+Mapper.xml文件解析重点分析XMLMapperBuilder，在解析MapperConfig.xml时，XMLMapperConfigBuilder类
