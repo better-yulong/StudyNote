@@ -256,6 +256,7 @@ useNewCache会完成cache实例化，并将其存入configuration实例；该实
     from author where id = ?
   </select>
 ```
-解析select语句时（其他insert、udpate、delete语句类似）创建MappedStatement实例时，获取boundSql关联的parameterMappings(之前已经根据select标签的parameterMap将parameterMapping关联到boundSql)。稍后遍历parameterMapping列表：
+- 解析select语句时（其他insert、udpate、delete语句类似）创建MappedStatement实例时，获取boundSql关联的parameterMappings(之前已经根据select标签的parameterMap将parameterMapping关联到boundSql)
+- 稍后遍历parameterMapping列表：
 1. 判断ParameterMode是否不为OUT（即为IN、INOUT其中之一），说明该paramter可作为入参；否则直接结束不处理---正好对应AuthorMapper.xml的parameter的mode属性
 2. 
