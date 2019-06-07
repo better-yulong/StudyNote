@@ -339,7 +339,7 @@ typeHandler若为null则直接返回，否则基于typeHandler调用期newInstan
 ```language
     resultMapElements(context.evalNodes("/mapper/resultMap"));
 ```
-
+同样，可
 
 
 
