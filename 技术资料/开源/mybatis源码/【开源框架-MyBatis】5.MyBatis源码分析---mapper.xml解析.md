@@ -208,7 +208,11 @@ useNewCache会完成cache实例化，并将其存入configuration实例；该实
 ##### 2.4.1 parameterMap解析
 从源码看，parameterMap仅有两个属性：id、type.其中id为字符串，而type则需可解析成class类（如若type无法）。细看Class parameterClass = resolveClass(type) 会发现type接受的值为两种：1.别名alais，此时会从MapperConfig.xml的typeAliases显示配置及自动初始化的基本类型、数组及集合类在TypeAliasRegistry去匹配获取class；2.class完整名称，会直接基于Class.forName来获得class
 ##### 2.4.2 parameter解析
-一个parameterMap节点可包含多个parameter节点，其存储于List<ParameterMapping> parameterMappings . 可发现parameter标签可配置属性：property、javaType、jdbcType、resultMap、mode、typeHandler、numericScale. 该部分代码可结合 DefaultParameterHandler的setParameters方法源码来理解
+一个parameterMap节点可包含多个parameter节点，其存储于List<ParameterMapping> parameterMappings . 可发现parameter标签可配置属性：property、javaType、jdbcType、resultMap、mode、typeHandler、numericScale.
+
+
+
+ 该部分代码可结合 DefaultParameterHandler的setParameters方法源码来理解
 ```language
     //DefaultParameterHandler的setParameters方法
       public void setParameters(PreparedStatement ps)
@@ -260,4 +264,5 @@ useNewCache会完成cache实例化，并将其存入configuration实例；该实
 - 获取业务调用query方法是传入的parameterOjbect，若不为空则将其包装为metaObject对象
 - 稍后遍历parameterMapping列表：
 1. 判断ParameterMode是否不为OUT（即为IN、INOUT其中之一），说明该paramter可作为入参；否则直接结束不处理---正好对应AuthorMapper.xml的parameter的mode属性
-2. 
+
+
