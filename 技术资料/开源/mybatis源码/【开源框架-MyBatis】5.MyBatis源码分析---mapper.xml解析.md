@@ -45,4 +45,4 @@ reader是对应第一个单独的业务Mapper.xml文件的IO对象
     }
   }
 ```
-后续以AuthorMapper.xml文件为例分析解读： parser.evalNode("/mapper")获取Mapper
+后续以AuthorMapper.xml文件为例分析解读： parser.evalNode("/mapper")获取AuthorMapper.xml的mapper节点对象.
