@@ -29,7 +29,7 @@
     }
   }
 ```
-
+MapperConfig.xml文件解析重点分析XMLConfigBuilder
 ### 一. 创建解析器对象parse实例
 ```language
  	XMLConfigBuilder parser = new XMLConfigBuilder(reader, environment, props);
