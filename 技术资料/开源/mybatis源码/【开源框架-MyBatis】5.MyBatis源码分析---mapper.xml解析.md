@@ -218,6 +218,10 @@ useNewCache会完成cache实例化，并将其存入configuration实例；该实
 
 - 获取参数并简单初始化后，会调用
 
+
+
+
+
  该部分代码可结合 DefaultParameterHandler的setParameters方法源码来理解
 ```language
     //DefaultParameterHandler的setParameters方法
