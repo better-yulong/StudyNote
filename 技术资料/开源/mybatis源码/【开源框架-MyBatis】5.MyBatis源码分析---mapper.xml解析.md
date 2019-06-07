@@ -147,4 +147,4 @@ cache-ref从名称可理解为缓存引用，而此处同样是取namespace值�
     }
   }
 ```
-从代码来看，<cache> 标签可配置属性为：type(默认值:PERPETUAL)、eviction（默认为:LRU)、
+从代码来看，<cache> 标签可配置属性为：type(默认值:PERPETUAL)、eviction（默认为:LRU)、flushInterval(默认为nul)、size、readOnly
