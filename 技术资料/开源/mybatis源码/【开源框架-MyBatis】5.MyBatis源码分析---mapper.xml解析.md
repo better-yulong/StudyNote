@@ -385,7 +385,12 @@ typeHandler若为null则直接返回，否则基于typeHandler调用期newInstan
     return builderAssistant.addResultMap(id, typeClass, extend, discriminator, resultMappings);
   }
 ```
-1.id
+1.id获取
+```language
+   String id = resultMapNode.getStringAttribute("id",
+        resultMapNode.getValueBasedIdentifier());
+```
+即是获取resultMap的id属性，若没有则根据
 
 
 
