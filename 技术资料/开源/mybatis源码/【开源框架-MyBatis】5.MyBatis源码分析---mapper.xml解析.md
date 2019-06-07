@@ -206,4 +206,4 @@ useNewCache会完成cache实例化，并将其存入configuration实例；该实
   }
 ```
 ##### 2.4.1 parameterMap解析
-从源码看，parameterMap仅有两个属性：id、type
+从源码看，parameterMap仅有两个属性：id、type.其中id为字符串，而type则需可解析成class类
