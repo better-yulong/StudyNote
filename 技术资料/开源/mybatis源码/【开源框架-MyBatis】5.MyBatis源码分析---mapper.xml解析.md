@@ -30,7 +30,7 @@ Mapper.xml文件解析重点分析XMLMapperBuilder，在解析MapperConfig.xml�
 解析验证xml文件格式并获取document节点对象，初始化XML文件的Parser对象
 
 ### 二.parse解析
-甘于
+基于上面分析已实例化XMLMapperBuilder对象mapperParser，之后即调用parse
 ```language
    mapperParser.parse();
 ```
