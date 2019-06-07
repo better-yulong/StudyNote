@@ -132,3 +132,18 @@ reader是对应第一个单独的业务Mapper.xml文件的IO对象
 cache-ref从名称可理解为缓存引用，而此处同样是取namespace值并赋值给MapperBuilderAssistant实例对象，从此处来看指二级缓存默认是以namespace来划分
 
 #### 2.3.cache解析
+```language
+  private void cacheElement(XNode context) throws Exception {
+    if (context != null) {
+      String type = context.getStringAttribute("type", "PERPETUAL");
+      Class typeClass = typeAliasRegistry.resolveAlias(type);
+      String eviction = context.getStringAttribute("eviction", "LRU");
+      Class evictionClass = typeAliasRegistry.resolveAlias(eviction);
+      Long flushInterval = context.getLongAttribute("flushInterval");
+      Integer size = context.getIntAttribute("size");
+      boolean readWrite = !context.getBooleanAttribute("readOnly", false);
+      Properties props = context.getChildrenAsProperties();
+      builderAssistant.useNewCache(typeClass, evictionClass, flushInterval, size, readWrite, props);
+    }
+  }
+```
