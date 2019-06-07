@@ -214,7 +214,7 @@ useNewCache会完成cache实例化，并将其存入configuration实例；该实
 3. jdbcType只允许两种情况：1.不配置jdbcType即resolveJdbcType返回null；2.若有值则必须可从JdbcType枚举中匹配出JdbcType类型
 4. resultMap获取值，稍后使用
 5. mode由resolveParameterMode解析只允许两种情况：1.不配置mode即mode返回null；2.若有值则必须为ParameterMode枚举的三个之一：IN, OUT, INOUT
-6. typeHandler
+6. typeHandler只允许两种情况：1.不配置typeHandler即resolveClass返回null；2.若有值则必须可从TypeAliasRegistry中匹配出typeHandler对应的class
 
 
  该部分代码可结合 DefaultParameterHandler的setParameters方法源码来理解
