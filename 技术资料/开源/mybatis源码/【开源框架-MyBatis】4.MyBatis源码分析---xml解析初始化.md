@@ -420,4 +420,4 @@ properties标签只有两个属性:resource、url，且只能二选一. 其实�
     }
   }
 ```
-即逐个解析setting配置并设置到全局
+即逐个解析setting配置并设置到configuration对象
