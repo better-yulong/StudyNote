@@ -25,3 +25,4 @@ Mapper.xml文件解析重点分析XMLMapperBuilder，在解析MapperConfig.xml�
     this.xpath = factory.newXPath();
   }
 ```
+解析验证xml文件格式并获取document节点对象，初始化
