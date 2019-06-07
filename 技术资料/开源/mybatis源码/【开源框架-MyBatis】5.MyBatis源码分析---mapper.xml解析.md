@@ -339,7 +339,43 @@ typeHandler若为null则直接返回，否则基于typeHandler调用期newInstan
 ```language
     resultMapElements(context.evalNodes("/mapper/resultMap"));
 ```
-同样，可
+同样中存在多个resultMap标签，遍历解析
+```language
+  private ResultMap resultMapElement(XNode resultMapNode) throws Exception {
+    return resultMapElement(resultMapNode, Collections.EMPTY_LIST);
+  }
+
+  private ResultMap resultMapElement(XNode resultMapNode, List<ResultMapping> additionalResultMappings) throws Exception {
+    ErrorContext.instance().activity("processing " + resultMapNode.getValueBasedIdentifier());
+    String id = resultMapNode.getStringAttribute("id",
+        resultMapNode.getValueBasedIdentifier());
+    String type = resultMapNode.getStringAttribute("type",
+        resultMapNode.getStringAttribute("ofType",
+            resultMapNode.getStringAttribute("resultType",
+                resultMapNode.getStringAttribute("javaType"))));
+    String extend = resultMapNode.getStringAttribute("extends");
+    Class typeClass = resolveClass(type);
+    Discriminator discriminator = null;
+    List<ResultMapping> resultMappings = new ArrayList<ResultMapping>();
+    resultMappings.addAll(additionalResultMappings);
+    List<XNode> resultChildren = resultMapNode.getChildren();
+    for (XNode resultChild : resultChildren) {
+      if ("constructor".equals(resultChild.getName())) {
+        processConstructorElement(resultChild, typeClass, resultMappings);
+      } else if ("discriminator".equals(resultChild.getName())) {
+        discriminator = processDiscriminatorElement(resultChild, typeClass, resultMappings);
+      } else {
+        ArrayList<ResultFlag> flags = new ArrayList<ResultFlag>();
+        if ("id".equals(resultChild.getName())) {
+          flags.add(ResultFlag.ID);
+        }
+        resultMappings.add(buildResultMappingFromContext(resultChild, typeClass, flags));
+      }
+    }
+    return builderAssistant.addResultMap(id, typeClass, extend, discriminator, resultMappings);
+  }
+```
+
 
 
 
