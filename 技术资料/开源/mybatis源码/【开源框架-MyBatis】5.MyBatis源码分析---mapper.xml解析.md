@@ -256,4 +256,4 @@ useNewCache会完成cache实例化，并将其存入configuration实例；该实
     from author where id = ?
   </select>
 ```
-解析select语句时（其他insert、udpate、delete语句类似），会获取select查询的标签的parameterMap值，然后从
+解析select语句时（其他insert、udpate、delete语句类似）创建MappedStatement实例时，会获取boundSql
