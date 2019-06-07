@@ -208,4 +208,4 @@ useNewCache会完成cache实例化，并将其存入configuration实例；该实
 ##### 2.4.1 parameterMap解析
 从源码看，parameterMap仅有两个属性：id、type.其中id为字符串，而type则需可解析成class类（如若type无法）。细看Class parameterClass = resolveClass(type) 会发现type接受的值为两种：1.别名alais，此时会从MapperConfig.xml的typeAliases显示配置及自动初始化的基本类型、数组及集合类在TypeAliasRegistry去匹配获取class；2.class完整名称，会直接基于Class.forName来获得class
 ##### 2.4.2 parameter解析
-一个parameterMap节点可
+一个parameterMap节点可包含多个parameter节点，其存储于List<ParameterMapping> parameterMappings 
