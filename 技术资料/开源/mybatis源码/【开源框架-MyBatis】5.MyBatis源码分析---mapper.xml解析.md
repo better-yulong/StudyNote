@@ -204,4 +204,5 @@ useNewCache会完成cache实例化，并将其存入configuration实例；该实
     }
   }
 ```
-##### 2.4.
+##### 2.4.1 parameterMap解析
+从源码看，parameterMap仅有两
