@@ -339,6 +339,16 @@ typeHandler若为null则直接返回，否则基于typeHandler调用期newInstan
 ```language
     resultMapElements(context.evalNodes("/mapper/resultMap"));
 ```
+```language
+  <resultMap id="selectAuthor" type="domain.blog.Author">
+    <id column="id" property="id"/>
+    <result property="username" column="username"/>
+    <result property="password" column="password"/>
+    <result property="email" column="email"/>
+    <result property="bio" column="bio"/>
+    <result property="favouriteSection" column="favourite_section"/>
+  </resultMap>
+```
 同样中存在多个resultMap标签，遍历解析
 ```language
   private ResultMap resultMapElement(XNode resultMapNode) throws Exception {
