@@ -460,4 +460,4 @@ properties标签只有两个属性:resource、url，且只能二选一. 其实�
     }
   }
 ```
-即将environment属性指向default指向的id(development);循环获得environments的所有子environment节点，
+即将environment属性指向default指向的id(development);循环获得environments的所有子environment节点，但仅对匹配default指向添加default指向
