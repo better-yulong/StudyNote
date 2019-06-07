@@ -335,7 +335,18 @@ typeHandler若为null则直接返回，否则基于typeHandler调用期newInstan
 ```
 从如上源码来看，即是尝试根据javaType、jdbcType获取typeHanlder
 
+#### 2.5.resultMap解析
 resultMapElements(context.evalNodes("/mapper/resultMap"));
+
+
+
+
+
+
+
+
+
+
 
 
  该部分代码可结合 DefaultParameterHandler的setParameters方法源码来理解
@@ -390,5 +401,20 @@ resultMapElements(context.evalNodes("/mapper/resultMap"));
 - 获取业务调用query方法是传入的parameterOjbect，若不为空则将其包装为metaObject对象
 - 稍后遍历parameterMapping列表：
 1. 判断ParameterMode是否不为OUT（即为IN、INOUT其中之一），说明该paramter可作为入参；否则直接结束不处理---正好对应AuthorMapper.xml的parameter的mode属性
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
