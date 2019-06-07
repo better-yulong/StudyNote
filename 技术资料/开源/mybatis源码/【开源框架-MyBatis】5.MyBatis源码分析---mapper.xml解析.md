@@ -147,4 +147,4 @@ cache-ref从名称可理解为缓存引用，而此处同样是取namespace值�
     }
   }
 ```
-从代码来看，<cache> 标签可配置属性为：type(不配置默认PERPETUAL)、eviction（不配置默认LRU)、flushInterval(不配置默认返回nul)、size(不配置默认返回nul)、readOnly(不配置默认false)。同时会根据type、eviction匹配对应的class类.
+从代码来看，<cache> 标签可配置属性为：type(不配置默认PERPETUAL)、eviction（不配置默认LRU)、flushInterval(不配置默认返回nul)、size(不配置默认返回nul)、readOnly(不配置默认false);同时会根据type、eviction匹配对应的class类。稍后则
