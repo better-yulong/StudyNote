@@ -256,7 +256,7 @@ resultMap名称通过当parameter标签的resultMap的值基于applyCurrentNames
   }
 
 ```
-javaTypeClass值：javaType不为空则直接返回。若为空,jdbcType为CURSOR时其为ResultSet.class，否则从获取parameterMap中的type对应的类（resultType传入的为parameterMap中的type对应的类）
+javaTypeClass值：javaType不为空则直接返回。若为空,jdbcType为CURSOR时其为ResultSet.class，否则从parameterMap中的type对应的类（resultType传入的为parameterMap中的type对应的类）从判断其对应的get方法的返回值。
 ```language
   private Class resolveParameterJavaType(Class resultType, String property, Class javaType, JdbcType jdbcType) {
     if (javaType == null) {
