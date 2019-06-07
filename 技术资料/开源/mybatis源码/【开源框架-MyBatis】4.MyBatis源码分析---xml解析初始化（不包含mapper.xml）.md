@@ -500,3 +500,4 @@ properties标签只有两个属性:resource、url，且只能二选一. 其实�
     }
   }
 ```
+- mapper.xml文件可使用resource相对于类路径的资源引用
