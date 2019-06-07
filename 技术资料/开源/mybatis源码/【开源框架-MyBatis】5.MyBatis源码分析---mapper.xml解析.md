@@ -411,7 +411,17 @@ typeHandler若为null则直接返回，否则基于typeHandler调用期newInstan
    processConstructorElement(resultChild, typeClass, resultMappings);
 ```
 ```language
-
+  private void processConstructorElement(XNode resultChild, Class resultType, List<ResultMapping> resultMappings) throws Exception {
+    List<XNode> argChildren = resultChild.getChildren();
+    for (XNode argChild : argChildren) {
+      ArrayList<ResultFlag> flags = new ArrayList<ResultFlag>();
+      flags.add(ResultFlag.CONSTRUCTOR);
+      if ("idArg".equals(argChild.getName())) {
+        flags.add(ResultFlag.ID);
+      }
+      resultMappings.add(buildResultMappingFromContext(argChild, resultType, flags));
+    }
+  }
 ```
 
 
