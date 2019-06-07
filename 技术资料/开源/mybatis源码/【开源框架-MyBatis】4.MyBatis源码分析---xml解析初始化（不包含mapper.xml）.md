@@ -463,4 +463,31 @@ properties标签只有两个属性:resource、url，且只能二选一. 其实�
 - 即将environment属性指向default指向的id(development);循环获得environments的所有子environment节点，但仅对匹配default指向的id的environment进行解析并创建txFactory、dsFactory，之后基于Environment.Builder- 及其build方法生成Environment实例并赋值给configuration对象。
 - 两点：1.此处可在xml通过{url}表达式直接使用之前解析获得的properties属性;2.environment可配置多个
 
-
+#### 2.8 mappers解析
+```language
+   mapperElement(root.evalNode("mappers"));
+```
+```language
+  private void mapperElement(XNode parent) throws Exception {
+    if (parent != null) {
+      for (XNode child : parent.getChildren()) {
+        String resource = child.getStringAttribute("resource");
+        String url = child.getStringAttribute("url");
+        Reader reader;
+        if (resource != null && url == null) {
+          ErrorContext.instance().resource(resource);
+          reader = Resources.getResourceAsReader(resource);
+          XMLMapperBuilder mapperParser = new XMLMapperBuilder(reader, configuration, resource, sqlFragments);
+          mapperParser.parse();
+        } else if (url != null && resource == null) {
+          ErrorContext.instance().resource(url);
+          reader = Resources.getUrlAsReader(url);
+          XMLMapperBuilder mapperParser = new XMLMapperBuilder(reader, configuration, url, sqlFragments);
+          mapperParser.parse();
+        } else {
+          throw new BuilderException("A mapper element may only specify a url or resource, but not both.");
+        }
+      }
+    }
+  }
+```
