@@ -335,7 +335,7 @@ typeHandler若为null则直接返回，否则基于typeHandler调用期newInstan
 ```
 从如上源码来看，即是尝试根据javaType、jdbcType获取typeHanlder
 
-
+resultMapElements(context.evalNodes("/mapper/resultMap"));
 
 
  该部分代码可结合 DefaultParameterHandler的setParameters方法源码来理解
