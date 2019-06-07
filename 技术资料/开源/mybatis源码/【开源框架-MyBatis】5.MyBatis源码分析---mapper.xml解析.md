@@ -171,3 +171,4 @@ cache-ref从名称可理解为缓存引用，而此处同样是取namespace值�
     return cache;
   }
 ```
+useNewCache会完成cache
