@@ -172,3 +172,5 @@ cache-ref从名称可理解为缓存引用，而此处同样是取namespace值�
   }
 ```
 useNewCache会完成cache实例化，并将其存入configuration实例；该实例用HashMap存储所有的cache对象，key为cache的ID（即currentNamespace）,value为cache对象。之后将currentCache指向初始化的cache实例并返回
+
+#### 2.4.cache解析
