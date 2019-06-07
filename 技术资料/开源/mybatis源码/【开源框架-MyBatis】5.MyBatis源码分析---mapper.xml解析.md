@@ -6,6 +6,8 @@ Mapper.xml文件解析重点分析XMLMapperBuilder，在解析MapperConfig.xml�
   XMLMapperBuilder mapperParser = new XMLMapperBuilder(reader, configuration, resource, sqlFragments);
   mapperParser.parse();
 ```
+
+### 一.XMLMapperBuilder
 ```language
   public XMLMapperBuilder(Reader reader, Configuration configuration, String resource, Map<String, XNode> sqlFragments) {
     super(configuration);
