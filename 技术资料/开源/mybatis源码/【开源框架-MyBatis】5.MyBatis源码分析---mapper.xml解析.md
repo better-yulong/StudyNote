@@ -8,7 +8,7 @@ Mapper.xml文件解析重点分析XMLMapperBuilder，在解析MapperConfig.xml�
 ```
 
 ### 一.XMLMapperBuilder实例化
-reader
+reader是对应第一个单独的业务Mapper.xml文件的IO对象
 ```language
   public XMLMapperBuilder(Reader reader, Configuration configuration, String resource, Map<String, XNode> sqlFragments) {
     super(configuration);
