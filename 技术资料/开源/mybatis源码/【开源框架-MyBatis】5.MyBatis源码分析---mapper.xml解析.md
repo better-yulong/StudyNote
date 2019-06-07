@@ -247,7 +247,7 @@ useNewCache会完成cache实例化，并将其存入configuration实例；该实
     return builder.build();
   }
 ```
-resultMa名称通过当前applyCurrentNamespace
+resultMap名称通过当 resultMap的applyCurrentNamespace
 ```language
   public String applyCurrentNamespace(String base) {
     if (base == null) return null;
