@@ -391,7 +391,13 @@ typeHandler若为null则直接返回，否则基于typeHandler调用期newInstan
         resultMapNode.getValueBasedIdentifier());
 ```
 即是获取resultMap的id属性，若没有则根据当前resultMap的其他标签或父节点等生成默认值（个人感觉这块儿代码逻辑不合理，无论id是否有值均会运行resultMapNode.getValueBasedIdentifier()，而基本使用时都会配置id值）
-1. type获取
+2. type获取
+```language
+ String type = resultMapNode.getStringAttribute("type",
+        resultMapNode.getStringAttribute("ofType",
+            resultMapNode.getStringAttribute("resultType",
+                resultMapNode.getStringAttribute("javaType"))));
+```
 
 
 
