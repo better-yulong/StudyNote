@@ -210,7 +210,7 @@ useNewCache会完成cache实例化，并将其存入configuration实例；该实
 ##### 2.4.2 parameter解析
 一个parameterMap节点可包含多个parameter节点，其存储于List<ParameterMapping> parameterMappings . 可发现parameter标签可配置属性：property、javaType、jdbcType、resultMap、mode、typeHandler、numericScale.
 1. property为必有属性
-2. javaType可为空，基于该值从TypeAliasRegistry匹配出javaTypeClass 
+2. javaType可为空，基于该值从TypeAliasRegistry匹配出javaTypeClass，未匹配到则为null
 
 
  该部分代码可结合 DefaultParameterHandler的setParameters方法源码来理解
