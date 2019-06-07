@@ -256,7 +256,7 @@ resultMap名称通过当parameter标签的resultMap的值基于applyCurrentNames
   }
 
 ```
-javaTypeClass要么为ResultSet.class， 
+javaTypeClass:即或为ResultSet.class， 
 ```language
   private Class resolveParameterJavaType(Class resultType, String property, Class javaType, JdbcType jdbcType) {
     if (javaType == null) {
