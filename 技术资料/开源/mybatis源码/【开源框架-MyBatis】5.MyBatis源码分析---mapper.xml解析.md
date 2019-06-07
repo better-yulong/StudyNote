@@ -221,6 +221,32 @@ useNewCache会完成cache实例化，并将其存入configuration实例；该实
      ParameterMapping parameterMapping = builderAssistant.buildParameterMapping(parameterClass, property, javaTypeClass, jdbcTypeEnum, resultMap, modeEnum, typeHandlerClass, numericScale);
 
 ```
+```language
+  //MapperBuilderAssistant类
+  public ParameterMapping buildParameterMapping(
+      Class parameterType,
+      String property,
+      Class javaType,
+      JdbcType jdbcType,
+      String resultMap,
+      ParameterMode parameterMode,
+      Class typeHandler,
+      Integer numericScale) {
+    resultMap = applyCurrentNamespace(resultMap);
+
+    // Class parameterType = parameterMapBuilder.type();
+    Class javaTypeClass = resolveParameterJavaType(parameterType, property, javaType, jdbcType);
+    TypeHandler typeHandlerInstance = (TypeHandler) resolveInstance(typeHandler);
+
+    ParameterMapping.Builder builder = new ParameterMapping.Builder(configuration, property, javaTypeClass);
+    builder.jdbcType(jdbcType);
+    builder.resultMapId(resultMap);
+    builder.mode(parameterMode);
+    builder.numericScale(numericScale);
+    builder.typeHandler(typeHandlerInstance);
+    return builder.build();
+  }
+```
 
 
 
