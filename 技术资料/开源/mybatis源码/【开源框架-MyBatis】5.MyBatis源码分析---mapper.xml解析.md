@@ -405,7 +405,7 @@ typeHandler若为null则直接返回，否则基于typeHandler调用期newInstan
 获取type对应的class：null、基本类型则从TypeHanlderRegister获取、抑或通过forName获取
 
 ##### 2.5.1 resultMap/result解析
-从源码看，resultMap支持三种子节点：constructor、discriminator、id、
+从源码看，resultMap支持三种子节点：constructor、discriminator、id及默认result
 
 
 
