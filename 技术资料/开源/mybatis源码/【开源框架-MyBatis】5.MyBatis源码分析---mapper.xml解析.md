@@ -336,7 +336,9 @@ typeHandler若为null则直接返回，否则基于typeHandler调用期newInstan
 从如上源码来看，即是尝试根据javaType、jdbcType获取typeHanlder
 
 #### 2.5.resultMap解析
-resultMapElements(context.evalNodes("/mapper/resultMap"));
+```language
+    resultMapElements(context.evalNodes("/mapper/resultMap"));
+```
 
 
 
