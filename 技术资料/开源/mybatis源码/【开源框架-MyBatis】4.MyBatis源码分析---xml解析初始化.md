@@ -460,4 +460,4 @@ properties标签只有两个属性:resource、url，且只能二选一. 其实�
     }
   }
 ```
-即将environment属性指向default指向的id(development);循环获得environments的所有子environment节点，但仅对匹配default指向的id的environment进行解析并创建txFactory、dsFactory，之后基于Environment.Builder及其build方法生成Environment实例并赋值给configuration对象
+- 即将environment属性指向default指向的id(development);循环获得environments的所有子environment节点，但仅对匹配default指向的id的environment进行解析并创建txFactory、dsFactory，之后基于Environment.Builder- 及其build方法生成Environment实例并赋值给configuration对象。
