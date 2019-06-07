@@ -468,6 +468,15 @@ properties标签只有两个属性:resource、url，且只能二选一. 其实�
    mapperElement(root.evalNode("mappers"));
 ```
 ```language
+  <mappers>
+    <mapper resource="org/apache/ibatis/builder/AuthorMapper.xml"/>
+    <mapper resource="org/apache/ibatis/builder/BlogMapper.xml"/>
+    <mapper resource="org/apache/ibatis/builder/CachedAuthorMapper.xml"/>
+    <mapper resource="org/apache/ibatis/builder/PostMapper.xml"/>
+    <mapper resource="org/apache/ibatis/builder/NestedBlogMapper.xml"/>
+  </mappers>
+```
+```language
   private void mapperElement(XNode parent) throws Exception {
     if (parent != null) {
       for (XNode child : parent.getChildren()) {
