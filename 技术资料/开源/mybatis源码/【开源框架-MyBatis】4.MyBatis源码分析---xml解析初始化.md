@@ -423,7 +423,9 @@ properties标签只有两个属性:resource、url，且只能二选一. 其实�
 即逐个解析setting配置并设置给configuration对象的对应字段
 
 #### 2.7 environments解析
-
+```language
+      environmentsElement(root.evalNode("environments"));
+```
 ```language
   <environments default="development">
     <environment id="development">
