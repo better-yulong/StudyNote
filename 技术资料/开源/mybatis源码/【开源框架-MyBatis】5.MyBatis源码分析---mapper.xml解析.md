@@ -107,7 +107,7 @@ reader是对应第一个单独的业务Mapper.xml文件的IO对象
 ```
 而解析mapper.xml节点各子节点标签的源码为：
 ```language
-  //XMLMapperBuilder.xml类
+  //XMLMapperBuilder类
   private void configurationElement(XNode context) {
     try {
       String namespace = context.getStringAttribute("namespace");
@@ -125,3 +125,4 @@ reader是对应第一个单独的业务Mapper.xml文件的IO对象
   }
 ```
 
+#### 2.1.namespace
