@@ -129,4 +129,4 @@ reader是对应第一个单独的业务Mapper.xml文件的IO对象
 获取mapper节点的namespace值并赋值给MapperBuilderAssistant实例对象
 
 #### 2.2.cache-ref解析
-cache-ref从名称可理解为缓存引用，而此处同样是取namespace值并赋值给MapperBuilderAssistant实例对象，从此处来看指二级缓存默认是以namespace
+cache-ref从名称可理解为缓存引用，而此处同样是取namespace值并赋值给MapperBuilderAssistant实例对象，从此处来看指二级缓存默认是以namespace来划分
