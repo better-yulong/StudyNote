@@ -399,7 +399,8 @@ typeHandler若为null则直接返回，否则基于typeHandler调用期newInstan
                 resultMapNode.getStringAttribute("javaType"))));
 ```
 即是获取resultMap的type属性，若没有则根据当前resultMap的其他标签或父节点等生成默认值（这块儿逻辑和id获取一样，会导致过多多余的getStringAttribute调用）
-
+3. extends获取
+直接获取extends标签值
 
 
 
