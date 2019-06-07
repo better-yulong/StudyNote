@@ -406,7 +406,15 @@ typeHandler若为null则直接返回，否则基于typeHandler调用期newInstan
 
 ##### 2.5.1 resultMap/result解析
 从源码看，resultMap支持三种子节点：constructor、discriminator、id及默认result
-###### 2.5.1.1 
+###### 2.5.1.1 constructor方式处理
+```language
+   processConstructorElement(resultChild, typeClass, resultMappings);
+```
+```language
+
+```
+
+
 
 
 
