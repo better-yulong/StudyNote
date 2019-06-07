@@ -177,3 +177,30 @@ useNewCache会完成cache实例化，并将其存入configuration实例；该实
 ```language
    parameterMapElement(context.evalNodes("/mapper/parameterMap"));
 ```
+```language
+  private void parameterMapElement(List<XNode> list) throws Exception {
+    for (XNode parameterMapNode : list) {
+      String id = parameterMapNode.getStringAttribute("id");
+      String type = parameterMapNode.getStringAttribute("type");
+      Class parameterClass = resolveClass(type);
+      List<XNode> parameterNodes = parameterMapNode.evalNodes("parameter");
+      List<ParameterMapping> parameterMappings = new ArrayList<ParameterMapping>();
+      for (XNode parameterNode : parameterNodes) {
+        String property = parameterNode.getStringAttribute("property");
+        String javaType = parameterNode.getStringAttribute("javaType");
+        String jdbcType = parameterNode.getStringAttribute("jdbcType");
+        String resultMap = parameterNode.getStringAttribute("resultMap");
+        String mode = parameterNode.getStringAttribute("mode");
+        String typeHandler = parameterNode.getStringAttribute("typeHandler");
+        Integer numericScale = parameterNode.getIntAttribute("numericScale", null);
+        ParameterMode modeEnum = resolveParameterMode(mode);
+        Class javaTypeClass = resolveClass(javaType);
+        JdbcType jdbcTypeEnum = resolveJdbcType(jdbcType);
+        Class typeHandlerClass = resolveClass(typeHandler);
+        ParameterMapping parameterMapping = builderAssistant.buildParameterMapping(parameterClass, property, javaTypeClass, jdbcTypeEnum, resultMap, modeEnum, typeHandlerClass, numericScale);
+        parameterMappings.add(parameterMapping);
+      }
+      builderAssistant.addParameterMap(id, parameterClass, parameterMappings);
+    }
+  }
+```
