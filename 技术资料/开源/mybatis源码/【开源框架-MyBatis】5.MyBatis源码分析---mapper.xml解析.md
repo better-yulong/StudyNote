@@ -217,6 +217,12 @@ useNewCache会完成cache实例化，并将其存入configuration实例；该实
 6. typeHandler只允许两种情况：1.不配置typeHandler即resolveClass返回null；2.若有值则必须可从TypeAliasRegistry中匹配出typeHandler对应的class或为完整类名且可通过Resources.classForName获取class
 
 - 获取参数并简单初始化后，会调用
+```language
+     ParameterMapping parameterMapping = builderAssistant.buildParameterMapping(parameterClass, property, javaTypeClass, jdbcTypeEnum, resultMap, modeEnum, typeHandlerClass, numericScale);
+
+```
+
+
 
 
 
