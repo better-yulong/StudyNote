@@ -36,7 +36,7 @@ reader是对应第一个单独的业务Mapper.xml文件的IO对象
    mapperParser.parse();
 ```
 ```language
-
+  //XMLMapperBuilder类
   public void parse() {
     if (!configuration.isResourceLoaded(resource)) {
       configuration.addLoadedResource(resource);
@@ -45,3 +45,4 @@ reader是对应第一个单独的业务Mapper.xml文件的IO对象
     }
   }
 ```
+后续以AuthorMapper。
