@@ -273,7 +273,7 @@ javaTypeClass值：javaType不为空则直接返回。若为空,jdbcType为CURSO
     return javaType;
   }
 ```
-typeHandler若为null则直接返回，否则基于typeHandler调用期newInstance方法..
+typeHandler若为null则直接返回，否则基于typeHandler调用期newInstance方法.注意此处有强制类型转换为TypeHandler，即说明必须实现TypeHandler
 ```language
 TypeHandler typeHandlerInstance = (TypeHandler) resolveInstance(typeHandler);
 ```
