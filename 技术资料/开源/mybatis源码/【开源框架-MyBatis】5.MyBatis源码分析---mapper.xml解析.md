@@ -769,7 +769,7 @@ resource
       configuration.addLoadedResource(resource);
 ```
 resource的值类似于org/apache/ibatis/builder/BlogMapper.xml，解析前会先调用configuration.isResourceLoaded(resource)判断该xml是否已被加载解析。如若未加载，即立即调用configuration.addLoadedResource(resource)将其设置（底层为Set存储）
-##### 2.mapper.xml文件解析判断及标识
+##### 2.
 ```language
   @Test
   public void shouldSelectAuthorsUsingMapperClass() {
