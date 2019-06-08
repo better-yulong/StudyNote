@@ -62,7 +62,7 @@ MapperConfig.xml文件解析重点分析XMLConfigBuilder
 ```
 即完成如事务、数据源、缓存策略别名的注册
 2. 解析器对象初始化：new XPathParser(reader, true, new XMLMapperEntityResolver(), props);
-重点XMLMapperEntityResolver，源码如下用于xml格式及文件头dtd文件路径初始化（获取dtd文件用于验证xml文件）
+重点XMLMapperEntityResolver，源码如下用于xml格式及文件头dtd文件路径初始化（获取dtd文件用于验证xml文件格式合法性）
 ```language
 public class XMLMapperEntityResolver implements EntityResolver {
 
