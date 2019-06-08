@@ -59,3 +59,16 @@ XMLMapperBuilder类
   }
 ```
 - 首先是各参数id、fetchSize、timeout、parameterMap、parameterType（为获取parameterTypeClass）、resultMap、resultType（为获取resultTypeClass）、resultSetType（为获取resultSetTypeEnum）、statementType、flushCache、useCache、keyProperty的并初始化；同时获取nodeName确认isSelect值。
+
+
+```language
+  <insert id="insertAuthor" parameterType="domain.blog.Author">
+    <selectKey keyProperty="id" resultType="int" order="BEFORE">
+      select CAST(RANDOM()*1000000 as INTEGER) a from SYSIBM.SYSDUMMY1
+    </selectKey>
+    insert into Author (id,username,password,email,bio,favourite_section)
+    values(
+    #{id}, #{username}, #{password}, #{email}, #{bio}, #{favouriteSection:VARCHAR}
+    )
+  </insert>
+```
