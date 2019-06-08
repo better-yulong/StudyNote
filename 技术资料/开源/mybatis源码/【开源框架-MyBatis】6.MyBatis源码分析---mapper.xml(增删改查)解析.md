@@ -60,7 +60,7 @@ XMLMapperBuilder类
 ```
 - 首先是各参数id、fetchSize、timeout、parameterMap、parameterType（为获取parameterTypeClass）、resultMap、resultType（为获取resultTypeClass）、resultSetType（为获取resultSetTypeEnum）、statementType、flushCache、useCache、keyProperty的并初始化；同时获取nodeName确认isSelect值。
 
-### 一.keyProperty（主键处理）
+### 1.1 keyProperty（主键处理）
 除了上述大多属性的简单处理，相对复杂的可就是常见的插入时基于数据库序列 、sql函数等先获取主键id再完成insert操作,xml的写法有两种：
 ```language
   <insert id="insert" parameterType="Person" useGeneratedKeys="true" keyProperty="id">
@@ -92,4 +92,4 @@ XMLMapperBuilder类
     }
 ```
 
-#### 1.1 基于keyProperty和useGeneratedKeys="true"实现
+#### 1.1.1 基于keyProperty和useGeneratedKeys="true"实现
