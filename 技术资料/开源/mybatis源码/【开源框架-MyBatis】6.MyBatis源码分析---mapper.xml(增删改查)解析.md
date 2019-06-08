@@ -78,5 +78,18 @@ XMLMapperBuilder类
     )
   </insert>
 ```
+```language
+    String keyProperty = context.getStringAttribute("keyProperty");
+    KeyGenerator keyGenerator;
+    String keyStatementId = id + SelectKeyGenerator.SELECT_KEY_SUFFIX;
+    keyStatementId = builderAssistant.applyCurrentNamespace(keyStatementId);
+    if (configuration.hasKeyGenerator(keyStatementId)) {
+      keyGenerator = configuration.getKeyGenerator(keyStatementId);
+    } else {
+      keyGenerator = context.getBooleanAttribute("useGeneratedKeys",
+          configuration.isUseGeneratedKeys() && SqlCommandType.INSERT.equals(sqlCommandType))
+          ? new Jdbc3KeyGenerator() : new NoKeyGenerator();
+    }
+```
 
 #### 1.1 基于keyProperty和useGeneratedKeys="true"实现
