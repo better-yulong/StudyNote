@@ -776,7 +776,22 @@ builderAssistant.applyCurrentNamespace主要用于获取sql标签对象的完整
   }
 ```
 ```language
- bindMapperForNamespace();
-```
+     private void bindMapperForNamespace() {
+    String namespace = builderAssistant.getCurrentNamespace();
+    if (namespace != null) {
+      Class boundType = null;
+      try {
+        boundType = Resources.classForName(namespace);
+      } catch (ClassNotFoundException e) {
+        //ignore, bound type is not required
+      }
+      if (boundType != null) {
+        if (!configuration.hasMapper(boundType)) {
+          configuration.addMapper(boundType);
+        }
+      }
+    }
+  }
 
-最后的方法 bindMapperForNamespace();
+```
+最后的方法 bindMapperForNamespace()
