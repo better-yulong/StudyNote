@@ -93,3 +93,4 @@ XMLMapperBuilder类
 ```
 
 #### 1.1.1 基于keyProperty和useGeneratedKeys="true"
+insert语句显示指定
