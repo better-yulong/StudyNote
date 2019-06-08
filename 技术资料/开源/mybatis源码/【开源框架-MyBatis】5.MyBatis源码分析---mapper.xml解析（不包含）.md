@@ -423,6 +423,230 @@ typeHandler若为null则直接返回，否则基于typeHandler调用期newInstan
     }
   }
 ```
+```language
+  private ResultMapping buildResultMappingFromContext(XNode context, Class resultType, ArrayList<ResultFlag> flags) throws Exception {
+    String property = context.getStringAttribute("property");
+    String column = context.getStringAttribute("column");
+    String javaType = context.getStringAttribute("javaType");
+    String jdbcType = context.getStringAttribute("jdbcType");
+    String nestedSelect = context.getStringAttribute("select");
+    String nestedResultMap = context.getStringAttribute("resultMap",
+        processNestedResultMappings(context, Collections.EMPTY_LIST));
+    String typeHandler = context.getStringAttribute("typeHandler");
+    Class javaTypeClass = resolveClass(javaType);
+    Class typeHandlerClass = resolveClass(typeHandler);
+    JdbcType jdbcTypeEnum = resolveJdbcType(jdbcType);
+    return builderAssistant.buildResultMapping(resultType, property, column, javaTypeClass, jdbcTypeEnum, nestedSelect, nestedResultMap, typeHandlerClass, flags);
+  }
+```
+处理与普通的reslt相似，区别在于RequestMapping的属性ResultFlag的区别（普通为null；否则构造方法则会标识为ID或CONSTRUCTOR
+```language
+  <resultMap id="selectImmutableAuthor" type="domain.blog.ImmutableAuthor">
+    <constructor>
+      <idArg column="id" javaType="_int"/>
+      <arg column="username" javaType="string"/>
+      <arg column="password" javaType="string"/>
+      <arg column="email" javaType="string"/>
+      <arg column="bio" javaType="string"/>
+      <arg column="favourite_section" javaType="domain.blog.Section"/>
+    </constructor>
+  </resultMap>
+```
+运行时区别在普通的result节点，是在初始化resultMap其Type对应的对象后，调用其的setXXX方法完成参数赋值；而节点产constructor则是要求在创建resultMap其Type对应的对象时，将这部分作为构造方法的参数传入（比如ImmutableAuthor只提供构造该方法和公有的get方法，并不提供set方法。初步看来确保对象创建后属性即不可修改）
+###### 2.5.1.2 discriminator方式处理（主要用于相对复杂的数据结构）
+Document是Book 、Magazine 的父类，而子类分别添加不同的属性：
+```language
+public class Document {
+  private int id;
+  private String title;
+  private DocType type;
+  private List attributes; //此处为List
+}
+```
+```language
+public class Book extends Document {
+  private Integer pages;
+}
+```
+```language
+public class Magazine extends Document {
+  private String city;
+}
+```
+数据库数据：
+```language
+select * from DOCUMENTS
+Columns: DOCUMENT_ID, DOCUMENT_TITLE, DOCUMENT_TYPE, DOCUMENT_PAGENUMBER, DOCUMENT_CITY
+DEBUG [main] - <==        Row: 1, The World of Null-A, BOOK, 55, null
+DEBUG [main] - <==        Row: 2, Le Progres de Lyon, NEWSPAPER, null, Lyon
+DEBUG [main] - <==        Row: 3, Lord of the Rings, BOOK, 3587, null
+DEBUG [main] - <==        Row: 4, Le Canard enchaine, NEWSPAPER, null, Paris
+DEBUG [main] - <==        Row: 5, Le Monde, BROADSHEET, null, Paris
+DEBUG [main] - <==        Row: 6, Foundation, MONOGRAPH, 557, null
+-------------------------------------------------------------------------------
+select a.*, b.attribute from Documents a left join Document_Attributes b on a.document_id = b.document_id order by a.document_id
+DEBUG [main] - <==    Columns: DOCUMENT_ID, DOCUMENT_TITLE, DOCUMENT_TYPE, DOCUMENT_PAGENUMBER, DOCUMENT_CITY, ATTRIBUTE
+DEBUG [main] - <==        Row: 1, The World of Null-A, BOOK, 55, null, English
+DEBUG [main] - <==        Row: 1, The World of Null-A, BOOK, 55, null, Sci-Fi
+DEBUG [main] - <==        Row: 2, Le Progres de Lyon, NEWSPAPER, null, Lyon, French
+DEBUG [main] - <==        Row: 3, Lord of the Rings, BOOK, 3587, null, Fantasy
+DEBUG [main] - <==        Row: 3, Lord of the Rings, BOOK, 3587, null, English
+DEBUG [main] - <==        Row: 4, Le Canard enchaine, NEWSPAPER, null, Paris, null
+DEBUG [main] - <==        Row: 5, Le Monde, BROADSHEET, null, Paris, null
+DEBUG [main] - <==        Row: 6, Foundation, MONOGRAPH, 557, null, null
+即document为主表，Document_Attributes 为属性扩展表，document与Document_Attributes 通过主键关联，document一对多Document_Attributes 
+```
+xml配置：
+```language
+  <resultMap id="documentWithAttributes" class="com.testdomain.Document" groupBy="id">
+    <result property="id" column="DOCUMENT_ID"/>
+    <result property="title" column="DOCUMENT_TITLE"/>
+    <result property="type" column="DOCUMENT_TYPE"/>
+    <result property="attributes" resultMap="Documents.documentAttributes"/>
+    <discriminator column="DOCUMENT_TYPE" javaType="string">
+      <subMap value="BOOK" resultMap="bookWithAttributes"/>
+      <subMap value="NEWSPAPER" resultMap="newsWithAttributes"/>
+    </discriminator>
+  </resultMap>
+
+    <resultMap id="bookWithAttributes" class="com.testdomain.Book" extends="documentWithAttributes">
+    <result property="pages" column="DOCUMENT_PAGENUMBER"/>
+  </resultMap>
+
+  <resultMap id="newsWithAttributes" class="com.testdomain.Magazine" extends="documentWithAttributes">
+    <result property="city" column="DOCUMENT_CITY"/>
+  </resultMap>
+
+   <resultMap id="documentAttributes" class="java.lang.String">
+    <result property="value" column="attribute"/>
+  </resultMap>
+```
+通过如下查询分析， <result property="attributes" resultMap="Documents.documentAttributes"/>可用于实现resultMap嵌套（即Object中的List属性）；另外discriminator 可实现简单的业务逻辑判断，即DOCUMENT_TYPE的alue为BOOK时按bookWithAttributes赋值，而value为NEWSPAPER时按newsWithAttributes赋值
+```language
+    <discriminator column="DOCUMENT_TYPE" javaType="string">
+      <subMap value="BOOK" resultMap="bookWithAttributes"/>
+      <subMap value="NEWSPAPER" resultMap="newsWithAttributes"/>
+    </discriminator>
+```
+- 看完示例的结果的分析，再来分析源码.如若discriminator 子节点除了subMap还，还可是association、
+collection、case.
+1. discriminator子节点subMap时，即以value的值为key、resultMap的String值为value保存至discriminatorMap。
+2. discriminator子节点association、collection、case，
+```language
+  <resultMap id="blogWithPosts" type="Blog">
+    <id property="id" column="id"/>
+    <result property="title" column="title"/>
+    <association property="author" column="author_id"
+                 select="selectAuthorWithInlineParams"/>
+    <collection property="posts" column="id" select="selectPostsForBlog"/>
+  </resultMap>
+```
+```language
+public class Blog {
+
+  private int id;
+  private String title;
+  private Author author;
+  private List<Post> posts;
+}
+```
+对于属性select，则递归解析完成初始化并返回resultMap的Id转换成类似如下的关联
+```language
+    <result property="favoriteDocument" resultMap="Documents.document"/>
+```
+
+#### 2.5.sql解析
+```language
+   sqlElement(context.evalNodes("/mapper/sql"));
+```
+```language
+  private void sqlElement(List<XNode> list) throws Exception {
+    for (XNode context : list) {
+      String id = context.getStringAttribute("id");
+      id = builderAssistant.applyCurrentNamespace(id);
+      sqlFragments.put(id, context);
+    }
+  }
+```
+builderAssistant.applyCurrentNamespace主要用于获取sql标签对象的完整id(namespace.id),而sqlFragments定义为Map<String, XNode> sqlFragments。整体来说并没有作处理，只是保存
+
+#### 2.6.select|insert|update|delete解析
+```language
+  buildStatementFromContext(context.evalNodes("select|insert|update|delete"));
+```
+```language
+  private void buildStatementFromContext(List<XNode> list) {
+    for (XNode context : list) {
+      final XMLStatementBuilder statementParser = new XMLStatementBuilder(configuration, builderAssistant, this);
+      statementParser.parseStatementNode(context);
+    }
+  }
+```
+从new XMLStatementBuilder可理解为前面的均是configuration、builderAssistant对象的初始化，是为最后解析select|insert|update|delete做准备.
+```language
+  public XMLStatementBuilder(Configuration configuration, MapperBuilderAssistant builderAssistant, XMLMapperBuilder xmlMapperParser) {
+    super(configuration);
+    this.builderAssistant = builderAssistant;
+    this.xmlMapperParser = xmlMapperParser;
+  }
+
+  public void parseStatementNode(XNode context) {
+    String id = context.getStringAttribute("id");
+    Integer fetchSize = context.getIntAttribute("fetchSize", null);
+    Integer timeout = context.getIntAttribute("timeout", null);
+    String parameterMap = context.getStringAttribute("parameterMap");
+    String parameterType = context.getStringAttribute("parameterType");
+    Class parameterTypeClass = resolveClass(parameterType);
+    String resultMap = context.getStringAttribute("resultMap");
+    String resultType = context.getStringAttribute("resultType");
+
+    Class resultTypeClass = resolveClass(resultType);
+    String resultSetType = context.getStringAttribute("resultSetType");
+    StatementType statementType = StatementType.valueOf(context.getStringAttribute("statementType", StatementType.PREPARED.toString()));
+    ResultSetType resultSetTypeEnum = resolveResultSetType(resultSetType);
+
+    List<SqlNode> contents = parseDynamicTags(context);
+    MixedSqlNode rootSqlNode = new MixedSqlNode(contents);
+    SqlSource sqlSource = new DynamicSqlSource(configuration, rootSqlNode);
+    String nodeName = context.getNode().getNodeName();
+    SqlCommandType sqlCommandType = SqlCommandType.valueOf(nodeName.toUpperCase(Locale.ENGLISH));
+    boolean isSelect = sqlCommandType == SqlCommandType.SELECT;
+    boolean flushCache = context.getBooleanAttribute("flushCache", !isSelect);
+    boolean useCache = context.getBooleanAttribute("useCache", isSelect);
+
+    String keyProperty = context.getStringAttribute("keyProperty");
+    KeyGenerator keyGenerator;
+    String keyStatementId = id + SelectKeyGenerator.SELECT_KEY_SUFFIX;
+    keyStatementId = builderAssistant.applyCurrentNamespace(keyStatementId);
+    if (configuration.hasKeyGenerator(keyStatementId)) {
+      keyGenerator = configuration.getKeyGenerator(keyStatementId);
+    } else {
+      keyGenerator = context.getBooleanAttribute("useGeneratedKeys",
+          configuration.isUseGeneratedKeys() && SqlCommandType.INSERT.equals(sqlCommandType))
+          ? new Jdbc3KeyGenerator() : new NoKeyGenerator();
+    }
+
+    builderAssistant.addMappedStatement(id, sqlSource, statementType, sqlCommandType,
+        fetchSize, timeout, parameterMap, parameterTypeClass, resultMap, resultTypeClass,
+        resultSetTypeEnum, flushCache, useCache, keyGenerator, keyProperty);
+  }
+```
+- 首先是各参数id、fetchSize、timeout、parameterMap、parameterType（为获取parameterTypeClass）、resultMap、resultType（为获取resultTypeClass）、resultSetType（为获取resultSetTypeEnum）、statementType、flushCache、useCache、keyProperty的并初始化，
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -482,6 +706,30 @@ typeHandler若为null则直接返回，否则基于typeHandler调用期newInstan
 - 获取业务调用query方法是传入的parameterOjbect，若不为空则将其包装为metaObject对象
 - 稍后遍历parameterMapping列表：
 1. 判断ParameterMode是否不为OUT（即为IN、INOUT其中之一），说明该paramter可作为入参；否则直接结束不处理---正好对应AuthorMapper.xml的parameter的mode属性
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
