@@ -844,7 +844,8 @@ resource的值类似于org/apache/ibatis/builder/BlogMapper.xml，解析前会�
     }
   }
 ```
-最后的方法 bindMapperForNamespace()逻辑比较简单：1.验证当前mapper.xml文件的namespace值并确认可获取到class对象，然后添加至configuration的Mapper(Set类型，同时会验证是否有同名的namespace已经被添加过)
+ bindMapperForNamespace()：
+1.验证当前mapper.xml文件的namespace值并确认可获取到class对象，然后添加至configuration的Mapper(Set类型，同时会验证是否有同名的namespace已经被添加过)
 
 
 interface domain.blog.mappers.BlogMapper
