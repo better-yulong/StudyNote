@@ -817,6 +817,31 @@ resource的值类似于org/apache/ibatis/builder/BlogMapper.xml，解析前会�
   }
 }
 ```
+```language
+  public MapperAnnotationBuilder(Configuration configuration, Class type) {
+    String resource = type.getName().replace('.', '/') + ".java (best guess)";
+    this.assistant = new MapperBuilderAssistant(configuration, resource);
+    this.configuration = configuration;
+    this.type = type;
+    this.sqlFragments = new HashMap();    
+  }
+
+  public void parse() {
+    String resource = type.toString();
+    if (!configuration.isResourceLoaded(resource)) {
+      configuration.addLoadedResource(resource);
+      loadXmlResource();
+      assistant.setCurrentNamespace(type.getName());
+      parseCache();
+      parseCacheRef();
+      Method[] methods = type.getMethods();
+      for (Method method : methods) {
+        parseResultsAndConstructorArgs(method);
+        parseStatement(method);
+      }
+    }
+  }
+```
 
 
 最后的方法 bindMapperForNamespace()逻辑比较简单：1.验证当前mapper.xml文件的namespace值并确认可获取到class对象，然后添加至configuration的Mapper(Set类型，同时会验证是否有同名的namespace已经被添加过)
