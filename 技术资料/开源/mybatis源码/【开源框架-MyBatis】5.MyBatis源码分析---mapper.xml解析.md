@@ -802,6 +802,7 @@ resource的值类似于org/apache/ibatis/builder/BlogMapper.xml，解析前会�
   }
 ```
 ```language
+   //MapperRegistry类
   public void addMapper(Class type) {
     if (type.isInterface()) {
       if (knownMappers.contains(type)) {
