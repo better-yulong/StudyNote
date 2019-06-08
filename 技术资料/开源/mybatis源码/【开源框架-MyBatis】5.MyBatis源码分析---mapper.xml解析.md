@@ -801,6 +801,23 @@ resource的值类似于org/apache/ibatis/builder/BlogMapper.xml，解析前会�
     }
   }
 ```
+```language
+  public void addMapper(Class type) {
+    if (type.isInterface()) {
+      if (knownMappers.contains(type)) {
+        throw new BindingException("Type " + type + " is already known to the MapperRegistry.");
+      }
+      knownMappers.add(type);
+      // It's important that the type is added before the parser is run
+      // otherwise the binding may automatically be attempted by the
+      // mapper parser.  If the type is already known, it won't try.
+      MapperAnnotationBuilder parser = new MapperAnnotationBuilder(config, type);
+      parser.parse();
+    }
+  }
+}
+```
+
 
 最后的方法 bindMapperForNamespace()逻辑比较简单：1.验证当前mapper.xml文件的namespace值并确认可获取到class对象，然后添加至configuration的Mapper(Set类型，同时会验证是否有同名的namespace已经被添加过)
 
