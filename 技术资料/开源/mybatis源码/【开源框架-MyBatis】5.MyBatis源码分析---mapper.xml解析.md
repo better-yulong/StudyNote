@@ -795,8 +795,13 @@ builderAssistant.applyCurrentNamespace主要用于获取sql标签对象的完整
 
 ```
 ##### 1.configuration.addLoadedResource()
+resource
+```language
+    if (!configuration.isResourceLoaded(resource)) {
+      configuration.addLoadedResource(resource);
+```
 
-mapper.xml文件解析前会先调用configuration.addLoadedResource
+mapper.xml文件解析前会先调用configuration.isResourceLoaded(resource)判断该 
 最后的方法 bindMapperForNamespace()逻辑比较简单：1.验证当前mapper.xml文件的namespace值并确认可获取到class对象，然后添加至configuration的Mapper(Set类型，同时会验证是否有同名的namespace已经被添加过)
 
 org/apache/ibatis/builder/BlogMapper.xml
