@@ -892,4 +892,4 @@ public class ResultMapping {
 > autoMappingBehavior是<settings>里面的，是全局总开关。autoMapping是<resultMap>里面的，是局部select语句映射开关。（局部开关优先级大于全局开关）
 若在resultMap配置了autoMapping， 那么mybatis会自动把查询出来的columnValue值直接赋值给Bean对象， 如果autoMappng设为false， 则不会自动映射， 需要你在resultMap中手动配置result，它的作用在collection和association标签中作用是一样的。(后续再分析)
 - handleResult.handleResult会将如下查询结果resultObject添加至List，之后添加至multipleResults并作为PreparedStatementHandler.query方法的结果返回
-- 至此，当前单元测试的查询分析告一段落.后面会基于
+- 至此，当前单元测试的查询分析告一段落.后面会基于开发过程常用的配置文件解析逐步理解
