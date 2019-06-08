@@ -747,3 +747,5 @@ builderAssistant.applyCurrentNamespace主要用于获取sql标签对象的完整
 - 针对keyProperty说明：在完成全部解析之后，其最终仍是创建一个新的MappedStatement至configuration，只是id是根据当前namespace、父insert的ide及固定后缀生成。区别在于KeyGenerator对象差异，具体如下：
 1. 显示指定useGeneratedKeys为true或者是insert语句且MapperConfig.xml中显示指定useGeneratedKeys为true(默认为false),则即说明可使用key生成器，且默认使用Jdbc3KeyGenerator（其implements KeyGenerator）
 2. 对于selectKey方式即返回其初始化时生成的keyGenerator（如SelectKeyGenerator）
+
+#### 最终，所有的select、insert、update、delete、selectKey
