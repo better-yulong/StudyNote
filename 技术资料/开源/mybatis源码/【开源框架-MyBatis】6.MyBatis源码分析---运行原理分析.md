@@ -2,4 +2,4 @@
 ```language
   session.selectList("domain.blog.mappers.AuthorMapper.selectAllAuthors");
 ```
-继续深入分析可明白，
+继续深入分析可明白，在解析Mapper.xml文件时，会所有的select、delete、update、query
