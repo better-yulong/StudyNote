@@ -749,3 +749,5 @@ builderAssistant.applyCurrentNamespace主要用于获取sql标签对象的完整
 2. 对于selectKey方式即返回其初始化时生成的keyGenerator（如SelectKeyGenerator）
 
 #### 最终，所有的select、insert、update、delete、selectKey都会对应一个MappedStatement对象存储在configuration.
+
+#### 
