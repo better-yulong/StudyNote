@@ -91,7 +91,7 @@ XMLMapperBuilder类
           ? new Jdbc3KeyGenerator() : new NoKeyGenerator();
     }
 ```
-而在分析主键逻辑之前，需先关注 List<SqlNode> contents = parseDynamicTags(context);最终结合
+而在分析主键逻辑之前，需先关注 List<SqlNode> contents = parseDynamicTags(context);及 configuration.addKeyGenerator(id, new SelectKeyGenerator(keyStatement, executeBefore));即可理解configuration.getKeyGenerator(keyStatementId)
 ```language
   private List<SqlNode> parseDynamicTags(XNode node) {
     List<SqlNode> contents = new ArrayList<SqlNode>();
