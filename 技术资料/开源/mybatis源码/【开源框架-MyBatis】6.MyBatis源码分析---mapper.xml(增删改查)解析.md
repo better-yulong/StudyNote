@@ -92,6 +92,30 @@ XMLMapperBuilder类
     }
 ```
 而在分析主键逻辑之前，需先关注 List<SqlNode> contents = parseDynamicTags(context);
+```language
+  private List<SqlNode> parseDynamicTags(XNode node) {
+    List<SqlNode> contents = new ArrayList<SqlNode>();
+    NodeList children = node.getNode().getChildNodes();
+    for (int i = 0; i < children.getLength(); i++) {
+      XNode child = node.newXNode(children.item(i));
+      String nodeName = child.getNode().getNodeName();
+      if (child.getNode().getNodeType() == Node.CDATA_SECTION_NODE
+          || child.getNode().getNodeType() == Node.TEXT_NODE) {
+        String data = child.getStringBody("");
+        contents.add(new TextSqlNode(data));
+      } else {
+        NodeHandler handler = nodeHandlers.get(nodeName);
+        if (handler == null) {
+          throw new BuilderException("Unknown element <" + nodeName + "> in SQL statement.");
+        }
+        handler.handleNode(child, contents);
+
+      }
+    }
+    return contents;
+  }
+
+```
 
 
 
