@@ -71,4 +71,10 @@ XMLMapperBuilder类
     #{id}, #{username}, #{password}, #{email}, #{bio}, #{favouriteSection:VARCHAR}
     )
   </insert>
+
+ 
+  <insert id="insert" parameterType="Person" useGeneratedKeys="true" keyProperty="id">
+    INSERT INTO Person(firstName, lastName)
+    VALUES(#{firstName}, #{lastName})
+  </insert>
 ```
