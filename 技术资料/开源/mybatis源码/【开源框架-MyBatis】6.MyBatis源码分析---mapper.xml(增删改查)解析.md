@@ -171,7 +171,7 @@ XMLMapperBuilder类
     }
   }
 ```
-- 而上面的parseDynamicTags方法除了解析selectKey之外，其实是将select、insert、update、delete内的所有内容全部解析为Node节点对象，区别在于普通针对其嵌套的如include、trim、where、set、foreach、if、choose、when、otherwise、selectKey均会有对应的Handler针对处理
+- 而上面的parseDynamicTags方法除了解析selectKey之外，其实是将select、insert、update、delete内的所有内容全部解析为Node节点对象，区别在于普通针对其嵌套的如include、trim、where、set、foreach、if、choose、when、otherwise、selectKey均会有对应的Handler针对处理。这点儿
 - 其最终仍是创建一个新的MappedStatement至configuration，只是id是根据当前namespace、父insert的ide及固定后缀生成
 1. 显示指定useGeneratedKeys为true或者是insert语句且MapperConfig.xml中显示指定useGeneratedKeys为true(默认为false),则即说明可使用key生成器，且默认使用Jdbc3KeyGenerator（其implements KeyGenerator）
 2. 对于selectKey方式即返回其初始化时生成的keyGenerator（如SelectKeyGenerator）
