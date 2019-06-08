@@ -752,7 +752,6 @@ builderAssistant.applyCurrentNamespace主要用于获取sql标签对象的完整
 
 #### 收尾
 原本在分析上面就已经结束了，而忽略了这部分，直到分析其他单元测试源码才发现此处有遗漏
-
 ```language
   //XMLMapperBuilder类
   public void parse() {
@@ -763,3 +762,17 @@ builderAssistant.applyCurrentNamespace主要用于获取sql标签对象的完整
     }
   }
 ```
+```language
+  @Test
+  public void shouldSelectAuthorsUsingMapperClass() {
+    SqlSession session = sqlMapper.openSession();
+    try {
+      AuthorMapper mapper = session.getMapper(AuthorMapper.class);
+      List authors = mapper.selectAllAuthors();
+      assertEquals(2, authors.size());
+    } finally {
+      session.close();
+    }
+  }
+```
+最后的方法 bindMapperForNamespace();
