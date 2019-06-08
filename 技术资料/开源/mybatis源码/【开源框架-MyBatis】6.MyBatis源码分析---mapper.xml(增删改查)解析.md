@@ -91,7 +91,7 @@ XMLMapperBuilder类
           ? new Jdbc3KeyGenerator() : new NoKeyGenerator();
     }
 ```
-而在分析主键逻辑之前，需先关注 List<SqlNode> contents = parseDynamicTags(context);
+而在分析主键逻辑之前，需先关注 List<SqlNode> contents = parseDynamicTags(context);最终结合
 ```language
   private List<SqlNode> parseDynamicTags(XNode node) {
     List<SqlNode> contents = new ArrayList<SqlNode>();
@@ -117,7 +117,20 @@ XMLMapperBuilder类
 
 ```
 ```language
-
+  private Map<String, NodeHandler> nodeHandlers = new HashMap<String, NodeHandler>() {
+    {
+      put("include", new IncludeNodeHandler());
+      put("trim", new TrimHandler());
+      put("where", new WhereHandler());
+      put("set", new SetHandler());
+      put("foreach", new ForEachHandler());
+      put("if", new IfHandler());
+      put("choose", new ChooseHandler());
+      put("when", new IfHandler());
+      put("otherwise", new OtherwiseHandler());
+      put("selectKey", new SelectKeyHandler());
+    }
+  };
 ```
 ```language
   private class SelectKeyHandler implements NodeHandler {
