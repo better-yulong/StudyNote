@@ -574,4 +574,4 @@ builderAssistant.applyCurrentNamespace主要用于获取sql标签对象的完整
 ```language
   buildStatementFromContext(context.evalNodes("select|insert|update|delete"));
 ```
-下一篇继续笔记分析
+下一篇笔记继续分析

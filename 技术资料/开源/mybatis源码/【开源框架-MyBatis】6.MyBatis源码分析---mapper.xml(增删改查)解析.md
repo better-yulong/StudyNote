@@ -1,4 +1,4 @@
-#### 2.6.select|insert|update|delete解析
+
 ```language
   buildStatementFromContext(context.evalNodes("select|insert|update|delete"));
 ```
