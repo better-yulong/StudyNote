@@ -751,3 +751,4 @@ builderAssistant.applyCurrentNamespace主要用于获取sql标签对象的完整
 #### 最终，所有的select、insert、update、delete、selectKey都会对应一个MappedStatement对象存储在configuration.
 
 #### 收尾
+原本在分析上面就已经结束了，而忽略了这部分，
