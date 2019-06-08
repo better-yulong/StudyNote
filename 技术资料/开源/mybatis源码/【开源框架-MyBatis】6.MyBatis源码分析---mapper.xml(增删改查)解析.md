@@ -93,4 +93,4 @@ XMLMapperBuilder类
 ```
 
 #### 1.1.1 基于keyProperty和useGeneratedKeys="true"
-显示指定useGeneratedKeys为true或者是insert语句且MapperConfig.xml中显示指定
+1. 显示指定useGeneratedKeys为true或者是insert语句且MapperConfig.xml中显示指定useGeneratedKeys为true(默认为false),m
