@@ -800,8 +800,8 @@ resource
     if (!configuration.isResourceLoaded(resource)) {
       configuration.addLoadedResource(resource);
 ```
-mapper.xml文件解析前会先调用configuration.isResourceLoaded(resource)判断该 
+resource的值类似于org/apache/ibatis/builder/BlogMapper.xml，解析前会先调用configuration.isResourceLoaded(resource)判断该xml是否已被
 最后的方法 bindMapperForNamespace()逻辑比较简单：1.验证当前mapper.xml文件的namespace值并确认可获取到class对象，然后添加至configuration的Mapper(Set类型，同时会验证是否有同名的namespace已经被添加过)
 
-org/apache/ibatis/builder/BlogMapper.xml
+
 interface domain.blog.mappers.BlogMapper
