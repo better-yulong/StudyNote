@@ -60,6 +60,7 @@ XMLMapperBuilder类
 ```
 - 首先是各参数id、fetchSize、timeout、parameterMap、parameterType（为获取parameterTypeClass）、resultMap、resultType（为获取resultTypeClass）、resultSetType（为获取resultSetTypeEnum）、statementType、flushCache、useCache、keyProperty的并初始化；同时获取nodeName确认isSelect值。
 
+### keyProperty（插入时主）
 
 ```language
   <insert id="insertAuthor" parameterType="domain.blog.Author">
