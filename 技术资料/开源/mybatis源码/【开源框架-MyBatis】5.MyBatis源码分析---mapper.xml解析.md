@@ -775,4 +775,8 @@ builderAssistant.applyCurrentNamespace主要用于获取sql标签对象的完整
     }
   }
 ```
+```language
+ bindMapperForNamespace();
+```
+
 最后的方法 bindMapperForNamespace();
