@@ -91,5 +91,6 @@ XMLMapperBuilder类
           ? new Jdbc3KeyGenerator() : new NoKeyGenerator();
     }
 ```
+而在分析主键逻辑之前，需先关注
 1. 显示指定useGeneratedKeys为true或者是insert语句且MapperConfig.xml中显示指定useGeneratedKeys为true(默认为false),则即说明可使用key生成器，且默认使用Jdbc3KeyGenerator（其implements KeyGenerator）
 2. 对于selectKey方式即返回其初始化时生成的keyGenerator（找了下，暂时没有找到
