@@ -794,4 +794,4 @@ builderAssistant.applyCurrentNamespace主要用于获取sql标签对象的完整
   }
 
 ```
-最后的方法 bindMapperForNamespace()逻辑比较简单：1.验证当前mapper.xml文件的namespace值并确认可获取到class对象，
+最后的方法 bindMapperForNamespace()逻辑比较简单：1.验证当前mapper.xml文件的namespace值并确认可获取到class对象，然后添加至configuration的Mapper
