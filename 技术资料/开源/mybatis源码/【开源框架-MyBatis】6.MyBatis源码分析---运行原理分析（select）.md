@@ -402,5 +402,5 @@ resultSetHandler为FastResultSetHandler的实现：
     return collapseSingleResultList(multipleResults);
   }
 ```
-resultMaps对象对应解析Mapper.xml时生成的resultMap列表，当前示例
+resultMaps对象对应解析Mapper.xml时生成的resultMap列表，当前示例的ResultMap对象对应class值为class domain.blog.Post
 
