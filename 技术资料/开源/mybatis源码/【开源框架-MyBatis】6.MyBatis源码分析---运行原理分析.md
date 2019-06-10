@@ -234,4 +234,4 @@ BaseExecutor类query方法：
     }
   }
 ```
-运行结果：paramNames（List）：[one, two, 2]；paramPositions（List）：[0, 2, 3];rowBoundsIndex=1。其实
+运行结果：paramNames（List）：[one, two, 2]；paramPositions（List）：[0, 2, 3];rowBoundsIndex=1。其实此处的很简单：1.判断出rowBoundsIndex在参数中的下标；2.
