@@ -21,7 +21,7 @@
     }
   }
 ```
-##### 1.2 基于Dao文件
+##### 1.2.1 获取AuthorMapper对象
 ```language
   //MapperRegistry类
   public <T> T getMapper(Class<T> type, SqlSession sqlSession) {
@@ -69,6 +69,6 @@ session.getMapper最终调用的是MapperRegistry类的getMapper方法，此会�
   }
 ```
 即Proxy0类也有同样的构造方法，基于动态代理模式则调用Proxy0类的实例对象的方法均会被重写成调用MapperProxy的invoke方法。
-
+- 总的来说：
 
 
