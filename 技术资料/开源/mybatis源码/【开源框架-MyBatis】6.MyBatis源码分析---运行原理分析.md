@@ -108,5 +108,5 @@ session.getMapper最终调用的是MapperRegistry类的getMapper方法，此会�
   }
 ```
 setupFields()方法根据
-commandName根据Proxy0实例的接口名称（AuthorMapper）及当前执行的方法selectAllAuthor拼接设置commandName，setupCommandType则是根据commandName去
+commandName根据Proxy0实例的接口名称（AuthorMapper）及当前执行的方法selectAllAuthor拼接设置commandName，setupCommandType则是根据commandName调用config.getMappedStatement(commandName)方法获取s
 
