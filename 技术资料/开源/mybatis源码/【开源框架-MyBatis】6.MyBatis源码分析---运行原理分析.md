@@ -137,7 +137,6 @@ setupFields()方法里即根据Proxy0实例的接口名称（AuthorMapper）及�
 ```
 基于如上的动态代理的转换，最终运行sqlSession的select方法。
 
-
 ### 二.sqlSession的select执行分析
 #### 2.1 List结果集查询
 其实查询单个selectOne方法底层仍是调用selectList，唯一区别是RowBounds是设置的默认对象
@@ -204,6 +203,36 @@ setupFields()方法里即根据Proxy0实例的接口名称（AuthorMapper）及�
 BaseExecutor类query方法：
 ##### 2.1.1 queryStack判断当前的SQL执行栈，可能会连续执行多条sql语（之前讲解resultMap时有学习），即同一个线程query方法可能会嵌套执行，即每执行一次+1，而结束一次查询减1。简单的记数器，当结果为0意味着执行结束
 ##### 2.1.2 createCacheKey方法
+```language
+  public CacheKey createCacheKey(MappedStatement ms, Object parameterObject, RowBounds rowBounds) {
+    if (closed) throw new ExecutorException("Executor was closed.");
+    BoundSql boundSql = ms.getBoundSql(parameterObject);
+    CacheKey cacheKey = new CacheKey();
+    cacheKey.update(ms.getId());
+    cacheKey.update(rowBounds.getOffset());
+    cacheKey.update(rowBounds.getLimit());
+    cacheKey.update(boundSql.getSql());
+    List<ParameterMapping> parameterMappings = boundSql.getParameterMappings();
+    if (parameterMappings.size() > 0 && parameterObject != null) {
+      TypeHandlerRegistry typeHandlerRegistry = ms.getConfiguration().getTypeHandlerRegistry();
+      if (typeHandlerRegistry.hasTypeHandler(parameterObject.getClass())) {
+        cacheKey.update(parameterObject);
+      } else {
+        MetaObject metaObject = configuration.newMetaObject(parameterObject);
+        for (ParameterMapping parameterMapping : parameterMappings) {
+          String propertyName = parameterMapping.getProperty();
+          if (metaObject.hasGetter(propertyName)) {
+            cacheKey.update(metaObject.getValue(propertyName));
+          } else if (boundSql.hasAdditionalParameter(propertyName)) {
+            cacheKey.update(boundSql.getAdditionalParameter(propertyName));
+          }
+        }
+      }
+    }
+    return cacheKey;
+  }
+```
+
 - createCacheKey为根据MappedStatement的Id、rowBounds参数、parameter（对应mapper.selectAuthor(101)；此处为普通参数，未使用注解且只有1个参数，故为value为101的Integer对象）、sql、ParameterMappings参数对象（基于parameterMap的parameterMapping所有或者直接parameterType的parameterObject）。此处可能涉及到参数的特殊处理，针对性分析一下：
 ```language
   //BoundAuthorMapper类
