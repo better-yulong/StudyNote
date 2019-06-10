@@ -215,10 +215,22 @@ BaseExecutor类query方法：
   BoundAuthorMapper mapper = session.getMapper(BoundAuthorMapper.class);
   List<Post> posts = mapper.findThreeSpecificPosts(1, new RowBounds(1, 1), 3, 5);
 ```
-###### 2.1.2.1 MapperMethod的setupMethodSignature
-
- 
-
-
-
-
+###### 2.1.2.1 MapperMethod的setupMethodSignature方法
+```language
+  private void setupMethodSignature() {
+    if (List.class.isAssignableFrom(method.getReturnType())) {
+      returnsList = true;
+    }
+    final Class[] argTypes = method.getParameterTypes();
+    for (int i = 0; i < argTypes.length; i++) {
+      if (RowBounds.class.isAssignableFrom(argTypes[i])) {
+        rowBoundsIndex = i;
+      } else {
+        String paramName = String.valueOf(paramPositions.size());
+        paramName = getParamNameFromAnnotation(i, paramName);
+        paramNames.add(paramName);
+        paramPositions.add(i);
+      }
+    }
+  }
+```
