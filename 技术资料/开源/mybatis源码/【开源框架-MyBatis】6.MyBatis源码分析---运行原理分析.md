@@ -6,6 +6,7 @@
   session.selectList("domain.blog.mappers.AuthorMapper.selectAllAuthors");
 ```
 继续深入分析可明白，在解析Mapper.xml文件时，会所有的select、delete、update、insert节点生成对应的MappedStatement对象并存储至configuration对象（其存储为Map结构，key即selectList的参数：由Mapper.xml的namespace值及节点的id拼装；value为MappedStatement对象），而在session的selectList首先则是根据参数去获取MappedStatement实例，然后初始化executro执行后面的逻辑.
+
 #### 1.2 基于Dao文件
 ```language
   @Test
@@ -20,6 +21,7 @@
     }
   }
 ```
+##### 1.2 基于Dao文件
 ```language
   //MapperRegistry类
   public <T> T getMapper(Class<T> type, SqlSession sqlSession) {
