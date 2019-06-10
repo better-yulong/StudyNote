@@ -169,7 +169,7 @@ setupFields()方法里即根据Proxy0实例的接口名称（AuthorMapper）及�
   }
 ```
 ```language
-  
+  //BaseExecutor类
   public List query(MappedStatement ms, Object parameter, RowBounds rowBounds, ResultHandler resultHandler) throws SQLException {
     ErrorContext.instance().resource(ms.getResource()).activity("executing a query").object(ms.getId());
     if (closed) throw new ExecutorException("Executor was closed.");
