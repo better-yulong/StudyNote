@@ -91,4 +91,20 @@ session.getMapper最终调用的是MapperRegistry类的getMapper方法，此会�
     return null;
   }
 ```
-##### 1.2.2.1 AuthorMapper方法调用
+##### 1.2.2.1 MapperMethod方法
+```language
+  public MapperMethod(Class declaringInterface, Method method, SqlSession sqlSession) {
+    paramNames = new ArrayList<String>();
+    paramPositions = new ArrayList<Integer>();
+    this.sqlSession = sqlSession;
+    this.method = method;
+    this.config = sqlSession.getConfiguration();
+    this.hasNamedParameters = false;
+    this.declaringInterface = declaringInterface;
+    setupFields();
+    setupMethodSignature();
+    setupCommandType();
+    validateStatement();
+  }
+```
+
