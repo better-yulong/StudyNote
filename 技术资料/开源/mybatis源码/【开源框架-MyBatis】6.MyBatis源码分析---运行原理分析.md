@@ -20,9 +20,8 @@
     }
   }
 ```
-session.getMapper
 ```language
-  
+  //MapperRegistry类
   public <T> T getMapper(Class<T> type, SqlSession sqlSession) {
     if (!knownMappers.contains(type))
       throw new BindingException("Type " + type + " is not known to the MapperRegistry.");
@@ -33,6 +32,7 @@ session.getMapper
     }
   }
 ```
+session.getMapper最终调用的是MapperRegistry类的
 ```language
   //MapperProxy类
   public static <T> T newMapperProxy(Class<T> mapperInterface, SqlSession sqlSession) {
