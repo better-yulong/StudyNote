@@ -336,5 +336,15 @@ ms为MappedSatement对象；parameter即为非RowBounds对应的Map；RowBounds�
 ##### 2.2.2 StatementHandler封装
 之前有分析过，即根据interceptor链及各拦截器配置基于动态代理Proxy.newProxyInstance()生成 resultHandler的代理对象
 ##### 2.2.3  stmt = prepareStatement(handler);
+```language
+  //SimpleExecutor
+  private Statement prepareStatement(StatementHandler handler) throws SQLException {
+    Statement stmt;
+    Connection connection = transaction.getConnection();
+    stmt = handler.prepare(connection);
+    handler.parameterize(stmt);
+    return stmt;
+  }
+```
 
 
