@@ -59,10 +59,10 @@ session.getMapper最终调用的是MapperRegistry类的getMapper方法，此会�
     return null;
   }
 ```
-所以结果可理解为生成代理Proxy0类的实例对象，即
-Proxy0 etends Proxy implements AuthorMapper{
-	
+所以结果可理解为生成代理Proxy0类的实例对象，即Proxy0 etends Proxy implements AuthorMapper；且因Proxy为如下构造函数：
+```language
 
-}
+```
+
 
 
