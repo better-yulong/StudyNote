@@ -72,4 +72,23 @@ session.getMapper最终调用的是MapperRegistry类的getMapper方法，此会�
 - 总的来说：session.getMapper(AuthorMapper.class)返回是的基于动态代理模式生成的代理对象，运行时实际调用的是其继承自MapperProxy类的invokde方法
 
 ##### 1.2.1 AuthorMapper方法调用
+根据上面分析，最终执行的是MapperProxy类的invoke方法
+```language
+  public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+    try {
+      if (!OBJECT_METHODS.contains(method.getName())) {
+        final Class declaringInterface = findDeclaringInterface(proxy, method);
+        final MapperMethod mapperMethod = new MapperMethod(declaringInterface, method, sqlSession);
+        final Object result = mapperMethod.execute(args);
+        if (result == null && method.getReturnType().isPrimitive()) {
+          throw new BindingException("Mapper method '" + method.getName() + "' (" + method.getDeclaringClass() + ") attempted to return null from a method with a primitive return type (" + method.getReturnType() + ").");
+        }
+        return result;
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    return null;
+  }
+```
 
