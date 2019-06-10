@@ -367,6 +367,6 @@ ms为MappedSatement对象；parameter即为非RowBounds对应的Map；RowBounds�
   }
 
 ```
-初始化准备工作：1.指定connection对象需执行的sql
+初始化准备工作：1.设置connection对象需执行的sql（如：select * from post where id in (?,?,?)）；2.设置statement
 
 
