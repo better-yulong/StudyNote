@@ -335,7 +335,7 @@ ms为MappedSatement对象；parameter即为非RowBounds对应的Map；RowBounds�
 获取当前MappedStatement对象的configuration对象
 ##### 2.2.2 StatementHandler封装
 之前有分析过，即根据interceptor链及各拦截器配置基于动态代理Proxy.newProxyInstance()生成 resultHandler的代理对象
-##### 2.2.3  stmt = prepareStatement(handler);
+##### 2.2.3 stmt = prepareStatement(handler);
 ```language
   //SimpleExecutor类
   private Statement prepareStatement(StatementHandler handler) throws SQLException {
@@ -370,3 +370,4 @@ ms为MappedSatement对象；parameter即为非RowBounds对应的Map；RowBounds�
 - 初始化准备工作：1.设置connection对象prepareStatement对应的sql（如：select * from post where id in (?,?,?)）；2.设置statement的读超时时间（默认为0）；3.设置statment的fetchSize（默认为0）
 -  handler.parameterize(stmt)方法则主要针对于sql中有selectKey的场景（insert偏多），会在该方法里面根据keyGenerator完成key值对应的sql的执行及参数绑定，下一篇另行分析。select是该方法可先忽略。
 
+##### 2.2.4 handler.query(stmt, resultHandler)
