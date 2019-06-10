@@ -384,5 +384,23 @@ handler是RoutingStatementHandler的实例，但query方法最终调用的是Pre
 其实该方法底层执行依赖数据库恭驱动，即调用数据库驱动对应的java.sql.PreparedStatement的实现类的execute方法。即通过method.invoke(statement, params)最终调用EmbedPreparedStatement动态代理类的executeStatement方法，并将结果等信息赋值给ps对象。具体是哪些信息呢？可通过resultSetHandler.handleResultSets来反向分析
 ###### 2.2.4.2 resultSetHandler.handleResultSets方法
 resultSetHandler为FastResultSetHandler的实现：
+```language
+  public List handleResultSets(Statement stmt) throws SQLException {
+    final List multipleResults = new ArrayList();
+    final List<ResultMap> resultMaps = mappedStatement.getResultMaps();
+    int resultMapCount = resultMaps.size();
+    int resultSetCount = 0;
+    ResultSet rs = stmt.getResultSet();
+    validateResultMapsCount(rs,resultMapCount);
+    while (rs != null && resultMapCount > resultSetCount) {
+      final ResultMap resultMap = resultMaps.get(resultSetCount);
+      handleResultSet(rs, resultMap, multipleResults);
+      rs = getNextResultSet(stmt);
+      cleanUpAfterHandlingResultSet();
+      resultSetCount++;
+    }
+    return collapseSingleResultList(multipleResults);
+  }
+```
 
 
