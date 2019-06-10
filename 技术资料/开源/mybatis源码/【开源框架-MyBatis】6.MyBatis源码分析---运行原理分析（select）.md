@@ -381,4 +381,4 @@ handler是RoutingStatementHandler的实例，但query方法最终调用的是Pre
   }
 ```
 ###### 2.2.4.1 ps.execute方法执行
-其实该方法底层执行依赖数据库恭驱动，即调用
+其实该方法底层执行依赖数据库恭驱动，即调用数据库驱动对应的PreparedStatement的实现类的execute方法
