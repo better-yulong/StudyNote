@@ -238,11 +238,11 @@ BaseExecutor类query方法：
     return boundSql;
   }
 ```
-ms.getBoundSql最终会调用DynamicSqlSource类的getBoundSql方法；context.getSql()对应Mapper.xml文件中的原始SQL；而sqlSourceParser.parse(context.getSql(), parameterType)处理后sqlSource对象的：
+ms.getBoundSql最终会调用DynamicSqlSource类的getBoundSql方法；context.getSql()对应Mapper.xml文件中的原始SQL；而sqlSourceParser.parse(context.getSql(), parameterType)处理后sqlSource对象的sql属性为（替换占位符）：
 ```language
 select * from post where id in (?,?,?)
 ```
-同时
+且sqlSource的
 
 
 
