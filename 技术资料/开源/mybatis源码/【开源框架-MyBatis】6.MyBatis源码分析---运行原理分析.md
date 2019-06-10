@@ -21,5 +21,16 @@
   }
 ```
 session.getMapper
+```language
+  public <T> T getMapper(Class<T> type, SqlSession sqlSession) {
+    if (!knownMappers.contains(type))
+      throw new BindingException("Type " + type + " is not known to the MapperRegistry.");
+    try {
+      return MapperProxy.newMapperProxy(type, sqlSession);
+    } catch (Exception e) {
+      throw new BindingException("Error getting mapper instance. Cause: " + e, e);
+    }
+  }
+```
 
 
