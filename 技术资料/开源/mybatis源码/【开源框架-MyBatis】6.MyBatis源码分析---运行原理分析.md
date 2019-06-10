@@ -232,7 +232,6 @@ BaseExecutor类query方法：
     return cacheKey;
   }
 ```
-
 - createCacheKey为根据MappedStatement的Id、rowBounds参数、parameter（对应mapper.selectAuthor(101)；此处为普通参数，未使用注解且只有1个参数，故为value为101的Integer对象）、sql、ParameterMappings参数对象（基于parameterMap的parameterMapping所有或者直接parameterType的parameterObject）。此处可能涉及到参数的特殊处理，针对性分析一下：
 ```language
   //BoundAuthorMapper类
@@ -272,6 +271,7 @@ ms.getBoundSql最终会调用DynamicSqlSource类的getBoundSql方法；context.g
 select * from post where id in (?,?,?)
 ```
 且sqlSource的ParameterMappings属性则会存储#{one},#{two},#{2}对应的paramName值。
+- 
 
 ###### 2.1.2.1 MapperMethod的setupMethodSignature方法
 mapper.findThreeSpecificPosts(1, new RowBounds(1, 1), 3, 5)有4个参数，而会被如的ParameterMappings仅3个参数，为何呢？问题MapperMethod的setupMethodSignature方法的处理逻辑
