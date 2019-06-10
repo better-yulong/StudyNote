@@ -418,5 +418,16 @@ resultSetHandler为FastResultSetHandler的实现：
       handleRowValues(rs, resultMap, resultHandler, rowBounds);
     }
   }
+
+    protected void handleRowValues(ResultSet rs, ResultMap resultMap, ResultHandler resultHandler, RowBounds rowBounds) throws SQLException {
+    final DefaultResultContext resultContext = new DefaultResultContext();
+    skipRows(rs, rowBounds);
+    while (shouldProcessMoreRows(rs, resultContext, rowBounds)) {
+      final ResultMap discriminatedResultMap = resolveDiscriminatedResultMap(rs, resultMap);
+      Object rowValue = getRowValue(rs, discriminatedResultMap, null);
+      resultContext.nextResultObject(rowValue);
+      resultHandler.handleResult(resultContext);
+    }
+  }
 ```
 
