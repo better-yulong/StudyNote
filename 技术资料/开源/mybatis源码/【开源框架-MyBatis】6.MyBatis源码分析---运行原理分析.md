@@ -211,9 +211,9 @@ BaseExecutor类query方法：
                                     int three);
 ```
 ```language
-
-BoundAuthorMapper mapper = session.getMapper(BoundAuthorMapper.class);
-    List<Post> posts = mapper.findThreeSpecificPosts(1, new RowBounds(1, 1), 3, 5);
+  //BindingTest类
+  BoundAuthorMapper mapper = session.getMapper(BoundAuthorMapper.class);
+  List<Post> posts = mapper.findThreeSpecificPosts(1, new RowBounds(1, 1), 3, 5);
 ```
 
 
