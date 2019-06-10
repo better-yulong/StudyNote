@@ -272,7 +272,6 @@ ms.getBoundSql最终会调用DynamicSqlSource类的getBoundSql方法；context.g
 select * from post where id in (?,?,?)
 ```
 且sqlSource的ParameterMappings属性则会存储#{one},#{two},#{2}对应的paramName值。
-- 
 
 ###### 2.1.2.1 MapperMethod的setupMethodSignature方法
 mapper.findThreeSpecificPosts(1, new RowBounds(1, 1), 3, 5)有4个参数，而会被如的ParameterMappings仅3个参数，为何呢？问题MapperMethod的setupMethodSignature方法的处理逻辑
