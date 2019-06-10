@@ -233,5 +233,22 @@ BaseExecutor类query方法：
       }
     }
   }
+  
+    private Object getParam(Object[] args) {
+    final int paramCount = paramPositions.size();
+    if (args == null || paramCount == 0) {
+      return null;
+    } else if (!hasNamedParameters && paramCount == 1) {
+      return args[paramPositions.get(0)];
+    } else {
+      Map param = new HashMap();
+      for (int i = 0; i < paramCount; i++) {
+        param.put(paramNames.get(i), args[paramPositions.get(i)]);
+      }
+      return param;
+    }
+  }
 ```
-运行结果：paramNames（List）：[one, two, 2]；paramPositions（List）：[0, 2, 3];rowBoundsIndex=1。其实此处的很简单：1.判断出rowBoundsIndex在参数中的下标；2.解析其他非rowBoundsIndex参数，记录其他参数的paramName(如果有@Param注解则即为注解指定的参数名称；否则就简单粗暴的用下标作为paraName.
+1. 运行结果：paramNames（List）：[one, two, 2]；paramPositions（List）：[0, 2, 3];rowBoundsIndex=1。其实此处的很简单：1.判断出rowBoundsIndex在参数中的下标；2.解析其他非rowBoundsIndex参数，记录其他参数的paramName(如果有@Param注解则即为注解指定的参数名称；否则就简单粗暴的用下标作为paraName.
+
+
