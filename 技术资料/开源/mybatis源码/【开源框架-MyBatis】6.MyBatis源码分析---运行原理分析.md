@@ -222,7 +222,8 @@ BaseExecutor类query方法：
     //原始SQL	
     select * from post
     where id in (#{one},#{two},#{2})
-  ```
+```
+ms.getBoundSql最终会调用DynamicSqlSource类的getBoundSql方法；在
 ```language
   //DynamicSqlSource类
   public BoundSql getBoundSql(Object parameterObject) {
