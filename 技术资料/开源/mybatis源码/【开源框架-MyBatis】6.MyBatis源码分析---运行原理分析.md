@@ -347,7 +347,7 @@ ms为MappedSatement对象；parameter即为非RowBounds对应的Map；RowBounds�
   }
 ```
 ```language
-
+  //BaseStatementHandler类
   public Statement prepare(Connection connection)
       throws SQLException {
     ErrorContext.instance().sql(boundSql.getSql());
