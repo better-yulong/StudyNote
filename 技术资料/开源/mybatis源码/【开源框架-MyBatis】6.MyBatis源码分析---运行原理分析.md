@@ -219,6 +219,7 @@ BaseExecutor类query方法：
 ```
 - BoundSql boundSql = ms.getBoundSql(parameterObject）
 ```language
+    //原始SQL	
     select * from post
     where id in (#{one},#{two},#{2})
   ```
