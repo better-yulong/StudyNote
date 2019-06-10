@@ -14,7 +14,7 @@
     SqlSession session = sqlMapper.openSession();
     try {
       AuthorMapper mapper = session.getMapper(AuthorMapper.class);
-      List authors = mapper.selectAllAuthors();
+      List authors = mapper.selectAllAuthor(101);
       assertEquals(2, authors.size());
     } finally {
       session.close();
@@ -108,5 +108,5 @@ session.getMapper最终调用的是MapperRegistry类的getMapper方法，此会�
   }
 ```
 setupFields()方法根据
-commandName根据Proxy0实例的接口名称（AuthorMapper）及当前执行的方法
+commandName根据Proxy0实例的接口名称（AuthorMapper）及当前执行的方法selectAllAuthor拼接
 
