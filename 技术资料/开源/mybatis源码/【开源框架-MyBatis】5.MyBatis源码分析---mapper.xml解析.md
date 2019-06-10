@@ -843,8 +843,53 @@ resource的值类似于org/apache/ibatis/builder/BlogMapper.xml，解析前会�
       }
     }
   }
+
+  private void parseStatement(Method method) {
+    Configuration configuration = assistant.getConfiguration();
+    SqlSource sqlSource = getSqlSourceFromAnnotations(method);
+    if (sqlSource != null) {
+      Options options = method.getAnnotation(Options.class);
+      final String mappedStatementId = type.getName() + "." + method.getName();
+      boolean flushCache = false;
+      boolean useCache = true;
+      Integer fetchSize = null;
+      Integer timeout = null;
+      StatementType statementType = StatementType.PREPARED;
+      ResultSetType resultSetType = ResultSetType.FORWARD_ONLY;
+      SqlCommandType sqlCommandType = getSqlCommandType(method);
+      KeyGenerator keyGenerator = configuration.isUseGeneratedKeys()
+          && SqlCommandType.INSERT.equals(sqlCommandType) ? new Jdbc3KeyGenerator() : new NoKeyGenerator();
+      String keyProperty = "id";
+      if (options != null) {
+        flushCache = options.flushCache();
+        useCache = options.useCache();
+        fetchSize = options.fetchSize() > -1 ? options.fetchSize() : null;
+        timeout = options.timeout() > -1 ? options.timeout() : null;
+        statementType = options.statementType();
+        resultSetType = options.resultSetType();
+        keyGenerator = options.useGeneratedKeys() ? new Jdbc3KeyGenerator() : new NoKeyGenerator();
+        keyProperty = options.keyProperty();
+      }
+      assistant.addMappedStatement(
+          mappedStatementId,
+          sqlSource,
+          statementType,
+          sqlCommandType,
+          fetchSize,
+          timeout,
+          null,                             // ParameterMapID
+          getParameterType(method),
+          generateResultMapName(method),    // ResultMapID
+          getReturnType(method),
+          resultSetType,
+          flushCache,
+          useCache,
+          keyGenerator,
+          keyProperty);
+    }
+  }
 ```
 - bindMapperForNamespace()方法：验证当前mapper.xml文件的namespace值并确认可获取到class对象，然后添加至configuration的Mapper(Set类型，同时会验证是否有同名的namespace已经被添加过)
 - MapperRegistry的addMapper验证是否为接口，之后添加至knownMappers用于标记；后面则是实例化MapperAnnotationBuilde并调用parese方法
-- MapperAnnotationBuilder的parese方法则是判断是否加载过（namespace，即对应Dao的类名：interface domain.blog.mappers.BlogMapper）。先行标记，然后运行loadXmlResource（可忽略）；之后是调用parseCache()、parseCacheRef()则是判断当前Dao方法是否有缓存相关注解并处理；最后是遍历Dao接口所所有方法，
+- MapperAnnotationBuilder的parese方法则是判断是否加载过（namespace，即对应Dao的类名：interface domain.blog.mappers.BlogMapper）。先行标记，然后运行loadXmlResource（可忽略）；之后是调用parseCache()、parseCacheRef()则是判断当前Dao方法是否有缓存相关注解并处理；最后是遍历Dao接口所所有方法，根据注解、方法参数、
 
