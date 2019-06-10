@@ -66,6 +66,6 @@ session.getMapper最终调用的是MapperRegistry类的getMapper方法，此会�
     this.h = paramInvocationHandler;
   }
 ```
-即Proxy0类也有同样的构造方法，基于动态代理模式则调用
+即Proxy0类也有同样的构造方法，基于动态代理模式则调用Proxy0类的实例对象的方法均会被重写成调用MapperProxy的invoke
 
 
