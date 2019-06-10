@@ -223,7 +223,7 @@ BaseExecutor类query方法：
     select * from post
     where id in (#{one},#{two},#{2})
 ```
-ms.getBoundSql最终会调用DynamicSqlSource类的getBoundSql方法；context.getSql()对应Mapper.xml
+ms.getBoundSql最终会调用DynamicSqlSource类的getBoundSql方法；context.getSql()对应Mapper.xml文件中的原始SQL；而sqlSourceParser.parse(context.getSql(), parameterType)则会把
 ```language
   //DynamicSqlSource类
   public BoundSql getBoundSql(Object parameterObject) {
