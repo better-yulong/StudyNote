@@ -368,5 +368,5 @@ ms为MappedSatement对象；parameter即为非RowBounds对应的Map；RowBounds�
 
 ```
 - 初始化准备工作：1.设置connection对象prepareStatement对应的sql（如：select * from post where id in (?,?,?)）；2.设置statement的读超时时间（默认为0）；3.设置statment的fetchSize（默认为0）
--  handler.parameterize(stmt);方法则主要针对于sql中有selectKey的场景（inser
+-  handler.parameterize(stmt)方法则主要针对于sql中有selectKey的场景（insert偏多），
 
