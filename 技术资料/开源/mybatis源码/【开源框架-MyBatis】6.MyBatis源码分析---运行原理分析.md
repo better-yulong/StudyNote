@@ -59,6 +59,6 @@ session.getMapper最终调用的是MapperRegistry类的getMapper方法，此会�
     return null;
   }
 ```
-
+所以结果可理解为生成代理对象Proxy0类的实例
 
 
