@@ -201,6 +201,6 @@ setupFields()方法里即根据Proxy0实例的接口名称（AuthorMapper）及�
   }
 ```
 BaseExecutor类query方法：
-1. queryStack判断当前的SQL执行栈，可能会连续执行多条sql语（之前讲解resultMap时有学习），即同一个线程query方法可能会嵌套执行，即每执行一次+1，而结束一次查询减1。简单的记数器，当结果为0意味着执行结束
-2. createCacheKey为根据MappedStatement的Id、rowBounds参数、parameter（对应mapper.selectAuthor(101)；此处为普通参数，未使用注解且只有1个参数，故为value为101的Integer对象）、sql、ParameterMappings参数对象（基于parameterMap的parameterMapping所有或者直接parameterType的parameterObject）
+##### 2.1.1 queryStack判断当前的SQL执行栈，可能会连续执行多条sql语（之前讲解resultMap时有学习），即同一个线程query方法可能会嵌套执行，即每执行一次+1，而结束一次查询减1。简单的记数器，当结果为0意味着执行结束
+##### 2.1.2 createCacheKey为根据MappedStatement的Id、rowBounds参数、parameter（对应mapper.selectAuthor(101)；此处为普通参数，未使用注解且只有1个参数，故为value为101的Integer对象）、sql、ParameterMappings参数对象（基于parameterMap的parameterMapping所有或者直接parameterType的parameterObject）。由于此处涉及到如注解参数
 
