@@ -408,6 +408,7 @@ resultSetHandler为FastResultSetHandler的实现：
 4. validateResultMapsCount相对比较简单，则是确认st对象不为空且resultMaps有ResultMap对象可用于处理结果（否则抛异常）
 5. 循环获取resultMap，并调用handleResultSet方法
 ```language
+  //FastResultSetHandler类
   protected void handleResultSet(ResultSet rs, ResultMap resultMap, List multipleResults) throws SQLException {
     if (resultHandler == null) {
       DefaultResultHandler defaultResultHandler = new DefaultResultHandler();
