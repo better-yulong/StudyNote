@@ -404,4 +404,5 @@ resultSetHandler为FastResultSetHandler的实现：
 ```
 1. resultMaps对象对应解析Mapper.xml时生成的resultMap列表，当前示例的ResultMap对象对应class值为class domain.blog.Post。
 2. stmt.getResultSet()返回ResultSet （而此外即是对应各数据库驱动对应ResultSet的实现类的实例，此处为：org.apache.derby.impl.jdbc.EmbedResultSet40）
-3. validateResultMapsCount相对比较简单，则是确认st对象不为空且resultMaps有
+3. validateResultMapsCount相对比较简单，则是确认st对象不为空且resultMaps有ResultMap对象可用于处理结果（否则抛异常）
+4. 
