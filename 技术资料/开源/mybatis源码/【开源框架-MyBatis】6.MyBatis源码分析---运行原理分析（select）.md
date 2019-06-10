@@ -380,4 +380,4 @@ handler是RoutingStatementHandler的实例，但query方法最终调用的是Pre
     return resultSetHandler.handleResultSets(ps);
   }
 ```
-###### 2.2.4.1 ps.execute
+###### 2.2.4.1 ps.execute方法执行
