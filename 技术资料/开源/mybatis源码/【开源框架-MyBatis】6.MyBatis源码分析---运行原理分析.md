@@ -252,6 +252,6 @@ BaseExecutor类query方法：
 ```
 > args为findThreeSpecificPosts参数数组
 1. 运行结果：paramNames（List）：[one, two, 2]；paramPositions（List）：[0, 2, 3];rowBoundsIndex=1。其实此处的很简单：1.判断出rowBoundsIndex在参数中的下标；2.解析其他非rowBoundsIndex参数，记录其他参数的paramName(如果有@Param注解则即为注解指定的参数名称；否则就简单粗暴的用下标作为paraName.
-2. 之后的真实查询会基于如上getParam方法根据paramNames、paramPositions转换成param对象（HashMap：{2=5, two=3, one=1}）（只参数只有一个则直接使用）
+2. 之后的真实查询会基于如上getParam方法根据paramNames、paramPositions转换成param对象（HashMap：{2=5, two=3, one=1}）（只参数只有一个则直接使用普通对象如Integer返回，而不会使用Map）
 ##### 2.1.3 BaseExecutor的List query(MappedStatement ms, Object parameter, RowBounds rowBounds, ResultHandler resultHandler) 方法
 ms为MappedSatement对象；parameter即为非RowBounds对应的Map；RowBounds即为rowBounds对象；resultHandler即为结果ResultHandler对象（默认为Executor.NO_RESULT_HANDLER）
