@@ -141,6 +141,7 @@ setupFields()方法里即根据Proxy0实例的接口名称（AuthorMapper）及�
 ### 二.sqlSession的select执行分析
 #### 2.1 List结果集查询
 ```language
+  //MapperMethod类
   private Object executeForList(Object[] args) throws SQLException {
     Object result;
     if (rowBoundsIndex != null) {
@@ -167,4 +168,37 @@ setupFields()方法里即根据Proxy0实例的接口名称（AuthorMapper）及�
     }
   }
 ```
+```language
+  
+  public List query(MappedStatement ms, Object parameter, RowBounds rowBounds, ResultHandler resultHandler) throws SQLException {
+    ErrorContext.instance().resource(ms.getResource()).activity("executing a query").object(ms.getId());
+    if (closed) throw new ExecutorException("Executor was closed.");
+    List list;
+    try {
+      queryStack++;
+      CacheKey key = createCacheKey(ms, parameter, rowBounds);
+      final List cachedList = (List) localCache.getObject(key);
+      if (cachedList != null) {
+        list = cachedList;
+      } else {
+        localCache.putObject(key, EXECUTION_PLACEHOLDER);
+        try {
+          list = doQuery(ms, parameter, rowBounds, resultHandler);
+        } finally {
+          localCache.removeObject(key);
+        }
+        localCache.putObject(key, list);
+      }
+    } finally {
+      queryStack--;
+    }
+    if (queryStack == 0) {
+      for (DeferredLoad deferredLoad : deferredLoads) {
+        deferredLoad.load();
+      }
+    }
+    return list;
+  }
+```
+
 
