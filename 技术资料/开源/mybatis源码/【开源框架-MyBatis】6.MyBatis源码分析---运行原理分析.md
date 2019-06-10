@@ -232,8 +232,9 @@ BaseExecutor类query方法：
     return cacheKey;
   }
 ```
-- createCacheKey为根据MappedStatement的Id、rowBounds参数、parameter（对应mapper.selectAuthor(101)；此处为普通参数，未使用注解且只有1个参数，故为value为101的Integer对象）、sql、ParameterMappings参数对象（基于parameterMap的parameterMapping所有或者直接parameterType的parameterObject）。
-关于参数此处可能涉及到参数的特殊处理，针对性分析一下：
+- createCacheKey为根据MappedStatement的Id、rowBounds参数、parameter（对应mapper.selectAuthor(101)；此处为普通参数，未使用注解且只有1个参数，故为value为101的Integer对象）、sql、ParameterMappings参数对象（）
+
+关于参数param涉及到原参数的特殊处理，针对性分析一下：
 ```language
   //BoundAuthorMapper类
   List<Post> findThreeSpecificPosts(@Param("one") int one,
