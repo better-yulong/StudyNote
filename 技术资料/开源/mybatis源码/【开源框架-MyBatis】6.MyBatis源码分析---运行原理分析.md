@@ -201,5 +201,5 @@ setupFields()方法里即根据Proxy0实例的接口名称（AuthorMapper）及�
   }
 ```
 BaseExecutor类query方法：
-1. queryStack为
+1. queryStack判断当前的SQL执行栈，可能会连续执行多条sql语（之前讲解resultMap时有）
 
