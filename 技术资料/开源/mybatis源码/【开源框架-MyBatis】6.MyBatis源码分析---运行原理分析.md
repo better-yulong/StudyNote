@@ -217,7 +217,13 @@ BaseExecutor类query方法：
   BoundAuthorMapper mapper = session.getMapper(BoundAuthorMapper.class);
   List<Post> posts = mapper.findThreeSpecificPosts(1, new RowBounds(1, 1), 3, 5);
 ```
-- ms.getBoundSql(parameterObject）
+- BoundSql boundSql = ms.getBoundSql(parameterObject）
+```language
+
+    select * from post
+    where id in (#{one},#{two},#{2})
+  
+```
 
 
 
