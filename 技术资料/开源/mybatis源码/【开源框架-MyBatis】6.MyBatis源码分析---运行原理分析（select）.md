@@ -383,4 +383,6 @@ handler是RoutingStatementHandler的实例，但query方法最终调用的是Pre
 ###### 2.2.4.1 ps.execute方法执行
 其实该方法底层执行依赖数据库恭驱动，即调用数据库驱动对应的java.sql.PreparedStatement的实现类的execute方法。即通过method.invoke(statement, params)最终调用EmbedPreparedStatement动态代理类的executeStatement方法，并将结果等信息赋值给ps对象。具体是哪些信息呢？可通过resultSetHandler.handleResultSets来反向分析
 ###### 2.2.4.2 resultSetHandler.handleResultSets方法
-FastResultSetHandler
+resultSetHandler为FastResultSetHandler的实现：
+
+
