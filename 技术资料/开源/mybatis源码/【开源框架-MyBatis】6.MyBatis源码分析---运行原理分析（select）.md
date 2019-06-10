@@ -371,3 +371,4 @@ ms为MappedSatement对象；parameter即为非RowBounds对应的Map；RowBounds�
 -  handler.parameterize(stmt)方法则主要针对于sql中有selectKey的场景（insert偏多），会在该方法里面根据keyGenerator完成key值对应的sql的执行及参数绑定，下一篇另行分析。select是该方法可先忽略。
 
 ##### 2.2.4 handler.query(stmt, resultHandler)
+、
