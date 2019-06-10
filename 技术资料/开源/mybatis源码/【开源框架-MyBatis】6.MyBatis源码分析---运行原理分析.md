@@ -1,4 +1,4 @@
-### 一.运行前准备
+### 一.运行前转换
 #### 1.1 基于Mapper.xml的namespace及id关联 
 之前的单元测试方法调用查询源码为：
 ```language
@@ -135,5 +135,7 @@ setupFields()方法里即根据Proxy0实例的接口名称（AuthorMapper）及�
     return result;
   }
 ```
-基于如上的动态代理的转换，最终运行sqlSession的select方法
+基于如上的动态代理的转换，最终运行sqlSession的select方法。
 
+
+sqlSession的select执行分析
