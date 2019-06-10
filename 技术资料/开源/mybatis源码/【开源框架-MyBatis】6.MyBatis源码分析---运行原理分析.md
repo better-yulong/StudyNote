@@ -244,10 +244,6 @@ select * from post where id in (?,?,?)
 ```
 且sqlSource的ParameterMappings属性则会存储#{one},#{two},#{2}对应的paramName值。
 
-
-
-
-
 ###### 2.1.2.1 MapperMethod的setupMethodSignature方法
 ```language
   private void setupMethodSignature() {
