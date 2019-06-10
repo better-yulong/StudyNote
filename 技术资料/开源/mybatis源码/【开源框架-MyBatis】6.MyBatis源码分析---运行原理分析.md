@@ -107,6 +107,6 @@ session.getMapper最终调用的是MapperRegistry类的getMapper方法，此会�
     validateStatement();
   }
 ```
-setupFields()方法根据
-commandName根据Proxy0实例的接口名称（AuthorMapper）及当前执行的方法selectAllAuthor拼接设置commandName，setupCommandType则是根据commandName调用config.getMappedStatement(commandName)方法获取MappedStatement对象及CommandType（获取结果为SqlCommandType.SELECT），validateStatement方法其实有些多余。
+setupFields()方法里即根据Proxy0实例的接口名称（AuthorMapper）及当前执行的方法selectAllAuthor拼接设置commandName，setupCommandType则是根据commandName调用config.getMappedStatement(commandName)方法获取MappedStatement对象及CommandType（获取结果为SqlCommandType.SELECT），validateStatement方法其实有些多余。
+> 此处做了一个小实验，即
 
