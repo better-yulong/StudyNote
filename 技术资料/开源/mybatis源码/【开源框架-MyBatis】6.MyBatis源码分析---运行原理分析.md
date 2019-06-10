@@ -140,3 +140,17 @@ setupFields()方法里即根据Proxy0实例的接口名称（AuthorMapper）及�
 
 ### 二.sqlSession的select执行分析
 #### 2.1 List结果集查询
+```language
+  private Object executeForList(Object[] args) throws SQLException {
+    Object result;
+    if (rowBoundsIndex != null) {
+      Object param = getParam(args);
+      RowBounds rowBounds = (RowBounds) args[rowBoundsIndex];
+      result = sqlSession.selectList(commandName, param, rowBounds);
+    } else {
+      Object param = getParam(args);
+      result = sqlSession.selectList(commandName, param);
+    }
+    return result;
+  }
+```
