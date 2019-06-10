@@ -334,5 +334,6 @@ ms为MappedSatement对象；parameter即为非RowBounds对应的Map；RowBounds�
 ##### 2.2.1 ms.getConfiguration()
 获取当前MappedStatement对象的configuration对象
 ##### 2.2.2 StatementHandler封装
-之前有分析过，即根据interceptor链及各拦截器配置基于动态代理resultHandler
+之前有分析过，即根据interceptor链及各拦截器配置基于动态代理Proxy.newProxyInstance()生成 resultHandler的代理对象
+##### 2.2.2
 
