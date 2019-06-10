@@ -372,3 +372,12 @@ ms为MappedSatement对象；parameter即为非RowBounds对应的Map；RowBounds�
 
 ##### 2.2.4 handler.query(stmt, resultHandler)
 handler是RoutingStatementHandler的实例，但query方法最终调用的是PreparedStatementHandler的query方法
+```language
+  public List query(Statement statement, ResultHandler resultHandler)
+      throws SQLException {
+    PreparedStatement ps = (PreparedStatement) statement;
+    ps.execute();
+    return resultSetHandler.handleResultSets(ps);
+  }
+```
+###### 2.2.4.1 ps.execute
