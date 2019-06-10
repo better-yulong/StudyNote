@@ -317,7 +317,7 @@ ms为MappedSatement对象；parameter即为非RowBounds对应的Map；RowBounds�
 
 #### 2.2 SimpleExecutor的doQuery方法
 ```language
-  //SimpleExecutor
+  //SimpleExecutor类
   public List doQuery(MappedStatement ms, Object parameter, RowBounds rowBounds, ResultHandler resultHandler) throws SQLException {
     Statement stmt = null;
     try {
