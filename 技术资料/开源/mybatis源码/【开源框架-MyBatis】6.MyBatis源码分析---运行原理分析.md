@@ -215,6 +215,9 @@ BaseExecutor类query方法：
   BoundAuthorMapper mapper = session.getMapper(BoundAuthorMapper.class);
   List<Post> posts = mapper.findThreeSpecificPosts(1, new RowBounds(1, 1), 3, 5);
 ```
+###### 2.1.2.1 MapperMethod的setupMethodSignature
+
+ 
 
 
 
