@@ -22,6 +22,7 @@
 ```
 session.getMapper
 ```language
+  
   public <T> T getMapper(Class<T> type, SqlSession sqlSession) {
     if (!knownMappers.contains(type))
       throw new BindingException("Type " + type + " is not known to the MapperRegistry.");
@@ -32,5 +33,15 @@ session.getMapper
     }
   }
 ```
+```language
+  //MapperProxy类
+  public static <T> T newMapperProxy(Class<T> mapperInterface, SqlSession sqlSession) {
+    ClassLoader classLoader = mapperInterface.getClassLoader();
+    Class[] interfaces = new Class[]{mapperInterface};
+    MapperProxy proxy = new MapperProxy(sqlSession);
+    return (T) Proxy.newProxyInstance(classLoader, interfaces, proxy);
+  }
+```
+
 
 
