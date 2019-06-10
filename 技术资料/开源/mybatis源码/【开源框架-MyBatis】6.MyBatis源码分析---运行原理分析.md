@@ -71,7 +71,7 @@ session.getMapper最终调用的是MapperRegistry类的getMapper方法，此会�
 即Proxy0类也有同样的构造方法，基于动态代理模式则调用Proxy0类的实例对象的方法均会被重写成调用MapperProxy的invoke方法。
 - 总的来说：session.getMapper(AuthorMapper.class)返回是的基于动态代理模式生成的代理对象，运行时实际调用的是其继承自MapperProxy类的invokde方法
 
-##### 1.2.1 AuthorMapper方法调用
+##### 1.2.2 AuthorMapper方法调用
 根据上面分析，最终执行的是MapperProxy类的invoke方法
 ```language
   public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
@@ -91,4 +91,4 @@ session.getMapper最终调用的是MapperRegistry类的getMapper方法，此会�
     return null;
   }
 ```
-
+##### 1.2.2.1 AuthorMapper方法调用
