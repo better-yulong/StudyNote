@@ -234,4 +234,4 @@ BaseExecutor类query方法：
     }
   }
 ```
-运行结果
+运行结果：paramNames：[one, two, 2]；paramPositions：
