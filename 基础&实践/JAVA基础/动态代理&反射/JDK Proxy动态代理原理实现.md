@@ -18,8 +18,6 @@ Door door = (Door) Class.forName(className).newInstance();
     再配合依赖注入的方法，就提高了软件的可伸缩性、可扩展性。
 
 
-
-
 $Proxy0实现了Bird接口，当然可以类型转化
 final class $Proxy0 extends Proxy implements Bird;
 #### 结合Class文件结构和下面代码版本就可理解如上的继承、实现关系
