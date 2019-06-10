@@ -41,6 +41,23 @@ session.getMapper最终调用的是MapperRegistry类的getMapper方法，此会�
     MapperProxy proxy = new MapperProxy(sqlSession);
     return (T) Proxy.newProxyInstance(classLoader, interfaces, proxy);
   }
+
+  public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+    try {
+      if (!OBJECT_METHODS.contains(method.getName())) {
+        final Class declaringInterface = findDeclaringInterface(proxy, method);
+        final MapperMethod mapperMethod = new MapperMethod(declaringInterface, method, sqlSession);
+        final Object result = mapperMethod.execute(args);
+        if (result == null && method.getReturnType().isPrimitive()) {
+          throw new BindingException("Mapper method '" + method.getName() + "' (" + method.getDeclaringClass() + ") attempted to return null from a method with a primitive return type (" + method.getReturnType() + ").");
+        }
+        return result;
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    return null;
+  }
 ```
 
 
