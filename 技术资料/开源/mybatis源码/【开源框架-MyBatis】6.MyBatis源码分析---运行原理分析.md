@@ -32,7 +32,7 @@
     }
   }
 ```
-session.getMapper最终调用的是MapperRegistry类的getMapper方法，此会先判断type是否可识别（这点在上一）
+session.getMapper最终调用的是MapperRegistry类的getMapper方法，此会先判断type是否可识别（这点在上一篇笔记最后有讲解：在mapper.xml文件解析完成之后，会把对应的ge）
 ```language
   //MapperProxy类
   public static <T> T newMapperProxy(Class<T> mapperInterface, SqlSession sqlSession) {
