@@ -381,5 +381,4 @@ handler是RoutingStatementHandler的实例，但query方法最终调用的是Pre
   }
 ```
 ###### 2.2.4.1 ps.execute方法执行
-其实该方法底层执行依赖数据库恭驱动，即调用数据库驱动对应的java.sql.PreparedStatement的实现类的execute方法
-method.invoke(statement, params)   EmbedPreparedStatement动态代理类的 executeStatem
+其实该方法底层执行依赖数据库恭驱动，即调用数据库驱动对应的java.sql.PreparedStatement的实现类的execute方法。即通过method.invoke(statement, params)最终调用EmbedPreparedStatement动态代理类的executeStatement方法
