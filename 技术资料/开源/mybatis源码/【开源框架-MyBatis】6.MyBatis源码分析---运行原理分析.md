@@ -315,5 +315,21 @@ mapper.findThreeSpecificPosts(1, new RowBounds(1, 1), 3, 5)有4个参数，而�
 ##### 2.1.3 BaseExecutor的List query(MappedStatement ms, Object parameter, RowBounds rowBounds, ResultHandler resultHandler) 方法
 ms为MappedSatement对象；parameter即为非RowBounds对应的Map；RowBounds即为rowBounds对象；resultHandler即为结果ResultHandler对象（默认为Executor.NO_RESULT_HANDLER）
 
-##### 2.1.3 
-SimpleExecutor
+#### 2.2 SimpleExecutor的doQuery方法
+```language
+  //SimpleExecutor
+  public List doQuery(MappedStatement ms, Object parameter, RowBounds rowBounds, ResultHandler resultHandler) throws SQLException {
+    Statement stmt = null;
+    try {
+      Configuration configuration = ms.getConfiguration();
+      StatementHandler handler = configuration.newStatementHandler(this, ms, parameter, rowBounds, resultHandler);
+      stmt = prepareStatement(handler);
+      return handler.query(stmt, resultHandler);
+    } finally {
+      closeStatement(stmt);
+    }
+  }
+
+```
+
+
