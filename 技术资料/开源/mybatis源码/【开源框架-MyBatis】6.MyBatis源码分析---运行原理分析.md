@@ -234,4 +234,4 @@ BaseExecutor类query方法：
     }
   }
 ```
-运行结果：paramNames（List）：[one, two, 2]；paramPositions（List）：[0, 2, 3]。
+运行结果：paramNames（List）：[one, two, 2]；paramPositions（List）：[0, 2, 3];rowBoundsIndex=1。其实
