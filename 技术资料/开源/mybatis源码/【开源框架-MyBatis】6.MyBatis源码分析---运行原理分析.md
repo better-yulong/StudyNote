@@ -110,4 +110,30 @@ session.getMapper最终调用的是MapperRegistry类的getMapper方法，此会�
 setupFields()方法里即根据Proxy0实例的接口名称（AuthorMapper）及当前执行的方法selectAuthor拼接设置commandName；setupMethodSignature则是判断返回值是否为List及方法参数注解等处理；setupCommandType则是根据commandName调用config.getMappedStatement(commandName)方法获取MappedStatement对象及CommandType（获取结果为SqlCommandType.SELECT），validateStatement方法其实有些多余。
 > 此处做了一个小实验，即将Dao中的selectAuthor重命名（使得与Mapper.xml的select的名称不匹配），发现执行到如上方法时会因无法获取到对应的MappedStatement而抛出异常。
 
+```language
+  public Object execute(Object[] args) throws SQLException {
+    Object result;
+    if (SqlCommandType.INSERT == type) {
+      Object param = getParam(args);
+      result = sqlSession.insert(commandName, param);
+    } else if (SqlCommandType.UPDATE == type) {
+      Object param = getParam(args);
+      result = sqlSession.update(commandName, param);
+    } else if (SqlCommandType.DELETE == type) {
+      Object param = getParam(args);
+      result = sqlSession.delete(commandName, param);
+    } else if (SqlCommandType.SELECT == type) {
+      if (returnsList) {
+        result = executeForList(args);
+      } else {
+        Object param = getParam(args);
+        result = sqlSession.selectOne(commandName, param);
+      }
+    } else {
+      throw new BindingException("Unkown execution method for: " + commandName);
+    }
+    return result;
+  }
+```
+
 
