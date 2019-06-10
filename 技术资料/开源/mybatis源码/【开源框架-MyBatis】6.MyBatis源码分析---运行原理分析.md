@@ -154,3 +154,17 @@ setupFields()方法里即根据Proxy0实例的接口名称（AuthorMapper）及�
     return result;
   }
 ```
+```language
+
+  public List selectList(String statement, Object parameter, RowBounds rowBounds) {
+    try {
+      MappedStatement ms = configuration.getMappedStatement(statement);
+      return executor.query(ms, wrapCollection(parameter), rowBounds, Executor.NO_RESULT_HANDLER);
+    } catch (Exception e) {
+      throw ExceptionFactory.wrapException("Error querying database.  Cause: " + e, e);
+    } finally {
+      ErrorContext.instance().reset();
+    }
+  }
+```
+
