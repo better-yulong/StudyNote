@@ -222,8 +222,23 @@ BaseExecutor类query方法：
     select * from post
     where id in (#{one},#{two},#{2})
   ```
+```language
+  //DynamicSqlSource类
+  public BoundSql getBoundSql(Object parameterObject) {
+    DynamicContext context = new DynamicContext(configuration, parameterObject);
+    rootSqlNode.apply(context);
+    SqlSourceBuilder sqlSourceParser = new SqlSourceBuilder(configuration);
+    Class parameterType = parameterObject == null ? Object.class : parameterObject.getClass();
+    SqlSource sqlSource = sqlSourceParser.parse(context.getSql(), parameterType);
+    BoundSql boundSql = sqlSource.getBoundSql(parameterObject);
+    for (Map.Entry<String, Object> entry : context.getBindings().entrySet()) {
+      boundSql.setAdditionalParameter(entry.getKey(), entry.getValue());
+    }
+    return boundSql;
+  }
+```
 
-DynamicSqlSource
+
 
 
 ###### 2.1.2.1 MapperMethod的setupMethodSignature方法
