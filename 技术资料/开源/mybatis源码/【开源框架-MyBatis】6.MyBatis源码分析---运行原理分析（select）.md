@@ -454,7 +454,7 @@ resultSetHandler为FastResultSetHandler的实现：
 - handleResultSet方法：resolveDiscriminatedResultMap用于处理ResultMap标识中的discriminator标签逻辑（discriminator翻译过来为鉴别器；之前的示例有讲：discriminator可指定根据某列的值做逻辑判断，可关联不同的SubMap）获取当行前对应的SubMap。如若ResultMap无discriminator则直接返回ResultMap；若ResultMap有discriminator标签，则根据discriminator从rs获取对应列值并取得SubMap并返回SubMap
 - getRowValue方法（getRowValue(rs, discriminatedResultMap, null)如下核心方法）
   1.createResultObject()方法用于创建结果对象，但参数中的ResultMap是上一步获取的discriminator对应的SubMap，即创建的是子ResultMap对应的实例对象（其中会判断ResultMap的type对应的class；如若class在TypeHandler中则根据ResultMap的Type创建对应对象（如Integer、Date，抑或自定义对象）；如若有constructor标签，则调用获取rs对应的值调用有参构造方法实例化对象；如若classg不在TypeHandler也无constructor标签则直接调用objectFactory.create(resultType)创建对象，就对应于resultType="domain.blog.Author"）---此处疑问？ResultMap如果返回的是discriminator标签的SubMap，此处仅是创建子对象；那怎么实例化RsultMap对象的呢？
-> 之所以理解错也是对discriminator标签的SubMap与ResultMap的Class没有理解清楚？SubMap对应的Class必须是ReusltMap对应的Class的子类，如Document是Book、Magazine父类 ，只是各子类有添加各自私有属性，那么上面的问题就不难理解
+> 之所以理解错也是对discriminator标签的SubMap与ResultMap的Class没有理解清楚？SubMap对应的Class必须是ReusltMap对应的Class的子类，如Document是Book、Magazine父类 ，只是各子类有添加各自私有属性，那么上面的问题就不难理解，即根据Book或者 
 ```language
   <resultMap id="document" class="com.testdomain.Document">
     <result property="id" column="DOCUMENT_ID"/>
