@@ -452,7 +452,7 @@ resultSetHandler为FastResultSetHandler的实现：
 - 当前示例 resultHandler为null，即初始化defaultResultHandler 调用handleRowValues方法；skipRows主要是用于有指定rowBounds参数时跳至指定行，一般可忽略；shouldProcessMoreRows则会判断rs.next()并移动指针。
 - resolveDiscriminatedResultMap用于处理ResultMap标识中的discriminator标签逻辑（discriminator翻译过来为鉴别器；之前的示例有讲：discriminator可指定根据某列的值做逻辑判断，可关联不同的外部子ResultMap）获取当行前对应的外部子ResultMap。
 - getRowValue(rs, discriminatedResultMap, null)有两个主要方法：
-  1.  applyAutomaticMappings(rs, unmappedColumnNames, metaObject)方法用于处理结果集对对象的映射（即类似于：resultType="domain.blog.Author"），会根据metaObject（其是结果类的包装类，即Author的包装类）的属性property，从rs中获取值并用对应的TypeHandler处理后
+  1.  applyAutomaticMappings(rs, unmappedColumnNames, metaObject)方法用于处理结果集对对象的映射（即类似于：resultType="domain.blog.Author"），会根据metaObject（其是结果类的包装类实例，即Author的包装类实例对象）的属性property，从rs中获取值并用对应的TypeHandler处理，最后赋值给
 
 
 
