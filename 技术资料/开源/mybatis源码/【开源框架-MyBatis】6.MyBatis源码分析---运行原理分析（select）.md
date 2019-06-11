@@ -430,7 +430,7 @@ resultSetHandler为FastResultSetHandler的实现：
     }
   }
 ```
-- 当前示例 resultHandler为null，即初始化defaultResultHandler 调用handleRowValues方法
+- 当前示例 resultHandler为null，即初始化defaultResultHandler 调用handleRowValues方法；skipRows
 
 
 
