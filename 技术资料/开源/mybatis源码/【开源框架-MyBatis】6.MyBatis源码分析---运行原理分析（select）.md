@@ -478,4 +478,12 @@ resultSetHandler为FastResultSetHandler的实现：
   3.applyPropertyMappings(rs, resultMap, mappedColumnNames, metaObject, lazyLoader)可看出参数为mappedColumnNames，即可在ResultMap中映射到的列名；区别同第一个方法在于先根据column获取TypeHandler处理后的value，再根据property赋值给metaObjet对象。
 
 ###### 2.5 
+```language
+  <resultMap id="personDocument" class="com.testdomain.PersonDocument">
+    <result property="id" column="PERSON_ID"/>
+    <result property="name" column="PERSON_NAME"/>
+    <result property="favoriteDocument" resultMap="Documents.document"/>
+  </resultMap>
+```
+
 
