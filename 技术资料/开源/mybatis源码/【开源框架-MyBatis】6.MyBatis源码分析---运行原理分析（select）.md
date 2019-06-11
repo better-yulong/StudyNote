@@ -430,5 +430,5 @@ resultSetHandler为FastResultSetHandler的实现：
     }
   }
 ```
-
+- 当前示例 resultHandler为null，即
 DefaultResultHandler
