@@ -486,6 +486,8 @@ resultSetHandler为FastResultSetHandler的实现：
     <collection property="posts" column="id" select="selectPostsForBlog"/>
   </resultMap>
 
+select * from Blog where id = #{id}
+
 
 ###### 2.5 
 ```language
