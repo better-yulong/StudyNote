@@ -431,7 +431,7 @@ resultSetHandler为FastResultSetHandler的实现：
   }
 ```
 - 当前示例 resultHandler为null，即初始化defaultResultHandler 调用handleRowValues方法；skipRows主要是用于有指定rowBounds参数时跳至指定行，一般可忽略；shouldProcessMoreRows则会判断rs.next()并移动指针。
-- resolveDiscriminatedResultMap用于处理ResultMap标识中的discriminator标签逻辑（discriminator翻译过来为鉴别器；之前的示例有讲：discriminator可指定根据某列的值做逻辑判断，可关联不
+- resolveDiscriminatedResultMap用于处理ResultMap标识中的discriminator标签逻辑（discriminator翻译过来为鉴别器；之前的示例有讲：discriminator可指定根据某列的值做逻辑判断，可关联不同的外部ResultMap）
 
 
 
