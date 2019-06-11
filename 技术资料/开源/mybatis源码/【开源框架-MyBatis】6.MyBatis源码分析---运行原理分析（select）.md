@@ -484,6 +484,16 @@ resultSetHandler为FastResultSetHandler的实现：
     <result property="name" column="PERSON_NAME"/>
     <result property="favoriteDocument" resultMap="Documents.document"/>
   </resultMap>
+
+   <resultMap id="document" class="com.testdomain.Document">
+    <result property="id" column="DOCUMENT_ID"/>
+    <result property="title" column="DOCUMENT_TITLE"/>
+    <result property="type" column="DOCUMENT_TYPE"/>
+    <discriminator column="DOCUMENT_TYPE" javaType="string">
+      <subMap value="BOOK" resultMap="book"/>
+      <subMap value="NEWSPAPER" resultMap="news"/>
+    </discriminator>
+  </resultMap>
 ```
 
 
