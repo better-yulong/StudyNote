@@ -451,9 +451,10 @@ resultSetHandler为FastResultSetHandler的实现：
 ```
 - 当前示例 resultHandler为null，即初始化defaultResultHandler 调用handleRowValues方法；skipRows主要是用于有指定rowBounds参数时跳至指定行，一般可忽略；shouldProcessMoreRows则会判断rs.next()并移动指针。
 - resolveDiscriminatedResultMap用于处理ResultMap标识中的discriminator标签逻辑（discriminator翻译过来为鉴别器；之前的示例有讲：discriminator可指定根据某列的值做逻辑判断，可关联不同的外部子ResultMap）获取当行前对应的外部子ResultMap。
-- getRowValue(rs, discriminatedResultMap, null)有两个主要方法：
-  1.applyAutomaticMappings(rs, unmappedColumnNames, metaObject)方法用于处理结果集对对象的映射（即类似于：resultType="domain.blog.Author"；其参数为unmappedColumnNames），会根据metaObject（其是结果类的包装类实例，即Author的包装类实例对象）的属性property，从rs中获取值并用对应的TypeHandler处理，最后赋值给metaObject并标记foundValues为true;(之前有分析，通过当前代码也可看出，结果集到对象的映射支持可通过配置关闭) 
-  2. applyPropertyMappings(rs, resultMap, mappedColumnNames, metaObject, lazyLoader)可看出参数为mappedColumnNames，即可在ResultMap中映射到的列名；区别同第一个方法在于先根据column获取TypeHandler处理后的value，再根据property赋值给metaObjet对象。
+- getRowValue(rs, discriminatedResultMap, null)如下核心方法：
+  1.
+  2.applyAutomaticMappings(rs, unmappedColumnNames, metaObject)方法用于处理结果集对对象的映射（即类似于：resultType="domain.blog.Author"；其参数为unmappedColumnNames），会根据metaObject（其是结果类的包装类实例，即Author的包装类实例对象）的属性property，从rs中获取值并用对应的TypeHandler处理，最后赋值给metaObject并标记foundValues为true;(之前有分析，通过当前代码也可看出，结果集到对象的映射支持可通过配置关闭) 
+  3. applyPropertyMappings(rs, resultMap, mappedColumnNames, metaObject, lazyLoader)可看出参数为mappedColumnNames，即可在ResultMap中映射到的列名；区别同第一个方法在于先根据column获取TypeHandler处理后的value，再根据property赋值给metaObjet对象。
 
 
 
