@@ -1,4 +1,4 @@
-基于seelctKey的插入
+基于seelctKey的插入源代码分析
 BindingTest测试类shouldInsertAuthorWithSelectKey
 ```language
   @Test
@@ -15,7 +15,6 @@ BindingTest测试类shouldInsertAuthorWithSelectKey
     }
   }
 ```
-
 ```language
   BoundAuthorMapper.xml文件
   <insert id="insertAuthor" parameterType="domain.blog.Author">
@@ -28,5 +27,5 @@ BindingTest测试类shouldInsertAuthorWithSelectKey
     )
   </insert>
 ```
-
+因源码为测试各种场景，针对
 
