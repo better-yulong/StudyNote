@@ -535,8 +535,7 @@ DEBUG [main] - <==        Row: 1, 1, 101, 2007-12-05 00:00:00.0, NEWS, Corn nuts
 DEBUG [main] - <==        Row: 2, 1, 101, 2008-01-12 00:00:00.0, VIDEOS, Paul Hogan on Toy Dogs, That's not a dog.  THAT's a dog!, 0
 DEBUG [main] - xxx Connection Closed
 ```
-如上在resultMap 中通过select 关联查询仍使用FastResultSetHandler:handleResultSets处理结果集；且后两次关联查询会
-
+如上在resultMap 中通过select 关联查询仍使用FastResultSetHandler:handleResultSets处理结果集；且后两次关联查询会依赖第一次查询返回结果集中的数据。
 ###### 2.2.5.1 NestedResultSetHandler:handleResultSets
 ```language
   Mapper.xml
@@ -585,7 +584,7 @@ DEBUG [main] - xxx Connection Closed
 DEBUG [main] - Returned connection 22859697 to pool.
 
 ```
-
+基于如上分析及
 
 
 
