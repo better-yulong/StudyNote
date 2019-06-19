@@ -45,7 +45,68 @@ Mapper.xml解析生成MappedStatement时（即XMLStatementBuilder类的parseStat
       put("selectKey", new SelectKeyHandler());
     }
   };
+
+    private List<SqlNode> parseDynamicTags(XNode node) {
+    List<SqlNode> contents = new ArrayList<SqlNode>();
+    NodeList children = node.getNode().getChildNodes();
+    for (int i = 0; i < children.getLength(); i++) {
+      XNode child = node.newXNode(children.item(i));
+      String nodeName = child.getNode().getNodeName();
+      if (child.getNode().getNodeType() == Node.CDATA_SECTION_NODE
+          || child.getNode().getNodeType() == Node.TEXT_NODE) {
+        String data = child.getStringBody("");
+        contents.add(new TextSqlNode(data));
+      } else {
+        NodeHandler handler = nodeHandlers.get(nodeName);
+        if (handler == null) {
+          throw new BuilderException("Unknown element <" + nodeName + "> in SQL statement.");
+        }
+        handler.handleNode(child, contents);
+
+      }
+    }
+    return contents;
+  }
+  
+  private class SelectKeyHandler implements NodeHandler {
+    public void handleNode(XNode nodeToHandle, List<SqlNode> targetContents) {
+      XNode parent = nodeToHandle.getParent();
+      String id = parent.getStringAttribute("id") + SelectKeyGenerator.SELECT_KEY_SUFFIX;
+      String resultType = nodeToHandle.getStringAttribute("resultType");
+      Class resultTypeClass = resolveClass(resultType);
+      StatementType statementType = StatementType.valueOf(nodeToHandle.getStringAttribute("statementType", StatementType.PREPARED.toString()));
+      String keyProperty = nodeToHandle.getStringAttribute("keyProperty");
+      String parameterType = parent.getStringAttribute("parameterType");
+      boolean executeBefore = "BEFORE".equals(nodeToHandle.getStringAttribute("order", "AFTER"));
+      Class parameterTypeClass = resolveClass(parameterType);
+
+      //defaults
+      boolean useCache = false;
+      KeyGenerator keyGenerator = new NoKeyGenerator();
+      Integer fetchSize = null;
+      Integer timeout = null;
+      boolean flushCache = false;
+      String parameterMap = null;
+      String resultMap = null;
+      ResultSetType resultSetTypeEnum = null;
+
+      List<SqlNode> contents = parseDynamicTags(nodeToHandle);
+      MixedSqlNode rootSqlNode = new MixedSqlNode(contents);
+      SqlSource sqlSource = new DynamicSqlSource(configuration, rootSqlNode);
+      SqlCommandType sqlCommandType = SqlCommandType.SELECT;
+
+      builderAssistant.addMappedStatement(id, sqlSource, statementType, sqlCommandType,
+          fetchSize, timeout, parameterMap, parameterTypeClass, resultMap, resultTypeClass,
+          resultSetTypeEnum, flushCache, useCache, keyGenerator, keyProperty);
+
+      id = builderAssistant.applyCurrentNamespace(id);
+
+      MappedStatement keyStatement = configuration.getMappedStatement(id);
+      configuration.addKeyGenerator(id, new SelectKeyGenerator(keyStatement, executeBefore));
+    }
+  }
 ```
+
 
 
 
