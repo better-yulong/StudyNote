@@ -1,4 +1,21 @@
-BindingTest   shouldInsertAuthorWithSelectKey
+基于seelctKey的插入
+BindingTest测试类shouldInsertAuthorWithSelectKey
+```language
+  @Test
+  public void shouldInsertAuthorWithSelectKey() {
+    SqlSession session = sqlSessionFactory.openSession();
+    try {
+      BoundAuthorMapper mapper = session.getMapper(BoundAuthorMapper.class);
+      Author author = new Author(-1, "cbegin", "******", "cbegin@nowhere.com", "N/A", Section.NEWS);
+      int rows = mapper.insertAuthor(author);
+      assertEquals(1, rows);
+      session.rollback();
+    } finally {
+      session.close();
+    }
+  }
+```
+
 ```language
   BoundAuthorMapper.xml文件
   <insert id="insertAuthor" parameterType="domain.blog.Author">
