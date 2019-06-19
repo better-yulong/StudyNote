@@ -149,5 +149,13 @@ XMLStatementBuilder类
   }
 ```
 会获取SelectKeyGenerator
+```language
+  public void processBefore(Executor executor, MappedStatement ms, Statement stmt, Object parameter) {
+    if (executeBefore) {
+      processGeneratedKeys(executor, ms, stmt, parameter);
+    }
+  }
+```
+
 
 
