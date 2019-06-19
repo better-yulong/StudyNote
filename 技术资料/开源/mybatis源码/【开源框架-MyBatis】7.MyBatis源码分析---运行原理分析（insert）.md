@@ -107,7 +107,7 @@ XMLStatementBuilder类
     }
   }
 ```
-即类似selectKey会被转换成SelectKeyGenerator，并基于id(
+即类似selectKey会被转换成SelectKeyGenerator，并基于id(parent.getStringAttribute("id") + SelectKeyGenerator.SELECT_KEY_SUFFIX)保存至configuration对象的
 
 
 
