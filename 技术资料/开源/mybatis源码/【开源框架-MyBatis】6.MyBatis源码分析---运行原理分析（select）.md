@@ -476,7 +476,63 @@ resultSetHandler为FastResultSetHandler的实现：
 ```
   2.applyAutomaticMappings(rs, unmappedColumnNames, metaObject)方法用于处理结果集对对象的映射（即类似于：resultType="domain.blog.Author"；其参数为unmappedColumnNames），会根据metaObject（其是结果类的包装类实例，即Author的包装类实例对象）的属性property，从rs中获取值并用对应的TypeHandler处理，最后赋值给metaObject并标记foundValues为true;(之前有分析，通过当前代码也可看出，结果集到对象的映射支持可通过配置关闭) 
   3.applyPropertyMappings(rs, resultMap, mappedColumnNames, metaObject, lazyLoader)可看出参数为mappedColumnNames，即可在ResultMap中映射到的列名；区别同第一个方法在于先根据column获取TypeHandler处理后的value，再根据property赋值给metaObjet对象。
+```language
+  Mapper.xml文件
+  <resultMap id="blogWithPosts" type="Blog">
+    <id property="id" column="id"/>
+    <result property="title" column="title"/>
+    <association property="author" column="author_id"
+                 select="selectAuthorWithInlineParams"/>
+    <collection property="posts" column="id" select="selectPostsForBlog"/>
+  </resultMap>
 
+  <select id="selectBlogWithPostsUsingSubSelect" parameterType="int" resultMap="blogWithPosts">
+    select * from Blog where id = #{id}
+  </select>
+
+  <select id="selectAuthorWithInlineParams"
+          parameterType="int"
+          resultType="domain.blog.Author">
+    select * from author where id = #{id}
+  </select>
+
+  <select id="selectPostsForBlog" parameterType="int" resultType="Post">
+    select * from Post where blog_id = #{blog_id}
+  </select>
+```
+- 查询三次
+1. select * from Blog where id = ?
+2. select * from author where id = ?
+3. select * from Post where blog_id = ?
+```
+
+DEBUG [main] - ooo Connection Opened
+ExamplePlugin intercept:org.apache.ibatis.executor.CachingExecutor:query
+ExamplePlugin intercept:org.apache.ibatis.executor.parameter.DefaultParameterHandler:setParameters
+ExamplePlugin intercept:org.apache.ibatis.executor.statement.RoutingStatementHandler:query
+DEBUG [main] - ==>  Executing: select * from Blog where id = ? 
+DEBUG [main] - ==> Parameters: 1(Integer)
+ExamplePlugin intercept:org.apache.ibatis.executor.resultset.FastResultSetHandler:handleResultSets
+DEBUG [main] - <==    Columns: ID, AUTHOR_ID, TITLE
+DEBUG [main] - <==        Row: 1, 101, Jim Business
+ExamplePlugin intercept:org.apache.ibatis.executor.parameter.DefaultParameterHandler:setParameters
+ExamplePlugin intercept:org.apache.ibatis.executor.statement.RoutingStatementHandler:query
+DEBUG [main] - ==>  Executing: select * from author where id = ? 
+DEBUG [main] - ==> Parameters: 101(Integer)
+ExamplePlugin intercept:org.apache.ibatis.executor.resultset.FastResultSetHandler:handleResultSets
+DEBUG [main] - <==    Columns: ID, USERNAME, PASSWORD, EMAIL, BIO, FAVOURITE_SECTION
+DEBUG [main] - <==        Row: 101, jim, ********, jim@ibatis.apache.org, , NEWS
+ExamplePlugin intercept:org.apache.ibatis.executor.parameter.DefaultParameterHandler:setParameters
+ExamplePlugin intercept:org.apache.ibatis.executor.statement.RoutingStatementHandler:query
+DEBUG [main] - ==>  Executing: select * from Post where blog_id = ? 
+DEBUG [main] - ==> Parameters: 1(Integer)
+ExamplePlugin intercept:org.apache.ibatis.executor.resultset.FastResultSetHandler:handleResultSets
+DEBUG [main] - <==    Columns: ID, BLOG_ID, AUTHOR_ID, CREATED_ON, SECTION, SUBJECT, BODY, DRAFT
+DEBUG [main] - <==        Row: 1, 1, 101, 2007-12-05 00:00:00.0, NEWS, Corn nuts, I think if I never smelled another corn nut it would be too soon..., 1
+DEBUG [main] - <==        Row: 2, 1, 101, 2008-01-12 00:00:00.0, VIDEOS, Paul Hogan on Toy Dogs, That's not a dog.  THAT's a dog!, 0
+DEBUG [main] - xxx Connection Closed
+
+```
 
 ###### 2.5 
 ```language
