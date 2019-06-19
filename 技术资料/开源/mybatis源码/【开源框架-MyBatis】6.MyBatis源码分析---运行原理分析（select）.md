@@ -584,7 +584,7 @@ DEBUG [main] - xxx Connection Closed
 DEBUG [main] - Returned connection 22859697 to pool.
 
 ```
-基于如上分析及
+基于如上分析及如下源码，可初步认为如若resultMap中依赖resultMap
 
 
 
