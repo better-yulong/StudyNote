@@ -531,26 +531,7 @@ DEBUG [main] - <==    Columns: ID, BLOG_ID, AUTHOR_ID, CREATED_ON, SECTION, SUBJ
 DEBUG [main] - <==        Row: 1, 1, 101, 2007-12-05 00:00:00.0, NEWS, Corn nuts, I think if I never smelled another corn nut it would be too soon..., 1
 DEBUG [main] - <==        Row: 2, 1, 101, 2008-01-12 00:00:00.0, VIDEOS, Paul Hogan on Toy Dogs, That's not a dog.  THAT's a dog!, 0
 DEBUG [main] - xxx Connection Closed
-
 ```
 
-###### 2.5 
-```language
-  <resultMap id="personDocument" class="com.testdomain.PersonDocument">
-    <result property="id" column="PERSON_ID"/>
-    <result property="name" column="PERSON_NAME"/>
-    <result property="favoriteDocument" resultMap="Documents.document"/>
-  </resultMap>
-
-   <resultMap id="document" class="com.testdomain.Document">
-    <result property="id" column="DOCUMENT_ID"/>
-    <result property="title" column="DOCUMENT_TITLE"/>
-    <result property="type" column="DOCUMENT_TYPE"/>
-    <discriminator column="DOCUMENT_TYPE" javaType="string">
-      <subMap value="BOOK" resultMap="book"/>
-      <subMap value="NEWSPAPER" resultMap="news"/>
-    </discriminator>
-  </resultMap>
-```
 
 
