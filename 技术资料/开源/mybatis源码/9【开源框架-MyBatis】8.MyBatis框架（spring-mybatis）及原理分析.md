@@ -36,4 +36,4 @@ MyBatis框架和其他绝大部分框架一样，需要一个配置文件，其�
 
 </configuration>
 ```
-Mybatis可通过spring-mybatis无缝整合，
+Mybatis可通过spring-mybatis无缝整合，前面已经对MyBatis的源码有了深入的分析，但是
