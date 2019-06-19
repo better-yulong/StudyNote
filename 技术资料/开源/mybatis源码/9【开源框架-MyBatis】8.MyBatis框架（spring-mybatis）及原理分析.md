@@ -36,4 +36,5 @@ MyBatis框架和其他绝大部分框架一样，需要一个配置文件，其�
 
 </configuration>
 ```
-Mybatis可通过无缝整合，前面已经对MyBatis的源码有了深入的分析，但是平时我们使用更多是基于spring-mybatis整合无缝使用，
+前面已经对MyBatis的源码有了深入的分析，但是平时我们使用更多是基于spring-mybatis整合无缝使用，即直接注入Dao实例并调用对应方法，那具体又是怎么实现的呢？
+
