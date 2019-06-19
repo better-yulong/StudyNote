@@ -538,7 +538,7 @@ DEBUG [main] - xxx Connection Closed
 如上在resultMap 中通过select 关联查询仍使用FastResultSetHandler:handleResultSets处理结果集。
 ###### 2.2.5.1 NestedResultSetHandler:handleResultSets
 ```language
-  
+  Mapper.xml
   <select id="getDocumentsWithAttributes" resultMap="documentWithAttributes">
     select a.*, b.attribute
     from Documents a left join Document_Attributes b
@@ -564,9 +564,8 @@ DEBUG [main] - xxx Connection Closed
     <result property="city" column="DOCUMENT_CITY"/>
   </resultMap>
 ```
-
-
-     select a.*, b.attribute     from Documents a left join Document_Attributes b     on a.document_id = b.document_id     order by a.document_id   
+查询一次：
+select a.*, b.attribute     from Documents a left join Document_Attributes b     on a.document_id = b.document_id     order by a.document_id   
 
 DEBUG [main] - Checked out connection 22859697 from pool.
 DEBUG [main] - ooo Connection Opened
