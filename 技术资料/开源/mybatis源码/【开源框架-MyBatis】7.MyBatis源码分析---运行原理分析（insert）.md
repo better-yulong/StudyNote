@@ -111,6 +111,21 @@ XMLStatementBuilder类
 即类似selectKey会被转换成SelectKeyGenerator，并基于id(parent.getStringAttribute("id") + SelectKeyGenerator.SELECT_KEY_SUFFIX)保存至configuration对象的Map<String, KeyGenerator> keyGenerators属性。
 
 ### 二.运行时使用分析
-执行insert时，运
+执行insert时，运行至Executor方法：
+```language
+  public int doUpdate(MappedStatement ms, Object parameter)
+      throws SQLException {
+    Statement stmt = null;
+    try {
+      Configuration configuration = ms.getConfiguration();
+      StatementHandler handler = configuration.newStatementHandler(this, ms, parameter, RowBounds.DEFAULT, null);
+      stmt = prepareStatement(handler);
+      return handler.update(stmt);
+    } finally {
+      closeStatement(stmt);
+    }
+  }
+```
+
 
 
