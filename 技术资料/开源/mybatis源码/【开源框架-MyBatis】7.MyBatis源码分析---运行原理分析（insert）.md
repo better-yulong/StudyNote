@@ -183,8 +183,7 @@ XMLStatementBuilder类
       throw new ExecutorException("Error selecting key or setting result to parameter object. Cause: " + e, e);
     }
   }
-
 ```
-
+即从ms获取configuration对象，根据ms.getId() + SELECT_KEY_SUFFIX生成
 
 
