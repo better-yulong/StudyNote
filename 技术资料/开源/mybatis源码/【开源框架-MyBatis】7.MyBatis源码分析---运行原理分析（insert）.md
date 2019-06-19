@@ -27,5 +27,5 @@ BindingTest测试类shouldInsertAuthorWithSelectKey
     )
   </insert>
 ```
-因源码为测试各种场景，为
+因源码为测试各种场景，执行多次后发现结果并未如预期先执行selectKey语句之后再根据k
 
