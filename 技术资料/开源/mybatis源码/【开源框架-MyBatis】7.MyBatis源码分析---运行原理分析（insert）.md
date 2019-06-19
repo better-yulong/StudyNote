@@ -31,6 +31,7 @@ BindingTest测试类shouldInsertAuthorWithSelectKey
 ### 一.初始化分析
 Mapper.xml解析生成MappedStatement时（即XMLStatementBuilder类的parseStatementNode(XNode context)方法该行：List<SqlNode> contents = parseDynamicTags(context);
 ```language
+XMLStatementBuilder类
   private Map<String, NodeHandler> nodeHandlers = new HashMap<String, NodeHandler>() {
     {
       put("include", new IncludeNodeHandler());
