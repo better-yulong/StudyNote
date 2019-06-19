@@ -537,6 +537,15 @@ DEBUG [main] - xxx Connection Closed
 ```
 如上在resultMap 中通过select 关联查询仍使用FastResultSetHandler:handleResultSets处理结果集。
 ###### 2.2.5.1 NestedResultSetHandler:handleResultSets
+```language
+  <select id="getDocumentsWithAttributes" resultMap="documentWithAttributes">
+    select a.*, b.attribute
+    from Documents a left join Document_Attributes b
+    on a.document_id = b.document_id
+    order by a.document_id
+  </select>
+```
+
 
      select a.*, b.attribute     from Documents a left join Document_Attributes b     on a.document_id = b.document_id     order by a.document_id   
 
