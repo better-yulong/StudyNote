@@ -107,7 +107,7 @@ XMLStatementBuilder类
     }
   }
 ```
-即类似selectKey会被转换成
+即类似selectKey会被转换成SelectKeyGenerator，并基于id(
 
 
 
