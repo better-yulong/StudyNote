@@ -21,7 +21,7 @@ BindingTest   shouldInsertAuthorWithSelectKey
 1. select * from Blog where id = ?
 2. select * from author where id = ?
 3. select * from Post where blog_id = ?
-
+```
 
 DEBUG [main] - ooo Connection Opened
 ExamplePlugin intercept:org.apache.ibatis.executor.CachingExecutor:query
@@ -48,4 +48,7 @@ DEBUG [main] - <==    Columns: ID, BLOG_ID, AUTHOR_ID, CREATED_ON, SECTION, SUBJ
 DEBUG [main] - <==        Row: 1, 1, 101, 2007-12-05 00:00:00.0, NEWS, Corn nuts, I think if I never smelled another corn nut it would be too soon..., 1
 DEBUG [main] - <==        Row: 2, 1, 101, 2008-01-12 00:00:00.0, VIDEOS, Paul Hogan on Toy Dogs, That's not a dog.  THAT's a dog!, 0
 DEBUG [main] - xxx Connection Closed
+
+```
+
 
