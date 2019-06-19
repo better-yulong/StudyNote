@@ -536,7 +536,7 @@ DEBUG [main] - <==        Row: 2, 1, 101, 2008-01-12 00:00:00.0, VIDEOS, Paul Ho
 DEBUG [main] - xxx Connection Closed
 ```
 如上在resultMap 中通过select 关联查询仍使用FastResultSetHandler:handleResultSets处理结果集。
-###### 2.2.5.1 FastResultSetHandler:handleResultSets
+###### 2.2.5.1 NestedResultSetHandler:handleResultSets
 
 
-
+ resultMap.hasNestedResultMaps = resultMap.hasNestedResultMaps || resultMapping.getNestedResultMapId() != null;
