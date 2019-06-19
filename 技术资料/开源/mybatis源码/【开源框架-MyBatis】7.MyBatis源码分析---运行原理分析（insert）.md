@@ -113,6 +113,7 @@ XMLStatementBuilder类
 ### 二.运行时使用分析
 执行insert时，运行至Executor方法doUpdate后进入prepareStatement方法：
 ```language
+  SimpleExecutor类
   public int doUpdate(MappedStatement ms, Object parameter)
       throws SQLException {
     Statement stmt = null;
@@ -135,6 +136,6 @@ XMLStatementBuilder类
   }
 
 ```
-
+之后会调用对应
 
 
