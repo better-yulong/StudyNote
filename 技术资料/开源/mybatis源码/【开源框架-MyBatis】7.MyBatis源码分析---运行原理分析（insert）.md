@@ -27,5 +27,5 @@ BindingTest测试类shouldInsertAuthorWithSelectKey
     )
   </insert>
 ```
-因源码为测试各种场景，针对
+因源码为测试各种场景，为
 
