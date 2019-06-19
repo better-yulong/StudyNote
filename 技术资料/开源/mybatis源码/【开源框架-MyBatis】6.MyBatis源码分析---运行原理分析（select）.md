@@ -477,7 +477,8 @@ resultSetHandler为FastResultSetHandler的实现：
   2.applyAutomaticMappings(rs, unmappedColumnNames, metaObject)方法用于处理结果集对对象的映射（即类似于：resultType="domain.blog.Author"；其参数为unmappedColumnNames），会根据metaObject（其是结果类的包装类实例，即Author的包装类实例对象）的属性property，从rs中获取值并用对应的TypeHandler处理，最后赋值给metaObject并标记foundValues为true;(之前有分析，通过当前代码也可看出，结果集到对象的映射支持可通过配置关闭) 
   3.applyPropertyMappings(rs, resultMap, mappedColumnNames, metaObject, lazyLoader)可看出参数为mappedColumnNames，即可在ResultMap中映射到的列名；区别同第一个方法在于先根据column获取TypeHandler处理后的value，再根据property赋值给metaObjet对象。
 
-###### 2.2.5 FastResultSetHandler:handleResultSets方法
+##### 2.2.5 resultSetHandler.handleResultSets方法
+###### 2.2.5.1 FastResultSetHandler:handleResultSets
 ```language
   Mapper.xml文件
   <resultMap id="blogWithPosts" type="Blog">
@@ -535,7 +536,7 @@ DEBUG [main] - <==        Row: 2, 1, 101, 2008-01-12 00:00:00.0, VIDEOS, Paul Ho
 DEBUG [main] - xxx Connection Closed
 ```
 如上在resultMap 中通过select 关联查询仍使用FastResultSetHandler:handleResultSets处理结果集。
-
+###### 2.2.5.1 FastResultSetHandler:handleResultSets
 
 
 
