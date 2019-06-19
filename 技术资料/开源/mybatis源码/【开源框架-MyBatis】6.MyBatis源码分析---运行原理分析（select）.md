@@ -584,7 +584,7 @@ DEBUG [main] - xxx Connection Closed
 DEBUG [main] - Returned connection 22859697 to pool.
 
 ```
-基于如上分析及如下源码，可初步认为如若resultMap中依赖resultMap
+基于如上分析及如下源码，可初步认为如若resultMap中依赖其他resultMap的id，则会使用NestedResultSetHandler处理结果集；若如果
 
 
 
