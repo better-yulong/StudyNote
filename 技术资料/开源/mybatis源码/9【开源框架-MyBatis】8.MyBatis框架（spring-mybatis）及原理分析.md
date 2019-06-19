@@ -14,7 +14,6 @@ MyBatis框架和其他绝大部分框架一样，需要一个配置文件，其�
 		p:dataSource-ref="dataSource" p:configLocation="classpath:config/mybatis-config.xml"
 		p:mapperLocations="classpath*:mapper/*.xml" />
 ```
-
 ```language
 --mybatis-config.xml文件
 <?xml version="1.0" encoding="UTF-8"?>
