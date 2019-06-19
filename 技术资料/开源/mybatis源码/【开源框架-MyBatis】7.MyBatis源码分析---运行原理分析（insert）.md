@@ -16,10 +16,11 @@ BindingTest   shouldInsertAuthorWithSelectKey
     select * from Blog where id = #{id}
   </select>
 
-查询三次
-select * from Blog where id = ?
-select * from author where id = ?
-select * from Post where blog_id = ?
+```
+- 查询三次
+1. select * from Blog where id = ?
+2. select * from author where id = ?
+3. select * from Post where blog_id = ?
 
 
 DEBUG [main] - ooo Connection Opened
@@ -48,4 +49,3 @@ DEBUG [main] - <==        Row: 1, 1, 101, 2007-12-05 00:00:00.0, NEWS, Corn nuts
 DEBUG [main] - <==        Row: 2, 1, 101, 2008-01-12 00:00:00.0, VIDEOS, Paul Hogan on Toy Dogs, That's not a dog.  THAT's a dog!, 0
 DEBUG [main] - xxx Connection Closed
 
-```
