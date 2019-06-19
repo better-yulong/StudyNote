@@ -4,6 +4,19 @@ BindingTest   shouldInsertAuthorWithSelectKey
 
 
 ```language
+  <resultMap id="blogWithPosts" type="Blog">
+    <id property="id" column="id"/>
+    <result property="title" column="title"/>
+    <association property="author" column="author_id"
+                 select="selectAuthorWithInlineParams"/>
+    <collection property="posts" column="id" select="selectPostsForBlog"/>
+  </resultMap>
+
+  <select id="selectBlogWithPostsUsingSubSelect" parameterType="int" resultMap="blogWithPosts">
+    select * from Blog where id = #{id}
+  </select>
+
+查询三次
 select * from Blog where id = ?
 select * from author where id = ?
 select * from Post where blog_id = ?
