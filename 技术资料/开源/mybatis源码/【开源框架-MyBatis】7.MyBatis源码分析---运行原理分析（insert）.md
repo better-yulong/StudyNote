@@ -148,6 +148,6 @@ XMLStatementBuilder类
     parameterHandler.setParameters((PreparedStatement) statement);
   }
 ```
-
+会获取SelectKeyGenerator
 
 
