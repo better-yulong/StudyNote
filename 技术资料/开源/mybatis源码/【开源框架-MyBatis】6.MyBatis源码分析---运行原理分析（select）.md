@@ -540,6 +540,23 @@ DEBUG [main] - xxx Connection Closed
 
      select a.*, b.attribute     from Documents a left join Document_Attributes b     on a.document_id = b.document_id     order by a.document_id   
 
+DEBUG [main] - Checked out connection 22859697 from pool.
+DEBUG [main] - ooo Connection Opened
+DEBUG [main] - ==>  Executing: select a.*, b.attribute from Documents a left join Document_Attributes b on a.document_id = b.document_id order by a.document_id 
+DEBUG [main] - ==> Parameters: 
+DEBUG [main] - <==    Columns: DOCUMENT_ID, DOCUMENT_TITLE, DOCUMENT_TYPE, DOCUMENT_PAGENUMBER, DOCUMENT_CITY, ATTRIBUTE
+DEBUG [main] - <==        Row: 1, The World of Null-A, BOOK, 55, null, English
+DEBUG [main] - <==        Row: 1, The World of Null-A, BOOK, 55, null, Sci-Fi
+DEBUG [main] - <==        Row: 2, Le Progres de Lyon, NEWSPAPER, null, Lyon, French
+DEBUG [main] - <==        Row: 3, Lord of the Rings, BOOK, 3587, null, Fantasy
+DEBUG [main] - <==        Row: 3, Lord of the Rings, BOOK, 3587, null, English
+DEBUG [main] - <==        Row: 4, Le Canard enchaine, NEWSPAPER, null, Paris, null
+DEBUG [main] - <==        Row: 5, Le Monde, BROADSHEET, null, Paris, null
+DEBUG [main] - <==        Row: 6, Foundation, MONOGRAPH, 557, null, null
+DEBUG [main] - xxx Connection Closed
+DEBUG [main] - Returned connection 22859697 to pool.
+
+
 
  resultMap.hasNestedResultMaps = resultMap.hasNestedResultMaps || resultMapping.getNestedResultMapId() != null;
 
