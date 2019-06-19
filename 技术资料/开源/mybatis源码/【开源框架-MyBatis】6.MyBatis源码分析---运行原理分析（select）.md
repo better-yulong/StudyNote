@@ -538,12 +538,31 @@ DEBUG [main] - xxx Connection Closed
 如上在resultMap 中通过select 关联查询仍使用FastResultSetHandler:handleResultSets处理结果集。
 ###### 2.2.5.1 NestedResultSetHandler:handleResultSets
 ```language
+  
   <select id="getDocumentsWithAttributes" resultMap="documentWithAttributes">
     select a.*, b.attribute
     from Documents a left join Document_Attributes b
     on a.document_id = b.document_id
     order by a.document_id
   </select>
+ <resultMap id="documentWithAttributes" class="com.testdomain.Document" groupBy="id">
+    <result property="id" column="DOCUMENT_ID"/>
+    <result property="title" column="DOCUMENT_TITLE"/>
+    <result property="type" column="DOCUMENT_TYPE"/>
+    <result property="attributes" resultMap="Documents.documentAttributes"/>
+    <discriminator column="DOCUMENT_TYPE" javaType="string">
+      <subMap value="BOOK" resultMap="bookWithAttributes"/>
+      <subMap value="NEWSPAPER" resultMap="newsWithAttributes"/>
+    </discriminator>
+  </resultMap>
+
+  <resultMap id="book" class="com.testdomain.Book" extends="document">
+    <result property="pages" column="DOCUMENT_PAGENUMBER"/>
+  </resultMap>
+
+  <resultMap id="news" class="com.testdomain.Magazine" extends="document">
+    <result property="city" column="DOCUMENT_CITY"/>
+  </resultMap>
 ```
 
 
