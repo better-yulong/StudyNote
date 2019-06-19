@@ -1,6 +1,6 @@
 BindingTest   shouldInsertAuthorWithSelectKey
 ```language
-
+  BoundAuthorMapper.xml文件
   <insert id="insertAuthor" parameterType="domain.blog.Author">
     <selectKey keyProperty="id" resultType="int" order="BEFORE">
       select CAST(RANDOM()*1000000 as INTEGER) a from SYSIBM.SYSDUMMY1
