@@ -184,6 +184,6 @@ XMLStatementBuilder类
     }
   }
 ```
-即从ms获取configuration对象，根据ms.getId() + SELECT_KEY_SUFFIX生成
+即从ms获取configuration对象，根据规则 ms.getId() + SELECT_KEY_SUFFIX 生成keyStatementName，检验keyStatementName、
 
 
