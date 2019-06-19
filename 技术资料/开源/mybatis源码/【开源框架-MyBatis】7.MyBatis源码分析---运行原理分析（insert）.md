@@ -2,7 +2,7 @@ BindingTest   shouldInsertAuthorWithSelectKey
 
 
 
-
+Mapper.xml文件
 ```language
   <resultMap id="blogWithPosts" type="Blog">
     <id property="id" column="id"/>
