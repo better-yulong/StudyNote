@@ -535,7 +535,8 @@ DEBUG [main] - <==        Row: 1, 1, 101, 2007-12-05 00:00:00.0, NEWS, Corn nuts
 DEBUG [main] - <==        Row: 2, 1, 101, 2008-01-12 00:00:00.0, VIDEOS, Paul Hogan on Toy Dogs, That's not a dog.  THAT's a dog!, 0
 DEBUG [main] - xxx Connection Closed
 ```
-如上在resultMap 中通过select 关联查询仍使用FastResultSetHandler:handleResultSets处理结果集。
+如上在resultMap 中通过select 关联查询仍使用FastResultSetHandler:handleResultSets处理结果集；且后两次关联查询会
+
 ###### 2.2.5.1 NestedResultSetHandler:handleResultSets
 ```language
   Mapper.xml
@@ -564,9 +565,9 @@ DEBUG [main] - xxx Connection Closed
     <result property="city" column="DOCUMENT_CITY"/>
   </resultMap>
 ```
-查询一次：
-select a.*, b.attribute     from Documents a left join Document_Attributes b     on a.document_id = b.document_id     order by a.document_id   
-
+- 查询一次：
+1. select a.*, b.attribute     from Documents a left join Document_Attributes b     on a.document_id = b.document_id     order by a.document_id   
+```
 DEBUG [main] - Checked out connection 22859697 from pool.
 DEBUG [main] - ooo Connection Opened
 DEBUG [main] - ==>  Executing: select a.*, b.attribute from Documents a left join Document_Attributes b on a.document_id = b.document_id order by a.document_id 
@@ -582,6 +583,9 @@ DEBUG [main] - <==        Row: 5, Le Monde, BROADSHEET, null, Paris, null
 DEBUG [main] - <==        Row: 6, Foundation, MONOGRAPH, 557, null, null
 DEBUG [main] - xxx Connection Closed
 DEBUG [main] - Returned connection 22859697 to pool.
+
+```
+
 
 
 
