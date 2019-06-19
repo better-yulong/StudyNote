@@ -136,6 +136,18 @@ XMLStatementBuilder类
   }
 
 ```
-之后会调用对应
+之后会调用对应Hanlder类的参数初始化方法：
+```language
+  public void parameterize(Statement statement)
+      throws SQLException {
+    KeyGenerator keyGenerator = mappedStatement.getKeyGenerator();
+    ErrorContext.instance().store();
+    keyGenerator.processBefore(executor, mappedStatement, statement, boundSql.getParameterObject());
+    ErrorContext.instance().recall();
+    rebindGeneratedKey();
+    parameterHandler.setParameters((PreparedStatement) statement);
+  }
+```
+
 
 
