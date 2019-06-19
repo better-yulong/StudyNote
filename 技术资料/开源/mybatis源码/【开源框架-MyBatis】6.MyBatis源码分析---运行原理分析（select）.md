@@ -584,10 +584,8 @@ DEBUG [main] - xxx Connection Closed
 DEBUG [main] - Returned connection 22859697 to pool.
 
 ```
-基于如上分析及如下源码，可初步认为如若resultMap中依赖其他resultMap的id，则会使用NestedResultSetHandler处理结果集；若resultMap中依赖其他的select，则是多次查询仍使用FastResultSetHandler
-
-
-
+基于如上分析及如下源码，可初步认为如若resultMap中依赖其他resultMap的id，则会使用NestedResultSetHandler处理结果集；若resultMap中依赖其他的select，则是多次查询仍使用FastResultSetHandler处理结果集。
+```
  resultMap.hasNestedResultMaps = resultMap.hasNestedResultMaps || resultMapping.getNestedResultMapId() != null;
 
   public ResultSetHandler newResultSetHandler(Executor executor, MappedStatement mappedStatement, RowBounds rowBounds, ParameterHandler parameterHandler, ResultHandler resultHandler, BoundSql boundSql) {
@@ -597,3 +595,6 @@ DEBUG [main] - Returned connection 22859697 to pool.
     resultSetHandler = (ResultSetHandler) interceptorChain.pluginAll(resultSetHandler);
     return resultSetHandler;
   }
+
+```
+
