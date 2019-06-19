@@ -27,5 +27,5 @@ BindingTest测试类shouldInsertAuthorWithSelectKey
     )
   </insert>
 ```
-因源码为测试各种场景，执行多次后发现结果并未如预期先执行selectKey语句之后再根据key完成insert操作；要通过调试当前操作对应的MappedStatement对应的
+因源码为测试各种场景，执行多次后发现结果并未如预期先执行selectKey语句之后再根据key完成insert操作；要通过调试当前操作对应的MappedStatement对应的信息确认是否是执行的当前Mapper.xml中对应的配置（因为多场景测试，许多Mapper）
 
