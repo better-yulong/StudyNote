@@ -16,6 +16,15 @@ BindingTest   shouldInsertAuthorWithSelectKey
     select * from Blog where id = #{id}
   </select>
 
+  <select id="selectAuthorWithInlineParams"
+          parameterType="int"
+          resultType="domain.blog.Author">
+    select * from author where id = #{id}
+  </select>
+
+  <select id="selectPostsForBlog" parameterType="int" resultType="Post">
+    select * from Post where blog_id = #{blog_id}
+  </select>
 ```
 - 查询三次
 1. select * from Blog where id = ?
