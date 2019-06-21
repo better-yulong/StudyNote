@@ -50,13 +50,13 @@ public final class MapperScannerConfigurerTest {
 		<groupId>org.springframework</groupId>
 		<artifactId>spring-core</artifactId>
 		<version>3.1.0.RELEASE</version>
-		</dependency>
+	</dependency>
 ```
 启动后可正常访问默认index.jsp，在tomcat的webapp对应目:spring3-analysis\WEB-INF\lib，可发现spirng-core、spring-asm 的jar 包有正常依赖。
 ##### 2.1 新建测试类并在application.xml配置bean标签
 新建BeanExample类：
 ```language
-	public class BeanExample {
+public class BeanExample {
 	private String id;
 }
 ```
