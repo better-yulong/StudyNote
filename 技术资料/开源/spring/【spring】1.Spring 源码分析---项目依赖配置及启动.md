@@ -317,7 +317,7 @@ contextClassName = defaultStrategies.getProperty(WebApplicationContext.class.get
 //ContextLoader.properties文件
 org.springframework.web.context.WebApplicationContext=org.springframework.web.context.support.XmlWebApplicationContext
 ```
-
+通过如上方法即已实例化Spring的上下文
 
 
 
