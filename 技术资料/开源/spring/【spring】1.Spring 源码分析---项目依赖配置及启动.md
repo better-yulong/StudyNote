@@ -252,8 +252,8 @@ org.springframework.beans.factory.BeanDefinitionStoreException: IOException pars
 
     }
 ```
+即Tomcat初始化时会根据web.xml实例化Listeners对象（web.xml中配置的Listeners、Servlet、Filter对象由Servlet容器实例化），同时会调listener对象的contextInitialized方法，详细分析如下：
 
-即Tomcat初始化时会根据web.xml实例化Listeners对象（web.xml中配置的Listeners、Servlet、Filter对象由Servlet容器实例化），同时会调
 
 
 
