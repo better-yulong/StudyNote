@@ -38,7 +38,7 @@ public final class MapperScannerConfigurerTest {
 	}
 
 ```
-即类似基于Spirng的应用，容初始化也是默认，根据很久之前分析spring源码的理解，其实可发现在解析xml中的bean标签时，即是每个bean标签生成一个GenericBeanDefinition对象，设置其BeanClass、添加PropertyValue属性集合。为深入理解，下载源码分析
+即类似基于Spirng的应用，根据很久之前分析spring源码的理解，其实可发现在解析xml中的bean标签时，即是每个bean标签生成一个GenericBeanDefinition对象，设置其BeanClass、添加PropertyValue属性集合。为深入理解，下载源码分析
 
 ### 一.源码下载、导入及demo工程创建
 #### 1.下载源码并导入（基于3.1.0.RELEASE）
