@@ -378,7 +378,7 @@ org.springframework.web.context.WebApplicationContext=org.springframework.web.co
 ```
 在执行完上面方法好，最后一行 wac.refresh() ；看似简单实际才是重点，下一小节单元讲解
 ###### 2.2.3 Spring容器初始化 
-wac.refresh()，war为XmlWebApplicationContext的实例，基于
+wac.refresh()，war为XmlWebApplicationContext的实例，基于的XmlWebApplicationContext多级继承关系分析，最终调用的是AbstractApplicationContext的refresh()
 
 
 
