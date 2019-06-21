@@ -154,7 +154,7 @@ org.springframework.beans.factory.BeanDefinitionStoreException: IOException pars
 	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:341)
 ```
 从该报错可以明显看出，默认会在classpath路径查找applicationContext.xml文件；而具体核心方法调用链路为：tomcat的StandardContext.listenerStart --> spring的ContextLoaderListener.contextInitialized --> spring的ContextLoader.initWebApplicationContext --> spring的ContextLoader.configureAndRefreshWebApplicationContext --> spirng的AbstractApplicationContext.refresh  -->spirng的XmlBeanDefinitionReader.loadBeanDefinitions (中间部分方法调用省略，详细可参考上面的错误日志)
-##### 2.2.1 tomcat的StandardContext.listenerStart
+##### 2.2 tomcat的StandardContext.listenerStart
 核心在StandardContext.listenerStart方法
 ```language
     /**
@@ -255,7 +255,7 @@ org.springframework.beans.factory.BeanDefinitionStoreException: IOException pars
     }
 ```
 即Tomcat初始化时会根据web.xml实例化Listeners对象（web.xml中配置的Listeners、Servlet、Filter对象由Servlet容器实例化），同时会调listener对象的contextInitialized方法，详细分析如下：
-###### 2.2.1.1 Listeners 获取及实例化
+###### 2.2.1 Listeners 获取及实例化
 String listeners[] = findApplicationListeners(); 会获取应用web.xml配置的spirng 默认org.springframework.web.context.ContextLoaderListener；那么此处其实可认为是Servlet容器提供的扩展机制，可配置多个Listen（按顺序实例化及调用）,也可通过继承已有Listener(如ContextLoaderListener)或实现ServletContextListener 接口自定义Linstener（具体实践后面另行讲解）：
 ```language
 //建议配置为第一个Listeners，可查阅:https://www.cnblogs.com/qiankun-site/p/5886673.html
@@ -265,7 +265,7 @@ String listeners[] = findApplicationListeners(); 会获取应用web.xml配置的
 ```
 此处获取的是String[] 的listeners，即完整类名格式；而循环中调用                 results[i] = instanceManager.newInstance(listeners[i])；即完成了listener对象的实例化（底层调用class.newInstance())
 
-###### 2.2.1.2 Listeners 分组
+###### 2.2.2 Listeners 分组
 从源码可看出会将所有listener分成两个List存储；其中ServletContextAttributeListener、ServletRequestAttributeListener、ServletRequestListener、HttpSessionAttributeListener 四个接口的实现类放入eventListeners列表；而其他所有listener则放入lifecycleListeners列表
 ###### 2.2.1.3 Listenersg整合
 Listeners may have been added by ServletContextInitializers.  Put them after the ones we know about.即将通过其他方式添加的Listeners获取后添加至eventListeners、lifecycleListeners列表；并通过setApplicationEventListeners、setApplicationLifecycleListeners赋值给当前StandardContext实例
