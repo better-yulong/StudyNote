@@ -283,7 +283,7 @@ listener.contextInitialized(event);则调用到具体Listeners对象的contextIn
 		this.contextLoader.initWebApplicationContext(event.getServletContext());
 	}
 ```
-createContextLoader()默认直接返回null
+createContextLoader()默认直接返回null，this.contextLoader.initWebApplicationContext(event.getServletContext());最终执行的是
 
 
 
