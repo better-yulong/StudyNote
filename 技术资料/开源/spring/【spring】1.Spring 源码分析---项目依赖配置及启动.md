@@ -364,7 +364,7 @@ org.springframework.web.context.WebApplicationContext=org.springframework.web.co
 	<param-value>classpath:application.xml
 	</param-value>
     </context-param>
-        <context-param>
+    <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>/WEB-INF/classes/spring/rest-provider.xml</param-value>
     </context-param>
