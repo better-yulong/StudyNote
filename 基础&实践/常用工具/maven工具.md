@@ -13,7 +13,7 @@ rocess-sources, generate-resources, process-resources, compile, process-classes,
 t-resources, process-test-resources, test-compile, process-test-classes, test, prepare-package, package, pre-integration-test, integration
 -test, post-integration-test, verify, install, deploy, pre-clean, clean, post-clean, pre-site, site, post-site, site-deploy. -> [Help 1]
 ```
-通过报错即可知其支持的参数，在工程根目录（与p）运行 mvn dependency:tree ：
+通过报错即可知其支持的参数，在工程根目录（与pom.xml同级）运行 mvn dependency:tree ：
 ```language
 [INFO] com.zyl.demo.web:spring3-analysis:war:0.0.1-SNAPSHOT
 [INFO] +- org.springframework:spring-core:jar:3.1.0.RELEASE:compile
@@ -26,5 +26,5 @@ t-resources, process-test-resources, test-compile, process-test-classes, test, p
 [INFO]       +- org.springframework:spring-aop:jar:3.1.0.RELEASE:compile
 [INFO]       \- org.springframework:spring-expression:jar:3.1.0.RELEASE:compile
 ```
-该 
+mvn dependency:tree 可用于分析当前应用的依赖语法树（类似于Eclipse中Dependency 
 
