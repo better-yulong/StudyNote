@@ -376,10 +376,10 @@ org.springframework.web.context.WebApplicationContext=org.springframework.web.co
         <param-value>com.zyr.web.spring.SpringApplicationContextInitializer</param-value>  
  </context-param>  
 ```
-在执行完上面方法好，最后一行 wac.refresh() ；看似简单
+在执行完上面方法好，最后一行 wac.refresh() ；看似简单实际才是重点，下一小节单元讲解
 ###### 2.2.3 Spring容器初始化 
 wac.refresh();
-###### 2.2.2 
+
 
 
 
