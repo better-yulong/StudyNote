@@ -356,7 +356,7 @@ org.springframework.web.context.WebApplicationContext=org.springframework.web.co
 		wac.refresh();
 	}
 ```
-为兼容 Servlet <= 2.4 版本，wac(WebApplicationContext实例）id会做差异处理；loadParentContext(sc)获取父上下文此处默认为null，而wac.setParent(parent)、wac.setServletContext(sc)则用于指定spring容器上下文（WebApplicationContext实例）的父上下文、所属Servlet上下文。
+为兼容 Servlet <= 2.4 版本，wac(XmlWebApplicationContext实例）id会做差异处理；loadParentContext(sc)获取父上下文此处默认为null，而wac.setParent(parent)、wac.setServletContext(sc)则用于指定spring容器上下文（WebApplicationContext实例）的父上下文、所属Servlet上下文。
 - sc.getInitParameter(CONFIG_LOCATION_PARAM)其中CONFIG_LOCATION_PARAM参数为常量值：contextConfigLocation，即获取web.xml中的初始化参数contextConfigLocation的值（如若未设置返回""）并设置wac.setConfigLocation(initParameter)，该配置可支持多种配置方式如：
 ```language
     <context-param>
