@@ -263,7 +263,9 @@ String listeners[] = findApplicationListeners(); 会获取应用web.xml配置的
 ```
 此处获取的是String[] 的listeners，即完整类名格式；而循环中调用                 results[i] = instanceManager.newInstance(listeners[i])；即完成了listener对象的实例化（底层调用class.newInstance()).
 
-也可通过继承已有Listener(如ContextLoaderListener)或实现ServletContextListener 接口自定义Linstener（具体实践后面另行讲解）
+
+
+
 
 
 
@@ -304,6 +306,7 @@ Eclipse中Dependency Hierarchy的语法树层级显示及spring3-analysis工程�
 [INFO]    \- org.springframework:spring-context:jar:3.1.0.RELEASE:compile
 [INFO]       +- org.springframework:spring-aop:jar:3.1.0.RELEASE:compile
 [INFO]       \- org.springframework:spring-expression:jar:3.1.0.RELEASE:compile
+
 
 
 
