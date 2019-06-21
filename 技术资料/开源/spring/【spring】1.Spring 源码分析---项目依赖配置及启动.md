@@ -285,10 +285,10 @@ listener.contextInitialized(event);则调用到具体Listeners对象的contextIn
 ```
 createContextLoader()默认直接返回null，this.contextLoader.initWebApplicationContext(event.getServletContext());最终执行的是ContextLoaderListener的父类ContextLoader的 initWebApplicationContext方法：
 ```language
-//核心代码
-if (this.context instanceof ConfigurableWebApplicationContext) {
-				configureAndRefreshWebApplicationContext((ConfigurableWebApplicationContext)this.context, servletContext);
-			}
+   //核心代码
+   if (this.context instanceof ConfigurableWebApplicationContext) {			
+       configureAndRefreshWebApplicationContext((ConfigurableWebApplicationContext)this.context, servletContext);
+}
 ```
 
 
