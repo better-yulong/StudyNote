@@ -92,8 +92,8 @@ application.xml文件
 - 并从spirng 源码包中搜索applicationContext.xml，然后复制到spring3-analysis的resource目录，并将名称修改为application.xml （公司的工程中会使用非默认名称application.xml)；application.xml文件中bean配置对应的class没有对应的类且依赖jar也未配置，如若加载到该xml解析时应报错。重新启动spring3-analysis工程，并未报错且原测试jsp可正常访问。
 - 还原为applicationContext.xml效果相同，也不会被加载；并不像网上某些资料说只需将该文件入到对应目录即可；之后名称修改为application.xml继续后面的分析
 
-### 一.源码下载、导入及demo工程创建
-##### 2.2 web.xml中配置Listeners
+### 一.源码分析
+#### 2.1 web.xml中配置Listeners
 ```language
 <web-app>
   <display-name>spring3-analysis</display-name>
@@ -154,7 +154,7 @@ org.springframework.beans.factory.BeanDefinitionStoreException: IOException pars
 	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:341)
 ```
 从该报错可以明显看出，默认会在classpath路径查找applicationContext.xml文件；而具体核心方法调用链路为：tomcat的StandardContext.listenerStart --> spring的ContextLoaderListener.contextInitialized --> spring的ContextLoader.initWebApplicationContext --> spring的ContextLoader.configureAndRefreshWebApplicationContext --> spirng的AbstractApplicationContext.refresh  -->spirng的XmlBeanDefinitionReader.loadBeanDefinitions (中间部分方法调用省略，详细可参考上面的错误日志)
-###### 2.2.1 tomcat的StandardContext.listenerStart
+##### 2.2.1 tomcat的StandardContext.listenerStart
 核心在StandardContext.listenerStart方法
 ```language
     /**
