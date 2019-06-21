@@ -267,7 +267,7 @@ String listeners[] = findApplicationListeners(); 会获取应用web.xml配置的
 3. Listenersg整合
 Listeners may have been added by ServletContextInitializers.  Put them after the ones we know about.即将通过其他方式添加的Listeners获取后添加至eventListeners、lifecycleListeners列表；并通过setApplicationEventListeners、setApplicationLifecycleListeners赋值给当前StandardContext实例
 4. ServletContext上下文非空
-通过 getServletContext();获取ServletContext并设置 context.setNewServletContextListenerAllowed(false);避免被设置新的ServletContext。其中getServletContext()会判断当前context为n
+通过 getServletContext();获取ServletContext并设置 context.setNewServletContextListenerAllowed(false);避免被设置新的ServletContext。其中getServletContext()会判断当前context为null，调用context = new ApplicationContext(this)完成context的实例化。
 5. Listener上下文初始化
 listener.contextInitialized(event);则调用到具体Listeners对象的contextInitialized方法（而event则为new ServletContextEvent(getServletContext())）。另外contextInitialized调用前后fireContainerEvent("beforeContextInitialized", listener)、fireContainerEvent("afterContextInitialized", listener)可触发容器事件（listeners定义为：The container event listeners for this Container）
 ###### 2.2.2 listener.contextInitialized(event)（即ContextLoaderListener）
