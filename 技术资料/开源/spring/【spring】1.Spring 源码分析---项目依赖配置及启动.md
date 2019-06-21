@@ -267,14 +267,14 @@ String listeners[] = findApplicationListeners(); 会获取应用web.xml配置的
 
 ###### 2.2.2 Listeners 分组
 从源码可看出会将所有listener分成两个List存储；其中ServletContextAttributeListener、ServletRequestAttributeListener、ServletRequestListener、HttpSessionAttributeListener 四个接口的实现类放入eventListeners列表；而其他所有listener则放入lifecycleListeners列表
-###### 2.2.1.3 Listenersg整合
+###### 2.2.3 Listenersg整合
 Listeners may have been added by ServletContextInitializers.  Put them after the ones we know about.即将通过其他方式添加的Listeners获取后添加至eventListeners、lifecycleListeners列表；并通过setApplicationEventListeners、setApplicationLifecycleListeners赋值给当前StandardContext实例
-###### 2.2.1.4 ServletContext上下文非空
+###### 2.2.4 ServletContext上下文非空
 通过 getServletContext();获取ServletContext并设置 context.setNewServletContextListenerAllowed(false);避免被设置新的ServletContext。其中getServletContext()会判断当前context为null，调用context = new ApplicationContext(this)完成context的实例化。---特别注意：此处是Servlet容器的context
-###### 2.2.1.5 Listener上下文初始化
+###### 2.2.5 Listener上下文初始化
 listener.contextInitialized(event);则调用到具体Listeners对象的contextInitialized方法（而event则为new ServletContextEvent(getServletContext())）。另外contextInitialized调用前后fireContainerEvent("beforeContextInitialized", listener)、fireContainerEvent("afterContextInitialized", listener)可触发容器事件（listeners定义为：The container event listeners for this Container）
 *** 
-##### 2.2.2 listener.contextInitialized(event)（即ContextLoaderListener）
+##### 2.3 listener.contextInitialized(event)（即ContextLoaderListener）
 ```language
 	/**
 	 * Initialize the root web application context.
