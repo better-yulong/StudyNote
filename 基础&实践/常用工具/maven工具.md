@@ -26,5 +26,5 @@ t-resources, process-test-resources, test-compile, process-test-classes, test, p
 [INFO]       +- org.springframework:spring-aop:jar:3.1.0.RELEASE:compile
 [INFO]       \- org.springframework:spring-expression:jar:3.1.0.RELEASE:compile
 ```
-mvn dependency:tree 可用于分析当前应用的依赖语法树（类似于Eclipse中Dependency Hierarchy的语法树层级显示；但悲催的是Eclipse）层级
+mvn dependency:tree 可用于分析当前应用的依赖语法树（类似于Eclipse中Dependency Hierarchy的语法树层级显示；但悲催的是Eclipse该依赖分析无法复制）层级信息；其他如mvn dependency:tree
 
