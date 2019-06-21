@@ -263,6 +263,7 @@ String listeners[] = findApplicationListeners(); 会获取应用web.xml配置的
 ```
 此处获取的是String[] 的listeners，即完整类名格式；而循环中调用                 results[i] = instanceManager.newInstance(listeners[i])；即完成了listener对象的实例化（底层调用class.newInstance()).
 - 2.Listeners 分组
+-将
 
 
 
