@@ -1,3 +1,4 @@
+该系列源码可查看：https://github.com/better-yulong/study-code.git
 在整合mybatis、spring时，xml配置：
 ```language
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
