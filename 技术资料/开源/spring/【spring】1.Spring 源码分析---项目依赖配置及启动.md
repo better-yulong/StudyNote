@@ -268,6 +268,7 @@ String listeners[] = findApplicationListeners(); 会获取应用web.xml配置的
 Listeners may have been added by ServletContextInitializers.  Put them after the ones we know about.即将通过其他方式添加的Listeners获取后添加至eventListeners、lifecycleListeners列表；并通过setApplicationEventListeners、setApplicationLifecycleListeners赋值给当前StandardContext实例
 4. ServletContext上下文非空
 通过 getServletContext();获取ServletContext并设置 context.setNewServletContextListenerAllowed(false);避免被设置新的ServletContext
+5. ServletContext上下文非空
 
 
 
