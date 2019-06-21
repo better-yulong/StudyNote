@@ -457,6 +457,7 @@ wac.refresh()，war为XmlWebApplicationContext的实例，基于的XmlWebApplica
 		this.environment.validateRequiredProperties();
 	}
 ```
+ initPropertySources();该类在顶
 ```language
     //AbstractRefreshableWebApplicationContext类
 	@Override
