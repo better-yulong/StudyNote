@@ -269,7 +269,7 @@ Listeners may have been added by ServletContextInitializers.  Put them after the
 4. ServletContext上下文非空
 通过 getServletContext();获取ServletContext并设置 context.setNewServletContextListenerAllowed(false);避免被设置新的ServletContext
 5. Listener上下文初始化
-listener.contextInitialized(event);则调用到具体
+listener.contextInitialized(event);则调用到具体Listeners对象的contextInitialized方法（而event则为new ServletContextEvent(getServletContext())）。另外
 
 
 
