@@ -468,6 +468,7 @@ wac.refresh()，war为XmlWebApplicationContext的实例，基于的XmlWebApplica
 				this.servletConfig);
 	}
 ```
+https://www.cnblogs.com/wade-luffy/p/6072460.html  https://blog.csdn.net/boling_cavalry/article/details/81474340
 该方法主要用于获取servletContextInitParams、servletConfigInitParams、jndiProperties参数
 
 
