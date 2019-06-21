@@ -254,3 +254,18 @@ org.springframework.beans.factory.BeanDefinitionStoreException: IOException pars
 ```
 
 即Tomcat初始化时会根据web.xml实例化Listeners对象（web.xml中配置的Listeners、Servlet、Filter对象由Servlet容器实例化），同时会调
+
+
+Eclipse中Dependency Hierarchy的语法树层级显示及命令
+工程根目录（与pom.xml同级）运行 mvn dependency:tree ：
+```language
+[INFO] com.zyl.demo.web:spring3-analysis:war:0.0.1-SNAPSHOT
+[INFO] +- org.springframework:spring-core:jar:3.1.0.RELEASE:compile
+[INFO] |  +- org.springframework:spring-asm:jar:3.1.0.RELEASE:compile
+[INFO] |  \- commons-logging:commons-logging:jar:1.1.1:compile
+[INFO] \- org.springframework:spring-web:jar:3.1.0.RELEASE:compile
+[INFO]    +- aopalliance:aopalliance:jar:1.0:compile
+[INFO]    +- org.springframework:spring-beans:jar:3.1.0.RELEASE:compile
+[INFO]    \- org.springframework:spring-context:jar:3.1.0.RELEASE:compile
+[INFO]       +- org.springframework:spring-aop:jar:3.1.0.RELEASE:compile
+[INFO]       \- org.springframework:spring-expression:jar:3.1.0.RELEASE:compile
