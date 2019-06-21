@@ -13,6 +13,18 @@ rocess-sources, generate-resources, process-resources, compile, process-classes,
 t-resources, process-test-resources, test-compile, process-test-classes, test, prepare-package, package, pre-integration-test, integration
 -test, post-integration-test, verify, install, deploy, pre-clean, clean, post-clean, pre-site, site, post-site, site-deploy. -> [Help 1]
 ```
-通过报错即可知其支持的参数，运行 mvn dependency:tree ：
-
+通过报错即可知其支持的参数，在工程根目录（与p）运行 mvn dependency:tree ：
+```language
+[INFO] com.zyl.demo.web:spring3-analysis:war:0.0.1-SNAPSHOT
+[INFO] +- org.springframework:spring-core:jar:3.1.0.RELEASE:compile
+[INFO] |  +- org.springframework:spring-asm:jar:3.1.0.RELEASE:compile
+[INFO] |  \- commons-logging:commons-logging:jar:1.1.1:compile
+[INFO] \- org.springframework:spring-web:jar:3.1.0.RELEASE:compile
+[INFO]    +- aopalliance:aopalliance:jar:1.0:compile
+[INFO]    +- org.springframework:spring-beans:jar:3.1.0.RELEASE:compile
+[INFO]    \- org.springframework:spring-context:jar:3.1.0.RELEASE:compile
+[INFO]       +- org.springframework:spring-aop:jar:3.1.0.RELEASE:compile
+[INFO]       \- org.springframework:spring-expression:jar:3.1.0.RELEASE:compile
+```
+该 
 
