@@ -40,7 +40,7 @@ public final class MapperScannerConfigurerTest {
 ```
 即类似基于Spirng的应用，根据很久之前分析spring源码的理解，其实可发现在解析xml中的bean标签时，即是每个bean标签生成一个GenericBeanDefinition对象，设置其BeanClass、添加PropertyValue属性集合。为深入理解Spring原理，下载源码分析
 
-### 二.源码下载、导入及demo工程创建
+### 一.源码下载、导入及demo工程创建
 #### 1.下载源码并导入（基于3.1.0.RELEASE）
 从https://github.com/spring-projects/spring-framework/releases/tag/v3.1.0.RELEASE 下载源码，解压后导入eclipse。一开始各种报错，无奈决定尝试关闭所有项目逐个处理错误，仅保留spring-core 工程，发现依赖spring-asm工程，遂将该工作也打开，但是spring-core工程仍然报错：找不到许多spring-asm包中的类，开始各种折腾发现并没有什么用；于是决定看下报错类的源码，才发现下载的源码spring-asm并没有java源码，遂关闭spring-asm工程以便spring-core直接从maven仓库下载对应jar；然后将spring-core 的Java Compiler及Project Fact调整为JDK1.6,之后不再报错。（已上传至：https://github.com/better-yulong/StudyNote-Resource/tree/master/StudyNote-Resource/source-zip）
 #### 2.创建spirng3-analysis包（webapp）
