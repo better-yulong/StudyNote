@@ -260,6 +260,9 @@ String listeners[] = findApplicationListeners(); 会获取应用web.xml配置的
 
 
 
+
+
+
 Eclipse中Dependency Hierarchy的语法树层级显示及spring3-analysis工程根目录（与pom.xml同级）运行 mvn dependency:tree 分析，只需配置spirng-meb即可自动依赖所需jar：
 ```language
 [INFO] com.zyl.demo.web:spring3-analysis:war:0.0.1-SNAPSHOT
@@ -272,3 +275,4 @@ Eclipse中Dependency Hierarchy的语法树层级显示及spring3-analysis工程�
 [INFO]    \- org.springframework:spring-context:jar:3.1.0.RELEASE:compile
 [INFO]       +- org.springframework:spring-aop:jar:3.1.0.RELEASE:compile
 [INFO]       \- org.springframework:spring-expression:jar:3.1.0.RELEASE:compile
+
