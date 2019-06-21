@@ -297,7 +297,24 @@ createContextLoader()默认直接返回null，this.contextLoader.initWebApplicat
 			}
 }
 ```
-- 
+- this.context = createWebApplicationContext(servletContext);
+```language
+	protected WebApplicationContext createWebApplicationContext(ServletContext sc) {
+		Class<?> contextClass = determineContextClass(sc);
+		if (!ConfigurableWebApplicationContext.class.isAssignableFrom(contextClass)) {
+			throw new ApplicationContextException("Custom context class [" + contextClass.getName() +
+					"] is not of type [" + ConfigurableWebApplicationContext.class.getName() + "]");
+		}
+		ConfigurableWebApplicationContext wac =
+				(ConfigurableWebApplicationContext) BeanUtils.instantiateClass(contextClass);
+		return wac;
+	}
+```
+
+
+
+
+
 ```language
 //ContextLoader的 configureAndRefreshWebApplicationContext
 	protected void configureAndRefreshWebApplicationContext(ConfigurableWebApplicationContext wac, ServletContext sc) {
