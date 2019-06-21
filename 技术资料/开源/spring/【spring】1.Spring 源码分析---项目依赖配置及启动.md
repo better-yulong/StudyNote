@@ -285,72 +285,10 @@ listener.contextInitialized(event);则调用到具体Listeners对象的contextIn
 ```
 createContextLoader()默认直接返回null，this.contextLoader.initWebApplicationContext(event.getServletContext());最终执行的是ContextLoaderListener的父类ContextLoader的 initWebApplicationContext方法：
 ```language
-	/**
-	 * Initialize Spring's web application context for the given servlet context,
-	 * using the application context provided at construction time, or creating a new one
-	 * according to the "{@link #CONTEXT_CLASS_PARAM contextClass}" and
-	 * "{@link #CONFIG_LOCATION_PARAM contextConfigLocation}" context-params.
-	 * @param servletContext current servlet context
-	 * @return the new WebApplicationContext
-	 * @see #ContextLoader(WebApplicationContext)
-	 * @see #CONTEXT_CLASS_PARAM
-	 * @see #CONFIG_LOCATION_PARAM
-	 */
-	public WebApplicationContext initWebApplicationContext(ServletContext servletContext) {
-		if (servletContext.getAttribute(WebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE) != null) {
-			throw new IllegalStateException(
-					"Cannot initialize context because there is already a root application context present - " +
-					"check whether you have multiple ContextLoader* definitions in your web.xml!");
-		}
-
-		Log logger = LogFactory.getLog(ContextLoader.class);
-		servletContext.log("Initializing Spring root WebApplicationContext");
-		if (logger.isInfoEnabled()) {
-			logger.info("Root WebApplicationContext: initialization started");
-		}
-		long startTime = System.currentTimeMillis();
-
-		try {
-			// Store context in local instance variable, to guarantee that
-			// it is available on ServletContext shutdown.
-			if (this.context == null) {
-				this.context = createWebApplicationContext(servletContext);
-			}
-			if (this.context instanceof ConfigurableWebApplicationContext) {
+//核心代码
+if (this.context instanceof ConfigurableWebApplicationContext) {
 				configureAndRefreshWebApplicationContext((ConfigurableWebApplicationContext)this.context, servletContext);
 			}
-			servletContext.setAttribute(WebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE, this.context);
-
-			ClassLoader ccl = Thread.currentThread().getContextClassLoader();
-			if (ccl == ContextLoader.class.getClassLoader()) {
-				currentContext = this.context;
-			}
-			else if (ccl != null) {
-				currentContextPerThread.put(ccl, this.context);
-			}
-
-			if (logger.isDebugEnabled()) {
-				logger.debug("Published root WebApplicationContext as ServletContext attribute with name [" +
-						WebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE + "]");
-			}
-			if (logger.isInfoEnabled()) {
-				long elapsedTime = System.currentTimeMillis() - startTime;
-				logger.info("Root WebApplicationContext: initialization completed in " + elapsedTime + " ms");
-			}
-
-			return this.context;
-		}
-		catch (RuntimeException ex) {
-			logger.error("Context initialization failed", ex);
-			servletContext.setAttribute(WebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE, ex);
-			throw ex;
-		}
-		catch (Error err) {
-			logger.error("Context initialization failed", err);
-			servletContext.setAttribute(WebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE, err);
-			throw err;
-		}
-	}
 ```
 
 
