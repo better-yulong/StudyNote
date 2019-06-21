@@ -256,7 +256,7 @@ org.springframework.beans.factory.BeanDefinitionStoreException: IOException pars
 即Tomcat初始化时会根据web.xml实例化Listeners对象（web.xml中配置的Listeners、Servlet、Filter对象由Servlet容器实例化），同时会调
 
 
-Eclipse中Dependency Hierarchy的语法树层级显示及spring3-analysis工程根目录（与pom.xml同级）运行 mvn dependency:tree ：
+Eclipse中Dependency Hierarchy的语法树层级显示及spring3-analysis工程根目录（与pom.xml同级）运行 mvn dependency:tree 分析，只需配置spirng-meb即可自动依赖所需jar：
 ```language
 [INFO] com.zyl.demo.web:spring3-analysis:war:0.0.1-SNAPSHOT
 [INFO] +- org.springframework:spring-core:jar:3.1.0.RELEASE:compile
