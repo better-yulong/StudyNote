@@ -457,7 +457,7 @@ wac.refresh()，war为XmlWebApplicationContext的实例，基于的XmlWebApplica
 		this.environment.validateRequiredProperties();
 	}
 ```
- initPropertySources();该类在顶级父类为空方法，留给子类覆盖；validateRequiredProperties用于验证
+ initPropertySources();该类在顶级父类为空方法，留给子类覆盖；validateRequiredProperties用于验证必须的属性（可参考https://www.cnblogs.com/wade-luffy/p/6072460.html https://blog.csdn.net/boling_cavalry/article/details/81474340）做属性
 ```language
     //AbstractRefreshableWebApplicationContext类
 	@Override
