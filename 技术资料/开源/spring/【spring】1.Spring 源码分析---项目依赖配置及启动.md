@@ -265,7 +265,8 @@ String listeners[] = findApplicationListeners(); 会获取应用web.xml配置的
 2. Listeners 分组
 从源码可看出会将所有listener分成两个List存储；其中ServletContextAttributeListener、ServletRequestAttributeListener、ServletRequestListener、HttpSessionAttributeListener 四个接口的实现类放入eventListeners列表；而其他所有listener则放入lifecycleListeners列表
 3. Listenersg整合
-Listeners may have been added by ServletContextInitializers.  Put them after the ones we know about.即将通过其他方式添加的Listeners获取后添加至eventListeners、lifecycleListeners列表；并通过setApplicationEventListeners、setApplicationLifecycleListeners赋值给当前
+Listeners may have been added by ServletContextInitializers.  Put them after the ones we know about.即将通过其他方式添加的Listeners获取后添加至eventListeners、lifecycleListeners列表；并通过setApplicationEventListeners、setApplicationLifecycleListeners赋值给当前StandardContext实例
+
 
 
 
