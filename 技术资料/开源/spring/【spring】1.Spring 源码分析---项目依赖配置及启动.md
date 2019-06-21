@@ -469,6 +469,17 @@ wac.refresh()，war为XmlWebApplicationContext的实例，基于的XmlWebApplica
 	}
 ```
 ###### 2.2.4.2 ConfigurableListableBeanFactory beanFactory = obtainFreshBeanFactory();
+```language
+
+	protected ConfigurableListableBeanFactory obtainFreshBeanFactory() {
+		refreshBeanFactory();
+		ConfigurableListableBeanFactory beanFactory = getBeanFactory();
+		if (logger.isDebugEnabled()) {
+			logger.debug("Bean factory for " + getDisplayName() + ": " + beanFactory);
+		}
+		return beanFactory;
+	}
+```
 
 
 
