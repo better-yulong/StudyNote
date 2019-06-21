@@ -271,7 +271,19 @@ Listeners may have been added by ServletContextInitializers.  Put them after the
 5. Listener上下文初始化
 listener.contextInitialized(event);则调用到具体Listeners对象的contextInitialized方法（而event则为new ServletContextEvent(getServletContext())）。另外contextInitialized调用前后fireContainerEvent("beforeContextInitialized", listener)、fireContainerEvent("afterContextInitialized", listener)可触发容器事件（listeners定义为：The container event listeners for this Container）
 ###### 2.2.2 listener.contextInitialized(event)（即ContextLoaderListener）
-
+```language
+	/**
+	 * Initialize the root web application context.
+	 */
+	public void contextInitialized(ServletContextEvent event) {
+		this.contextLoader = createContextLoader();
+		if (this.contextLoader == null) {
+			this.contextLoader = this;
+		}
+		this.contextLoader.initWebApplicationContext(event.getServletContext());
+	}
+```
+createContextLoader()默认直接返回null
 
 
 
