@@ -377,7 +377,7 @@ org.springframework.web.context.WebApplicationContext=org.springframework.web.co
  </context-param>  
 ```
 
-
+wac.refresh();
 
 
 
