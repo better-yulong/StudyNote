@@ -256,7 +256,7 @@ org.springframework.beans.factory.BeanDefinitionStoreException: IOException pars
 - 1.Listeners web.xml加载分析
 String listeners[] = findApplicationListeners(); 会获取应用web.xml配置的spirng 默认org.springframework.web.context.ContextLoaderListener；那么此处其实可认为是Servlet容器提供的扩展机制，可配置多个Listen（按顺序实例化及调用）,如：
 ```language
---建议配置为第一个Listeners
+--建议配置为第一个Listeners，可查阅:https://www.cnblogs.com/qiankun-site/p/5886673.html
 <listener>
         <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
 </listener>
