@@ -261,7 +261,23 @@ String listeners[] = findApplicationListeners(); 会获取应用web.xml配置的
         <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
 </listener>
 ```
-也可通过继承已有Listener(如ContextLoaderListener)或实现ServletContextListener 接口自定义Linstener
+也可通过继承已有Listener(如ContextLoaderListener)或实现ServletContextListener 接口自定义Linstener（具体实践后面另行讲解）
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ```language
  public class ContextLoaderListener extends ContextLoader implements ServletContextListener 
 ```
@@ -286,4 +302,16 @@ Eclipse中Dependency Hierarchy的语法树层级显示及spring3-analysis工程�
 [INFO]    \- org.springframework:spring-context:jar:3.1.0.RELEASE:compile
 [INFO]       +- org.springframework:spring-aop:jar:3.1.0.RELEASE:compile
 [INFO]       \- org.springframework:spring-expression:jar:3.1.0.RELEASE:compile
+
+
+
+
+
+
+
+
+
+
+
+
 
