@@ -261,7 +261,7 @@ String listeners[] = findApplicationListeners(); 会获取应用web.xml配置的
         <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
 </listener>
 ```
-
+也可通过继承已有Listener，如
 
 
 
