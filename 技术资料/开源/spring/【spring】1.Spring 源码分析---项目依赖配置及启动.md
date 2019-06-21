@@ -261,7 +261,7 @@ String listeners[] = findApplicationListeners(); 会获取应用web.xml配置的
         <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
 </listener>
 ```
-此处获取的是String[] 的listeners，即完整类名格式；而循环中调用                 results[i] = instanceManager.newInstance(listeners[i])；即完成了listener对象的新农合 
+此处获取的是String[] 的listeners，即完整类名格式；而循环中调用                 results[i] = instanceManager.newInstance(listeners[i])；即完成了listener对象的实例化（底层调用class.newInstance()).
 
 也可通过继承已有Listener(如ContextLoaderListener)或实现ServletContextListener 接口自定义Linstener（具体实践后面另行讲解）
 
