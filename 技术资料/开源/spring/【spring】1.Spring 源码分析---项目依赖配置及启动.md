@@ -369,7 +369,11 @@ org.springframework.web.context.WebApplicationContext=org.springframework.web.co
         <param-value>/WEB-INF/classes/spring/rest-provider.xml</param-value>
     </context-param>
 ```
-- customizeContext(sc, wac)该方法用于获取ServletContext的contextInitializerClasses配置并实例化对应对象
+- customizeContext(sc, wac)该方法用于获取ServletContext的contextInitializerClasses配置并实例化对应对象，如：
+```language
+
+```
+
 
 
 
