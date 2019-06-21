@@ -356,7 +356,7 @@ org.springframework.web.context.WebApplicationContext=org.springframework.web.co
 		wac.refresh();
 	}
 ```
-为兼容 Servlet <= 2.4 版本，wac(WebApplicationContext实例）id会做差异处理；loadParentContext(sc)获取父上下文
+为兼容 Servlet <= 2.4 版本，wac(WebApplicationContext实例）id会做差异处理；loadParentContext(sc)获取父上下文此处默认为null，而wac.setParent(parent)、wac.setServletContext(sc)则用于指定spring
 
 
 
