@@ -436,7 +436,7 @@ wac.refresh()，war为XmlWebApplicationContext的实例，基于的XmlWebApplica
 		}
 	}
 ```
-###### 2.2.3.1  prepareRefresh()
+###### 2.2.4.1  prepareRefresh()
 
 
 
