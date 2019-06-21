@@ -356,8 +356,7 @@ org.springframework.web.context.WebApplicationContext=org.springframework.web.co
 		wac.refresh();
 	}
 ```
-
-
+为兼容 Servlet <= 2.4 
 
 
 
