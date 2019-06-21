@@ -380,7 +380,7 @@ org.springframework.web.context.WebApplicationContext=org.springframework.web.co
 ###### 2.2.3 Spring容器初始化 
 wac.refresh()，war为XmlWebApplicationContext的实例，基于的XmlWebApplicationContext多级继承关系分析，最终调用的是AbstractApplicationContext的refresh()
 ```language
-  
+  //AbstractApplicationContext类
 	public void refresh() throws BeansException, IllegalStateException {
 		synchronized (this.startupShutdownMonitor) {
 			// Prepare this context for refreshing.
