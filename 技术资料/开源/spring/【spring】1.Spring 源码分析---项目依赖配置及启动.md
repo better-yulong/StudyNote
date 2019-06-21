@@ -310,7 +310,12 @@ createContextLoader()默认直接返回null，this.contextLoader.initWebApplicat
 		return wac;
 	}
 ```
-而其中determineContextClass方法中，会读取spring-web工程的ContextLoader.properties文件来获取contextClass 
+而其中determineContextClass方法中，会读取spring-web工程的ContextLoader.properties文件来获取spring容器对应的contextClass 
+```language
+
+ContextLoader.properties文件
+org.springframework.web.context.WebApplicationContext=org.springframework.web.context.support.XmlWebApplicationContext
+```
 
 
 
