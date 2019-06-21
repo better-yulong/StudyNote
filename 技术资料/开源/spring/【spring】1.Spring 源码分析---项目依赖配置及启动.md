@@ -437,6 +437,26 @@ wac.refresh()，war为XmlWebApplicationContext的实例，基于的XmlWebApplica
 	}
 ```
 ###### 2.2.4.1  AbstractApplicationContext类prepareRefresh()
+```language
+	protected void prepareRefresh() {
+		this.startupDate = System.currentTimeMillis();
+
+		synchronized (this.activeMonitor) {
+			this.active = true;
+		}
+
+		if (logger.isInfoEnabled()) {
+			logger.info("Refreshing " + this);
+		}
+
+		// Initialize any placeholder property sources in the context environment
+		initPropertySources();
+
+		// Validate that all properties marked as required are resolvable
+		// see ConfigurablePropertyResolver#setRequiredProperties
+		this.environment.validateRequiredProperties();
+	}
+```
 
 
 
