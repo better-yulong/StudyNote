@@ -436,7 +436,7 @@ wac.refresh()，war为XmlWebApplicationContext的实例，基于的XmlWebApplica
 		}
 	}
 ```
-###### 2.2.4.1  AbstractApplicationContext类prepareRefresh()
+###### 2.2.4.1 AbstractApplicationContext类prepareRefresh()
 ```language
 	protected void prepareRefresh() {
 		this.startupDate = System.currentTimeMillis();
@@ -468,7 +468,7 @@ wac.refresh()，war为XmlWebApplicationContext的实例，基于的XmlWebApplica
 				this.servletConfig);
 	}
 ```
-ConfigurableListableBeanFactory beanFactory = obtainFreshBeanFactory();
+###### 2.2.4.2 ConfigurableListableBeanFactory beanFactory = obtainFreshBeanFactory();
 
 
 
