@@ -13,5 +13,6 @@ rocess-sources, generate-resources, process-resources, compile, process-classes,
 t-resources, process-test-resources, test-compile, process-test-classes, test, prepare-package, package, pre-integration-test, integration
 -test, post-integration-test, verify, install, deploy, pre-clean, clean, post-clean, pre-site, site, post-site, site-deploy. -> [Help 1]
 ```
-通过报错即可知其支持的参数，t
+通过报错即可知其支持的参数，运行 mvn dependency:tree ：
+
 
