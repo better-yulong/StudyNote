@@ -6,12 +6,11 @@ mvnDebug tomcat7:run(远程调试模式启动，默认远程端口8000)
 - 另可通过-X参数（mvn -X tomcat:run ）开启debug日志输出，对于分析定位问题相当有用
 
 ### 一.mvn命令分析工程依赖
-命令无需死记，命令行输入 mvn dependency 会运行分析，但会报错（因mvn -h 命令并不会输出需要的命令提示信息）：
+命令无需死记，命令行输入 mvn dependency: 会运行分析(注意后面的冒号)，但会报错（因mvn -h 命令并不会输出需要的命令提示信息）：
 ```language
-plugin-group-id>:<plugin-artifact-id>[:<plugin-version>]:<goal>. Available lifecycle phases are: validate, initialize, generate-sources, p
-rocess-sources, generate-resources, process-resources, compile, process-classes, generate-test-sources, process-test-sources, generate-tes
-t-resources, process-test-resources, test-compile, process-test-classes, test, prepare-package, package, pre-integration-test, integration
--test, post-integration-test, verify, install, deploy, pre-clean, clean, post-clean, pre-site, site, post-site, site-deploy. -> [Help 1]
+[ERROR] Could not find goal '' in plugin org.apache.maven.plugins:maven-dependency-plugin:2.1 among available goals unpack-dependencies, g
+o-offline, copy-dependencies, analyze-dep-mgt, list, purge-local-repository, help, get, build-classpath, sources, analyze-report, analyze,
+ tree, unpack, resolve, copy, analyze-only, resolve-plugins 
 ```
 通过报错即可知其支持的参数，在工程根目录（与pom.xml同级）运行 mvn dependency:tree ：
 ```language
