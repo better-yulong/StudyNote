@@ -46,10 +46,10 @@ public final class MapperScannerConfigurerTest {
 #### 2.创建spirng3-analysis包（webapp）
 基于eclipse创建web 的demo应用spring3-analysis，然后在spring3-analysis的pom.xml文件中添加spirng-core的依赖（根据spring-core的pom.xml配置）
 ```language
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-core</artifactId>
-			<version>3.1.0.RELEASE</version>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-core</artifactId>
+		<version>3.1.0.RELEASE</version>
 		</dependency>
 ```
 启动后可正常访问默认index.jsp，在tomcat的webapp对应目:spring3-analysis\WEB-INF\lib，可发现spirng-core、spring-asm 的jar 包有正常依赖。
