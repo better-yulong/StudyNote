@@ -595,7 +595,7 @@ public int loadBeanDefinitions(String location, Set<Resource> actualResources) t
 		}
 	}
 ```
- - 上面可看出beans节点默认只支持import、alias、bean、beans四类子节点，因重点分析bean标签解析故上面只示例如： 
+ - 上面可看出beans节点默认只支持import、alias、bean、beans四类子节点，因重点分析bean标签解析故上面只贴了processBeanDefinition方法源码；4个标签示例如： 
  ```language
     <import resource="user-appalicationContext.xml"/>
     <bean id="user" class="cn.com.infcn.test.User"></bean>
@@ -604,7 +604,6 @@ public int loadBeanDefinitions(String location, Set<Resource> actualResources) t
         //嵌套 beans标签
     </beans>
 ```
-
  - 其中代码：BeanDefinitionHolder bdHolder = delegate.parseBeanDefinitionElement(ele)对应BeanDefinitionParserDelegate类
 ```language
 	public BeanDefinitionHolder parseBeanDefinitionElement(Element ele, BeanDefinition containingBean) {
