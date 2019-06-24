@@ -604,7 +604,7 @@ public int loadBeanDefinitions(String location, Set<Resource> actualResources) t
         //嵌套 beans标签
     </beans>
 ```
- - 其中代码：BeanDefinitionHolder bdHolder = delegate.parseBeanDefinitionElement(ele)对应BeanDefinitionParserDelegate类
+ - 其中代码：BeanDefinitionHolder bdHolder = delegate.parseBeanDefinitionElement(ele) 对应BeanDefinitionParserDelegate类
 ```language
 	public BeanDefinitionHolder parseBeanDefinitionElement(Element ele, BeanDefinition containingBean) {
                 // 首先获取id和name属性
@@ -672,6 +672,7 @@ public int loadBeanDefinitions(String location, Set<Resource> actualResources) t
 [autowire="default", class="org.springframework.jmx.export.MBeanExporter", dependency-check="default", id="jmxAdapter", lazy-init="default"]
  
 ```language
+        BeanDefinitionParserDelegate类
 	/**
 	 * Parse the bean definition itself, without regard to name or aliases. May return
 	 * <code>null</code> if problems occured during the parse of the bean definition.
