@@ -742,6 +742,8 @@ BeanDefinitionReaderUtils.generateBeanName及beanName = this.readerContext.gener
 该方法主要用于设置beanFactory的ClassLoader、Resolver、environment、SystemProperties、SystemEnvironment等
 ###### 2.2.4.4 AbstractRefreshableWebApplicationContext类postProcessBeanFactory
 
+
+
 - 后面的内容先行保留，后续完善
 ```language
  public class ContextLoaderListener extends ContextLoader implements ServletContextListener 
