@@ -737,6 +737,7 @@ BeanDefinitionReaderUtils.generateBeanName及beanName = this.readerContext.gener
 用于解析内嵌的自定义标签
 ###### BeanDefinitionReaderUtils.registerBeanDefinition(bdHolder, getReaderContext().getRegistry());
 
+
 [autowire="default", class="org.springframework.jmx.export.MBeanExporter", dependency-check="default", id="jmxAdapter", lazy-init="default"]
 
 PropertiesBeanDefinitionReader
