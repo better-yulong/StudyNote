@@ -627,7 +627,7 @@ public int loadBeanDefinitions(String location, Set<Resource> actualResources) t
 		}
 
 		if (containingBean == null) {
-                        //根据
+                        //检验beanName、aliases是否
 			checkNameUniqueness(beanName, aliases, ele);
 		}
 
