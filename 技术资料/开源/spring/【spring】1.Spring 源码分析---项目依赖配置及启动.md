@@ -692,7 +692,7 @@ public int loadBeanDefinitions(String location, Set<Resource> actualResources) t
 			if (ele.hasAttribute(PARENT_ATTRIBUTE)) {
 				parent = ele.getAttribute(PARENT_ATTRIBUTE);
 			}
-	                //创建GenericBeanDefinition并指定parent
+	                //创建GenericBeanDefinition并指定ParentName、其BeanClass或者
 			AbstractBeanDefinition bd = createBeanDefinition(className, parent);
 
 			parseBeanDefinitionAttributes(ele, beanName, containingBean, bd);
