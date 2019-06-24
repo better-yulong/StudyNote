@@ -774,7 +774,7 @@ https://www.cnblogs.com/yuxiang1/archive/2018/06/19/9199730.html
 ###### 2.2.4.10 AbstractRefreshableWebApplicationContext类registerListeners
 注册监听器
 ###### 2.2.4.11 AbstractApplicationContext类finishBeanFactoryInitialization
-Environment主要是负责解析properties和profile，最终通过过PropertySourcesPropertyResolver这个类来处理的
+Environment主要是负责解析properties和profile，最终通过过PropertySourcesPropertyResolver这个类来处理；
 
 - 后面的内容先行保留，后续完善
 ```language
