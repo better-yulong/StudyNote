@@ -741,7 +741,7 @@ BeanDefinitionReaderUtils.generateBeanName及beanName = this.readerContext.gener
 ###### 2.2.4.3 AbstractApplicationContext类prepareBeanFactory(beanFactory);
 该方法主要用于设置beanFactory的ClassLoader、Resolver、environment、SystemProperties、SystemEnvironment等
 ###### 2.2.4.4 AbstractRefreshableWebApplicationContext类postProcessBeanFactory
-spring中并没有具体去实现postProcessBeanFactory方法，是提供给想要实现BeanPostProcessor的三方框架使用的。谁要使用谁就去实现。作用是在BeanFactory准备工作完成后做一些定制化的处理，一般结合BeanPostProcessor接口的实现类一起使用，注入一些重要资源（类似Application的属性和ServletContext的属性）；最后需要设置忽略这类BeanPostProcessor子接口的自动装配。
+spring中并没有具体去实现postProcessBeanFactory方法，是提供给想要实现BeanPostProcessor的三方框架使用的，主要承接前文中的prepareBeanFactory()方法。谁要使用谁就去实现，作用是在BeanFactory准备工作完成后做一些定制化的处理，一般结合BeanPostProcessor接口的实现类一起使用，注入一些重要资源（类似Application的属性和ServletContext的属性）。最后需要设置忽略这类BeanPostProcessor子接口的自动装配。
 
 
 
