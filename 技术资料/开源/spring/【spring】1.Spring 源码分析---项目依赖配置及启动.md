@@ -481,7 +481,7 @@ wac.refresh()，war为XmlWebApplicationContext的实例，基于的XmlWebApplica
 	}
 ```
 基于类继承关系,实际调用的是AbstractRefreshableApplicationContext类的refreshBeanFactory()、getBeanFactory()方法
-
+DefaultListableBeanFactory
 
 
 
