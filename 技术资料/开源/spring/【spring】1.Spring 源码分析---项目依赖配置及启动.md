@@ -595,7 +595,7 @@ public int loadBeanDefinitions(String location, Set<Resource> actualResources) t
 		}
 	}
 ```
-###### 解析并获取
+###### 解析并获取BeanDefinitionHolder 
 上面可看出beans节点默认只支持import、alias、bean、beans四类子节点，因重点分析bean标签解析故上面只贴了processBeanDefinition方法源码；4个标签示例如： 
  ```language
     <import resource="user-appalicationContext.xml"/>
@@ -733,7 +733,7 @@ public int loadBeanDefinitions(String location, Set<Resource> actualResources) t
 ```
 BeanDefinitionReaderUtils.generateBeanName及beanName = this.readerContext.generateBeanName(beanDefinition)主要针对没有beanName时根据parent、factory或者beanClassName来生成beanName并添加至aliases（如<bean class="org.springframework.jmx.export.MBeanExporter">）
 以上方法执行完parseBeanDefinitionElement方法会返回new  BeanDefinitionHolder(beanDefinition, beanName, aliasesArray); 
-
+###### BeanDefinitionParserDelegate解析并获取BeanDefinitionHolder 
 
 
 [autowire="default", class="org.springframework.jmx.export.MBeanExporter", dependency-check="default", id="jmxAdapter", lazy-init="default"]
