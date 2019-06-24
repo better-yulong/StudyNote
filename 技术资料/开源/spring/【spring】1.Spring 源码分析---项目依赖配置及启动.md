@@ -736,6 +736,7 @@ BeanDefinitionReaderUtils.generateBeanName及beanName = this.readerContext.gener
 ###### BeanDefinitionParserDelegate类decorateBeanDefinitionIfRequired 
 
 
+
 [autowire="default", class="org.springframework.jmx.export.MBeanExporter", dependency-check="default", id="jmxAdapter", lazy-init="default"]
 
 PropertiesBeanDefinitionReader
