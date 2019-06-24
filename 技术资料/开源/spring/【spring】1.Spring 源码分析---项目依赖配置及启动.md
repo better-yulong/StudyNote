@@ -595,7 +595,7 @@ public int loadBeanDefinitions(String location, Set<Resource> actualResources) t
 		}
 	}
 ```
- - 上面可看出beans节点默认只支持import、alias、bean、beans四类子节点，示例如： 
+ - 上面可看出beans节点默认只支持import、alias、bean、beans四类子节点，因重点分析bean标签解析故上面只示例如： 
  ```language
     <import resource="user-appalicationContext.xml"/>
     <bean id="user" class="cn.com.infcn.test.User"></bean>
