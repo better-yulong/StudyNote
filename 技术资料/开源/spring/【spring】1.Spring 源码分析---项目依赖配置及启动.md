@@ -740,7 +740,7 @@ BeanDefinitionReaderUtils.generateBeanName及beanName = this.readerContext.gener
 至此obtainFreshBeanFactory()完成，返回DefaultListableBeanFactory并完成application.xml文件解析生成对应的BeanDefinitionHolder
 ###### 2.2.4.3 AbstractApplicationContext类prepareBeanFactory(beanFactory);
 该方法主要用于设置beanFactory的ClassLoader、Resolver、environment、SystemProperties、SystemEnvironment等
-###### 2.2.4.4 AbstractRefreshableWebApplicationContext类postProcessBeanFactory(beanFactory);
+###### 2.2.4.4 AbstractRefreshableWebApplicationContext类postProcessBeanFactory
 
 - 后面的内容先行保留，后续完善
 ```language
