@@ -696,6 +696,7 @@ public int loadBeanDefinitions(String location, Set<Resource> actualResources) t
 			AbstractBeanDefinition bd = createBeanDefinition(className, parent);
                         //解析scope/singleton/abstract/lazy-init/autowire/dependency-check/depends-on/autowire-candidate/primary/init-method/destroy-method/factory-method/factory-bean属性值及根据默认值判断处理更新bd对象
 			parseBeanDefinitionAttributes(ele, beanName, containingBean, bd);
+                        //description设置
 			bd.setDescription(DomUtils.getChildElementValueByTagName(ele, DESCRIPTION_ELEMENT));
 
 			parseMetaElements(ele, bd);
