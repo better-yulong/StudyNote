@@ -738,7 +738,7 @@ BeanDefinitionReaderUtils.generateBeanName及beanName = this.readerContext.gener
 ###### BeanDefinitionReaderUtils.registerBeanDefinition(bdHolder, getReaderContext().getRegistry());
 完成beanName注册.beanDefinitionMap.put(beanName, beanDefinition)，并绑定beanName与所有alias
 至此obtainFreshBeanFactory()完成，返回DefaultListableBeanFactory并完成application.xml文件解析生成对应的BeanDefinitionHolder
-###### 2.2.4.3 AbstractApplicationContext类obtainFreshBeanFactory();
+###### 2.2.4.3 AbstractApplicationContext类prepareBeanFactory(beanFactory);
 
 
 - 后面的内容先行保留，后续完善
