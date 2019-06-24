@@ -487,6 +487,7 @@ wac.refresh()，war为XmlWebApplicationContext的实例，基于的XmlWebApplica
   - ServletContext实例对象sc提供获取context-param参数的值，但仅是获取而不做处理；获取该值后，如上获取contextConfigLocation会根据;切分成locations数组，然后逐个根据路径格式（如/开头绝对路径；抑或classpath:开头路径；file开头等）基于PropertySourcesPropertyResolver成解析占位符获取路径生成configLocations数组供后续使用（前缀classpath:此处会保留）
   2. 遍历getConfigLocations结果（此） ,使用XmlBeanDefinitionReader实例的loadBeanDefinitions方法来解析xml文件及加载BeanDefinitions(实际对应其父类AbstractBeanDefinitionReader的loadBeanDefinitions)
 ```language
+//父类AbstractBeanDefinitionReader的loadBeanDefinitions
 public int loadBeanDefinitions(String location, Set<Resource> actualResources) throws BeanDefinitionStoreException {
 		ResourceLoader resourceLoader = getResourceLoader();
 		if (resourceLoader == null) {
