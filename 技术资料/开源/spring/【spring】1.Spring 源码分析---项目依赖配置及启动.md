@@ -702,7 +702,7 @@ public int loadBeanDefinitions(String location, Set<Resource> actualResources) t
 			parseMetaElements(ele, bd);
                         //获取器注入，可根据需要在配置文件指定需返回的bean，参考：https://www.cnblogs.com/ViviChan/p/4981619.html
 			parseLookupOverrideSubElements(ele, bd.getMethodOverrides());
-                        //方法
+                        //替换掉 bean 中的一些方法：https://blog.csdn.net/qq_22912803/article/details/52503914
 			parseReplacedMethodSubElements(ele, bd.getMethodOverrides());
 
 			parseConstructorArgElements(ele, bd);
