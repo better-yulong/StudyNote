@@ -615,7 +615,7 @@ public int loadBeanDefinitions(String location, Set<Resource> actualResources) t
 			String[] nameArr = StringUtils.tokenizeToStringArray(nameAttr, MULTI_VALUE_ATTRIBUTE_DELIMITERS);
 			aliases.addAll(Arrays.asList(nameArr));
 		}
-
+                //如果只配置了name，没有配置id，则用第一个name作为id
 		String beanName = id;
 		if (!StringUtils.hasText(beanName) && !aliases.isEmpty()) {
 			beanName = aliases.remove(0);
