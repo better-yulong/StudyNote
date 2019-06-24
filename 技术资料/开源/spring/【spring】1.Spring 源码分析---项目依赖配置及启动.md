@@ -666,7 +666,7 @@ public int loadBeanDefinitions(String location, Set<Resource> actualResources) t
 		return null;
 	}
 ```
-主要步骤如下：获取id、name属性值，如若有name则直接用将name作为alis
+主要步骤如下：获取id、name属性值，如若有name则直接用将name作为alis添加至aliases列表，用id作为beanName
 [autowire="default", class="org.springframework.jmx.export.MBeanExporter", dependency-check="default", id="jmxAdapter", lazy-init="default"]
  
 
