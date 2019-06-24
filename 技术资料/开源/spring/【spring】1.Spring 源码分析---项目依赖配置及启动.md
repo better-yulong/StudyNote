@@ -668,9 +668,64 @@ public int loadBeanDefinitions(String location, Set<Resource> actualResources) t
 		return null;
 	}
 ```
-主要步骤如下：获取id、name属性值，如若有name则直接用将name作为alis添加至aliases列表，用id作为beanName
+
 [autowire="default", class="org.springframework.jmx.export.MBeanExporter", dependency-check="default", id="jmxAdapter", lazy-init="default"]
  
+```language
+	/**
+	 * Parse the bean definition itself, without regard to name or aliases. May return
+	 * <code>null</code> if problems occured during the parse of the bean definition.
+	 */
+	public AbstractBeanDefinition parseBeanDefinitionElement(
+			Element ele, String beanName, BeanDefinition containingBean) {
+
+		this.parseState.push(new BeanEntry(beanName));
+
+		String className = null;
+		if (ele.hasAttribute(CLASS_ATTRIBUTE)) {
+			className = ele.getAttribute(CLASS_ATTRIBUTE).trim();
+		}
+
+		try {
+			String parent = null;
+			if (ele.hasAttribute(PARENT_ATTRIBUTE)) {
+				parent = ele.getAttribute(PARENT_ATTRIBUTE);
+			}
+			AbstractBeanDefinition bd = createBeanDefinition(className, parent);
+
+			parseBeanDefinitionAttributes(ele, beanName, containingBean, bd);
+			bd.setDescription(DomUtils.getChildElementValueByTagName(ele, DESCRIPTION_ELEMENT));
+
+			parseMetaElements(ele, bd);
+			parseLookupOverrideSubElements(ele, bd.getMethodOverrides());
+			parseReplacedMethodSubElements(ele, bd.getMethodOverrides());
+
+			parseConstructorArgElements(ele, bd);
+			parsePropertyElements(ele, bd);
+			parseQualifierElements(ele, bd);
+
+			bd.setResource(this.readerContext.getResource());
+			bd.setSource(extractSource(ele));
+
+			return bd;
+		}
+		catch (ClassNotFoundException ex) {
+			error("Bean class [" + className + "] not found", ele, ex);
+		}
+		catch (NoClassDefFoundError err) {
+			error("Class that bean class [" + className + "] depends on not found", ele, err);
+		}
+		catch (Throwable ex) {
+			error("Unexpected failure during bean definition parsing", ele, ex);
+		}
+		finally {
+			this.parseState.pop();
+		}
+
+		return null;
+	}
+```
+
 
 PropertiesBeanDefinitionReader
 
