@@ -735,7 +735,7 @@ BeanDefinitionReaderUtils.generateBeanName及beanName = this.readerContext.gener
 以上方法执行完parseBeanDefinitionElement方法会返回new  BeanDefinitionHolder(beanDefinition, beanName, aliasesArray); 
 ###### BeanDefinitionParserDelegate类decorateBeanDefinitionIfRequired 
 用于解析内嵌的自定义标签
-###### BeanDefinitionParserDelegate类decorateBeanDefinitionIfRequired 
+###### BeanDefinitionReaderUtils.registerBeanDefinition(bdHolder, getReaderContext().getRegistry());
 
 [autowire="default", class="org.springframework.jmx.export.MBeanExporter", dependency-check="default", id="jmxAdapter", lazy-init="default"]
 
