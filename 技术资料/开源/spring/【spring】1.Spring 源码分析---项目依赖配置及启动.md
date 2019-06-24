@@ -528,8 +528,8 @@ public int loadBeanDefinitions(String location, Set<Resource> actualResources) t
 		}
 	}
 ```
- - Resource[] resources = ((ResourcePatternResolver) resourceLoader).getResources(location)该行根据location字符串值（如classpath:applicationContext.xml）
-ClassPathResource
+ - Resource[] resources = ((ResourcePatternResolver) resourceLoader).getResources(location)该行根据location字符串值（如classpath:applicationContext.xml）获取对应的ClassPathResource；
+
 
 PropertiesBeanDefinitionReader
 
