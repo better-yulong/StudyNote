@@ -694,7 +694,7 @@ public int loadBeanDefinitions(String location, Set<Resource> actualResources) t
 			}
 	                //创建GenericBeanDefinition并指定ParentName、其BeanClass或者BeanClassName
 			AbstractBeanDefinition bd = createBeanDefinition(className, parent);
-                        //解析scope/singleton/abstract/lazy-init/autowire/dependency-check/depends-on/autowire-candidate
+                        //解析scope/singleton/abstract/lazy-init/autowire/dependency-check/depends-on/autowire-candidate/primary/init-method
 			parseBeanDefinitionAttributes(ele, beanName, containingBean, bd);
 			bd.setDescription(DomUtils.getChildElementValueByTagName(ele, DESCRIPTION_ELEMENT));
 
