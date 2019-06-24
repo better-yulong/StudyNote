@@ -533,6 +533,21 @@ public int loadBeanDefinitions(String location, Set<Resource> actualResources) t
  - XmlBeanDefinitionReader类loadBeanDefinitions、doLoadBeanDefinitions、registerBeanDefinitions --> DefaultBeanDefinitionDocumentReader类registerBeanDefinitions、doRegisterBeanDefinitions--> DefaultBeanDefinitionDocumentReader类doRegisterBeanDefinitions、parseBeanDefinitions、parseDefaultElement、processBeanDefinition，大致步骤：使用InputStream读取xml文件；根据文件xsd及xml解析工具生成doc对象；获取beans节点及属性；获取bean节点对应的element对象并获取属性值（为部分未明确指定的属性设置默认值,BeanDefinitionParserDelegate类的populateDefaults）
  - DefaultBeanDefinitionDocumentReader类processBeanDefinition方法
 ```language
+        private void parseDefaultElement(Element ele, BeanDefinitionParserDelegate delegate) {
+		if (delegate.nodeNameEquals(ele, IMPORT_ELEMENT)) {
+			importBeanDefinitionResource(ele);
+		}
+		else if (delegate.nodeNameEquals(ele, ALIAS_ELEMENT)) {
+			processAliasRegistration(ele);
+		}
+		else if (delegate.nodeNameEquals(ele, BEAN_ELEMENT)) {
+			processBeanDefinition(ele, delegate);
+		}
+		else if (delegate.nodeNameEquals(ele, NESTED_BEANS_ELEMENT)) {
+			// recurse
+			doRegisterBeanDefinitions(ele);
+		}
+	}
 	/**
 	 * Process the given bean element, parsing the bean definition
 	 * and registering it with the registry.
