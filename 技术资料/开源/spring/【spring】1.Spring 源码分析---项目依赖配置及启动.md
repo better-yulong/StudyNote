@@ -772,7 +772,7 @@ https://www.cnblogs.com/yuxiang1/archive/2018/06/19/9199730.html
 ###### 2.2.4.9 AbstractRefreshableWebApplicationContext类onRefresh
 执行Spring 主题的刷新 UiApplicationContextUtils.initThemeSource()
  ###### 2.2.4.10 AbstractRefreshableWebApplicationContext类registerListeners
-
+//注册监听器
 
 
 - 后面的内容先行保留，后续完善
