@@ -598,6 +598,8 @@ public int loadBeanDefinitions(String location, Set<Resource> actualResources) t
  - 上面可看出beans节点默认只支持import、alias、bean、beans四类子节点， 
  ```language
     <import resource="user-appalicationContext.xml"/>
+    <bean id="user" class="cn.com.infcn.test.User"></bean>
+    <alias name="user" alias="myUser" />
 ```
 
  - 其中代码：BeanDefinitionHolder bdHolder = delegate.parseBeanDefinitionElement(ele)对应BeanDefinitionParserDelegate类
