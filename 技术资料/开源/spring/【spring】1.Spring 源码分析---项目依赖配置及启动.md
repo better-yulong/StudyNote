@@ -595,13 +595,13 @@ public int loadBeanDefinitions(String location, Set<Resource> actualResources) t
 		}
 	}
 ```
- - 上面可看出beans节点默认只支持import、alias、bean、beans四类子节点， 
+ - 上面可看出beans节点默认只支持import、alias、bean、beans四类子节点，示例如： 
  ```language
     <import resource="user-appalicationContext.xml"/>
     <bean id="user" class="cn.com.infcn.test.User"></bean>
     <alias name="user" alias="myUser" />
     <beans>
-        //嵌套 beans
+        //嵌套 beans标签
     </beans>
 ```
 
