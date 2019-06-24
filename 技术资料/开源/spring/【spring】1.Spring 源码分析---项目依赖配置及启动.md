@@ -700,7 +700,7 @@ public int loadBeanDefinitions(String location, Set<Resource> actualResources) t
 			bd.setDescription(DomUtils.getChildElementValueByTagName(ele, DESCRIPTION_ELEMENT));
                         //解析meta子节点（meta不体现在bean本身；而是一个额外的声明，当需要使用里面的信息的时候可以通过BeanDefinition的getAttribute(key)方法进行获取）
 			parseMetaElements(ele, bd);
-                        //获取器注入，可根据需要在配置文件指定需返回的bean，参考：https://www.cnblogs.com/ViviChan/p/4981619.html
+                        //获取器注入，可根据需要在配置文件指定需返回的bean，参考：https://blog.csdn.net/jishuizhipan/article/details/79391688
 			parseLookupOverrideSubElements(ele, bd.getMethodOverrides());
                         //替换bean中方法：https://blog.csdn.net/qq_22912803/article/details/52503914
 			parseReplacedMethodSubElements(ele, bd.getMethodOverrides());
