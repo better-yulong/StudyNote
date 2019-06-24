@@ -600,6 +600,9 @@ public int loadBeanDefinitions(String location, Set<Resource> actualResources) t
     <import resource="user-appalicationContext.xml"/>
     <bean id="user" class="cn.com.infcn.test.User"></bean>
     <alias name="user" alias="myUser" />
+    <beans>
+        //嵌套 beans
+    </beans>
 ```
 
  - 其中代码：BeanDefinitionHolder bdHolder = delegate.parseBeanDefinitionElement(ele)对应BeanDefinitionParserDelegate类
