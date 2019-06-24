@@ -609,13 +609,13 @@ public int loadBeanDefinitions(String location, Set<Resource> actualResources) t
 	public BeanDefinitionHolder parseBeanDefinitionElement(Element ele, BeanDefinition containingBean) {
 		String id = ele.getAttribute(ID_ATTRIBUTE); //id
 		String nameAttr = ele.getAttribute(NAME_ATTRIBUTE);
-
+             
 		List<String> aliases = new ArrayList<String>();
 		if (StringUtils.hasLength(nameAttr)) {
 			String[] nameArr = StringUtils.tokenizeToStringArray(nameAttr, MULTI_VALUE_ATTRIBUTE_DELIMITERS);
 			aliases.addAll(Arrays.asList(nameArr));
 		}
-                //如果只配置了name，没有配置id，则用第一个name作为beanName 
+                //如果只配置了name，没有配置id，则从aliases移除并获取第一个name作为beanName 
 		String beanName = id;
 		if (!StringUtils.hasText(beanName) && !aliases.isEmpty()) {
 			beanName = aliases.remove(0);
