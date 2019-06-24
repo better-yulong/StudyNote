@@ -708,7 +708,7 @@ public int loadBeanDefinitions(String location, Set<Resource> actualResources) t
 			parseConstructorArgElements(ele, bd);
 		        //解析property（name、ref、value，以及property标签可包含子节点meta解析)
 			parsePropertyElements(ele, bd);
-                        //解析qualifier,通过Qualifier指定注入bean的名称
+                        //解析qualifier,通过Qualifier指定注入bean的名称（极少使用)
 			parseQualifierElements(ele, bd);
 
 			bd.setResource(this.readerContext.getResource());
