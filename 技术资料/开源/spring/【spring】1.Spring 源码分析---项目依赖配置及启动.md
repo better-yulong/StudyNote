@@ -771,8 +771,9 @@ https://www.cnblogs.com/yuxiang1/archive/2018/06/19/9199730.html
 初始化自定义或者默认事件监听多路广播器（ https://blog.csdn.net/yu_kang/article/details/883897000；可用于事件发布，参考：https://blog.csdn.net/weixin_39035120/article/details/86225377、https://www.cnblogs.com/takumicx/p/9972461.html
 ###### 2.2.4.9 AbstractRefreshableWebApplicationContext类onRefresh
 执行Spring 主题的刷新 UiApplicationContextUtils.initThemeSource()
- ###### 2.2.4.10 AbstractRefreshableWebApplicationContext类registerListeners
-//注册监听器
+###### 2.2.4.10 AbstractRefreshableWebApplicationContext类registerListeners
+注册监听器
+###### 2.2.4.11 AbstractRefreshableWebApplicationContext类registerListeners
 
 
 - 后面的内容先行保留，后续完善
