@@ -704,7 +704,7 @@ public int loadBeanDefinitions(String location, Set<Resource> actualResources) t
 			parseLookupOverrideSubElements(ele, bd.getMethodOverrides());
                         //替换bean中方法：https://blog.csdn.net/qq_22912803/article/details/52503914
 			parseReplacedMethodSubElements(ele, bd.getMethodOverrides());
-                        //constructor-arg
+                        //解析constructor-arg（index、type、value-type）
 			parseConstructorArgElements(ele, bd);
 			parsePropertyElements(ele, bd);
 			parseQualifierElements(ele, bd);
