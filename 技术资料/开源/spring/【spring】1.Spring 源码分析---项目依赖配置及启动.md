@@ -738,9 +738,6 @@ BeanDefinitionReaderUtils.generateBeanName及beanName = this.readerContext.gener
 ###### BeanDefinitionReaderUtils.registerBeanDefinition(bdHolder, getReaderContext().getRegistry());
 完成beanName注册.beanDefinitionMap.put(beanName, beanDefinition)，并绑定beanName与所有alias
 
-[autowire="default", class="org.springframework.jmx.export.MBeanExporter", dependency-check="default", id="jmxAdapter", lazy-init="default"]
-
-PropertiesBeanDefinitionReader
 
 
 
