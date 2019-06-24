@@ -760,7 +760,7 @@ spring中并没有具体去实现postProcessBeanFactory方法，是提供给想�
         WebApplicationContextUtils.registerEnvironmentBeans(beanFactory, this.servletContext, this.servletConfig);
     }
 ```
-###### 2.2.4.5 AbstractRefreshableWebApplicationContext类invokeBeanFactoryPostProcessors
+###### 2.2.4.5 AbstractApplicationContext类invokeBeanFactoryPostProcessors
 ```language
 public static void invokeBeanFactoryPostProcessors(
         ConfigurableListableBeanFactory beanFactory, List<BeanFactoryPostProcessor> beanFactoryPostProcessors) {
