@@ -734,8 +734,8 @@ public int loadBeanDefinitions(String location, Set<Resource> actualResources) t
 BeanDefinitionReaderUtils.generateBeanName及beanName = this.readerContext.generateBeanName(beanDefinition)主要针对没有beanName时根据parent、factory或者beanClassName来生成beanName并添加至aliases（如<bean class="org.springframework.jmx.export.MBeanExporter">）
 以上方法执行完parseBeanDefinitionElement方法会返回new  BeanDefinitionHolder(beanDefinition, beanName, aliasesArray); 
 ###### BeanDefinitionParserDelegate类decorateBeanDefinitionIfRequired 
-用于解析内嵌的自定义
-
+用于解析内嵌的自定义标签
+###### BeanDefinitionParserDelegate类decorateBeanDefinitionIfRequired 
 
 [autowire="default", class="org.springframework.jmx.export.MBeanExporter", dependency-check="default", id="jmxAdapter", lazy-init="default"]
 
