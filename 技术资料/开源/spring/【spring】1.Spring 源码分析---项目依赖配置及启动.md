@@ -768,7 +768,8 @@ https://www.cnblogs.com/yuxiang1/archive/2018/06/19/9199730.html
 ###### 2.2.4.6 AbstractApplicationContext类initMessageSource
 初始化MessageSource组件（做国际化功能；消息绑定，消息解析）；
 ###### 2.2.4.6 AbstractApplicationContext类initApplicationEventMulticaster
-
+初始化自定义
+https://blog.csdn.net/yu_kang/article/details/88389700
 
 
 
