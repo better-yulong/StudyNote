@@ -668,7 +668,7 @@ public int loadBeanDefinitions(String location, Set<Resource> actualResources) t
 		return null;
 	}
 ```
- 
+ parseBeanDefinitionElement方法：
 ```language
         BeanDefinitionParserDelegate类
 	/**
