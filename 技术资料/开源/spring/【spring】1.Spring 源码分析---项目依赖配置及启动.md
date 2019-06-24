@@ -767,7 +767,7 @@ spring中并没有具体去实现postProcessBeanFactory方法，是提供给想�
 https://www.cnblogs.com/yuxiang1/archive/2018/06/19/9199730.html
 ###### 2.2.4.7 AbstractApplicationContext类initMessageSource
 初始化MessageSource组件（做国际化功能；消息绑定，消息解析）；
-###### 2.2.4.6 AbstractApplicationContext类initApplicationEventMulticaster
+###### 2.2.4.8 AbstractApplicationContext类initApplicationEventMulticaster
 初始化自定义或者默认事件监听多路广播器（ https://blog.csdn.net/yu_kang/article/details/883897000；可用于事件发布，参考：https://blog.csdn.net/weixin_39035120/article/details/86225377、https://www.cnblogs.com/takumicx/p/9972461.html
 
 
