@@ -595,7 +595,7 @@ public int loadBeanDefinitions(String location, Set<Resource> actualResources) t
 		}
 	}
 ```
- - 上面可看出其中代码：BeanDefinitionHolder bdHolder = delegate.parseBeanDefinitionElement(ele)对应BeanDefinitionParserDelegate类
+ - 上面可看出beans节点默认只支持 其中代码：BeanDefinitionHolder bdHolder = delegate.parseBeanDefinitionElement(ele)对应BeanDefinitionParserDelegate类
 ```language
 	public BeanDefinitionHolder parseBeanDefinitionElement(Element ele, BeanDefinition containingBean) {
 		String id = ele.getAttribute(ID_ATTRIBUTE); //id
