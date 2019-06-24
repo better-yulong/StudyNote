@@ -528,8 +528,8 @@ public int loadBeanDefinitions(String location, Set<Resource> actualResources) t
 		}
 	}
 ```
-
-
+ - 
+ClassPathResource
 
 PropertiesBeanDefinitionReader
 
