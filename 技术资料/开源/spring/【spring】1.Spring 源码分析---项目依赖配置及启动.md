@@ -768,6 +768,11 @@ https://www.cnblogs.com/yuxiang1/archive/2018/06/19/9199730.html
 ###### 2.2.4.6 AbstractApplicationContext类initMessageSource
 初始化MessageSource组件（做国际化功能；消息绑定，消息解析）；
 
+
+
+
+
+
 - 后面的内容先行保留，后续完善
 ```language
  public class ContextLoaderListener extends ContextLoader implements ServletContextListener 
@@ -793,6 +798,9 @@ Eclipse中Dependency Hierarchy的语法树层级显示及spring3-analysis工程�
 [INFO]    \- org.springframework:spring-context:jar:3.1.0.RELEASE:compile
 [INFO]       +- org.springframework:spring-aop:jar:3.1.0.RELEASE:compile
 [INFO]       \- org.springframework:spring-expression:jar:3.1.0.RELEASE:compile
+
+
+
 
 
 
