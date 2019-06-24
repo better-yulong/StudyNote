@@ -625,7 +625,7 @@ public int loadBeanDefinitions(String location, Set<Resource> actualResources) t
 						"' as bean name and " + aliases + " as aliases");
 			}
 		}
-
+                //containingBean默认传入null
 		if (containingBean == null) {
                         //检验beanName、aliases是否已被使用，若未使用将beanName、aliases添加至usedNames对应的Map
 			checkNameUniqueness(beanName, aliases, ele);
