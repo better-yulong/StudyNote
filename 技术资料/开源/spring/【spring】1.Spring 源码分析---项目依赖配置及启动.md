@@ -531,6 +531,29 @@ public int loadBeanDefinitions(String location, Set<Resource> actualResources) t
 ```
  - Resource[] resources = ((ResourcePatternResolver) resourceLoader).getResources(location)该行根据location字符串值（如classpath:applicationContext.xml）获取对应的ClassPathResource；
  - XmlBeanDefinitionReader类loadBeanDefinitions、doLoadBeanDefinitions、registerBeanDefinitions --> DefaultBeanDefinitionDocumentReader类registerBeanDefinitions、doRegisterBeanDefinitions--> DefaultBeanDefinitionDocumentReader类doRegisterBeanDefinitions、parseBeanDefinitions、parseDefaultElement、processBeanDefinition
+```language
+	/**
+	 * Process the given bean element, parsing the bean definition
+	 * and registering it with the registry.
+	 */
+	protected void processBeanDefinition(Element ele, BeanDefinitionParserDelegate delegate) {
+		BeanDefinitionHolder bdHolder = delegate.parseBeanDefinitionElement(ele);
+		if (bdHolder != null) {
+			bdHolder = delegate.decorateBeanDefinitionIfRequired(ele, bdHolder);
+			try {
+				// Register the final decorated instance.
+				BeanDefinitionReaderUtils.registerBeanDefinition(bdHolder, getReaderContext().getRegistry());
+			}
+			catch (BeanDefinitionStoreException ex) {
+				getReaderContext().error("Failed to register bean definition with name '" +
+						bdHolder.getBeanName() + "'", ele, ex);
+			}
+			// Send registration event.
+			getReaderContext().fireComponentRegistered(new BeanComponentDefinition(bdHolder));
+		}
+	}
+```
+
  
 
 PropertiesBeanDefinitionReader
