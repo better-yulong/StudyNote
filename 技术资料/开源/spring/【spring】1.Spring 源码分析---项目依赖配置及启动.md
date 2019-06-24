@@ -731,7 +731,7 @@ public int loadBeanDefinitions(String location, Set<Resource> actualResources) t
 	}
 ```
 BeanDefinitionReaderUtils.generateBeanName及beanName = this.readerContext.generateBeanName(beanDefinition)主要针对没有beanName时根据parent、factory或者beanClassName来生成beanName并添加至aliases（如<bean class="org.springframework.jmx.export.MBeanExporter">）
-
+以上
 
 
 
