@@ -760,7 +760,7 @@ spring中并没有具体去实现postProcessBeanFactory方法，是提供给想�
         WebApplicationContextUtils.registerEnvironmentBeans(beanFactory, this.servletContext, this.servletConfig);
     }
 ```
-
+###### 2.2.4.5 AbstractRefreshableWebApplicationContext类invokeBeanFactoryPostProcessors
 ```language
 public static void invokeBeanFactoryPostProcessors(
         ConfigurableListableBeanFactory beanFactory, List<BeanFactoryPostProcessor> beanFactoryPostProcessors) {
@@ -947,11 +947,7 @@ public static void invokeBeanFactoryPostProcessors(
     // 因为后处理器可能已经修改了原始元数据，例如， 替换值中的占位符...
     beanFactory.clearMetadataCache();
 
---------------------- 
-作者：程序员囧辉 
-来源：CSDN 
-原文：https://blog.csdn.net/v123411739/article/details/87741251 
-版权声明：本文为博主原创文章，转载请附上博文链接！
+}
 ```
 
 
