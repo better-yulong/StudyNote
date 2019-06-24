@@ -706,6 +706,7 @@ public int loadBeanDefinitions(String location, Set<Resource> actualResources) t
 			parseReplacedMethodSubElements(ele, bd.getMethodOverrides());
                         //解析constructor-arg（index、type、value-type）
 			parseConstructorArgElements(ele, bd);
+		
 			parsePropertyElements(ele, bd);
 			parseQualifierElements(ele, bd);
 
