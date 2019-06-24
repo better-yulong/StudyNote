@@ -497,6 +497,7 @@ wac.refresh()，war为XmlWebApplicationContext的实例，基于的XmlWebApplica
 
 
 
+PropertiesBeanDefinitionReader
 
 
 
