@@ -698,7 +698,7 @@ public int loadBeanDefinitions(String location, Set<Resource> actualResources) t
 			parseBeanDefinitionAttributes(ele, beanName, containingBean, bd);
                         //description设置
 			bd.setDescription(DomUtils.getChildElementValueByTagName(ele, DESCRIPTION_ELEMENT));
-                        
+                        //解析meta子节点（）
 			parseMetaElements(ele, bd);
 			parseLookupOverrideSubElements(ele, bd.getMethodOverrides());
 			parseReplacedMethodSubElements(ele, bd.getMethodOverrides());
