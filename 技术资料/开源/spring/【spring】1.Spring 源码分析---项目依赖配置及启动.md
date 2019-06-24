@@ -486,6 +486,48 @@ wac.refresh()，war为XmlWebApplicationContext的实例，基于的XmlWebApplica
   - 从这儿对于spring全局配置文件路径及命名认识就非常清晰了；由于我将applicationContext.xml放在resource目录（编译后会进入classes目录）且在web.xml中未指定所以getConfigLocations时未读取并解析到该文件（为了验证，决定将源码XmlWebApplicationContext类的DEFAULT_CONFIG_LOCATION修改为"/WEB-INF/classes/applicationContext.xml"来验证分析是否正确。
   - ServletContext实例对象sc提供获取context-param参数的值，但仅是获取而不做处理；获取该值后，如上获取contextConfigLocation会根据;切分成locations数组，然后逐个根据路径格式（如/开头绝对路径；抑或classpath:开头路径；file开头等）基于PropertySourcesPropertyResolver成解析占位符获取路径生成configLocations数组供后续使用（前缀classpath:此处会保留）
   2. 遍历getConfigLocations结果（此） ,使用XmlBeanDefinitionReader实例的loadBeanDefinitions方法来解析xml文件及加载BeanDefinitions(实际对应其父类AbstractBeanDefinitionReader的loadBeanDefinitions)
+```language
+public int loadBeanDefinitions(String location, Set<Resource> actualResources) throws BeanDefinitionStoreException {
+		ResourceLoader resourceLoader = getResourceLoader();
+		if (resourceLoader == null) {
+			throw new BeanDefinitionStoreException(
+					"Cannot import bean definitions from location [" + location + "]: no ResourceLoader available");
+		}
+
+		if (resourceLoader instanceof ResourcePatternResolver) {
+			// Resource pattern matching available.
+			try {
+				Resource[] resources = ((ResourcePatternResolver) resourceLoader).getResources(location);
+				int loadCount = loadBeanDefinitions(resources);
+				if (actualResources != null) {
+					for (Resource resource : resources) {
+						actualResources.add(resource);
+					}
+				}
+				if (logger.isDebugEnabled()) {
+					logger.debug("Loaded " + loadCount + " bean definitions from location pattern [" + location + "]");
+				}
+				return loadCount;
+			}
+			catch (IOException ex) {
+				throw new BeanDefinitionStoreException(
+						"Could not resolve bean definition resource pattern [" + location + "]", ex);
+			}
+		}
+		else {
+			// Can only load single resources by absolute URL.
+			Resource resource = resourceLoader.getResource(location);
+			int loadCount = loadBeanDefinitions(resource);
+			if (actualResources != null) {
+				actualResources.add(resource);
+			}
+			if (logger.isDebugEnabled()) {
+				logger.debug("Loaded " + loadCount + " bean definitions from location [" + location + "]");
+			}
+			return loadCount;
+		}
+	}
+```
 
 
 
