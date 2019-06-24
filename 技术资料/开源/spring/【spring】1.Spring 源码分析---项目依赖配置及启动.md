@@ -706,7 +706,7 @@ public int loadBeanDefinitions(String location, Set<Resource> actualResources) t
 			parseReplacedMethodSubElements(ele, bd.getMethodOverrides());
                         //解析constructor-arg（index、type、value-type）
 			parseConstructorArgElements(ele, bd);
-		        //解析property（name、ref、value依赖meta，以及property标签可包含子节点meta)
+		        //解析property（name、ref、value，以及property标签可包含子节点meta解析)
 			parsePropertyElements(ele, bd);
 			parseQualifierElements(ele, bd);
 
