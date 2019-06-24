@@ -763,6 +763,7 @@ spring中并没有具体去实现postProcessBeanFactory方法，是提供给想�
 ###### 2.2.4.5 AbstractApplicationContext类invokeBeanFactoryPostProcessors
 执行BeanFactoryPostProcessors对应的postProcessBeanFactory方法。BeanDefinitionRegistryPostProcessor可用于将在xml解析完成BeanDefinition之后将自定义实现BeanDefinition并注册到spring环境，以便于可通过spring管理BeanDefinition对应的对象（https://blog.csdn.net/boling_cavalry/article/details/82193692），更多提供给第三方框架使用，如Mybatis的MapperScannerConfigurer（https://www.cnblogs.com/fangjian0423/p/spring-mybatis-MapperScannerConfigurer-analysis.html）
 ###### 2.2.4.6 AbstractApplicationContext类registerBeanPostProcessors
+将处定义的addBeanPostProcessor
 
 
 
@@ -805,4 +806,3 @@ Eclipse中Dependency Hierarchy的语法树层级显示及spring3-analysis工程�
 
 
 
- 
