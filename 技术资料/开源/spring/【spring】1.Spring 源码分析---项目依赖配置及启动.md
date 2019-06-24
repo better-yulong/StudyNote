@@ -607,9 +607,10 @@ public int loadBeanDefinitions(String location, Set<Resource> actualResources) t
  - 其中代码：BeanDefinitionHolder bdHolder = delegate.parseBeanDefinitionElement(ele)对应BeanDefinitionParserDelegate类
 ```language
 	public BeanDefinitionHolder parseBeanDefinitionElement(Element ele, BeanDefinition containingBean) {
+                // 首先获取id和name属性
 		String id = ele.getAttribute(ID_ATTRIBUTE); //id
 		String nameAttr = ele.getAttribute(NAME_ATTRIBUTE);
-             
+                //// name属性同时作为bean的别名保存起来
 		List<String> aliases = new ArrayList<String>();
 		if (StringUtils.hasLength(nameAttr)) {
 			String[] nameArr = StringUtils.tokenizeToStringArray(nameAttr, MULTI_VALUE_ATTRIBUTE_DELIMITERS);
