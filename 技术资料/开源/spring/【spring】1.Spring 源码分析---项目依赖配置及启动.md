@@ -666,6 +666,7 @@ public int loadBeanDefinitions(String location, Set<Resource> actualResources) t
 		return null;
 	}
 ```
+主要步骤如下：获取id、name属性值，
 [autowire="default", class="org.springframework.jmx.export.MBeanExporter", dependency-check="default", id="jmxAdapter", lazy-init="default"]
  
 
