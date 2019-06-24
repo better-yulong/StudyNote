@@ -761,6 +761,7 @@ spring中并没有具体去实现postProcessBeanFactory方法，是提供给想�
     }
 ```
 ###### 2.2.4.5 AbstractApplicationContext类invokeBeanFactoryPostProcessors
+BeanDefinitionRegistryPostProcessor可用于将在https://blog.csdn.net/boling_cavalry/article/details/82193692
 org.mybatis.spring.mapper.MapperScannerConfigurere则是自定义BeanDefinitionRegistryPostProcessor的示例（后续另行研究：https://www.cnblogs.com/fangjian0423/p/spring-mybatis-MapperScannerConfigurer-analysis.html）
 ```language
 public static void invokeBeanFactoryPostProcessors(
