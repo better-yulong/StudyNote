@@ -692,7 +692,7 @@ public int loadBeanDefinitions(String location, Set<Resource> actualResources) t
 			if (ele.hasAttribute(PARENT_ATTRIBUTE)) {
 				parent = ele.getAttribute(PARENT_ATTRIBUTE);
 			}
-	                //创建GenericBeanDefinition并指定ParentName、其BeanClass或者BeanClassName
+	                //创建GenericBeanDefinition并指定ParentName、其BeanClass或者BeanClassName（ <bean id="child" class="com.timo.domain.Child" parent="parent">）
 			AbstractBeanDefinition bd = createBeanDefinition(className, parent);
                         //解析scope/singleton/abstract/lazy-init/autowire/dependency-check/depends-on/autowire-candidate/primary/init-method/destroy-method/factory-method/factory-bean属性值及根据默认值判断处理更新bd对象
 			parseBeanDefinitionAttributes(ele, beanName, containingBean, bd);
@@ -732,6 +732,12 @@ public int loadBeanDefinitions(String location, Set<Resource> actualResources) t
 		return null;
 	}
 ```
+
+
+
+
+
+
 
 
 PropertiesBeanDefinitionReader
