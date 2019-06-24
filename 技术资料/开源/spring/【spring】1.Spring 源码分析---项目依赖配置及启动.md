@@ -730,8 +730,7 @@ public int loadBeanDefinitions(String location, Set<Resource> actualResources) t
 		return null;
 	}
 ```
-BeanDefinitionReaderUtils.generateBeanName及beanName = this.readerContext.generateBeanName(beanDefinition)
-
+BeanDefinitionReaderUtils.generateBeanName及beanName = this.readerContext.generateBeanName(beanDefinition)主要针对没有beanName时根据parent、
 
 
 
