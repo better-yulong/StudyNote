@@ -765,7 +765,7 @@ spring中并没有具体去实现postProcessBeanFactory方法，是提供给想�
 ###### 2.2.4.6 AbstractApplicationContext类registerBeanPostProcessors（BeanPostProcessor）
 将处定义的addBeanPostProcessor添加至beanFactory，以便实现对bean拦截的自定义创建；如AOP，最终放进Spring容器的，必须是代理对象，而不是原先的对象 ，这样别的对象在注入时，才能获得带有切面逻辑的代理对象；BeanPostProcessor是连接IOC和AOP的桥梁。
 https://www.cnblogs.com/yuxiang1/archive/2018/06/19/9199730.html
-
+###### 2.2.4.6 AbstractApplicationContext类initMessageSource
 
 
 - 后面的内容先行保留，后续完善
