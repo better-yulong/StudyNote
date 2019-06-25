@@ -791,7 +791,7 @@ https://www.cnblogs.com/yuxiang1/archive/2018/06/19/9199730.html
 		}
 
 		// Stop using the temporary ClassLoader for type matching.
-                //prepareBeanFactory时设置TempClassLoader，
+                //prepareBeanFactory时设置TempClassLoader；如postProcessBeanFactory时根据
 		beanFactory.setTempClassLoader(null);
 
 		// Allow for caching all bean definition metadata, not expecting further changes.
