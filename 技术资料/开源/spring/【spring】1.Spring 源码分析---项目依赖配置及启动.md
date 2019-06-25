@@ -776,12 +776,14 @@ https://www.cnblogs.com/yuxiang1/archive/2018/06/19/9199730.html
 ###### 2.2.4.11 AbstractApplicationContext类finishBeanFactoryInitialization
 - ConversionService：Environment主要是负责解析properties和profile，最终通过过PropertySourcesPropertyResolver这个类来处理；如Environment的<T> T getProperty(String key, Class<T> targetType)为泛型参数，properties初始值得到的是String,需要ConversionService以及其相关类从String转换成T类型。可参考：https://www.cnblogs.com/abcwt112/p/7447435.html
 ```language
+        http://www.imooc.com/article/details/id/253222
 	/**
 	 * Finish the initialization of this context's bean factory,
 	 * initializing all remaining singleton beans.
 	 */
 	protected void finishBeanFactoryInitialization(ConfigurableListableBeanFactory beanFactory) {
 		// Initialize conversion service for this context.
+		// 初始化上下文的转换服务，ConversionService是一个类型转换接口
 		if (beanFactory.containsBean(CONVERSION_SERVICE_BEAN_NAME) &&
 				beanFactory.isTypeMatch(CONVERSION_SERVICE_BEAN_NAME, ConversionService.class)) {
 			beanFactory.setConversionService(
