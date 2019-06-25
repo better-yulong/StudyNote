@@ -795,7 +795,7 @@ https://www.cnblogs.com/yuxiang1/archive/2018/06/19/9199730.html
 		beanFactory.setTempClassLoader(null);
 
 		// Allow for caching all bean definition metadata, not expecting further changes.
-		//
+		//设置beanFactory的configurationFrozen为true,ua 
 		beanFactory.freezeConfiguration();
 
 		// Instantiate all remaining (non-lazy-init) singletons.
