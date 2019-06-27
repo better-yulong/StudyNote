@@ -57,6 +57,8 @@ public class ContextLoaderListener extends org.springframework.web.context.Conte
     	<listener-class>com.framework.aoe.web.ContextLoaderListener</listener-class>
   </listener>
 ```
+
+### 1.2示例工程spring3-analysis pom.xml配置优化
 之前在基于spring、spirngMVC搭建新工程时会比较困惑，究竟需要配置哪几个jar依赖才可以?
 Eclipse中Dependency Hierarchy的语法树层级显示jar依赖及传递依赖关系或者spring3-analysis工程根目录（与pom.xml同级）运行 mvn dependency:tree 分析，类似如下好只需配置spirng-web即可自动依赖其他所需jar：
 ```language
@@ -71,7 +73,7 @@ Eclipse中Dependency Hierarchy的语法树层级显示jar依赖及传递依赖�
 [INFO]       +- org.springframework:spring-aop:jar:3.1.0.RELEASE:compile
 [INFO]       \- org.springframework:spring-expression:jar:3.1.0.RELEASE:compile
 
-
+根据如上方法，分析spring3-analysis工程依赖
 
 
 
