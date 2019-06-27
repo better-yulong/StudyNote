@@ -73,7 +73,8 @@ Eclipse中Dependency Hierarchy的语法树层级显示jar依赖及传递依赖�
 [INFO]       +- org.springframework:spring-aop:jar:3.1.0.RELEASE:compile
 [INFO]       \- org.springframework:spring-expression:jar:3.1.0.RELEASE:compile
 
-根据如上方法，分析spring3-analysis工程依赖，只需按配置如下一个依赖即可通过传递依赖
+根据如上方法，分析spring3-analysis工程依赖，只需按配置如下一个依赖即可通过传递依赖实现所有依赖jar。
+
 
 
 
