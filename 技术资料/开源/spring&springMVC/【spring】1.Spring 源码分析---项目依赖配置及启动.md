@@ -60,7 +60,7 @@ public class BeanExample {
 	private String id;
 }
 ```
-application.xml文件（网上随便找的，对应类不）
+application.xml文件（网上随便找的，对应类不存在）
 ```language
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
