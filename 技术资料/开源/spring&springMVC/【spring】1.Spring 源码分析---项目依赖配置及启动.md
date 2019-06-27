@@ -1006,6 +1006,7 @@ beanFactory.preInstantiateSingletons()初始化所有非延迟加载的单例bea
 		}
 
 		// Check if required type matches the type of the actual bean instance.
+                //如若指定
 		if (requiredType != null && bean != null && !requiredType.isAssignableFrom(bean.getClass())) {
 			try {
 				return getTypeConverter().convertIfNecessary(bean, requiredType);
