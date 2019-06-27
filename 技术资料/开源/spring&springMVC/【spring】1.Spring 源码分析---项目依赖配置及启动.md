@@ -1006,7 +1006,7 @@ beanFactory.preInstantiateSingletons()初始化所有非延迟加载的单例bea
 		}
 
 		// Check if required type matches the type of the actual bean instance.
-                //如若指定
+                //如若指定返回对象的类型，则对对象做强制类型转换
 		if (requiredType != null && bean != null && !requiredType.isAssignableFrom(bean.getClass())) {
 			try {
 				return getTypeConverter().convertIfNecessary(bean, requiredType);
