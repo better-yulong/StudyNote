@@ -15,6 +15,28 @@ public class ContextLoaderListener extends org.springframework.web.context.Conte
 }
 ```
 ### 1.2示例工程引入及配置 
+```language
+        //pom.xml
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>3.1.0.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>3.1.0.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>com.aoe.framework</groupId>
+		    <artifactId>framework-aoe-web</artifactId>
+		    <version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		
+	</dependencies>
+```
+
 
 
 
