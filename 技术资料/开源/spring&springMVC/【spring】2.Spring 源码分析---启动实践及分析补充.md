@@ -86,11 +86,15 @@ Eclipse中Dependency Hierarchy的语法树层级显示jar依赖及传递依赖�
 	</dependencies>
 ```
 #### 1.4 示例bean及xml配置
-```package com.aoe.demo;
+```
+  package com.aoe.demo;
 
-public class BeanExample {
+  public class BeanExample {
 	private String id;
-}
+  }
+```
+```language
+
 ```
 
 
