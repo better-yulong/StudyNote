@@ -36,6 +36,17 @@ public class ContextLoaderListener extends org.springframework.web.context.Conte
 		
 	</dependencies>
 ```
+```language
+  //web.xml
+  <context-param>
+  	<param-name>contextConfigLocation</param-name>
+  	<param-value>classpath:applicationContext.xml</param-value>
+  </context-param>
+  <listener>
+    	<listener-class>com.framework.aoe.web.ContextLoaderListener</listener-class>
+  </listener>
+```
+
 
 
 
