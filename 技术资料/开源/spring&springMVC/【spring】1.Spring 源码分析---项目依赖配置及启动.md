@@ -1063,7 +1063,8 @@ if (parentBeanFactory != null && !containsBeanDefinition(beanName)) {
 其实是需要的，有时候不需要是因为不小心把其他的bean全部扫描进DispatchServlet的MVC Context里面了，所以不需要再加载WebApplicationContext（亲测）
   - 是不是可以只配置MVC Context而不使用WebApplicationContext?
 亲测可以
-- 关于单例模式与原型模式互相依赖分析及示例（https://blog.csdn.net/u011120159/article/details/82218472)
+#### 单例模式与原型模式互相依赖
+- https://blog.csdn.net/u011120159/article/details/82218472
   1. 单例模式中注入原型bean，prototypeBean其实只实例化了一次，原型模式的作用完全没有发挥; 
   2. lookup方法注入:cglib动态生成一个的子类，该子类会自动override有lookup注解的方法，代码干净整洁。
   - Spring提供了EarlyBeanReference功能，首先Spring里面有个名字为singletonObjects的并发map用来存放所有实例化并且初始化好的bean，singletonFactories则用来存放需要解决循环依赖的bean信息（beanName,和一个回调工厂）。当实例化beanA时候会触发getBean(“beanA”)。普通Bean循环依赖-与注入顺序无关，可正常注入；工厂Bean与普通Bean循环依赖-与注入顺序有关，可能注入失败（http://ifeve.com/%E8%AE%BAspring%E4%B8%AD%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96%E7%9A%84%E6%AD%A3%E7%A1%AE%E6%80%A7%E4%B8%8Ebean%E6%B3%A8%E5%85%A5%E7%9A%84%E9%A1%BA%E5%BA%8F%E5%85%B3%E7%B3%BB/）
