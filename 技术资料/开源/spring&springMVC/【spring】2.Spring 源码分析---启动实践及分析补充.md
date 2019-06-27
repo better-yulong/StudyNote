@@ -46,8 +46,8 @@ public class ContextLoaderListener extends org.springframework.web.context.Conte
     	<listener-class>com.framework.aoe.web.ContextLoaderListener</listener-class>
   </listener>
 ```
-之前在基于spring、spirngMVC搭建新工程时会比较困惑，究竟需要配置哪几个jar依赖才可以，其实以如下方式分析
-Eclipse中Dependency Hierarchy的语法树层级显示及spring3-analysis工程根目录（与pom.xml同级）运行 mvn dependency:tree 分析，只需配置spirng-meb即可自动依赖所需jar：
+之前在基于spring、spirngMVC搭建新工程时会比较困惑，究竟需要配置哪几个jar依赖才可以?
+Eclipse中Dependency Hierarchy的语法树层级显示或者spring3-analysis工程根目录（与pom.xml同级）运行 mvn dependency:tree 分析，只需配置spirng-meb即可自动依赖所需jar：
 ```language
 [INFO] com.zyl.demo.web:spring3-analysis:war:0.0.1-SNAPSHOT
 [INFO] +- org.springframework:spring-core:jar:3.1.0.RELEASE:compile
