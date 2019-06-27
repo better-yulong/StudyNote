@@ -1,7 +1,18 @@
 ### 一. 自定义ServletContextListener
-- 后面的内容先行保留，后续完善
+### 三级标题
 ```language
- public class ContextLoaderListener extends ContextLoader implements ServletContextListener 
+ package com.framework.aoe.web;
+
+import javax.servlet.ServletContextEvent;
+
+public class ContextLoaderListener extends org.springframework.web.context.ContextLoaderListener{
+	
+	public void contextInitialized(ServletContextEvent event) {
+		System.out.println("==> aoe ContextLoaderListener contextInitialized start。。。");
+		super.contextInitialized(event);
+		System.out.println("==> aoe ContextLoaderListener contextInitialized end。。。");
+	}
+}
 ```
 
 新建framework-aoe-web 工程（类似spirng-web），新建
