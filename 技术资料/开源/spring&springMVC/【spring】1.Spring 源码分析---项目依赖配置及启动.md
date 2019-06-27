@@ -1027,7 +1027,7 @@ beanFactory.preInstantiateSingletons()初始化所有非延迟加载的单例bea
 正常流程的最后 一个方法，实例化DefaultLifecycleProcessor，并调用其onRefresh()，标识spring容器为running状态；最后publishEvent(new ContextRefreshedEvent(this))。至于excepiton后的destroyBeans()、cancelRefresh(ex)等流程就不分析了。
 
 ### 补充知识点
-#### depends-on
+#### depends-on与ref
 - depends-on是bean标签的属性之一，表示一个bean对其他bean的依赖关系。乍一想，不是有ref吗？其实还是有区别的，<ref/>标签是一个bean对其他bean的引用，而depends-on属性只是表明依赖关系（不一定会引用），这个依赖关系决定了被依赖的bean必定会在依赖bean之前被实例化，反过来，容器关闭时，依赖bean会在被依赖的bean之前被销毁；manager和accoutDao会先于beanOne被实例化，会慢于beanOne被销毁，而beanOne不引用accountDao（或者说beanOne不会将accountDao注入到自己的属性中）。这就是depends-on的主要作用。
 ```
 <bean id="beanOne" class="ExampleBean" depends-on="manager,accountDao">
@@ -1037,6 +1037,7 @@ beanFactory.preInstantiateSingletons()初始化所有非延迟加载的单例bea
 <bean id="manager" class="ManagerBean" />
 <bean id="accountDao" class="x.y.jdbc.JdbcAccountDao" />
 ```
+#### 父子上下文及bean依赖
 - WebApplicationContext 是MVC Context的父上下文，是否可以互相注入对方的bean？（https://www.jianshu.com/p/6f9204b812da）
   - WebApplicationContext中的bean可以注入到MVC Context的bean中，反向不可以（亲测）。参见一下代码：来自AbstractBeanFactory
 ```
