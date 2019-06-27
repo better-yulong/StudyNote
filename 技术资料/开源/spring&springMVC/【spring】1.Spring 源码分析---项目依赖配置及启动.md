@@ -1027,7 +1027,7 @@ beanFactory.preInstantiateSingletons()初始化所有非延迟加载的单例bea
 正常流程的最后 一个方法，实例化DefaultLifecycleProcessor，并调用其onRefresh()，标识spring容器为running状态；最后publishEvent(new ContextRefreshedEvent(this))。至于excepiton后的destroyBeans()、cancelRefresh(ex)等流程就不分析了。
 
 ###### 2.2.4.12 说以很明
-上面源码分析涉及很多类，除了spring-web jar包外，还主要涉及spirng-context（ApplicationContext及其各子接口或子类ConfigurableApplicationContext、AbstractApplicationContext、
+上面源码分析涉及很多类，除了spring-web jar包外，还主要涉及spirng-context（ApplicationContext及其各子接口或子类ConfigurableApplicationContext、AbstractApplicationContext、AbstractRefreshableApplicationContext及XmlWebApplicationContext），
 
 
 ### 补充知识点
