@@ -1027,7 +1027,7 @@ beanFactory.preInstantiateSingletons()初始化所有非延迟加载的单例bea
 正常流程的最后 一个方法，实例化DefaultLifecycleProcessor，并调用其onRefresh()，标识spring容器为running状态；最后publishEvent(new ContextRefreshedEvent(this))。至于excepiton后的destroyBeans()、cancelRefresh(ex)等流程就不分析了。
 
 ###### 2.2.4.12 说以很明
-上面源码分析涉及g
+上面源码分析涉及很多类，除了spring-web jarr包，还有
 ### 补充知识点
 #### depends-on与ref
 - depends-on是bean标签的属性之一，表示一个bean对其他bean的依赖关系。乍一想，不是有ref吗？其实还是有区别的，<ref/>标签是一个bean对其他bean的引用，而depends-on属性只是表明依赖关系（不一定会引用），这个依赖关系决定了被依赖的bean必定会在依赖bean之前被实例化，反过来，容器关闭时，依赖bean会在被依赖的bean之前被销毁；manager和accoutDao会先于beanOne被实例化，会慢于beanOne被销毁，而beanOne不引用accountDao（或者说beanOne不会将accountDao注入到自己的属性中）。这就是depends-on的主要作用。
