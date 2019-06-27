@@ -14,6 +14,15 @@ public class ContextLoaderListener extends org.springframework.web.context.Conte
 	}
 }
 ```
+```language
+  <dependencies>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>3.1.0.RELEASE</version>
+		</dependency>
+  </dependencies>
+```
 
 ### 1.2示例工程引入及配置 
 ```language
