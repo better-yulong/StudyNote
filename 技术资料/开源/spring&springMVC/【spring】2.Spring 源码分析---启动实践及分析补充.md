@@ -96,7 +96,32 @@ Eclipse中Dependency Hierarchy的语法树层级显示jar依赖及传递依赖�
 ```language
   <bean id="beanExample" name="beanExample" class="com.aoe.demo.BeanExample"></bean>
 ```
-运行OK
+运行OK，tomat以debug模式启动日志：
+```language
+019-6-27 17:28:49 org.apache.catalina.core.StandardEngine startInternal
+信息: Starting Servlet Engine: Apache Tomcat/7.0.14
+==> aoe ContextLoaderListener contextInitialized start。。。
+2019-6-27 17:28:51 org.apache.catalina.core.ApplicationContext log
+信息: Initializing Spring root WebApplicationContext
+2019-6-27 17:28:51 org.springframework.web.context.ContextLoader initWebApplicationContext
+信息: Root WebApplicationContext: initialization started
+2019-6-27 17:28:51 org.springframework.context.support.AbstractApplicationContext prepareRefresh
+信息: Refreshing Root WebApplicationContext: startup date [Thu Jun 27 17:28:51 CST 2019]; root of context hierarchy
+2019-6-27 17:28:51 org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
+信息: Loading XML bean definitions from class path resource [applicationContext.xml]
+2019-6-27 17:28:52 org.springframework.beans.factory.support.DefaultListableBeanFactory preInstantiateSingletons
+信息: Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@10cc9b4: defining beans [beanExample]; root of factory hierarchy
+2019-6-27 17:28:52 org.springframework.web.context.ContextLoader initWebApplicationContext
+信息: Root WebApplicationContext: initialization completed in 1263 ms
+==> aoe ContextLoaderListener contextInitialized end。。。
+2019-6-27 17:28:52 org.apache.coyote.AbstractProtocolHandler start
+信息: Starting ProtocolHandler ["http-bio-8080"]
+2019-6-27 17:28:52 org.apache.coyote.AbstractProtocolHandler start
+信息: Starting ProtocolHandler ["ajp-bio-8009"]
+2019-6-27 17:28:52 org.apache.catalina.startup.Catalina start
+信息: Server startup in 3018 ms
+```
+
 
 
 
