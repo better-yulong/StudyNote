@@ -1,5 +1,5 @@
 ### 一. 自定义ServletContextListener
-### 1.1 自定义framework工程framework-aoe-web工程（类似spirng-web），新建
+### 1.1 自定义framework工程framework-aoe-web工程（类似spirng-web），新建ContextLoaderListener继承org.springframework.web.context.ContextLoaderListener，源码
 ```language
  package com.framework.aoe.web;
 
@@ -14,8 +14,7 @@ public class ContextLoaderListener extends org.springframework.web.context.Conte
 	}
 }
 ```
-
-新建framework-aoe-web 工程（类似spirng-web），新建
+### 1.2 
 
 
 
