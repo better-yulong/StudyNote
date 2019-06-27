@@ -1,5 +1,5 @@
 ### 一. 自定义ServletContextListener
-### 1.1 自定义framework工程framework-aoe-web工程（类似spirng-web），新建ContextLoaderListener继承org.springframework.web.context.ContextLoaderListener，源码
+#### 1.1 自定义framework工程framework-aoe-web工程（类似spirng-web），新建ContextLoaderListener继承org.springframework.web.context.ContextLoaderListener，源码
 ```language
  package com.framework.aoe.web;
 
@@ -25,7 +25,7 @@ public class ContextLoaderListener extends org.springframework.web.context.Conte
   </dependencies>
 ```
 
-### 1.2示例工程spring3-analysis 依赖jar引入及配置 
+#### 1.2示例工程spring3-analysis 依赖jar引入及配置 
 ```language
         //spring3-analysis pom.xml
 	<dependencies>
@@ -58,7 +58,7 @@ public class ContextLoaderListener extends org.springframework.web.context.Conte
   </listener>
 ```
 
-### 1.2示例工程spring3-analysis pom.xml配置优化
+#### 1.3示例工程spring3-analysis pom.xml配置优化
 之前在基于spring、spirngMVC搭建新工程时会比较困惑，究竟需要配置哪几个jar依赖才可以?
 Eclipse中Dependency Hierarchy的语法树层级显示jar依赖及传递依赖关系或者spring3-analysis工程根目录（与pom.xml同级）运行 mvn dependency:tree 分析，类似如下好只需配置spirng-web即可自动依赖其他所需jar：
 ```language
@@ -74,7 +74,17 @@ Eclipse中Dependency Hierarchy的语法树层级显示jar依赖及传递依赖�
 [INFO]       \- org.springframework:spring-expression:jar:3.1.0.RELEASE:compile
 
 根据如上方法，分析spring3-analysis工程依赖，只需按配置如下一个依赖即可通过传递依赖实现所有依赖jar。
-
+```language
+        //spring3-analysis pom.xml
+	<dependencies>
+		<dependency>
+			<groupId>com.aoe.framework</groupId>
+		    <artifactId>framework-aoe-web</artifactId>
+		    <version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		
+	</dependencies>
+```
 
 
 
