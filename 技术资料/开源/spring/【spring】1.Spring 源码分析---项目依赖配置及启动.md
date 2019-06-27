@@ -739,7 +739,7 @@ BeanDefinitionReaderUtils.generateBeanName及beanName = this.readerContext.gener
 完成beanName注册.beanDefinitionMap.put(beanName, beanDefinition)，并绑定beanName与所有alias
 至此obtainFreshBeanFactory()完成，返回DefaultListableBeanFactory并完成application.xml文件解析生成对应的BeanDefinitionHolder
 ###### 2.2.4.3 AbstractApplicationContext类prepareBeanFactory(beanFactory);
-该方法主要用于调用beanFactory的setBeanClassLoader、addPropertyEditorRegistrar、addBeanPostProcessor、ignoreDependencyInterface、registerResolvableDependency等方法，并调用beanFactory的registerSingleton将  beanName为environment、systemPropertiessystemEnvironment及对应实例对象注册到beanFactory的registeredSingletons。（这里有个特殊处理，即
+该方法主要用于调用beanFactory的setBeanClassLoader、addPropertyEditorRegistrar、addBeanPostProcessor、ignoreDependencyInterface、registerResolvableDependency等方法，并调用beanFactory的registerSingleton将  beanName为environment、systemPropertiessystemEnvironment及对应实例对象注册到beanFactory的registeredSingletons。（这里有个特殊处理，即对应beanName如若singletonObject为null会先使用NULL_OBJECT作为占位符）
 ```language
 	/**
 	 * Add the given singleton object to the singleton cache of this factory.
@@ -758,7 +758,7 @@ BeanDefinitionReaderUtils.generateBeanName及beanName = this.readerContext.gener
 
 ```
 ###### 2.2.4.4 AbstractRefreshableWebApplicationContext类postProcessBeanFactory
-spring中并没有具体去实现postProcessBeanFactory方法，是提供给想要实现BeanPostProcessor的三方框架使用的，主要承接前文中的prepareBeanFactory()方法。谁要使用谁就去实现，作用是在BeanFactory准备工作完成后做一些定制化的处理，一般结合BeanPostProcessor接口的实现类一起使用，注入一些重要资源（类似Application的属性和ServletContext的属性）。最后需要设置忽略这类BeanPostProcessor子接口的自动装配。
+spring中并没有具体去实现postProcessBeanFactory方法，是提供给想要实现BeanPostProcessor的三方框架使用的，主要承接前文中的prepareBeanFactory()方法。谁要使用谁就去实现，作用是在BeanFactory准备工作完成后做一些定制化的处理，一般结合BeanPostProcessor接口的实现类一起使用，注入一些重要资源（类似Application的属性和ServletContext的属性）。最后需要设置忽略这类BeanPostProcessor子接口的自动装配
 ```language
     //https://www.cnblogs.com/question-sky/p/6760811.html
     /**
@@ -773,12 +773,12 @@ spring中并没有具体去实现postProcessBeanFactory方法，是提供给想�
         beanFactory.ignoreDependencyInterface(ServletConfigAware.class);
         //注册web环境，包括request、session、golableSession、application
         WebApplicationContextUtils.registerWebApplicationScopes(beanFactory, this.servletContext);
-        //注册servletContext、contextParamters、contextAttributes  、servletConfig单例bean
+        //注册servletContext、contextParamters、contextAttributes  、servletConfig单例bean，即实际调用singletonObjects.put、registeredSingletons.add(beanName)
         WebApplicationContextUtils.registerEnvironmentBeans(beanFactory, this.servletContext, this.servletConfig);
     }
 ```
 ###### 2.2.4.5 AbstractApplicationContext类invokeBeanFactoryPostProcessors（BeanFactoryPostProcessor）
-执行BeanFactoryPostProcessors对应的postProcessBeanFactory方法。BeanDefinitionRegistryPostProcessor可用于将在xml解析完成BeanDefinition之后将自定义实现BeanDefinition并注册到spring环境，以便于可通过spring管理BeanDefinition对应的对象（https://blog.csdn.net/boling_cavalry/article/details/82193692），更多提供给第三方框架使用，如Mybatis的MapperScannerConfigurer（https://www.cnblogs.com/fangjian0423/p/spring-mybatis-MapperScannerConfigurer-analysis.html）--另中，外该运行fptk
+执行BeanFactoryPostProcessors对应的postProcessBeanFactory方法。BeanDefinitionRegistryPostProcessor可用于将在xml解析完成BeanDefinition之后将自定义实现BeanDefinition并注册到spring环境，以便于可通过spring管理BeanDefinition对应的对象（https://blog.csdn.net/boling_cavalry/article/details/82193692），更多提供给第三方框架使用，如Mybatis的MapperScannerConfigurer（https://www.cnblogs.com/fangjian0423/p/spring-mybatis-MapperScannerConfigurer-analysis.html）
 ###### 2.2.4.6 AbstractApplicationContext类registerBeanPostProcessors（BeanPostProcessor）
 将处定义的addBeanPostProcessor添加至beanFactory，以便实现对bean拦截的自定义创建；如AOP，最终放进Spring容器的，必须是代理对象，而不是原先的对象 ，这样别的对象在注入时，才能获得带有切面逻辑的代理对象；BeanPostProcessor是连接IOC和AOP的桥梁。
 https://www.cnblogs.com/yuxiang1/archive/2018/06/19/9199730.html
@@ -864,20 +864,22 @@ beanFactory.preInstantiateSingletons()初始化所有非延迟加载的单例bea
   1. BeanDefinition bd 的parent为null，若bd类型为RootBeanDefinition，则直接cloneBeanDefinitionbd克隆返回mbd即可；如bd类型不为RootBeanDefinition则使用bd实例化RootBeanDefinition返回mbd;
   2. BeanDefinition bd 的parent不为null且是普通bean（符合!beanName.equals(parentBeanName)）则递归调用getMergedBeanDefinition完成parent的BeanDefinition实例化；若bd 的parent不为null且不是普通bean（parentBeanFactory为ConfigurableBeanFactory子类，即该 bean为ConfigurableBeanFactory的实现类，这个地方理解后续springmvc涉及到了子上下文容器会出现该场景）则从ParentBeanFactory获取parentBeanName对应的BeanDefinition实例。之后基于parent的BeanDefinition实例化新的RootBeanDefinition并mbd.overrideFrom(bd)，完合并。
   3. 在上面1、2完成之后即获取到RootBeanDefinition实例mbd，则是设置mbd的scope（这里有一点：如若containingBd不为null且其是非单例bean，那么mdb本身也不可以是单例；在使用自定义的namespace时，mbd会对应一个containingBd来关联）
-- 获取RootBeanDefinition 之后最重要的方法莫过于getBean()方法（普通bean和FactoryBean差异后面补充，先分析getBean方法
+- 获取RootBeanDefinition 之后最重要的方法莫过于getBean()方法（普通bean和FactoryBean差异后面补充，先分析getBean方法),对应AbstractBeanFactory的getBean()方法
 ```language
    //return doGetBean(name, null, null, false)
    	@SuppressWarnings("unchecked")
 	protected <T> T doGetBean(
 			final String name, final Class<T> requiredType, final Object[] args, boolean typeCheckOnly)
 			throws BeansException {
-
+                //处理beanName,工厂类bean的beanName前面添加&符号以与普通bean的beanName区分,具体可查看DefaultListableBeanFactory类的getBeanNamesForType方法; transformedBeanName方法用于获取不带&的beanName
 		final String beanName = transformedBeanName(name);
 		Object bean;
 
 		// Eagerly check singleton cache for manually registered singletons.
+               //获取Singleton实例
 		Object sharedInstance = getSingleton(beanName);
 		if (sharedInstance != null && args == null) {
+                        //该分分主要处理：1.普通bean或者FactoryBean自身直接返回sharedInstance；2.FactoryBean但是是用来创建bean实例
 			if (logger.isDebugEnabled()) {
 				if (isSingletonCurrentlyInCreation(beanName)) {
 					logger.debug("Returning eagerly cached instance of singleton bean '" + beanName +
@@ -887,18 +889,22 @@ beanFactory.preInstantiateSingletons()初始化所有非延迟加载的单例bea
 					logger.debug("Returning cached instance of singleton bean '" + beanName + "'");
 				}
 			}
+                        //会做如下判断：1.若name是&开头但beanInstance不是FactoryBean的实例则抛出异常；2.若name是&开头或者beanInstance不是FactoryBean的实例则直接返回beanInstance；3.从cache获取实例：getCachedObjectForFactoryBean(beanName)；factoryBean实例化后传以存入factoryBeanObjectCache；4.如若cache没有，则该beanInstance为FactoryBean，然后调用getObjectFromFactoryBean(factory, beanName, !synthetic);返回bean
 			bean = getObjectForBeanInstance(sharedInstance, name, beanName, null);
 		}
 
 		else {
+ 		       //该分支用于beanName首次
 			// Fail if we're already creating this bean instance:
 			// We're assumably within a circular reference.
+                        //该beanName对应为原型模式且正在创建中；进行循环依赖检测，如果a中持有b，b中又持有c会报错
 			if (isPrototypeCurrentlyInCreation(beanName)) {
 				throw new BeanCurrentlyInCreationException(beanName);
 			}
 
 			// Check if bean definition exists in this factory.
 			BeanFactory parentBeanFactory = getParentBeanFactory();
+		        //如果在所有已经加载的类中没有beanName则会尝试从parentBeanFactory中检测--即使用lookup 模式处理prototype模式的bean生成：WebApplicationContext中的bean可以注入到MVC Context的bean中，反向不可以---判断工厂中是否含有当前 Bean 的定义，如果当前beanFactory不包含bean的定义且父工厂不为空，则查询父工厂
 			if (parentBeanFactory != null && !containsBeanDefinition(beanName)) {
 				// Not found -> check parent.
 				String nameToLookup = originalBeanName(name);
@@ -913,13 +919,15 @@ beanFactory.preInstantiateSingletons()初始化所有非延迟加载的单例bea
 			}
 
 			if (!typeCheckOnly) {
+                               //不是类型检查而是创建bean，即alreadyCreated.add(beanName)
 				markBeanAsCreated(beanName);
 			}
-
+			//获取RootBeanDefinition 并检查其isAbstract、isPrototype（抛异常）
 			final RootBeanDefinition mbd = getMergedLocalBeanDefinition(beanName);
 			checkMergedBeanDefinition(mbd, beanName, args);
 
 			// Guarantee initialization of beans that the current bean depends on.
+                        //如若显示通过depends-on明确先行初始化依赖的bean，则完成依赖bean的实例化
 			String[] dependsOn = mbd.getDependsOn();
 			if (dependsOn != null) {
 				for (String dependsOnBean : dependsOn) {
@@ -930,9 +938,11 @@ beanFactory.preInstantiateSingletons()初始化所有非延迟加载的单例bea
 
 			// Create bean instance.
 			if (mbd.isSingleton()) {
+                                //getSingletonw会判断若beanName未实例化则最终调用beanName对应的ObjectFactory的getObject方法，即createBean(beanName, mbd, args)；beanName已实例化则返回该实例化对象	
 				sharedInstance = getSingleton(beanName, new ObjectFactory<Object>() {
 					public Object getObject() throws BeansException {
-						try {
+						try { 
+                                                        //实例化bean
 							return createBean(beanName, mbd, args);
 						}
 						catch (BeansException ex) {
@@ -944,6 +954,7 @@ beanFactory.preInstantiateSingletons()初始化所有非延迟加载的单例bea
 						}
 					}
 				});
+				//同上，若是调用对应的getBean方法则调用getObjectFromFactoryBean；否则则直接返回bean实例
 				bean = getObjectForBeanInstance(sharedInstance, name, beanName, mbd);
 			}
 
@@ -951,12 +962,16 @@ beanFactory.preInstantiateSingletons()初始化所有非延迟加载的单例bea
 				// It's a prototype -> create a new instance.
 				Object prototypeInstance = null;
 				try {
+                                        //将beanName添加至prototypesCurrentlyInCreation；多次调用会被添加多次（类似于引用计数）
 					beforePrototypeCreation(beanName);
+                                        //创建新的实例
 					prototypeInstance = createBean(beanName, mbd, args);
 				}
 				finally {
+                                         //将beanName从prototypesCurrentlyInCreation移除
 					afterPrototypeCreation(beanName);
-				}
+				}                            
+		                //同上，若是调用对应的getBean方法则调用getObjectFromFactoryBean；否则则直接返回bean实例
 				bean = getObjectForBeanInstance(prototypeInstance, name, beanName, mbd);
 			}
 
@@ -966,6 +981,7 @@ beanFactory.preInstantiateSingletons()初始化所有非延迟加载的单例bea
 				if (scope == null) {
 					throw new IllegalStateException("No Scope registered for scope '" + scopeName + "'");
 				}
+                                //除了标准的singleton、prototype外，还可扩展支持session、request、globalSession等；但看源码此处发现没有什么区别
 				try {
 					Object scopedInstance = scope.get(beanName, new ObjectFactory<Object>() {
 						public Object getObject() throws BeansException {
@@ -1007,8 +1023,44 @@ beanFactory.preInstantiateSingletons()初始化所有非延迟加载的单例bea
 
 ```
 
+- depends-on是bean标签的属性之一，表示一个bean对其他bean的依赖关系。乍一想，不是有ref吗？其实还是有区别的，<ref/>标签是一个bean对其他bean的引用，而depends-on属性只是表明依赖关系（不一定会引用），这个依赖关系决定了被依赖的bean必定会在依赖bean之前被实例化，反过来，容器关闭时，依赖bean会在被依赖的bean之前被销毁；manager和accoutDao会先于beanOne被实例化，会慢于beanOne被销毁，而beanOne不引用accountDao（或者说beanOne不会将accountDao注入到自己的属性中）。这就是depends-on的主要作用。
+```
+<bean id="beanOne" class="ExampleBean" depends-on="manager,accountDao">
+    <property name="manager" ref="manager" />
+</bean>
 
+<bean id="manager" class="ManagerBean" />
+<bean id="accountDao" class="x.y.jdbc.JdbcAccountDao" />
+```
+- WebApplicationContext 是MVC Context的父上下文，是否可以互相注入对方的bean？（https://www.jianshu.com/p/6f9204b812da）
+  - WebApplicationContext中的bean可以注入到MVC Context的bean中，反向不可以（亲测）。参见一下代码：来自AbstractBeanFactory
+```
+// Check if bean definition exists in this factory.
+BeanFactory parentBeanFactory = getParentBeanFactory();
+if (parentBeanFactory != null && !containsBeanDefinition(beanName)) {
+    // Not found -> check parent.
+    String nameToLookup = originalBeanName(name);
+    if (args != null) {
+        // Delegation to parent with explicit args.
+        return (T) parentBeanFactory.getBean(nameToLookup, args);
+    }
+    else {
+        // No args -> delegate to standard getBean method.
+        return parentBeanFactory.getBean(nameToLookup, requiredType);
+    }
+}
 
+```
+  - 如果同一个bean被两个上下文扫描到，会怎么样？是不是有两个实例？
+是的，会在两个上下文中生成两个独立的bean（亲测）
+  - web.xml为什么有时候需要ContextLoaderListener，有时候又不需要？
+其实是需要的，有时候不需要是因为不小心把其他的bean全部扫描进DispatchServlet的MVC Context里面了，所以不需要再加载WebApplicationContext（亲测）
+  - 是不是可以只配置MVC Context而不使用WebApplicationContext?
+亲测可以
+- 关于单例模式与原型模式互相依赖分析及示例（https://blog.csdn.net/u011120159/article/details/82218472)
+  1. 单例模式中注入原型bean，prototypeBean其实只实例化了一次，原型模式的作用完全没有发挥; 
+  2. lookup方法注入:cglib动态生成一个的子类，该子类会自动override有lookup注解的方法，代码干净整洁。
+  - Spring提供了EarlyBeanReference功能，首先Spring里面有个名字为singletonObjects的并发map用来存放所有实例化并且初始化好的bean，singletonFactories则用来存放需要解决循环依赖的bean信息（beanName,和一个回调工厂）。当实例化beanA时候会触发getBean(“beanA”)。普通Bean循环依赖-与注入顺序无关，可正常注入；工厂Bean与普通Bean循环依赖-与注入顺序有关，可能注入失败（http://ifeve.com/%E8%AE%BAspring%E4%B8%AD%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96%E7%9A%84%E6%AD%A3%E7%A1%AE%E6%80%A7%E4%B8%8Ebean%E6%B3%A8%E5%85%A5%E7%9A%84%E9%A1%BA%E5%BA%8F%E5%85%B3%E7%B3%BB/）
 
 - 后面的内容先行保留，后续完善
 ```language
@@ -1035,7 +1087,6 @@ Eclipse中Dependency Hierarchy的语法树层级显示及spring3-analysis工程�
 [INFO]    \- org.springframework:spring-context:jar:3.1.0.RELEASE:compile
 [INFO]       +- org.springframework:spring-aop:jar:3.1.0.RELEASE:compile
 [INFO]       \- org.springframework:spring-expression:jar:3.1.0.RELEASE:compile
-
 
 
 
