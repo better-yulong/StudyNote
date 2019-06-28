@@ -122,7 +122,7 @@ Eclipse中Dependency Hierarchy的语法树层级显示jar依赖及传递依赖�
 信息: Server startup in 3018 ms
 ```
 
-
+### 二. 基于注解注入Bean
 
 
 
