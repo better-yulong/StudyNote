@@ -167,7 +167,40 @@ public class AnnotationBeanExample implements InitializingBean{
 ```
 因未配置注解，运行时并未自动完成该bean的注入，如若实例化成功，会有如上运行日志片段：
 > 信息: Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@10cc9b4: defining beans [beanExample]; root of factory hierarchy
-- 通过注解方式注入Bean单单给除给类加上注解外，还需在xml中配置以开启注解扫描，具体怎么配置呢？之前更多是基于度娘或者Spring官方文档，但并未了解过。
+- 通过注解方式注入Bean单单给除给类加上注解外，还需在xml中配置以开启注解扫描，具体怎么配置呢？之前更多是基于度娘或者Spring官方文档，但并未了解过。注解实际也对应一个类，那我们就看看源码：
+```language
+/**
+ * Indicates that an annotated class is a "component".
+ * Such classes are considered as candidates for auto-detection
+ * when using annotation-based configuration and classpath scanning.
+ *
+ * <p>Other class-level annotations may be considered as identifying
+ * a component as well, typically a special kind of component:
+ * e.g. the {@link Repository @Repository} annotation or AspectJ's
+ * {@link org.aspectj.lang.annotation.Aspect @Aspect} annotation.
+ *
+ * @author Mark Fisher
+ * @since 2.5
+ * @see Repository
+ * @see Service
+ * @see Controller
+ * @see org.springframework.context.annotation.ClassPathBeanDefinitionScanner
+ */
+@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+public @interface Component {
+
+	/**
+	 * The value may indicate a suggestion for a logical component name,
+	 * to be turned into a Spring bean in case of an autodetected component.
+	 * @return the suggested component name, if any
+	 */
+	String value() default "";
+
+}
+```
+
 
 
 
