@@ -134,7 +134,7 @@ afterPropertiesSet方法，初始化bean的时候执行，可以针对某个具�
 BeanPostProcessor针对所有Spring上下文中所有的bean，可以在配置文档applicationContext.xml中配置一个BeanPostProcessor，然后对所有的bean进行一个初始化之前和之后的代理。BeanPostProcessor接口中有两个方法： postProcessBeforeInitialization和postProcessAfterInitialization。 postProcessBeforeInitialization方法在bean初始化之前执行， postProcessAfterInitialization方法在bean初始化之后执行。
 - 总之，afterPropertiesSet 和init-method之间的执行顺序是afterPropertiesSet 先执行，init-method 后执行。从BeanPostProcessor的作用，可以看出最先执行的是postProcessBeforeInitialization，然后是afterPropertiesSet，然后是init-method，然后是postProcessAfterInitialization。
 
-#### 基于注解方式自动注入分析
+#### 2 基于注解方式自动注入分析
 之前基于xml中通过bean标签注入，但后续实际更多的是基于xml配置扫描、java源文件使用注解标签方式注入
 ##### 示例类AnnotationBeanExample（暂未配置注解扫描）
 ```language
@@ -200,7 +200,7 @@ public @interface Component {
 
 }
 ```
-Component用于标识一个类为组件但过于笼统，而Controller、Service、Repository则是基于业务特性分层，前期与Component相似，但后期会被添加独有的特性（基于Domain-Driven Design；在同一包里面，注释方面由有差异，会说明可与这些注解配合使用的其他注解）。其中有一句：when using annotation-based configuration and classpath scanning，即说明若需使用注解方式注入bean则应在xml中注解配置和classpath扫描。
+- Component用于标识一个类为组件但过于笼统，而Controller、Service、Repository则是基于业务特性分层，前期与Component相似，但后期会被添加独有的特性（基于Domain-Driven Design；在同一包里面，注释方面由有差异，会说明可与这些注解配合使用的其他注解）。其中有一句：when using annotation-based configuration and classpath scanning，即说明若需使用注解方式注入bean则应在xml中注解配置和classpath扫描。
 
 > <bean class="org.springframework.context.annotation.ClassPathBeanDefinitionScanner"></bean>
 
