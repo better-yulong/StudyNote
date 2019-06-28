@@ -313,6 +313,7 @@ public class BeanExample {
 	
 }
 ```
+运行
 
 
 
