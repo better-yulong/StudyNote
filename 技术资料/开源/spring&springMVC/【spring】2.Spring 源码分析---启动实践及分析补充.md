@@ -123,7 +123,9 @@ Eclipse中Dependency Hierarchy的语法树层级显示jar依赖及传递依赖�
 ```
 
 ### 二. 基于注解注入Bean
-目前仍未引入SpirngMVC，主要用于分析spring bean的初始
+目前仍未引入SpirngMVC，主要用于分析spring bean的初始化原理，为便于分析，结合之前分析源码有关于（init-method方、afterPropertiesSet、BeanPostProcessor）
+
+
 
 
 
