@@ -224,7 +224,7 @@ public @interface Component {
 	<context:component-scan base-package="com.aoe"/>
 </beans>
 ```
-
+再次运行
 
 
 
