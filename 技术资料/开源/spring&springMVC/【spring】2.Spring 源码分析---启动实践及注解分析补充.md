@@ -209,7 +209,7 @@ public @interface Component {
  Configures component scanning directives for use with @{@link Configuration} classes.
  * Provides support parallel with Spring XML's {@code <context:component-scan>} element.
 ```
-通过注释可发现，配置组件扫描可使用@Configuration 注解，也可通过Spring XML配置：<context:component-scan>，那么可知即在applicationContext.xml配置<context:component-scan>；便根据经验，因xml文件默认使用beans作为根标签，默认命名空间是支持bean标签；而需使用其他命名空间如context的标签则需在xm
+通过注释可发现，配置组件扫描可使用@Configuration 注解，也可通过Spring XML配置：<context:component-scan>，那么可知即在applicationContext.xml配置<context:component-scan>；便根据经验，因xml文件默认使用beans作为根标签，默认命名空间是支持bean标签；而需使用其他命名空间如context的标签则需在xml文件ga头引入新的命名空间及xsd文件，g
 
 
 
