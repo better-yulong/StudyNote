@@ -310,7 +310,7 @@ public class BeanExample {
 	
 }
 ```
-三种方式实现有差异，各方法执行的顺序不同，且也可同时支持多种。示例运行日志片段：
+三种方式实现有差异，各方法执行的顺序不同，可同时支持多种；示例运行日志为：
 ```language
 ==> aoe ContextLoaderListener contextInitialized start。。。
 2019-6-28 18:24:09 org.apache.catalina.core.ApplicationContext log
