@@ -203,15 +203,26 @@ public @interface Component {
 - Component用于标识一个类为组件但过于笼统，而Controller、Service、Repository则是基于业务特性分层，前期与Component相似，但后期会被添加独有的特性（基于Domain-Driven Design；在同一包里面，注释方面有差异，会说明可与这些注解配合使用的其他注解）。其中有一句：when using annotation-based configuration and classpath scanning，即说明若需使用注解方式注入bean则应在xml中注解配置和classpath扫描。
 ##### 2.2 分析注解配置
 根据上面的注释 ClassPathBeanDefinitionScanner ，于是首先想到的是在applicationContex.xml配置：
- <bean class="org.springframework.context.annotation.ClassPathBeanDefinitionScanner"></bean>
- 但验证之后发现，启动果断报错，提示没有匹配的构造方法（即无参构造方法），查看源码确实没有，而参数中至今包含一个BeanDefinitionRegistry参数，感觉不对。之后算是没有思路，于是决定看看带Scan关键字的类有哪些，无竟间发现ComponentScan注解,通过查看源码及注释：
+ ```
+<bean class="org.springframework.context.annotation.ClassPathBeanDefinitionScanner"></bean>
+```
+但验证之后发现，启动果断报错，提示没有匹配的构造方法（即无参构造方法），查看源码确实没有，而参数中至今包含一个BeanDefinitionRegistry参数，感觉不对。之后算是没有思路，于是决定看看带Scan关键字的类有哪些，无竟间发现ComponentScan注解,通过查看源码及注释：
 ```language
  Configures component scanning directives for use with @{@link Configuration} classes.
  * Provides support parallel with Spring XML's {@code <context:component-scan>} element.
 ```
 通过注释可发现，配置组件扫描可使用@Configuration 注解，也可通过Spring XML配置：<context:component-scan>，那么可知即在applicationContext.xml配置<context:component-scan>；便根据经验，因xml文件默认使用beans作为根标签，默认命名空间是支持bean标签；而需使用其他命名空间如context的标签则需在xml文件头引入新的命名空间及xsd文件。一开始除了百度或官网也不确定该如何可准确配置，于是呼尝试继承在源码中查找是否要可用的xml文参考，果不其然找到了componentScan.xml，于是修改配置：
 ```language
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:context="http://www.springframework.org/schema/context"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+				http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd">
 
+	<bean id="beanExample" name="beanExample" class="com.aoe.demo.BeanExample"></bean>
+	<context:component-scan base-package="com.aoe"/>
+</beans>
 ```
 
 
