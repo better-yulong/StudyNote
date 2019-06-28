@@ -124,8 +124,8 @@ Eclipse中Dependency Hierarchy的语法树层级显示jar依赖及传递依赖�
 
 ### 二. 基于注解注入Bean
 目前仍未引入SpirngMVC，主要用于分析spring bean的初始化原理，为便于分析，结合之前分析源码有关于其他扩展方法（init-method方、afterPropertiesSet、BeanPostProcessor），故同步实践相关方法
-#### init-method方、afterPropertiesSet、BeanPostProcessor介绍
-##### 1、init-method方法
+#### 1.init-method方、afterPropertiesSet、BeanPostProcessor介绍
+##### 1.1 init-method方法
 init-method方法，初始化bean的时候执行，可以针对某个具体的bean进行配置。init-method需要在applicationContext.xml配置文档中bean的定义里头写明。例如：<bean id="TestBean" class="nju.software.xkxt.util.TestBean" init-method="init"></bean>
 这样，当TestBean在初始化的时候会执行TestBean中定义的init方法。
 ##### 2、afterPropertiesSet方法
@@ -136,7 +136,7 @@ BeanPostProcessor针对所有Spring上下文中所有的bean，可以在配置�
 
 #### 2 基于注解方式自动注入分析
 之前基于xml中通过bean标签注入，但后续实际更多的是基于xml配置扫描、java源文件使用注解标签方式注入
-##### 示例类AnnotationBeanExample（暂未配置注解扫描）
+##### 2.1示例类AnnotationBeanExample（暂未配置注解扫描）
 ```language
 package com.aoe.demo;
 
