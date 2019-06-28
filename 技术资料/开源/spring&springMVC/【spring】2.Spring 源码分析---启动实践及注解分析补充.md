@@ -313,7 +313,7 @@ public class BeanExample {
 	
 }
 ```
-实现有差异，而且各方法执行的位置也有差异，且也可运行日志如下：
+实现有差异，而且各方法执行的位置也有差异，且也可同时支持多种。示例运行日志片段：
 ```language
 ==> aoe ContextLoaderListener contextInitialized start。。。
 2019-6-28 18:24:09 org.apache.catalina.core.ApplicationContext log
