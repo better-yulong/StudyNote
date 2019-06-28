@@ -204,7 +204,7 @@ public @interface Component {
 ##### 2.2 分析注解配置
 根据上面的注释 ClassPathBeanDefinitionScanner ，于是首首先想到的是在applicationContex.xml配置：
 > <bean class="org.springframework.context.annotation.ClassPathBeanDefinitionScanner"></bean>
-但验证之后发现，启动果断报错，提示没有匹配的构造方法（即无参构造方法），查看源码确实没有，而参数中包含一个BeanDefinitionRegistry
+但验证之后发现，启动果断报错，提示没有匹配的构造方法（即无参构造方法），查看源码确实没有，而参数中至今包含一个BeanDefinitionRegistry参数，感觉不对。之后算是没有思路，于是
 
 
 
