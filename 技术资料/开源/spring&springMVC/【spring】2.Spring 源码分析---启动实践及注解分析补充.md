@@ -282,9 +282,9 @@ public class AnnotationBeanExample implements InitializingBean,DisposableBean{
 	}
 	
 	@PostConstruct
-        public Object init() {  
-        System.out.println("AnnotationBeanExample init-method is called");  
-       }  
+        public void init() {  
+           System.out.println("AnnotationBeanExample init-method is called");  
+        }  
 	
 	@PreDestroy 
 	public void preDestroy() throws Exception {
