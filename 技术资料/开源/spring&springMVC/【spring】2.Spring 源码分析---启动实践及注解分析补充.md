@@ -224,7 +224,31 @@ public @interface Component {
 	<context:component-scan base-package="com.aoe"/>
 </beans>
 ```
-再次运行bean注入成功，因
+再次运行bean：beanExample,annotationBeanExample注入成功且，日志：
+```language
+==> aoe ContextLoaderListener contextInitialized start。。。
+2019-6-28 14:21:27 org.apache.catalina.core.ApplicationContext log
+信息: Initializing Spring root WebApplicationContext
+2019-6-28 14:21:27 org.springframework.web.context.ContextLoader initWebApplicationContext
+信息: Root WebApplicationContext: initialization started
+2019-6-28 14:21:27 org.springframework.context.support.AbstractApplicationContext prepareRefresh
+信息: Refreshing Root WebApplicationContext: startup date [Fri Jun 28 14:21:27 CST 2019]; root of context hierarchy
+2019-6-28 14:21:27 org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
+信息: Loading XML bean definitions from class path resource [applicationContext.xml]
+2019-6-28 14:21:44 org.springframework.beans.factory.support.DefaultListableBeanFactory preInstantiateSingletons
+信息: Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@966905: defining beans [beanExample,annotationBeanExample,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.ConfigurationClassPostProcessor$ImportAwareBeanPostProcessor#0]; root of factory hierarchy
+afterPropertiesSet has been created
+2019-6-28 14:21:44 org.springframework.web.context.ContextLoader initWebApplicationContext
+信息: Root WebApplicationContext: initialization completed in 17536 ms
+==> aoe ContextLoaderListener contextInitialized end。。。
+2019-6-28 14:21:44 org.apache.coyote.AbstractProtocolHandler start
+信息: Starting ProtocolHandler ["http-bio-8080"]
+2019-6-28 14:21:45 org.apache.coyote.AbstractProtocolHandler start
+信息: Starting ProtocolHandler ["ajp-bio-8009"]
+2019-6-28 14:21:45 org.apache.catalina.startup.Catalina start
+信息: Server startup in 18622 ms
+```
+
 
 
 
