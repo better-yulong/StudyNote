@@ -167,7 +167,7 @@ public class AnnotationBeanExample implements InitializingBean{
 ```
 因未配置注解，运行时并未自动完成该bean的注入，如若实例化成功，会有如上运行日志片段：
 > 信息: Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@10cc9b4: defining beans [beanExample]; root of factory hierarchy
-- 通过注解方式注入Bean单单给除给类加上注解外，还需在xml中配置以开启注解扫描，具体怎么配置呢？之前更多是基于度忍
+- 通过注解方式注入Bean单单给除给类加上注解外，还需在xml中配置以开启注解扫描，具体怎么配置呢？之前更多是基于度娘或者Spring官方文档，但并未了解过。
 
 
 
