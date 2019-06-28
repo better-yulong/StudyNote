@@ -298,8 +298,22 @@ public class AnnotationBeanExample implements InitializingBean,DisposableBean{
 2. xml中定义init-method 和  destory-method方法
 ```language
 	<bean id="beanExample" name="beanExample" class="com.aoe.demo.BeanExample" init-method="init" destroy-method="destroy"></bean>
-
 ```
+```language
+public class BeanExample {
+	
+	public void destroy() throws Exception {
+		System.out.println("BeanExample destroy  running...");
+	}
+	
+    public void init() {  
+        System.out.println("BeanExample init-method is called");  
+        System.out.println("******************************");  
+    }  
+	
+}
+```
+
 
 
 
