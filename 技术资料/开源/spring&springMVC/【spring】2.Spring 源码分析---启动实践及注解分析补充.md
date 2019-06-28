@@ -313,7 +313,29 @@ public class BeanExample {
 	
 }
 ```
-运行
+实现有差异，而且各方法执行的位置也有差异，且也可运行日志如下：
+```language
+==> aoe ContextLoaderListener contextInitialized start。。。
+2019-6-28 18:24:09 org.apache.catalina.core.ApplicationContext log
+信息: Initializing Spring root WebApplicationContext
+2019-6-28 18:24:09 org.springframework.web.context.ContextLoader initWebApplicationContext
+信息: Root WebApplicationContext: initialization started
+2019-6-28 18:24:10 org.springframework.context.support.AbstractApplicationContext prepareRefresh
+信息: Refreshing Root WebApplicationContext: startup date [Fri Jun 28 18:24:10 CST 2019]; root of context hierarchy
+2019-6-28 18:24:10 org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
+信息: Loading XML bean definitions from class path resource [applicationContext.xml]
+2019-6-28 18:24:18 org.springframework.beans.factory.support.DefaultListableBeanFactory preInstantiateSingletons
+信息: Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@270fc4: defining beans [beanExample,annotationBeanExample,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.ConfigurationClassPostProcessor$ImportAwareBeanPostProcessor#0]; root of factory hierarchy
+BeanExample init-method is called
+******************************
+AnnotationBeanExample init-method is called
+******************************
+AnnotationBeanExample afterPropertiesSet has been created
+==> aoe ContextLoaderListener contextInitialized end。。。2019-6-28 18:24:24 org.springframework.web.context.ContextLoader initWebApplicationContext
+信息: Root WebApplicationContext: initialization completed in 14249 ms
+
+```
+
 
 
 
