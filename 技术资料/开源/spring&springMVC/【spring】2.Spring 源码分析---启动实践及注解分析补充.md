@@ -200,7 +200,7 @@ public @interface Component {
 
 }
 ```
-从注解来看，
+从注释来看，Component注解可用于标示被注解的为是一个
 
 
 
