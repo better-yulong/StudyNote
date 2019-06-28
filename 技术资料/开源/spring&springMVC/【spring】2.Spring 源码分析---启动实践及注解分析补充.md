@@ -248,7 +248,7 @@ afterPropertiesSet has been created
 2019-6-28 14:21:45 org.apache.catalina.startup.Catalina start
 信息: Server startup in 18622 ms
 ```
-从日志来看afterPropertiesSet运行但init方法并未执行，其实原因很简单，实现implements InitializingBean之后
+从日志来看afterPropertiesSet运行但init方法并未执行，其实原因很简单，实现implements InitializingBean的bean实例由spring之后会自动调用
 
 
 
