@@ -135,7 +135,7 @@ BeanPostProcessor针对所有Spring上下文中所有的bean，可以在配置�
 - 总之，afterPropertiesSet 和init-method之间的执行顺序是afterPropertiesSet 先执行，init-method 后执行。从BeanPostProcessor的作用，可以看出最先执行的是postProcessBeforeInitialization，然后是afterPropertiesSet，然后是init-method，然后是postProcessAfterInitialization。
 
 #### 基于注解方式自动注入分析
-之前
+之前基于xml中通过bean标签注入，但后续实际更多的是基于xml配置
 ```language
 package com.aoe.demo;
 
