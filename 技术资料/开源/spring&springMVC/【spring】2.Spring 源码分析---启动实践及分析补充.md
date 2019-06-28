@@ -136,7 +136,7 @@ BeanPostProcessor针对所有Spring上下文中所有的bean，可以在配置�
 
 #### 基于注解方式自动注入分析
 之前基于xml中通过bean标签注入，但后续实际更多的是基于xml配置扫描、java源文件使用注解标签方式注入
-##### 示例类AnnotationBeanExample 
+##### 示例类AnnotationBeanExample（暂未配置注解扫描）
 ```language
 package com.aoe.demo;
 
@@ -163,9 +163,7 @@ public class AnnotationBeanExample implements InitializingBean{
 	public void afterPropertiesSet() throws Exception {
 		System.out.println("afterPropertiesSet has been created");
 	}
-	
 }
-
 ```
 
 
