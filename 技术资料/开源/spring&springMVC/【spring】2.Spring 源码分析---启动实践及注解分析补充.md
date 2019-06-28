@@ -209,7 +209,7 @@ public @interface Component {
  Configures component scanning directives for use with @{@link Configuration} classes.
  * Provides support parallel with Spring XML's {@code <context:component-scan>} element.
 ```
-
+初步可以看到
 
 
 
