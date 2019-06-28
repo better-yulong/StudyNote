@@ -200,7 +200,7 @@ public @interface Component {
 
 }
 ```
-
+Component 用于标识一个类为组件，而
 
 
 
