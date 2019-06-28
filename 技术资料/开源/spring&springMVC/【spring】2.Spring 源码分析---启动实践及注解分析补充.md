@@ -248,7 +248,7 @@ afterPropertiesSet has been created
 2019-6-28 14:21:45 org.apache.catalina.startup.Catalina start
 信息: Server startup in 18622 ms
 ```
-从日志来看afterPropertiesSet运行但init方法并未执行，其实原因很简单，实现implements InitializingBean的bean由spring容器化实例之后会自动调用afterPropertiesSet方法；而init虽然名为init仅只是一个普通的方法，如在xml中可通过bean的init-method来指定在实例初始化之前执行，但注解方式该如何让其执行呢？暂时并没有什么好的思路：1.既然知道是在beean实例化时调用那么可再次梳理下之前分析的Spring bean注入源码，调试确认；2.可通过之前了解的init-method标签解析梳理调用逻辑。但实际分析了并未找到对应的逻辑，初步认为注解实现方式与xml标签实现有差异，借助于度娘:
+从日志来看afterPropertiesSet运行但init方法并未执行，其实原因很简单，实现implements InitializingBean的bean由spring容器化实例之后会自动调用afterPropertiesSet方法；而init虽然名为init仅只是一个普通的方法，如在xml中可通过bean的init-method来指定在实例初始化之前执行，但注解方式该如何让其执行呢？暂时并没有什么好的思路：1.既然知道是在beean实例化时调用那么可再次梳理下之前分析的Spring bean注入源码，调试确认；2.可通过之前了解的init-method标签解析梳理调用逻辑。但实际分析了并未找到对应的逻辑，初步认为注解实现方式与xml标签实现有差异，借助于度娘:https://blog.csdn.net/glory1234work2115/article/details/51815911，
 ###### 2.2.1 bean初步化、销毁方法多种实现方式
 1. @PostConstruct 和 @PreDestroy 方法 或 实现InitializingBean和 DisposableBean接口
 ```language
