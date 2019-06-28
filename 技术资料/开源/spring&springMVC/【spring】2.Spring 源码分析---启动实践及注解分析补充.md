@@ -200,7 +200,7 @@ public @interface Component {
 
 }
 ```
-Component用于标识一个类为组件但过于笼统，而Controller、Service、Repository则是基于业务特性分层，前期与Component相似，但后期会被添加独有的特性。其中有一句：
+Component用于标识一个类为组件但过于笼统，而Controller、Service、Repository则是基于业务特性分层，前期与Component相似，但后期会被添加独有的特性。其中有一句：when using annotation-based configuration and classpath scanning，即说明若需使用基于注解的配置和classpath扫描
 
 
 
