@@ -224,7 +224,7 @@ public @interface Component {
 	<context:component-scan base-package="com.aoe"/>
 </beans>
 ```
-再次运行bean：beanExample,annotationBeanExample注入成功且afterPropertiesSet运行（但init方法并未，日志：
+再次运行bean：beanExample,annotationBeanExample注入成功且afterPropertiesSet运行（但init方法并未执行），日志：
 ```language
 ==> aoe ContextLoaderListener contextInitialized start。。。
 2019-6-28 14:21:27 org.apache.catalina.core.ApplicationContext log
