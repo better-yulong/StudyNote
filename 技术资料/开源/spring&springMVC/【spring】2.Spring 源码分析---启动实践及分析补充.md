@@ -165,7 +165,7 @@ public class AnnotationBeanExample implements InitializingBean{
 	}
 }
 ```
-
+因未配置注解，运行时并未自动完成该bea
 
 
 
