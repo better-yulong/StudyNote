@@ -248,7 +248,7 @@ afterPropertiesSet has been created
 2019-6-28 14:21:45 org.apache.catalina.startup.Catalina start
 信息: Server startup in 18622 ms
 ```
-从日志来看afterPropertiesSet运行但init方法并未执行，其实原因很简单，实现implements InitializingBean的bean由spring容器化实例之后会自动调用afterPropertiesSet方法；而init虽然名为init仅只是一个普通的方法，如在xml中可通过bean的init-method来指定在实例初始化之前执行，但注解方式该如何让其执行呢？
+从日志来看afterPropertiesSet运行但init方法并未执行，其实原因很简单，实现implements InitializingBean的bean由spring容器化实例之后会自动调用afterPropertiesSet方法；而init虽然名为init仅只是一个普通的方法，如在xml中可通过bean的init-method来指定在实例初始化之前执行，但注解方式该如何让其执行呢？暂时并没有什么好的
 
 
 
