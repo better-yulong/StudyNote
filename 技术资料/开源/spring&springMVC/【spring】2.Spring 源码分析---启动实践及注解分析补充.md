@@ -496,7 +496,7 @@ public @interface Service {
 
 }
 ```
-2.  一
+2.同一个类可实例化多个对象
 ```language
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
