@@ -334,4 +334,33 @@ AnnotationBeanExample afterPropertiesSet has been created
 - 补充：applicationContext.xml文件中的bean及component-scan没有优先级，默认按照其在xml中的顺序解析、实例化（但如若实例化是依赖其他bean，则可能优先实例化依赖bean）；
 
 ###### 2.2.2 基于注解的bean实例化分析
-之前分析applicationContext时有讲过，applicationContext默认的命名空间是beans（其支持的常用子标签是bean）；但在applicationContext会判断当前标签是否为默认命名空间，如若不是调用自定义的元素解析类
+之前分析applicationContext时有讲过，applicationContext默认的命名空间是beans（其支持的常用子标签是bean）；但在applicationContext会判断当前标签是否为默认命名空间，如若不是调用自定义的元素解析：
+```language
+	/**
+	 * Parse the elements at the root level in the document:
+	 * "import", "alias", "bean".
+	 * @param root the DOM root element of the document
+	 */
+	protected void parseBeanDefinitions(Element root, BeanDefinitionParserDelegate delegate) {
+		if (delegate.isDefaultNamespace(root)) {
+			NodeList nl = root.getChildNodes();
+			for (int i = 0; i < nl.getLength(); i++) {
+				Node node = nl.item(i);
+				if (node instanceof Element) {
+					Element ele = (Element) node;
+					if (delegate.isDefaultNamespace(ele)) {
+						parseDefaultElement(ele, delegate);
+					}
+					else {
+						delegate.parseCustomElement(ele);
+					}
+				}
+			}
+		}
+		else {
+			delegate.parseCustomElement(root);
+		}
+	}
+
+```
+
