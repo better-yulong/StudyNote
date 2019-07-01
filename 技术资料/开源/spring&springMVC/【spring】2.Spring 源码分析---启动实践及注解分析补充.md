@@ -402,7 +402,8 @@ public class ContextNamespaceHandler extends NamespaceHandlerSupport {
 		return null;
 	}
 ```
-1. classpath*:com/aoe/**/*.class
+
+1. 根据 classpath*:com/aoe/**/*.class
 
 [file [D:\work\webcontainer\tomcat7\webapps\spring3-analysis\WEB-INF\classes\com\aoe\demo\AnnotationBean.class], file [D:\work\webcontainer\tomcat7\webapps\spring3-analysis\WEB-INF\classes\com\aoe\demo\AnnotationBeanExample.class], file [D:\work\webcontainer\tomcat7\webapps\spring3-analysis\WEB-INF\classes\com\aoe\demo\BeanExample.class]]
 
