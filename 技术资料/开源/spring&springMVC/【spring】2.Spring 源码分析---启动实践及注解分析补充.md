@@ -465,7 +465,7 @@ public class ContextNamespaceHandler extends NamespaceHandlerSupport {
 								}
 								candidates.add(sbd);
 							}
-                ...........
+                ...........省略多行
 		return candidates;
 	}
 
