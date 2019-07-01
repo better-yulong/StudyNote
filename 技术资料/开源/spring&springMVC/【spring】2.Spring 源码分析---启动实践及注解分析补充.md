@@ -367,4 +367,4 @@ AnnotationBeanExample afterPropertiesSet has been created
 ```
 其实无论默认还是自定义命名空间，之后的解析流程是相似的：
 1. String namespaceUri = getNamespaceURI(node); 根据节点获取命命名空间URI。如根据context获取URI为http://www.springframework.org/schema/context（对应xml的配置：xmlns:context="http://www.springframework.org/schema/context"，其中ns即为namespace简写）
-2. 
+2. 通过xmlns值可
