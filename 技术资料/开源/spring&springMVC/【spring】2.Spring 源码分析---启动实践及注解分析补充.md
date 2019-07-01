@@ -407,4 +407,4 @@ classpath*:com/aoe/**/*.class
 
 [file [D:\work\webcontainer\tomcat7\webapps\spring3-analysis\WEB-INF\classes\com\aoe\demo\AnnotationBean.class], file [D:\work\webcontainer\tomcat7\webapps\spring3-analysis\WEB-INF\classes\com\aoe\demo\AnnotationBeanExample.class], file [D:\work\webcontainer\tomcat7\webapps\spring3-analysis\WEB-INF\classes\com\aoe\demo\BeanExample.class]]
 
-org.springframework.core.type.classreading.SimpleMetadataReade  --> AnnotationMetadata --> annotationSet
+org.springframework.core.type.classreading.SimpleMetadataReader  --> AnnotationMetadata --> annotationSet --->ScannedGenericBeanDefinition
