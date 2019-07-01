@@ -389,7 +389,7 @@ public class ContextNamespaceHandler extends NamespaceHandlerSupport {
 即针对不同的elementName指定不同的解析器Parser（默认的命名空间beans则是硬编码方式根据elementName指定不同的解析方法），如ComponentScanBeanDefinitionParser：
 ```language
 	public BeanDefinition parse(Element element, ParserContext parserContext) {
-                //获取配置的basePackages数组，支持的分隔符为
+                //获取配置的basePackages数组，支持的分隔符为，；及空格
 		String[] basePackages = StringUtils.tokenizeToStringArray(element.getAttribute(BASE_PACKAGE_ATTRIBUTE),
 				ConfigurableApplicationContext.CONFIG_LOCATION_DELIMITERS);
 
