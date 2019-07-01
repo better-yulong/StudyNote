@@ -422,7 +422,7 @@ public class ContextNamespaceHandler extends NamespaceHandlerSupport {
 //设置candidate的Primary（优先注入）、Lazy、DependsOn、Role（bean角色定义）
 AnnotationConfigUtils.processCommonDefinitionAnnotations((AnnotatedBeanDefinition) candidate);
 				}
-	
+				//1.
 				if (checkCandidate(beanName, candidate)) {
 					BeanDefinitionHolder definitionHolder = new BeanDefinitionHolder(candidate, beanName);
 					definitionHolder = AnnotationConfigUtils.applyScopedProxyMode(scopeMetadata, definitionHolder, this.registry);
