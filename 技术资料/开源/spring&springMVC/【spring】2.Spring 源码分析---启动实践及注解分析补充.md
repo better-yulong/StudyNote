@@ -479,4 +479,20 @@ AnnotationConfigUtils.processCommonDefinitionAnnotations((AnnotatedBeanDefinitio
 
 ```
 补充知识点1：
-1. Component注解可用于标识某个Class是Spring容器的一个组件；而通过Service源码（Controller、Repository类似）
+1. Component注解可用于标识某个Class是Spring容器的一个组件；而通过Service源码（Controller、Repository类似）可发现其也被定义为：
+```language
+@Target({ElementType.TYPE})
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Component
+public @interface Service {
+
+	/**
+	 * The value may indicate a suggestion for a logical component name,
+	 * to be turned into a Spring bean in case of an autodetected component.
+	 * @return the suggested component name, if any
+	 */
+	String value() default "";
+
+}
+```
