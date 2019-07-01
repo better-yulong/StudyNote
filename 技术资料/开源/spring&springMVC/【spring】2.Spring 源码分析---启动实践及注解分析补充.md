@@ -513,7 +513,6 @@ public @interface Service {
 ```
 spring容器初始化日志：
 > Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@15fc606: defining beans [beanExample,beanExample1,beanExample2,annotationBean,annotationBeanExample,BeanExample,BeanExample1,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.ConfigurationClassPostProcessor$ImportAwareBeanPostProcessor#0]; 
-- 在Spring上下文初始化时会调用registerBeanPostProcessors
+- 在Spring上下文初始化时会调用registerBeanPostProcessors完成这3个Processor的注册：
 ([org.springframework.context.annotation.internalAutowiredAnnotationProcessor, org.springframework.context.annotation.internalRequiredAnnotationProcessor, org.springframework.context.annotation.internalCommonAnnotationProcessor, org.springframework.context.annotation.ConfigurationClassPostProcessor$ImportAwareBeanPostProcessor#0])
-
 AutowiredAnnotationBeanPostProcessor setBeanFactory  AbstractAutowireCapableBeanFactory
