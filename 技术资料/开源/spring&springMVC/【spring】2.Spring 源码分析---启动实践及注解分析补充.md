@@ -496,7 +496,7 @@ public @interface Service {
 
 }
 ```
-2.同一个类可实例化多个对象
+2.同一个类可实例化多个对象（xml配置多个bean方式或者@Service标签配置@Service(value="BeanExample,BeanExample1")：
 ```language
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
@@ -511,3 +511,4 @@ public @interface Service {
 	<context:component-scan base-package="com.aoe;1.c d,f"/>
 </beans>
 ```
+从
