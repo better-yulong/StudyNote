@@ -419,9 +419,10 @@ public class ContextNamespaceHandler extends NamespaceHandlerSupport {
 					postProcessBeanDefinition((AbstractBeanDefinition) candidate, beanName);
 				}
 				if (candidate instanceof AnnotatedBeanDefinition) {
-//设置candidate的Primary（优先注入）、Lazy、DependsOn、
+//设置candidate的Primary（优先注入）、Lazy、DependsOn、Role（bean角色定义）
 AnnotationConfigUtils.processCommonDefinitionAnnotations((AnnotatedBeanDefinition) candidate);
 				}
+	
 				if (checkCandidate(beanName, candidate)) {
 					BeanDefinitionHolder definitionHolder = new BeanDefinitionHolder(candidate, beanName);
 					definitionHolder = AnnotationConfigUtils.applyScopedProxyMode(scopeMetadata, definitionHolder, this.registry);
