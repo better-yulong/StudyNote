@@ -407,7 +407,7 @@ public class ContextNamespaceHandler extends NamespaceHandlerSupport {
 		Assert.notEmpty(basePackages, "At least one base package must be specified");
 		Set<BeanDefinitionHolder> beanDefinitions = new LinkedHashSet<BeanDefinitionHolder>();
 		for (String basePackage : basePackages) {
-                        //1.生成资源路径：classpath*:com/aoe/**/*.class ；2.获取所有class文件的Resources列表；3.每个class定义一个MetadataReader，并基于MetadataReader生成ScannedGenericBeanDefinition实例sbd；4.判断是否有
+                        //1.生成资源路径：classpath*:com/aoe/**/*.class ；2.获取所有class文件的Resources列表；3.每个class定义一个MetadataReader，并基于MetadataReader生成ScannedGenericBeanDefinition实例sbd；4.判断是
 			Set<BeanDefinition> candidates = findCandidateComponents(basePackage);
 			for (BeanDefinition candidate : candidates) {
 				ScopeMetadata scopeMetadata = this.scopeMetadataResolver.resolveScopeMetadata(candidate);
@@ -428,6 +428,68 @@ public class ContextNamespaceHandler extends NamespaceHandlerSupport {
 			}						
 		}
 		return beanDefinitions;
+	}
+
+```
+```language
+	/**
+	 * Scan the class path for candidate components.
+	 * @param basePackage the package to check for annotated classes
+	 * @return a corresponding Set of autodetected bean definitions
+	 */
+	public Set<BeanDefinition> findCandidateComponents(String basePackage) {
+		Set<BeanDefinition> candidates = new LinkedHashSet<BeanDefinition>();
+		try {
+			String packageSearchPath = ResourcePatternResolver.CLASSPATH_ALL_URL_PREFIX +
+					resolveBasePackage(basePackage) + "/" + this.resourcePattern;
+			Resource[] resources = this.resourcePatternResolver.getResources(packageSearchPath);
+			boolean traceEnabled = logger.isTraceEnabled();
+			boolean debugEnabled = logger.isDebugEnabled();
+			for (Resource resource : resources) {
+				if (traceEnabled) {
+					logger.trace("Scanning " + resource);
+				}
+				if (resource.isReadable()) {
+					try {
+						MetadataReader metadataReader = this.metadataReaderFactory.getMetadataReader(resource);
+						if (isCandidateComponent(metadataReader)) {
+							ScannedGenericBeanDefinition sbd = new ScannedGenericBeanDefinition(metadataReader);
+							sbd.setResource(resource);
+							sbd.setSource(resource);
+							if (isCandidateComponent(sbd)) {
+								if (debugEnabled) {
+									logger.debug("Identified candidate component class: " + resource);
+								}
+								candidates.add(sbd);
+							}
+							else {
+								if (debugEnabled) {
+									logger.debug("Ignored because not a concrete top-level class: " + resource);
+								}
+							}
+						}
+						else {
+							if (traceEnabled) {
+								logger.trace("Ignored because not matching any filter: " + resource);
+							}
+						}
+					}
+					catch (Throwable ex) {
+						throw new BeanDefinitionStoreException(
+								"Failed to read candidate component class: " + resource, ex);
+					}
+				}
+				else {
+					if (traceEnabled) {
+						logger.trace("Ignored because not readable: " + resource);
+					}
+				}
+			}
+		}
+		catch (IOException ex) {
+			throw new BeanDefinitionStoreException("I/O failure during classpath scanning", ex);
+		}
+		return candidates;
 	}
 
 ```
