@@ -524,22 +524,8 @@ spring容器初始化日志：
 			metadata.checkConfigMembers(beanDefinition);
 		}
 	}
-	private InjectionMetadata findAutowiringMetadata(Class<?> clazz) {
-		// Quick check on the concurrent map first, with minimal locking.
-		InjectionMetadata metadata = this.injectionMetadataCache.get(clazz);
-		if (metadata == null) {
-			synchronized (this.injectionMetadataCache) {
-				metadata = this.injectionMetadataCache.get(clazz);
-				if (metadata == null) {
-					metadata = buildAutowiringMetadata(clazz);
-					this.injectionMetadataCache.put(clazz, metadata);
-				}
-			}
-		}
-		return metadata;
-	}
 ```
-
+findAutowiringMetadata即遍历class
 injectionMetadataCache
 
 
