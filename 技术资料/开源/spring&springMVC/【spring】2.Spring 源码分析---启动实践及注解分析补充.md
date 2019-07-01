@@ -353,6 +353,7 @@ AnnotationBeanExample afterPropertiesSet has been created
 						parseDefaultElement(ele, delegate);
 					}
 					else {
+                                                //自定义命名空间
 						delegate.parseCustomElement(ele);
 					}
 				}
