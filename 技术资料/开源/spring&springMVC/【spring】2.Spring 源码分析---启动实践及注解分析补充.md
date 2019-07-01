@@ -516,9 +516,8 @@ spring容器初始化日志：
 ###### 注解的解析
  在Spring上下文初始化时会调用registerBeanPostProcessors完成这3个Processor的注册及实例化
 ([org.springframework.context.annotation.internalAutowiredAnnotationProcessor, org.springframework.context.annotation.internalRequiredAnnotationProcessor, org.springframework.context.annotation.internalCommonAnnotationProcessor, org.springframework.context.annotation.ConfigurationClassPostProcessor$ImportAwareBeanPostProcessor#0])
-
 - 后续分析主要涉及两个：CommonAnnotationBeanPostProcessor、internalAutowiredAnnotationProcessor
-- 
+1. CommonAnnotationBeanPostProcessor
 CommonAnnotationBeanPostProcessor  postProcessMergedBeanDefinition   findResourceMetadata
 
 
