@@ -410,6 +410,7 @@ public class ContextNamespaceHandler extends NamespaceHandlerSupport {
                         //1.生成资源路径：classpath*:com/aoe/**/*.class ；2.获取所有class文件的Resources列表；3.每个class定义一个MetadataReader，并基于MetadataReader生成ScannedGenericBeanDefinition实例sbd；4.判断是
 			Set<BeanDefinition> candidates = findCandidateComponents(basePackage);
 			for (BeanDefinition candidate : candidates) {
+                                //AnnotatedBeanDefinition
 				ScopeMetadata scopeMetadata = this.scopeMetadataResolver.resolveScopeMetadata(candidate);
 				candidate.setScope(scopeMetadata.getScopeName());
 				String beanName = this.beanNameGenerator.generateBeanName(candidate, this.registry);
