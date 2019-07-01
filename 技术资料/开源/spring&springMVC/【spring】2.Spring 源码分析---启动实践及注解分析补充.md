@@ -413,7 +413,7 @@ public class ContextNamespaceHandler extends NamespaceHandlerSupport {
                                 //创建ScopeMetadata并candidate获取value值、获取proxyMode或设置proxyMode默认为NO（默认为SCOPE_SINGLETON）
 				ScopeMetadata scopeMetadata = this.scopeMetadataResolver.resolveScopeMetadata(candidate);
 				candidate.setScope(scopeMetadata.getScopeName());
-                                //如若通过value指定beanName则直
+                                //如若通过value指定beanName则直接返回；否则根据根据className
 				String beanName = this.beanNameGenerator.generateBeanName(candidate, this.registry);
 				if (candidate instanceof AbstractBeanDefinition) {
 					postProcessBeanDefinition((AbstractBeanDefinition) candidate, beanName);
