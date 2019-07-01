@@ -331,7 +331,7 @@ AnnotationBeanExample afterPropertiesSet has been created
 ==> aoe ContextLoaderListener contextInitialized end。。。2019-6-28 18:24:24 org.springframework.web.context.ContextLoader initWebApplicationContext
 信息: Root WebApplicationContext: initialization completed in 14249 ms
 ```
-补充：
-1. applicationContext.xml文件中的bean及component-scan没有优先级，默认按照其在xml中的顺序解析、实例化（但如若实例化是依赖其他bean，则可能优先实例化依赖bean）；
+- 补充：applicationContext.xml文件中的bean及component-scan没有优先级，默认按照其在xml中的顺序解析、实例化（但如若实例化是依赖其他bean，则可能优先实例化依赖bean）；
 
-###### 2.2.1 bean初步化、销毁方法多种实现方式
+###### 2.2.2 基于注解的bean实例化分析
+之前分析applicationCOn
