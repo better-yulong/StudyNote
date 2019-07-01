@@ -370,4 +370,20 @@ AnnotationBeanExample afterPropertiesSet has been created
 2. 通过xmlns值在spirng-beans的META_INF的spring.handlers及spring.schemas找到配置：
 - > http\://www.springframework.org/schema/context=org.springframework.context.config.ContextNamespaceHandler  (命名空间处理器配置)
 - > http\://www.springframework.org/schema/context/spring-context-2.5.xsd=org/springframework/context/config/spring-context-2.5.xsd （命名空间xml文件描述符xsd文件）
+```language
+public class ContextNamespaceHandler extends NamespaceHandlerSupport {
 
+	public void init() {
+		registerBeanDefinitionParser("property-placeholder", new PropertyPlaceholderBeanDefinitionParser());
+		registerBeanDefinitionParser("property-override", new PropertyOverrideBeanDefinitionParser());
+		registerBeanDefinitionParser("annotation-config", new AnnotationConfigBeanDefinitionParser());
+		registerBeanDefinitionParser("component-scan", new ComponentScanBeanDefinitionParser());
+		registerBeanDefinitionParser("load-time-weaver", new LoadTimeWeaverBeanDefinitionParser());
+		registerBeanDefinitionParser("spring-configured", new SpringConfiguredBeanDefinitionParser());
+		registerBeanDefinitionParser("mbean-export", new MBeanExportBeanDefinitionParser());
+		registerBeanDefinitionParser("mbean-server", new MBeanServerBeanDefinitionParser());
+	}
+
+}
+```
+即
