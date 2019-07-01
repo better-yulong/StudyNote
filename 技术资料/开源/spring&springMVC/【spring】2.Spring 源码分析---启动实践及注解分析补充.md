@@ -426,7 +426,7 @@ AnnotationConfigUtils.processCommonDefinitionAnnotations((AnnotatedBeanDefinitio
 				if (checkCandidate(beanName, candidate)) {
                                         //根据candidate、beanName实例化definitionHolder 
 					BeanDefinitionHolder definitionHolder = new BeanDefinitionHolder(candidate, beanName);
-                                        //因为上面
+                                        //因为上面设置proxyMode默认为NO，此处实际直接返回definitionHolder自身
 					definitionHolder = AnnotationConfigUtils.applyScopedProxyMode(scopeMetadata, definitionHolder, this.registry);
 					beanDefinitions.add(definitionHolder);
 					registerBeanDefinition(definitionHolder, this.registry);
