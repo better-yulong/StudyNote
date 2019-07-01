@@ -403,4 +403,4 @@ public class ContextNamespaceHandler extends NamespaceHandlerSupport {
 	}
 ```
 
-
+classpath*:com/aoe/**/*.class
