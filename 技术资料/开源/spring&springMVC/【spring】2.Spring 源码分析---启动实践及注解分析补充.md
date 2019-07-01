@@ -496,4 +496,18 @@ public @interface Service {
 
 }
 ```
-2
+2.  一
+```language
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:context="http://www.springframework.org/schema/context"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+				http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+	<bean id="beanExample" name="beanExample" class="com.aoe.demo.BeanExample" init-method="init" destroy-method="destroy"></bean>
+	<bean id="beanExample1"  class="com.aoe.demo.BeanExample" init-method="init" destroy-method="destroy"></bean>
+	<bean name="beanExample2" class="com.aoe.demo.BeanExample" init-method="init" destroy-method="destroy"></bean>
+	<context:component-scan base-package="com.aoe;1.c d,f"/>
+</beans>
+```
