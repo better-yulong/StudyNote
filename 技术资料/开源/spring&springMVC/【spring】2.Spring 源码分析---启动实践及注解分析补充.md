@@ -518,6 +518,26 @@ spring容器初始化日志：
 - 而internalAutowiredAnnotationProcessor则对应AutowiredAnnotationBeanPostProcessor；之后在AbstractAutowireCapableBeanFactory类的createBean方法获取bean对象时，createBean方法内会在获取instanceWrapper（bean实例）后调用applyMergedBeanDefinitionPostProcessors（即完成bean实例化后的），即会调用AutowiredAnnotationBeanPostProcessor的postProcessMergedBeanDefinition方法：
 ```language
 
+	public void postProcessMergedBeanDefinition(RootBeanDefinition beanDefinition, Class<?> beanType, String beanName) {
+		if (beanType != null) {
+			InjectionMetadata metadata = findAutowiringMetadata(beanType);
+			metadata.checkConfigMembers(beanDefinition);
+		}
+	}
+	private InjectionMetadata findAutowiringMetadata(Class<?> clazz) {
+		// Quick check on the concurrent map first, with minimal locking.
+		InjectionMetadata metadata = this.injectionMetadataCache.get(clazz);
+		if (metadata == null) {
+			synchronized (this.injectionMetadataCache) {
+				metadata = this.injectionMetadataCache.get(clazz);
+				if (metadata == null) {
+					metadata = buildAutowiringMetadata(clazz);
+					this.injectionMetadataCache.put(clazz, metadata);
+				}
+			}
+		}
+		return metadata;
+	}
 ```
 
 injectionMetadataCache
