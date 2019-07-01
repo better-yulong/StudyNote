@@ -331,3 +331,4 @@ AnnotationBeanExample afterPropertiesSet has been created
 ==> aoe ContextLoaderListener contextInitialized end。。。2019-6-28 18:24:24 org.springframework.web.context.ContextLoader initWebApplicationContext
 信息: Root WebApplicationContext: initialization completed in 14249 ms
 ```
+
