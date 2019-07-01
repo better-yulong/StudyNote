@@ -386,4 +386,4 @@ public class ContextNamespaceHandler extends NamespaceHandlerSupport {
 
 }
 ```
-即针对不同的elementName指定不同的
+即针对不同的elementName指定不同的解析器Parser（默认的命名空间beans则是
