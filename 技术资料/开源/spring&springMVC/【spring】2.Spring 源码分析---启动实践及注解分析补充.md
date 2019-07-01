@@ -511,4 +511,5 @@ public @interface Service {
 	<context:component-scan base-package="com.aoe;1.c d,f"/>
 </beans>
 ```
-从
+spring容器初始化日志：
+> 段落引用
