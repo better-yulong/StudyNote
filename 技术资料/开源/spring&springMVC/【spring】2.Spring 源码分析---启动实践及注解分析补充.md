@@ -407,7 +407,7 @@ public class ContextNamespaceHandler extends NamespaceHandlerSupport {
 		Assert.notEmpty(basePackages, "At least one base package must be specified");
 		Set<BeanDefinitionHolder> beanDefinitions = new LinkedHashSet<BeanDefinitionHolder>();
 		for (String basePackage : basePackages) {
-                        //1.生成资源路径：classpath*:com/aoe/**/*.class ；
+                        //1.生成资源路径：classpath*:com/aoe/**/*.class ；2.逐个
 			Set<BeanDefinition> candidates = findCandidateComponents(basePackage);
 			for (BeanDefinition candidate : candidates) {
 				ScopeMetadata scopeMetadata = this.scopeMetadataResolver.resolveScopeMetadata(candidate);
