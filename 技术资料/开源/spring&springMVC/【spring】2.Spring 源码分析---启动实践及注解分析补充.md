@@ -513,7 +513,8 @@ public @interface Service {
 ```
 spring容器初始化日志：
 > Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@15fc606: defining beans [beanExample,beanExample1,beanExample2,annotationBean,annotationBeanExample,BeanExample,BeanExample1,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.ConfigurationClassPostProcessor$ImportAwareBeanPostProcessor#0]; 
-- 在Spring上下文初始化时会调用registerBeanPostProcessors完成这3个Processor的注册及实例化
+###### 注解的解析
+ 在Spring上下文初始化时会调用registerBeanPostProcessors完成这3个Processor的注册及实例化
 ([org.springframework.context.annotation.internalAutowiredAnnotationProcessor, org.springframework.context.annotation.internalRequiredAnnotationProcessor, org.springframework.context.annotation.internalCommonAnnotationProcessor, org.springframework.context.annotation.ConfigurationClassPostProcessor$ImportAwareBeanPostProcessor#0])
 - 而internalAutowiredAnnotationProcessor则对应AutowiredAnnotationBeanPostProcessor；之后在AbstractAutowireCapableBeanFactory类的createBean方法获取bean对象时，createBean方法内会在获取instanceWrapper（bean实例）后调用applyMergedBeanDefinitionPostProcessors（即完成bean实例化后的），即会调用AutowiredAnnotationBeanPostProcessor的postProcessMergedBeanDefinition方法：
 ```language
@@ -527,6 +528,7 @@ spring容器初始化日志：
 		}
 	}
 ```
+###### 
 
 ###### BeanPostProcessor接口作用：
 如果我们想在Spring容器中完成bean实例化、配置以及其他初始化方法前后要添加一些自己逻辑处理。我们需要定义一个或多个BeanPostProcessor接口实现类，然后注册到Spring IoC容器中。
