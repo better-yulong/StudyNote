@@ -424,6 +424,7 @@ AnnotationConfigUtils.processCommonDefinitionAnnotations((AnnotatedBeanDefinitio
 				}
 				//1.检查registry是否已包含beanName对应的BeanDefinition若无则直接返回true；2.获取BeanDefinition及OriginatingBeanDefinition，检查传入的candidate与从registry获取的是否可匹配
 				if (checkCandidate(beanName, candidate)) {
+                                   
 					BeanDefinitionHolder definitionHolder = new BeanDefinitionHolder(candidate, beanName);
 					definitionHolder = AnnotationConfigUtils.applyScopedProxyMode(scopeMetadata, definitionHolder, this.registry);
 					beanDefinitions.add(definitionHolder);
