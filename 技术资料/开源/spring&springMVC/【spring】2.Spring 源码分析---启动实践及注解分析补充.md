@@ -516,4 +516,4 @@ spring容器初始化日志：
 
 registerBeanPostProcessors([org.springframework.context.annotation.internalAutowiredAnnotationProcessor, org.springframework.context.annotation.internalRequiredAnnotationProcessor, org.springframework.context.annotation.internalCommonAnnotationProcessor, org.springframework.context.annotation.ConfigurationClassPostProcessor$ImportAwareBeanPostProcessor#0])
 
-AbstractAutowireCapableBeanFactory
+AutowiredAnnotationBeanPostProcessor setBeanFactory  AbstractAutowireCapableBeanFactory
