@@ -429,6 +429,7 @@ AnnotationConfigUtils.processCommonDefinitionAnnotations((AnnotatedBeanDefinitio
                                         //因为上面设置proxyMode默认为NO，此处实际直接返回definitionHolder自身
 					definitionHolder = AnnotationConfigUtils.applyScopedProxyMode(scopeMetadata, definitionHolder, this.registry);
 					beanDefinitions.add(definitionHolder);
+                                        //
 					registerBeanDefinition(definitionHolder, this.registry);
 				}
 			}						
