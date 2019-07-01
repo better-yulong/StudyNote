@@ -520,13 +520,13 @@ spring容器初始化日志：
 
 	public void postProcessMergedBeanDefinition(RootBeanDefinition beanDefinition, Class<?> beanType, String beanName) {
 		if (beanType != null) {
+                         
 			InjectionMetadata metadata = findAutowiringMetadata(beanType);
 			metadata.checkConfigMembers(beanDefinition);
 		}
 	}
 ```
-findAutowiringMetadata即遍历class的Field、Method并获取注解信息，基于class及注解元素、信息，调用injectionMetadataCache.put(clazz, metadata)完成保存injectionMetadataCache
-
+findAutowiringMetadata即遍历class的Field、Method并获取注解信息，基于class及注解元素、信息，调用injectionMetadataCache.put(clazz, metadata)完成保存
 
 ###### BeanPostProcessor接口作用：
 如果我们想在Spring容器中完成bean实例化、配置以及其他初始化方法前后要添加一些自己逻辑处理。我们需要定义一个或多个BeanPostProcessor接口实现类，然后注册到Spring IoC容器中。
