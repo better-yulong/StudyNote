@@ -479,4 +479,4 @@ AnnotationConfigUtils.processCommonDefinitionAnnotations((AnnotatedBeanDefinitio
 
 ```
 补充知识点1：
-1. Component可以
+1. Component注解可用于标识某个Class是
