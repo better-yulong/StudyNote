@@ -396,7 +396,7 @@ public class ContextNamespaceHandler extends NamespaceHandlerSupport {
 		// Actually scan for bean definitions and register them.
 	        //根据标签配置实例化ClassPathBeanDefinitionScanner，并设置ResourceLoade、Environment、BeanDefinitionDefaults、AutowireCandidatePatterns
 		ClassPathBeanDefinitionScanner scanner = configureScanner(parserContext, element);
-                //即扫描所有class完成BeanDefinition注册至registry，返回
+                //即扫描所有class完成BeanDefinition注册至registry，返回BeanDefinitionHolder集合
 		Set<BeanDefinitionHolder> beanDefinitions = scanner.doScan(basePackages);
 		registerComponents(parserContext.getReaderContext(), beanDefinitions, element);
 
