@@ -386,4 +386,4 @@ public class ContextNamespaceHandler extends NamespaceHandlerSupport {
 
 }
 ```
-即
+即针对不同的elementName指定不同的
