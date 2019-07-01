@@ -454,7 +454,7 @@ public class ContextNamespaceHandler extends NamespaceHandlerSupport {
 				if (resource.isReadable()) {
 					try {
 						MetadataReader metadataReader = this.metadataReaderFactory.getMetadataReader(resource);
-                                        
+                                                //会根据class类的metadat判断是否有Component注解
 						if (isCandidateComponent(metadataReader)) {
 							ScannedGenericBeanDefinition sbd = new ScannedGenericBeanDefinition(metadataReader);
 							sbd.setResource(resource);
