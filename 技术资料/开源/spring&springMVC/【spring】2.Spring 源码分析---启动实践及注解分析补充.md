@@ -419,7 +419,7 @@ public class ContextNamespaceHandler extends NamespaceHandlerSupport {
 					postProcessBeanDefinition((AbstractBeanDefinition) candidate, beanName);
 				}
 				if (candidate instanceof AnnotatedBeanDefinition) {
-//设置candidate的Primary、Lazy、DependsOn、
+//设置candidate的Primary（优先注入）、Lazy、DependsOn、
 AnnotationConfigUtils.processCommonDefinitionAnnotations((AnnotatedBeanDefinition) candidate);
 				}
 				if (checkCandidate(beanName, candidate)) {
