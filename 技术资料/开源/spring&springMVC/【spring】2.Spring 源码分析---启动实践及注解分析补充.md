@@ -332,4 +332,4 @@ AnnotationBeanExample afterPropertiesSet has been created
 信息: Root WebApplicationContext: initialization completed in 14249 ms
 ```
 补充：
-1. applicationContext.xml文件中的bean及component-scan
+1. applicationContext.xml文件中的bean及component-scan没有优先级，默认按照其在xml中的顺序解析、实例化（但基有
