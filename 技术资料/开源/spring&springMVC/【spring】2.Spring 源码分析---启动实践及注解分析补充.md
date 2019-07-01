@@ -479,3 +479,4 @@ AnnotationConfigUtils.processCommonDefinitionAnnotations((AnnotatedBeanDefinitio
 
 ```
 补充知识点1：
+1. Component可以
