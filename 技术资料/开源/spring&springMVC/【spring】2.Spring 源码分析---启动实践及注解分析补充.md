@@ -519,6 +519,9 @@ spring容器初始化日志：
 
 CommonAnnotationBeanPostProcessor  postProcessMergedBeanDefinition   findResourceMetadata
 
+
+
+injectionMetadataCache
 - 而internalAutowiredAnnotationProcessor则对应AutowiredAnnotationBeanPostProcessor；之后在AbstractAutowireCapableBeanFactory类的doCreateBean方法获取bean对象时，createBean方法内会在获取instanceWrapper（bean实例）后调用applyMergedBeanDefinitionPostProcessors（即完成bean实例化后的），即会调用AutowiredAnnotationBeanPostProcessor的postProcessMergedBeanDefinition方法：
 ```language
 
