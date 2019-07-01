@@ -528,7 +528,7 @@ spring容器初始化日志：
 		}
 	}
 ```
-###### 
+###### 对象的注入
 
 ###### BeanPostProcessor接口作用：
 如果我们想在Spring容器中完成bean实例化、配置以及其他初始化方法前后要添加一些自己逻辑处理。我们需要定义一个或多个BeanPostProcessor接口实现类，然后注册到Spring IoC容器中。
