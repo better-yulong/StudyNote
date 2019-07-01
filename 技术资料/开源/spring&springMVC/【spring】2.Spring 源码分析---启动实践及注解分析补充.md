@@ -394,7 +394,7 @@ public class ContextNamespaceHandler extends NamespaceHandlerSupport {
 				ConfigurableApplicationContext.CONFIG_LOCATION_DELIMITERS);
 
 		// Actually scan for bean definitions and register them.
-	        //根据标签配置实例化ClassPathBeanDefinitionScanner，并设置ResourceLoade、Environment、BeanDefinitionDefaults、
+	        //根据标签配置实例化ClassPathBeanDefinitionScanner，并设置ResourceLoade、Environment、BeanDefinitionDefaults、AutowireCandidatePatterns、BeanNameGenerator
 		ClassPathBeanDefinitionScanner scanner = configureScanner(parserContext, element);
 		Set<BeanDefinitionHolder> beanDefinitions = scanner.doScan(basePackages);
 		registerComponents(parserContext.getReaderContext(), beanDefinitions, element);
