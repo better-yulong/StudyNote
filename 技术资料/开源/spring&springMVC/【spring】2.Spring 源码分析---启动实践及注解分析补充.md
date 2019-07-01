@@ -440,9 +440,10 @@ public class ContextNamespaceHandler extends NamespaceHandlerSupport {
 	public Set<BeanDefinition> findCandidateComponents(String basePackage) {
 		Set<BeanDefinition> candidates = new LinkedHashSet<BeanDefinition>();
 		try {
+                        1.生成资源路径：classpath*:com/aoe/**/*.class
 			String packageSearchPath = ResourcePatternResolver.CLASSPATH_ALL_URL_PREFIX +
 					resolveBasePackage(basePackage) + "/" + this.resourcePattern;
-			
+			2.获取所有class文件的Resources列表
                         Resource[] resources = this.resourcePatternResolver.getResources(packageSearchPath);
 			boolean traceEnabled = logger.isTraceEnabled();
 			boolean debugEnabled = logger.isDebugEnabled();
@@ -453,6 +454,7 @@ public class ContextNamespaceHandler extends NamespaceHandlerSupport {
 				if (resource.isReadable()) {
 					try {
 						MetadataReader metadataReader = this.metadataReaderFactory.getMetadataReader(resource);
+                                        
 						if (isCandidateComponent(metadataReader)) {
 							ScannedGenericBeanDefinition sbd = new ScannedGenericBeanDefinition(metadataReader);
 							sbd.setResource(resource);
