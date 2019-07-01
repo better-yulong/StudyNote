@@ -479,7 +479,7 @@ AnnotationConfigUtils.processCommonDefinitionAnnotations((AnnotatedBeanDefinitio
 
 ```
 补充知识点1：
-1. Component注解可用于标识某个Class是Spring的一个组件；而通过Service源码（Controller、Repository类似）可发现其也被定义为Spring的一个组件，而context:component-scan
+1. Component注解可用于标识某个Class是Spring的一个组件；而通过Service源码（Controller、Repository类似）可发现其也被定义为Spring的一个组件，而context:component-scan则正好是扫描符合规则的组件class
 ```language
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
