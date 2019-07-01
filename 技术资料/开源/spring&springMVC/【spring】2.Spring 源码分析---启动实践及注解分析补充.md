@@ -368,6 +368,6 @@ AnnotationBeanExample afterPropertiesSet has been created
 其实无论默认还是自定义命名空间，之后的解析流程是相似的：
 1. String namespaceUri = getNamespaceURI(node); 根据节点获取命命名空间URI。如根据context获取URI为http://www.springframework.org/schema/context（对应xml的配置：xmlns:context="http://www.springframework.org/schema/context"，其中ns即为namespace简写）
 2. 通过xmlns值在spirng-beans的META_INF的spring.handlers及spring.schemas找到配置：
-> http\://www.springframework.org/schema/context=org.springframework.context.config.ContextNamespaceHandler  (命名空间处理器配置)
-> http\://www.springframework.org/schema/context/spring-context-2.5.xsd=org/springframework/context/config/spring-context-2.5.xsd （命名空间xml文件描述符xsd文件）
+- > http\://www.springframework.org/schema/context=org.springframework.context.config.ContextNamespaceHandler  (命名空间处理器配置)
+- > http\://www.springframework.org/schema/context/spring-context-2.5.xsd=org/springframework/context/config/spring-context-2.5.xsd （命名空间xml文件描述符xsd文件）
 
