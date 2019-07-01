@@ -454,7 +454,7 @@ public class ContextNamespaceHandler extends NamespaceHandlerSupport {
 				if (resource.isReadable()) {
 					try {
 						MetadataReader metadataReader = this.metadataReaderFactory.getMetadataReader(resource);
-                                                //会根据class类的metadat判断是否有Component注解(及@Controller，@Service，@Component，@Repository)
+                                                //会根据class类的metadat判断是否有Component注解(及@Controller，@Service，@Repository注解)
 						if (isCandidateComponent(metadataReader)) {
 							ScannedGenericBeanDefinition sbd = new ScannedGenericBeanDefinition(metadataReader);
 							sbd.setResource(resource);
@@ -465,33 +465,7 @@ public class ContextNamespaceHandler extends NamespaceHandlerSupport {
 								}
 								candidates.add(sbd);
 							}
-							else {
-								if (debugEnabled) {
-									logger.debug("Ignored because not a concrete top-level class: " + resource);
-								}
-							}
-						}
-						else {
-							if (traceEnabled) {
-								logger.trace("Ignored because not matching any filter: " + resource);
-							}
-						}
-					}
-					catch (Throwable ex) {
-						throw new BeanDefinitionStoreException(
-								"Failed to read candidate component class: " + resource, ex);
-					}
-				}
-				else {
-					if (traceEnabled) {
-						logger.trace("Ignored because not readable: " + resource);
-					}
-				}
-			}
-		}
-		catch (IOException ex) {
-			throw new BeanDefinitionStoreException("I/O failure during classpath scanning", ex);
-		}
+                ...........
 		return candidates;
 	}
 
