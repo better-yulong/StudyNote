@@ -333,4 +333,4 @@ AnnotationBeanExample afterPropertiesSet has been created
 ```
 补充：
 1. applicationContext.xml文件中的bean及component-scan没有优先级，默认按照其在xml中的顺序解析、实例化（但如若实例化是依赖其他bean，则可能优先实例化依赖bean）；
-2. 
+
