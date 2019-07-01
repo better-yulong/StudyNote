@@ -386,7 +386,7 @@ public class ContextNamespaceHandler extends NamespaceHandlerSupport {
 
 }
 ```
-即针对不同的elementName指定不同的解析器Parser（默认的命名空间beans则是硬编码方式根据elementName指定不同的解析方法），如ComponentScanBeanDefinitionParser（除了）：
+即针对不同的elementName指定不同的解析器Parser（默认的命名空间beans则是硬编码方式根据elementName指定不同的解析方法），如ComponentScanBeanDefinitionParser（除了base-package还支持很多配置参数，具体可查看源码）：
 ```language
 	public BeanDefinition parse(Element element, ParserContext parserContext) {
                 //获取配置的basePackages数组，支持的分隔符为，；及空格，如base-package="com.aoe;1.c d,f"
