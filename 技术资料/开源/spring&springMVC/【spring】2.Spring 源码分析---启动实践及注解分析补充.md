@@ -349,6 +349,7 @@ AnnotationBeanExample afterPropertiesSet has been created
 				if (node instanceof Element) {
 					Element ele = (Element) node;
 					if (delegate.isDefaultNamespace(ele)) {
+ 						//默认命名空间beans
 						parseDefaultElement(ele, delegate);
 					}
 					else {
