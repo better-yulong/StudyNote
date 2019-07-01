@@ -365,7 +365,7 @@ AnnotationBeanExample afterPropertiesSet has been created
 	}
 
 ```
-解析流程：
+自定义命名解析流程：
 1. String namespaceUri = getNamespaceURI(node); 根据节点获取命命名空间URI。如根据context获取URI为http://www.springframework.org/schema/context（对应xml的配置：xmlns:context="http://www.springframework.org/schema/context"，其中ns即为namespace简写）
 2. 通过xmlns值在spirng-beans的META_INF的spring.handlers及spring.schemas找到配置：
 - > http\://www.springframework.org/schema/context=org.springframework.context.config.ContextNamespaceHandler  (命名空间处理器配置)
