@@ -525,7 +525,7 @@ spring容器初始化日志：
 		}
 	}
 ```
-findAutowiringMetadata即遍历class的Field、Method并获取注解信息，
+findAutowiringMetadata即遍历class的Field、Method并获取注解信息，基于class及注解元素、信息生成InjectionMetadata
 injectionMetadataCache
 
 
