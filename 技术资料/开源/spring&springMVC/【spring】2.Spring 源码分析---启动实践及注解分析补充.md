@@ -479,4 +479,4 @@ AnnotationConfigUtils.processCommonDefinitionAnnotations((AnnotatedBeanDefinitio
 
 ```
 补充知识点1：
-1. Component注解可用于标识某个Class是
+1. Component注解可用于标识某个Class是Spring容器的一个组件；而通过Service源码（Controller、）
