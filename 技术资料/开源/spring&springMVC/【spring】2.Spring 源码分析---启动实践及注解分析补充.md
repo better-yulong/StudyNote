@@ -521,7 +521,10 @@ spring容器初始化日志：
 	protected Object doCreateBean(final String beanName, final RootBeanDefinition mbd, final Object[] args) {
 		// Instantiate the bean.
 		//省略N行.....
-			、
+
+		if (instanceWrapper == null) {
+			instanceWrapper = createBeanInstance(beanName, mbd, args);
+		}
 		final Object bean = (instanceWrapper != null ? instanceWrapper.getWrappedInstance() : null);
 		// Allow post-processors to modify the merged bean definition.
 		synchronized (mbd.postProcessingLock) {
