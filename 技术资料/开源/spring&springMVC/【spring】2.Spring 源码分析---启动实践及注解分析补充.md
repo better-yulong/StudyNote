@@ -531,7 +531,7 @@ AutowiredAnnotationBeanPostProcessor的postProcessMergedBeanDefinition方法：
 		}
 	}
 ```
-
+DefaultListableBeanFactory(AbstractAutowireCapableBeanFactory).doCreateBean-->
 InitDestroyAnnotationBeanPostProcessor 
 
 ```language
