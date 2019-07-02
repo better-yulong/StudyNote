@@ -531,8 +531,8 @@ AutowiredAnnotationBeanPostProcessor的postProcessMergedBeanDefinition方法：
 		}
 	}
 ```
-DefaultListableBeanFactory(AbstractAutowireCapableBeanFactory).doCreateBean-->
-InitDestroyAnnotationBeanPostProcessor 
+DefaultListableBeanFactory(AbstractAutowireCapableBeanFactory).doCreateBean-->DefaultListableBeanFactory(AbstractAutowireCapableBeanFactory).initializeBean
+InitDestroyAnnotationBeanPostProcessor -->DefaultListableBeanFactory(AbstractAutowireCapableBeanFactory).applyBeanPostProcessorsBeforeInitialization
 
 ```language
 	/**
