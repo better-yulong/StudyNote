@@ -548,7 +548,7 @@ DefaultListableBeanFactory(AbstractAutowireCapableBeanFactory).doCreateBean-->De
 		
 		Object wrappedBean = bean;
 		if (mbd == null || !mbd.isSynthetic()) {
-                        //调用bean的
+                        //调用bean的@PostConstruct初始化方法
 			wrappedBean = applyBeanPostProcessorsBeforeInitialization(wrappedBean, beanName);
 		}
 
