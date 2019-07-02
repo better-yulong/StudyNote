@@ -532,6 +532,11 @@ AutowiredAnnotationBeanPostProcessor的postProcessMergedBeanDefinition方法：
 	}
 ```
 
+
+
+
+
+
 DefaultListableBeanFactory(AbstractAutowireCapableBeanFactory).doCreateBean-->DefaultListableBeanFactory(AbstractAutowireCapableBeanFactory).initializeBean 这个方法即包含bean实例化之后的初始化方法
 ```language
 	protected Object initializeBean(final String beanName, final Object bean, RootBeanDefinition mbd) {
