@@ -552,7 +552,7 @@ DefaultListableBeanFactory(AbstractAutowireCapableBeanFactory).doCreateBean-->De
 			wrappedBean = applyBeanPostProcessorsBeforeInitialization(wrappedBean, beanName);
 		}
 
-		try {   //调用bean的
+		try {   //调用bean的afterPropertiesSet()方法
 			invokeInitMethods(beanName, wrappedBean, mbd);
 		}
 		catch (Throwable ex) {
@@ -568,6 +568,8 @@ DefaultListableBeanFactory(AbstractAutowireCapableBeanFactory).doCreateBean-->De
 	}
 ```
 - applyBeanPostProcessorsBeforeInitialization方法：DefaultListableBeanFactory(AbstractAutowireCapableBeanFactory).applyBeanPostProcessorsBeforeInitialization-->CommonAnnotationBeanPostProcessor(InitDestroyAnnotationBeanPostProcessor).postProcessBeforeInitialization-->InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods，即通过反射调用@PostConstruct定义的init方法；
+
+
 
 
 ```language
