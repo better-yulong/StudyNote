@@ -624,7 +624,7 @@ AutowiredAnnotationBeanPostProcessor的postProcessMergedBeanDefinition方法：
 	}
 ```
 1.Resource注解(基于名称注入） CommonAnnotationBeanPostProcessor.postProcessPropertyValues-->InjectionMetadata.inject -->InjectedElement.inject-->Field.set(target, getResourceToInject(target, requestingBeanName))
-1.Resource注解(基于名称注入）
+1.Autowired注解
 
 
 
