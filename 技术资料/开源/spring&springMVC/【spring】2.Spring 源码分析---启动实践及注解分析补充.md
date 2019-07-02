@@ -623,7 +623,7 @@ AutowiredAnnotationBeanPostProcessor的postProcessMergedBeanDefinition方法：
 		applyPropertyValues(beanName, mbd, bw, pvs);
 	}
 ```
-1. CommonAnnotationBeanPostProcessor.postProcessPropertyValues-->
+1. CommonAnnotationBeanPostProcessor.postProcessPropertyValues-->ResourceElement
 
 
 
