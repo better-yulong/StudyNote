@@ -663,7 +663,32 @@ AutowiredAnnotationBeanPostProcessor的postProcessMergedBeanDefinition方法：
 		return wrappedBean;
 	}
 ```
-至此，基于注解的bean注入流程分析
+至此，基于注解的bean注入流程分析结束，运行日志：
+信息: Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@966905: defining beans [beanExample,beanExample1,beanExample2,annotationBean,annotationBeanInjectExample,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.ConfigurationClassPostProcessor$ImportAwareBeanPostProcessor#0]; root of factory hierarchy
+BeanExample init-method is called:5022763
+******************************
+BeanExample init-method is called:14321474
+******************************
+BeanExample init-method is called:15087600
+******************************
+AnnotationBean afterPropertiesSet has been created:27127259
+AnnotationBeanInjectExample init-method is called:3231848
+******************************
+beanExample:5022763
+beanExample1:14321474
+beanExample2:15087600
+annotationBean:27127259
+AnnotationBeanInjectExample afterPropertiesSet has been created:3231848
+2019-7-2 18:04:06 org.springframework.web.context.ContextLoader initWebApplicationContext
+信息: Root WebApplicationContext: initialization completed in 12021 ms
+==> aoe ContextLoaderListener contextInitialized end。。。
+2019-7-2 18:04:06 org.apache.coyote.AbstractProtocolHandler start
+信息: Starting ProtocolHandler ["http-bio-8080"]
+2019-7-2 18:04:06 org.apache.coyote.AbstractProtocolHandler start
+信息: Starting ProtocolHandler ["ajp-bio-8009"]
+2019-7-2 18:04:06 org.apache.catal
+
+
 ###### BeanPostProcessor接口作用：
 如果我们想在Spring容器中完成bean实例化、配置以及其他初始化方法前后要添加一些自己逻辑处理。我们需要定义一个或多个BeanPostProcessor接口实现类，然后注册到Spring IoC容器中。而从上面的分析来看，Process由DefaultListableBeanFactory(AbstractBeanFactory).addBeanPostProcessor(BeanPostProcessor)添加（即beanFactory属性List<BeanPostProcessor> beanPostProcessors).
 1. prepareBeanFactory:即初始化prepareBeanFactory时会添加ApplicationContextAwareProcessor：该processor是对Aware
