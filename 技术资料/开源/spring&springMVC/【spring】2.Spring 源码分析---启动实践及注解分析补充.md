@@ -542,6 +542,7 @@ spring容器初始化日志：
                         //重点3：完成对象的注入（@Resources、@Autowarie）
 			populateBean(beanName, mbd, instanceWrapper);
 			if (exposedObject != null) {
+                                 //重点4对象初始化方法调用
 				exposedObject = initializeBean(beanName, exposedObject, mbd);
 			}
 		}
