@@ -533,6 +533,39 @@ AutowiredAnnotationBeanPostProcessor的postProcessMergedBeanDefinition方法：
 ```
 DefaultListableBeanFactory(AbstractAutowireCapableBeanFactory).doCreateBean-->DefaultListableBeanFactory(AbstractAutowireCapableBeanFactory).initializeBean
 InitDestroyAnnotationBeanPostProcessor -->DefaultListableBeanFactory(AbstractAutowireCapableBeanFactory).applyBeanPostProcessorsBeforeInitialization-->CommonAnnotationBeanPostProcessor(InitDestroyAnnotationBeanPostProcessor).postProcessBeforeInitialization-->InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods，即通过反射调用@PostConstruct定义的init方法；
+	protected Object initializeBean(final String beanName, final Object bean, RootBeanDefinition mbd) {
+		if (System.getSecurityManager() != null) {
+			AccessController.doPrivileged(new PrivilegedAction<Object>() {
+				public Object run() {
+					invokeAwareMethods(beanName, bean);
+					return null;
+				}
+			}, getAccessControlContext());
+		}
+		else {
+			invokeAwareMethods(beanName, bean);
+		}
+		
+		Object wrappedBean = bean;
+		if (mbd == null || !mbd.isSynthetic()) {
+			wrappedBean = applyBeanPostProcessorsBeforeInitialization(wrappedBean, beanName);
+		}
+
+		try {
+			invokeInitMethods(beanName, wrappedBean, mbd);
+		}
+		catch (Throwable ex) {
+			throw new BeanCreationException(
+					(mbd != null ? mbd.getResourceDescription() : null),
+					beanName, "Invocation of init method failed", ex);
+		}
+
+		if (mbd == null || !mbd.isSynthetic()) {
+			wrappedBean = applyBeanPostProcessorsAfterInitialization(wrappedBean, beanName);
+		}
+		return wrappedBean;
+	}
+
 
 ```language
 	/**
