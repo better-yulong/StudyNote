@@ -688,7 +688,7 @@ AnnotationBeanInjectExample afterPropertiesSet has been created:3231848
 信息: Starting ProtocolHandler ["ajp-bio-8009"]
 2019-7-2 18:04:06 org.apache.catal
 
-#### 所有如上示例均com.aoe.demo.sample1
+#### 所有如上示例均在spring3-analysis工程com.aoe.demo.sample1包内。
 
 ###### BeanPostProcessor接口作用：
 如果我们想在Spring容器中完成bean实例化、配置以及其他初始化方法前后要添加一些自己逻辑处理。我们需要定义一个或多个BeanPostProcessor接口实现类，然后注册到Spring IoC容器中。而从上面的分析来看，Process由DefaultListableBeanFactory(AbstractBeanFactory).addBeanPostProcessor(BeanPostProcessor)添加（即beanFactory属性List<BeanPostProcessor> beanPostProcessors).
