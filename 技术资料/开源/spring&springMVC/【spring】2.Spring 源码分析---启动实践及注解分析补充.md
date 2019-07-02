@@ -520,6 +520,7 @@ spring容器初始化日志：
 1. CommonAnnotationBeanPostProcessor-->postProcessMergedBeanDefinition-->findResourceMetadata 会查找使用Resource的Field、Methods并封装ResourceElement使用当前所属class存储至CommonAnnotationBeanPostProcessor的injectionMetadataCache以便后续使用；
 2.AutowiredAnnotationBeanPostProcessor-->postProcessMergedBeanDefinition-->findAutowiringMetadata会查找使用@Component（及Service、Controller）的Field、Methods并封装ResourceElement使用当前所属class存储至CommonAnnotationBeanPostProcessor的injectionMetadataCache以便后续使用；
 
+
 ；之后在AbstractAutowireCapableBeanFactory类的doCreateBean方法获取bean对象时，createBean方法内会在获取instanceWrapper（bean实例）后调用applyMergedBeanDefinitionPostProcessors（即完成bean实例化后的），即会调用AutowiredAnnotationBeanPostProcessor的postProcessMergedBeanDefinition方法：
 ```language
 
@@ -532,6 +533,8 @@ spring容器初始化日志：
 		}
 	}
 ```
+
+
 ```language
 	/**
 	 * Populate the bean instance in the given BeanWrapper with the property values
