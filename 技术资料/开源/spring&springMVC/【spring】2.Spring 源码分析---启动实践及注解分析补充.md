@@ -527,7 +527,7 @@ spring容器初始化日志：
 		}
 		final Object bean = (instanceWrapper != null ? instanceWrapper.getWrappedInstance() : null);
 		// Allow post-processors to modify the merged bean definition.
-                //重点2：调用ProcessorpostProcessMergedBeanDefinition完成注解解析
+                //重点2：调用ProcessorpostProcessMergedBeanDefinition完成注解解析（@Resources、@Autowarie）
 		synchronized (mbd.postProcessingLock) {
 			if (!mbd.postProcessed) {
 				applyMergedBeanDefinitionPostProcessors(mbd, beanType, beanName);
@@ -539,55 +539,14 @@ spring容器初始化日志：
 		// Initialize the bean instance.
 		Object exposedObject = bean;
 		try {
+                       
 			populateBean(beanName, mbd, instanceWrapper);
 			if (exposedObject != null) {
 				exposedObject = initializeBean(beanName, exposedObject, mbd);
 			}
 		}
-		catch (Throwable ex) {
-			if (ex instanceof BeanCreationException && beanName.equals(((BeanCreationException) ex).getBeanName())) {
-				throw (BeanCreationException) ex;
-			}
-			else {
-				throw new BeanCreationException(mbd.getResourceDescription(), beanName, "Initialization of bean failed", ex);
-			}
-		}
-
-		if (earlySingletonExposure) {
-			Object earlySingletonReference = getSingleton(beanName, false);
-			if (earlySingletonReference != null) {
-				if (exposedObject == bean) {
-					exposedObject = earlySingletonReference;
-				}
-				else if (!this.allowRawInjectionDespiteWrapping && hasDependentBean(beanName)) {
-					String[] dependentBeans = getDependentBeans(beanName);
-					Set<String> actualDependentBeans = new LinkedHashSet<String>(dependentBeans.length);
-					for (String dependentBean : dependentBeans) {
-						if (!removeSingletonIfCreatedForTypeCheckOnly(dependentBean)) {
-							actualDependentBeans.add(dependentBean);
-						}
-					}
-					if (!actualDependentBeans.isEmpty()) {
-						throw new BeanCurrentlyInCreationException(beanName,
-								"Bean with name '" + beanName + "' has been injected into other beans [" +
-								StringUtils.collectionToCommaDelimitedString(actualDependentBeans) +
-								"] in its raw version as part of a circular reference, but has eventually been " +
-								"wrapped. This means that said other beans do not use the final version of the " +
-								"bean. This is often the result of over-eager type matching - consider using " +
-								"'getBeanNamesOfType' with the 'allowEagerInit' flag turned off, for example.");
-					}
-				}
-			}
-		}
-
-		// Register bean as disposable.
-		try {
-			registerDisposableBeanIfNecessary(beanName, bean, mbd);
-		}
-		catch (BeanDefinitionValidationException ex) {
-			throw new BeanCreationException(mbd.getResourceDescription(), beanName, "Invalid destruction signature", ex);
-		}
-
+		catch (Throwable ex) {}
+		//省略N行.....	
 		return exposedObject;
 	}
 ```
