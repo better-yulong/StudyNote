@@ -551,10 +551,8 @@ spring容器初始化日志：
 		return exposedObject;
 	}
 ```
-###### **重点2：**
-
-
-获取bean对象时，doCreateBean方法内会在获取instanceWrapper（bean实例）后获取所有的getBeanPostProcessors()逐个调用Processor的postProcessMergedBeanDefinition：
+###### **重点2：调用ProcessorpostProcessMergedBeanDefinition完成注解解析（@Resources、@Autowarie）**
+doCreateBean方法内会在获取instanceWrapper（bean实例）后获取所有的getBeanPostProcessors()逐个调用Processor的postProcessMergedBeanDefinition：
 1. CommonAnnotationBeanPostProcessor-->postProcessMergedBeanDefinition-->findResourceMetadata 会查找使用Resource的Field、Methods并封装ResourceElement使用当前所属class存储至CommonAnnotationBeanPostProcessor的injectionMetadataCache以便后续使用。
 2.AutowiredAnnotationBeanPostProcessor-->postProcessMergedBeanDefinition-->findAutowiringMetadata会查找使用@Component（及@Service、@Controller、@Repository）的Field、Methods并封装AutowiredFieldElement使用当前所属class存储至AutowiredAnnotationBeanPostProcessor的injectionMetadataCache以便后续使用。
 AutowiredAnnotationBeanPostProcessor的postProcessMergedBeanDefinition方法：
@@ -569,6 +567,10 @@ AutowiredAnnotationBeanPostProcessor的postProcessMergedBeanDefinition方法：
 		}
 	}
 ```
+###### **重点2：调用ProcessorpostProcessMergedBeanDefinition完成注解解析（@Resources、@Autowarie）**
+
+
+
 ###### 注解对象的注入
 
 
