@@ -527,7 +527,7 @@ spring容器初始化日志：
 		}
 		final Object bean = (instanceWrapper != null ? instanceWrapper.getWrappedInstance() : null);
 		// Allow post-processors to modify the merged bean definition.
-                 
+                //重点2：调用ProcessorpostProcessMergedBeanDefinition完成注解解析
 		synchronized (mbd.postProcessingLock) {
 			if (!mbd.postProcessed) {
 				applyMergedBeanDefinitionPostProcessors(mbd, beanType, beanName);
