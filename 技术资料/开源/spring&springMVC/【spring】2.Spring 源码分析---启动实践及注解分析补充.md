@@ -569,7 +569,7 @@ AutowiredAnnotationBeanPostProcessor的postProcessMergedBeanDefinition方法：
 	}
 ```
 ###### **重点3：完成对象的注入（@Resources、@Autowarie）**
-其重点在AbstractAutowireCapableBeanFactorypopulateBean方法
+其重点在AbstractAutowireCapableBeanFactory类populateBean方法
 ```language
 	/**
 	 * Populate the bean instance in the given BeanWrapper with the property values
