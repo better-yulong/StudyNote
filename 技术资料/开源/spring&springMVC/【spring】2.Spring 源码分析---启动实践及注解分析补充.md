@@ -568,56 +568,7 @@ AutowiredAnnotationBeanPostProcessor的postProcessMergedBeanDefinition方法：
 	}
 ```
 ###### **重点3：完成对象的注入（@Resources、@Autowarie）**
-
-
-
-###### 注解对象的注入
-
-
-
-
-
-
-DefaultListableBeanFactory(AbstractAutowireCapableBeanFactory).doCreateBean-->DefaultListableBeanFactory(AbstractAutowireCapableBeanFactory).initializeBean 这个方法即包含bean实例化之后的初始化方法
-```language
-	protected Object initializeBean(final String beanName, final Object bean, RootBeanDefinition mbd) {
-		if (System.getSecurityManager() != null) {
-			AccessController.doPrivileged(new PrivilegedAction<Object>() {
-				public Object run() {
-					invokeAwareMethods(beanName, bean);
-					return null;
-				}
-			}, getAccessControlContext());
-		}
-		else {
-			invokeAwareMethods(beanName, bean);
-		}
-		
-		Object wrappedBean = bean;
-		if (mbd == null || !mbd.isSynthetic()) {
-                        //调用bean的@PostConstruct初始化方法
-			wrappedBean = applyBeanPostProcessorsBeforeInitialization(wrappedBean, beanName);
-		}
-
-		try {   //调用bean的afterPropertiesSet()方法、
-			invokeInitMethods(beanName, wrappedBean, mbd);
-		}
-		catch (Throwable ex) {
-			throw new BeanCreationException(
-					(mbd != null ? mbd.getResourceDescription() : null),
-					beanName, "Invocation of init method failed", ex);
-		}
-
-		if (mbd == null || !mbd.isSynthetic()) {
-			wrappedBean = applyBeanPostProcessorsAfterInitialization(wrappedBean, beanName);
-		}
-		return wrappedBean;
-	}
-```
-
-
-
-
+其重点在
 
 ```language
 	/**
@@ -672,6 +623,55 @@ DefaultListableBeanFactory(AbstractAutowireCapableBeanFactory).doCreateBean-->De
 		applyPropertyValues(beanName, mbd, bw, pvs);
 	}
 ```
+
+
+###### 注解对象的注入
+
+
+
+
+
+
+DefaultListableBeanFactory(AbstractAutowireCapableBeanFactory).doCreateBean-->DefaultListableBeanFactory(AbstractAutowireCapableBeanFactory).initializeBean 这个方法即包含bean实例化之后的初始化方法
+```language
+	protected Object initializeBean(final String beanName, final Object bean, RootBeanDefinition mbd) {
+		if (System.getSecurityManager() != null) {
+			AccessController.doPrivileged(new PrivilegedAction<Object>() {
+				public Object run() {
+					invokeAwareMethods(beanName, bean);
+					return null;
+				}
+			}, getAccessControlContext());
+		}
+		else {
+			invokeAwareMethods(beanName, bean);
+		}
+		
+		Object wrappedBean = bean;
+		if (mbd == null || !mbd.isSynthetic()) {
+                        //调用bean的@PostConstruct初始化方法
+			wrappedBean = applyBeanPostProcessorsBeforeInitialization(wrappedBean, beanName);
+		}
+
+		try {   //调用bean的afterPropertiesSet()方法、
+			invokeInitMethods(beanName, wrappedBean, mbd);
+		}
+		catch (Throwable ex) {
+			throw new BeanCreationException(
+					(mbd != null ? mbd.getResourceDescription() : null),
+					beanName, "Invocation of init method failed", ex);
+		}
+
+		if (mbd == null || !mbd.isSynthetic()) {
+			wrappedBean = applyBeanPostProcessorsAfterInitialization(wrappedBean, beanName);
+		}
+		return wrappedBean;
+	}
+```
+
+
+
+
 
 ###### 对象的注入
 同上面的注解解析，AbstractAutowireCapableBeanFactory类的doCreateBean方法获取bean对象时，会在调用applyMergedBeanDefinitionPostProcessors之后调用其内部 populateBean方法
