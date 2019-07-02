@@ -656,7 +656,7 @@ DefaultListableBeanFactory(AbstractAutowireCapableBeanFactory).doCreateBean-->De
 				for (BeanPostProcessor bp : getBeanPostProcessors()) {
 					if (bp instanceof InstantiationAwareBeanPostProcessor) {
 						InstantiationAwareBeanPostProcessor ibp = (InstantiationAwareBeanPostProcessor) bp;
-                                                //最核心的是findResourceMetadata，获取Resources注解并封装为ResourceElement并添加至metadata
+                                                
 						pvs = ibp.postProcessPropertyValues(pvs, filteredPds, bw.getWrappedInstance(), beanName);
 						if (pvs == null) {
 							return;
