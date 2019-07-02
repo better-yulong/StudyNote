@@ -549,6 +549,7 @@ DefaultListableBeanFactory(AbstractAutowireCapableBeanFactory).doCreateBean-->De
 		
 		Object wrappedBean = bean;
 		if (mbd == null || !mbd.isSynthetic()) {
+                        //
 			wrappedBean = applyBeanPostProcessorsBeforeInitialization(wrappedBean, beanName);
 		}
 
