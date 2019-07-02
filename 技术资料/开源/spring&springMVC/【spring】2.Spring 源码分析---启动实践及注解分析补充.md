@@ -567,7 +567,7 @@ AutowiredAnnotationBeanPostProcessor的postProcessMergedBeanDefinition方法：
 		}
 	}
 ```
-###### **重点2：调用ProcessorpostProcessMergedBeanDefinition完成注解解析（@Resources、@Autowarie）**
+###### **重点3：完成对象的注入（@Resources、@Autowarie）**
 
 
 
