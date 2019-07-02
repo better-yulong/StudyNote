@@ -539,7 +539,7 @@ spring容器初始化日志：
 		// Initialize the bean instance.
 		Object exposedObject = bean;
 		try {
-                       
+                        //重点3：完成对象的注入（@Resources、@Autowarie）
 			populateBean(beanName, mbd, instanceWrapper);
 			if (exposedObject != null) {
 				exposedObject = initializeBean(beanName, exposedObject, mbd);
