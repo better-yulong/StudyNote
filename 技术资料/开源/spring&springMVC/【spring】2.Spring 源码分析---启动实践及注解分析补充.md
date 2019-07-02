@@ -623,7 +623,7 @@ AutowiredAnnotationBeanPostProcessor的postProcessMergedBeanDefinition方法：
 		applyPropertyValues(beanName, mbd, bw, pvs);
 	}
 ```
-1. CommonAnnotationBeanPostProcessor.postProcessPropertyValues-->InjectionMetadata.inject -->InjectedElement.inject-->Field.set(target, getResourceToInject(target, requestingBeanName))
+1.Reso CommonAnnotationBeanPostProcessor.postProcessPropertyValues-->InjectionMetadata.inject -->InjectedElement.inject-->Field.set(target, getResourceToInject(target, requestingBeanName))
 
 
 
