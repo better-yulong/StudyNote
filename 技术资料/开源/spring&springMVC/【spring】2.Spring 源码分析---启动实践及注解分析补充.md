@@ -517,7 +517,93 @@ spring容器初始化日志：
  在Spring上下文初始化时会调用registerBeanPostProcessors完成这3个Processor的注册及实例化
 ([org.springframework.context.annotation.internalAutowiredAnnotationProcessor, org.springframework.context.annotation.internalRequiredAnnotationProcessor, org.springframework.context.annotation.internalCommonAnnotationProcessor, org.springframework.context.annotation.ConfigurationClassPostProcessor$ImportAwareBeanPostProcessor#0])
 - 后续分析主要涉及两个：CommonAnnotationBeanPostProcessor、AutowiredAnnotationBeanPostProcessor。在调用DefaultListableBeanFactory类（实际AbstractAutowireCapableBeanFactory类）的doCreateBean方法，而doCreateBean方法主要有如下几点：
-  
+```language
+	protected Object doCreateBean(final String beanName, final RootBeanDefinition mbd, final Object[] args) {
+		// Instantiate the bean.
+		.....
+		final Object bean = (instanceWrapper != null ? instanceWrapper.getWrappedInstance() : null);
+		Class beanType = (instanceWrapper != null ? instanceWrapper.getWrappedClass() : null);
+
+		// Allow post-processors to modify the merged bean definition.
+		synchronized (mbd.postProcessingLock) {
+			if (!mbd.postProcessed) {
+				applyMergedBeanDefinitionPostProcessors(mbd, beanType, beanName);
+				mbd.postProcessed = true;
+			}
+		}
+
+		// Eagerly cache singletons to be able to resolve circular references
+		// even when triggered by lifecycle interfaces like BeanFactoryAware.
+		boolean earlySingletonExposure = (mbd.isSingleton() && this.allowCircularReferences &&
+				isSingletonCurrentlyInCreation(beanName));
+		if (earlySingletonExposure) {
+			if (logger.isDebugEnabled()) {
+				logger.debug("Eagerly caching bean '" + beanName +
+						"' to allow for resolving potential circular references");
+			}
+			addSingletonFactory(beanName, new ObjectFactory() {
+				public Object getObject() throws BeansException {
+					return getEarlyBeanReference(beanName, mbd, bean);
+				}
+			});
+		}
+
+		// Initialize the bean instance.
+		Object exposedObject = bean;
+		try {
+			populateBean(beanName, mbd, instanceWrapper);
+			if (exposedObject != null) {
+				exposedObject = initializeBean(beanName, exposedObject, mbd);
+			}
+		}
+		catch (Throwable ex) {
+			if (ex instanceof BeanCreationException && beanName.equals(((BeanCreationException) ex).getBeanName())) {
+				throw (BeanCreationException) ex;
+			}
+			else {
+				throw new BeanCreationException(mbd.getResourceDescription(), beanName, "Initialization of bean failed", ex);
+			}
+		}
+
+		if (earlySingletonExposure) {
+			Object earlySingletonReference = getSingleton(beanName, false);
+			if (earlySingletonReference != null) {
+				if (exposedObject == bean) {
+					exposedObject = earlySingletonReference;
+				}
+				else if (!this.allowRawInjectionDespiteWrapping && hasDependentBean(beanName)) {
+					String[] dependentBeans = getDependentBeans(beanName);
+					Set<String> actualDependentBeans = new LinkedHashSet<String>(dependentBeans.length);
+					for (String dependentBean : dependentBeans) {
+						if (!removeSingletonIfCreatedForTypeCheckOnly(dependentBean)) {
+							actualDependentBeans.add(dependentBean);
+						}
+					}
+					if (!actualDependentBeans.isEmpty()) {
+						throw new BeanCurrentlyInCreationException(beanName,
+								"Bean with name '" + beanName + "' has been injected into other beans [" +
+								StringUtils.collectionToCommaDelimitedString(actualDependentBeans) +
+								"] in its raw version as part of a circular reference, but has eventually been " +
+								"wrapped. This means that said other beans do not use the final version of the " +
+								"bean. This is often the result of over-eager type matching - consider using " +
+								"'getBeanNamesOfType' with the 'allowEagerInit' flag turned off, for example.");
+					}
+				}
+			}
+		}
+
+		// Register bean as disposable.
+		try {
+			registerDisposableBeanIfNecessary(beanName, bean, mbd);
+		}
+		catch (BeanDefinitionValidationException ex) {
+			throw new BeanCreationException(mbd.getResourceDescription(), beanName, "Invalid destruction signature", ex);
+		}
+
+		return exposedObject;
+	}
+```
+
 
 
 获取bean对象时，doCreateBean方法内会在获取instanceWrapper（bean实例）后获取所有的getBeanPostProcessors()逐个调用Processor的postProcessMergedBeanDefinition：
