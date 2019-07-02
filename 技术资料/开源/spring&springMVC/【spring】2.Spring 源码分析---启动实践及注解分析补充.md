@@ -530,8 +530,7 @@ spring容器初始化日志：
 		}
 	}
 ```
-###### 对象的注入
-同上面的注解解析，AbstractAutowireCapableBeanFactory类的doCreateBean方法获取bean对象时，会在调用applyMergedBeanDefinitionPostProcessors之后调用其内部 populateBean方法
+
 ```language
 	/**
 	 * Populate the bean instance in the given BeanWrapper with the property values
