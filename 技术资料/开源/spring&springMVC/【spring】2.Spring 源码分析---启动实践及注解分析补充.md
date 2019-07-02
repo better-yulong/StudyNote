@@ -551,7 +551,7 @@ spring容器初始化日志：
 		return exposedObject;
 	}
 ```
-###### 六级标题
+###### **重点2：**
 
 
 获取bean对象时，doCreateBean方法内会在获取instanceWrapper（bean实例）后获取所有的getBeanPostProcessors()逐个调用Processor的postProcessMergedBeanDefinition：
