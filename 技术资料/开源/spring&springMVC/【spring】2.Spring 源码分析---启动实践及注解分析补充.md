@@ -567,10 +567,6 @@ DefaultListableBeanFactory(AbstractAutowireCapableBeanFactory).doCreateBean-->De
 		return wrappedBean;
 	}
 ```
-- applyBeanPostProcessorsBeforeInitialization方法：DefaultListableBeanFactory(AbstractAutowireCapableBeanFactory).applyBeanPostProcessorsBeforeInitialization-->CommonAnnotationBeanPostProcessor(InitDestroyAnnotationBeanPostProcessor).postProcessBeforeInitialization-->InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods，即通过反射调用@PostConstruct定义的init方法；
-
-
-
 
 
 ```language
