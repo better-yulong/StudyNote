@@ -532,7 +532,6 @@ AutowiredAnnotationBeanPostProcessor的postProcessMergedBeanDefinition方法：
 	}
 ```
 DefaultListableBeanFactory(AbstractAutowireCapableBeanFactory).doCreateBean-->DefaultListableBeanFactory(AbstractAutowireCapableBeanFactory).initializeBean
--->DefaultListableBeanFactory(AbstractAutowireCapableBeanFactory).applyBeanPostProcessorsBeforeInitialization-->CommonAnnotationBeanPostProcessor(InitDestroyAnnotationBeanPostProcessor).postProcessBeforeInitialization-->InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods，即通过反射调用@PostConstruct定义的init方法；
 ```language
 	protected Object initializeBean(final String beanName, final Object bean, RootBeanDefinition mbd) {
 		if (System.getSecurityManager() != null) {
@@ -568,7 +567,7 @@ DefaultListableBeanFactory(AbstractAutowireCapableBeanFactory).doCreateBean-->De
 		return wrappedBean;
 	}
 ```
-
+- applyBeanPostProcessorsBeforeInitialization方法：DefaultListableBeanFactory(AbstractAutowireCapableBeanFactory).applyBeanPostProcessorsBeforeInitialization-->CommonAnnotationBeanPostProcessor(InitDestroyAnnotationBeanPostProcessor).postProcessBeforeInitialization-->InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods，即通过反射调用@PostConstruct定义的init方法；
 
 
 ```language
