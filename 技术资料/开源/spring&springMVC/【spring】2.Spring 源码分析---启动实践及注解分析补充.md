@@ -520,7 +520,7 @@ spring容器初始化日志：
 ```language
 	protected Object doCreateBean(final String beanName, final RootBeanDefinition mbd, final Object[] args) {
 		// Instantiate the bean.
-		.....
+		//省略N行.....
 		final Object bean = (instanceWrapper != null ? instanceWrapper.getWrappedInstance() : null);
 		Class beanType = (instanceWrapper != null ? instanceWrapper.getWrappedClass() : null);
 
