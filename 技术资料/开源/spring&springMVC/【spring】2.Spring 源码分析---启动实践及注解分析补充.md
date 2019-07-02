@@ -626,8 +626,8 @@ AutowiredAnnotationBeanPostProcessor的postProcessMergedBeanDefinition方法：
 1. Resource注解(基于名称注入） CommonAnnotationBeanPostProcessor.postProcessPropertyValues-->InjectionMetadata.inject -->InjectedElement.inject-->Field.set(target, getResourceToInject(target, requestingBeanName))     resource = factory.getBean(name, element.lookupType)
 2. Autowired注解（优先class注入，若同一类有多个bean则再根据名称匹配）  AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues-->InjectionMetadata.inject -->AutowiredFieldElement.inject-->DefaultListableBeanFactory.doResolveDependency-->DefaultListableBeanFactory.findAutowireCandidates （根据class获取beanName）-->Field.set(target, getResourceToInject(target, requestingBeanName)) 
 - 完成如上依赖bean的注入之后，会同步存储bean之前的依赖关系（存储字符串beanName)到dependentBeanMap  dependenciesForBeanMap（双向）
-###### **重点4：完成对象的注入（@Resources、@Autowarie）**
-
+###### **重点4：重点4：对象初始化方法调用（@PostConstruct、InitializingBean的afterPropertiesSet()方法）**
+在调用populateBean完成bean注入之后，则调用
 
 
 
