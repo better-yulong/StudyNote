@@ -552,7 +552,7 @@ DefaultListableBeanFactory(AbstractAutowireCapableBeanFactory).doCreateBean-->De
 			wrappedBean = applyBeanPostProcessorsBeforeInitialization(wrappedBean, beanName);
 		}
 
-		try {   //调用bean的afterPropertiesSet()方法、
+		try {   //调用bean的@PostConstruct、afterPropertiesSet()方法、
 			invokeInitMethods(beanName, wrappedBean, mbd);
 		}
 		catch (Throwable ex) {
