@@ -28,6 +28,7 @@ public class ApplicationContextAwareExample implements ApplicationContextAware {
 }
 
 ```
+运行日志：
 
 
 
