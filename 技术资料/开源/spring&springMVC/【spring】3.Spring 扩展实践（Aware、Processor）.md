@@ -220,7 +220,7 @@ XmlWebApplicationContext(AbstractApplicationContext)类的refresh()会调用regi
 
 		// Finally, re-register all internal BeanPostProcessors.
 		OrderComparator.sort(internalPostProcessors);
-		//将上面实例化的3个Process实例
+		//将上面实例化的3个Process实例添加至beanFactory对应的beanPostProcessors列表
 		registerBeanPostProcessors(beanFactory, internalPostProcessors);
 
 		beanFactory.addBeanPostProcessor(new ApplicationListenerDetector());
