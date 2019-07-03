@@ -143,5 +143,5 @@ internalCommonAnnotationProcessor<-->CommonAnnotationBeanPostProcessor
 ##### 3.2 Processor的实例化
 
 
-
+##### 3.3  发
 AbstractApplicationContext类的refresh()会调用registerBeanPostProcessors(beanFactory)方法
