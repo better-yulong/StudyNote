@@ -1023,6 +1023,7 @@ beanFactory.preInstantiateSingletons()初始化所有非延迟加载的单例bea
 	}
 
 ```
+
 ###### 2.2.4.11 AbstractApplicationContext类finishRefresh()
 正常流程的最后 一个方法，实例化DefaultLifecycleProcessor，并调用其onRefresh()，标识spring容器为running状态；最后publishEvent(new ContextRefreshedEvent(this))。至于excepiton后的destroyBeans()、cancelRefresh(ex)等流程就不分析了。
 
