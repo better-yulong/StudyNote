@@ -22,7 +22,7 @@
 	**.iml
 	**.DS_Store
 ```
-2. 提交所有文件（git push origin master）
+2. 提交所有文件（git add . / git commit -m 'comment' / git push origin master）
 3. 如果添加了.gitignore还是没有作用那是因为你的项目已经提交到仓库了,这个时候需要清除仓库的数据
 ```language
 	// 清除仓库的所有的数据
