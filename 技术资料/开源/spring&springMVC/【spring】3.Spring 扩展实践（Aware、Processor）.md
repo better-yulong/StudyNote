@@ -159,7 +159,7 @@ XmlWebApplicationContext(AbstractApplicationContext)类的refresh()会调用regi
 	 * <p>Must be called before any instantiation of application beans.
 	 */
 	protected void registerBeanPostProcessors(ConfigurableListableBeanFactory beanFactory) {
-                //
+                //即可获取internalAutowiredAnnotationProcessor、internalRequiredAnnotationProcessor、internalCommonAnnotationProcessor
 		String[] postProcessorNames = beanFactory.getBeanNamesForType(BeanPostProcessor.class, true, false);
 
 		// Register BeanPostProcessorChecker that logs an info message when
