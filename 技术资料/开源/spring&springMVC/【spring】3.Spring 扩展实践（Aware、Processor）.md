@@ -138,4 +138,5 @@ ClassPathBeanDefinitionScanner的scan(String... basePackages) 有两点：
 通过如上对应关系：
 > internalConfigurationAnnotationProcessor<-->ConfigurationClassPostProcessor
 internalAutowiredAnnotationProcessor<-->AutowiredAnnotationBeanPostProcessor
-internalRequiredAnnotationProcessor<-->RequiredAnnotationBeanPostProcessor,internalCommonAnnotationProcessor<-->CommonAnnotationBeanPostProcessor
+internalRequiredAnnotationProcessor<-->RequiredAnnotationBeanPostProcessor
+internalCommonAnnotationProcessor<-->CommonAnnotationBeanPostProcessor
