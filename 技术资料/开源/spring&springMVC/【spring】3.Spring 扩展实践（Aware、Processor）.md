@@ -70,7 +70,8 @@ ApplicationContextAwareExample  StartupDate:1562129008373
 > [org.springframework.context.annotation.internalAutowiredAnnotationProcessor, org.springframework.context.annotation.internalRequiredAnnotationProcessor, org.springframework.context.annotation.internalCommonAnnotationProcessor, org.springframework.context.annotation.ConfigurationClassPostProcessor$ImportAwareBeanPostProcessor#0]
 - 从这部分processp实例的名称即可知道，这部分processor与注解有关，那么根据之前的理解，Spring实例化之前会先行完成class对应的BeanDefinition注册：registry.registerBeanDefinition(beanName, definition)
 ##### 3.1 Processor的BeanDefinition注册
-ClassPathBeanDefinitionScanner的scan(String... basePackages) 有两点：1.基于basePackages完成扫描并完成各class应对的BeanDefinition注册；2.AnnotationConfigUtils.registerAnnotationConfigProcessors(this.registry); 完成注解配置Processor的BeanDefinition注册
+ClassPathBeanDefinitionScanner的scan(String... basePackages) 有两点：
+1. 基于basePackages完成扫描并完成各class应对的BeanDefinition注册；AnnotationConfigUtils.registerAnnotationConfigProcessors(this.registry); 完成注解配置Processor的BeanDefinition注册
 ```language
         //AnnotationConfigUtils
         	/**
