@@ -4,4 +4,4 @@
 1. prepareBeanFactory:即初始化prepareBeanFactory时会添加ApplicationContextAwareProcessor：该processor是对实现了Aware接口的bean的处理
 
 ###### BeanPostProcessor接口作用：
-spring Aware的目的是为了让bean获取spring容器的服务
+Spring Aware的目的是为了让bean获取spring容器的服务
