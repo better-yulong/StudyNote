@@ -235,12 +235,108 @@ XmlWebApplicationContext(AbstractApplicationContext)类的refresh()会调用regi
     1. 可在xml基于bean标签配置，即Spring容器启动时会自动完成BeanDefinition注册及默认实例化单例；
     2. 基于注解实现BeanDefinition注册及默认实例化单例；
 #### 3.2 基于framework-aoe-beans 实现自定义Processor
+```language
+@Component
+public class AnnotationProcessorExample implements BeanPostProcessor, InitializingBean {
 
+	public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
+		System.out.println("AnnotationProcessorExample postProcessBeforeInitialization。。。");
+		return null;
+	}
 
+	public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+		System.out.println("AnnotationProcessorExample postProcessAfterInitialization。。。");
+		return null;
+	}
 
+	public void afterPropertiesSet() throws Exception {
+		System.out.println("AnnotationProcessorExample afterPropertiesSet。。。");
+	}
+
+}
+```
+```language
+public class SimpleProcessorExample implements BeanPostProcessor, InitializingBean {
+
+	public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
+		System.out.println("SimpleProcessorExample postProcessBeforeInitialization。。。");
+		return null;
+	}
+
+	public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+		System.out.println("SimpleProcessorExample postProcessAfterInitialization。。。");
+		return null;
+	}
+
+	public void afterPropertiesSet() throws Exception {
+		System.out.println("SimpleProcessorExample afterPropertiesSet。。。");
+	}
+
+}
+```
+```language
+<bean name="simpleProcessorExample" class="com.framework.aoe.beans.factory.support.process1.SimpleProcessorExample"></bean>
+```
+spring3-analysis引入framework-aoe-beans 工程后，运行发现抛出了异常，是实例化"beanExample"时调用其init方法时NullPointException。开始还没太明白，细看才发现实例"beanExample"之前已经成功实例化，那为何在调用Process时调用其init方法时会出现"beanExample"为null呢？开始没及理解也没去了解BeanPostProcessor的源码，就如上简单做了下实例。之后分析BeanPostProcessor的源码及分析才发现Processor是通过此方式调用的（即将返回值赋值给使用的result; 而我上面示例粗暴的返回null正好将之前实例化的对象又置为null了）：
+```
 for (BeanPostProcessor beanProcessor : getBeanPostProcessors()) {
 			result = beanProcessor.postProcessBeforeInitialization(result, beanName);
 			if (result == null) {
 				return result;
 			}
 		}
+```
+那修改就简单了，将上面两个Processor示例的对应方法的"retrun null;"统一修改为"return bean;"即可，再将启动应用，发现麻利的就OK了，启动日志：
+```language
+==> aoe ContextLoaderListener contextInitialized start。。。
+2019-7-3 18:12:38 org.apache.catalina.core.ApplicationContext log
+信息: Initializing Spring root WebApplicationContext
+2019-7-3 18:12:38 org.springframework.web.context.ContextLoader initWebApplicationContext
+信息: Root WebApplicationContext: initialization started
+2019-7-3 18:12:39 org.springframework.context.support.AbstractApplicationContext prepareRefresh
+信息: Refreshing Root WebApplicationContext: startup date [Wed Jul 03 18:12:39 CST 2019]; root of context hierarchy
+2019-7-3 18:12:39 org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
+信息: Loading XML bean definitions from class path resource [applicationContext.xml]
+SimpleProcessorExample afterPropertiesSet。。。
+2019-7-3 18:12:41 org.springframework.beans.factory.support.DefaultListableBeanFactory preInstantiateSingletons
+信息: Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@1531164: defining beans [beanExample,beanExample1,beanExample2,annotationBean,annotationBeanInjectExample,applicationContextAwareExample,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,simpleProcessorExample,org.springframework.context.annotation.ConfigurationClassPostProcessor$ImportAwareBeanPostProcessor#0]; root of factory hierarchy
+SimpleProcessorExample postProcessBeforeInitialization。。。
+BeanExample init-method is called:27503148
+******************************
+SimpleProcessorExample postProcessAfterInitialization。。。
+SimpleProcessorExample postProcessBeforeInitialization。。。
+BeanExample init-method is called:33116517
+******************************
+SimpleProcessorExample postProcessAfterInitialization。。。
+SimpleProcessorExample postProcessBeforeInitialization。。。
+BeanExample init-method is called:21943671
+******************************
+SimpleProcessorExample postProcessAfterInitialization。。。
+SimpleProcessorExample postProcessBeforeInitialization。。。
+AnnotationBean afterPropertiesSet has been created:10344162
+SimpleProcessorExample postProcessAfterInitialization。。。
+SimpleProcessorExample postProcessBeforeInitialization。。。
+AnnotationBeanInjectExample init-method is called:272782
+******************************
+beanExample:27503148
+beanExample1:33116517
+beanExample2:21943671
+annotationBean:10344162
+AnnotationBeanInjectExample afterPropertiesSet has been created:272782
+SimpleProcessorExample postProcessAfterInitialization。。。
+SimpleProcessorExample postProcessBeforeInitialization。。。
+ApplicationContextAwareExample  name:null
+ApplicationContextAwareExample  DisplayName:Root WebApplicationContext
+ApplicationContextAwareExample  StartupDate:1562148759136
+SimpleProcessorExample postProcessAfterInitialization。。。
+==> aoe ContextLoaderListener contextInitialized end。。。
+2019-7-3 18:12:41 org.springframework.web.context.ContextLoader initWebApplicationContext
+信息: Root WebApplicationContext: initialization completed in 3208 ms
+2019-7-3 18:12:41 org.apache.coyote.AbstractProtocolHandler start
+信息: Starting ProtocolHandler ["http-bio-8080"]
+2019-7-3 18:12:41 org.apache.coyote.AbstractProtocolHandler start
+信息: Starting ProtocolHandler ["ajp-bio-8009"]
+2019-7-3 18:12:41 org.apache.catalina.startup.Catalina start
+信息: Server startup in 4760 ms
+```
+额，然而，发现SimpleProcessorExample 确实实例化并执行了，但基于注解的AnnotationProcessorExample并未被实例化并调用？开始来纠结了一小会会儿，原因很简单，因为AnnotationProcessorExample 的package并没有在component-scan中配置，调整配置重启，一切OK。
