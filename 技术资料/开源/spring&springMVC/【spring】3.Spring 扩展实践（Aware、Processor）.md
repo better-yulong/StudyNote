@@ -151,8 +151,13 @@ XmlWebApplicationContext(AbstractApplicationContext).invokeBeanFactoryPostProces
 
 
 ##### 3.3  发
-AbstractApplicationContext类的refresh()会调用registerBeanPostProcessors(beanFactory)方法
-XmlWebApplicationContext(AbstractApplicationContext).registerBeanPostProcessors(ConfigurableListableBeanFactory) line: 707	
+XmlWebApplicationContext(AbstractApplicationContext)类的refresh()会调用registerBeanPostProcessors(beanFactory)方法
+```language
+internalAutowiredAnnotationProcessor<-->AutowiredAnnotationBeanPostProcessor
+internalRequiredAnnotationProcessor<-->RequiredAnnotationBeanPostProcessor
+internalCommonAnnotationProcessor<-->CommonAnnotationBeanPostProcessor
+```
+
 ```language
          //AbstractApplicationContext类
 	/**
