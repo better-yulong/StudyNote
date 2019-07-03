@@ -33,7 +33,7 @@ public class ApplicationContextAwareExample implements ApplicationContextAware {
 ApplicationContextAwareExample  DisplayName:Root WebApplicationContext
 ApplicationContextAwareExample  StartupDate:1562129008373
 ```
-至于原理呢？就是上
+至于原理呢？就是上一节分析的Spring包含了非常多的Processor，而其中BeanPostProcessor
 
 
 ### 二.BeanPostProcessor接口
