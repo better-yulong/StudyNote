@@ -230,6 +230,7 @@ XmlWebApplicationContext(AbstractApplicationContext)类的refresh()会调用regi
 
 ### 三.自定义Processor实践
 #### 3.1个人理解，自定义Processor可关注这几点：
-1. BeanDefinition如何注册
+####  3.1.1 BeanDefinition如何注册
+
 
 String[] postProcessorNames = beanFactory.getBeanNamesForType(BeanPostProcessor.class, true, false)
