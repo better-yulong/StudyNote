@@ -176,6 +176,7 @@ XmlWebApplicationContext(AbstractApplicationContext)类的refresh()会调用regi
 		List<String> nonOrderedPostProcessorNames = new ArrayList<String>();
 		for (String ppName : postProcessorNames) {
 			if (isTypeMatch(ppName, PriorityOrdered.class)) {
+                                //获取Processor实例（内部会调用doC
 				BeanPostProcessor pp = beanFactory.getBean(ppName, BeanPostProcessor.class);
 				priorityOrderedPostProcessors.add(pp);
 				if (pp instanceof MergedBeanDefinitionPostProcessor) {
