@@ -1,5 +1,5 @@
 ### 一.Spring Aware接口
-Spring Aware的目的是为了让bean获取spring容器的服务，即实现Aware接口后，容器在bean实例化时会自动将容器：
+Spring Aware的目的是为了让bean获取spring容器的服务，即实现Aware接口后，容器在bean实例化时会自动将容器本身的服务做为：
   - BeanNameAware ：可以获取容器中bean的名称
   - BeanFactoryAware:获取当前bean factory这也可以调用容器的服务
   - ApplicationContextAware： 当前的applicationContext， 这也可以调用容器的服务
