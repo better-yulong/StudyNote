@@ -226,3 +226,4 @@ XmlWebApplicationContext(AbstractApplicationContext)类的refresh()会调用regi
 		beanFactory.addBeanPostProcessor(new ApplicationListenerDetector());
 	}
 ```
+通过上在的分析，
