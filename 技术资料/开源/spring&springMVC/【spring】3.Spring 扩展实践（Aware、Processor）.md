@@ -28,7 +28,11 @@ public class ApplicationContextAwareExample implements ApplicationContextAware {
 }
 
 ```
-运行日志：
+应用启动日志：
+```language
+ApplicationContextAwareExample  DisplayName:Root WebApplicationContext
+ApplicationContextAwareExample  StartupDate:1562129008373
+```
 
 
 
