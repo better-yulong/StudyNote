@@ -1023,6 +1023,7 @@ beanFactory.preInstantiateSingletons()初始化所有非延迟加载的单例bea
 	}
 
 ```
+getBean()方法是有可能触发Bean实例化阶段的活动，是因为只有当对应某个bean定义的getBean()方法第一次被调用时，不管是显式的还是隐式的，Bean实例化阶段的活动才会被触发，第二次被调用则会直接返回容器缓存的第一次实例化完的对象实例（prototype类型bean除外）。当getBean()方法内部发现该bean定义之前还没有被实例化之后，会通过createBean()方法来进行具体的对象实例化.
 
 ###### 2.2.4.11 AbstractApplicationContext类finishRefresh()
 正常流程的最后 一个方法，实例化DefaultLifecycleProcessor，并调用其onRefresh()，标识spring容器为running状态；最后publishEvent(new ContextRefreshedEvent(this))。至于excepiton后的destroyBeans()、cancelRefresh(ex)等流程就不分析了。
