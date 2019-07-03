@@ -33,7 +33,34 @@ public class ApplicationContextAwareExample implements ApplicationContextAware {
 ApplicationContextAwareExample  DisplayName:Root WebApplicationContext
 ApplicationContextAwareExample  StartupDate:1562129008373
 ```
-至于原理呢？就是上一节分析的Spring包含了非常多的Processor，而其中ApplicationContextAwareProcessor则正好是对实现Aware相关接口bean实例的个性化处理。ApplicationContextAwareProcessor
+至于原理呢？就是上一节分析的Spring包含了非常多的Processor，而其中ApplicationContextAwareProcessor则正好是对实现Aware相关接口bean实例的个性化处理。ApplicationContextAwareProcessor源码：
+```language
+        //ApplicationContextAwareProcessor源码
+	private void invokeAwareInterfaces(Object bean) {
+		if (bean instanceof Aware) {
+			if (bean instanceof EnvironmentAware) {
+				((EnvironmentAware) bean).setEnvironment(this.applicationContext.getEnvironment());
+			}
+			if (bean instanceof EmbeddedValueResolverAware) {
+				((EmbeddedValueResolverAware) bean).setEmbeddedValueResolver(
+						new EmbeddedValueResolver(this.applicationContext.getBeanFactory()));
+			}
+			if (bean instanceof ResourceLoaderAware) {
+				((ResourceLoaderAware) bean).setResourceLoader(this.applicationContext);
+			}
+			if (bean instanceof ApplicationEventPublisherAware) {
+				((ApplicationEventPublisherAware) bean).setApplicationEventPublisher(this.applicationContext);
+			}
+			if (bean instanceof MessageSourceAware) {
+				((MessageSourceAware) bean).setMessageSource(this.applicationContext);
+			}
+			if (bean instanceof ApplicationContextAware) {
+				((ApplicationContextAware) bean).setApplicationContext(this.applicationContext);
+			}
+		}
+	}
+```
+
 
 ### 二.BeanPostProcessor接口
 如果我们想在Spring容器中完成bean实例化、配置以及其他初始化方法前后要添加一些自己逻辑处理。我们需要定义一个或多个BeanPostProcessor接口实现类，然后注册到Spring IoC容器中。而从上面的分析来看，Processor由DefaultListableBeanFactory(AbstractBeanFactory).addBeanPostProcessor(BeanPostProcessor)添加（即beanFactory属性List<BeanPostProcessor> beanPostProcessors).
