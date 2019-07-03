@@ -144,15 +144,13 @@ internalCommonAnnotationProcessor<-->CommonAnnotationBeanPostProcessor
 ##### 3.2.1 ConfigurationClassPostProcessor实例化
 DefaultListableBeanFactory.getBeansOfType(BeanDefinitionRegistryPostProcessor.class, true, false)
 XmlWebApplicationContext(AbstractApplicationContext).invokeBeanFactoryPostProcessors(ConfigurableListableBeanFactory) line: 612	
-
-##### 3.2.2 注解Process实例化
+##### 3.2.2 其他注解Process实例化
 XmlWebApplicationContext(AbstractApplicationContext)类的refresh()会调用registerBeanPostProcessors(beanFactory)方法
 ```language
-internalAutowiredAnnotationProcessor<-->AutowiredAnnotationBeanPostProcessor
-internalRequiredAnnotationProcessor<-->RequiredAnnotationBeanPostProcessor
-internalCommonAnnotationProcessor<-->CommonAnnotationBeanPostProcessor
+    internalAutowiredAnnotationProcessor<-->AutowiredAnnotationBeanPostProcessor
+    internalRequiredAnnotationProcessor<-->RequiredAnnotationBeanPostProcessor
+    internalCommonAnnotationProcessor<-->CommonAnnotationBeanPostProcessor
 ```
-
 ```language
          //AbstractApplicationContext类
 	/**
