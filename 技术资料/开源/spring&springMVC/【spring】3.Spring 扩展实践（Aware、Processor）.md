@@ -235,3 +235,11 @@ XmlWebApplicationContext(AbstractApplicationContext)类的refresh()会调用regi
     1. 可在xml基于bean标签配置，即Spring容器启动时会自动完成BeanDefinition注册及默认实例化单例；
     2. 基于注解实现BeanDefinition注册及默认实例化单例；
 #### 3.2 基于framework-aoe-beans 实现自定义Processor
+
+
+for (BeanPostProcessor beanProcessor : getBeanPostProcessors()) {
+			result = beanProcessor.postProcessBeforeInitialization(result, beanName);
+			if (result == null) {
+				return result;
+			}
+		}
