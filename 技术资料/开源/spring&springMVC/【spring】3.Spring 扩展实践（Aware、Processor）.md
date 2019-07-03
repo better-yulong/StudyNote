@@ -7,7 +7,8 @@ Spring Aware的目的是为了让bean获取spring容器的服务，即实现Awar
   - applicationEventPulisherAware：应用事件发布器，可以发布事件，
   - ResourceLoaderAware： 获得资源加载器，可以获得外部资源文件的内容；
 #### 1.1 ApplicationContextAware示例
-```@Component
+```
+@Component
 public class ApplicationContextAwareExample implements ApplicationContextAware {
 	
 	private String name ;
