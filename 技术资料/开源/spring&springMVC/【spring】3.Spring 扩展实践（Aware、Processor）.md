@@ -54,6 +54,7 @@ ApplicationContextAwareExample  StartupDate:1562129008373
 			if (bean instanceof MessageSourceAware) {
 				((MessageSourceAware) bean).setMessageSource(this.applicationContext);
 			}
+                        //设置applicationContext
 			if (bean instanceof ApplicationContextAware) {
 				((ApplicationContextAware) bean).setApplicationContext(this.applicationContext);
 			}
