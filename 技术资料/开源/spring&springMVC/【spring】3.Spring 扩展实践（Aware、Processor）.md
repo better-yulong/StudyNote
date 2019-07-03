@@ -143,7 +143,10 @@ internalCommonAnnotationProcessor<-->CommonAnnotationBeanPostProcessor
 ##### 3.2 Processor的实例化
 
 beanFactory.getBeansOfType(BeanDefinitionRegistryPostProcessor.class, true, false)
-getBeansOfType
+DefaultListableBeanFactory.getBeansOfType(Class<T>, boolean, boolean) line: 400	
+XmlWebApplicationContext(AbstractApplicationContext).invokeBeanFactoryPostProcessors(ConfigurableListableBeanFactory) line: 612	
+
+
 
 
 ##### 3.3  发
