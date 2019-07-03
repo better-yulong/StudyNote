@@ -140,3 +140,5 @@ ClassPathBeanDefinitionScanner的scan(String... basePackages) 有两点：
 internalAutowiredAnnotationProcessor<-->AutowiredAnnotationBeanPostProcessor
 internalRequiredAnnotationProcessor<-->RequiredAnnotationBeanPostProcessor
 internalCommonAnnotationProcessor<-->CommonAnnotationBeanPostProcessor
+##### 3.2 Processor的实例化
+AbstractApplicationContext
