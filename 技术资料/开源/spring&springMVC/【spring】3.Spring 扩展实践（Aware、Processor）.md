@@ -64,7 +64,74 @@ ApplicationContextAwareExample  StartupDate:1562129008373
 
 ### 二.BeanPostProcessor接口
 如果我们想在Spring容器中完成bean实例化、配置以及其他初始化方法前后要添加一些自己逻辑处理。我们需要定义一个或多个BeanPostProcessor接口实现类，然后注册到Spring IoC容器中。而从上面的分析来看，Processor由DefaultListableBeanFactory(AbstractBeanFactory).addBeanPostProcessor(BeanPostProcessor)添加（即beanFactory属性List<BeanPostProcessor> beanPostProcessors).
-1. prepareBeanFactory:即初始化prepareBeanFactory时会添加ApplicationContextAwareProcessor：该processor是对实现了Aware接口的bean的处理（如上分析）
-2. postProcessBeanFactory(beanFactory)：添加ServletContextAwareProcessor
-另外，通过调试即之前的分析还有如下Processor实例：
+#### 1. prepareBeanFactory:即初始化prepareBeanFactory时会添加ApplicationContextAwareProcessor：该processor是对实现了Aware接口的bean的处理（如上分析）
+#### 2. postProcessBeanFactory(beanFactory)：添加ServletContextAwareProcessor
+#### 3. 通过调试即之前的分析还有如下Processor实例：
 > [org.springframework.context.annotation.internalAutowiredAnnotationProcessor, org.springframework.context.annotation.internalRequiredAnnotationProcessor, org.springframework.context.annotation.internalCommonAnnotationProcessor, org.springframework.context.annotation.ConfigurationClassPostProcessor$ImportAwareBeanPostProcessor#0]
+- 从这部分processp实例的名称即可知道，这部分processor与注解有关，那么根据之前的理解，Spring实例化之前会先行完成class对应的BeanDefinition注册：registry.registerBeanDefinition(beanName, definition)
+##### 3.1 Processor的BeanDefinition注册
+ClassPathBeanDefinitionScanner的scan(String... basePackages) 有两点：1.基于basePackages完成扫描并完成各class应对的BeanDefinition注册；2.AnnotationConfigUtils.registerAnnotationConfigProcessors(this.registry); 完成注解配置Processor的BeanDefinition注册
+```language
+        //AnnotationConfigUtils
+        	/**
+	 * The bean name of the internally managed Configuration annotation processor.
+	 */
+	public static final String CONFIGURATION_ANNOTATION_PROCESSOR_BEAN_NAME =
+			"org.springframework.context.annotation.internalConfigurationAnnotationProcessor";
+
+	/**
+	 * The bean name of the internally managed Autowired annotation processor.
+	 */
+	public static final String AUTOWIRED_ANNOTATION_PROCESSOR_BEAN_NAME =
+			"org.springframework.context.annotation.internalAutowiredAnnotationProcessor";
+
+	/**
+	 * The bean name of the internally managed Required annotation processor.
+	 */
+	public static final String REQUIRED_ANNOTATION_PROCESSOR_BEAN_NAME =
+			"org.springframework.context.annotation.internalRequiredAnnotationProcessor";
+
+	/**
+	 * The bean name of the internally managed JSR-250 annotation processor.
+	 */
+	public static final String COMMON_ANNOTATION_PROCESSOR_BEAN_NAME =
+			"org.springframework.context.annotation.internalCommonAnnotationProcessor";
+
+	public static Set<BeanDefinitionHolder> registerAnnotationConfigProcessors(
+			BeanDefinitionRegistry registry, Object source) {
+
+		Set<BeanDefinitionHolder> beanDefs = new LinkedHashSet<BeanDefinitionHolder>(4);
+
+		if (!registry.containsBeanDefinition(CONFIGURATION_ANNOTATION_PROCESSOR_BEAN_NAME)) {
+			RootBeanDefinition def = new RootBeanDefinition(ConfigurationClassPostProcessor.class);
+			def.setSource(source);
+			beanDefs.add(registerPostProcessor(registry, def, CONFIGURATION_ANNOTATION_PROCESSOR_BEAN_NAME));
+		}
+
+		if (!registry.containsBeanDefinition(AUTOWIRED_ANNOTATION_PROCESSOR_BEAN_NAME)) {
+			RootBeanDefinition def = new RootBeanDefinition(AutowiredAnnotationBeanPostProcessor.class);
+			def.setSource(source);
+			beanDefs.add(registerPostProcessor(registry, def, AUTOWIRED_ANNOTATION_PROCESSOR_BEAN_NAME));
+		}
+
+		if (!registry.containsBeanDefinition(REQUIRED_ANNOTATION_PROCESSOR_BEAN_NAME)) {
+			RootBeanDefinition def = new RootBeanDefinition(RequiredAnnotationBeanPostProcessor.class);
+			def.setSource(source);
+			beanDefs.add(registerPostProcessor(registry, def, REQUIRED_ANNOTATION_PROCESSOR_BEAN_NAME));
+		}
+
+		// Check for JSR-250 support, and if present add the CommonAnnotationBeanPostProcessor.
+		if (jsr250Present && !registry.containsBeanDefinition(COMMON_ANNOTATION_PROCESSOR_BEAN_NAME)) {
+			RootBeanDefinition def = new RootBeanDefinition(CommonAnnotationBeanPostProcessor.class);
+			def.setSource(source);
+			beanDefs.add(registerPostProcessor(registry, def, COMMON_ANNOTATION_PROCESSOR_BEAN_NAME));
+		}
+
+		// Check for JPA support, and if present add the PersistenceAnnotationBeanPostProcessor.
+		 //省略JPA相关的Processor注册
+
+		return beanDefs;
+	}
+```
+通过如上对应关系：
+> internalConfigurationAnnotationProcessor<-->ConfigurationClassPostProcessor,internalAutowiredAnnotationProcessor<-->AutowiredAnnotationBeanPostProcessor,internalRequiredAnnotationProcessor<-->RequiredAnnotationBeanPostProcessor,internalCommonAnnotationProcessor<-->CommonAnnotationBeanPostProcessor
