@@ -141,7 +141,7 @@ internalAutowiredAnnotationProcessor<-->AutowiredAnnotationBeanPostProcessor
 internalRequiredAnnotationProcessor<-->RequiredAnnotationBeanPostProcessor
 internalCommonAnnotationProcessor<-->CommonAnnotationBeanPostProcessor
 ##### 3.2 Processor的实例化
-internalConfigurationAnnotationProcessor
+##### 3.2.1 ConfigurationClassPostProcessor实例化
 DefaultListableBeanFactory.getBeansOfType(BeanDefinitionRegistryPostProcessor.class, true, false)
 XmlWebApplicationContext(AbstractApplicationContext).invokeBeanFactoryPostProcessors(ConfigurableListableBeanFactory) line: 612	
 
