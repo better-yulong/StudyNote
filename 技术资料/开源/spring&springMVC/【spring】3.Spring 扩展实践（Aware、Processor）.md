@@ -226,4 +226,6 @@ XmlWebApplicationContext(AbstractApplicationContext)类的refresh()会调用regi
 		beanFactory.addBeanPostProcessor(new ApplicationListenerDetector());
 	}
 ```
-通过上在的分析，Process的Bean定义、实例化、调用逻辑基本清晰了，那么该如何实现自定义的BeanPostProcessor呢?分析 需关注如下几点:
+- 通过上在的分析，Process的Bean定义、实例化、调用逻辑基本清晰了，那么该如何实现自定义的BeanPostProcessor呢?分析 需关注如下几点:
+
+String[] postProcessorNames = beanFactory.getBeanNamesForType(BeanPostProcessor.class, true, false)
