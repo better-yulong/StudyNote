@@ -1097,7 +1097,7 @@ public class LazyInitTestLinstener implements ApplicationListener,ApplicationCon
 
 }
 ```
-如预期，applicationContext.getBean(LazyInitBeanExample.class)会实例化bean（之前没有实例化，即
+如预期，applicationContext.getBean(LazyInitBeanExample.class)会实例化bean（之前没有实例化，缓存中无对象）
 
 
 ###### 2.2.4.12 AbstractApplicationContext类finishRefresh()
