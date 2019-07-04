@@ -1068,7 +1068,36 @@ public class LazyInitTestLinstener implements ApplicationListener {
   1. singleton（非延迟初始化bean）在容器初始化时会主动初始化；
   2. 而prototype、延迟初始化bean则是在singleton（非延迟初始化bean）实例化之后解析注解的实例对象才会在Processor中被动初始化。
 - 既然有了上面的理解，那就知道上面的Linstener是无法实例在使用时实例化，而是基于注解注入（其实就是传说的DI：依赖注入）时就完成其实例化，那有没有方法基于上面的代码实现在调用lazyInitBeanExample.hashCode()才实例化呢？哈哈，其实后面的第3篇笔记有讲到Aware接口，发看就知道解决方案了（此处是猜测，马上开始验证）
+```language
 
+@Component
+public class LazyInitTestLinstener implements ApplicationListener,ApplicationContextAware {
+	
+	@Autowired
+	private ApplicationContext applicationContext;
+
+	public void onApplicationEvent(ApplicationEvent event) {
+		if(event instanceof ContextRefreshedEvent){
+			System.out.println("LazyInitTestLinstener --> ContextRefreshedEvent");
+			//LazyInitBeanExample 基于@Lazy注解使得在前面的bean初始化时并不会实例化，而里面待首次使用时才会实例化（但如果通过@Autowired、@Rresource也会在前面在注解处理时实例化。
+			LazyInitBeanExample lazyInitBeanExample  = applicationContext.getBean(LazyInitBeanExample.class);
+			System.out.println("lazyInitBeanExample:" + lazyInitBeanExample.hashCode());
+		}
+		
+	}
+	
+	@PostConstruct
+	public void init(){
+		System.out.println("LazyInitTestLinstener ... ");
+	}
+
+	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+		this.applicationContext = applicationContext ;
+	}
+
+}
+```
+如预期，
 
 
 ###### 2.2.4.12 AbstractApplicationContext类finishRefresh()
