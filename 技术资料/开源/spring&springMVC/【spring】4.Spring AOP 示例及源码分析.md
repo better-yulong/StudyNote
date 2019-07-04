@@ -124,5 +124,5 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 		return null;
 	}
 ```
-
+#### 3.1 解析前准备configureAutoProxyCreator(parserContext, element)
 
