@@ -37,7 +37,23 @@ AopNamespaceHandlerTests，结合示例代码，进行示例编码
 			<version>1.6.8</version>
 		</dependency>
 ```
-2.新增
+2.新增业务类及切换拦截类
+```language
+@Repository
+public class BizAspectjExample {
+	
+	@PostConstruct
+	public void init(){
+		System.out.println("BizExample init...");
+	}
+}
+
+```
+```language
+
+```
+
+
 
 
 严重: Context initialization failed
