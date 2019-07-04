@@ -1063,7 +1063,7 @@ public class LazyInitTestLinstener implements ApplicationListener {
 
 }
 ```
-本来预期是在onApplicationEvent方法接受到对应事件才会实例化lazyInitBeanExample，但是却发现在此之前已经实例化了，那空间是哪儿实例化的呢？
+本来预期是在onApplicationEvent方法接受到对应事件才会实例化lazyInitBeanExample，但是却发现在此之前已经实例化了，那空间是哪儿实例化的呢？分析源码调试终于发现，
 
 
 
