@@ -94,4 +94,6 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:294)
 
 ```
-既然报错，那就分析下原因，
+既然报错，那就分析下原因，看看如何解决
+
+#### 2.1 
