@@ -70,7 +70,8 @@ public class AspectjExample {
 
 }
 ```
-2.新增业务类及切换拦截类
+3. xml配置
+需在xml文件头配置命名空间及xsd文件路径，参考
 
 
 
