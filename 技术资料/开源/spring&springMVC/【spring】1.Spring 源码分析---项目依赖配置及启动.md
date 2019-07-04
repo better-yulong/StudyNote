@@ -1025,7 +1025,9 @@ beanFactory.preInstantiateSingletons()初始化所有非延迟加载的单例bea
 ```
 - getBean()方法是有可能触发Bean实例化阶段的活动，是因为只有当对应某个bean定义的getBean()方法第一次被调用时，不管是显式的还是隐式的，Bean实例化阶段的活动才会被触发，第二次被调用则会直接返回容器缓存的第一次实例化完的对象实例（prototype类型bean除外）。当getBean()方法内部发现该bean定义之前还没有被实例化之后，会通过createBean()方法来进行具体的对象实例化。
 - 原型Bean:原型的Bean指的就是每次请求Bean实例的时候，返回的都是新实例的Bean对象。也就是说，每次注入到另外的Bean或者通过调用getBean()来获得的Bean都将是全新的实例。 
-###### 2.2.4.11 @Lazy或x
+
+###### 2.2.4.11 @Lazy或xml中 lazy-init="true"分析
+
 
 ###### 2.2.4.12 AbstractApplicationContext类finishRefresh()
 正常流程的最后 一个方法，实例化DefaultLifecycleProcessor，并调用其onRefresh()，标识spring容器为running状态；最后publishEvent(new ContextRefreshedEvent(this))。至于excepiton后的destroyBeans()、cancelRefresh(ex)等流程就不分析了。
@@ -1075,3 +1077,4 @@ if (parentBeanFactory != null && !containsBeanDefinition(beanName)) {
   1. 单例模式中注入原型bean，prototypeBean其实只实例化了一次，原型模式的作用完全没有发挥; 
   2. lookup方法注入:cglib动态生成一个的子类，该子类会自动override有lookup注解的方法，代码干净整洁。
   - Spring提供了EarlyBeanReference功能，首先Spring里面有个名字为singletonObjects的并发map用来存放所有实例化并且初始化好的bean，singletonFactories则用来存放需要解决循环依赖的bean信息（beanName,和一个回调工厂）。当实例化beanA时候会触发getBean(“beanA”)。普通Bean循环依赖-与注入顺序无关，可正常注入；工厂Bean与普通Bean循环依赖-与注入顺序有关，可能注入失败（http://ifeve.com/%E8%AE%BAspring%E4%B8%AD%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96%E7%9A%84%E6%AD%A3%E7%A1%AE%E6%80%A7%E4%B8%8Ebean%E6%B3%A8%E5%85%A5%E7%9A%84%E9%A1%BA%E5%BA%8F%E5%85%B3%E7%B3%BB/）
+
