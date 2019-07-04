@@ -48,10 +48,27 @@ public class BizAspectjExample {
 		System.out.println("BizExample init...");
 	}
 }
-
 ```
 ```language
+//
+//非注解的切面类，采用xml配置
+public class AspectjExample {
+	
+	public void before(){
+		System.out.println("AspectjExample before...");
+	}
+	
+	public void after(){
+		System.out.println("AspectjExample after...");
+	}
+        //这个地方比较关键，因为是around方式增强
+	public void around(ProceedingJoinPoint pjp) throws Throwable {
+		System.out.println("AspectjExample around before...");
+		pjp.proceed();
+		System.out.println("AspectjExample around after...");
+	}
 
+}
 ```
 
 
