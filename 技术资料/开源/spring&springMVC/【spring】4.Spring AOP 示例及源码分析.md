@@ -71,14 +71,22 @@ public class AspectjExample {
 }
 ```
 3. xml配置
-需在xml文件头配置命名空间及xsd文件路径，参考AopNamespaceHandlerEventTests-context.xml
+需在applicationContext.xml文件头配置命名空间及xsd文件路径，参考AopNamespaceHandlerEventTests-context.xml
 ```language
+	<aop:config>
+		<aop:aspect id="bizAspectjExampleAop" ref="aspectjExample">
+			<aop:pointcut id="pc" expression="execution(* *..BizAspectjExample.*(..))"/>
+			<aop:before pointcut-ref="pc" method="before" />
+			<aop:after pointcut-ref="pc" method="after" />
+			<!-- <aop:after-returning pointcut-ref="pc" method="myAfterReturningAdvice" returning="age"/>
+			<aop:after-throwing pointcut-ref="pc" method="myAfterThrowingAdvice" throwing="ex"/> -->
+			<aop:around pointcut-ref="pc" method="around"/>
+		</aop:aspect>
+	</aop:config>
 
+	<bean name="aspectjExample" class="com.aoe.demo.aop.AspectjExample"></bean>
 ```
-
-
-
-
+然而启动后报错，如下：
 严重: Context initialization failed
 org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'bizAspectjExample' defined in file [D:\work\webcontainer\tomcat7\webapps\spring3-analysis\WEB-INF\classes\com\aoe\demo\aop\BizAspectjExample.class]: Initialization of bean failed; nested exception is org.springframework.aop.framework.AopConfigException: Cannot proxy target class because CGLIB2 is not available. Add CGLIB to the class path or specify proxy interfaces.
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:527)
