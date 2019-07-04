@@ -39,6 +39,7 @@ AopNamespaceHandlerTests，结合示例代码，进行示例编码
 ```
 2.新增业务类及切换拦截类
 ```language
+//之后会针对init方法做AOP验证
 @Repository
 public class BizAspectjExample {
 	
