@@ -29,7 +29,15 @@ AOP的配置类似于bean，可xml配置亦可通过注解方式配置
 #### 2.1 xml配置 
 近期较少使用，只记得需要在xml中使用aop相关的会签，于是乎在spring源码中根据aop关键字查找xml文件AopNamespaceHandlerEventTests-context.xml并及关联java类：
 AopNamespaceHandlerTests，结合示例代码，进行示例编码
-1. spring相关的jar之前已完成
+1. spring相关的jar之前已完成pom.xml的配置，但仍需增加：
+```language
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>1.6.8</version>
+		</dependency>
+```
+2.新增
 
 
 严重: Context initialization failed
