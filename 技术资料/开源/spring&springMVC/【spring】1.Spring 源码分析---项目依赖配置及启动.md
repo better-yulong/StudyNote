@@ -1063,7 +1063,7 @@ public class LazyInitTestLinstener implements ApplicationListener {
 
 }
 ```
-然而
+本来预期是在onApplicationEvent方法接受到对应事件才会实例化lazyInitBeanExample，但是
 
 
 
