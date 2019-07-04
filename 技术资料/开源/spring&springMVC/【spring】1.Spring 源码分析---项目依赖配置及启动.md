@@ -1028,7 +1028,7 @@ beanFactory.preInstantiateSingletons()初始化所有非延迟加载的单例bea
 
 ###### 2.2.4.11 @Lazy或xml中 lazy-init="true"分析
 1. BeanDefinition定义：xml解析生成BeanDefinition会判断lazy-init会签；或者scan扫描到BeanDefinition之后会判断是否有@Lazy，之后会调用BeanDefinition的setLazyInit方法设置值；
-2. 前面分支的容器启动时会调用
+2. 前面分支的容器启动时会调用代码完成单例bean的实例化
 
 ###### 2.2.4.12 AbstractApplicationContext类finishRefresh()
 正常流程的最后 一个方法，实例化DefaultLifecycleProcessor，并调用其onRefresh()，标识spring容器为running状态；最后publishEvent(new ContextRefreshedEvent(this))。至于excepiton后的destroyBeans()、cancelRefresh(ex)等流程就不分析了。
