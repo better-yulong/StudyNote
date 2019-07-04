@@ -1041,7 +1041,7 @@ public class LazyInitBeanExample {
 	}
 }
 ```
-通过启用、及注释分别运行应用，从启动日志可可看出添加@Lazy该bean不会有启动时实例化（注释@Lazy后则可在应用启动时实例化），为了验证该需确认在
+通过启用、及注释分别运行应用，从启动日志可可看出添加@Lazy该bean不会有启动时实例化（注释@Lazy后则可在应用启动时实例化），为了验证该需确认在容器启动之后调用该bean来触发其实例化，通过查看spring容器的启动
 
 ###### 2.2.4.12 AbstractApplicationContext类finishRefresh()
 正常流程的最后 一个方法，实例化DefaultLifecycleProcessor，并调用其onRefresh()，标识spring容器为running状态；最后publishEvent(new ContextRefreshedEvent(this))。至于excepiton后的destroyBeans()、cancelRefresh(ex)等流程就不分析了。
