@@ -71,7 +71,11 @@ public class AspectjExample {
 }
 ```
 3. xml配置
-需在xml文件头配置命名空间及xsd文件路径，参考
+需在xml文件头配置命名空间及xsd文件路径，参考AopNamespaceHandlerEventTests-context.xml
+```language
+
+```
+
 
 
 
