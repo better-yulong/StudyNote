@@ -87,8 +87,11 @@ public class AspectjExample {
 	<bean name="aspectjExample" class="com.aoe.demo.aop.AspectjExample"></bean>
 ```
 然而启动后报错，如下：
-严重: Context initialization failed
+```严重: Context initialization failed
 org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'bizAspectjExample' defined in file [D:\work\webcontainer\tomcat7\webapps\spring3-analysis\WEB-INF\classes\com\aoe\demo\aop\BizAspectjExample.class]: Initialization of bean failed; nested exception is org.springframework.aop.framework.AopConfigException: Cannot proxy target class because CGLIB2 is not available. Add CGLIB to the class path or specify proxy interfaces.
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:527)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:456)
 	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:294)
+
+```
+
