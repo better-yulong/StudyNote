@@ -125,4 +125,6 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 	}
 ```
 #### 3.1 解析前准备configureAutoProxyCreator(parserContext, element)
+主要有3点：
+1. 
 
