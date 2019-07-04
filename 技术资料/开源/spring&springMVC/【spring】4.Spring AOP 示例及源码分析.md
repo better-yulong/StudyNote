@@ -37,7 +37,7 @@ AopNamespaceHandlerTests，结合示例代码，进行示例编码
 			<version>1.6.8</version>
 		</dependency>
 ```
-2.新增业务类及切换拦截类
+2. 新增业务类及切换拦截类
 ```language
 //之后会针对init方法做AOP验证
 @Repository
@@ -50,7 +50,7 @@ public class BizAspectjExample {
 }
 ```
 ```language
-//
+//参考AopNamespaceHandlerTests类
 //非注解的切面类，采用xml配置
 public class AspectjExample {
 	
@@ -70,7 +70,7 @@ public class AspectjExample {
 
 }
 ```
-
+2.新增业务类及切换拦截类
 
 
 
