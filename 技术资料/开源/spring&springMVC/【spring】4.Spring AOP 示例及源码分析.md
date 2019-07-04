@@ -97,5 +97,5 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 既然报错，那就分析下原因，看看如何解决
 
 ### 三.AOP解析及初始化分析
-有了之前分析context:component-scan的经验，就知道如何分析了（如若不明白可查看该系列笔记2）。根据xml找到AOP标签处理对应的自定义命名空间处理器为AopNamespaceHandler，而config子标签对应的解析器为ConfigBeanDefinitionParser：
+有了之前分析context:component-scan的经验，就知道如何分析了（如若不明白可查看该系列笔记2）。根据xml找到AOP标签处理对应的自定义命名空间处理器为AopNamespaceHandler，而config子标签对应的解析器为ConfigBeanDefinitionParser，根据之前的
 
