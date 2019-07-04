@@ -1063,7 +1063,8 @@ public class LazyInitTestLinstener implements ApplicationListener {
 
 }
 ```
-本来预期是在onApplicationEvent方法接受到对应事件才会实例化lazyInitBeanExample，但是却发现在此之前已经实例化了，那空间是哪儿实例化的呢？分析源码调试终于发现，原来是因为@Autowired注解处理时就会实例化的：当延迟初始化的bean被注入到了一个非延迟初始化singleton bean时，也会。
+- 本来预期是在onApplicationEvent方法接受到对应事件才会实例化lazyInitBeanExample，但是却发现在此之前已经实例化了，那空间是哪儿实例化的呢？分析源码调试终于发现，原来是因为@Autowired注解处理时就会实例化的：当延迟初始化的bean被注入到了一个非延迟初始化singleton bean时，也会触发其初始化。
+
 
 
 
