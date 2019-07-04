@@ -1030,6 +1030,16 @@ beanFactory.preInstantiateSingletons()初始化所有非延迟加载的单例bea
 1. BeanDefinition定义：xml解析生成BeanDefinition会判断lazy-init会签；或者scan扫描到BeanDefinition之后会判断是否有@Lazy，之后会调用BeanDefinition的setLazyInit方法设置值；
 2. 前面分支的容器启动时会调用代码完成单例bean的实例化finishBeanFactoryInitialization(beanFactory)中有明确判断不实例化 lazy-init 对象
 3. @Lazy的Bean实例化分析
+```language
+@Repository
+//@Lazy
+public class LazyInitBeanExample {
+	
+	@PostConstruct
+	public void init(){
+		System.out.println("LazyInitBeanExample init...");
+	}
+}```
 
 
 ###### 2.2.4.12 AbstractApplicationContext类finishRefresh()
