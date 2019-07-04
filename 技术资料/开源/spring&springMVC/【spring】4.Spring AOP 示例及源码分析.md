@@ -27,4 +27,12 @@ advice +　目标对象的方法。
 ### 二.AOP示例
 AOP的配置类似于bean，可xml配置亦可通过注解方式配置
 #### 2.1 xml配置 
+较少
 AopNamespaceHandlerTests
+
+
+严重: Context initialization failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'bizAspectjExample' defined in file [D:\work\webcontainer\tomcat7\webapps\spring3-analysis\WEB-INF\classes\com\aoe\demo\aop\BizAspectjExample.class]: Initialization of bean failed; nested exception is org.springframework.aop.framework.AopConfigException: Cannot proxy target class because CGLIB2 is not available. Add CGLIB to the class path or specify proxy interfaces.
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:527)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:456)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:294)
