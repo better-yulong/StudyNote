@@ -1067,7 +1067,7 @@ public class LazyInitTestLinstener implements ApplicationListener {
 - 通过上面的分析其实对singleton、prototype、延迟初始化bean具体在何是实例化有了比较清晰的认识：
   1. singleton（非延迟初始化bean）在容器初始化时会主动初始化；
   2. 而prototype、延迟初始化bean则是在singleton（非延迟初始化bean）实例化之后解析注解的实例对象才会在Processor中被动初始化。
-- 既然有了上面的理解，那就知道上面的Linstener是无法实例在使用时实例化
+- 既然有了上面的理解，那就知道上面的Linstener是无法实例在使用时实例化，而是基于注解
 
 
 
