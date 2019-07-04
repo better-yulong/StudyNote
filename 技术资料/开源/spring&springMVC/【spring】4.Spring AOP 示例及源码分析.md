@@ -128,5 +128,5 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 主要有3点：
 1. AopConfigUtils.registerOrEscalateApcAsRequired(AspectJAwareAdvisorAutoProxyCreator.class, registry, source),主要是将创建AspectJAwareAdvisorAutoProxyCreator的BeanDefinition并注册到registry（有点眼熟哈，后面会讲）
 2. AopConfigUtils.forceAutoProxyCreatorToUseClassProxying(registry)、AopConfigUtils.forceAutoProxyCreatorToExposeProxy(registry)即解析是否有配置proxy-target-class、expose-proxy，有则根据值并将其作为新属性添加到步骤1对应的AspectJAwareAdvisorAutoProxyCreator的BeanDefinition（definition.getPropertyValues().add("proxyTargetClass", Boolean.TRUE);）
-3. 
+3. 组装AspectJAwareAdvisorAutoProxyCreator的BeanDefinition
 
