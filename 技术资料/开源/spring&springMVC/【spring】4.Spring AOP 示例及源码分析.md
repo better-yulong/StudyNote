@@ -126,5 +126,6 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 ```
 #### 3.1 解析前准备configureAutoProxyCreator(parserContext, element)
 主要有3点：
-1. AopConfigUtils.registerOrEscalateApcAsRequired(AspectJAwareAdvisorAutoProxyCreator.class, registry, source),主要是将创建AspectJAwareAdvisorAutoProxyCreator的BeanDefinition并注册到registry（有点眼熟，
+1. AopConfigUtils.registerOrEscalateApcAsRequired(AspectJAwareAdvisorAutoProxyCreator.class, registry, source),主要是将创建AspectJAwareAdvisorAutoProxyCreator的BeanDefinition并注册到registry（有点眼熟哈，后面会讲）
+2. 
 
