@@ -27,7 +27,7 @@ advice +　目标对象的方法。
 ### 二.AOP示例
 AOP的配置类似于bean，可xml配置亦可通过注解方式配置
 #### 2.1 xml配置 
-近期较少使用，只记得需要在xml中使用aop相关的会签，于是首在
+近期较少使用，只记得需要在xml中使用aop相关的会签，于是乎在spring源码中根据aop
 AopNamespaceHandlerTests
 
 
