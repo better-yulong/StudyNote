@@ -1041,7 +1041,29 @@ public class LazyInitBeanExample {
 	}
 }
 ```
-通过启用、及注释分别运行应用，从启动日志可可看出添加@Lazy该bean不会有启动时实例化（注释@Lazy后则可在应用启动时实例化），为了验证该需确认在容器启动之后调用该bean来触发其实例化，通过查看spring容器的启动源码，可考虑在AbstractApplicationContext在finishRefresh()方法来处理（因其在容器初始化结束后会触发事件）--即
+通过启用、及注释分别运行应用，从启动日志可可看出添加@Lazy该bean不会有启动时实例化（注释@Lazy后则可在应用启动时实例化），为了验证该需确认在容器启动之后调用该bean来触发其实例化，通过查看spring容器的启动源码，可考虑在AbstractApplicationContext在finishRefresh()方法来处理（因其在容器初始化结束后会触发事件）：
+```language
+@Component
+public class LazyInitTestLinstener implements ApplicationListener {
+	
+	@Autowired
+	private LazyInitBeanExample lazyInitBeanExample;
+
+	public void onApplicationEvent(ApplicationEvent event) {
+		if(event instanceof ContextRefreshedEvent){
+			System.out.println("lazyInitBeanExample:" + lazyInitBeanExample.hashCode());
+		}
+		
+	}
+	
+	@PostConstruct
+	public void init(){
+		System.out.println("LazyInitTestLinstener ... ");
+	}
+
+}
+```
+
 
 
 
