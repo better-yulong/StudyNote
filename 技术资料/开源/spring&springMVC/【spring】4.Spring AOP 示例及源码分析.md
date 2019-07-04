@@ -97,4 +97,4 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 既然报错，那就分析下原因，看看如何解决
 
 ### 三.AOP解析及初始化分析
-有了之前分析context
+有了之前分析context:component-scan的经验，就知道如何分析了（如若不明白可
