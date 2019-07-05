@@ -154,4 +154,32 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 		}
 	}
 ```
-即根据标签，生成不同class的BeanDefinition（还包括AspectJExpressionPointcut、AspectJPointcutAdvisor）等
+即根据标签，生成不同class的BeanDefinition（还包括AspectJExpressionPointcut、AspectJPointcutAdvisor）等。
+
+
+```language
+	public AopProxy createAopProxy(AdvisedSupport config) throws AopConfigException {
+		if (config.isOptimize() || config.isProxyTargetClass() || hasNoUserSuppliedProxyInterfaces(config)) {
+			Class targetClass = config.getTargetClass();
+			if (targetClass == null) {
+				throw new AopConfigException("TargetSource cannot determine target class: " +
+						"Either an interface or a target is required for proxy creation.");
+			}
+			if (targetClass.isInterface()) {
+				return new JdkDynamicAopProxy(config);
+			}
+			if (!cglibAvailable) {
+				throw new AopConfigException(
+						"Cannot proxy target class because CGLIB2 is not available. " +
+						"Add CGLIB to the class path or specify proxy interfaces.");
+			}
+			return CglibProxyFactory.createCglibProxy(config);
+		}
+		else {
+			return new JdkDynamicAopProxy(config);
+		}
+	}
+```
+
+	
+
