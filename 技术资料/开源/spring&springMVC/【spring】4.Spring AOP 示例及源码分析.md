@@ -130,6 +130,7 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 2. AopConfigUtils.forceAutoProxyCreatorToUseClassProxying(registry)、AopConfigUtils.forceAutoProxyCreatorToExposeProxy(registry)即解析是否有配置proxy-target-class、expose-proxy，有则根据值并将其作为新属性添加到步骤1对应的AspectJAwareAdvisorAutoProxyCreator的BeanDefinition（definition.getPropertyValues().add("proxyTargetClass", Boolean.TRUE);）
 3. 封装AspectJAwareAdvisorAutoProxyCreator的BeanDefinition为BeanComponentDefinition，并设置到parserContext
 #### 3.2 解析aop:aspect及其子标签
+
 	private Class getAdviceClass(Element adviceElement, ParserContext parserContext) {
 		String elementName = parserContext.getDelegate().getLocalName(adviceElement);
 		if (BEFORE.equals(elementName)) {
