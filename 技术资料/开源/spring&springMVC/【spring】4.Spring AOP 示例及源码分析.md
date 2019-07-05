@@ -155,8 +155,7 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 	}
 ```
 即根据标签，生成不同class的BeanDefinition（还包括AspectJExpressionPointcut、AspectJPointcutAdvisor）等。
-
-
+#### 3.3 
 ```language
 	public AopProxy createAopProxy(AdvisedSupport config) throws AopConfigException {
 		if (config.isOptimize() || config.isProxyTargetClass() || hasNoUserSuppliedProxyInterfaces(config)) {
@@ -180,6 +179,12 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 		}
 	}
 ```
-
+```language
+    private boolean hasNoUserSuppliedProxyInterfaces(AdvisedSupport config) {
+		Class[] interfaces = config.getProxiedInterfaces();
+		return (interfaces.length == 0 || (interfaces.length == 1 && 
+    SpringProxy.class.equals(interfaces[0])));
+	}
+```
 	
 
