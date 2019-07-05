@@ -155,7 +155,8 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 	}
 ```
 即根据标签，生成不同class的BeanDefinition（还包括AspectJExpressionPointcut、AspectJPointcutAdvisor）等。
-#### 3.3 
+#### 3.3 AOP代理bean生成
+结合之前分析的经验及AspectJAwareAdvisorAutoProxyCreator（其是）
 ```language
 	public AopProxy createAopProxy(AdvisedSupport config) throws AopConfigException {
 		if (config.isOptimize() || config.isProxyTargetClass() || hasNoUserSuppliedProxyInterfaces(config)) {
