@@ -131,7 +131,8 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 3. 封装AspectJAwareAdvisorAutoProxyCreator的BeanDefinition为BeanComponentDefinition，并设置到parserContext
 #### 3.2 解析aop:aspect及其子标签
 根据<
-	private Class getAdviceClass(Element adviceElement, ParserContext parserContext) {
+```	
+     private Class getAdviceClass(Element adviceElement, ParserContext parserContext) {
 		String elementName = parserContext.getDelegate().getLocalName(adviceElement);
 		if (BEFORE.equals(elementName)) {
 			return AspectJMethodBeforeAdvice.class;
@@ -152,3 +153,6 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 			throw new IllegalArgumentException("Unknown advice kind [" + elementName + "].");
 		}
 	}
+
+
+```
