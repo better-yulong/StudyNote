@@ -156,7 +156,8 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 ```
 即根据标签，生成不同class的BeanDefinition（还包括AspectJExpressionPointcut、AspectJPointcutAdvisor）等。
 #### 3.3 AOP代理bean生成
-结合之前分析的经验及AspectJAwareAdvisorAutoProxyCreator（其是）
+结合之前分析的经验及AspectJAwareAdvisorAutoProxyCreator（其有父接口：BeanPostProcessor），即在初始bean原始对象的创建后，会调用到AspectJAwareAdvisorAutoProxyCreator（AbstractAutoProxyCreator）的postProcessAfterInitialization方法，根据日志及调试，异常由createAopProxy方法抛出，从代码来看此处有两种生成代理对象的方式：JdkDynamicAopProxy、CglibProxyFactory.createCglibProxy；而报错来看则是并没有在class apth中配置CGLIB的支持，而此处也希望走JdkDynamic；通过调试分析，之所以走到该分支，是因为hasNoUserSuppliedProxyInterfaces获取到的interfaces列表为null.
+
 ```language
 	public AopProxy createAopProxy(AdvisedSupport config) throws AopConfigException {
 		if (config.isOptimize() || config.isProxyTargetClass() || hasNoUserSuppliedProxyInterfaces(config)) {
@@ -187,5 +188,134 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
     SpringProxy.class.equals(interfaces[0])));
 	}
 ```
+从源码来看，而config.getProxiedInterfaces实际获取的就是proxyFactory对应的Interface列表
+```language
+		if (!shouldProxyTargetClass(beanClass, beanName)) {
+			// Must allow for introductions; can't just set interfaces to
+			// the target's interfaces only.
+			Class<?>[] targetInterfaces = ClassUtils.getAllInterfacesForClass(beanClass, this.proxyClassLoader);
+			for (Class<?> targetInterface : targetInterfaces) {
+				proxyFactory.addInterface(targetInterface);
+			}
+		}
+```
+经调试,实际上在的代码就是获取被代理类的接口列表并添加到proxyFactory,开始不太理解原因；不过根据之前静态代理、动态的分析来看，动态代理需基于接口而之前的报错日志，翻译应该包含两个信息：即class path缺少CGLIB或者无特定接口，初步推断是需要基于接口来实现AOP。
+##### 3.3.0 AOP bean实例化
+1. JdkDynamicAopProxy底层仍是使用熟悉的方式（Proxy.newProxyInstance(classLoader, proxiedInterfaces, this)）来实现动态，其实this即之前new的JdkDynamicAopProxy实例（而JdkDynamicAopProxy则InvocationHandler的实现类）。
+2. Processor的postProcessAfterInitialization方法是在创建bean的原始对象之后调用各Processor进行封装（或生成代理），而返回给容器的则是封装之后的对象，即基于AOP时，Spring容器中beanName对应的实际存储对象为生成的动态代理实例proxy。
+既然上面的分析到了，那下面就验证下分析结果哈
+##### 3.3.1 基于接口实现AOP 
+###### 3.3.1.1 被代理类业务接口
+```language
+    public interface BizAspectjExampleInterf {
+	void init();
+    }
+```
+###### 3.3.1.2 被代理类业务实现类
+```
+@Repository
+public class BizAspectjExample implements BizAspectjExampleInterf {
 	
+	/* (non-Javadoc)
+	 * @see com.aoe.demo.aop.BizAspectjExampleInterf#init()
+	 */
+	@PostConstruct
+	public void init(){
+		System.out.println("BizAspectjExample init...");
+	}
+}
 
+```
+###### 3.3.1.3 applicationContext.xml配置
+```language
+
+<!-- 未基于接口
+	<aop:config>
+		<aop:aspect id="bizAspectjExampleAop" ref="aspectjExample">
+			<aop:pointcut id="pc" expression="execution(* *..BizAspectjExample.*(..))"/>
+			<aop:before pointcut-ref="pc" method="before" />
+			<aop:after pointcut-ref="pc" method="after" />
+			<aop:around pointcut-ref="pc" method="around"/>
+		</aop:aspect>
+	</aop:config>
+	 -->
+	
+	<aop:config>
+		<aop:aspect id="bizAspectjExampleAop" ref="aspectjExample">
+		    <!-- 将基于实现类BizAspectjExample修改为接口BizAspectjExampleInterf ; BizAspectjExample是BizAspectjExampleInterf的实现类  -->
+			<aop:pointcut id="pc" expression="execution(* *..BizAspectjExampleInterf.*(..))"/>
+			<aop:before pointcut-ref="pc" method="before" />
+			<aop:after pointcut-ref="pc" method="after" />
+			<aop:around pointcut-ref="pc" method="around"/>
+		</aop:aspect>
+	</aop:config>
+
+	<bean name="aspectjExample" class="com.aoe.demo.aop.AspectjExample"></bean>
+```
+启动应用成功，但日志仅打印了BizAspectjExample的init方法自身的日志，而并未打印AspectjExample拦截期望打印的日志，之后继续分析发现：AOP是基于Processor生成原始实例的动态代理bean，而原始实例创建时会调用init方法，即niit方法已经在之前执行了。那就相对简单了，定义新方法，结合之前LazyInitTestLinstener示例在容器初始化结束之后获取bean并调用对应方法。
+```language
+public interface BizAspectjExampleInterf {
+
+	void biz();
+
+}
+```
+```language
+@Repository
+public class BizAspectjExample implements BizAspectjExampleInterf {
+	
+	/* (non-Javadoc)
+	 * @see com.aoe.demo.aop.BizAspectjExampleInterf#init()
+	 */
+	@PostConstruct
+	public void init(){
+		System.out.println("BizAspectjExample init...");
+	}
+	
+	public void biz(){
+		System.out.println("BizAspectjExample biz...");
+	}
+}
+```
+```language
+//LazyInitTestLinstener
+@Component
+public class LazyInitTestLinstener implements ApplicationListener,ApplicationContextAware {
+	
+	@Autowired
+	private ApplicationContext applicationContext;
+
+	public void onApplicationEvent(ApplicationEvent event) {
+		if(event instanceof ContextRefreshedEvent){
+			System.out.println("LazyInitTestLinstener --> ContextRefreshedEvent");
+			//LazyInitBeanExample 基于@Lazy注解使得在前面的bean初始化时并不会实例化，而里面待首次使用时才会实例化（但如果通过@Autowired、@Rresource也会在前面在注解处理时实例化。
+			LazyInitBeanExample lazyInitBeanExample  = applicationContext.getBean(LazyInitBeanExample.class);
+			System.out.println("lazyInitBeanExample:" + lazyInitBeanExample.hashCode());
+			
+			//基于类获取bean会无法获取
+			//BizAspectjExample bizAspectjExample  = (BizAspectjExample) applicationContext.getBean(BizAspectjExample.class);
+			//通过接口、beanName可以正常获取到bean
+			BizAspectjExampleInterf bizAspectjExample  = (BizAspectjExampleInterf) applicationContext.getBean(BizAspectjExampleInterf.class);
+			//BizAspectjExampleInterf bizAspectjExample  = (BizAspectjExampleInterf) applicationContext.getBean("bizAspectjExample");
+			bizAspectjExample.biz();
+		}
+		
+	}
+```
+启动成功，通过日志可发现已正常的实现AOP拦截：
+```language
+AspectjExample before...
+AspectjExample around before...
+BizAspectjExample biz...
+AspectjExample after...
+AspectjExample around after...
+2019-7-5 16:48:44 org.springframework.web.context.ContextLoader initWebApplicationContext
+```
+###### 3.3.1.4 补充知识点
+在上面LazyInitTestLinstener 中通过applicationContext.getBean()即期获取普通的bean（如LazyInitBeanExample）可直接通过类名；但是即若是基于AOP的代理，则只能通过接口或者beanName才可获取到Spring容器中的bean。
+
+### 四、后续
+计划调整，暂时分析到这儿，至于基于注解的AOP配置认为应该类似于@Aotuwrie注解的注入原理类似，以及SpirngMVC后续分析补充。
+
+- 参考资料：
+  1. https://www.cnblogs.com/junzi2099/p/8274813.html
