@@ -266,4 +266,4 @@ handlerMappings涉及到两个：
         <url-pattern>/hello/*</url-pattern>
     </servlet-mapping>
 ```
-关于web.xml的解析涉及到tomcat源码，此处简单带过，之后会有单独系列分析。简单说，即tomcat加载应用时，会调用WebXml解析web.xml文件，其中如上个servlet会由一个ServletDef对象表示，
+关于web.xml的解析涉及到tomcat源码，此处简单带过，之后会有单独系列分析。简单说，即tomcat加载应用时，会调用WebXml解析web.xml文件，其中如上个servlet会由一个ServletDef对象表示（
