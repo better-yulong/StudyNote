@@ -253,3 +253,17 @@ handlerMappings涉及到两个：
 [org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping@1fb80c9, org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping@c44aaf]。都有共同的父类AbstractUrlHandlerMapping，而获取handler的逻辑相对简单：1.根据url分别从HandlerMapping的handlerMap中匹配Handler（注意BeanNameUrlHandlerMapping、DefaultAnnotationHandlerMapping各有一个实例变量）handlerMap；2.是否为/，若是则返回RootHandler；3.如若未找到Handler则返回DefaultHandler（默认为null）。而上面的示例经过查找均未匹配到Handler，所以页面返回404则日志提示未匹配到。而这些，均需分析SpringMVC的启动逻辑才能明白。
 
 ### 四、SpringMVC的启动初始化分析
+针对web.xml配置
+```language
+     <servlet>
+        <servlet-name>example</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>example</servlet-name>
+        <url-pattern>/hello/*</url-pattern>
+    </servlet-mapping>
+```
+
