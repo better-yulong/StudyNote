@@ -266,4 +266,4 @@ handlerMappings涉及到两个：
         <url-pattern>/hello/*</url-pattern>
     </servlet-mapping>
 ```
-关于web.xml的解析涉及到tomcat源码，此处简单带过，之后会有单独系列分析。简单说，即tomcat加载应用时，会调用WebXml解析web.xml文件，其中如上个servlet会由一个ServletDef对象表示（同时会创建一个默认的JspServlet用于处理jsp页面请求）（configureContext方法即解析web.xml,涉及到contextParams
+关于web.xml的解析涉及到tomcat源码，此处简单带过，之后会有单独系列分析。简单说，即tomcat加载应用时，会调用WebXml解析web.xml文件，其中如上个servlet会由一个ServletDef对象表示（同时会创建一个默认的JspServlet用于处理jsp页面请求）（configureContext方法即解析web.xml,涉及到contextParams、filters、errorPages、listeners
