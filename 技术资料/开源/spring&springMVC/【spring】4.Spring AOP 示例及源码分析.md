@@ -315,7 +315,7 @@ AspectjExample around after...
 在上面LazyInitTestLinstener 中通过applicationContext.getBean()即期获取普通的bean（如LazyInitBeanExample）可直接通过类名；但是即若是基于AOP的代理，则只能通过接口或者beanName才可获取到Spring容器中的bean。
 
 ### 四、后续
-计划调整，暂时分析到这儿，至于基于注解的AOP配置认为应该类似于@Aotuwrie注解的注入原理类似,
+计划调整，暂时分析到这儿，至于基于注解的AOP配置认为应该类似于@Aotuwrie注解的注入原理类似,后续另行分析。
 
 - 参考资料：
   1. https://www.cnblogs.com/junzi2099/p/8274813.html
