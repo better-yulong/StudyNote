@@ -270,9 +270,20 @@ handlerMappings涉及到两个：
 - StandardContext类loadOnStartup方法过滤出启动即需加载的Servlet并实例化（注释：Load the collected "load on startup" servlets）；由StandardWrapper.loadServlet-->DefaultInstanceManager.newInstance--(通过反射)-->调用DispatcherServlet的无参构造方法
 #### 4.1 DispatcherServlet实例化分析
 ##### 4.1.1 DispatcherServlet类加载初始化
-静态代码段：
+静态代码段，主要用于初始化SpringMVC：
 ```language
-
+static {
+		// Load default strategy implementations from properties file.
+		// This is currently strictly internal and not meant to be customized
+		// by application developers.
+		try {
+			ClassPathResource resource = new ClassPathResource(DEFAULT_STRATEGIES_PATH, DispatcherServlet.class);
+			defaultStrategies = PropertiesLoaderUtils.loadProperties(resource);
+		}
+		catch (IOException ex) {
+			throw new IllegalStateException("Could not load 'DispatcherServlet.properties': " + ex.getMessage());
+		}
+	}
 ```
 
 
