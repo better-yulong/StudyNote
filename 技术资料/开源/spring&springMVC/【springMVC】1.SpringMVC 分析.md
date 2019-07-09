@@ -350,6 +350,7 @@ org.springframework.web.servlet.FlashMapManager=org.springframework.web.servlet.
 			// Either the context is not a ConfigurableApplicationContext with refresh
 			// support or the context injected at construction time had already been
 			// refreshed -> trigger initial onRefresh manually here.
+                         //用于处理非
 			onRefresh(wac);
 		}
 
@@ -357,10 +358,6 @@ org.springframework.web.servlet.FlashMapManager=org.springframework.web.servlet.
 			// Publish the context as a servlet context attribute.
 			String attrName = getServletContextAttributeName();
 			getServletContext().setAttribute(attrName, wac);
-			if (this.logger.isDebugEnabled()) {
-				this.logger.debug("Published WebApplicationContext of servlet '" + getServletName() +
-						"' as ServletContext attribute with name [" + attrName + "]");
-			}
 		}
 
 		return wac;
