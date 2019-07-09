@@ -298,6 +298,8 @@ org.springframework.web.servlet.RequestToViewNameTranslator=org.springframework.
 org.springframework.web.servlet.ViewResolver=org.springframework.web.servlet.view.InternalResourceViewResolver
 org.springframework.web.servlet.FlashMapManager=org.springframework.web.servlet.support.DefaultFlashMapManager
 ```
-其实从这儿也可以看出来，之前上面分析url
+其实从这儿也可以看出来，之前上面分析url映射的HandlerMapping是哪儿配置的了。
+
+
 
 
