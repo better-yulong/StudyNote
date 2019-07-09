@@ -270,7 +270,7 @@ handlerMappings涉及到两个：
 - StandardContext类loadOnStartup方法过滤出启动即需加载的Servlet并实例化（注释：Load the collected "load on startup" servlets）；由StandardWrapper.loadServlet-->DefaultInstanceManager.newInstance--(通过反射)-->调用DispatcherServlet的无参构造方法
 #### 4.1 DispatcherServlet实例化分析
 ##### 4.1.1 DispatcherServlet类加载初始化
-静态代码段，主要用于初始化SpringMVC：
+静态代码段，主要用于初始化SpringMVC默认配置文件DispatcherServlet.properties（其中包含）：
 ```language
 static {
 		// Load default strategy implementations from properties file.
