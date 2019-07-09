@@ -390,7 +390,7 @@ SpringMVC初始化时，容器初始化结束发布事件会触发SourceFilterin
 ```
 分析到这儿,其实可以认为SpringMVC容器已经初始化结束了,而之前想分析的RequestMapping注解解析究竟是哪儿处理的呢?同样,之前分析过Spring的DI(即基于@Resources、@Autoware注解）的处理逻辑就应该可以猜到其处理逻辑了。
 ###### 4.1.2.3 RequestMapping解析分析
-同样，根据之前分析Spring源码时初步推断，SpringMVC相关注解的解析仍然需要开启注解自动扫描，但是具体如何 
+同样，根据之前分析Spring源码时初步推断，SpringMVC相关注解的解析仍然需要开启注解自动扫描，但是具体如何配置呢？
 
 
 
