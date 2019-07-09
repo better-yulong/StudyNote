@@ -303,6 +303,6 @@ org.springframework.web.servlet.FlashMapManager=org.springframework.web.servlet.
 如此创建DispatcherServlet之后 ，tomcat的StandardWrapper的initServlet方法调用servlet.init(facade) -->GenericServlet.init(ServletConfig）-->HttpServletBean.init()-->FrameworkServlet.initServletBean(); 这个方法才是关键，其中两个核心方法：
 ```language
     this.webApplicationContext = initWebApplicationContext();
-			initFrameworkServlet();
+    initFrameworkServlet();
 ```
 
