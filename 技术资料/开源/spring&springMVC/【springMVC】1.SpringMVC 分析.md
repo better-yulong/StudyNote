@@ -437,7 +437,7 @@ example-servlet.xml：
 信息: Mapped URL path [/example/helloWorld/] onto handler 'servletContextAwareBean'
 2019-7-9 18:58:53 org.springframework.web.servlet.FrameworkServlet initServletBean
 ```
-从日志来看，这次确实已经正确实例化bean及识别到
+从日志来看，这次确实已经正确实例化bean及识别到MappedURL信息了，但当访问：
 
 
 
