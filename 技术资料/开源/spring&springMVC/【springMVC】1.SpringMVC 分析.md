@@ -368,8 +368,9 @@ SpringMVC初始化时，容器初始化结束发布事件会触发SourceFilterin
 ```language
         //DispatcherServlet类，context对应WebApplicationContext for namespace 'example-servlet'
 	protected void initStrategies(ApplicationContext context) {
-                //即如文件上传类型的的
+                //即如文件上传类型的的Resolver，默认为null,可为null
 		initMultipartResolver(context);
+                //AcceptHeaderLocaleResolver
 		initLocaleResolver(context);
 		initThemeResolver(context);
 		initHandlerMappings(context);
