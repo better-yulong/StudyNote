@@ -418,11 +418,11 @@ web.xml配置：
         <url-pattern>/example/*</url-pattern>
     </servlet-mapping>
 ```
+example-servlet.xml：
 ```language
    <bean id="servletContextAwareBean" class="com.aoe.demo.springmvc.ExampleController"/>
 ```
-
-启动应用，中单有个小插曲，启动时始终报找不到
+启动应用，中单有个小插曲，启动时始终报
 
 
 
