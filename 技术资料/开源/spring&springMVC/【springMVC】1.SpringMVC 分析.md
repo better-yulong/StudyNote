@@ -308,9 +308,9 @@ org.springframework.web.servlet.FlashMapManager=org.springframework.web.servlet.
 ###### 4.1.2.1 初始化上下文 FrameworkServlet.initWebApplicationContext()
 ```language
 	protected WebApplicationContext initWebApplicationContext() {
-                
+                //获取Spring ROOT 
 		WebApplicationContext rootContext =
-				WebApplicationContextUtils.getWebApplicationContext(getServletContext());
+			WebApplicationContextUtils.getWebApplicationContext(getServletContext());
 		WebApplicationContext wac = null;
 
 		if (this.webApplicationContext != null) {
