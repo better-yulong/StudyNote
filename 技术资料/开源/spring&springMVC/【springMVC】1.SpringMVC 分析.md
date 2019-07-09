@@ -300,4 +300,9 @@ org.springframework.web.servlet.FlashMapManager=org.springframework.web.servlet.
 ```
 其实从这儿也可以看出来，之前上面分析url映射的HandlerMapping是哪儿配置的了。
 ##### 4.1.2 DispatcherServlet实例初始化
-如此创建DispatcherServlet之后 ，tomcat的StandardWrapper的initServlet方法调用servlet.init(facade) -->GenericServlet.init(ServletConfig）-->HttpServletBean.init()-->FrameworkServlet.initServletBean(); 这个方法才是
+如此创建DispatcherServlet之后 ，tomcat的StandardWrapper的initServlet方法调用servlet.init(facade) -->GenericServlet.init(ServletConfig）-->HttpServletBean.init()-->FrameworkServlet.initServletBean(); 这个方法才是关键，其中两个核心方法：
+```language
+    this.webApplicationContext = initWebApplicationContext();
+			initFrameworkServlet();
+```
+
