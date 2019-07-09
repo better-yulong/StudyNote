@@ -422,7 +422,7 @@ example-servlet.xml：
 ```language
    <bean id="servletContextAwareBean" class="com.aoe.demo.springmvc.ExampleController"/>
 ```
-启动应用，中单有个小插曲，启动时始终报
+启动应用，中单有个小插曲，启动时始终报ClassNotFoundException，即ExampleController.class始终找不到，
 
 
 
