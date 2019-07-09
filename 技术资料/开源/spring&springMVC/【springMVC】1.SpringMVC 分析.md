@@ -308,7 +308,7 @@ org.springframework.web.servlet.FlashMapManager=org.springframework.web.servlet.
 ###### 4.1.2.1 初始化上下文 FrameworkServlet.initWebApplicationContext()
 ```language
 	protected WebApplicationContext initWebApplicationContext() {
-                //获取Spring ROOT Conext，即对应Spring的ApplicationContext.ROOT(个人理解，即对应之前分析 Spring源码启动时根据Listener、applicationContext创建的ApplicationContext
+                //获取Spring ROOT Conext，即对应Spring的ApplicationContext.ROOT(个人理解，即对应之前分析 Spring源码启动时根据Listener、applicationContext.xml创建的ApplicationContext。其实这儿很多人会有疑问，为什么我不配置
 		WebApplicationContext rootContext =
 			WebApplicationContextUtils.getWebApplicationContext(getServletContext());
 		WebApplicationContext wac = null;
