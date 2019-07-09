@@ -315,6 +315,7 @@ org.springframework.web.servlet.FlashMapManager=org.springframework.web.servlet.
 
 		if (this.webApplicationContext != null) {
 			// A context instance was injected at construction time -> use it
+                        //从
 			wac = this.webApplicationContext;
 			if (wac instanceof ConfigurableWebApplicationContext) {
 				ConfigurableWebApplicationContext cwac = (ConfigurableWebApplicationContext) wac;
