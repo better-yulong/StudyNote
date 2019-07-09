@@ -376,8 +376,9 @@ SpringMVC初始化时，容器初始化结束发布事件会触发SourceFilterin
 		initThemeResolver(context);
                 //初始化HandlerMapping，未配置会默认实例化BeanNameUrlHandlerMapping、DefaultAnnotationHandlerMapping（根据上面讲到的DispatcherServlet类加载初始化的配置文件）
 		initHandlerMappings(context);
-                //初始化HandlerAdapter，未配置会默认实例化HttpRequestHandlerAdapter、DefaultAnnotationHandlerMapping（根据上面讲到的DispatcherServlet类加载初始化的配置文件）
+                //初始化HandlerAdapter，未配置会默认实例化HttpRequestHandlerAdapter、SimpleControllerHandlerAdapter、AnnotationMethodHandlerAdapter（根据上面讲到的DispatcherServlet类加载初始化的配置文件）
 		initHandlerAdapters(context);
+                
 		initHandlerExceptionResolvers(context);
 		initRequestToViewNameTranslator(context);
 		initViewResolvers(context);
