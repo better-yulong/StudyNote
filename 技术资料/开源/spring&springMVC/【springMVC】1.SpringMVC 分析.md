@@ -270,7 +270,7 @@ handlerMappings涉及到两个：
 - StandardContext类loadOnStartup方法过滤出启动即需加载的Servlet并实例化（注释：Load the collected "load on startup" servlets）；由StandardWrapper.loadServlet-->DefaultInstanceManager.newInstance--(通过反射)-->调用DispatcherServlet的无参构造方法
 #### 4.1 DispatcherServlet实例化分析
 ##### 4.1.1 DispatcherServlet类加载初始化
-静态代码段，主要用于初始化SpringMVC默认配置文件DispatcherServlet.properties（其中包含）：
+静态代码段，主要用于初始化SpringMVC默认配置文件DispatcherServlet.properties：
 ```language
 static {
 		// Load default strategy implementations from properties file.
@@ -284,6 +284,30 @@ static {
 			throw new IllegalStateException("Could not load 'DispatcherServlet.properties': " + ex.getMessage());
 		}
 	}
+```
+```language
+#
+
+org.springframework.web.servlet.LocaleResolver=org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver
+
+org.springframework.web.servlet.ThemeResolver=org.springframework.web.servlet.theme.FixedThemeResolver
+
+org.springframework.web.servlet.HandlerMapping=org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping,\
+	org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping
+
+org.springframework.web.servlet.HandlerAdapter=org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter,\
+	org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter,\
+	org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter
+
+org.springframework.web.servlet.HandlerExceptionResolver=org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerExceptionResolver,\
+	org.springframework.web.servlet.mvc.annotation.ResponseStatusExceptionResolver,\
+	org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver
+
+org.springframework.web.servlet.RequestToViewNameTranslator=org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator
+
+org.springframework.web.servlet.ViewResolver=org.springframework.web.servlet.view.InternalResourceViewResolver
+
+org.springframework.web.servlet.FlashMapManager=org.springframework.web.servlet.support.DefaultFlashMapManager
 ```
 
 
