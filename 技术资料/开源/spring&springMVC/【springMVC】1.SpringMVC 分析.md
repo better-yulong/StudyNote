@@ -372,7 +372,7 @@ SpringMVC初始化时，容器初始化结束发布事件会触发SourceFilterin
 		initMultipartResolver(context);
                 //普通的Resolver，为null会创建默认的AcceptHeaderLocaleResolver实例
 		initLocaleResolver(context);
-                //
+                //普通的ThemeResolver，为null会创建默认的FixedThemeResolver
 		initThemeResolver(context);
 		initHandlerMappings(context);
 		initHandlerAdapters(context);
