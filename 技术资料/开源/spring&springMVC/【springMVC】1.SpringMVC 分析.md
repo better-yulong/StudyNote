@@ -392,6 +392,7 @@ SpringMVC初始化时，容器初始化结束发布事件会触发SourceFilterin
 ###### 4.1.2.3 RequestMapping解析分析
 同样，根据之前分析Spring源码时初步推断，SpringMVC相关注解的解析仍然需要开启注解自动扫描，但是具体如何配置呢？是需配置SpringMVC独有的注解扫描？然而，看了下Controller、@RequestMapping源码及注释发现，并没有特别对特别说明。那么结合之前的bean注入有xml配置与注解配置两种方式，那么此处就采用原始的xml配置方式来试试看（为便于验证，对原Controller类名和web.xml做了简单调整，代码为：
 ```language
+//Controller类
 @Controller
 @RequestMapping("/example")
 public class ExampleController {
@@ -404,7 +405,19 @@ public class ExampleController {
     }
 }
 ```
-web.xml
+web.xml配置：
+```language
+      <servlet>
+        <servlet-name>example</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>example</servlet-name>
+        <url-pattern>/example/*</url-pattern>
+    </servlet-mapping>
+```
 
 
 
