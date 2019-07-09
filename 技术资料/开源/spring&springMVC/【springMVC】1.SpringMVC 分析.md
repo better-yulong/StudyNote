@@ -342,6 +342,7 @@ org.springframework.web.servlet.FlashMapManager=org.springframework.web.servlet.
 		}
 		if (wac == null) {
 			// No context instance is defined for this servlet -> create a local one
+                       
 			wac = createWebApplicationContext(rootContext);
 		}
 
