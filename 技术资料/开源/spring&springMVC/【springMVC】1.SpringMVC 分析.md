@@ -342,7 +342,7 @@ org.springframework.web.servlet.FlashMapManager=org.springframework.web.servlet.
 		}
 		if (wac == null) {
 			// No context instance is defined for this servlet -> create a local one
-                        //此处是创建新的context ，新的context的id的Parents为null,其id是org.springframework.web.context.WebApplicationContext:/springmvc3-analysis/example，namespace为example-servlet；最后的操作则与之前分析Spring一样，解析其对应的example-s
+                        //此处是创建新的context ，新的context的id的Parents为null,其id是org.springframework.web.context.WebApplicationContext:/springmvc3-analysis/example，namespace为example-servlet；最后的操作则与之前分析Spring一样，解析其对应的example-servlet.xml文件完成子上下文（容器）的初始化
 			wac = createWebApplicationContext(rootContext);
 		}
 
