@@ -388,7 +388,7 @@ SpringMVC初始化时，容器初始化结束发布事件会触发SourceFilterin
 		initFlashMapManager(context);
 	}
 ```
-分析到这儿,其实可以认为SpringMVC容器已经初始化结束了,而之前想分析的RequestMapping注解解析究竟是哪儿处理的呢?同样,之前分析过Spring的
+分析到这儿,其实可以认为SpringMVC容器已经初始化结束了,而之前想分析的RequestMapping注解解析究竟是哪儿处理的呢?同样,之前分析过Spring的DI(即基于@Resources、@Autoware
 
 
 
