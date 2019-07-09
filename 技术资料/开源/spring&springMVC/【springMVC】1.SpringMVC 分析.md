@@ -299,6 +299,9 @@ org.springframework.web.servlet.ViewResolver=org.springframework.web.servlet.vie
 org.springframework.web.servlet.FlashMapManager=org.springframework.web.servlet.support.DefaultFlashMapManager
 ```
 其实从这儿也可以看出来，之前上面分析url映射的HandlerMapping是哪儿配置的了。
+##### 4.1.2 DispatcherServlet实例初始化
+如此创建DispatcherServlet
+
 
 
 
