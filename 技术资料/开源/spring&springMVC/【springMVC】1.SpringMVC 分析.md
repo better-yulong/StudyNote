@@ -315,7 +315,7 @@ org.springframework.web.servlet.FlashMapManager=org.springframework.web.servlet.
 
 		if (this.webApplicationContext != null) {
 			// A context instance was injected at construction time -> use it
-                        //从注释来看即已有上下文实例，即若未激活则类似于之前的Spring分析时的过程(当前示例this.webApplicationContext为null，不会运行至 
+                        //从注释来看即已有上下文实例，即若未激活则类似于之前的Spring分析时的过程(当前示例this.webApplicationContext为null，不会运行至此处 
 			wac = this.webApplicationContext;
 			if (wac instanceof ConfigurableWebApplicationContext) {
 				ConfigurableWebApplicationContext cwac = (ConfigurableWebApplicationContext) wac;
@@ -327,6 +327,7 @@ org.springframework.web.servlet.FlashMapManager=org.springframework.web.servlet.
 						// the root application context (if any; may be null) as the parent
 						cwac.setParent(rootContext);
 					}
+                                        //配置并刷新已有的WebApplicationContext
 					configureAndRefreshWebApplicationContext(cwac);
 				}
 			}
