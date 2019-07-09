@@ -388,7 +388,7 @@ SpringMVC初始化时，容器初始化结束发布事件会触发SourceFilterin
 		initFlashMapManager(context);
 	}
 ```
-
+分析到这儿,其实可以认为SpringMVC容器
 
 
 
