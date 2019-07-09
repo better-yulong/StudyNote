@@ -422,7 +422,11 @@ example-servlet.xml：
 ```language
    <bean id="servletContextAwareBean" class="com.aoe.demo.springmvc.ExampleController"/>
 ```
-启动应用，中单有个小插曲，启动时始终报ClassNotFoundException，即ExampleController.class始终找不到，去应用的target/classes目录确实找不到class文件，结合eclipse的Problems发现系JavaBuild配置报错，调整后clean
+启动应用，中单有个小插曲，启动时始终报ClassNotFoundException，即ExampleController.class始终找不到，去应用的target/classes目录确实找不到class文件，结合eclipse的Problems发现系JavaBuild配置报错，调整后clean应用class正常编译。启动应用日志为：
+```language
+
+```
+
 
 
 
