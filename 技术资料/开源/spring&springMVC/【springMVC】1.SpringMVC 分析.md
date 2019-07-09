@@ -374,7 +374,7 @@ SpringMVC初始化时，容器初始化结束发布事件会触发SourceFilterin
 		initLocaleResolver(context);
                 //普通的ThemeResolver，为null会创建默认的FixedThemeResolver；加载主题资源，国际化时会使用到
 		initThemeResolver(context);
-                //初始化HandlerMapping，未配置会默认实例化
+                //初始化HandlerMapping，未配置会默认实例化BeanNameUrlHandlerMapping、DefaultAnnotationHandlerMapping（根据上面
 		initHandlerMappings(context);
 		initHandlerAdapters(context);
 		initHandlerExceptionResolvers(context);
