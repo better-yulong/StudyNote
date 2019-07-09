@@ -424,9 +424,20 @@ example-servlet.xml：
 ```
 启动应用，中单有个小插曲，启动时始终报ClassNotFoundException，即ExampleController.class始终找不到，去应用的target/classes目录确实找不到class文件，结合eclipse的Problems发现系JavaBuild配置报错，调整后clean应用class正常编译。启动应用日志为：
 ```language
-
+信息: Refreshing WebApplicationContext for namespace 'example-servlet': startup date [Tue Jul 09 18:58:51 CST 2019]; root of context hierarchy
+2019-7-9 18:58:51 org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
+信息: Loading XML bean definitions from ServletContext resource [/WEB-INF/example-servlet.xml]
+2019-7-9 18:58:52 org.springframework.beans.factory.support.DefaultListableBeanFactory preInstantiateSingletons
+信息: Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@98062f: defining beans [servletContextAwareBean]; root of factory hierarchy
+2019-7-9 18:58:52 org.springframework.web.servlet.handler.AbstractUrlHandlerMapping registerHandler
+信息: Mapped URL path [/example/helloWorld] onto handler 'servletContextAwareBean'
+2019-7-9 18:58:52 org.springframework.web.servlet.handler.AbstractUrlHandlerMapping registerHandler
+信息: Mapped URL path [/example/helloWorld.*] onto handler 'servletContextAwareBean'
+2019-7-9 18:58:52 org.springframework.web.servlet.handler.AbstractUrlHandlerMapping registerHandler
+信息: Mapped URL path [/example/helloWorld/] onto handler 'servletContextAwareBean'
+2019-7-9 18:58:53 org.springframework.web.servlet.FrameworkServlet initServletBean
 ```
-
+从日志来看，这次确实已经
 
 
 
