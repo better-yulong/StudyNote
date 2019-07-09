@@ -364,7 +364,8 @@ org.springframework.web.servlet.FlashMapManager=org.springframework.web.servlet.
 	}
 ```
 ###### 4.1.2.2
-SpringMVC初始化时，容器初始化结束发布事件会触发SourceFilteringListener.onApplicationEventInternal-->GenericApplicationListenerAdapter.onApplicationEvent-->FrameworkServlet$ContextRefreshListener.onApplicationEvent-->DispatcherServlet.onRefresh-->DispatcherServlet.
+SpringMVC初始化时，容器初始化结束发布事件会触发SourceFilteringListener.onApplicationEventInternal-->GenericApplicationListenerAdapter.onApplicationEvent-->FrameworkServlet$ContextRefreshListener.onApplicationEvent-->DispatcherServlet.onRefresh-->DispatcherServlet.initStrategies方法
+
 
 
 
