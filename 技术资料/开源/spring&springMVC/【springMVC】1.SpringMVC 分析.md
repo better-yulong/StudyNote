@@ -370,7 +370,7 @@ SpringMVC初始化时，容器初始化结束发布事件会触发SourceFilterin
 	protected void initStrategies(ApplicationContext context) {
                 //即如文件上传类型的的Resolver，默认为null,可为null
 		initMultipartResolver(context);
-                //普通的LocaleResolver，为null会创建默认的AcceptHeaderLocaleResolver实例
+                //普通的LocaleResolver，为null会创建默认的AcceptHeaderLocaleResolver实例,
 		initLocaleResolver(context);
                 //普通的ThemeResolver，为null会创建默认的FixedThemeResolver
 		initThemeResolver(context);
