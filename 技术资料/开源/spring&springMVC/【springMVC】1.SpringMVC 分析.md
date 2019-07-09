@@ -350,7 +350,7 @@ org.springframework.web.servlet.FlashMapManager=org.springframework.web.servlet.
 			// Either the context is not a ConfigurableApplicationContext with refresh
 			// support or the context injected at construction time had already been
 			// refreshed -> trigger initial onRefresh manually here.
-                         //用于处理非
+                         //用于处理非ConfigurableApplicationContext的容器初始化
 			onRefresh(wac);
 		}
 
@@ -363,3 +363,23 @@ org.springframework.web.servlet.FlashMapManager=org.springframework.web.servlet.
 		return wac;
 	}
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
