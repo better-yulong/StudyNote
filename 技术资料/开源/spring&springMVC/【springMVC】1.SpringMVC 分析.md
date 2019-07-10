@@ -536,7 +536,56 @@ BeanNameUrlHandlerMapping类determineUrlsForHandler方法（从源码来看beanN
 		return StringUtils.toStringArray(urls);
 	}
 ```
-目前的beanName如若将@Controller
+
+```language
+	protected String[] determineUrlsForHandler(String beanName) {
+		ApplicationContext context = getApplicationContext();
+		Class<?> handlerType = context.getType(beanName);
+		RequestMapping mapping = context.findAnnotationOnBean(beanName, RequestMapping.class);
+		if (mapping != null) {
+			// @RequestMapping found at type level
+			this.cachedMappings.put(handlerType, mapping);
+			Set<String> urls = new LinkedHashSet<String>();
+			String[] typeLevelPatterns = mapping.value();
+			if (typeLevelPatterns.length > 0) {
+				// @RequestMapping specifies paths at type level
+				String[] methodLevelPatterns = determineUrlsForHandlerMethods(handlerType, true);
+				for (String typeLevelPattern : typeLevelPatterns) {
+					if (!typeLevelPattern.startsWith("/")) {
+						typeLevelPattern = "/" + typeLevelPattern;
+					}
+					boolean hasEmptyMethodLevelMappings = false;
+					for (String methodLevelPattern : methodLevelPatterns) {
+						if (methodLevelPattern == null) {
+							hasEmptyMethodLevelMappings = true;
+						}
+						else {
+							String combinedPattern = getPathMatcher().combine(typeLevelPattern, methodLevelPattern);
+							addUrlsForPath(urls, combinedPattern);
+						}
+					}
+					if (hasEmptyMethodLevelMappings ||
+							org.springframework.web.servlet.mvc.Controller.class.isAssignableFrom(handlerType)) {
+						addUrlsForPath(urls, typeLevelPattern);
+					}
+				}
+				return StringUtils.toStringArray(urls);
+			}
+			else {
+				// actual paths specified by @RequestMapping at method level
+				return determineUrlsForHandlerMethods(handlerType, false);
+			}
+		}
+		else if (AnnotationUtils.findAnnotation(handlerType, Controller.class) != null) {
+			// @RequestMapping to be introspected at method level
+			return determineUrlsForHandlerMethods(handlerType, false);
+		}
+		else {
+			return null;
+		}
+	}
+```
+
 
 
 
