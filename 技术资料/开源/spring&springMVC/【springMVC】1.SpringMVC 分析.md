@@ -470,7 +470,8 @@ example-servlet.xml：
 		}
 	}
 ```
-org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping,org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping 创建
+org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping,org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping原始对象实例化就不做分析，重点分析原始对象实例化之后的处理过程。
+
 
 
 
