@@ -614,7 +614,8 @@ DefaultAnnotationHandlerMapping类determineUrlsForHandler方法（beanName为ser
 信息: Mapped URL path [/example/helloWorld/] onto handler 'exampleController'
 ```
 ###### 补充知识点
-当spring的xml配置文件中，手动注入bean（xml的bean标签： name="/exampleController"）与context:component-scan(且class需有@Controller(value="/exampleController2")同时配置时会xml的顺序优先取前面对应的name值
+1. 当spring的xml配置文件中，手动注入bean（xml的bean标签： name="/exampleController"）与context:component-scan(且class需有@Controller(value="/exampleController2")同时配置时会xml的顺序优先取前面对应的name值作为其容器中bean的beanNam
+2. 
 
 
 
