@@ -548,7 +548,7 @@ DefaultAnnotationHandlerMapping类determineUrlsForHandler方法（beanName为ser
 			// @RequestMapping found at type level
 			this.cachedMappings.put(handlerType, mapping);
 			Set<String> urls = new LinkedHashSet<String>();
-                         
+                        //结果为：[/example]
 			String[] typeLevelPatterns = mapping.value();
 			if (typeLevelPatterns.length > 0) {
 				// @RequestMapping specifies paths at type level
