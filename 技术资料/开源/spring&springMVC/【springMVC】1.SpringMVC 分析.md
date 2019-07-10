@@ -455,7 +455,7 @@ example-servlet.xml：
 				try {
                                         //加载class获取clazz 对象
 					Class<?> clazz = ClassUtils.forName(className, DispatcherServlet.class.getClassLoader());
-                                        // context.getAutowireCapableBeanFactory().createBean(clazz)，即获取BeanFactory并实例化
+                                        // context.getAutowireCapableBeanFactory().createBean(clazz)，即获取BeanFactory并实例化clazz 对应的实例对象（即Spring源码已分析的过程）
 					Object strategy = createDefaultStrategy(context, clazz);
 					strategies.add((T) strategy);
 				}
