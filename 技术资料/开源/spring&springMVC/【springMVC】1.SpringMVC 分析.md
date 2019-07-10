@@ -586,7 +586,7 @@ DefaultAnnotationHandlerMapping类determineUrlsForHandler方法（beanName为ser
 		}
 	}
 ```
-因由于是示例是基于注解方式实现的
+因由于是示例是基于@RequestMapping注解方式实现的url映射，故仅
 
 
 
