@@ -590,7 +590,7 @@ DefaultAnnotationHandlerMapping类determineUrlsForHandler方法（beanName为ser
 ###### ExampleControler与servletContextAwareBean关系
 - 在源码传入servletContextAwareBean调用Class<?> handlerType = context.getType(beanName)时，却可获取到- ExampleControler的class对象。
 - 经过层层分析，为啥呢？想呵呵，很简单因为xml配置ExampleControler时复制的忘了修改指定的id就是rvletContextAwareBean；导致xml解析bean标签注册BeanDefinition时ExampleControler对应的beanName就是这个。哈哈，傻了...
-###### BeanNameUrlHandlerMapping是如何
+###### BeanNameUrlHandlerMapping是如何解析生成其
 
 
 
