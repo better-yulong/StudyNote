@@ -582,7 +582,7 @@ DefaultAnnotationHandlerMapping类determineUrlsForHandler方法（beanName为ser
 			}
 		}
 		else if (AnnotationUtils.findAnnotation(handlerType, Controller.class) != null) {
-			// @RequestMapping to be introspected at method level
+			//class无RequestMapping仅方法
 			return determineUrlsForHandlerMethods(handlerType, false);
 		}
 		else {
