@@ -508,7 +508,7 @@ AbstractDetectingUrlHandlerMapping.detectHandlers()方法从名称即可判断�
 			String[] urls = determineUrlsForHandler(beanName);
 			if (!ObjectUtils.isEmpty(urls)) {
 				// URL paths found: Let's consider it a handler.
-                                /此处AbstractDetectingUrlHandlerMapping的registerHandler，会调用父类该方法，即类似以/example/helloWorld.*为key，beanName对应的class不
+                                /此处AbstractDetectingUrlHandlerMapping的registerHandler，会调用父类该方法，即类似以/example/helloWorld.*为key，beanName对应的class为value存储至HandlerMapping实例对应的
 				registerHandler(urls, beanName);
 			}
 			else {
