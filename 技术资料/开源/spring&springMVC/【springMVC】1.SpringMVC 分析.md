@@ -473,7 +473,7 @@ example-servlet.xml：
 - BeanNameUrlHandlerMapping、DefaultAnnotationHandlerMapping原始对象实例化就不做分析，重点分析原始对象实例化之后的处理过程。之前有分析过BeanPostProcessor接口有两个核心接口：postProcessBeforeInitialization、postProcessAfterInitialization用于实例对象初始化前后的处理，此处就涉及到ApplicationContextAwareProcessor，即判断当前实例是否有实现Aware接口若有则反射调用对应接口。
 - BeanNameUrlHandlerMapping、DefaultAnnotationHandlerMapping拥有共同直接父类AbstractDetectingUrlHandlerMapping、间接共同接口ApplicationContextAware，那么根据分析BeanNameUrlHandlerMapping原始对象创建之后即被反射调用其setApplicationContext(ApplicationContext context):
 ```language
-        //BeanNameUrlHandlerMapping类setApplicationContext方法
+        //BeanNameUrlHandlerMapping(WebApplicationObjectSupport)类setApplicationContext方法
 	public final void setApplicationContext(ApplicationContext context) throws BeansException {
 		if (context == null && !isContextRequired()) {
 			// Reset internal context state.
@@ -485,7 +485,7 @@ example-servlet.xml：
                         //设置当前HandlerMapping实例对应的context
 			this.applicationContext = context;
 			this.messageSourceAccessor = new MessageSourceAccessor(context);
-                        //通过
+                        //通过WebApplicationObjectSupport.initApplicationContext-->
 			initApplicationContext(context);
 		}
 		else {
