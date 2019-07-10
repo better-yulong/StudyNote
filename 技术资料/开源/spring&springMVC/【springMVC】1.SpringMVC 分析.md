@@ -602,7 +602,17 @@ DefaultAnnotationHandlerMapping类determineUrlsForHandler方法（beanName为ser
 ```language
 	<bean id="exampleController"  name="/exampleController"  class="com.aoe.demo.springmvc.ExampleController"/>
 ```
-
+日志为：
+```language
+2019-7-10 18:17:29 org.springframework.web.servlet.handler.AbstractUrlHandlerMapping registerHandler
+信息: Mapped URL path [/exampleController] onto handler 'exampleController'
+2019-7-10 18:17:29 org.springframework.web.servlet.handler.AbstractUrlHandlerMapping registerHandler
+信息: Mapped URL path [/example/helloWorld] onto handler 'exampleController'
+2019-7-10 18:17:29 org.springframework.web.servlet.handler.AbstractUrlHandlerMapping registerHandler
+信息: Mapped URL path [/example/helloWorld.*] onto handler 'exampleController'
+2019-7-10 18:17:29 org.springframework.web.servlet.handler.AbstractUrlHandlerMapping registerHandler
+信息: Mapped URL path [/example/helloWorld/] onto handler 'exampleController'
+```
 
 
 
