@@ -470,7 +470,7 @@ example-servlet.xml：
 		}
 	}
 ```
-
+org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping,org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping 创建
 
 
 
