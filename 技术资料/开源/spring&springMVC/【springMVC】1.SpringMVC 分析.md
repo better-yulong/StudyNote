@@ -588,9 +588,11 @@ DefaultAnnotationHandlerMapping类determineUrlsForHandler方法（beanName为ser
 ```
 因由于是示例是基于@RequestMapping注解方式实现的url映射，故仅DefaultAnnotationHandlerMapping有获取到url配置并添加到其handlerMap。在分析请求是为何无法匹配到方法返回404之前，还有两个问题待解答。
 ###### ExampleControler与servletContextAwareBean关系
-在源码传入servletContextAwareBean调用Class<?> handlerType = context.getType(beanName)时，却可获取到ExampleControler的class对象，
+- 在源码传入servletContextAwareBean调用Class<?> handlerType = context.getType(beanName)时，却可获取到ExampleControler的class对象。
 
 
+
+servletContextAwareBean
 
 
 
