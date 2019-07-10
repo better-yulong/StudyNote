@@ -536,7 +536,7 @@ BeanNameUrlHandlerMapping类determineUrlsForHandler方法（从源码来看beanN
 		return StringUtils.toStringArray(urls);
 	}
 ```
-DefaultAnnotationHandlerMapping类determineUrlsForHandler方法：
+DefaultAnnotationHandlerMapping类determineUrlsForHandler方法（beanName为servletContextAwareBean）：
 ```language
 	protected String[] determineUrlsForHandler(String beanName) {
 		ApplicationContext context = getApplicationContext();
