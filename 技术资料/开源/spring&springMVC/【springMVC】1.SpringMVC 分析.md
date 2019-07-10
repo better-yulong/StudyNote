@@ -536,7 +536,7 @@ BeanNameUrlHandlerMapping类determineUrlsForHandler方法（从源码来看beanN
 		return StringUtils.toStringArray(urls);
 	}
 ```
-
+目前的beanName如若将@Controller
 
 
 
