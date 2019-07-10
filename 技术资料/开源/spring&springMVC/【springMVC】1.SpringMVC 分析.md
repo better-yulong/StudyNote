@@ -485,7 +485,7 @@ example-servlet.xml：
                         //设置当前HandlerMapping实例对应的context
 			this.applicationContext = context;
 			this.messageSourceAccessor = new MessageSourceAccessor(context);
-                        //通过WebApplicationObjectSupport.initApplicationContext-->AbstractDetectingUrlHandlerMapping.initApplicationContext()-->AbstractDetectingUrlHandlerMapping.detectHandlers() 
+                        //通过WebApplicationObjectSupport.initApplicationContext-->AbstractDetectingUrlHandlerMapping.initApplicationContext()-->AbstractDetectingUrlHandlerMapping.detectHandlers()（重点）
 			initApplicationContext(context);
 		}
 		else {
@@ -493,7 +493,7 @@ example-servlet.xml：
 		}
 	}
 ```
-
+AbstractDetectingUrlHandlerMapping.detectHandlers()方法从名称即可判断是检测
 
 
 
