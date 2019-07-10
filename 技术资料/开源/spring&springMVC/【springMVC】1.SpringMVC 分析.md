@@ -497,10 +497,7 @@ AbstractDetectingUrlHandlerMapping.detectHandlers()方法从名称即可判断�
 ```language
 
 	protected void detectHandlers() throws BeansException {
-		if (logger.isDebugEnabled()) {
-			logger.debug("Looking for URL mappings in application context: " + getApplicationContext());
-		}
-          
+		//此处detectHandlersInAncestorContexts为false         
 		String[] beanNames = (this.detectHandlersInAncestorContexts ?
 				BeanFactoryUtils.beanNamesForTypeIncludingAncestors(getApplicationContext(), Object.class) :
 				getApplicationContext().getBeanNamesForType(Object.class));
