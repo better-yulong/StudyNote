@@ -564,7 +564,7 @@ DefaultAnnotationHandlerMapping类determineUrlsForHandler方法（beanName为ser
 							hasEmptyMethodLevelMappings = true;
 						}
 						else {
-                                                        //封装class类的RequestMapping及Methods的RequestMapping
+                                                        //封装class类的RequestMapping及Methods的RequestMapping成完整的url列表（[/example/helloWorld, /example/helloWorld.*, /example/helloWorld/]）
 							String combinedPattern = getPathMatcher().combine(typeLevelPattern, methodLevelPattern);
                                                 
 							addUrlsForPath(urls, combinedPattern);
