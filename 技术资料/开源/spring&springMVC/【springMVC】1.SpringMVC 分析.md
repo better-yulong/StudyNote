@@ -485,7 +485,7 @@ example-servlet.xml：
                         //设置当前HandlerMapping实例对应的context
 			this.applicationContext = context;
 			this.messageSourceAccessor = new MessageSourceAccessor(context);
-                        
+                        //通过
 			initApplicationContext(context);
 		}
 		else {
