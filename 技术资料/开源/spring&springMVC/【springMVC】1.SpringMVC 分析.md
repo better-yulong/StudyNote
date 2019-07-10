@@ -443,6 +443,7 @@ example-servlet.xml：
 ```language
 @SuppressWarnings("unchecked")
 	protected <T> List<T> getDefaultStrategies(ApplicationContext context, Class<T> strategyInterface) {
+                 
 		String key = strategyInterface.getName();
 		String value = defaultStrategies.getProperty(key);
 		if (value != null) {
@@ -455,7 +456,7 @@ example-servlet.xml：
 					strategies.add((T) strategy);
 				}
 				catch (ClassNotFoundException ex) {
-                                  
+                                  //省略异常处理
 				}
 			}
 			return strategies;
