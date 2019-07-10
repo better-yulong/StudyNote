@@ -445,13 +445,15 @@ example-servlet.xml：
 	protected <T> List<T> getDefaultStrategies(ApplicationContext context, Class<T> strategyInterface) {
                 //根据strategyInterface的值HandlerMapping.class获取完整类名org.springframework.web.servlet.HandlerMapping
 		String key = strategyInterface.getName();
-                //根据key取DispatcherServlet.properties文件对应的Properties对象获取配置项：
+                //根据key取DispatcherServlet.properties文件对应的Properties对象获取配置项：org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping,org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping
 		String value = defaultStrategies.getProperty(key);
 		if (value != null) {
+                        //类名转数组
 			String[] classNames = StringUtils.commaDelimitedListToStringArray(value);
 			List<T> strategies = new ArrayList<T>(classNames.length);
 			for (String className : classNames) {
 				try {
+                                       
 					Class<?> clazz = ClassUtils.forName(className, DispatcherServlet.class.getClassLoader());
 					Object strategy = createDefaultStrategy(context, clazz);
 					strategies.add((T) strategy);
