@@ -610,10 +610,11 @@ DefaultAnnotationHandlerMapping类determineUrlsForHandler方法（beanName为ser
 信息: Mapped URL path [/example/helloWorld] onto handler 'exampleController'
 2019-7-10 18:17:29 org.springframework.web.servlet.handler.AbstractUrlHandlerMapping registerHandler
 信息: Mapped URL path [/example/helloWorld.*] onto handler 'exampleController'
-2019-7-10 18:17:29 org.springframework.web.servlet.handler.AbstractUrlHandlerMapping registerHandler
+2019-7-10 18:17:29 org.springfreamework.web.servlet.handler.AbstractUrlHandlerMapping registerHandler
 信息: Mapped URL path [/example/helloWorld/] onto handler 'exampleController'
 ```
-
+###### 补充知识点
+当spring的xml配置文件中，手动注入b
 
 
 
