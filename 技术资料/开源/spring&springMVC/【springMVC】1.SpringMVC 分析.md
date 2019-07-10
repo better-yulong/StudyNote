@@ -615,7 +615,7 @@ DefaultAnnotationHandlerMapping类determineUrlsForHandler方法（beanName为ser
 ```
 ###### 补充知识点
 1. 当spring的xml配置文件中，手动注入bean（xml的bean标签： name="/exampleController"）与context:component-scan(且class需有@Controller(value="/exampleController2")同时配置时会xml的顺序优先取前面对应的name值作为其容器中bean的beanNam
-2. 同1如若同时使用注解扫描及手动bean注入时，会两次实例化bean（第2次wfc ww pw
+2. 同1如若同时使用注解扫描及手动bean注入时，会两次调用实例化bean的方法（第2次会判断是否已存在，有则从
 
 
 
