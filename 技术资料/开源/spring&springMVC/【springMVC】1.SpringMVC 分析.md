@@ -519,7 +519,7 @@ AbstractDetectingUrlHandlerMapping.detectHandlers()方法从名称即可判断�
 		}
 	}
 ```
-
+BeanNameUrlHandlerMapping类determineUrlsForHandler方法（从源码来看
 ```language
 	@Override
 	protected String[] determineUrlsForHandler(String beanName) {
