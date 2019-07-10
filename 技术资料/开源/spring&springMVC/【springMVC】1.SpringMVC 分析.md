@@ -443,8 +443,9 @@ example-servlet.xml：
 ```language
 @SuppressWarnings("unchecked")
 	protected <T> List<T> getDefaultStrategies(ApplicationContext context, Class<T> strategyInterface) {
-                //根据strategyInterface的值HandlerMapping.class获取完整类名
+                //根据strategyInterface的值HandlerMapping.class获取完整类名org.springframework.web.servlet.HandlerMapping
 		String key = strategyInterface.getName();
+                //根据key取Dispat
 		String value = defaultStrategies.getProperty(key);
 		if (value != null) {
 			String[] classNames = StringUtils.commaDelimitedListToStringArray(value);
