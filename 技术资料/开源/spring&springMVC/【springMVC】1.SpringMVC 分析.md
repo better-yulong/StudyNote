@@ -552,7 +552,7 @@ DefaultAnnotationHandlerMapping类determineUrlsForHandler方法（beanName为ser
 			String[] typeLevelPatterns = mapping.value();
 			if (typeLevelPatterns.length > 0) {
 				// @RequestMapping specifies paths at type level
-                                //判断是方法级别的RequestMapping配置信息，根据配置组装urls
+                                //判断是方法级别的RequestMapping配置信息，根据配置组装urls，即会根据（[/helloWorld, /helloWorld.*, /helloWorld/]）
 				String[] methodLevelPatterns = determineUrlsForHandlerMethods(handlerType, true);
 				for (String typeLevelPattern : typeLevelPatterns) {
 					if (!typeLevelPattern.startsWith("/")) {
