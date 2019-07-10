@@ -591,8 +591,14 @@ DefaultAnnotationHandlerMapping类determineUrlsForHandler方法（beanName为ser
 - 在源码传入servletContextAwareBean调用Class<?> handlerType = context.getType(beanName)时，却可获取到- ExampleControler的class对象。
 - 经过层层分析，为啥呢？想呵呵，很简单因为xml配置ExampleControler时复制的忘了修改指定的id就是rvletContextAwareBean；导致xml解析bean标签注册BeanDefinition时ExampleControler对应的beanName就是这个。哈哈，傻了...
 ###### BeanNameUrlHandlerMapping是如何解析生成handlerMap？
-上面已经分析了基于注解方式的时，DefaultAnnotationHandlerMapping会依次解析class、method方法上的@RequestMapping注解，生成url并将url与ExampleControler.class映射保存至其handlerMap；而BeanNameUrlHandlerMapping呢？如其如应该就是beanName名称url处理，直接盾BeanNameUrlHandlerMapping源码注释吧。
-
+上面已经分析了基于注解方式的时，DefaultAnnotationHandlerMapping会依次解析class、method方法上的@RequestMapping注解，生成url并将url与ExampleControler.class映射保存至其handlerMap；而BeanNameUrlHandlerMapping呢？如其如应该就是beanName名称url处理，直接盾BeanNameUrlHandlerMapping源码注释：
+```language
+ The mapping is from URL to bean name. Thus an incoming URL "/foo" would map
+ * to a handler named "/foo", or to "/foo /foo2" in case of multiple mappings to
+ * a single handler. Note: In XML definitions, you'll need to use an alias
+ * name="/foo" in the bean definition, as the XML id may not contain slashes
+```
+相对就比较好理解，即在xml中的iy
 
 
 
