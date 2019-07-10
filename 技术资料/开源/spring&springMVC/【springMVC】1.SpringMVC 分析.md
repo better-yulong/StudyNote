@@ -453,7 +453,7 @@ example-servlet.xml：
 			List<T> strategies = new ArrayList<T>(classNames.length);
 			for (String className : classNames) {
 				try {
-                                       
+                                        //加载class
 					Class<?> clazz = ClassUtils.forName(className, DispatcherServlet.class.getClassLoader());
 					Object strategy = createDefaultStrategy(context, clazz);
 					strategies.add((T) strategy);
