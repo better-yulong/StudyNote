@@ -504,7 +504,7 @@ AbstractDetectingUrlHandlerMapping.detectHandlers()方法从名称即可判断�
 
 		// Take any bean name that we can determine URLs for.
 		for (String beanName : beanNames) {
-                        //此处AbstractDetectingUrlHandlerMapping的determineUrlsForHandler为abstract需要子类自行实现，即根据beanName获取可处理请求的urls列表(BeanNameUrlHandlerMapping、DefaultAnnotationHandlerMappinge有)
+                        //此处AbstractDetectingUrlHandlerMapping的determineUrlsForHandler为abstract需要子类自行实现，即根据beanName获取可处理请求的urls列表(BeanNameUrlHandlerMapping、DefaultAnnotationHandlerMapping有不同的实现)
 			String[] urls = determineUrlsForHandler(beanName);
 			if (!ObjectUtils.isEmpty(urls)) {
 				// URL paths found: Let's consider it a handler.
@@ -536,7 +536,7 @@ BeanNameUrlHandlerMapping类determineUrlsForHandler方法（从源码来看beanN
 		return StringUtils.toStringArray(urls);
 	}
 ```
-
+DefaultAnnotationHandlerMapping类determineUrlsForHandler方法：
 ```language
 	protected String[] determineUrlsForHandler(String beanName) {
 		ApplicationContext context = getApplicationContext();
