@@ -565,7 +565,7 @@ DefaultAnnotationHandlerMapping类determineUrlsForHandler方法（beanName为ser
                                                          addUrlsForPath(urls, combinedPattern);
 						}
 					}
-					if (hasEmptyMethodLevelMappings ||
+  					if (hasEmptyMethodLevelMappings ||
 							org.springframework.web.servlet.mvc.Controller.class.isAssignableFrom(handlerType)) {
 						addUrlsForPath(urls, typeLevelPattern);
 					}
