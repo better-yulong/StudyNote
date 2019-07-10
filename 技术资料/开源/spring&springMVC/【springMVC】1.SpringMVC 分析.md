@@ -470,7 +470,7 @@ example-servlet.xml：
 		}
 	}
 ```
-org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping,org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping原始对象实例化就不做分析，重点分析原始对象实例化之后的处理过程。之前有分析过BeanPostProcessor接口有两个核心接口：postProcessBeforeInitialization
+org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping,org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping原始对象实例化就不做分析，重点分析原始对象实例化之后的处理过程。之前有分析过BeanPostProcessor接口有两个核心接口：postProcessBeforeInitialization、postProcessAfterInitialization用于实例对象初始化前后的处理。
 
 
 
