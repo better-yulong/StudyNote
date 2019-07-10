@@ -493,7 +493,33 @@ example-servlet.xml：
 		}
 	}
 ```
-AbstractDetectingUrlHandlerMapping.detectHandlers()方法从名称即可判断是检测
+AbstractDetectingUrlHandlerMapping.detectHandlers()方法从名称即可判断是检测Hanlder：
+```language
+
+	protected void detectHandlers() throws BeansException {
+		if (logger.isDebugEnabled()) {
+			logger.debug("Looking for URL mappings in application context: " + getApplicationContext());
+		}
+		String[] beanNames = (this.detectHandlersInAncestorContexts ?
+				BeanFactoryUtils.beanNamesForTypeIncludingAncestors(getApplicationContext(), Object.class) :
+				getApplicationContext().getBeanNamesForType(Object.class));
+
+		// Take any bean name that we can determine URLs for.
+		for (String beanName : beanNames) {
+			String[] urls = determineUrlsForHandler(beanName);
+			if (!ObjectUtils.isEmpty(urls)) {
+				// URL paths found: Let's consider it a handler.
+				registerHandler(urls, beanName);
+			}
+			else {
+				if (logger.isDebugEnabled()) {
+					logger.debug("Rejected bean name '" + beanName + "': no URL paths identified");
+				}
+			}
+		}
+	}
+```
+
 
 
 
