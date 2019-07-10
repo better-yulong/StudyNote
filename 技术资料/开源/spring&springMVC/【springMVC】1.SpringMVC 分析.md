@@ -551,7 +551,7 @@ DefaultAnnotationHandlerMapping类determineUrlsForHandler方法（beanName为ser
                         //结果为：[/example]
 			String[] typeLevelPatterns = mapping.value();
 			if (typeLevelPatterns.length > 0) {
-				// @RequestMapping specifies paths at type level
+				// @RequestMapping specifies paths at type level（返回null）
 				String[] methodLevelPatterns = determineUrlsForHandlerMethods(handlerType, true);
 				for (String typeLevelPattern : typeLevelPatterns) {
 					if (!typeLevelPattern.startsWith("/")) {
