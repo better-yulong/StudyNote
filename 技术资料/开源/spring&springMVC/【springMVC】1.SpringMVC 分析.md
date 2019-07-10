@@ -578,7 +578,7 @@ DefaultAnnotationHandlerMapping类determineUrlsForHandler方法（beanName为ser
 			}
 		}
 		else if (AnnotationUtils.findAnnotation(handlerType, Controller.class) != null) {
-			//class无RequestMapping仅方法上包含RequestMapping注解 
+			
 			return determineUrlsForHandlerMethods(handlerType, false);
 		}
 		else {
