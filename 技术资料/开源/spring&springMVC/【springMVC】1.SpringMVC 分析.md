@@ -443,7 +443,7 @@ example-servlet.xml：
 ```language
 @SuppressWarnings("unchecked")
 	protected <T> List<T> getDefaultStrategies(ApplicationContext context, Class<T> strategyInterface) {
-                 
+                //根据strategyInterface的值HandlerMapping.class获取完整类名
 		String key = strategyInterface.getName();
 		String value = defaultStrategies.getProperty(key);
 		if (value != null) {
