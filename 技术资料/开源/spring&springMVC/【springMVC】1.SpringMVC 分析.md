@@ -598,10 +598,9 @@ DefaultAnnotationHandlerMapping类determineUrlsForHandler方法（beanName为ser
  * a single handler. Note: In XML definitions, you'll need to use an alias
  * name="/foo" in the bean definition, as the XML id may not contain slashes
 ```
-相对就比较好理解，即在example-servelt.xml修改为（注意此处为手动注入bean,老）：
+相对就比较好理解，即在example-servelt.xml修改为（注意此处为手动注入bean,暂不要配置context:component-scan）：
 ```language
 	<bean id="exampleController"  name="/exampleController"  class="com.aoe.demo.springmvc.ExampleController"/>
-
 ```
 
 
