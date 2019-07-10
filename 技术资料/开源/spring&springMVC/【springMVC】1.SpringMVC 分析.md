@@ -540,6 +540,7 @@ DefaultAnnotationHandlerMapping类determineUrlsForHandler方法（beanName为ser
 ```language
 	protected String[] determineUrlsForHandler(String beanName) {
 		ApplicationContext context = getApplicationContext();
+                //通过即可获得ExampleController
 		Class<?> handlerType = context.getType(beanName);
 		RequestMapping mapping = context.findAnnotationOnBean(beanName, RequestMapping.class);
 		if (mapping != null) {
