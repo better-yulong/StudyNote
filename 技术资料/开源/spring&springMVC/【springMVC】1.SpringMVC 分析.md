@@ -520,6 +520,23 @@ AbstractDetectingUrlHandlerMapping.detectHandlers()方法从名称即可判断�
 	}
 ```
 
+```language
+	@Override
+	protected String[] determineUrlsForHandler(String beanName) {
+		List<String> urls = new ArrayList<String>();
+		if (beanName.startsWith("/")) {
+			urls.add(beanName);
+		}
+		String[] aliases = getApplicationContext().getAliases(beanName);
+		for (String alias : aliases) {
+			if (alias.startsWith("/")) {
+				urls.add(alias);
+			}
+		}
+		return StringUtils.toStringArray(urls);
+	}
+```
+
 
 
 
