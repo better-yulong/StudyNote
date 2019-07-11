@@ -656,7 +656,8 @@ Error creating bean with name 'org.springframework.web.servlet.mvc.annotation.De
    2. DefaultAnnotationHandlerMapping则是解析class、method对应的RequestMapping注解生成url，然后以url为keyExampleController.class为value存入至DefaultAnnotationHandlerMapping实例对应hanlderMap。同样，存入hanlderMap之前会先使用key检查是否已存在，而由于上面讲的同一class因beanName不同容器中存在两个对象，所以解析到第2个对象的RequestMapping注解时，生成的url之前存入到hanlderMap中了，此次存入之前的检查不通过，故会报上面的错误。
 
 ##### 4.1.3 http请求404问题
-既然上面已经明确了xml中bean标签与@Controller同时存在问题，注释xml的bean的手动注入使用注解
+既然上面已经明确了xml中bean标签与@Controller同时存在问题，注释xml的bean的手动注入使用注解方式来分析该问题。
+
 
 
 
