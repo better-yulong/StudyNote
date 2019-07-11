@@ -648,6 +648,7 @@ public class ExampleController {
 信息: Mapped URL path [/example/helloWorld/] onto handler '/exampleController2'
 Error creating bean with name 'org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping': Initialization of bean failed; nested exception is java.lang.IllegalStateException: Cannot map handler 'exampleController1' to URL path [/example/helloWorld]: There is already handler of type [class com.aoe.demo.springmvc.ExampleController] mapped.
 ```
+原因呢？
 
 
 
