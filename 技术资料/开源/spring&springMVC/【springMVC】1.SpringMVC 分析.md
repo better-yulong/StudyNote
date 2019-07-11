@@ -658,7 +658,7 @@ Error creating bean with name 'org.springframework.web.servlet.mvc.annotation.De
 
 ##### 4.1.3 http请求404问题
 - 既然上面已经明确了xml中bean标签与@Controller同时存在问题，注释xml的bean的手动注入使用注解方式来分析该问题。之前有分析过，http请求分发的入口源码在DispatcherServlet(FrameworkServlet).processRequest(HttpServletRequest, HttpServletResponse) 。
-- 基于http://localhost:8080/springmvc3-analysis/example/helloWorld 访问时始终报404，经调试分析在匹配url之分几点：1.判断fullPath是否包含应用名（有可能是/）并处理；2.使用url匹配servlet配置（即对应wb.xml的servlet配置（<url-pattern>/example/*</url-pattern>）并生成servletName（会从url中把web.xml中可匹配的前缀去除但保留前面的/）即为/helloWorld；3.使用servletName即/helloWorld去hanlderMap获取
+- 基于http://localhost:8080/springmvc3-analysis/example/helloWorld 访问时始终报404，经调试分析在匹配url之分几点：1.判断fullPath是否包含应用名（有可能是/）并处理；2.使用url匹配servlet配置（即对应wb.xml的servlet配置（<url-pattern>/example/*</url-pattern>）并生成servletName（会从url中把web.xml中可匹配的前缀去除但保留前面的/）即为/helloWorld；3.使用servletName即/helloWorld去hanlderMap获取获取Hanlder实例...额，根据之前的分析
 
 
 
