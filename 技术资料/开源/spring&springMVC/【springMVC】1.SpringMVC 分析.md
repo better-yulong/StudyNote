@@ -631,7 +631,7 @@ public class ExampleController {
 ```
 ```language
 	<context:component-scan base-package="com.aoe.demo.springmvc"/>
-	<bean id="exampleController"  name="/exampleController"  class="com.aoe.demo.springmvc.ExampleController"/>
+	<bean id="exampleController1"  name="/exampleController"  class="com.aoe.demo.springmvc.ExampleController"/>
 ```
 若如该示例运行时会异常，提示
 
