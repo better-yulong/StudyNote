@@ -668,8 +668,8 @@ Error creating bean with name 'org.springframework.web.servlet.mvc.annotation.De
 
 
 
-##### 补充知识点
-1. 404差别
+##### 补充知识点：404返回
+404分两种场景，1是请求url在web.xml无
 
 
 
