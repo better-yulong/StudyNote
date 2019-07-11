@@ -657,7 +657,7 @@ Error creating bean with name 'org.springframework.web.servlet.mvc.annotation.De
 
 ##### 4.1.3 http请求404问题
 既然上面已经明确了xml中bean标签与@Controller同时存在问题，注释xml的bean的手动注入使用注解方式来分析该问题。
-
+基于http://localhost:8080/springmvc3-analysis/example/helloWorld 访问时始终报
 
 
 
