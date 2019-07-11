@@ -657,7 +657,7 @@ Error creating bean with name 'org.springframework.web.servlet.mvc.annotation.De
 - 完成BeanNameUrlHandlerMapping、DefaultAnnotationHandlerMapping基于beanName或者RequestMapping解析生成hanlder之后，会将BeanNameUrlHandlerMapping、DefaultAnnotationHandlerMapping对应的两个实例对象赋值给DispatcherServlet实例，而后续http请求则会分别调用这两个实例进行url匹配与分析（先BeanNameUrlHandlerMapping匹配，后匹配DefaultAnnotationHandlerMapping）
 
 ##### 4.1.3 http请求404问题
-既然上面已经明确了xml中bean标签与@Controller同时存在问题，注释xml的bean的手动注入使用注解方式来分析该问题。之前有分析过，http请求分发的入口源码在
+既然上面已经明确了xml中bean标签与@Controller同时存在问题，注释xml的bean的手动注入使用注解方式来分析该问题。之前有分析过，http请求分发的入口源码在DispatcherServlet(FrameworkServlet).processRequest(HttpServletRequest, HttpServletResponse) 。
 基于http://localhost:8080/springmvc3-analysis/example/helloWorld 访问时始终报404，
 
 
