@@ -664,7 +664,7 @@ Error creating bean with name 'org.springframework.web.servlet.mvc.annotation.De
 2019-7-11 18:14:15 org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver handleNoSuchRequestHandlingMethod
 警告: No matching handler method found for servlet request: path '/exampleController', method 'GET', parameters map[[empty]]
 ```
-从日志来看，即未找到RequestHandlingMethod。通过调试发现，
+从日志来看，即未找到RequestHandlingMethod。通过调试发现，基于BeanNameUrlHandlerMapping会先根据url获取
 
 
 
