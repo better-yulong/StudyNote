@@ -649,7 +649,7 @@ public class ExampleController {
 Error creating bean with name 'org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping': Initialization of bean failed; nested exception is java.lang.IllegalStateException: Cannot map handler 'exampleController1' to URL path [/example/helloWorld]: There is already handler of type [class com.aoe.demo.springmvc.ExampleController] mapped.
 ```
 原因呢？做如下几点解答：
-1. 之前说的xml中标签是按顺序解析，这个地方按顺序的只是解析生成BeanDefinition是按明的当两该顺序；所以就会有上面说的出现beanName重复进，会用后解析生成的BeanDefinition替换掉先解析
+1. 之前说的xml中标签是按顺序解析，这个地方按顺序的只是解析生成BeanDefinition是按明的当两该顺序；所以就会有上面说的出现beanName重复进，会用后解析生成的BeanDefinition替换掉先解析生成的BeanDefitinion(如日志：Overriding bean definition for bean 'exampleController1': replacing [Generic bean: class [com.aoe.demo.springmvc.ExampleController]）
 
 
 
