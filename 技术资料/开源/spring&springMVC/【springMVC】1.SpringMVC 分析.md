@@ -653,7 +653,7 @@ Error creating bean with name 'org.springframework.web.servlet.mvc.annotation.De
 2. 如若xml中bean标签与@Controller同时配置，而beanName不一样，会分别在Spring容器中实例化两个不同的实例与不同的beanName对应。
 3. xml中bean标签与@Controller同时且beanName不一致时，为何会提示handler 已经被映射（只是在解析RequestMapping标签时才会报错） ，解析时会获取Spring容器中所有的beanName表现（顺序同上面的beanDefinitionNames List）：
    1. BeanNameUrlHandlerMapping逻辑相对简单，即判断beanName是否/开头，若是则以beanName为key，ExampleController.class为value存入至hanlderMap；存入hanlderMap之前会先使用key检查是否已存在，而beanName不两只故检查通过；
-   2. DefaultAnnotationHandlerMapping则是解析class、method对应的
+   2. DefaultAnnotationHandlerMapping则是解析class、method对应的RequestMapping注解生成url，然后以url为key
 
 
 
