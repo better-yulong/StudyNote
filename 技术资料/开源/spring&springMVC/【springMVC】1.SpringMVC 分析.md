@@ -634,6 +634,20 @@ public class ExampleController {
 	<bean id="exampleController1"  name="/exampleController"  class="com.aoe.demo.springmvc.ExampleController"/>
 ```
 若如该示例运行时会异常（摘取）：
+```language
+信息: Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@172290f: defining beans [/exampleController2,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,exampleController1,org.springframework.context.annotation.ConfigurationClassPostProcessor$ImportAwareBeanPostProcessor#0]; root of factory hierarchy
+2019-7-11 9:22:28 org.springframework.web.servlet.handler.AbstractUrlHandlerMapping registerHandler
+信息: Mapped URL path [/exampleController2] onto handler '/exampleController2'
+2019-7-11 9:22:28 org.springframework.web.servlet.handler.AbstractUrlHandlerMapping registerHandler
+信息: Mapped URL path [/exampleController] onto handler 'exampleController1'
+2019-7-11 9:22:28 org.springframework.web.servlet.handler.AbstractUrlHandlerMapping registerHandler
+信息: Mapped URL path [/example/helloWorld] onto handler '/exampleController2'
+2019-7-11 9:22:28 org.springframework.web.servlet.handler.AbstractUrlHandlerMapping registerHandler
+信息: Mapped URL path [/example/helloWorld.*] onto handler '/exampleController2'
+2019-7-11 9:22:28 org.springframework.web.servlet.handler.AbstractUrlHandlerMapping registerHandler
+信息: Mapped URL path [/example/helloWorld/] onto handler '/exampleController2'
+Error creating bean with name 'org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping': Initialization of bean failed; nested exception is java.lang.IllegalStateException: Cannot map handler 'exampleController1' to URL path [/example/helloWorld]: There is already handler of type [class com.aoe.demo.springmvc.ExampleController] mapped.
+```
 
 
 
