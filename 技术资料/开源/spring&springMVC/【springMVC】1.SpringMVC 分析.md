@@ -658,13 +658,13 @@ Error creating bean with name 'org.springframework.web.servlet.mvc.annotation.De
 
 ##### 4.1.3 http请求404问题
 1. 既然上面已经明确了xml中bean标签与@Controller同时存在问题，注释xml的bean的手动注入使用注解方式来分析该问题。之前有分析过，http请求分发的入口源码在DispatcherServlet(FrameworkServlet).processRequest(HttpServletRequest, HttpServletResponse) 。
-- 基于http://localhost:8080/springmvc3-analysis/example/helloWorld 访问时始终报404，经调试分析在匹配url之分几点：1.判断fullPath是否包含应用名（有可能是/）并处理；2.使用url匹配servlet配置（即对应wb.xml的servlet配置（<url-pattern>/example/*</url-pattern>）并生成servletName（会从url中把web.xml中可匹配的前缀去除但保留前面的/）即为/helloWorld；3.使用servletName即/helloWorld去hanlderMap获取获取Hanlder实例...额，根据之前的分析/helloWorld确实匹配不到。那就知道怎么确认分析是否正确了，访问：http://localhost:8080/springmvc3-analysis/example/example/helloWorld 就OK了，既然这样就知道怎么处理了。
+- 基于http://localhost:8080/springmvc3-analysis/example/helloWorld 访问时始终报404，经调试分析在匹配url之分几点：1.判断fullPath是否包含应用名（有可能是/）并处理；2.使用url匹配servlet配置（即对应wb.xml的servlet配置（<url-pattern>/example/*</url-pattern>）并生成servletName（会从url中把web.xml中可匹配的前缀去除但保留前面的/）即为/helloWorld；3.使用servletName即/helloWorld去hanlderMap获取获取Hanlder实例（DefaultAnnotationHandlerMapping）...额，根据之前的分析/helloWorld确实匹配不到。那就知道怎么确认分析是否正确了，访问：http://localhost:8080/springmvc3-analysis/example/example/helloWorld 就OK了，既然这样就知道怎么处理了。
 2. 由于示例有配置@Controller(value="/exampleController")，故也顺便看看http://localhost:8080/springmvc3-analysis/exampleController 结果怎样。页面仍是404，而后台有日志：
 ```language
 2019-7-11 18:14:15 org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver handleNoSuchRequestHandlingMethod
 警告: No matching handler method found for servlet request: path '/exampleController', method 'GET', parameters map[[empty]]
 ```
-从日志来看，即未找到RequestHandlingMethod。通过调试发现，基于BeanNameUrlHandlerMapping会先根据url前面部分（/exampleController）获取Hanlder（实现与上面分析相似），但在获取到Hanlder之后，则会再次获取HandlerAdapter实例ha，最终调用 ha.handle(processedRequest, response, mappedHandler.getHandler())完成实际调用并返回ModelAndView实例（ha这点儿点即使上面的基于）
+从日志来看，即未找到RequestHandlingMethod。通过调试发现，基于BeanNameUrlHandlerMapping会先根据url前面部分（/exampleController）获取Hanlder（实现与上面分析相似），但在获取到Hanlder之后，则会再次获取HandlerAdapter实例ha，最终调用 ha.handle(processedRequest, response, mappedHandler.getHandler())完成实际调用并返回ModelAndView实例（ha这点儿点即使上面的基于DefaultAnnotationHandlerMapping流程也类似），但当前在
 
 
 
