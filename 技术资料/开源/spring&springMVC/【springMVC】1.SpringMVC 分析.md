@@ -664,7 +664,8 @@ Error creating bean with name 'org.springframework.web.servlet.mvc.annotation.De
 2019-7-11 18:14:15 org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver handleNoSuchRequestHandlingMethod
 警告: No matching handler method found for servlet request: path '/exampleController', method 'GET', parameters map[[empty]]
 ```
-从日志来看，即未找到RequestHandlingMethod。通过调试发现，基于BeanNameUrlHandlerMapping会先根据url前面部分（/exampleController）获取Hanlder（实现与上面分析相似），但在获取到Hanlder之后，则会再次获取HandlerAdapter实例ha，最终调用 ha.handle(processedRequest, response, mappedHandler.getHandler())完成实际调用并返回ModelAndView实例（ha这点儿点即使上面的基于DefaultAnnotationHandlerMapping流程也类似）。补充一点哈，
+从日志来看，即未找到RequestHandlingMethod。通过调试发现，基于BeanNameUrlHandlerMapping会先根据url前面部分（/exampleController）获取Hanlder（实现与上面分析相似），但在获取到Hanlder之后，则会再次获取HandlerAdapter实例ha，最终调用 ha.handle(processedRequest, response, mappedHandler.getHandler())完成实际调用并返回ModelAndView实例（ha这点儿点即使上面的基于DefaultAnnotationHandlerMapping流程也类似）。补充一点哈，调用 ha.handle之前也会根据调用Interceptor）
+
 
 
 
