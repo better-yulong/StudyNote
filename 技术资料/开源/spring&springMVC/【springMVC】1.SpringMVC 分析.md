@@ -649,7 +649,7 @@ public class ExampleController {
 Error creating bean with name 'org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping': Initialization of bean failed; nested exception is java.lang.IllegalStateException: Cannot map handler 'exampleController1' to URL path [/example/helloWorld]: There is already handler of type [class com.aoe.demo.springmvc.ExampleController] mapped.
 ```
 原因呢？做如下几点解答：
-1. 之前说的xml中基于
+1. 之前说的xml中标签是按顺序解析，这个地方按顺序的只是BeanDefinition
 
 
 
