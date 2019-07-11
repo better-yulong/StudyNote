@@ -652,8 +652,8 @@ Error creating bean with name 'org.springframework.web.servlet.mvc.annotation.De
 1. 之前说的xml中标签是按顺序解析，这个地方按顺序的只是解析生成BeanDefinition是按明的当两该顺序；所以就会有上面说的出现beanName重复进，会用后解析生成的BeanDefinition替换掉先解析生成的BeanDefitinion(如日志：Overriding bean definition for bean 'exampleController1': replacing [Generic bean: class [com.aoe.demo.springmvc.ExampleController]）。而bean的实例化则是beanDefinitionNames List的顺序（即按解析到beanName的先后顺序）
 2. 如若xml中bean标签与@Controller同时配置，而beanName不一样，会分别在Spring容器中实例化两个不同的实例与不同的beanName对应。
 3. xml中bean标签与@Controller同时且beanName不一致时，为何会提示handler 已经被映射（只是在解析RequestMapping标签时才会报错） ，解析时会获取Spring容器中所有的beanName表现（顺序同上面的beanDefinitionNames List）：
-   1. BeanNameUrlHandlerMapping逻辑相对简单，即判断beanName是否/开头，若是则以beanName为key，ExampleController.class为value存入至hanlderMap；存入hanlderMap之前会先使用key检查是否已存在，而beanName不两只故检查通过；
-   2. DefaultAnnotationHandlerMapping则是解析class、method对应的RequestMapping注解生成url，然后以url为key
+   1. BeanNameUrlHandlerMapping逻辑相对简单，即判断beanName是否/开头，若是则以beanName为key，ExampleController.class为value存入至BeanNameUrlHandlerMapping实例对应的hanlderMap。存入hanlderMap之前会先使用key检查是否已存在，而beanName不两只故检查通过；
+   2. DefaultAnnotationHandlerMapping则是解析class、method对应的RequestMapping注解生成url，然后以url为keyExampleController.class为value存入至DefaultAnnotationHandlerMapping实例对应hanlderMap。同样，。存入hanlderMap之前会先使用key检查是否已存在，而beanName不两只故检查通过；
 
 
 
