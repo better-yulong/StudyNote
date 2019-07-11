@@ -671,7 +671,7 @@ Error creating bean with name 'org.springframework.web.servlet.mvc.annotation.De
 ##### 补充知识点：404错误（分两种场景）
 1. 请求url在web.xml无法匹配到对应的Servlet接受请求并处理，此是由Serrlvt容器即Tomcat返回404；
 2. 请求url可在web.xml中匹配到对应的Servlet接受请求，但无对应的Hanlder处理。
-3. 
+未对404做特殊处理，可直接
 
 
 
