@@ -668,7 +668,7 @@ Error creating bean with name 'org.springframework.web.servlet.mvc.annotation.De
 - 当前示例根据http://localhost:8080/springmvc3-analysis/exampleController 确实可基于BeanNameUrlHanlderMapping匹配到Hanlder（因为ExampleController类有显示使用@Controller（value="exampleController")),但在之后根据Hanlder获取HandlerAdapter。
 
 ##### 4.1.3.1 根据Hanlder获取HandlerAdapter
-内部实现则是使用Hanlder作为参数，依次调用HttpRequestHandlerAdapter、SimpleControllerHandlerAdapter
+内部实现则是使用Hanlder作为参数，依次调用HttpRequestHandlerAdapter、SimpleControllerHandlerAdapter、AnnotationMethodHandlerAdapter的support方法，并返回
 
 
 
