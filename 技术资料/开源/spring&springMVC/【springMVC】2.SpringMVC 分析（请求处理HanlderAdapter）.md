@@ -63,5 +63,5 @@ public class SimpleControllerHandlerAdapter implements HandlerAdapter {
 
 }
 ```
-通过源码分析，即hanlder对应类需是Controller的子类；于是乎开始尝试编写示例代码；然后发现
+通过源码分析，即hanlder对应类需是Controller的子类；于是乎开始尝试编写示例代码。然额，发现当使用@Controller注解与implement
 
