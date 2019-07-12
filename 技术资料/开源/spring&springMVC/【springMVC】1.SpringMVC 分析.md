@@ -665,7 +665,7 @@ Error creating bean with name 'org.springframework.web.servlet.mvc.annotation.De
 警告: No matching handler method found for servlet request: path '/exampleController', method 'GET', parameters map[[empty]]
 ```
 - 从日志来看，即未找到RequestHandlingMethod。通过调试发现，基于BeanNameUrlHandlerMapping会先根据url前面部分（/exampleController）获取Hanlder（先BeanName再DefaultAnnotationHandlerMapping，只为获取Hanlder）。之后是公共流程：基于Hanlder及其他参数HandlerAdapter实例ha，调用 ha.handle(processedRequest, response, mappedHandler.getHandler())完成实际调用并返回ModelAndView实例。补充一点哈，调用 ha.handle之前也会根据调用Interceptor）
-- 当前示例根据http://localhost:8080/springmvc3-analysis/exampleController 确实可基于BeanNameUrlHanlderMapping匹配到Hanlder（因为ExampleController
+- 当前示例根据http://localhost:8080/springmvc3-analysis/exampleController 确实可基于BeanNameUrlHanlderMapping匹配到Hanlder（因为ExampleController类有显示使用@Controller（value="exampleController")),w
 
 
 
