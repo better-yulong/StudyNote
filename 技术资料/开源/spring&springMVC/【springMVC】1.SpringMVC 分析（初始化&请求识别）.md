@@ -665,12 +665,13 @@ Error creating bean with name 'org.springframework.web.servlet.mvc.annotation.De
 警告: No matching handler method found for servlet request: path '/exampleController', method 'GET', parameters map[[empty]]
 ```
 - 从日志来看，即未找到RequestHandlingMethod。通过调试发现，基于BeanNameUrlHandlerMapping会先根据url前面部分（/exampleController）获取Hanlder（先BeanName再DefaultAnnotationHandlerMapping，只为获取Hanlder）。之后是公共流程：基于Hanlder及其他参数HandlerAdapter实例ha，调用 ha.handle(processedRequest, response, mappedHandler.getHandler())完成实际调用并返回ModelAndView实例。补充一点哈，调用 ha.handle之前也会根据调用Interceptor）
-- 当前示例根据http://localhost:8080/springmvc3-analysis/exampleController 确实可基于BeanNameUrlHanlderMapping匹配到Hanlder（因为ExampleController类有显示使用@Controller（value="exampleController")),但在之后根据Hanlder获取HandlerAdapter。
+- 当前示例根据http://localhost:8080/springmvc3-analysis/exampleController 确实可基于BeanNameUrlHanlderMapping匹配到Hanlder（因为ExampleController类有显示使用@Controller（value="exampleController")),但在之后根据Hanlder判断并返回HandlerAdapter实例。
 
 ###### 4.1.3.1 根据Hanlder获取HandlerAdapter
-内部实现则是使用Hanlder作为参数，依次调用HttpRequestHandlerAdapter、SimpleControllerHandlerAdapter、AnnotationMethodHandlerAdapter的support方法并返回HandlerAdapter实例
+内部实现则是使用Hanlder作为参数，依次调用HttpRequestHandlerAdapter、SimpleControllerHandlerAdapter、AnnotationMethodHandlerAdapter的support方法并返回HandlerAdapter实例ha（这三种之一），而在后面会基于hanlder实例作为参数调用ha.handler处理http请求（不同的HandlerAdapter的handler方法有不同的实现）
 至此，下一章节继续分析 
 
+至于上面示例使用http://localhost:8080/springmvc3-analysis/exampleController  始终404看下一章节即可明白了。
 ##### 补充知识点：404错误（分两种场景）
 1. 请求url在web.xml无法匹配到对应的Servlet接受请求并处理，此是由Serrlvt容器即Tomcat返回404；
 2. 请求url可在web.xml中匹配到对应的Servlet接受请求，但无对应的Hanlder处理。
