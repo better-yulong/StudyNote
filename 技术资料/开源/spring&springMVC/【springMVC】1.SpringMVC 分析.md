@@ -669,7 +669,7 @@ Error creating bean with name 'org.springframework.web.servlet.mvc.annotation.De
 
 ###### 4.1.3.1 根据Hanlder获取HandlerAdapter
 内部实现则是使用Hanlder作为参数，依次调用HttpRequestHandlerAdapter、SimpleControllerHandlerAdapter、AnnotationMethodHandlerAdapter的support方法并返回HandlerAdapter实例
-至此，下一
+至此，下一章节继续分析 
 
 ##### 补充知识点：404错误（分两种场景）
 1. 请求url在web.xml无法匹配到对应的Servlet接受请求并处理，此是由Serrlvt容器即Tomcat返回404；
