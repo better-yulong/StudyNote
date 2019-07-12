@@ -40,6 +40,6 @@ public class HttpRequestHandlerAdapter implements HandlerAdapter {
 - 扩展实践后面再讲
 
 
-### 一.HttpRequestHandlerAdapter 实践
+### 一.BeanNameUrlHanlderMapping 实践
 
 
