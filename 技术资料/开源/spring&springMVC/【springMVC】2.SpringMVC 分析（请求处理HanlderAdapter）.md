@@ -11,7 +11,7 @@
 		throw new ServletException("No adapter for handler [" + handler +
 ```
 
-### 一.HttpRequestHandlerAdapter实践
+### 一.HttpRequestHandlerAdapter 实践
 HttpRequestHandlerAdapter源码：
 ```language
 public class HttpRequestHandlerAdapter implements HandlerAdapter {
@@ -40,5 +40,6 @@ public class HttpRequestHandlerAdapter implements HandlerAdapter {
 - 扩展实践后面再讲
 
 
+### 一.HttpRequestHandlerAdapter 实践
 
 
