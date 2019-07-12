@@ -40,6 +40,28 @@ public class HttpRequestHandlerAdapter implements HandlerAdapter {
 - 扩展实践后面再讲
 
 
-### 一.BeanNameUrlHanlderMapping 实践
+### 一.SimpleControllerHandlerAdapter 实践
+```language
+public class SimpleControllerHandlerAdapter implements HandlerAdapter {
 
+	public boolean supports(Object handler) {
+		return (handler instanceof Controller);
+	}
+
+	public ModelAndView handle(HttpServletRequest request, HttpServletResponse response, Object handler)
+			throws Exception {
+
+		return ((Controller) handler).handleRequest(request, response);
+	}
+
+	public long getLastModified(HttpServletRequest request, Object handler) {
+		if (handler instanceof LastModified) {
+			return ((LastModified) handler).getLastModified(request);
+		}
+		return -1L;
+	}
+
+}
+```
+通过源码分析，即hanlder对应类需是
 
