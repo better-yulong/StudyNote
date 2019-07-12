@@ -36,5 +36,5 @@ public class HttpRequestHandlerAdapter implements HandlerAdapter {
 
 }
 ```
-结合上面的源码，HttpRequestHandlerAdapter示例相对简单，即判断当前Hanlder是否为HttpRequestHandler的实例，若是则直接返回当前Hanlder（参考上一章，
+结合上面的源码，HttpRequestHandlerAdapter示例相对简单，即判断当前Hanlder是否为HttpRequestHandler的实例，若是则直接返回当前Hanlder（参考上一章，Hanlder可简单理解为对应ExampleController的实例）
 
