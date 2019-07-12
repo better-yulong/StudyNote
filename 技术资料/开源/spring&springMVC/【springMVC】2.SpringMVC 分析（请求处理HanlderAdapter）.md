@@ -11,7 +11,30 @@
 		throw new ServletException("No adapter for handler [" + handler +
 ```
 
-### 一.HttpRequestHandlerAdapter示例
+### 一.HttpRequestHandlerAdapter实践
+HttpRequestHandlerAdapter源码：
+```language
+public class HttpRequestHandlerAdapter implements HandlerAdapter {
 
+	public boolean supports(Object handler) {
+		return (handler instanceof HttpRequestHandler);
+	}
+
+	public ModelAndView handle(HttpServletRequest request, HttpServletResponse response, Object handler)
+			throws Exception {
+
+		((HttpRequestHandler) handler).handleRequest(request, response);
+		return null;
+	}
+
+	public long getLastModified(HttpServletRequest request, Object handler) {
+		if (handler instanceof LastModified) {
+			return ((LastModified) handler).getLastModified(request);
+		}
+		return -1L;
+	}
+
+}
+```
 
 
