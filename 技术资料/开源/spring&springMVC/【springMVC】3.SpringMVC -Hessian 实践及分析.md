@@ -2,4 +2,4 @@
 
 ### 一. demo示例编写
 #### 1.1 创建示例工程
-创建示例工程rpc-client
+创建示例web 工程rpc-client、rpc-server,及java工程 rpc-skeleton，分别对于
