@@ -15,4 +15,6 @@
 
 	}
 ```
-之后需在rpc-client、rpc-server 应用的pom.xml中配置对rpc-skeleton的依赖
+之后需在rpc-client、rpc-server 应用的pom.xml中配置对rpc-skeleton的依赖.
+##### 1.1.2 rpc-skeleton 接口
+
