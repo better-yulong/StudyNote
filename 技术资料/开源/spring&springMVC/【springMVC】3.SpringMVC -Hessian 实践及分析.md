@@ -96,6 +96,7 @@ spring-servlet.xml配置
 	</bean> 
 ```
 同rpc-server在其pom.xml中配置对hessian的jar依赖
+##### 1.1.4 验证
+访问http://localhost:8080/rpc-client/rpc/entry，如预期完成hessian调用验证。
 
-访问http://localhost:8080/rpc-client/rpc/entry，如预期完成hessian
 
