@@ -57,6 +57,7 @@ pom.xml中配置对hessian的jar依赖
     </dependency>  
 ```
 ##### 1.1.3 rpc-client 客户端
+外部请求Controller（用于发起hessian客户端请求）
 
 
 同rpc-server在其pom.xml中配置对hessian的jar依赖
