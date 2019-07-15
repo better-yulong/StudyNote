@@ -17,6 +17,7 @@
 ```
 之后需在rpc-client、rpc-server 应用的pom.xml中配置对rpc-skeleton的依赖.
 ##### 1.1.2 rpc-server 服务
+HessianExampleService1服务实现类
 ```language
 package com.aoe.demo.rpc.hessian;
 
@@ -38,7 +39,16 @@ public class HessianExampleService1 implements HessianExampleInterf1 {
 }
 
 ```
-spring-servlet.xml
+spring-servlet.xml配置
+```language
+<bean name="hessianExampleService1"  class="com.aoe.demo.rpc.hessian.HessianExampleService1"></bean>
+	
+	<bean name="/hessianExampleService1" class="org.springframework.remoting.caucho.HessianServiceExporter">
+	    <property name="service" ref="hessianExampleService1"/>
+	    <property name="serviceInterface" value="com.aoe.demo.rpc.hessian.HessianExampleInterf1"/>
+	</bean>
+```
+注：需在pom.xml
 
 
 
