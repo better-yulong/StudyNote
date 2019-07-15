@@ -126,6 +126,7 @@ public class HessianServiceExporter extends HessianExporter implements HttpReque
 
 }
 ```
-HessianServiceExporter 类本身的源码仅包含handleRequest方法；分析之前先回顾下之前分析SpringMVC关于获取Hanlder及
+HessianServiceExporter 类本身的源码仅包含handleRequest方法；分析之前先回顾下之前分析SpringMVC关于获取Hanlder、HanlderAdapter及调用部分源码:
+
 
 
