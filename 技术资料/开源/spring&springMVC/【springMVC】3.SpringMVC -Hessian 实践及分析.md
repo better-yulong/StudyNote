@@ -17,5 +17,28 @@
 ```
 之后需在rpc-client、rpc-server 应用的pom.xml中配置对rpc-skeleton的依赖.
 ##### 1.1.2 rpc-server 服务
+```language
+package com.aoe.demo.rpc.hessian;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class HessianExampleService1 implements HessianExampleInterf1 {
+	
+	/* (non-Javadoc)
+	 * @see com.aoe.demo.rpc.hessian.HessianExampleInterf1#getServiceNames(java.util.List)
+	 */
+	public List getServiceNames(List paramList){
+		System.out.println("param0:" + paramList.get(0));
+		List serviceNames = new ArrayList<String>();
+		serviceNames.add("service hessianExampleService1");
+		return serviceNames ;
+	}
+
+}
+
+```
+spring-servlet.xml
+
 
 
