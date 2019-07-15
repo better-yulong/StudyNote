@@ -48,7 +48,8 @@ spring-servlet.xml配置
 	    <property name="serviceInterface" value="com.aoe.demo.rpc.hessian.HessianExampleInterf1"/>
 	</bean>
 ```
-注：需在pom.xml
+pom.xml中配置对hessian的jar的依赖
+
 
 
 
