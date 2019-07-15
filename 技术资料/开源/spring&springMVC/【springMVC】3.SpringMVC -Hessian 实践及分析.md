@@ -89,6 +89,11 @@ public class EntryController {
 }
 ```
 spring-servlet.xml配置
-
+```language
+ <bean id="accountService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+    	<property name="serviceUrl" value="http://localhost:8080/rpc-server/rpc/hessianExampleService1"/>
+    	<property name="serviceInterface" value="com.aoe.demo.rpc.hessian.HessianExampleInterf1"/>
+	</bean> 
+```
 同rpc-server在其pom.xml中配置对hessian的jar依赖
 
