@@ -48,7 +48,7 @@ spring-servlet.xml配置
 	    <property name="serviceInterface" value="com.aoe.demo.rpc.hessian.HessianExampleInterf1"/>
 	</bean>
 ```
-pom.xml中配置对hessian的jar的依赖
+pom.xml中配置对hessian的jar依赖
 ```language
      <dependency>
 	<groupId>com.caucho</groupId>
@@ -56,8 +56,8 @@ pom.xml中配置对hessian的jar的依赖
 	<version>3.2.1</version>
     </dependency>  
 ```
-##### 1.1.3 rpc-cli服务
+##### 1.1.3 rpc-client 客户端
 
 
-
+同rpc-server在其pom.xml中配置对hessian的jar依赖
 
