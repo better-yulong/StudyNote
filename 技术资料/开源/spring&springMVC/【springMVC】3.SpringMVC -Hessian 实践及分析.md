@@ -100,5 +100,32 @@ spring-servlet.xml配置
 访问http://localhost:8080/rpc-client/rpc/entry，如预期完成hessian调用验证。
 
 ### 二. hessian 服务端（HessianServiceExporter）
+HessianServiceExporter
+```language
+public class HessianServiceExporter extends HessianExporter implements HttpRequestHandler {
+
+	/**
+	 * Processes the incoming Hessian request and creates a Hessian response.
+	 */
+	public void handleRequest(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		if (!"POST".equals(request.getMethod())) {
+			throw new HttpRequestMethodNotSupportedException(request.getMethod(),
+					new String[] {"POST"}, "HessianServiceExporter only supports POST requests");
+		}
+
+		response.setContentType(CONTENT_TYPE_HESSIAN);
+		try {
+		  invoke(request.getInputStream(), response.getOutputStream());
+		}
+		catch (Throwable ex) {
+		  throw new NestedServletException("Hessian skeleton invocation failed", ex);
+		}
+	}
+
+}
+```
+
 
 
