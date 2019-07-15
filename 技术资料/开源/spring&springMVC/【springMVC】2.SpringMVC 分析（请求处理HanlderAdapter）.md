@@ -37,8 +37,6 @@ public class HttpRequestHandlerAdapter implements HandlerAdapter {
 }
 ```
 - 结合上面的源码，HttpRequestHandlerAdapter示例相对简单，即判断当前Hanlder是否为HttpRequestHandler的实例，若是则直接返回当前Hanlder（参考上一章，Hanlder可简单理解为对应ExampleController的实例），此处还是花费了比较多的时间，最终还是大致理解了下HttpRequestHandler的注释：HttpRequestHandler用于处理http请求；最简单的示例是在web.xml定义HttpRequestHandler bean并通过servlet-name与该beanName匹配；典型的实现就是直接构建binary响应而不需要view资源，这区别于SpringMVC的Controller，仅支持简单返回ModeAndView。同Spring2.0一样，基于Spring的远程服务提供，诸如HttpInvokerServiceExporter、HessianServiceExporter。实现该接口比Controller接口更具扩展性，因其对于spring web基础构建的最小依赖。
-- 
-
 
 ### 二.SimpleControllerHandlerAdapter 实践
 ```language
