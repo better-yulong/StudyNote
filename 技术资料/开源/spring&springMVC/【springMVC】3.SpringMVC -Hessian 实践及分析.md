@@ -129,7 +129,7 @@ public class HessianServiceExporter extends HessianExporter implements HttpReque
 HessianServiceExporter 类本身的源码仅包含handleRequest方法；分析之前先回顾下之前分析SpringMVC关于获取Hanlder、HanlderAdapter及调用原理:
 1. hanlder注册
 SpringMVC容器启动初始化上下文时，会检测所有的Hanlder(注解或者beanName）；而当前示例hessian服务发布时beanName为"/hessianExampleService1"，符合该规则即在rpc-server启动时，会调用this.handlerMap.put(urlPath, resolvedHandler) 完成urlPath("/hessianExampleService1")与resolvedHandler（HessianServiceExporter实例）的映射；
-2.根据rpc-client的配置（<property name="serviceUrl" value="http://localhost:8080/rpc-server/rpc/hessianExampleService1"/>）
+2.根据rpc-client的配置客户端发起hessian服务调用时（<property name="serviceUrl" value="http://localhost:8080/rpc-server/rpc/hessianExampleService1"/>），
 
 
 
