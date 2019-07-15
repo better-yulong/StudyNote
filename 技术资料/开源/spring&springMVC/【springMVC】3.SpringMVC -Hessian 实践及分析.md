@@ -15,4 +15,4 @@
 
 	}
 ```
-之后需在rpc
+之后需在rpc-client、rpc-server 应用的pom.xml中配置对rpc-skeleton的依赖
