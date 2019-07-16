@@ -31,10 +31,10 @@ public class DubboExampleService1 implements DubboExampleInterf1 {
 		serviceNames.add("DubboExampleService1");
 		return serviceNames ;
 	}
-
 }
 ```
-
+######  2.1.2.2 xml配置
+参考官网添加xml头
 
 
 Configuration problem: Unable to locate Spring NamespaceHandler for XML schema namespace
