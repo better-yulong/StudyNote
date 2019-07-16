@@ -8,11 +8,19 @@ Dubbo2.7由apache维护，因公司使用的仍是com.alibaba的Dubbo版本，�
 dubbo系统示例工程沿用Spring&SpirngMVC分析时hessian示例使用的三个工程:rpc-server、rpc-client、rpc-skeleton.
 #### 2.1 配置方式
 根据dubbo的官方文档（http://dubbo.apache.org/zh-cn/docs/user/configuration/xml.html）， dubbo支持多种配置：XML配置、API配置、注解配置，当前示例先选择xml配置方式
-##### 2.1.1 dubbo 服务接口（rpc-skeleton
+##### 2.1.1 dubbo 服务接口（rpc-skeleton)
+```language
+package com.aoe.demo.rpc.dubbo;
 
+import java.util.List;
 
+public interface DubboExampleInterf1 {
+	
+	public List serviceProvider(List params);
 
-##### 2.1.1 dubbo服务
+}
+```
+##### 2.1.2 dubbo服务
 rpc-skeleton新
 
 
