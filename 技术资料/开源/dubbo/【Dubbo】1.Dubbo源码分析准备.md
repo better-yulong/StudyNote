@@ -36,7 +36,7 @@ public class DubboExampleService1 implements DubboExampleInterf1 {
 ######  2.1.2.2 xml配置
 参考官网添加xml头(xmlns、xsd），之后基于dubbo 标签完成bean及dubbo相关配置，然而启动后始终报错：
 org.springframework.beans.factory.parsing.BeanDefinitionParsingException: Configuration problem: Unable to locate Spring NamespaceHandler for XML schema namespace [http://dubbo.apache.org/schema/dubbo]。
-- 最初基于官网配置，并未意识到未引入
+- 最初基于官网配置，并未意识到未引入dubbo 的jar包；
 开始没太明白，初步怀疑是xml头文件修改时出现错误，然而多次确认发现并无明显错误；于是基于之前自定义NamespaceHanlder的经验，于是全文搜索"dubbo.apache.org/schema/dubbo"确认对应hanlder配置发现并没有找到（步骤一下载的dubbo源码并无匹配项）。本来还有些许疑虑,于是换个思路分析 *.halder文件中关于Namespace配置，至此才恍然大悟，官网基于apache dubbo配置，而当前dubbo版本为alibaba版本：
 ```language
 http\://code.alibabatech.com/schema/dubbo=com.alibaba.dubbo.config.spring.schema.DubboNamespaceHandler
