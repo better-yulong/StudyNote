@@ -8,7 +8,8 @@ Dubbo2.7由apache维护，因公司使用的仍是com.alibaba的Dubbo版本，�
 dubbo系统示例工程沿用Spring&SpirngMVC分析时hessian示例使用的三个工程:rpc-server、rpc-client、rpc-skeleton.
 #### 2.1 配置方式
 根据dubbo的官方文档（http://dubbo.apache.org/zh-cn/docs/user/configuration/xml.html）， dubbo支持多种配置：XML配置、API配置、注解配置，当前示例先选择xml配置方式
-
+##### 2.1.1 dubbo服务
+rpc-skel
 
 
 Configuration problem: Unable to locate Spring NamespaceHandler for XML schema namespace
