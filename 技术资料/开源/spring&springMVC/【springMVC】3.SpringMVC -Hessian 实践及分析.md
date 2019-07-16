@@ -571,6 +571,7 @@ getHessianOutput方法根据_isHessian2Request参数确认返回Output实例类�
     	<property name="hessian2" value="true"></property>
 	</bean>
 ```
-额，运行OK，客户端调试发现使用的确实如预期为Hessian2Output；那服务端呢？
+额，运行OK，客户端调试发现使用的确实如预期为Hessian2Output；那服务端呢？调试如预期。
+
 
 
