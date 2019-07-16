@@ -20,7 +20,7 @@ public interface DubboExampleInterf1 {
 
 }
 ```
-##### 2.1.2 dubbo服务
+##### 2.1.2 dubbo服务实现(rpc-server)
 rpc-skeleton新
 
 
