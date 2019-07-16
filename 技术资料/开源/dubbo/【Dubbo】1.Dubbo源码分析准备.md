@@ -4,4 +4,4 @@ Dubbo2.7由apache维护，因公司使用的仍是com.alibaba的Dubbo版本，�
 eclipse基于https://github.com/apache/dubbo，选择2.5.x为初始化版本，创建本地仓库。Eclipse中import git仓库代码并copy至workspace。
 
 ### 二.dubbo配置及示例验证
-dubbo
+dubbo系统示例工程沿用SpringM
