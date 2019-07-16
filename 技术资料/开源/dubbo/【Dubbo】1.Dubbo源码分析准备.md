@@ -21,7 +21,7 @@ public interface DubboExampleInterf1 {
 }
 ```
 ##### 2.1.2 dubbo服务实现(rpc-server)
-rpc-skeleton新
+######  2.1.2.1 
 
 
 Configuration problem: Unable to locate Spring NamespaceHandler for XML schema namespace
