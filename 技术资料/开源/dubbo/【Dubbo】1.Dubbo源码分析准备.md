@@ -34,7 +34,7 @@ public class DubboExampleService1 implements DubboExampleInterf1 {
 }
 ```
 ######  2.1.2.2 xml配置
-参考官网添加xml头
+参考官网添加xml头(xmlns、xsd），之后基于dubbo标签完成
 
 
 Configuration problem: Unable to locate Spring NamespaceHandler for XML schema namespace
