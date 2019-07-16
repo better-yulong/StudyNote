@@ -21,7 +21,20 @@ public interface DubboExampleInterf1 {
 }
 ```
 ##### 2.1.2 dubbo服务实现(rpc-server)
-######  2.1.2.1 
+######  2.1.2.1 DubboExampleService1服务实现
+```language
+public class DubboExampleService1 implements DubboExampleInterf1 {
+
+	public List serviceProvider(List params) {
+		System.out.println("param0:" + params.get(0));
+		List serviceNames = new ArrayList<String>();
+		serviceNames.add("DubboExampleService1");
+		return serviceNames ;
+	}
+
+}
+```
+
 
 
 Configuration problem: Unable to locate Spring NamespaceHandler for XML schema namespace
