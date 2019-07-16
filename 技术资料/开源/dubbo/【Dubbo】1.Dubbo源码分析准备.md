@@ -6,4 +6,4 @@ eclipse基于https://github.com/apache/dubbo，选择2.5.x为初始化版本，�
 ### 二.dubbo配置及示例验证
 dubbo系统示例工程沿用Spring&SpirngMVC分析时hessian示例使用的三个工程:rpc-server、rpc-client、rpc-skeleton.
 #### 2.1 配置方式
-根据dubbo的官方文档， dubbo
+根据dubbo的官方文档（http://dubbo.apache.org/zh-cn/docs/user/configuration/xml.html）， dubbo支持多种配置：XML配置、API配置、注解配置，当前示例先选择xml配置方式
