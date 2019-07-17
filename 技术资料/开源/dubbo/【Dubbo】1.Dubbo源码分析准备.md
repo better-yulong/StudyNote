@@ -15,7 +15,8 @@ eclipse基于https://github.com/apache/dubbo，选择2.5.3为初始化版本，�
         <url>http://maven.cuisongliu.com/content/groups/public</url>  
     </mirror> 
 ```
-3. 步骤2完成后，再次切到dubbo /目录运行mvn clean install -Dmaven.test.skip，此时运行发现dubbo-common包中的JSONTest.java测试方法报错无法编译通过。同样百度各种尝试如手动编译（却发现无源码）或更换fastjson版本号，各种不爽；无奈之下，因其是Test方法那粗暴点注释该方法，重新编译还真OK。于是乎后面同样的方式处理
+3. 步骤2完成后，再次切到dubbo /目录运行mvn clean install -Dmaven.test.skip，此时运行发现dubbo-common包中的JSONTest.java测试方法报错无法编译通过。同样百度各种尝试如手动编译（却发现无源码）或更换fastjson版本号，各种不爽；无奈之下，因其是Test方法那粗暴点注释该方法，重新编译还真OK。于是乎后面同样的方式处理ClientReconnectTest报错。
+4. 
 
 https://github.com/alibaba/dubbo-doc-static
 https://github.com/apache/dubbo/issues/21
