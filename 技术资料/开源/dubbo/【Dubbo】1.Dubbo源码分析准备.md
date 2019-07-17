@@ -8,6 +8,9 @@ eclipse基于https://github.com/apache/dubbo，选择2.5.3为初始化版本，�
 1.  dubbo解压缩后/目录运行mvn clean install -Dmaven.test.skip ，报错提示：opensesame相关报错。https://github.com/alibaba/opensesame 下载opensesame 的zip包（该包为alibaba开源项目的顶级父类项目），解压opensesame的zip包在其/目录运行 mvn clean install -Dmaven.test.skip ，相对比较顺利：opensesame成功编译并被安装至本地
 
 
+https://github.com/apache/dubbo/issues/21
+
+
 
 - zookeeper：windows版本（zookeeper-3.3.6.tar；已上传至StudyNote-Resource），解压缩之后运行bin目录下的zkServer即可启动zookeeper；另外也可运行同目录下zkCli进行客户端命令行模式（本地运行IP：127.0.0.1；默认端口2181)
 
