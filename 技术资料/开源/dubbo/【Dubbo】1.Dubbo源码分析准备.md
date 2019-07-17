@@ -7,7 +7,7 @@ eclipse基于https://github.com/apache/dubbo，选择2.5.3为初始化版本，�
 #### 1.1.2 dubbo intalll至本地仓库
 1.  dubbo解压缩后/目录运行mvn clean install -Dmaven.test.skip ，报错提示：opensesame相关报错。https://github.com/alibaba/opensesame 下载opensesame 的zip包（该包为alibaba开源项目的顶级父类项目），解压opensesame的zip包在其/目录运行 mvn clean install -Dmaven.test.skip ，相对比较顺利：opensesame成功编译并被安装至本地
 
-
+https://github.com/alibaba/dubbo-doc-static
 https://github.com/apache/dubbo/issues/21
 
 
