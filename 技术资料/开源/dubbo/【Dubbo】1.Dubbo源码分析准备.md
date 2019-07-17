@@ -21,7 +21,7 @@ eclipse基于https://github.com/apache/dubbo，选择2.5.3为初始化版本，�
 set MAVEN_OPTS=-XX:MaxPermSize=256m  //同时配置Xms、Xmx就不行，仅配置这一个确实可生效，先解决暂不定位原因
 set JAVA_HOME=D:\work\java\JDK6 //考虑到jdk兼容，采用JDK6编译，因为demo工程基本也是使用的JRE6
 ```
-4. 同步骤3解决NettyClientTest编译报错、
+4. 同步骤3解决NettyClientTest编译报错及其他
 
 https://github.com/alibaba/dubbo-doc-static
 https://github.com/apache/dubbo/issues/21
