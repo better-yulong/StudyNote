@@ -16,7 +16,12 @@ eclipse基于https://github.com/apache/dubbo，选择2.5.3为初始化版本，�
     </mirror> 
 ```
 3. 步骤2完成后，再次切到dubbo /目录运行mvn clean install -Dmaven.test.skip，此时运行发现dubbo-common包中的JSONTest.java测试方法报错无法编译通过。同样百度各种尝试如手动编译（却发现无源码）或更换fastjson版本号，各种不爽；无奈之下，因其是Test方法那粗暴点注释该方法，重新编译还真OK。于是乎后面同样的方式处理ClientReconnectTest报错。
-4. 步骤3运行一段时间之后再次中断，系统报错原因：PermGen space 溢出；该问题看似比较简单，但在我本地还是花了点时间，常用方法即是修改mvn.bat（windows平台）的MAVEN_OPTS参数（set MAVEN_OPTS=-Xms512m -Xmx2048m -XX:MaxPermSize=256m）。然额，修改后使用命令mvn -v查看提示Error，而仅修改了该参数；之后研究其他方式配置或者调整jdk版本，但并没生效，经过折腾及尝试，mvn.bat
+4. 步骤3运行一段时间之后再次中断，系统报错原因：PermGen space 溢出；该问题看似比较简单，但在我本地还是花了点时间，常用方法即是修改mvn.bat（windows平台）的MAVEN_OPTS参数（set MAVEN_OPTS=-Xms512m -Xmx2048m -XX:MaxPermSize=256m）。然额，修改后使用命令mvn -v查看提示Error，而仅修改了该参数；之后研究其他方式配置或者调整jdk版本，但并没生效，经过折腾及尝试，mvn.bat调整为：
+```language
+set MAVEN_OPTS=-XX:MaxPermSize=256m  //同时配置X
+set JAVA_HOME=D:\work\java\JDK6
+```
+
 
 https://github.com/alibaba/dubbo-doc-static
 https://github.com/apache/dubbo/issues/21
