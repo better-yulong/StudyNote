@@ -15,7 +15,7 @@ eclipse基于https://github.com/apache/dubbo，选择2.5.3为初始化版本，�
         <url>http://maven.cuisongliu.com/content/groups/public</url>  
     </mirror> 
 ```
-3. 步骤2完成后，再次切到dubbo /目录运行mvn clean install -Dmaven.test.skip，此时运行发现
+3. 步骤2完成后，再次切到dubbo /目录运行mvn clean install -Dmaven.test.skip，此时运行发现dubbo-common包中的JSONTest.java测试方法报错无法编译通过。同样
 
 https://github.com/alibaba/dubbo-doc-static
 https://github.com/apache/dubbo/issues/21
