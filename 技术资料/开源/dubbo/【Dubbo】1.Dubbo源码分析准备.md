@@ -148,4 +148,8 @@ http\://code.alibabatech.com/schema/dubbo=com.alibaba.dubbo.config.spring.schema
 ```language
 	<dubbo:reference id="dubboExampleService1" interface="com.aoe.demo.rpc.dubbo.DubboExampleInterf1" />
 ``` 
-一看感觉就少了什么东西（从哪儿获取注册的服务？），咋整？先不管，启动rpc-client会发现提示未配置dubbo:application，
+一看感觉就少了什么东西（从哪儿获取注册的服务？），咋整？先不管，启动rpc-client会发现提示未配置dubbo:application，之后同样会提示未配置dubbo:registry，参考源码示例配置修改spring xml配置：
+```language
+
+```
+
