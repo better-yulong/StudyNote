@@ -169,3 +169,7 @@ der%26pid%3D13576%26revision%3D0.0.1-SNAPSHOT%26side%3Dconsumer%26timestamp%3D15
    <dubbo:reference id="dubboExampleService1" interface="com.aoe.demo.rpc.dubbo.DubboExampleInterf1" />
 ```
 运再次启动，还有俩问题：1.zookeeper未启动，启动rpc-client应用也会卡住，通过栈信息即可确定是无法连接zookeeper；2.zookeeper启动，但zk中无服务注册信息或者rpc-server未启动，启动均会报错提示无可用的服务提供者
+```language
+Failed to check the status of the service com.aoe.demo.rpc.dubbo.DubboExampleInterf1. No provider available for the service com.aoe.demo.rpc.dubbo.DubboExampleInterf1 from the url zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=rpc-client&dubbo=2.5.3&interface=com.aoe.demo.rpc.dubbo.DubboExampleInterf1&methods=serviceProvider&pid=13576&revision=0.0.1-SNAPSHOT&side=consumer&timestamp=1563442468270 to the consumer 100.119.69.32 use dubbo version 2.5.3
+```
+
