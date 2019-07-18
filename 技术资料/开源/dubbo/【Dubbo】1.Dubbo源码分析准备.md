@@ -113,3 +113,25 @@ http\://code.alibabatech.com/schema/dubbo=com.alibaba.dubbo.config.spring.schema
 </beans>
 ```
 ######  2.1.2.3 pom.xml配置
+添加dubbo、zk依赖包
+```language
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>dubbo</artifactId>
+			<version>2.5.3</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring</artifactId>
+					<!-- 可以使用*号全部排除 -->
+					<!-- <groupId>*</groupId> <artifactId>*</artifactId> -->
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.github.sgroschupf</groupId>
+			<artifactId>zkclient</artifactId>
+			<version>0.1</version>
+		</dependency>
+```
+- 有两点需要注意：
