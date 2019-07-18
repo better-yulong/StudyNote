@@ -141,7 +141,14 @@ http\://code.alibabatech.com/schema/dubbo=com.alibaba.dubbo.config.spring.schema
 1. 运行时提示找不到CurrentHashMap的某方法，根据经验系class 对应的jdk不一致不兼容；遂逐个将dubbo及rpc项目的jdk编译版本统一指定为JDK6（其实也主要因为我本地有多个jdk版本，从JDK5至JDK8）
 2. 启动时系统假死，通过线程栈可发现是因为尝试连接zookeeper，启动zk即可。
 ######  2.1.2.5 查看zookeeper注册信息
-运行zookeeper bin目录中的zkCli.cmd文件即会可自动连接至zookeeper（命令行模式)。使用 ls / 可发现根节点新节dubbo节点；使用ls /dubbo 可发现节点 [com.aoe.demo.rpc.dubbo.DubboExampleInterf1] 注册成功；可继续 
+运行zookeeper bin目录中的zkCli.cmd文件即会可自动连接至zookeeper（命令行模式)。使用 ls / 可发现根节点新节dubbo节点；使用ls /dubbo 可发现节点 [com.aoe.demo.rpc.dubbo.DubboExampleInterf1] 注册成功；
+```language
+[zk: localhost:2181(CONNECTED) 0] ls /dubbo/com.aoe.demo.rpc.dubbo.DubboExampleI
+com.aoe.demo.rpc.dubbo.DubboExampleInterf1/
+consumers       configurators   routers         providers
+
+```
+ 
 
 ### dubbo客户端示例及验证
 根据之前分析源码经验，同时dubbo 历史版本的文档官网已比较难找，于是乎既然又源码了，那就直接从源码着手。参考dubbo-demo-consumer.xml配置rpc-client的spring xml配置文件（同rpc-server添加xml头）：
