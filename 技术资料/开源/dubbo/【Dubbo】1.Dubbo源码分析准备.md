@@ -83,6 +83,4 @@ org.springframework.beans.factory.parsing.BeanDefinitionParsingException: Config
 ```language
 http\://code.alibabatech.com/schema/dubbo=com.alibaba.dubbo.config.spring.schema.DubboNamespaceHandler
 ```
-
-
-Configuration problem: Unable to locate Spring NamespaceHandler for XML schema namespace
+调整xml头并添加dubbo服务配置：
