@@ -156,8 +156,7 @@ der%26pid%3D13576%26revision%3D0.0.1-SNAPSHOT%26side%3Dconsumer%26timestamp%3D15
 63442468270]
 ```
  
-
-### dubbo客户端示例及验证
+### 三.dubbo客户端示例及验证
 根据之前分析源码经验，同时dubbo 历史版本的文档官网已比较难找，于是乎既然又源码了，那就直接从源码着手。参考dubbo-demo-consumer.xml配置rpc-client的spring xml配置文件（同rpc-server添加xml头）：
 ```language
 	<dubbo:reference id="dubboExampleService1" interface="com.aoe.demo.rpc.dubbo.DubboExampleInterf1" />
