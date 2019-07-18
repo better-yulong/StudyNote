@@ -194,4 +194,5 @@ public class EntryController {
 
 }
 ```
-解决上面所有问题，依次启动zk、rpc-server、rpc-client，启动过程正常并无报错，然后调用entry方法入口 
+解决上面所有问题，依次启动zk、rpc-server、rpc-client，启动过程正常并无报错，然后调用entry方法入口，验证通过。
+
