@@ -172,5 +172,26 @@ der%26pid%3D13576%26revision%3D0.0.1-SNAPSHOT%26side%3Dconsumer%26timestamp%3D15
 Failed to check the status of the service com.aoe.demo.rpc.dubbo.DubboExampleInterf1. No provider available for the service com.aoe.demo.rpc.dubbo.DubboExampleInterf1 from the url zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=rpc-client&dubbo=2.5.3&interface=com.aoe.demo.rpc.dubbo.DubboExampleInterf1&methods=serviceProvider&pid=13576&revision=0.0.1-SNAPSHOT&side=consumer&timestamp=1563442468270 to the consumer 100.119.69.32 use dubbo version 2.5.3
 ```
 - 添加服务调用示例代码
+```language
+@Controller
+public class EntryController {
+	
+	@Autowired
+	private HessianExampleInterf1 hessianExampleService;
+	
+	@Autowired
+	private DubboExampleInterf1 dubboExampleService1;
+	
+	@RequestMapping("/entry")
+	@ResponseBody
+	public Object entry(){
+		List<String> params =  new ArrayList<String>();
+		params.add("parm");
+		System.out.println("hessianExampleService result0:" + hessianExampleService.getServiceNames(params).get(0));
+		System.out.println("dubboExampleService1 result0:" + dubboExampleService1.serviceProvider(params).get(0));
+		return "entry";
+	}
 
-解决上面所有问题，依次启动zk、rpc-server、rpc-client
+}
+```
+解决上面所有问题，依次启动zk、rpc-server、rpc-client，启动过程正常并无报错，
