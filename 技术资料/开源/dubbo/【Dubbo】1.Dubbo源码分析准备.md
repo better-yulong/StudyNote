@@ -24,9 +24,10 @@ set JAVA_HOME=D:\work\java\JDK6 //考虑到jdk兼容，采用JDK6编译，因为
 4. 同步骤3解决NettyClientTest编译报错及其他类似报错，耗时13分钟终于OK。
 注：alibaba dubbo官方文档（区别于apache dubbo）：https://github.com/alibaba/dubbo-doc-static
 
-#### 1.1.2 dubbo intalll至本地仓库
+#### 1.1.2 dubbo 源码导入至eclipse
+导入之后需要注意将
 
-#### 1.1.2  zookeeper
+#### 1.1.3  zookeeper
 windows版本（zookeeper-3.3.6.tar；已上传至StudyNote-Resource），解压缩之后运行bin目录下的zkServer即可启动zookeeper；另外也可运行同目录下zkCli进行客户端命令行模式（本地运行IP：127.0.0.1；默认端口2181)
 
 ### 二.dubbo配置及示例验证
