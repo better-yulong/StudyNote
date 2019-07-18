@@ -154,4 +154,4 @@ http\://code.alibabatech.com/schema/dubbo=com.alibaba.dubbo.config.spring.schema
     <dubbo:registry address="zookeeper://127.0.0.1:2181" />
 	<dubbo:reference id="dubboExampleService1" interface="com.aoe.demo.rpc.dubbo.DubboExampleInterf1" />
 ```
-运再次启动，还有俩问题：1.zookeeper未启动，会卡
+运再次启动，还有俩问题：1.zookeeper未启动，启动rpc-client应用
