@@ -140,4 +140,5 @@ http\://code.alibabatech.com/schema/dubbo=com.alibaba.dubbo.config.spring.schema
 ######  2.1.2.4 启动rpc-server 应用
 上面提示的部分问题也是启动过程出现的，但逐步解决，另外还有两点：
 1. 运行时提示找不到CurrentHashMap的某方法，根据经验系class 对应的jdk不一致不兼容；遂逐个将dubbo及rpc项目的jdk编译版本统一指定为JDK6（其实也主要因为我本地有多个jdk版本，从JDK5至JDK8）
-2. 启动时系统假死，
+2. 启动时系统假死，通过线程栈可发现是因为尝试连接zookeeper，启动zk即可。
+
