@@ -44,7 +44,7 @@ dataDir=E:/study/zkdata
 # the port at which the clients will connect
 clientPort=2181
 ```
-3. 运行bin目录下的zkServer即可启动zookeeper；另外也可运行同目录下zkCli进行客户端命令行模式（本地运行IP：127.0.0.1；默认端口2181)
+3. 运行bin目录下的zkServer即可启动zookeeper；另外也可运行同目录下zkCli进行客户端命令行模式（本地运行IP：127.0.0.1；端口2181)
 
 ### 二.dubbo配置及示例验证
 dubbo系统示例工程沿用Spring&SpirngMVC分析时hessian示例使用的三个工程:rpc-server、rpc-client、rpc-skeleton.
