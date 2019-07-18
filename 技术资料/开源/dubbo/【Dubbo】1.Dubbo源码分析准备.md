@@ -29,7 +29,10 @@ set JAVA_HOME=D:\work\java\JDK6 //考虑到jdk兼容，采用JDK6编译，因为
 
 #### 1.1.3  zookeeper
 1. windows版本（zookeeper-3.3.6.tar；已上传至StudyNote-Resource）
-2. 解压缩之后进入conf目录，复制zoo_simple.cfg文件为zoo.cfg,并指定端口号、数据运行bin目录下的zkServer即可启动zookeeper；另外也可运行同目录下zkCli进行客户端命令行模式（本地运行IP：127.0.0.1；默认端口2181)
+2. 解压缩之后进入conf目录，复制zoo_simple.cfg文件为zoo.cfg,并指定端口号、数据存储路径
+
+
+运行bin目录下的zkServer即可启动zookeeper；另外也可运行同目录下zkCli进行客户端命令行模式（本地运行IP：127.0.0.1；默认端口2181)
 
 ### 二.dubbo配置及示例验证
 dubbo系统示例工程沿用Spring&SpirngMVC分析时hessian示例使用的三个工程:rpc-server、rpc-client、rpc-skeleton.
