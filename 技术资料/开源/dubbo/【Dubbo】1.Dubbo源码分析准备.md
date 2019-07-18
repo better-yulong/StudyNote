@@ -164,8 +164,8 @@ der%26pid%3D13576%26revision%3D0.0.1-SNAPSHOT%26side%3Dconsumer%26timestamp%3D15
 ``` 
 一看感觉就少了什么东西（从哪儿获取注册的服务？），咋整？先不管，启动rpc-client会发现提示未配置dubbo:application，之后同样会提示未配置dubbo:registry，参考源码示例配置修改spring xml配置：
 ```language
-    <dubbo:application name="rpc-client" />
-    <dubbo:registry address="zookeeper://127.0.0.1:2181" />
-	<dubbo:reference id="dubboExampleService1" interface="com.aoe.demo.rpc.dubbo.DubboExampleInterf1" />
+   <dubbo:application name="rpc-client" />
+   <dubbo:registry address="zookeeper://127.0.0.1:2181" />
+   <dubbo:reference id="dubboExampleService1" interface="com.aoe.demo.rpc.dubbo.DubboExampleInterf1" />
 ```
 运再次启动，还有俩问题：1.zookeeper未启动，启动rpc-client应用也会卡住，通过栈信息即可确定是无法连接zookeeper；2.zookeeper启动，但zk中无服务注册信息或者rpc-server未启动，启动均会报错提示无可用的服务提供者
