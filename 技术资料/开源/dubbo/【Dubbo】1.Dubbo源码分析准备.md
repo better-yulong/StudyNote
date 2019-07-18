@@ -22,7 +22,6 @@ set MAVEN_OPTS=-XX:MaxPermSize=256m  //同时配置Xms、Xmx就不行，仅配�
 set JAVA_HOME=D:\work\java\JDK6 //考虑到jdk兼容，采用JDK6编译，因为demo工程基本也是使用的JRE6
 ```
 4. 同步骤3解决NettyClientTest编译报错及其他类似报错，耗时13分钟终于OK。--其实整个还是很花了点时间
-注：alibaba dubbo官方文档（区别于apache dubbo）：https://github.com/alibaba/dubbo-doc-static
 
 #### 1.1.2 dubbo 源码导入至eclipse
 解决错误
