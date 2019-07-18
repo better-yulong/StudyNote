@@ -147,5 +147,5 @@ http\://code.alibabatech.com/schema/dubbo=com.alibaba.dubbo.config.spring.schema
 根据之前分析源码经验，同时dubbo 历史版本的文档官网已比较难找，于是乎既然又源码了，那就直接从源码着手。参考dubbo-demo-consumer.xml配置rpc-client的spring xml配置文件（同rpc-server添加xml头）：
 ```language
 	<dubbo:reference id="dubboExampleService1" interface="com.aoe.demo.rpc.dubbo.DubboExampleInterf1" />
-```
-一看感觉
+``` 
+一看感觉就少了什么东西（从哪儿获取注册的服务？），咋整？先
