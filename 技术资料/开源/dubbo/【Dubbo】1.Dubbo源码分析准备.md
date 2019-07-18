@@ -143,4 +143,6 @@ http\://code.alibabatech.com/schema/dubbo=com.alibaba.dubbo.config.spring.schema
 ######  2.1.2.5 查看zookeeper注册信息
 运行zookeeper bin目录中的zkCli.cmd文件即会可自动连接至zookeeper（命令行模式)。使用 ls / 可发现根节点新节dubbo节点；使用ls /dubbo 可发现节点 [com.aoe.demo.rpc.dubbo.DubboExampleInterf1] 注册成功。
 
+### dubbo客户端示例及验证
+根据之前
 
