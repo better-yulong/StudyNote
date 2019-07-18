@@ -84,3 +84,31 @@ org.springframework.beans.factory.parsing.BeanDefinitionParsingException: Config
 http\://code.alibabatech.com/schema/dubbo=com.alibaba.dubbo.config.spring.schema.DubboNamespaceHandler
 ```
 调整xml头并添加dubbo服务配置：
+```language
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:context="http://www.springframework.org/schema/context"
+		xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+		xmlns:aop="http://www.springframework.org/schema/aop"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+		        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+				http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+				http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+	
+	<context:component-scan base-package="com.aoe.demo.rpc"/>
+	
+	<bean name="hessianExampleService1"  class="com.aoe.demo.rpc.hessian.HessianExampleService1"></bean>
+	
+	<bean name="/hessianExampleService1" class="org.springframework.remoting.caucho.HessianServiceExporter">
+	    <property name="service" ref="hessianExampleService1"/>
+	    <property name="serviceInterface" value="com.aoe.demo.rpc.hessian.HessianExampleInterf1"/>
+	</bean>
+	
+	<dubbo:application name="rpc-server"></dubbo:application>
+	<dubbo:registry address="zookeeper://127.0.0.1:2181"></dubbo:registry>
+	<dubbo:protocol name="dubbo" port="20890"></dubbo:protocol>
+	<bean id="dubboExampleService1" class="com.aoe.demo.rpc.dubbo.DubboExampleService1"></bean>
+	<dubbo:service interface="com.aoe.demo.rpc.dubbo.DubboExampleInterf1" ref="dubboExampleService1"></dubbo:service>
+</beans>
+```
