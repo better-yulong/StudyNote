@@ -135,4 +135,4 @@ http\://code.alibabatech.com/schema/dubbo=com.alibaba.dubbo.config.spring.schema
 		</dependency>
 ```
 - 有两点需要注意：
-1. 引入dubbo 2.5.3 之后启动应用会提示spring某个class对应method找不到，即NoSuchMethodFoundException；经分析因dubbo 自动依赖2.5 版本的spring包，导
+1. 引入dubbo 2.5.3 之后启动应用会提示spring某个class对应method找不到，即NoSuchMethodFoundException；经分析因dubbo 自动依赖2.5 版本的spring包; 而之前框架整体依赖Spring 3.1.0，导致spring版本不
