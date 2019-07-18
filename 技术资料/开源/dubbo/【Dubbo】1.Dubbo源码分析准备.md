@@ -45,7 +45,7 @@ clientPort=2181
 ```
 3. 运行bin目录下的zkServer即可启动zookeeper；另外也可运行同目录下zkCli进行客户端命令行模式（本地运行IP：127.0.0.1；端口2181)
 
-### 二.dubbo配置及示例验证
+### 二.dubbo 服务端配置及示例验证
 dubbo系统示例工程沿用Spring&SpirngMVC分析时hessian示例使用的三个工程:rpc-server、rpc-client、rpc-skeleton.
 #### 2.1 配置方式
 根据dubbo的官方文档（http://dubbo.apache.org/zh-cn/docs/user/configuration/xml.html）， dubbo支持多种配置：XML配置、API配置、注解配置，当前示例先选择xml配置方式
