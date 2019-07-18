@@ -139,4 +139,4 @@ http\://code.alibabatech.com/schema/dubbo=com.alibaba.dubbo.config.spring.schema
 2. 若不引入zk的包，启动时会提示找不到zk相关的class，根据pom.xml确认dubbo确实没有依赖zk包，需此处需单独配置zk依赖jar 
 ######  2.1.2.4 启动rpc-server 应用
 上面提示的部分问题也是启动过程出现的，但逐步解决，另外还有两点：
-1. 运行时提示找不到CurrentHashMapr afs
+1. 运行时提示找不到CurrentHashMap的某方法，根据经验系class 对应的jdk不一致不兼容；遂逐个将
