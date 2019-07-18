@@ -138,4 +138,4 @@ http\://code.alibabatech.com/schema/dubbo=com.alibaba.dubbo.config.spring.schema
 1. 引入dubbo 2.5.3 之后启动应用会提示spring某个class对应method找不到，即NoSuchMethodFoundException；经分析因dubbo 自动依赖2.5 版本的spring包; 而之前框架整体依赖Spring 3.1.0，导致spring版本不兼容，故需排除dubbo引入 的spring包。但是又不可采用*全部排除，因为dubbo 包依赖项目依赖的dubbo-config、dubbo-remoting等包，即按需排除即可；
 2. 若不引入zk的包，启动时会提示找不到zk相关的class，根据pom.xml确认dubbo确实没有依赖zk包，需此处需单独配置zk依赖jar 
 ######  2.1.2.4 启动rpc-server 应用
-启动过程
+上面提示的部分问题也是启动过程出现的，但逐步解决，另外还有两
