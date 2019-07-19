@@ -207,4 +207,4 @@ public class EntryController {
 	<dubbo:service interface="com.aoe.demo.rpc.dubbo.DubboExampleInterf1" ref="dubboExampleService1"></dubbo:service>
 ```
 结合之前分析经验，那肯定需先从自定义命名空间dubbo入手；参考Dubbo官方文档（http://dubbo.apache.org/zh-cn/docs/user/quick-start.html）：
-> Dubbo 采用全 Spring 配置方式，透明化接入应用，对应用没有任何 API 侵入，只需用 Spring 加载 Dubbo 的配置即可，Dubbo 基于 Spring 的 Schema 扩展 进行加载（spring中t）。如果不想使用 Spring 配置，可以通过 API 的方式 进行调用。
+> Dubbo 采用全 Spring 配置方式，透明化接入应用，对应用没有任何 API 侵入，只需用 Spring 加载 Dubbo 的配置即可，Dubbo 基于 Spring 的 Schema 扩展 进行加载（spring中常用的自定义标签：context、aop等实际都此用方式实现）。如果不想使用 Spring 配置，可以通过 API 的方式 进行调用。
