@@ -237,5 +237,4 @@ public class DubboNamespaceHandler extends NamespaceHandlerSupport {
 }
 ```
 ##### 4.1.1 Version.checkDuplicate(DubboNamespaceHandler.class)
-代码逻辑相对
-com/alibaba/dubbo/config/spring/schema/DubboNamespaceHandler.class
+代码逻辑相对简单，即根据class全限定名：com/alibaba/dubbo/config/spring/schema/DubboNamespaceHandler.class，
