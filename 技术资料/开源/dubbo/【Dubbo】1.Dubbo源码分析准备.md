@@ -197,7 +197,7 @@ public class EntryController {
 解决上面所有问题，依次启动zk、rpc-server、rpc-client，启动过程正常并无报错，然后调用entry方法入口，验证通过。
 
 ### 四.dubbo服务端源码分析
-示例工程rpc-server spring的xm中有关于dubbo的配置（）：
+示例工程rpc-server spring的xm中有关于dubbo的配置（暂无其他配置）：
 ```language
 	
 	<dubbo:application name="rpc-server"></dubbo:application>
@@ -206,4 +206,4 @@ public class EntryController {
 	<bean id="dubboExampleService1" class="com.aoe.demo.rpc.dubbo.DubboExampleService1"></bean>
 	<dubbo:service interface="com.aoe.demo.rpc.dubbo.DubboExampleInterf1" ref="dubboExampleService1"></dubbo:service>
 ```
-结合之前分析经验，
+结合之前分析经验，那肯定需先从自定义 命名空间
