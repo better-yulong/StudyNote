@@ -236,4 +236,4 @@ public class DubboNamespaceHandler extends NamespaceHandlerSupport {
 
 }
 ```
-##### 4.1.1 
+##### 4.1.1 Version.checkDuplicate(DubboNamespaceHandler.class)
