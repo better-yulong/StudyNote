@@ -206,4 +206,4 @@ public class EntryController {
 	<bean id="dubboExampleService1" class="com.aoe.demo.rpc.dubbo.DubboExampleService1"></bean>
 	<dubbo:service interface="com.aoe.demo.rpc.dubbo.DubboExampleInterf1" ref="dubboExampleService1"></dubbo:service>
 ```
-结合之前分析经验，那肯定需先从自定义 命名空间
+结合之前分析经验，那肯定需先从自定义命名空间dubbo入手；
