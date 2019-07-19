@@ -241,5 +241,8 @@ public class DubboNamespaceHandler extends NamespaceHandlerSupport {
 - 该类主要Version.checkDuplicate主要用于检查是否存在重复的jar包
 #### 4.2 各标签解析
 - 结合DubboNamespaceHandler及之前其他源码分析，此处完成xml的解析，根据标签生成ApplicationConfig、RegistryConfig、ProviderConfig等类的BeanDefinition，并调用parserContext.getRegistry().registerBeanDefinition(id, beanDefinition)注册。而在Spring容器实例化bean时会从Registry根据id获取对应的beanDefinition(getBeayn方法)---具体各标签后面另行讲解
-- 既然此处将xml解析生成各种BeanDefinition，那么根据之前分析spring过程，对应的Bean实例化之后可通过类似initial方式或者Processor方式来处理，于是乎调试看看。发现调试时始终无法关联到当前eclipse中的spring源码，而是关联到spring jar中的class反编译文件；定位发现dubbo工程自动依赖了之前提到的spring 2.5的jar,于是乎强制将各dubbo源码工程对
+- 既然此处将xml解析生成各种BeanDefinition，那么根据之前分析spring过程，对应的Bean实例化之后可通过类似initial方式或者Processor方式来处理，于是乎调试看看。发现调试时始终无法关联到当前eclipse中的spring源码，而是关联到spring jar中的class反编译文件；定位发现dubbo工程自动依赖了之前提到的spring 2.5的jar,于是乎强制将各dubbo源码工程对spring 2.5 的依赖强制升级到spring 3.1.0 
+
+
+
 
