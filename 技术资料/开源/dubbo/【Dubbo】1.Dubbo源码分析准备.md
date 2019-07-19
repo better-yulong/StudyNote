@@ -212,4 +212,8 @@ public class EntryController {
 > http\://code.alibabatech.com/schema/dubbo/dubbo.xsd=META-INF/dubbo.xsd；
 - 同时亦可在dubbo-config-spring工程META-INF\spring.handlers找到handler配置：
 > http\://code.alibabatech.com/schema/dubbo=com.alibaba.dubbo.config.spring.schema.DubboNamespaceHandler
-- 其实，根据之前分析命名一般会默认规范，如ContextNamespaceHandler、
+- 其实，根据之前分析命名一般会默认规范，如ContextNamespaceHandler、DubboNamespaceHandler
+#### 4.1 DubboNamespaceHandler分析
+```language
+
+```
