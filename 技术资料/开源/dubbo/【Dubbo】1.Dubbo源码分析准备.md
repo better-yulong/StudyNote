@@ -211,7 +211,7 @@ public class EntryController {
 - 根据xml文件头dubbo的xmlns:dubbo="http://code.alibabatech.com/schema/dubbo",可根据code.alibabatech.com/schema/dubbo搜索，即可在dubbo-config-spring工程META-INF\spring.schemas找到对应配置：
 > http\://code.alibabatech.com/schema/dubbo/dubbo.xsd=META-INF/dubbo.xsd；
 - 同时亦可在dubbo-config-spring工程META-INF\spring.handlers找到handler配置：
-> 段落引用
+> http\://code.alibabatech.com/schema/dubbo=com.alibaba.dubbo.config.spring.schema.DubboNamespaceHandler
 
 
 dubbo-config-spring
