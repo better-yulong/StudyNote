@@ -237,5 +237,5 @@ public class DubboNamespaceHandler extends NamespaceHandlerSupport {
 }
 ```
 ##### 4.1.1 Version.checkDuplicate(DubboNamespaceHandler.class)
-代码逻辑相对简单，即根据class全限定名：com/alibaba/dubbo/config/spring/schema/DubboNamespaceHandler.class在Version.class所在ClassCloader查找：ClassHelper.getCallerClassLoader(Version.class).getResources(path);判断是否有重复class（其中path即为class的全限定名）
+代码逻辑相对简单，即根据class全限定名：com/alibaba/dubbo/config/spring/schema/DubboNamespaceHandler.class在Version.class所在ClassCloader查找：ClassHelper.getCallerClassLoader(Version.class).getResources(path);判断是否有重复class（其中path即为class的全限定名）,具体见如知识点：
 ###### 4.1.1.1 ClassLoader
