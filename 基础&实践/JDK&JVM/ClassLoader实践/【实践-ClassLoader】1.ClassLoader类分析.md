@@ -44,8 +44,6 @@ public class ClassLoader1Test {
 		B:file:/D:/work/workspace/study-code-effective-java/JVMDemo/src/
 		B:null*/
 	}
-
 }
-
 
 ```
