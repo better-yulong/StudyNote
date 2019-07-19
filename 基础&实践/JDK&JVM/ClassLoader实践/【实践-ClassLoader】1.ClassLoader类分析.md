@@ -28,7 +28,7 @@ public class ClassLoader1Test {
 				[Loaded java.lang.Shutdown from C:\Program Files\Java\jre1.8.0_112\lib\rt.jar]
 				[Loaded java.lang.Shutdown$Lock from C:\Program Files\Java\jre1.8.0_112\lib\rt.jar]*/
 		
-		//
+		//通过验证可发现getResource并不会调用clssloader load class
 		
 		
 		System.out.println("......................");
@@ -44,5 +44,6 @@ public class ClassLoader1Test {
 	}
 
 }
+
 
 ```
