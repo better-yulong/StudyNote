@@ -199,7 +199,6 @@ public class EntryController {
 ### 四.dubbo服务端源码分析
 示例工程rpc-server spring的xm中有关于dubbo的配置（暂无其他配置）：
 ```language
-	
 	<dubbo:application name="rpc-server"></dubbo:application>
 	<dubbo:registry address="zookeeper://127.0.0.1:2181"></dubbo:registry>
 	<dubbo:protocol name="dubbo" port="20890"></dubbo:protocol>
