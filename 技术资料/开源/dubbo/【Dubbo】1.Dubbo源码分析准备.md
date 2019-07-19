@@ -215,18 +215,24 @@ public class EntryController {
 - 其实，根据之前分析命名一般会默认规范，如ContextNamespaceHandler、DubboNamespaceHandler
 #### 4.1 DubboNamespaceHandler分析
 ```language
-public class ContextNamespaceHandler extends NamespaceHandlerSupport {
+public class DubboNamespaceHandler extends NamespaceHandlerSupport {
+
+	static {
+		Version.checkDuplicate(DubboNamespaceHandler.class);
+	}
 
 	public void init() {
-		registerBeanDefinitionParser("property-placeholder", new PropertyPlaceholderBeanDefinitionParser());
-		registerBeanDefinitionParser("property-override", new PropertyOverrideBeanDefinitionParser());
-		registerBeanDefinitionParser("annotation-config", new AnnotationConfigBeanDefinitionParser());
-		registerBeanDefinitionParser("component-scan", new ComponentScanBeanDefinitionParser());
-		registerBeanDefinitionParser("load-time-weaver", new LoadTimeWeaverBeanDefinitionParser());
-		registerBeanDefinitionParser("spring-configured", new SpringConfiguredBeanDefinitionParser());
-		registerBeanDefinitionParser("mbean-export", new MBeanExportBeanDefinitionParser());
-		registerBeanDefinitionParser("mbean-server", new MBeanServerBeanDefinitionParser());
-	}
+	    registerBeanDefinitionParser("application", new DubboBeanDefinitionParser(ApplicationConfig.class, true));
+        registerBeanDefinitionParser("module", new DubboBeanDefinitionParser(ModuleConfig.class, true));
+        registerBeanDefinitionParser("registry", new DubboBeanDefinitionParser(RegistryConfig.class, true));
+        registerBeanDefinitionParser("monitor", new DubboBeanDefinitionParser(MonitorConfig.class, true));
+        registerBeanDefinitionParser("provider", new DubboBeanDefinitionParser(ProviderConfig.class, true));
+        registerBeanDefinitionParser("consumer", new DubboBeanDefinitionParser(ConsumerConfig.class, true));
+        registerBeanDefinitionParser("protocol", new DubboBeanDefinitionParser(ProtocolConfig.class, true));
+        registerBeanDefinitionParser("service", new DubboBeanDefinitionParser(ServiceBean.class, true));
+        registerBeanDefinitionParser("reference", new DubboBeanDefinitionParser(ReferenceBean.class, false));
+        registerBeanDefinitionParser("annotation", new DubboBeanDefinitionParser(AnnotationBean.class, true));
+    }
 
 }
 ```
