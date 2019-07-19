@@ -208,7 +208,7 @@ public class EntryController {
 结合之前分析经验，那肯定需先从自定义命名空间dubbo入手；参考Dubbo官方文档（http://dubbo.apache.org/zh-cn/docs/user/quick-start.html）：
 > Dubbo 采用全 Spring 配置方式，透明化接入应用，对应用没有任何 API 侵入，只需用 Spring 加载 Dubbo 的配置即可，Dubbo 基于 Spring 的 Schema 扩展 进行加载（spring中常用的自定义标签：context、aop等实际都此用方式实现）。如果不想使用 Spring 配置，可以通过 API 的方式 进行调用（API使用范围说明：API 仅用于 OpenAPI, ESB, Test, Mock 等系统集成，普通服务提供方或消费方，请采用XML 配置方式使用 Dubbo）。
 #### 4.1 dubbo schema扩展分析
-- 根据xml文件头dubbo的xmlns:dubbo="http://code.alibabatech.com/schema/dubbo",可根据code.alibabatech.com/schema/dubbo搜索，即可在dubbo-config-spring工程META-INF\spring.schemas找到对应配置：
+- 根据xml文件头dubbo的 xmlns:dubbo=http://code.alibabatech.com/schema/dubbo,可根据code.alibabatech.com/schema/dubbo搜索，即可在dubbo-config-spring工程META-INF\spring.schemas找到对应配置：
 > http\://code.alibabatech.com/schema/dubbo/dubbo.xsd=META-INF/dubbo.xsd；
 - 同时亦可在dubbo-config-spring工程META-INF\spring.handlers找到handler配置：
 > http\://code.alibabatech.com/schema/dubbo=com.alibaba.dubbo.config.spring.schema.DubboNamespaceHandler
