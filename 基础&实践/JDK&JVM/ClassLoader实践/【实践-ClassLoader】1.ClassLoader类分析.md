@@ -1,4 +1,4 @@
-可参考资料：https://www.guitu18.com/se/java/2019-02-22/29.html
+可参考资料：https://www.guitu18.com/se/java/2019-02-22/29.html、https://docs.oracle.com/javase/7/docs/api/java/lang/ClassLoader.html
 ```language
 package com.test.jvm.classloader;
 
