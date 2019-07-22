@@ -250,5 +250,8 @@ public class DubboNamespaceHandler extends NamespaceHandlerSupport {
 	<bean id="dubboExampleService1" class="com.aoe.demo.rpc.dubbo.DubboExampleService1"></bean>
 	<dubbo:service interface="com.aoe.demo.rpc.dubbo.DubboExampleInterf1" ref="dubboExampleService1"></dubbo:service>
 ```
+```language
+public class ServiceBean<T> extends ServiceConfig<T> implements InitializingBean, DisposableBean, ApplicationContextAware, ApplicationListener, BeanNameAware
+```
 
 
