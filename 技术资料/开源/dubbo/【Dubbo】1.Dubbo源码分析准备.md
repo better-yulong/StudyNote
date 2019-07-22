@@ -259,5 +259,6 @@ public class ServiceBean<T> extends ServiceConfig<T> implements InitializingBean
 ##### 2.ServiceBean类setApplicationContext方法（ApplicationListener）
 当前bean为BeanNameAware接口的实例，自动设置当前bean的applicationContext（即Spring容器的上下文），同时因当前ServiceBean实现ApplicationListener，该方法内会同时反射调用applicationContext的addApplicationListener方法，将当前ServiceBean实例添加至Listeners列表；
 ##### 3.ServiceBean类onApplicationEvent方法
+ServiceBean实现ApplicationListener，即需实现onApplicationEvent，
 
 
