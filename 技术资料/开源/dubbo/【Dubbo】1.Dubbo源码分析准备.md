@@ -255,5 +255,5 @@ public class ServiceBean<T> extends ServiceConfig<T> implements InitializingBean
 ```
 关于ServiceBean实现的接口之前分析Spring源码时曾有讲解过，基本作用相对比较清楚，即解析dubbo:service时会化BeanDefinition并完成注册（beanName默认取interface值，如com.aoe.demo.rpc.dubbo.DubboExampleInterf1），那么在完成com.aoe.demo.rpc.dubbo.DubboExampleInterf1对应的ServiceBean原始bean实例化后会依次调用：
 #####  ServiceBean类setBeanName方法
-即对应DefaultListableBeanFactory(AbstractAutowireCapableBeanFactory).invokeAwareMethods(final String beanName, final Object bean)；即
+即对应DefaultListableBeanFactory(AbstractAutowireCapableBeanFactory).invokeAwareMethods(final String beanName, final Object bean)；即当前bean为BeanNameAware接口的实例，自动设置当前bean的
 
