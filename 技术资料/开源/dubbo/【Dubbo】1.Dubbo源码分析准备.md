@@ -261,6 +261,6 @@ public class ServiceBean<T> extends ServiceConfig<T> implements InitializingBean
 ##### 3.ServiceBean类afterPropertiesSet()方法（对应InitializingBean）
 1. ServiceBean类实例bean实例provider是否为null，为null则：
 ##### 3.ServiceBean类onApplicationEvent方法
-ServiceBean实现ApplicationListener，即需实现onApplicationEvent
+ServiceBean实现ApplicationListener，即需实现onApplicationEvent方法.
 
 
