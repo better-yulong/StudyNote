@@ -290,8 +290,8 @@ public class ServiceBean<T> extends ServiceConfig<T> implements InitializingBean
 ```
 同provider，此种方式会在ServiceBean原始bean实例后设置properties属性时完成applacition属性的赋值（ServiceBean从间接父类AbstractInterfaceConfig类继承applacition属性）
 3. 不配置applacition：后续bean实例化后期会针对ServiceBean实例无applacition时实例化默认的ApplicationConfig对象。
-###### 3.3 对应module配置(对应dubbo:module或者module--ModuleConfig)，也有三种方式同上（可不配置、全局配置、Provider配置）；module配置主要用于模块信息配置，用于注册中心计算模块间依赖关系
-###### 3.4 对应registry配置(对应dubbo:registry或者registry--ModuleConfig)，也有三种方式同上（可不配置、全局配置、Provider配置）；module配置主要用于模块信息配置，用于注册中心计算模块间依赖关系
+###### 3.3 对应module配置(对应dubbo:module或者module--ModuleConfig)，方式同上（可不配置、全局配置、Provider配置）；module配置主要用于模块信息配置，用于注册中心计算模块间依赖关系
+###### 3.4 对应registry配置(对应dubbo:registry或者registry--RegistryConfig)，方式同上（可不配置、全局配置、Provider配置、Application配置）；module配置主要用于模块信息配置，用于注册中心计算模块间依赖关系
 
 
 ##### 3.ServiceBean类onApplicationEvent方法
