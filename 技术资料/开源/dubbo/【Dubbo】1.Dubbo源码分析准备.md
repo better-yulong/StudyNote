@@ -278,6 +278,7 @@ public class ServiceBean<T> extends ServiceConfig<T> implements InitializingBean
 此种方式会在ServiceBean原始bean实例后设置properties属性时完成provider属性的赋值（ServiceBean从父类ServiceConfig类继承provider属性）
 3. 不配置provider：后续bean实例化后期会针对ServiceBean实例无provider实例化默认的ProiderConfig对象。
 
+###### 3.2 对于provider配置(对应dubbo:provider或者provider--ProviderConfig)呢，实际有三种（结合源码示例）：
 ###### 3.2  ApplicationConfig
 
 <dubbo:application name="rpc-server"></dubbo:application>
