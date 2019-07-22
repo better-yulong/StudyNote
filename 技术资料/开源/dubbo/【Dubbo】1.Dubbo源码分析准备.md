@@ -246,3 +246,9 @@ public class DubboNamespaceHandler extends NamespaceHandlerSupport {
 根据DubboNamespaceHandler可发现，涉及dubbo的标签会实例化ApplicationConfig、ModuleConfig、RegistryConfig、MonitorConfig、ProviderConfig、ConsumerConfig、ProtocolConfig、ServiceBean、ReferenceBean、AnnotationBean 这10类bean；而前面7种相对简单，即可认为是简单数据对象；而ServiceBean、ReferenceBean、AnnotationBean则不同。
 ##### 4.3.1 ServiceBean(dubbo:service)
 
+```language
+	<bean id="dubboExampleService1" class="com.aoe.demo.rpc.dubbo.DubboExampleService1"></bean>
+	<dubbo:service interface="com.aoe.demo.rpc.dubbo.DubboExampleInterf1" ref="dubboExampleService1"></dubbo:service>
+```
+
+
