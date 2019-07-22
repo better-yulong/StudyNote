@@ -263,9 +263,14 @@ public class ServiceBean<T> extends ServiceConfig<T> implements InitializingBean
 - 每个dubbo:provider会对应一个ProviderConfig实例（服务提供方最大可接受连接数accepts、请求及响应数据包大小限制payload、协议编码方式codec、协议序列化方式、serialization、提供者上下文路径path、服务端协议、Register等）;基于provider、protocol可指定全局配置，也可针对单个dubbo:service精细化配置.
 - 对于provider配置呢，实际有三种：
 1. 全局provider配置（即对应ServiceBean类afterPropertiesSet()方法的处理）
+```language
+<dubbo:provider timeout="1000" protocol="dubbo"></dubbo:provider>
+	<dubbo:service interface="com.aoe.demo.rpc.dubbo.DubboExampleInterf1" ref="dubboExampleService1" ></dubbo:service>
+```
+2. 单个dubbo:service指定provider
 
 
-；2.单个dubbo:service指定provider；3.不配置provider
+；3.不配置provider
 
 2. ServiceBean类实例bean实例provider是否为null，为null则：
 2. 
