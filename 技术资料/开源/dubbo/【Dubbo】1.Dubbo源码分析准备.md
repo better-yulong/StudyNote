@@ -274,7 +274,7 @@ public class ServiceBean<T> extends ServiceConfig<T> implements InitializingBean
 	      <dubbo:service interface="com.aoe.demo.rpc.dubbo.DubboExampleInterf1" ref="dubboExampleService1"  protocol="dubbo"></dubbo:service>
 	</dubbo:provider>
 ```
-此种方式即对应
+此种方式会在ServiceBean原始bean实例
 3. 不配置provider：后续bean实例化后期会针对ServiceBean实例无provider实例化默认的ProiderConfig对象。
 #####
 
