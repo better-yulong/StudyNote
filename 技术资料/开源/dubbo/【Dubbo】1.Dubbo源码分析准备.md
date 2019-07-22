@@ -261,7 +261,7 @@ public class ServiceBean<T> extends ServiceConfig<T> implements InitializingBean
 ###### 3.ServiceBean类afterPropertiesSet()方法（对应InitializingBean）,即对ServiceBean 实例的初始化配置
 - dubbo:provider为dubbo:service提供缺省配置;dubbo:protocol指定协议配置.
 - 每个dubbo:provider会对应一个ProviderConfig实例（服务提供方最大可接受连接数accepts、请求及响应数据包大小限制payload、协议编码方式codec、协议序列化方式、serialization、提供者上下文路径path、服务端协议、Register等）;基于provider、protocol可指定全局配置，也可针对单个dubbo:service精细化配置.
-###### 3.1 对于provider配置呢，实际有三种（结合源码示例）：
+###### 3.1 对于provider配置(对应dubbo:provider或者provider)呢，实际有三种（结合源码示例）：
 1. 全局provider配置（即对应ServiceBean类afterPropertiesSet()方法的处理）
 ```language
 <dubbo:provider timeout="1000" protocol="dubbo"></dubbo:provider>
