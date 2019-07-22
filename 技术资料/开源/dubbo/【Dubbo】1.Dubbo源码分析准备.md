@@ -279,7 +279,7 @@ public class ServiceBean<T> extends ServiceConfig<T> implements InitializingBean
 3. 不配置provider：后续bean实例化后期会针对ServiceBean实例无provider时实例化默认的ProiderConfig对象。
 
 ###### 3.2 对应application配置(对应dubbo:application或者application--ApplicationConfig)，实际有三种（结合源码示例）：
-1. 全局application配置（即对应ServiceBean类afterPropertiesSet()方法的处理全局application配置；此处注意还有个前提：即provider没有指定application，若已指定则忽略全局application），用于注册中心计算应用间依赖关系（可
+1. 全局application配置（即对应ServiceBean类afterPropertiesSet()方法的处理全局application配置；此处注意还有个前提：即provider没有指定application，若已指定则忽略全局application），仅用于注册中心计算应用间依赖关系（不影响服务调用）
 ```language
   <dubbo:application name="rpc-server"></dubbo:application>
 ```
