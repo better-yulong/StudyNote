@@ -262,12 +262,12 @@ public class ServiceBean<T> extends ServiceConfig<T> implements InitializingBean
 - dubbo:provider为dubbo:service提供缺省配置;dubbo:protocol指定协议配置.
 - 每个dubbo:provider会对应一个ProviderConfig实例（服务提供方最大可接受连接数accepts、请求及响应数据包大小限制payload、协议编码方式codec、协议序列化方式、serialization、提供者上下文路径path、服务端协议、Register等）;基于provider、protocol可指定全局配置，也可针对单个dubbo:service精细化配置.
 ###### 3.1 对于provider配置(对应dubbo:provider或者provider--ProviderConfig)呢，实际有三种（结合源码示例）：
-1. 全局provider配置（即对应ServiceBean类afterPropertiesSet()方法的处理）
+1. 全局provider配置（即对应ServiceBean类afterPropertiesSet()方法的处理全局provider楝方）
 ```language
 <dubbo:provider timeout="1000" protocol="dubbo"></dubbo:provider>
 	<dubbo:service interface="com.aoe.demo.rpc.dubbo.DubboExampleInterf1" ref="dubboExampleService1" ></dubbo:service>
 ```
-此种方式即会在ServiceBean类afterPropertiesSet()方法获取全局application并赋值
+
 2. 单个dubbo:service指定provider（嵌套标签实现；apache dubbo可采用类似d protocol方式来指定，无需嵌套标签）
 ```
 <dubbo:protocol name="dubbo" port="20890"></dubbo:protocol>
@@ -278,8 +278,8 @@ public class ServiceBean<T> extends ServiceConfig<T> implements InitializingBean
 此种方式会在ServiceBean原始bean实例后设置properties属性时完成provider属性的赋值（ServiceBean从父类ServiceConfig类继承provider属性）
 3. 不配置provider：后续bean实例化后期会针对ServiceBean实例无provider实例化默认的ProiderConfig对象。
 
-###### 3.2 对于provider配置(对应dubbo:application或者provider--ApplicationConfig)呢，实际有三种（结合源码示例）：
-###### 3.2  ApplicationConfig
+###### 3.2 对于application配置(对应dubbo:application或者application--ApplicationConfig)呢，实际有三种（结合源码示例）：
+
 
 <dubbo:application name="rpc-server"></dubbo:application>
 <dubbo:service interface="com.aoe.demo.rpc.dubbo.DubboExampleInterf1" ref="dubboExampleService1" application="rpc-server" ></dubbo:service>
