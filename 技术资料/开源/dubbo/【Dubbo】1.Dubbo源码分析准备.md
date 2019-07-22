@@ -259,8 +259,9 @@ public class ServiceBean<T> extends ServiceConfig<T> implements InitializingBean
 ##### 2.ServiceBean类setApplicationContext方法（ApplicationListener）
 当前bean为ApplicationContextAware接口的实例（故步骤1的invokeAwareMethods中也会判断当前bean是否为ApplicationContextAware接口的实例），自动设置当前bean的applicationContext（即Spring容器的上下文），同时因当前ServiceBean实现ApplicationListener，该方法内会同时反射调用applicationContext的addApplicationListener方法，将当前ServiceBean实例添加至Listeners列表；同时此处也会将applicationContext设置到dubbo扩展实现的SpringExtensionFactory.addApplicationContext(applicationContext)。
 ##### 3.ServiceBean类afterPropertiesSet()方法（对应InitializingBean）
+1. dubboPrServiceBean类实例bean实例provider是否为null，为null则：
 1. ServiceBean类实例bean实例provider是否为null，为null则：
-1. ServiceBean类实例bean实例provider是否为null，为null则：
+
 
 ##### 3.ServiceBean类onApplicationEvent方法
 ServiceBean实现ApplicationListener，即需实现onApplicationEvent方法.
