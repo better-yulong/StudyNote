@@ -276,7 +276,7 @@ public class ServiceBean<T> extends ServiceConfig<T> implements InitializingBean
 	</dubbo:provider>
 ```
 此种方式会在ServiceBean原始bean实例后设置properties属性时完成provider属性的赋值（ServiceBean从父类ServiceConfig类继承provider属性）
-3. 不配置provider：后续bean实例化后期会针对ServiceBean实例无provider实例化默认的ProiderConfig对象。
+3. 不配置provider：后续bean实例化后期会针对ServiceBean实例无provider时实例化默认的ProiderConfig对象。
 
 ###### 3.2 对于application配置(对应dubbo:application或者application--ApplicationConfig)呢，实际有三种（结合源码示例）：
 1. 全局application配置（即对应ServiceBean类afterPropertiesSet()方法的处理全局application配置；此处注意还有个前提：即provider没有指定application，若已指定则忽略全局application）
@@ -289,16 +289,9 @@ public class ServiceBean<T> extends ServiceConfig<T> implements InitializingBean
 <dubbo:service interface="com.aoe.demo.rpc.dubbo.DubboExampleInterf1" ref="dubboExampleService1" application="rpc-server" ></dubbo:service>
 ```
 同provider，此种方式会在ServiceBean原始bean实例后设置properties属性时完成applacition属性的赋值（ServiceBean从间接父类AbstractInterfaceConfig类继承applacition属性）
-3. 不配置applacition：后续bean实例化后期会针对ServiceBean实例无applacition实例化默认的ProiderConfig对象。
+3. 不配置applacition：后续bean实例化后期会针对ServiceBean实例无applacition时实例化默认的ApplicationConfig对象。
 
 
-<dubbo:application name="rpc-server"></dubbo:application>
-<dubbo:service interface="com.aoe.demo.rpc.dubbo.DubboExampleInterf1" ref="dubboExampleService1" application="rpc-server" ></dubbo:service>
-
-
-2. ServiceBean类实例bean实例provider是否为null，为null则：
-2. 
-1. ServiceBean类实例bean实例provider是否为null，为null则：
 
 
 ##### 3.ServiceBean类onApplicationEvent方法
