@@ -267,7 +267,12 @@ public class ServiceBean<T> extends ServiceConfig<T> implements InitializingBean
 <dubbo:provider timeout="1000" protocol="dubbo"></dubbo:provider>
 	<dubbo:service interface="com.aoe.demo.rpc.dubbo.DubboExampleInterf1" ref="dubboExampleService1" ></dubbo:service>
 ```
-2. 单个dubbo:service指定provider
+2. 单个dubbo:service指定provider（嵌套标签实现；apache ）
+```<dubbo:provider timeout="1000" protocol="dubbo">
+	      <dubbo:service interface="com.aoe.demo.rpc.dubbo.DubboExampleInterf1" ref="dubboExampleService1"  protocol="dubbo"></dubbo:service>
+	</dubbo:provider>
+
+```
 
 
 ；3.不配置provider
