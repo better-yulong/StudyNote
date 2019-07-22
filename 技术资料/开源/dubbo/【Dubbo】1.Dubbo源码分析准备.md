@@ -254,11 +254,11 @@ public class DubboNamespaceHandler extends NamespaceHandlerSupport {
 public class ServiceBean<T> extends ServiceConfig<T> implements InitializingBean, DisposableBean, ApplicationContextAware, ApplicationListener, BeanNameAware
 ```
 关于ServiceBean实现的接口之前分析Spring源码时曾有讲解过，基本作用相对比较清楚，即解析dubbo:service时会化BeanDefinition并完成注册（beanName默认取interface值，如com.aoe.demo.rpc.dubbo.DubboExampleInterf1），那么在完成com.aoe.demo.rpc.dubbo.DubboExampleInterf1对应的ServiceBean原始bean实例化后会依次调用：
-##### 1.ServiceBean类setBeanName方法
+###### 1.ServiceBean类setBeanName方法
 即对应DefaultListableBeanFactory(AbstractAutowireCapableBeanFactory).invokeAwareMethods(final String beanName, final Object bean)；即当前bean为BeanNameAware接口的实例，自动设置当前bean的beanName（值为：com.aoe.demo.rpc.dubbo.DubboExampleInterf1）
-##### 2.ServiceBean类setApplicationContext方法（ApplicationListener）
+###### 2.ServiceBean类setApplicationContext方法（ApplicationListener）
 当前bean为ApplicationContextAware接口的实例（故步骤1的invokeAwareMethods中也会判断当前bean是否为ApplicationContextAware接口的实例），自动设置当前bean的applicationContext（即Spring容器的上下文），同时因当前ServiceBean实现ApplicationListener，该方法内会同时反射调用applicationContext的addApplicationListener方法，将当前ServiceBean实例添加至Listeners列表；同时此处也会将applicationContext设置到dubbo扩展实现的SpringExtensionFactory.addApplicationContext(applicationContext)。
-##### 3.ServiceBean类afterPropertiesSet()方法（对应InitializingBean）,即对ServiceBean 实例的初始化配置
+###### 3.ServiceBean类afterPropertiesSet()方法（对应InitializingBean）,即对ServiceBean 实例的初始化配置
 - dubbo:provider为dubbo:service提供缺省配置;dubbo:protocol指定协议配置.
 - 每个dubbo:provider会对应一个ProviderConfig实例（服务提供方最大可接受连接数accepts、请求及响应数据包大小限制payload、协议编码方式codec、协议序列化方式、serialization、提供者上下文路径path、服务端协议、Register等）;基于provider、protocol可指定全局配置，也可针对单个dubbo:service精细化配置.
 ###### 3.1 对于provider配置呢，实际有三种（结合源码示例）：
