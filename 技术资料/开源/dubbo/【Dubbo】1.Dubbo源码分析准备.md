@@ -288,7 +288,7 @@ public class ServiceBean<T> extends ServiceConfig<T> implements InitializingBean
 <dubbo:application name="rpc-server"></dubbo:application>
 <dubbo:service interface="com.aoe.demo.rpc.dubbo.DubboExampleInterf1" ref="dubboExampleService1" application="rpc-server" ></dubbo:service>
 ```
-同上
+同provider，
 
 
 
