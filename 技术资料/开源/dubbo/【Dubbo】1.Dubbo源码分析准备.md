@@ -288,8 +288,8 @@ public class ServiceBean<T> extends ServiceConfig<T> implements InitializingBean
 <dubbo:application name="rpc-server"></dubbo:application>
 <dubbo:service interface="com.aoe.demo.rpc.dubbo.DubboExampleInterf1" ref="dubboExampleService1" application="rpc-server" ></dubbo:service>
 ```
-同provider，此种方式会在ServiceBean原始bean实例后设置properties属性时完成applacition属性的赋值（ServiceBean从间接父类ServiceConfig类继承provider属性）
-
+同provider，此种方式会在ServiceBean原始bean实例后设置properties属性时完成applacition属性的赋值（ServiceBean从间接父类AbstractInterfaceConfig类继承applacition属性）
+3. 不配置applacition：后续bean实例化后期会针对ServiceBean实例无applacition实例化默认的ProiderConfig对象。
 
 
 <dubbo:application name="rpc-server"></dubbo:application>
