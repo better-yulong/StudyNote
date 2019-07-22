@@ -253,5 +253,5 @@ public class DubboNamespaceHandler extends NamespaceHandlerSupport {
 ```language
 public class ServiceBean<T> extends ServiceConfig<T> implements InitializingBean, DisposableBean, ApplicationContextAware, ApplicationListener, BeanNameAware
 ```
-关于ServiceBean实现的接口之前分析Spring源码时曾有讲解过，基本作用相对比较清楚，现逐个说明：
+关于ServiceBean实现的接口之前分析Spring源码时曾有讲解过，基本作用相对比较清楚，
 ###### 4.3.1.1
