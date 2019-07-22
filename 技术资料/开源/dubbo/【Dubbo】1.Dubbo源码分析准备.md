@@ -290,7 +290,7 @@ public class ServiceBean<T> extends ServiceConfig<T> implements InitializingBean
 ```
 同provider，此种方式会在ServiceBean原始bean实例后设置properties属性时完成applacition属性的赋值（ServiceBean从间接父类AbstractInterfaceConfig类继承applacition属性）
 3. 不配置applacition：后续bean实例化后期会针对ServiceBean实例无applacition时实例化默认的ApplicationConfig对象。
-###### 3.3 对应module配置(对应dubbo:module或者module--ModuleConfig)呢，实际有三种（结合源码示例）
+###### 3.3 对应module配置(对应dubbo:module或者module--ModuleConfig)，也有三种方式同上；module配置主要
 
 
 
