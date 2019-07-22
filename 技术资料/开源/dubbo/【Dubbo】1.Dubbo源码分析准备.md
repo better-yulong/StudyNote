@@ -283,7 +283,13 @@ public class ServiceBean<T> extends ServiceConfig<T> implements InitializingBean
 ```language
   <dubbo:application name="rpc-server"></dubbo:application>
 ```
-2. 单个dubbo:service指定appliction
+2. 单个dubbo:service指定关联applacition
+```language
+<dubbo:application name="rpc-server"></dubbo:application>
+<dubbo:service interface="com.aoe.demo.rpc.dubbo.DubboExampleInterf1" ref="dubboExampleService1" application="rpc-server" ></dubbo:service>
+```
+同上
+
 
 
 <dubbo:application name="rpc-server"></dubbo:application>
