@@ -273,7 +273,7 @@ public class ServiceBean<T> extends ServiceConfig<T> implements InitializingBean
 	</dubbo:provider>
 
 ```
-3. 不配置provider：后续bean
+3. 不配置provider：后续bean实例化后期会针对ServiceBean实例无provider实例化默认的ProiderConfig
 
 ；3.不配置provider
 
