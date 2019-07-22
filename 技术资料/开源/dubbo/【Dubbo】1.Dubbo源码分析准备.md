@@ -257,5 +257,5 @@ public class ServiceBean<T> extends ServiceConfig<T> implements InitializingBean
 ##### 1.ServiceBean类setBeanName方法
 即对应DefaultListableBeanFactory(AbstractAutowireCapableBeanFactory).invokeAwareMethods(final String beanName, final Object bean)；即当前bean为BeanNameAware接口的实例，自动设置当前bean的beanName（值为：com.aoe.demo.rpc.dubbo.DubboExampleInterf1）
 ##### 2.ServiceBean类setApplicationContext方法（ApplicationListener）
-同上，设置
+当前bean为BeanNameAware接口的实例，自动设置当前bean的applicationContext（即Spring容器的上
 
