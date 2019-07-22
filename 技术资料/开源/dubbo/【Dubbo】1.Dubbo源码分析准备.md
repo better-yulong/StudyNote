@@ -244,5 +244,5 @@ public class DubboNamespaceHandler extends NamespaceHandlerSupport {
 - 既然此处将xml解析生成各种BeanDefinition，那么根据之前分析spring过程，对应的Bean实例化之后可通过类似initial方式或者Processor方式来处理，于是乎调试看看。发现调试时始终无法关联到当前eclipse中的spring源码，而是关联到spring jar中的class反编译文件；定位发现dubbo工程自动依赖了之前提到的spring 2.5的jar,于是乎强制将各dubbo源码工程对spring 2.5 的依赖强制升级到spring 3.1.0 
 #### 4.3 bean实例化分析
 根据DubboNamespaceHandler可发现，涉及dubbo的标签会实例化ApplicationConfig、ModuleConfig、RegistryConfig、MonitorConfig、ProviderConfig、ConsumerConfig、ProtocolConfig、ServiceBean、ReferenceBean、AnnotationBean 这10类bean；而前面7种相对简单，即可认为是简单数据对象；而ServiceBean、ReferenceBean、AnnotationBean则不同。
-
+#### 4.3
 
