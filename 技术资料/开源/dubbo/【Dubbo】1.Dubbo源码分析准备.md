@@ -532,7 +532,7 @@ export方法：判断当前ServiceBean(SreviceConfig)的export及delay配置（�
 
         if (ExtensionLoader.getExtensionLoader(ConfiguratorFactory.class)
                 .hasExtension(url.getProtocol())) {
-            //如若是其他自定义协议（dubbo不会运行至
+            //如若是其他自定义协议（dubbo不会运行至此处）
             url = ExtensionLoader.getExtensionLoader(ConfiguratorFactory.class)
                     .getExtension(url.getProtocol()).getConfigurator(url).configure(url);
         }
