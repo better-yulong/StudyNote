@@ -419,7 +419,7 @@ export方法：判断当前ServiceBean(SreviceConfig)的export及delay配置（�
         if (anyhost) {
             map.put(Constants.ANYHOST_KEY, "true");
         }
-        map.put(Constants.SIDE_KEY, Constants.PROVIDER_SIDE);
+        map.put(Constants.SIDE_KEY, Constants.PROVIDER_SIDE);//provider
         map.put(Constants.DUBBO_VERSION_KEY, Version.getVersion());
         map.put(Constants.TIMESTAMP_KEY, String.valueOf(System.currentTimeMillis()));
         if (ConfigUtils.getPid() > 0) {
