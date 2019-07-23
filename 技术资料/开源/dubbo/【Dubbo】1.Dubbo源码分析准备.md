@@ -365,7 +365,7 @@ export方法：判断当前ServiceBean(SreviceConfig)的export及delay配置（�
         if (NetUtils.isInvalidLocalHost(host)) {
             anyhost = true;
             try {
-                //获取本机IP（该部分不同的dubbo版本实现会有差异，因为针对多网卡或者获取IP错误场景会导致服务注册异常，可参考：
+                //获取本机IP（该部分不同的dubbo版本实现会有差异，因为针对多网卡或者获取IP错误场景会导致服务注册异常，可参考：http://dubbo.apache.org/zh-cn/blog/dubbo-network-interfaces.html
                host = InetAddress.getLocalHost().getHostAddress();
             } catch (UnknownHostException e) {
                 logger.warn(e.getMessage(), e);
@@ -400,6 +400,7 @@ export方法：判断当前ServiceBean(SreviceConfig)的export及delay配置（�
         if (provider != null && (port == null || port == 0)) {
             port = provider.getPort();
         }
+        //根据name从对应的网络协议对象获取port配置
         final int defaultPort = ExtensionLoader.getExtensionLoader(Protocol.class).getExtension(name).getDefaultPort();
         if (port == null || port == 0) {
             port = defaultPort;
