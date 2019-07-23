@@ -349,7 +349,7 @@ export方法：判断当前ServiceBean(SreviceConfig)的export及delay配置（�
 方法loadRegistries(true)（AbstractInterfaceConfig类）
 ```language
     protected List<URL> loadRegistries(boolean provider) {
-         //检查并验证registry配置（可配置多个registry；涉）
+         //检查并验证registry配置（可配置多个registry；包含兼容处理）
         checkRegistry();
         List<URL> registryList = new ArrayList<URL>();
         if (registries != null && registries.size() > 0) {
