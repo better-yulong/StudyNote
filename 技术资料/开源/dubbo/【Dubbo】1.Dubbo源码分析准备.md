@@ -432,7 +432,7 @@ export方法：判断当前ServiceBean(SreviceConfig)的export及delay配置（�
         appendParameters(map, provider, Constants.DEFAULT_KEY);
         appendParameters(map, protocolConfig);
         appendParameters(map, this);
-//dubbo:method 方法级配置。对应的配置类： org.apache.dubbo.config.MethodConfig。同时该标签为 <dubbo:service> 或 <dubbo:reference> 的子标签，用于控制到方法级。 
+        //dubbo:method 方法级配置。对应的配置类： org.apache.dubbo.config.MethodConfig。同时该标签为 <dubbo:service> 或 <dubbo:reference> 的子标签，用于控制到方法级。 
         if (methods != null && methods.size() > 0) {
             for (MethodConfig method : methods) {
                 appendParameters(map, method, method.getName());
