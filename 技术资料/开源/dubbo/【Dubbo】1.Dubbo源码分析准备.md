@@ -260,7 +260,7 @@ public class ServiceBean<T> extends ServiceConfig<T> implements InitializingBean
 当前bean为ApplicationContextAware接口的实例（故步骤1的invokeAwareMethods中也会判断当前bean是否为ApplicationContextAware接口的实例），自动设置当前bean的applicationContext（即Spring容器的上下文），同时因当前ServiceBean实现ApplicationListener，该方法内会同时反射调用applicationContext的addApplicationListener方法，将当前ServiceBean实例添加至Listeners列表；同时此处也会将applicationContext设置到dubbo扩展实现的SpringExtensionFactory.addApplicationContext(applicationContext)。
 ###### 3.ServiceBean类afterPropertiesSet()方法（对应InitializingBean）,即对ServiceBean 实例的初始化配置
 - dubbo:provider为dubbo:service提供缺省配置;dubbo:protocol指定协议配置.
-- 每个dubbo:provider会对应一个ProviderConfig实例（服务提供方最大可接受连接数accepts、请求及响应数据包大小限制payload、协议编码方式codec、协议序列化方式、serialization、提供者上下文路径path、服务端协议、Register等）;基于provider、protocol可指定全局配置，也可针对单个dubbo:service精细化配置.
+- 每个dubbo:provider会对应一个ProviderConfig实例（服务提供方最大可接受连接数accepts、请求及响应数据包大小限制payload、协议编码方式codec、协议序列化方式、serialization、提供者上下文路径path、服务端协议、Register等）;基于provider、protocol可指定全局配置(此处protocol仅是兼容处理；后面会在标准化处理)，也可针对单个dubbo:service精细化配置.
 ###### 3.1 对应provider配置(对应dubbo:provider或者provider--ProviderConfig)，实际有三种（结合源码示例）：
 1. 全局provider配置（即对应ServiceBean类afterPropertiesSet()方法的处理全局provider配置）
 ```language
