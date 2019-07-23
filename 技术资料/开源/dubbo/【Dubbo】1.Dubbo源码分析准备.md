@@ -579,6 +579,6 @@ export方法：判断当前ServiceBean(SreviceConfig)的export及delay配置（�
         this.urls.add(url);
     }
 ```
-方法exportLocal(url)方法
+方法exportLocal(url)方法内主流涉及2点：1、proxyFactory.getInvoker(...)
 
 
