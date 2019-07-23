@@ -334,5 +334,4 @@ public class ServiceBean<T> extends ServiceConfig<T> implements InitializingBean
         }
     }
 ```
-export方法主要为：1.判断当前ServiceBean的export及delay配置（会判断状态避免重复注册），之后根据delay配置判断：1.若delay有配置则启动异步Demon线程sleep指定delay时间后
-
+export方法主要为：1.判断当前ServiceBean的export及delay配置（会判断状态避免重复注册），之后根据delay配置判断：1.若delay有配置则启动异步Demon线程sleep指定delay时间后调用doExport方法；2.无delay配置则直接调用do
