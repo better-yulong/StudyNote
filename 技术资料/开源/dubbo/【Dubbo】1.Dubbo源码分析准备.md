@@ -420,7 +420,7 @@ export方法：判断当前ServiceBean(SreviceConfig)的export及delay配置（�
             map.put(Constants.ANYHOST_KEY, "true");
         }
         map.put(Constants.SIDE_KEY, Constants.PROVIDER_SIDE);//provider
-        map.put(Constants.DUBBO_VERSION_KEY, Version.getVersion());//从MANIFEST.MF规范、jar等获取版本号
+        map.put(Constants.DUBBO_VERSION_KEY, Version.getVersion());//从MANIFEST.MF规范、jar文件名等获取版本号
         map.put(Constants.TIMESTAMP_KEY, String.valueOf(System.currentTimeMillis()));//获取时间戳为key
         if (ConfigUtils.getPid() > 0) {
             //基于RuntimeMXBean获取当前JVM进程 的PID
@@ -493,6 +493,7 @@ export方法：判断当前ServiceBean(SreviceConfig)的export及delay配置（�
             map.put("generic", String.valueOf(true));
             map.put("methods", Constants.ANY_VALUE);
         } else {
+            //从MANIFEST.MF规范、jar文件名等获取版本号       
             String revision = Version.getVersion(interfaceClass, version);
             if (revision != null && revision.length() > 0) {
                 map.put("revision", revision);
