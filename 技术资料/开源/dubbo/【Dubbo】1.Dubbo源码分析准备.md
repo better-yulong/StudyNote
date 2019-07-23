@@ -365,7 +365,7 @@ export方法：判断当前ServiceBean(SreviceConfig)的export及delay配置（�
         if (NetUtils.isInvalidLocalHost(host)) {
             anyhost = true;
             try {
-                //获取本机IP（该部分不同的dubbo版本实现会有差异，因为
+                //获取本机IP（该部分不同的dubbo版本实现会有差异，因为针对多网卡或者获取IP错误导致服务注册异常，，
                 host = InetAddress.getLocalHost().getHostAddress();
             } catch (UnknownHostException e) {
                 logger.warn(e.getMessage(), e);
