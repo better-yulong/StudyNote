@@ -297,7 +297,7 @@ public class ServiceBean<T> extends ServiceConfig<T> implements InitializingBean
 序列化协议）。
 ###### 3.7 对应protocol配置（对应dubbo:service path="")，方式同上（可不配置、Provider配置、Service配置）；path配置用于服务路径配置。
 
-##### 3.ServiceBean类onApplicationEvent方法
+##### 4.ServiceBean类onApplicationEvent方法
 ServiceBean实现ApplicationListener，即需实现onApplicationEvent方法.
 
 
