@@ -346,7 +346,7 @@ export方法：判断当前ServiceBean(SreviceConfig)的export及delay配置（�
         }
     }
 ```
-方法loadRegistries(true)
+方法loadRegistries(true)（AbstractInterfaceConfig类）
 ```language
     protected List<URL> loadRegistries(boolean provider) {
         checkRegistry();
