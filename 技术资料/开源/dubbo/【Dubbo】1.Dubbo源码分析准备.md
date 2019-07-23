@@ -498,7 +498,7 @@ export方法：判断当前ServiceBean(SreviceConfig)的export及delay配置（�
             if (revision != null && revision.length() > 0) {
                 map.put("revision", revision);
             }
-
+            //获取
             String[] methods = Wrapper.getWrapper(interfaceClass).getMethodNames();
             if(methods.length == 0) {
                 logger.warn("NO method found in service interface " + interfaceClass.getName());
