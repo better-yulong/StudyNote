@@ -293,6 +293,7 @@ public class ServiceBean<T> extends ServiceConfig<T> implements InitializingBean
 ###### 3.3 对应module配置(对应dubbo:module或者module--ModuleConfig)，方式同上（可不配置、全局配置、Provider配置、Service配置）；module配置主要用于模块信息配置，用于注册中心计算模块间依赖关系
 ###### 3.4 对应registry配置(对应dubbo:registry或者registry--RegistryConfig)，方式同上（可不配置、全局配置、Provider配置、Application配置、Service配置）；registry配置主要用于注册中心配置。
 ###### 3.5 对应monitor配置(对应dubbo:monitor或者monitor--MonitorConfig)，方式同上（可不配置、全局配置、Provider配置、Application配置、Service配置）；monitor配置主要用于监控中心配置。
+###### 3.5 
 
 ##### 3.ServiceBean类onApplicationEvent方法
 ServiceBean实现ApplicationListener，即需实现onApplicationEvent方法.
