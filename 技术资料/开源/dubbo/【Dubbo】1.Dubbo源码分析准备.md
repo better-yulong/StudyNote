@@ -421,7 +421,7 @@ export方法：判断当前ServiceBean(SreviceConfig)的export及delay配置（�
         }
         map.put(Constants.SIDE_KEY, Constants.PROVIDER_SIDE);//provider
         map.put(Constants.DUBBO_VERSION_KEY, Version.getVersion());//从MANIFEST.MF规范、jar等获取版本号
-        map.put(Constants.TIMESTAMP_KEY, String.valueOf(System.currentTimeMillis()));//获取时间戳key
+        map.put(Constants.TIMESTAMP_KEY, String.valueOf(System.currentTimeMillis()));//获取时间戳为key
         if (ConfigUtils.getPid() > 0) {
             map.put(Constants.PID_KEY, String.valueOf(ConfigUtils.getPid()));
         }
