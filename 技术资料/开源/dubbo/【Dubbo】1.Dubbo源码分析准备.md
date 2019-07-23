@@ -505,7 +505,7 @@ export方法：判断当前ServiceBean(SreviceConfig)的export及delay配置（�
                 map.put("methods", Constants.ANY_VALUE);
             }
             else {
-                //将接口方法转
+                //将接口方法,分隔字符串put至map
                 map.put("methods", StringUtils.join(new HashSet<String>(Arrays.asList(methods)), ","));
             }
         }
