@@ -299,7 +299,7 @@ public class ServiceBean<T> extends ServiceConfig<T> implements InitializingBean
 序列化协议）。
 ###### 3.7 对应path配置（对应dubbo:service path="")，方式同上（可不配置、Provider配置、Service配置）；path配置用于服务路径配置。
 
-###### 3.8 非 
+###### 3.8 如若当前ServiceBean服务非延迟注册（provider、service设置delay)，则调用SreviceConf类（ServiceBean父类)的export方法（稍后延迟）
 
 
 ##### 4.ServiceBean类onApplicationEvent方法
