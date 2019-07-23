@@ -334,5 +334,5 @@ public class ServiceBean<T> extends ServiceConfig<T> implements InitializingBean
         }
     }
 ```
-export方法主要为：1.判断当前ServiceBean的export及delay配置，
+export方法主要为：1.判断当前ServiceBean的export及delay配置（会判断状态避免重复注册），之后根据
 
