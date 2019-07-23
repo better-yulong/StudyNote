@@ -349,4 +349,5 @@ export方法：判断当前ServiceBean(SreviceConfig)的export及delay配置（�
     }
 ```
 - 方法loadRegistries(true)（AbstractInterfaceConfig类；可配置多个registry；包含兼容处理），即根据register配置及其他参数组装完整的registerUrl(如[registry://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=rpc-server&dubbo=2.5.3&pid=13916&registry=zookeeper&timestamp=1563867985933]）
-- doExportUrlsFor1Protocol(protocolConfig, registryURLs)这个方法
+- doExportUrlsFor1Protocol(protocolConfig, registryURLs)方法
+
