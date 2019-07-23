@@ -426,6 +426,7 @@ export方法：判断当前ServiceBean(SreviceConfig)的export及delay配置（�
             //基于RuntimeMXBean获取当前JVM进程 的PID
             map.put(Constants.PID_KEY, String.valueOf(ConfigUtils.getPid()));
         }
+        //
         appendParameters(map, application);
         appendParameters(map, module);
         appendParameters(map, provider, Constants.DEFAULT_KEY);
