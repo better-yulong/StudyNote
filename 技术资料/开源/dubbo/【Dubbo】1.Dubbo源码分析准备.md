@@ -527,7 +527,7 @@ export方法：判断当前ServiceBean(SreviceConfig)的export及delay配置（�
         if ((contextPath == null || contextPath.length() == 0) && provider != null) {
             contextPath = provider.getContextpath();
         }
-        //基于当前各参数组装url(dubbo://100.119.69.22:20890/com.aoe.demo.rpc.dubbo.DubboExampleInterf1?anyhost=true&application=rpc-server&default.timeout=1000&dubbo=2.5.3&interface=com.aoe.demo.rpc.dubbo.DubboExampleInterf1&methods=serviceProvider&pid=7576&revision=0.0.1-SNAPSHOT&side=provider&timestamp=1563876209932)
+        //基于当前各参数组装url(URL为dubbo自定语dubbo://100.119.69.22:20890/com.aoe.demo.rpc.dubbo.DubboExampleInterf1?anyhost=true&application=rpc-server&default.timeout=1000&dubbo=2.5.3&interface=com.aoe.demo.rpc.dubbo.DubboExampleInterf1&methods=serviceProvider&pid=7576&revision=0.0.1-SNAPSHOT&side=provider&timestamp=1563876209932)
         URL url = new URL(name, host, port, (contextPath == null || contextPath.length() == 0 ? "" : contextPath + "/") + path, map);
 
         if (ExtensionLoader.getExtensionLoader(ConfiguratorFactory.class)
