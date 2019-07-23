@@ -298,7 +298,6 @@ public class ServiceBean<T> extends ServiceConfig<T> implements InitializingBean
 ###### 3.6 对应protocol配置(对应dubbo:protocol或者protocol--ProtocolConfig)，方式同上（可不配置、全局配置、Provider配置、Service配置）；protocol配置主要用于服务提供者协议配置；如果需要支持多协议，可以声明多个<dubbo:protocol>标签，并在<dubbo:service>中通过protocol属性指定使用的协议。说明：如果需要支持多协议，可以声明多个<dubbo:protocol>标签，并在<dubbo:service>中通过protocol属性指定使用的协议（通讯协议
 序列化协议）。
 ###### 3.7 对应path配置（对应dubbo:service path="")，方式同上（可不配置、Provider配置、Service配置）；path配置用于服务路径配置。
-
 ###### 3.8 如若当前ServiceBean服务非延迟注册（provider、service设置delay)，则调用SreviceConf类（ServiceBean父类)的export方法（稍后延迟注册也会分析到export方法）
 
 ##### 4.ServiceBean类onApplicationEvent方法
