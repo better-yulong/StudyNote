@@ -303,5 +303,36 @@ public class ServiceBean<T> extends ServiceConfig<T> implements InitializingBean
 ##### 4.ServiceBean类onApplicationEvent方法
 - ServiceBean实现ApplicationListener，即需实现onApplicationEvent方法。而spring容器初始化完成之后调用finishRefresh，会经由SimpleApplicationEventMulticaster.multicastEvent(ApplicationEvent)广播事件ContextRefreshedEvent，同时会判断当前ServiceBean服务是否延迟注册（provider、service设置delay)、是否已注册（ServiceBean服务注册后会修改exported状态）、是否未注册（ServiceBean服务默认为未注册即isUnexported，注册后会修改isUnexported）
 - 延迟注册且未注册则调用SreviceConf类（ServiceBean父类)的export方法（非延迟注册的服务已于上一步完成服务注册）：
-
+```language
+    public synchronized void export() {
+        if (provider != null) {
+            if (export == null) {
+                export = provider.getExport();
+            }
+            if (delay == null) {
+                delay = provider.getDelay();
+            }
+        }
+        if (export != null && ! export.booleanValue()) {
+            return;
+        }
+        if (delay != null && delay > 0) {
+            Thread thread = new Thread(new Runnable() {
+                public void run() {
+                    try {
+                        Thread.sleep(delay);
+                    } catch (Throwable e) {
+                    }
+                    doExport();
+                }
+            });
+            thread.setDaemon(true);
+            thread.setName("DelayExportServiceThread");
+            thread.start();
+        } else {
+            doExport();
+        }
+    }
+```
+export方法
 
