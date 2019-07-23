@@ -408,7 +408,7 @@ export方法：判断当前ServiceBean(SreviceConfig)的export及delay配置（�
         if (port == null || port <= 0) {
             port = getRandomPort(name);
             if (port == null || port < 0) {
-                //未指定端口在及默认端口，获取可用的
+                //未指定端口在及默认端口，获取可用的随机端口
                 port = NetUtils.getAvailablePort(defaultPort);
                 putRandomPort(name, port);
             }
