@@ -400,7 +400,7 @@ export方法：判断当前ServiceBean(SreviceConfig)的export及delay配置（�
         if (provider != null && (port == null || port == 0)) {
             port = provider.getPort();
         }
-        //根据name从对应的网络协议对象获取port配置
+        //根据name从对应的网络协议对象获取默认port配置（如DubboProtocol为
         final int defaultPort = ExtensionLoader.getExtensionLoader(Protocol.class).getExtension(name).getDefaultPort();
         if (port == null || port == 0) {
             port = defaultPort;
