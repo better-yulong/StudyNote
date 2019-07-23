@@ -335,5 +335,5 @@ public class ServiceBean<T> extends ServiceConfig<T> implements InitializingBean
     }
 ```
 export方法：判断当前ServiceBean(SreviceConfig)的export及delay配置（会判断状态避免重复注册），之后根据delay配置判断：1.若delay有配置则启动异步Demon线程sleep指定delay时间后调用doExport方法；2.无delay配置则直接调用doExport方法。
-- doExport方法(SreviceConfig类）：1、验证是否已卸载 、已注册、interfaceName是否不配置；2、检查并实例化ServiceBean对象默认的ProviderConfig及完成provider对象初始化；3、根据provider对象及当前ServiceBean实例的application、module、registries、monitor、protocols（registries、monitor配置可在module、application配置，但application优先级大于module）；4.检查interfaceClass或interfaceName及类加载（涉及泛化调用，后面分析）；5.local标识判断及类加载（服务接口的本地实现类； 新版本local机制已经废弃,被stub属性所替换）；6.stub配置判断及处理（涉及本地代理调用，后面分析）
+- doExport方法(SreviceConfig类）：1、验证是否已卸载 、已注册、interfaceName是否不配置；2、检查并实例化ServiceBean对象默认的ProviderConfig及完成provider对象初始化；3、根据provider对象及当前ServiceBean实例的application、module、registries、monitor、protocols（registries、monitor配置可在module、application配置，但application优先级大于module）；4.检查interfaceClass或interfaceName及类加载（涉及泛化调用，后面分析）；5.local标识判断及类加载（服务接口的本地实现类； 新版本local机制已经废弃,被stub属性所替换）；6.stub配置判断及处理（涉及本地代理调用，后面分析）；6、Application、
 
