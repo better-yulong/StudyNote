@@ -300,6 +300,6 @@ public class ServiceBean<T> extends ServiceConfig<T> implements InitializingBean
 ###### 3.7 对应protocol配置（对应dubbo:service path="")，方式同上（可不配置、Provider配置、Service配置）；path配置用于服务路径配置。
 
 ##### 4.ServiceBean类onApplicationEvent方法
-ServiceBean实现ApplicationListener，即需实现onApplicationEvent方法。而spring容器初始化完成之后调用finishRefresh，会经由SimpleApplicationEventMulticaster.multicastEvent(ApplicationEvent)广播事件ContextRefreshedEvent，同时会判断当前ServiceBean服务是否延迟注册（provider、service设置delay)、	
+ServiceBean实现ApplicationListener，即需实现onApplicationEvent方法。而spring容器初始化完成之后调用finishRefresh，会经由SimpleApplicationEventMulticaster.multicastEvent(ApplicationEvent)广播事件ContextRefreshedEvent，同时会判断当前ServiceBean服务是否延迟注册（provider、service设置delay)、是否已注册（ServiceBean服务ymm后会修改exported	
 
 
