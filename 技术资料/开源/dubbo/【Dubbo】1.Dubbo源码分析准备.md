@@ -510,6 +510,7 @@ export方法：判断当前ServiceBean(SreviceConfig)的export及delay配置（�
             }
         }
         if (! ConfigUtils.isEmpty(token)) {
+             //token 访问令牌
             if (ConfigUtils.isDefault(token)) {
                 map.put("token", UUID.randomUUID().toString());
             } else {
