@@ -340,8 +340,9 @@ export方法：判断当前ServiceBean(SreviceConfig)的export及delay配置（�
 ###### 服务发布核心：doExportUrls方法（ServiceConfig类）
 ```language
     private void doExportUrls() {
-        //
+        //根据register配置及其他参数组装完整的registerUrl列表
         List<URL> registryURLs = loadRegistries(true);
+        //基于protocol完成服务
         for (ProtocolConfig protocolConfig : protocols) {
             doExportUrlsFor1Protocol(protocolConfig, registryURLs);
         }
