@@ -543,7 +543,7 @@ export方法：判断当前ServiceBean(SreviceConfig)的export及delay配置（�
 
             //配置不是remote的情况下做本地暴露 (配置为remote，则表示只暴露远程服务)
             if (!Constants.SCOPE_REMOTE.toString().equalsIgnoreCase(scope)) {
-                //rg
+                //后面单独分析
                 exportLocal(url);
             }
             //如果配置不是local则暴露为远程服务.(配置为local，则表示只暴露远程服务)
@@ -578,6 +578,6 @@ export方法：判断当前ServiceBean(SreviceConfig)的export及delay配置（�
         this.urls.add(url);
     }
 ```
-
+方法exportLocal(url)其实也
 
 
