@@ -518,7 +518,7 @@ export方法：判断当前ServiceBean(SreviceConfig)的export及delay配置（�
             }
         }
         if ("injvm".equals(protocolConfig.getName())) {
-            //protocol为injvm
+            //protocol为injvm，修改注册
             protocolConfig.setRegister(false);
             map.put("notify", "false");
         }
