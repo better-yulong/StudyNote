@@ -346,4 +346,53 @@ export方法：判断当前ServiceBean(SreviceConfig)的export及delay配置（�
         }
     }
 ```
+方法loadRegistries(true)
+```language
+    protected List<URL> loadRegistries(boolean provider) {
+        checkRegistry();
+        List<URL> registryList = new ArrayList<URL>();
+        if (registries != null && registries.size() > 0) {
+            for (RegistryConfig config : registries) {
+                String address = config.getAddress();
+                if (address == null || address.length() == 0) {
+                	address = Constants.ANYHOST_VALUE;
+                }
+                String sysaddress = System.getProperty("dubbo.registry.address");
+                if (sysaddress != null && sysaddress.length() > 0) {
+                    address = sysaddress;
+                }
+                if (address != null && address.length() > 0 
+                        && ! RegistryConfig.NO_AVAILABLE.equalsIgnoreCase(address)) {
+                    Map<String, String> map = new HashMap<String, String>();
+                    appendParameters(map, application);
+                    appendParameters(map, config);
+                    map.put("path", RegistryService.class.getName());
+                    map.put("dubbo", Version.getVersion());
+                    map.put(Constants.TIMESTAMP_KEY, String.valueOf(System.currentTimeMillis()));
+                    if (ConfigUtils.getPid() > 0) {
+                        map.put(Constants.PID_KEY, String.valueOf(ConfigUtils.getPid()));
+                    }
+                    if (! map.containsKey("protocol")) {
+                        if (ExtensionLoader.getExtensionLoader(RegistryFactory.class).hasExtension("remote")) {
+                            map.put("protocol", "remote");
+                        } else {
+                            map.put("protocol", "dubbo");
+                        }
+                    }
+                    List<URL> urls = UrlUtils.parseURLs(address, map);
+                    for (URL url : urls) {
+                        url = url.addParameter(Constants.REGISTRY_KEY, url.getProtocol());
+                        url = url.setProtocol(Constants.REGISTRY_PROTOCOL);
+                        if ((provider && url.getParameter(Constants.REGISTER_KEY, true))
+                                || (! provider && url.getParameter(Constants.SUBSCRIBE_KEY, true))) {
+                            registryList.add(url);
+                        }
+                    }
+                }
+            }
+        }
+        return registryList;
+    }
+```
+
 
