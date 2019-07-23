@@ -548,6 +548,7 @@ export方法：判断当前ServiceBean(SreviceConfig)的export及delay配置（�
             }
             //如果配置不是local则暴露为远程服务.(配置为local，则表示只暴露远程服务)
             if (! Constants.SCOPE_LOCAL.toString().equalsIgnoreCase(scope) ){
+                 //下面单独分析
                 if (logger.isInfoEnabled()) {
                     logger.info("Export dubbo service " + interfaceClass.getName() + " to url " + url);
                 }
@@ -578,6 +579,6 @@ export方法：判断当前ServiceBean(SreviceConfig)的export及delay配置（�
         this.urls.add(url);
     }
 ```
-方法exportLocal(url)其实也
+方法exportLocal(url)方法
 
 
