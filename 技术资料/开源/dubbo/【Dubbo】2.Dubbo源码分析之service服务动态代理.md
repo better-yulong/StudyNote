@@ -43,7 +43,7 @@ private static final ProxyFactory proxyFactory = ExtensionLoader.getExtensionLoa
             throw new IllegalArgumentException("Extension type(" + type + 
                     ") is not extension, because WITHOUT @" + SPI.class.getSimpleName() + " Annotation!");
         }
-        //实例化
+        //实例化当前扩展点type对应的ExtensionLoader
         ExtensionLoader<T> loader = (ExtensionLoader<T>) EXTENSION_LOADERS.get(type);
         if (loader == null) {
             EXTENSION_LOADERS.putIfAbsent(type, new ExtensionLoader<T>(type));
