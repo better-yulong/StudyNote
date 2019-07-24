@@ -38,6 +38,7 @@ private static final ProxyFactory proxyFactory = ExtensionLoader.getExtensionLoa
         if(!type.isInterface()) {
             throw new IllegalArgumentException("Extension type(" + type + ") is not interface!");
         }
+        //即Dubbo SPI约定，检查当前class是否被 @SPI 注解
         if(!withExtensionAnnotation(type)) {
             throw new IllegalArgumentException("Extension type(" + type + 
                     ") is not extension, because WITHOUT @" + SPI.class.getSimpleName() + " Annotation!");
