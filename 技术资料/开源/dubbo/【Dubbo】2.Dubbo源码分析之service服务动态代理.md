@@ -66,7 +66,7 @@ private static final ProxyFactory proxyFactory = ExtensionLoader.getExtensionLoa
             synchronized (cachedClasses) {
                 classes = cachedClasses.get();
                 if (classes == null) {
-                    //
+                    //加载扩展类s
                     classes = loadExtensionClasses();
                     cachedClasses.set(classes);
                 }
