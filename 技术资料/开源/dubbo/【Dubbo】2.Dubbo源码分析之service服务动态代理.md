@@ -1,4 +1,4 @@
-针对上一篇服务注册源码，如源码(及参数）：
+针对上一篇服务注册源码，如erviceConfig类源码(及参数）：
 ```language
     @SuppressWarnings({ "unchecked", "rawtypes" })
     private void exportLocal(URL url) {
