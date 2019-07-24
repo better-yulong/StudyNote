@@ -100,7 +100,7 @@ private static final ProxyFactory proxyFactory = ExtensionLoader.getExtensionLoa
     }
     
     private void loadFile(Map<String, Class<?>> extensionClasses, String dir) {
-        
+        //比如：META-INF/dubbo/internal/com.alibaba.dubbo.rpc.Protocol
         String fileName = dir + type.getName();
         try {
             Enumeration<java.net.URL> urls;
