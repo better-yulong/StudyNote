@@ -26,8 +26,7 @@ private static final ProxyFactory proxyFactory = ExtensionLoader.getExtensionLoa
 ### 一.Dubbo SPI架构
 - 开始有尝试调试如上代码，但感觉很难对整体有一个清晰的思路；于是决定换个角度，先从整体理解下Dubbo SPI的整体架构（Dubbo 的微内核设计，可参考资料：https://my.oschina.net/j4love/blog/1813040、https://www.jianshu.com/p/7daa38fc9711）。
 - 从上面资料，可将ExtensionLoader对比ServiceLoader，而Protocol 、ProxyFactory、ExtensionFactory即为满足Dubbo SPI的两个自定义扩展点。
-#### 1.1 ExtensionLoader
-##### 1.1.1 ExtensionLoader实例化
+#### 1.1 ExtensionLoader实例化
 参考如上的源码，ExtensionLoader实例化通过类似方式：ExtensionLoader.getExtensionLoader(Protocol.class)
 ```language
     @SuppressWarnings("unchecked")
@@ -216,6 +215,7 @@ mock=com.alibaba.dubbo.rpc.support.MockProtocol
 ```
 至此完成根据type实例化对应ExtensionLoader实例（同时完成SPI文件解析，初始化同一type所有及其所有实现类class、 name等信息）
 
+#### 1.2 Exte
 
 ExtensionLoader.getExtensionLoader(ProxyFactory.class).getAdaptiveExtension()
 
