@@ -570,7 +570,7 @@ export方法：判断当前ServiceBean(SreviceConfig)的export及delay配置（�
                     }
                 } else {
                     Invoker<?> invoker = proxyFactory.getInvoker(ref, (Class) interfaceClass, url);
-
+![mybatis12.PNG](1)
                     Exporter<?> exporter = protocol.export(invoker);
                     exporters.add(exporter);
                 }
