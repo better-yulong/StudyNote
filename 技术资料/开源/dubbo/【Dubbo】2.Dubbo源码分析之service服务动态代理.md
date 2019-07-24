@@ -135,7 +135,7 @@ private static final ProxyFactory proxyFactory = ExtensionLoader.getExtensionLoa
                                             line = line.substring(i + 1).trim();
                                         }
                                         if (line.length() > 0) {
-                                            //
+                                            //加载Dubbo SPI扩展接口实现类，如ProtocolFilterWrapper、
                                             Class<?> clazz = Class.forName(line, true, classLoader);
                                             if (! type.isAssignableFrom(clazz)) {
                                                 throw new IllegalStateException("Error when load extension class(interface: " +
