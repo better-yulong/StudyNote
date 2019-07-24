@@ -249,6 +249,7 @@ mock=com.alibaba.dubbo.rpc.support.MockProtocol
         @SuppressWarnings("unchecked")
     private T createAdaptiveExtension() {
         try {
+              
             return injectExtension((T) getAdaptiveExtensionClass().newInstance());
         } catch (Exception e) {
             throw new IllegalStateException("Can not create adaptive extenstion " + type + ", cause: " + e.getMessage(), e);
