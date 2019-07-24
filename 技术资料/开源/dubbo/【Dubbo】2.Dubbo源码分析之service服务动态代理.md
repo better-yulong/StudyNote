@@ -205,7 +205,7 @@ private static final ProxyFactory proxyFactory = ExtensionLoader.getExtensionLoa
                                                 }
                                             }
                                         }
-                                  
+    //省略千万行
     }
 ```
 META-INF/dubbo/internal/com.alibaba.dubbo.rpc.Protocol文件：
