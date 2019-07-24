@@ -274,6 +274,7 @@ mock=com.alibaba.dubbo.rpc.support.MockProtocol
         com.alibaba.dubbo.common.compiler.Compiler compiler = ExtensionLoader.getExtensionLoader(com.alibaba.dubbo.common.compiler.Compiler.class).getAdaptiveExtension();
         return compiler.compile(code, classLoader);
     }
+
 ```
 
 
