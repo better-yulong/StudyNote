@@ -220,7 +220,7 @@ mock=com.alibaba.dubbo.rpc.support.MockProtocol
 ```language
    @SuppressWarnings("unchecked")
     public T getAdaptiveExtension() {
-         //获取反省的扩展实现实例(首次获取为null）
+         //获取缺省扩展实现类实例(首次获取为null）
         Object instance = cachedAdaptiveInstance.get();
         if (instance == null) {
             if(createAdaptiveInstanceError == null) {
@@ -228,7 +228,7 @@ mock=com.alibaba.dubbo.rpc.support.MockProtocol
                     instance = cachedAdaptiveInstance.get();
                     if (instance == null) {
                         try {
-                            //获取 
+                            //获取缺省扩展实现类实例
                             instance = createAdaptiveExtension();
                             cachedAdaptiveInstance.set(instance);
                         } catch (Throwable t) {
