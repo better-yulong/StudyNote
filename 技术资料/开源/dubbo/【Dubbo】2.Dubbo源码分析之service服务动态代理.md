@@ -148,7 +148,7 @@ private static final ProxyFactory proxyFactory = ExtensionLoader.getExtensionLoa
                                                 if(cachedAdaptiveClass == null) {
                                                     cachedAdaptiveClass = clazz;
                                                 } else if (! cachedAdaptiveClass.equals(clazz)) {
-                                                    
+                                                    //@Adaptive在类上,即当前类为缺省的适配扩展,每个扩展接口只允许有一个缺省适配扩展
                                                     throw new IllegalStateException("More than 1 adaptive class found: "
                                                             + cachedAdaptiveClass.getClass().getName()
                                                             + ", " + clazz.getClass().getName());
@@ -161,6 +161,7 @@ private static final ProxyFactory proxyFactory = ExtensionLoader.getExtensionLoa
                                                         cachedWrapperClasses = new ConcurrentHashSet<Class<?>>();
                                                         wrappers = cachedWrapperClasses;
                                                     }
+                                                    //每个EstensionLoader实例对应一个扩展接口type,也对应一个用于存储所有接口实现类clas的set集合
                                                     wrappers.add(clazz);
                                                 } catch (NoSuchMethodException e) {
                                                     clazz.getConstructor();
