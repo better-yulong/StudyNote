@@ -127,7 +127,7 @@ private static final ProxyFactory proxyFactory = ExtensionLoader.getExtensionLoa
                                 line = line.trim();
                                 if (line.length() > 0) {
                                     try {
-                                        //Dubbo SPI采用k
+                                        //Dubbo SPI采用=即key、value方式配置，此处截取
                                         String name = null;
                                         int i = line.indexOf('=');
                                         if (i > 0) {
@@ -135,6 +135,7 @@ private static final ProxyFactory proxyFactory = ExtensionLoader.getExtensionLoa
                                             line = line.substring(i + 1).trim();
                                         }
                                         if (line.length() > 0) {
+                                            //
                                             Class<?> clazz = Class.forName(line, true, classLoader);
                                             if (! type.isAssignableFrom(clazz)) {
                                                 throw new IllegalStateException("Error when load extension class(interface: " +
