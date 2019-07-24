@@ -180,6 +180,7 @@ private static final ProxyFactory proxyFactory = ExtensionLoader.getExtensionLoa
                                                             }
                                                         }
                                                     }
+                                                     //,拆分name
                                                     String[] names = NAME_SEPARATOR.split(name);
                                                     if (names != null && names.length > 0) {
                                                         Activate activate = clazz.getAnnotation(Activate.class);
