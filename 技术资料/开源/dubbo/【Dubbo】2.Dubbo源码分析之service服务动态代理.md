@@ -215,6 +215,12 @@ private static final ProxyFactory proxyFactory = ExtensionLoader.getExtensionLoa
     }
 ```
 
+```language
+filter=com.alibaba.dubbo.rpc.protocol.ProtocolFilterWrapper
+listener=com.alibaba.dubbo.rpc.protocol.ProtocolListenerWrapper
+mock=com.alibaba.dubbo.rpc.support.MockProtocol
+```
+
 
 ### Dubbo SPI之Protocol
 
