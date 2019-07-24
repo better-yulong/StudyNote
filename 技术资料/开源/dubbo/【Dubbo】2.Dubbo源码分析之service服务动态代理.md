@@ -28,7 +28,7 @@ private static final ProxyFactory proxyFactory = ExtensionLoader.getExtensionLoa
 - 从上面资料，可将ExtensionLoader对比ServiceLoader，而Protocol 、ProxyFactory、ExtensionFactory即为满足Dubbo SPI的两个自定义扩展点。
 #### 1.1 ExtensionLoader
 ##### 1.1.1 ExtensionLoader实例化
-参考如上的源码，ExtensionLoader实例化
+参考如上的源码，ExtensionLoader实例化通过类似方式：ExtensionLoader.getExtensionLoader(Protocol.class)
 ```language
     @SuppressWarnings("unchecked")
     public static <T> ExtensionLoader<T> getExtensionLoader(Class<T> type) {
