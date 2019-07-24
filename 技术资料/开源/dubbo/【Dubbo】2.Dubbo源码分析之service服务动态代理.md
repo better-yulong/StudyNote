@@ -143,11 +143,12 @@ private static final ProxyFactory proxyFactory = ExtensionLoader.getExtensionLoa
                                                         type + ", class line: " + clazz.getName() + "), class " 
                                                         + clazz.getName() + "is not subtype of interface.");
                                             }
-                                    
+                                            //clazz就否有@Adaptive注解
                                             if (clazz.isAnnotationPresent(Adaptive.class)) {
                                                 if(cachedAdaptiveClass == null) {
                                                     cachedAdaptiveClass = clazz;
                                                 } else if (! cachedAdaptiveClass.equals(clazz)) {
+                                                    
                                                     throw new IllegalStateException("More than 1 adaptive class found: "
                                                             + cachedAdaptiveClass.getClass().getName()
                                                             + ", " + clazz.getClass().getName());
