@@ -169,7 +169,7 @@ private static final ProxyFactory proxyFactory = ExtensionLoader.getExtensionLoa
                                                     clazz.getConstructor();
                                                      //name为空，即未用=号配置成key、value格式 
                                                     if (name == null || name.length() == 0) {
-                                                       
+                                                       //获取默认名称 
                                                         name = findAnnotationName(clazz);
                                                         if (name == null || name.length() == 0) {
                                                             if (clazz.getSimpleName().length() > type.getSimpleName().length()
