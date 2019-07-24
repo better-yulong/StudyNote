@@ -216,6 +216,10 @@ mock=com.alibaba.dubbo.rpc.support.MockProtocol
 ```
 至此完成根据type实例化对应ExtensionLoader实例（同时完成SPI文件解析，初始化同一type所有及其所有实现类class、 name等信息）
 
+
+ExtensionLoader.getExtensionLoader(ProxyFactory.class).getAdaptiveExtension()
+
+
 ### Dubbo SPI之Protocol
 
 
