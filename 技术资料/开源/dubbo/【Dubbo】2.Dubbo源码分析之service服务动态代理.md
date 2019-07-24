@@ -106,7 +106,7 @@ private static final ProxyFactory proxyFactory = ExtensionLoader.getExtensionLoa
             Enumeration<java.net.URL> urls;
             ClassLoader classLoader = findClassLoader();
             if (classLoader != null) {
-
+                //Finds all the resources with the given name,，即根据指定名查找所有
                 urls = classLoader.getResources(fileName);
             } else {
                 urls = ClassLoader.getSystemResources(fileName);
