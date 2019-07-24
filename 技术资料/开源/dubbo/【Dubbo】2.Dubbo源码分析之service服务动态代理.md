@@ -34,6 +34,7 @@ private static final ProxyFactory proxyFactory = ExtensionLoader.getExtensionLoa
     public static <T> ExtensionLoader<T> getExtensionLoader(Class<T> type) {
         if (type == null)
             throw new IllegalArgumentException("Extension type == null");
+        //type必须为接口，即对应DubboSPI
         if(!type.isInterface()) {
             throw new IllegalArgumentException("Extension type(" + type + ") is not interface!");
         }
