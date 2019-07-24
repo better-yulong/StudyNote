@@ -217,6 +217,55 @@ mock=com.alibaba.dubbo.rpc.support.MockProtocol
 
 #### 1.2 ExtensionLoader.getAdaptiveExtension()方法
 上面已分析完ExtensionLoader实例化过程，而
+```language
+   @SuppressWarnings("unchecked")
+    public T getAdaptiveExtension() {
+        Object instance = cachedAdaptiveInstance.get();
+        if (instance == null) {
+            if(createAdaptiveInstanceError == null) {
+                synchronized (cachedAdaptiveInstance) {
+                    instance = cachedAdaptiveInstance.get();
+                    if (instance == null) {
+                        try {
+                            instance = createAdaptiveExtension();
+                            cachedAdaptiveInstance.set(instance);
+                        } catch (Throwable t) {
+                            createAdaptiveInstanceError = t;
+                            throw new IllegalStateException("fail to create adaptive instance: " + t.toString(), t);
+                        }
+                    }
+                }
+            }
+            else {
+                throw new IllegalStateException("fail to create adaptive instance: " + createAdaptiveInstanceError.toString(), createAdaptiveInstanceError);
+            }
+        }
+
+        return (T) instance;
+    }
+
+        @SuppressWarnings("unchecked")
+    private T createAdaptiveExtension() {
+        try {
+            return injectExtension((T) getAdaptiveExtensionClass().newInstance());
+        } catch (Exception e) {
+            throw new IllegalStateException("Can not create adaptive extenstion " + type + ", cause: " + e.getMessage(), e);
+        }
+    }
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ExtensionLoader.getExtensionLoader(ProxyFactory.class).getAdaptiveExtension()
 
@@ -224,3 +273,4 @@ ExtensionLoader.getExtensionLoader(ProxyFactory.class).getAdaptiveExtension()
 ### Dubbo SPI之Protocol
 
 
+  
