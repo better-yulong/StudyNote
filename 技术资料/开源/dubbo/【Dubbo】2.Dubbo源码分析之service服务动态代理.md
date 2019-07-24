@@ -137,6 +137,7 @@ private static final ProxyFactory proxyFactory = ExtensionLoader.getExtensionLoa
                                         if (line.length() > 0) {
                                             //加载Dubbo SPI扩展接口实现类，如ProtocolFilterWrapper、ProtocolListenerWrapper、MockProtocol
                                             Class<?> clazz = Class.forName(line, true, classLoader);
+                                           //验证clazz与type关系，clazz必须是type接口的实现类
                                             if (! type.isAssignableFrom(clazz)) {
                                                 throw new IllegalStateException("Error when load extension class(interface: " +
                                                         type + ", class line: " + clazz.getName() + "), class " 
