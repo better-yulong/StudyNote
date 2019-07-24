@@ -115,7 +115,7 @@ private static final ProxyFactory proxyFactory = ExtensionLoader.getExtensionLoa
             }
             if (urls != null) {
                 while (urls.hasMoreElements()) {
-                    //kjar:file:/D:/***/study-code-effective-java/***/rpc-server/WEB-INF/lib/dubbo-registry-api-2.5.3.jar!/META-INF/dubbo/internal/com.alibaba.dubbo.rpc.Protocol
+                    //如jar:file:/D:/***/study-code-effective-java/***/rpc-server/WEB-INF/lib/dubbo-registry-api-2.5.3.jar!/META-INF/dubbo/internal/com.alibaba.dubbo.rpc.Protocol
                     java.net.URL url = urls.nextElement();
                     try {
                         BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream(), "utf-8"));
