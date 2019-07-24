@@ -191,6 +191,7 @@ private static final ProxyFactory proxyFactory = ExtensionLoader.getExtensionLoa
                                                             if (! cachedNames.containsKey(clazz)) {
                                                                 cachedNames.put(clazz, n);
                                                             }
+                                                            //如若同一name已有对应class则提示异常
                                                             Class<?> c = extensionClasses.get(n);
                                                             if (c == null) {
                                                                 extensionClasses.put(n, clazz);
