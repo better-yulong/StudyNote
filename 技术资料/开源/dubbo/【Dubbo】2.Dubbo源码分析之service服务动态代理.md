@@ -168,6 +168,7 @@ private static final ProxyFactory proxyFactory = ExtensionLoader.getExtensionLoa
 
                                                     clazz.getConstructor();
                                                     if (name == null || name.length() == 0) {
+                                                      
                                                         name = findAnnotationName(clazz);
                                                         if (name == null || name.length() == 0) {
                                                             if (clazz.getSimpleName().length() > type.getSimpleName().length()
