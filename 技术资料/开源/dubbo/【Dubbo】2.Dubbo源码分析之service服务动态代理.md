@@ -216,7 +216,7 @@ mock=com.alibaba.dubbo.rpc.support.MockProtocol
 至此完成根据type实例化对应ExtensionLoader实例（同时完成SPI文件解析，初始化同一type所有及其所有实现类class、 name等信息）
 
 #### 1.2 ExtensionLoader.getAdaptiveExtension()方法
-上面已分析完ExtensionLoader实例化过程，而获取具体扩展实例呢？注意上面分析时会判断class的@Adaptive注解，即是否反省的扩展实现，并赋值到 
+上面已分析完ExtensionLoader实例化过程，而获取具体扩展实例呢？注意上面分析时会判断class的@Adaptive注解，即是否反省的扩展实现，并赋值到ExtensionLoader实例的cachedAdaptiveClass
 ```language
    @SuppressWarnings("unchecked")
     public T getAdaptiveExtension() {
