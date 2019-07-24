@@ -110,7 +110,7 @@ private static final ProxyFactory proxyFactory = ExtensionLoader.getExtensionLoa
                 //Finds all the resources with the given name,，即根据指定名查找所有资源
                 urls = classLoader.getResources(fileName);
             } else {
-                //获取
+                //使用SystemClassLoader或者BootstrapClassLoader根据指定名查找所有资源
                 urls = ClassLoader.getSystemResources(fileName);
             }
             if (urls != null) {
