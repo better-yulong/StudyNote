@@ -25,5 +25,5 @@ private static final ProxyFactory proxyFactory = ExtensionLoader.getExtensionLoa
 
 ### Dubbo SPI架构
 - 开始有尝试调试如上代码，但感觉很难对整体有一个清晰的思路；于是决定换个角度，先从整体理解下Dubbo SPI的整体架构（Dubbo 的微内核设计，可参考资料：https://my.oschina.net/j4love/blog/1813040、https://www.jianshu.com/p/7daa38fc9711）。
-- 从上面资料，可将ExtensionLoader对比
+- 从上面资料，可将ExtensionLoader对比ServiceLoader，而Protocol 、
 
