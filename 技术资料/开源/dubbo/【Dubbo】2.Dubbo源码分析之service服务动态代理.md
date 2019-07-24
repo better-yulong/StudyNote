@@ -94,8 +94,8 @@ private static final ProxyFactory proxyFactory = ExtensionLoader.getExtensionLoa
         
         Map<String, Class<?>> extensionClasses = new HashMap<String, Class<?>>();
         loadFile(extensionClasses, DUBBO_INTERNAL_DIRECTORY);//值：META-INF/dubbo/internal/
-        loadFile(extensionClasses, DUBBO_DIRECTORY);
-        loadFile(extensionClasses, SERVICES_DIRECTORY);
+        loadFile(extensionClasses, DUBBO_DIRECTORY);//值：META-INF/dubbo/
+        loadFile(extensionClasses, SERVICES_DIRECTORY);//值：META-INF/services/
         return extensionClasses;
     }
     
