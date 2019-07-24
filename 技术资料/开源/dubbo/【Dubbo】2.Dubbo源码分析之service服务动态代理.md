@@ -106,6 +106,7 @@ private static final ProxyFactory proxyFactory = ExtensionLoader.getExtensionLoa
             Enumeration<java.net.URL> urls;
             ClassLoader classLoader = findClassLoader();
             if (classLoader != null) {
+
                 urls = classLoader.getResources(fileName);
             } else {
                 urls = ClassLoader.getSystemResources(fileName);
