@@ -259,6 +259,7 @@ mock=com.alibaba.dubbo.rpc.support.MockProtocol
     private Class<?> getAdaptiveExtensionClass() {
         //1.优先从cachedClasses获取所有扩展实现类信息；2.若为null则在上面有分析即解析SPI文件初始化
         getExtensionClasses();
+        //获取缺省
         if (cachedAdaptiveClass != null) {
             return cachedAdaptiveClass;
         }
