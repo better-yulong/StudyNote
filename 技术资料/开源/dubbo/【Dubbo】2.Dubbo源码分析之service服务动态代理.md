@@ -60,11 +60,13 @@ private static final ProxyFactory proxyFactory = ExtensionLoader.getExtensionLoa
     }
      
      private Map<String, Class<?>> getExtensionClasses() {
+        //classes示例：{spi=class com.alibaba.dubbo.common.extension.factory.SpiExtensionFactory, spring=class com.alibaba.dubbo.config.spring.extension.SpringExtensionFactory}
         Map<String, Class<?>> classes = cachedClasses.get();
         if (classes == null) {
             synchronized (cachedClasses) {
                 classes = cachedClasses.get();
                 if (classes == null) {
+                    //
                     classes = loadExtensionClasses();
                     cachedClasses.set(classes);
                 }
