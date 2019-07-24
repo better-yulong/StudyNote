@@ -183,11 +183,13 @@ private static final ProxyFactory proxyFactory = ExtensionLoader.getExtensionLoa
                                                      //,拆分name
                                                     String[] names = NAME_SEPARATOR.split(name);
                                                     if (names != null && names.length > 0) {
+                                                        //处理@Adaptive注解，在扩展点的实现类表示一个扩展类被获取到的的条件
                                                         Activate activate = clazz.getAnnotation(Activate.class);
                                                         if (activate != null) {
                                                             cachedActivates.put(names[0], activate);
                                                         }
                                                         for (String n : names) {
+                                                            //从这来看貌似只有第1个name有效
                                                             if (! cachedNames.containsKey(clazz)) {
                                                                 cachedNames.put(clazz, n);
                                                             }
