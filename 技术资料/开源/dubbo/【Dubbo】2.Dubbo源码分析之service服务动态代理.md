@@ -100,6 +100,7 @@ private static final ProxyFactory proxyFactory = ExtensionLoader.getExtensionLoa
     }
     
     private void loadFile(Map<String, Class<?>> extensionClasses, String dir) {
+        
         String fileName = dir + type.getName();
         try {
             Enumeration<java.net.URL> urls;
