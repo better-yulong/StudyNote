@@ -122,7 +122,6 @@ private static final ProxyFactory proxyFactory = ExtensionLoader.getExtensionLoa
                         try {
                             String line = null;
                             while ((line = reader.readLine()) != null) {
-                                //#作为解释
                                 final int ci = line.indexOf('#');
                                 if (ci >= 0) line = line.substring(0, ci);
                                 line = line.trim();
