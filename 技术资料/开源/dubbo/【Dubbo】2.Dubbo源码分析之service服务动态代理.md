@@ -214,7 +214,7 @@ filter=com.alibaba.dubbo.rpc.protocol.ProtocolFilterWrapper
 listener=com.alibaba.dubbo.rpc.protocol.ProtocolListenerWrapper
 mock=com.alibaba.dubbo.rpc.support.MockProtocol
 ```
-
+至此完成根据type
 
 ### Dubbo SPI之Protocol
 
