@@ -205,25 +205,7 @@ private static final ProxyFactory proxyFactory = ExtensionLoader.getExtensionLoa
                                                 }
                                             }
                                         }
-                                    } catch (Throwable t) {
-                                        IllegalStateException e = new IllegalStateException("Failed to load extension class(interface: " + type + ", class line: " + line + ") in " + url + ", cause: " + t.getMessage(), t);
-                                        exceptions.put(line, e);
-                                    }
-                                }
-                            } // end of while read lines
-                        } finally {
-                            reader.close();
-                        }
-                    } catch (Throwable t) {
-                        logger.error("Exception when load extension class(interface: " +
-                                            type + ", class file: " + url + ") in " + url, t);
-                    }
-                } // end of while urls
-            }
-        } catch (Throwable t) {
-            logger.error("Exception when load extension class(interface: " +
-                    type + ", description file: " + fileName + ").", t);
-        }
+                                  
     }
 ```
 META-INF/dubbo/internal/com.alibaba.dubbo.rpc.Protocol文件：
