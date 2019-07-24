@@ -155,7 +155,7 @@ private static final ProxyFactory proxyFactory = ExtensionLoader.getExtensionLoa
                                                 }
                                             } else {
                                                 try {
-                                                    //获取还参的构造器(一个type接口有多个实现类
+                                                    //获取还参的构造器(一个type接口有多个实现类)
                                                     clazz.getConstructor(type);
                                                     Set<Class<?>> wrappers = cachedWrapperClasses;
                                                     if (wrappers == null) {
@@ -165,6 +165,7 @@ private static final ProxyFactory proxyFactory = ExtensionLoader.getExtensionLoa
                                                     //每个EstensionLoader实例对应一个扩展接口type,也对应一个用于存储所有接口实现类clas的set集合
                                                     wrappers.add(clazz);
                                                 } catch (NoSuchMethodException e) {
+
                                                     clazz.getConstructor();
                                                     if (name == null || name.length() == 0) {
                                                         name = findAnnotationName(clazz);
