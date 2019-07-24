@@ -127,6 +127,7 @@ private static final ProxyFactory proxyFactory = ExtensionLoader.getExtensionLoa
                                 line = line.trim();
                                 if (line.length() > 0) {
                                     try {
+                                        //Dubbo SPI采用k
                                         String name = null;
                                         int i = line.indexOf('=');
                                         if (i > 0) {
