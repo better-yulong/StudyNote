@@ -27,6 +27,33 @@ private static final ProxyFactory proxyFactory = ExtensionLoader.getExtensionLoa
 - 开始有尝试调试如上代码，但感觉很难对整体有一个清晰的思路；于是决定换个角度，先从整体理解下Dubbo SPI的整体架构（Dubbo 的微内核设计，可参考资料：https://my.oschina.net/j4love/blog/1813040、https://www.jianshu.com/p/7daa38fc9711）。
 - 从上面资料，可将ExtensionLoader对比ServiceLoader，而Protocol 、ProxyFactory、ExtensionFactory即为满足Dubbo SPI的两个自定义扩展点。
 #### 1.1 ExtensionLoader实例化
+##### 1.1.1 ExtensionLoader
+```language
+    @SuppressWarnings("unchecked")
+    public static <T> ExtensionLoader<T> getExtensionLoader(Class<T> type) {
+        if (type == null)
+            throw new IllegalArgumentException("Extension type == null");
+        if(!type.isInterface()) {
+            throw new IllegalArgumentException("Extension type(" + type + ") is not interface!");
+        }
+        if(!withExtensionAnnotation(type)) {
+            throw new IllegalArgumentException("Extension type(" + type + 
+                    ") is not extension, because WITHOUT @" + SPI.class.getSimpleName() + " Annotation!");
+        }
+        
+        ExtensionLoader<T> loader = (ExtensionLoader<T>) EXTENSION_LOADERS.get(type);
+        if (loader == null) {
+            EXTENSION_LOADERS.putIfAbsent(type, new ExtensionLoader<T>(type));
+            loader = (ExtensionLoader<T>) EXTENSION_LOADERS.get(type);
+        }
+        return loader;
+    }
+
+    private ExtensionLoader(Class<?> type) {
+        this.type = type;
+        objectFactory = (type == ExtensionFactory.class ? null : ExtensionLoader.getExtensionLoader(ExtensionFactory.class).getAdaptiveExtension());
+    }
+```
 
 
 ### Dubbo SPI之Protocol
