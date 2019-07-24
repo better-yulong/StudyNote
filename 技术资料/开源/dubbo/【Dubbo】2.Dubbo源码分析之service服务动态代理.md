@@ -167,8 +167,9 @@ private static final ProxyFactory proxyFactory = ExtensionLoader.getExtensionLoa
                                                 } catch (NoSuchMethodException e) {
                                                     //获取默认无参的构造器
                                                     clazz.getConstructor();
+                                                     //name为空，即未用=号配置成key、value格式 
                                                     if (name == null || name.length() == 0) {
-                                                        //name为空，即未用=号配置成key、value格式 
+                                                       
                                                         name = findAnnotationName(clazz);
                                                         if (name == null || name.length() == 0) {
                                                             if (clazz.getSimpleName().length() > type.getSimpleName().length()
