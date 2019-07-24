@@ -75,8 +75,9 @@ private static final ProxyFactory proxyFactory = ExtensionLoader.getExtensionLoa
         return classes;
 	}
 
-    // 此方法已经getExtensionClasses方法同步过。
+
     private Map<String, Class<?>> loadExtensionClasses() {
+       //获取SPI注解
         final SPI defaultAnnotation = type.getAnnotation(SPI.class);
         if(defaultAnnotation != null) {
             String value = defaultAnnotation.value();
