@@ -580,7 +580,7 @@ export方法：判断当前ServiceBean(SreviceConfig)的export及delay配置（�
     }
 ```
 方法exportLocal(url)方法内主流涉及2点：1、proxyFactory.getInvoker(...)；2、protocol.export(invoker)；3.exporters.add(exporter)。另外proxyFactory为ServiceConfi类的satic变量：proxyFactory= ExtensionLoader.getExtensionLoader(ProxyFactory.class).getAdaptiveExtension()
-
+这部分相对可分析的东西比较多，下一篇
 
 
 
