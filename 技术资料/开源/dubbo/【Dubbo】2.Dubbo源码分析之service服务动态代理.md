@@ -260,6 +260,14 @@ mock=com.alibaba.dubbo.rpc.support.MockProtocol
         }
         return cachedAdaptiveClass = createAdaptiveExtensionClass();
     }
+
+        
+    private Class<?> createAdaptiveExtensionClass() {
+        String code = createAdaptiveExtensionClassCode();
+        ClassLoader classLoader = findClassLoader();
+        com.alibaba.dubbo.common.compiler.Compiler compiler = ExtensionLoader.getExtensionLoader(com.alibaba.dubbo.common.compiler.Compiler.class).getAdaptiveExtension();
+        return compiler.compile(code, classLoader);
+    }
 ```
 
 
