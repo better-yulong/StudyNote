@@ -214,7 +214,7 @@ private static final ProxyFactory proxyFactory = ExtensionLoader.getExtensionLoa
         }
     }
 ```
-
+META-INF/dubbo/internal/com.alibaba.dubbo.rpc.Protocol文件：
 ```language
 filter=com.alibaba.dubbo.rpc.protocol.ProtocolFilterWrapper
 listener=com.alibaba.dubbo.rpc.protocol.ProtocolListenerWrapper
