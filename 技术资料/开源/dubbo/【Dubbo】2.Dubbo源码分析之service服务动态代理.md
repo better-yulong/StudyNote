@@ -165,10 +165,10 @@ private static final ProxyFactory proxyFactory = ExtensionLoader.getExtensionLoa
                                                     //每个EstensionLoader实例对应一个扩展接口type,也对应一个用于存储所有接口实现类clas的set集合
                                                     wrappers.add(clazz);
                                                 } catch (NoSuchMethodException e) {
-
+                                                    //获取默认无参的构造器
                                                     clazz.getConstructor();
                                                     if (name == null || name.length() == 0) {
-                                                      
+                                                        //name为空，即未用=号配置成key、value格式 
                                                         name = findAnnotationName(clazz);
                                                         if (name == null || name.length() == 0) {
                                                             if (clazz.getSimpleName().length() > type.getSimpleName().length()
