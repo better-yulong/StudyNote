@@ -257,6 +257,7 @@ mock=com.alibaba.dubbo.rpc.support.MockProtocol
     }
 
     private Class<?> getAdaptiveExtensionClass() {
+        //1.优先从cachedClasses获取扩展实现类列
         getExtensionClasses();
         if (cachedAdaptiveClass != null) {
             return cachedAdaptiveClass;
