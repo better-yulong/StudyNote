@@ -155,6 +155,7 @@ private static final ProxyFactory proxyFactory = ExtensionLoader.getExtensionLoa
                                                 }
                                             } else {
                                                 try {
+                                                    //获取还参的构造器(一个type接口有多个实现类
                                                     clazz.getConstructor(type);
                                                     Set<Class<?>> wrappers = cachedWrapperClasses;
                                                     if (wrappers == null) {
