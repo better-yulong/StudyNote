@@ -58,7 +58,7 @@ private static final ProxyFactory proxyFactory = ExtensionLoader.getExtensionLoa
         //同上，非ExtensionFactory实例化ExtensionFactory扩展点对应的ExtensionLoader，getAdaptiveExtension方法分析往下看；
         objectFactory = (type == ExtensionFactory.class ? null : ExtensionLoader.getExtensionLoader(ExtensionFactory.class).getAdaptiveExtension());
     }
-
+    
      private Map<String, Class<?>> getExtensionClasses() {
         Map<String, Class<?>> classes = cachedClasses.get();
         if (classes == null) {
