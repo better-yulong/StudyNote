@@ -52,6 +52,7 @@ private static final ProxyFactory proxyFactory = ExtensionLoader.getExtensionLoa
         return loader;
     }
 
+    //ExtensionLoader 带参构造方法
     private ExtensionLoader(Class<?> type) {
         this.type = type;
         objectFactory = (type == ExtensionFactory.class ? null : ExtensionLoader.getExtensionLoader(ExtensionFactory.class).getAdaptiveExtension());
