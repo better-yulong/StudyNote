@@ -268,7 +268,7 @@ mock=com.alibaba.dubbo.rpc.support.MockProtocol
     }
         
     private Class<?> createAdaptiveExtensionClass() {
-           	//这个方法眼前一亮：1.判断是否有方法使用注解 @Adaptive ；如若没有会抛出异常（每个扩展接口必须 有一个缺省实现）；2.如若有Method级别的@Adaptive注解，则会使用StringBuillder方式拼接一个java文件，
+        //这个方法眼前一亮：1.判断是否有方法使用注解 @Adaptive ；如若没有会抛出异常（每个扩展接口必须 有一个缺省实现）；2.如若有Method级别的@Adaptive注解，则会使用StringBuillder方式拼接一个java文件，
     	//如codeBuidler.append("\npublic class " + type.getSimpleName() + "$Adpative" + " implements " + type.getCanonicalName() + " {");
         String code = createAdaptiveExtensionClassCode();
         ClassLoader classLoader = findClassLoader();
