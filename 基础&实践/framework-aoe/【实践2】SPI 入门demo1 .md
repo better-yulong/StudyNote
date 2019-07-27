@@ -1,6 +1,5 @@
-- 很多框架都使用了java的SPI机制，如java.sql.Driver的SPI实现（mysql驱动、oracle驱动等）、common-logging的日志接口实现、dubbo的扩展实现等等框架；
+- 很多框架都使用了java的SPI机制，如java.sql.Driver的SPI实现（mysql驱动、oracle驱动等）、common-logging的日志接口实现、dubbo的扩展实现等等框架(可参考：https://www.jianshu.com/p/46b42f7f593c)
 - 当前示例以日志接口实现为例。
-- https://www.jia
 #### 一、日志框架开发
 1. framework-aoe-spi-logger 工程定义日志服务接口 org.framework.aoe.spi.logger.Logger:
 ```language
