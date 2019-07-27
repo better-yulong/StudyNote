@@ -273,6 +273,7 @@ mock=com.alibaba.dubbo.rpc.support.MockProtocol
         String code = createAdaptiveExtensionClassCode();
         //获取类加载器 ExtensionLoader.class.getClassLoader()
         ClassLoader classLoader = findClassLoader();
+        //根据SPI
         com.alibaba.dubbo.common.compiler.Compiler compiler = ExtensionLoader.getExtensionLoader(com.alibaba.dubbo.common.compiler.Compiler.class).getAdaptiveExtension();
         return compiler.compile(code, classLoader);
     }
