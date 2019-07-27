@@ -277,7 +277,7 @@ mock=com.alibaba.dubbo.rpc.support.MockProtocol
     }
 
 ```
-createAdaptiveExtensionClass方法生成Protoco的
+createAdaptiveExtensionClass方法生成Protoco的AdaptiveExtensionClassCode，即完全拼接生成java代码：
 ```language
 package com.alibaba.dubbo.rpc;
 import com.alibaba.dubbo.common.extension.ExtensionLoader;
