@@ -263,7 +263,7 @@ mock=com.alibaba.dubbo.rpc.support.MockProtocol
         if (cachedAdaptiveClass != null) {
             return cachedAdaptiveClass;
         }
-       
+       //无缺省adaptiveClass，需创建
         return cachedAdaptiveClass = createAdaptiveExtensionClass();
     }
 
