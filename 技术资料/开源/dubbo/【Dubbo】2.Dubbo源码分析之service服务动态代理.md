@@ -228,7 +228,7 @@ mock=com.alibaba.dubbo.rpc.support.MockProtocol
                     instance = cachedAdaptiveInstance.get();
                     if (instance == null) {
                         try {
-                            //获取缺省扩展实现类实例
+                            //缺省扩展实现类实例
                             instance = createAdaptiveExtension();
                             cachedAdaptiveInstance.set(instance);
                         } catch (Throwable t) {
