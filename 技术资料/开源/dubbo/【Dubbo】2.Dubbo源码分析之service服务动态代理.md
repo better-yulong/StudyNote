@@ -391,7 +391,7 @@ public class ServiceConfig<T> extends AbstractServiceConfig {
             Exporter<?> exporter = protocol.export(invoker);
             exporters.add(exporter);
 ```
-其中根据Javassist生成的ProxyFactory$Adpative源码分析，代码重点在如下两行：1.获取ProxyFactory扩展实例extension（基于Dubbo SPI获取 JavassistProxyFactory实例）; 2.extension.getInvoker获取
+其中根据Javassist生成的ProxyFactory$Adpative源码分析，代码重点在如下两行：1.获取ProxyFactory扩展实例extension（基于Dubbo SPI获取 JavassistProxyFactory实例）; 2.extension.getInvoker获取调用器invoker实例
 ```language
 //ProxyFactory SPI接口javassis对应实现类JavassistProxyFactory; extName如若没有指定则默认为javassist
 		com.alibaba.dubbo.rpc.ProxyFactory extension = (com.alibaba.dubbo.rpc.ProxyFactory) ExtensionLoader
