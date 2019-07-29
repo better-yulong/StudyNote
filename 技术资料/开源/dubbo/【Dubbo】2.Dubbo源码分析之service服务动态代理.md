@@ -364,6 +364,7 @@ public class ProxyFactory$Adpative implements com.alibaba.dubbo.rpc.ProxyFactory
 		if (extName == null)
 			throw new IllegalStateException("Fail to get extension(com.alibaba.dubbo.rpc.ProxyFactory) name from url("
 					+ url.toString() + ") use keys([proxy])");
+                //ProxyFactory SPI接口javassis
 		com.alibaba.dubbo.rpc.ProxyFactory extension = (com.alibaba.dubbo.rpc.ProxyFactory) ExtensionLoader
 				.getExtensionLoader(com.alibaba.dubbo.rpc.ProxyFactory.class).getExtension(extName);
 		return extension.getInvoker(arg0, arg1, arg2);
