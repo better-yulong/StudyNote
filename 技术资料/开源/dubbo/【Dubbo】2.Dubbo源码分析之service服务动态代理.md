@@ -567,7 +567,7 @@ return new AbstractProxyInvoker<T>(proxy, type, url) {
 		return extension.export(arg0);
 	}
 ```
-即获取Invoker对象Url信息，根据
+即获取Invoker对象Url信息，根据protocol获取Protocol实例（默认为DubboProtocol），
 
 ### Dubbo SPI之Protocol
 
