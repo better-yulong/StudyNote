@@ -367,7 +367,7 @@ public class ProxyFactory$Adpative implements com.alibaba.dubbo.rpc.ProxyFactory
                 //ProxyFactory SPI接口javassis对应实现类JavassistProxyFactory
 		com.alibaba.dubbo.rpc.ProxyFactory extension = (com.alibaba.dubbo.rpc.ProxyFactory) ExtensionLoader
 				.getExtensionLoader(com.alibaba.dubbo.rpc.ProxyFactory.class).getExtension(extName);
-                //结合JavassistProxyFactory.getInvoker方法：
+                //结合JavassistProxyFactory.getInvoker方法，返回实例为AbstractProxyInvoker的实例，其doInvoker方法可通过
 		return extension.getInvoker(arg0, arg1, arg2);
 	}
 }
