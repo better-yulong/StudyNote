@@ -384,6 +384,13 @@ public class ServiceConfig<T> extends AbstractServiceConfig {
     ......	
 }
 ```
+回到之前分析URL注册时源码：
+```language
+            //源码为protocol.export中嵌套proxyFactory.getInvoker，但为方便调试此处调整为2行分别实现
+            Invoker  invoker = proxyFactory.getInvoker(ref, (Class) interfaceClass, local);
+            Exporter<?> exporter = protocol.export(invoker);
+            exporters.add(exporter);
+```
 
 JavassistProxyFactory
 1. invoker : DubboExampleService1
