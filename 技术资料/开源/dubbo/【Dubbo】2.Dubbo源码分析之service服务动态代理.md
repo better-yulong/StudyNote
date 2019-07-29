@@ -384,6 +384,7 @@ public class ServiceConfig<T> extends AbstractServiceConfig {
     ......	
 }
 ```
+
 JavassistProxyFactory
 1. invoker : DubboExampleService1
 2. interfaces : interface com.aoe.demo.rpc.dubbo.DubboExampleInterf1
