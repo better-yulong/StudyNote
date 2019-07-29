@@ -568,6 +568,80 @@ return new AbstractProxyInvoker<T>(proxy, type, url) {
 	}
 ```
 即获取Invoker对象Url信息，根据protocol获取Protocol实例（默认为DubboProtocol，可根据url的protocol动态获取），那么此处就涉及DubboProtocol.export（）方法（当前示例入参为Dubbo的Url实例）
+```language
+
+
+    public <T> Exporter<T> export(Invoker<T> invoker) throws RpcException {
+        URL url = invoker.getUrl();
+        
+        // export service.
+        String key = serviceKey(url);
+        DubboExporter<T> exporter = new DubboExporter<T>(invoker, key, exporterMap);
+        exporterMap.put(key, exporter);
+        
+        //export an stub service for dispaching event
+        Boolean isStubSupportEvent = url.getParameter(Constants.STUB_EVENT_KEY,Constants.DEFAULT_STUB_EVENT);
+        Boolean isCallbackservice = url.getParameter(Constants.IS_CALLBACK_SERVICE, false);
+        if (isStubSupportEvent && !isCallbackservice){
+            String stubServiceMethods = url.getParameter(Constants.STUB_EVENT_METHODS_KEY);
+            if (stubServiceMethods == null || stubServiceMethods.length() == 0 ){
+                if (logger.isWarnEnabled()){
+                    logger.warn(new IllegalStateException("consumer [" +url.getParameter(Constants.INTERFACE_KEY) +
+                            "], has set stubproxy support event ,but no stub methods founded."));
+                }
+            } else {
+                stubServiceMethodsMap.put(url.getServiceKey(), stubServiceMethods);
+            }
+        }
+
+        openServer(url);
+        
+        return exporter;
+    }
+    
+    private void openServer(URL url) {
+        // find server.
+        String key = url.getAddress();
+        //client 也可以暴露一个只有server可以调用的服务。
+        boolean isServer = url.getParameter(Constants.IS_SERVER_KEY,true);
+        if (isServer) {
+        	ExchangeServer server = serverMap.get(key);
+        	if (server == null) {
+        		serverMap.put(key, createServer(url));
+        	} else {
+        		//server支持reset,配合override功能使用
+        		server.reset(url);
+        	}
+        }
+    }
+    
+    private ExchangeServer createServer(URL url) {
+        //默认开启server关闭时发送readonly事件
+        url = url.addParameterIfAbsent(Constants.CHANNEL_READONLYEVENT_SENT_KEY, Boolean.TRUE.toString());
+        //默认开启heartbeat
+        url = url.addParameterIfAbsent(Constants.HEARTBEAT_KEY, String.valueOf(Constants.DEFAULT_HEARTBEAT));
+        String str = url.getParameter(Constants.SERVER_KEY, Constants.DEFAULT_REMOTING_SERVER);
+
+        if (str != null && str.length() > 0 && ! ExtensionLoader.getExtensionLoader(Transporter.class).hasExtension(str))
+            throw new RpcException("Unsupported server type: " + str + ", url: " + url);
+
+        url = url.addParameter(Constants.CODEC_KEY, Version.isCompatibleVersion() ? COMPATIBLE_CODEC_NAME : DubboCodec.NAME);
+        ExchangeServer server;
+        try {
+            server = Exchangers.bind(url, requestHandler);
+        } catch (RemotingException e) {
+            throw new RpcException("Fail to start server(url: " + url + ") " + e.getMessage(), e);
+        }
+        str = url.getParameter(Constants.CLIENT_KEY);
+        if (str != null && str.length() > 0) {
+            Set<String> supportedTypes = ExtensionLoader.getExtensionLoader(Transporter.class).getSupportedExtensions();
+            if (!supportedTypes.contains(str)) {
+                throw new RpcException("Unsupported client type: " + str);
+            }
+        }
+        return server;
+    }
+```
 
 
 ### Dubbo SPI之Protocol
