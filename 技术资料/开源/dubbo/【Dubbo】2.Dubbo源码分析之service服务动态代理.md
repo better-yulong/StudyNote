@@ -370,7 +370,7 @@ public class ProxyFactory$Adpative implements com.alibaba.dubbo.rpc.ProxyFactory
 	}
 }
 ```
-即根据上面示例分析，
+即根据上面示例分析，ServiceBean实例化会同步实例化
 ```language
 public class ServiceConfig<T> extends AbstractServiceConfig {
 
@@ -379,6 +379,8 @@ public class ServiceConfig<T> extends AbstractServiceConfig {
     private static final Protocol protocol = ExtensionLoader.getExtensionLoader(Protocol.class).getAdaptiveExtension();
     
     private static final ProxyFactory proxyFactory = ExtensionLoader.getExtensionLoader(ProxyFactory.class).getAdaptiveExtension();
+    ......	
+}
 ```
 
 ### Dubbo SPI之Protocol
