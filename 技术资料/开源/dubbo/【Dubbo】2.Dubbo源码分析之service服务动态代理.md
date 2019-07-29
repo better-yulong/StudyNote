@@ -567,7 +567,8 @@ return new AbstractProxyInvoker<T>(proxy, type, url) {
 		return extension.export(arg0);
 	}
 ```
-即获取Invoker对象Url信息，根据protocol获取Protocol实例（默认为DubboProtocol，可根据url的protocol动态获取），那么此处就涉及DubboProtocol.export（）方法
+即获取Invoker对象Url信息，根据protocol获取Protocol实例（默认为DubboProtocol，可根据url的protocol动态获取），那么此处就涉及DubboProtocol.export（）方法（当前示例入参为Dubbo的Url实例）
+
 
 ### Dubbo SPI之Protocol
 
