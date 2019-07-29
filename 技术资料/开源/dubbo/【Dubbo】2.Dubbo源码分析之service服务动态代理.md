@@ -432,7 +432,8 @@ public class JavassistProxyFactory extends AbstractProxyFactory {
 
 }
 ```
-JavaassistRpcProxyFactory.getInvoker 方法
+
+
 
 
 ### Dubbo SPI之Protocol
