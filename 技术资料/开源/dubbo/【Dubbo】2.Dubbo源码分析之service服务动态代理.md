@@ -530,7 +530,7 @@ public class Wrapper1
 }
 
 ```
-
+##### 1.2.1.2 基于包装对象wwapp
 
 
 ### Dubbo SPI之Protocol
