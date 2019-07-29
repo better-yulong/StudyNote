@@ -370,7 +370,16 @@ public class ProxyFactory$Adpative implements com.alibaba.dubbo.rpc.ProxyFactory
 	}
 }
 ```
+即根据上面示例分析，
+```language
+public class ServiceConfig<T> extends AbstractServiceConfig {
 
+    private static final long   serialVersionUID = 3033787999037024738L;
+
+    private static final Protocol protocol = ExtensionLoader.getExtensionLoader(Protocol.class).getAdaptiveExtension();
+    
+    private static final ProxyFactory proxyFactory = ExtensionLoader.getExtensionLoader(ProxyFactory.class).getAdaptiveExtension();
+```
 
 ### Dubbo SPI之Protocol
 
