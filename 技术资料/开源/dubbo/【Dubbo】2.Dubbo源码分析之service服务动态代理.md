@@ -372,12 +372,6 @@ public class ProxyFactory$Adpative implements com.alibaba.dubbo.rpc.ProxyFactory
 ```
 
 
-
-
-
-ExtensionLoader.getExtensionLoader(ProxyFactory.class).getAdaptiveExtension()
-
-
 ### Dubbo SPI之Protocol
 
 
