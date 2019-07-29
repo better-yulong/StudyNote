@@ -433,7 +433,7 @@ public class JavassistProxyFactory extends AbstractProxyFactory {
 }
 ```
 ##### 1.2.1.1 Wrapper动态代理包装类分析（Wrapper.getWrapper）
-Wrapper.getWrapper（Class clazz)方法内会判断
+Wrapper.getWrapper（Class clazz)方法内会判断cl
 
 
 ### Dubbo SPI之Protocol
