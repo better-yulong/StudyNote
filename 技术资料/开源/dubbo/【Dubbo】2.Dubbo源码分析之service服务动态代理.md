@@ -549,7 +549,8 @@ return new AbstractProxyInvoker<T>(proxy, type, url) {
       }
 ```
 ##### 1.2.1.3 invoker注册至exporter
-上一步基于proxyFactory.getInvoker生成invoker实例（AbstractProxyInvoker类），之后调用exporter = protocol.export(invoker)
+上一步基于proxyFactory.getInvoker生成invoker实例（AbstractProxyInvoker类），之后调用exporter = protocol.export(invoker)（即对应上在分析的）：
+
 
 ### Dubbo SPI之Protocol
 
