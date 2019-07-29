@@ -549,7 +549,7 @@ return new AbstractProxyInvoker<T>(proxy, type, url) {
       }
 ```
 ##### 1.2.1.3 invoker注册至exporter
-上一步生成invoker实例（
+上一步基于proxyFactory.getInvoker生成invoker实例（AbstractProxyInvoker类），
 
 ### Dubbo SPI之Protocol
 
