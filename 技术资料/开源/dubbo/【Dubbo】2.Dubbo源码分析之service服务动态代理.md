@@ -434,6 +434,103 @@ public class JavassistProxyFactory extends AbstractProxyFactory {
 ```
 ##### 1.2.1.1 Wrapper动态代理包装类分析（Wrapper.getWrapper）
 Wrapper.getWrapper（Class clazz)方法对clazz
+```language
+package com.alibaba.dubbo.common.bytecode;
+
+import com.aoe.demo.rpc.dubbo.DubboExampleService1;
+import java.lang.reflect.InvocationTargetException;
+import java.util.List;
+import java.util.Map;
+
+public class Wrapper1
+  extends Wrapper
+  implements ClassGenerator.DC
+{
+  public static String[] pns;
+  public static Map pts;
+  public static String[] mns;
+  public static String[] dmns;
+  public static Class[] mts0;
+  
+  public String[] getPropertyNames()
+  {
+    return pns;
+  }
+  
+  public boolean hasProperty(String paramString)
+  {
+    return pts.containsKey(paramString);
+  }
+  
+  public Class getPropertyType(String paramString)
+  {
+    return (Class)pts.get(paramString);
+  }
+  
+  public String[] getMethodNames()
+  {
+    return mns;
+  }
+  
+  public String[] getDeclaredMethodNames()
+  {
+    return dmns;
+  }
+  
+  public void setPropertyValue(Object paramObject1, String paramString, Object paramObject2)
+  {
+    try
+    {
+      DubboExampleService1 localDubboExampleService1 = (DubboExampleService1)paramObject1;
+    }
+    catch (Throwable localThrowable)
+    {
+      throw new IllegalArgumentException(localThrowable);
+    }
+    throw new NoSuchPropertyException("Not found property \"" + paramString + "\" filed or setter method in class com.aoe.demo.rpc.dubbo.DubboExampleService1.");
+  }
+  
+  public Object getPropertyValue(Object paramObject, String paramString)
+  {
+    try
+    {
+      DubboExampleService1 localDubboExampleService1 = (DubboExampleService1)paramObject;
+    }
+    catch (Throwable localThrowable)
+    {
+      throw new IllegalArgumentException(localThrowable);
+    }
+    throw new NoSuchPropertyException("Not found property \"" + paramString + "\" filed or setter method in class com.aoe.demo.rpc.dubbo.DubboExampleService1.");
+  }
+  
+  public Object invokeMethod(Object paramObject, String paramString, Class[] paramArrayOfClass, Object[] paramArrayOfObject)
+    throws InvocationTargetException
+  {
+    DubboExampleService1 localDubboExampleService1;
+    try
+    {
+      localDubboExampleService1 = (DubboExampleService1)paramObject;
+    }
+    catch (Throwable localThrowable1)
+    {
+      throw new IllegalArgumentException(localThrowable1);
+    }
+    try
+    {
+      if ((!"serviceProvider".equals(paramString)) || (paramArrayOfClass.length == 1)) {
+        return localDubboExampleService1.serviceProvider((List)paramArrayOfObject[0]);
+      }
+    }
+    catch (Throwable localThrowable2)
+    {
+      throw new InvocationTargetException(localThrowable2);
+    }
+    throw new NoSuchMethodException("Not found method \"" + paramString + "\" in class com.aoe.demo.rpc.dubbo.DubboExampleService1.");
+  }
+}
+
+```
+
 
 
 ### Dubbo SPI之Protocol
