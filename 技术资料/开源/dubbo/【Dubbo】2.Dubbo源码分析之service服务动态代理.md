@@ -393,13 +393,13 @@ public class ServiceConfig<T> extends AbstractServiceConfig {
 ```
 其中根据Javassist生成的ProxyFactory$Adpative源码分析，代码重点在如下两行：
 ```language
-//ProxyFactory SPI接口javassis对应实现类JavassistProxyFactory
+//ProxyFactory SPI接口javassis对应实现类JavassistProxyFactory; extName如若没有指定则默认为javassist
 		com.alibaba.dubbo.rpc.ProxyFactory extension = (com.alibaba.dubbo.rpc.ProxyFactory) ExtensionLoader
 				.getExtensionLoader(com.alibaba.dubbo.rpc.ProxyFactory.class).getExtension(extName);
                 //结合JavassistProxyFactory.getInvoker方法，返回实例为AbstractProxyInvoker的实例，其doInvoker方法可通过
 		return extension.getInvoker(arg0, arg1, arg2);
 ```
-##### 1.2.1 
+##### 1.2.1  
 JavassistProxyFactory
 1. invoker : DubboExampleService1
 2. interfaces : interface com.aoe.demo.rpc.dubbo.DubboExampleInterf1
