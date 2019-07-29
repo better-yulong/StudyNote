@@ -548,7 +548,7 @@ return new AbstractProxyInvoker<T>(proxy, type, url) {
         return localDubboExampleService1.serviceProvider((List)paramArrayOfObject[0]);
       }
 ```
-##### 1.2.1.3 invoker生成exporter
+##### 1.2.1.3 invoker生成服务发布对象exporter
 上一步基于proxyFactory.getInvoker生成invoker实例（AbstractProxyInvoker类），之后调用exporter = protocol.export(invoker)（即对应上在分析的Protocol&Adaptive类的export方法）：
 ```language
 	public com.alibaba.dubbo.rpc.Exporter export(com.alibaba.dubbo.rpc.Invoker arg0)
