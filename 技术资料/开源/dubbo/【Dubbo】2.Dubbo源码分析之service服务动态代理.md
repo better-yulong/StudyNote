@@ -385,9 +385,9 @@ public class ServiceConfig<T> extends AbstractServiceConfig {
 }
 ```
 JavassistProxyFactory
-1. invoker:DubboExampleService1
-2. interfaces:interface com.aoe.demo.rpc.dubbo.DubboExampleInterf1
-3. injvm://127.0.0.1/com.aoe.demo.rpc.dubbo.DubboExampleInterf1?anyhost=true&application=rpc-server&default.timeout=1000&dubbo=2.5.3&interface=com.aoe.demo.rpc.dubbo.DubboExampleInterf1&methods=serviceProvider&pid=9424&revision=0.0.1-SNAPSHOT&side=provider&timestamp=1564390430345
+1. invoker : DubboExampleService1
+2. interfaces : interface com.aoe.demo.rpc.dubbo.DubboExampleInterf1
+3. url : injvm://127.0.0.1/com.aoe.demo.rpc.dubbo.DubboExampleInterf1?anyhost=true&application=rpc-server&default.timeout=1000&dubbo=2.5.3&interface=com.aoe.demo.rpc.dubbo.DubboExampleInterf1&methods=serviceProvider&pid=9424&revision=0.0.1-SNAPSHOT&side=provider&timestamp=1564390430345
 ```language
 /**
  * JavaassistRpcProxyFactory 
