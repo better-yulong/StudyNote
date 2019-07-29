@@ -382,6 +382,8 @@ public class ServiceConfig<T> extends AbstractServiceConfig {
     ......	
 }
 ```
+JavassistProxyFactory
+
 
 ### Dubbo SPI之Protocol
 
