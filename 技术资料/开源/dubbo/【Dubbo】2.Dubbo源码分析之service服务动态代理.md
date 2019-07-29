@@ -531,7 +531,17 @@ public class Wrapper1
 
 ```
 ##### 1.2.1.2 基于包装对象wrapper实例化Invoker对象
-
+```language
+return new AbstractProxyInvoker<T>(proxy, type, url) {
+            @Override
+            protected Object doInvoke(T proxy, String methodName, 
+                                      Class<?>[] parameterTypes, 
+                                      Object[] arguments) throws Throwable {
+                return wrapper.invokeMethod(proxy, methodName, parameterTypes, arguments);
+            }
+        };
+```
+即实例化
 
 ### Dubbo SPI之Protocol
 
