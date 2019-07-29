@@ -400,7 +400,7 @@ public class ServiceConfig<T> extends AbstractServiceConfig {
 		return extension.getInvoker(arg0, arg1, arg2);
 ```
 #### 1.2.1 调用器invoker实例化分析
-JavassistProxyFactory
+根据上面分析，即对应JavassistProxyFactory.getInvoker方法,c
 1. invoker : DubboExampleService1
 2. interfaces : interface com.aoe.demo.rpc.dubbo.DubboExampleInterf1
 3. url : injvm://127.0.0.1/com.aoe.demo.rpc.dubbo.DubboExampleInterf1?anyhost=true&application=rpc-server&default.timeout=1000&dubbo=2.5.3&interface=com.aoe.demo.rpc.dubbo.DubboExampleInterf1&methods=serviceProvider&pid=9424&revision=0.0.1-SNAPSHOT&side=provider&timestamp=1564390430345
