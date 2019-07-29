@@ -370,7 +370,7 @@ public class ProxyFactory$Adpative implements com.alibaba.dubbo.rpc.ProxyFactory
 	}
 }
 ```
-即根据上面示例分析，ServiceBean实例化会同步实例化
+即根据上面示例分析，ServiceBean实例化会同步实例化基于Javassit动态代理生成的实例化protocol 、proxyFactory
 ```language
 public class ServiceConfig<T> extends AbstractServiceConfig {
 
