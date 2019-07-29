@@ -541,7 +541,7 @@ return new AbstractProxyInvoker<T>(proxy, type, url) {
             }
         };
 ```
-即实例化
+即实例化AbstractProxyInvoker类对象，基于上一步实例化的并重写invokeMethod
 
 ### Dubbo SPI之Protocol
 
