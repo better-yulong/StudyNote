@@ -399,7 +399,7 @@ public class ServiceConfig<T> extends AbstractServiceConfig {
                 //结合JavassistProxyFactory.getInvoker方法，返回实例为AbstractProxyInvoker的实例，其doInvoker方法可通过
 		return extension.getInvoker(arg0, arg1, arg2);
 ```
-##### 1.2.1 获取ProxyFactory扩展实例extension（基于Dubbo SPI获取 JavassistProxyFactory实例）；
+#### 1.2.1 调用器invoker实例化分析
 JavassistProxyFactory
 1. invoker : DubboExampleService1
 2. interfaces : interface com.aoe.demo.rpc.dubbo.DubboExampleInterf1
