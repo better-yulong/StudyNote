@@ -385,6 +385,8 @@ public class ServiceConfig<T> extends AbstractServiceConfig {
 }
 ```
 JavassistProxyFactory
+1. DubboExampleService1
+1. interface com.aoe.demo.rpc.dubbo.DubboExampleInterf1injvm://127.0.0.1/com.aoe.demo.rpc.dubbo.DubboExampleInterf1?anyhost=true&application=rpc-server&default.timeout=1000&dubbo=2.5.3&interface=com.aoe.demo.rpc.dubbo.DubboExampleInterf1&methods=serviceProvider&pid=9424&revision=0.0.1-SNAPSHOT&side=provider&timestamp=1564390430345
 ```language
 /**
  * JavaassistRpcProxyFactory 
@@ -397,7 +399,7 @@ public class JavassistProxyFactory extends AbstractProxyFactory {
     public <T> T getProxy(Invoker<T> invoker, Class<?>[] interfaces) {
         return (T) Proxy.getProxy(interfaces).newInstance(new InvokerInvocationHandler(invoker));
     }
-//DubboExampleService1、interface com.aoe.demo.rpc.dubbo.DubboExampleInterf1、injvm://127.0.0.1/com.aoe.demo.rpc.dubbo.DubboExampleInterf1?anyhost=true&application=rpc-server&default.timeout=1000&dubbo=2.5.3&interface=com.aoe.demo.rpc.dubbo.DubboExampleInterf1&methods=serviceProvider&pid=9424&revision=0.0.1-SNAPSHOT&side=provider&timestamp=1564390430345
+
     public <T> Invoker<T> getInvoker(T proxy, Class<T> type, URL url) {
         // TODO Wrapper类不能正确处理带$的类名
         final Wrapper wrapper = Wrapper.getWrapper(proxy.getClass().getName().indexOf('$') < 0 ? proxy.getClass() : type);
