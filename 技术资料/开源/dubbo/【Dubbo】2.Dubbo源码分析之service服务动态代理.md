@@ -548,7 +548,8 @@ return new AbstractProxyInvoker<T>(proxy, type, url) {
         return localDubboExampleService1.serviceProvider((List)paramArrayOfObject[0]);
       }
 ```
-##### 1.2.1.3 invoker注册生成expor
+##### 1.2.1.3 invoker注册至exporter
+上一步生成invoker实例（
 
 ### Dubbo SPI之Protocol
 
