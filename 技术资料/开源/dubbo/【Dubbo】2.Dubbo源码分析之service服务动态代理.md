@@ -433,7 +433,7 @@ public class JavassistProxyFactory extends AbstractProxyFactory {
 }
 ```
 ##### 1.2.1.1 Wrapper动态代理包装类分析（Wrapper.getWrapper）
-Wrapper.getWrapper（Class clazz)方法对clazz初始判断后调用Wrapper.makeWrapper(Class clazz
+Wrapper.getWrapper（Class clazz)方法对clazz初始判断后调用Wrapper.makeWrapper(Class clazz)生成包装类（内部使用封装了Javassisst的
 ```language
 package com.alibaba.dubbo.common.bytecode;
 
