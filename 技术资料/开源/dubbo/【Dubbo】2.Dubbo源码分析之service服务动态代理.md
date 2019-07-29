@@ -541,7 +541,7 @@ return new AbstractProxyInvoker<T>(proxy, type, url) {
             }
         };
 ```
-即实例化AbstractProxyInvoker类对象，基于上一步实例化的wrapper重写invokeMethod方法（其中proxy则应对发布的dubbo服务DubboExampleService1对象；
+即实例化AbstractProxyInvoker类对象，doInvoke方法中重写wrapper的invokeMethod方法（其中proxy则应对发布的dubbo服务DubboExampleService1对象）；而
 
 ### Dubbo SPI之Protocol
 
