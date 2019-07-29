@@ -333,7 +333,7 @@ public class Protocol$Adpative implements com.alibaba.dubbo.rpc.Protocol {
 ```
 - JDK动态代理与Javassit代理均是动态生成class；但JDK动态代理有其局限，其是基于接口、及接口实现者实现生成动态代理代理class（https://www.cnblogs.com/lxyit/p/9272319.html），其底层使用DataOutputStream对象方法基于class文件结构完成手动组装生成class文件（相对Javassit性能较好，但需要对class文件结构及相关方法足够熟悉）。如Object o = Proxy.newProxyInstance(classLoader, interfaces, handler)，其中handler是InvocationHandler实现类，其通过invoke方法即实现了对原对象的代理，handler通过其构造方法将被代理对象（注意此处是对象）注入至handler实现。而newProxyInstance方法则最终基于被代理接口interfaces、handler（封装被代理对象及代理逻辑）动态生成interfacesr实现类，而在其对应方法调用handlerr的invoke方法完成代理逻辑及被代理对象自身逻辑的调用。
 - Javassist是一个开源的分析、编辑和创建Java字节码的类库，相对简单其可直接使用java编码的形式生成动态代理class（但性能相比JDK动态代理差一些），可认为其是基于java源码结构生成class文件。
-
+- 
 
 
 
