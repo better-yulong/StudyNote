@@ -386,10 +386,18 @@ public class ServiceConfig<T> extends AbstractServiceConfig {
 ```
 回到之前分析URL注册时源码：
 ```language
-            //源码为protocol.export中嵌套proxyFactory.getInvoker，但为方便调试此处调整为2行分别实现；其中proxyFactory对应对应ProxyFactory$Adpativ
+            //源码为protocol.export中嵌套proxyFactory.getInvoker，但为方便调试此处调整为2行分别实现；其中proxyFactory对应对应ProxyFactory$Adpative
             Invoker  invoker = proxyFactory.getInvoker(ref, (Class) interfaceClass, local);
             Exporter<?> exporter = protocol.export(invoker);
             exporters.add(exporter);
+```
+其中
+```language
+//ProxyFactory SPI接口javassis对应实现类JavassistProxyFactory
+		com.alibaba.dubbo.rpc.ProxyFactory extension = (com.alibaba.dubbo.rpc.ProxyFactory) ExtensionLoader
+				.getExtensionLoader(com.alibaba.dubbo.rpc.ProxyFactory.class).getExtension(extName);
+                //结合JavassistProxyFactory.getInvoker方法，返回实例为AbstractProxyInvoker的实例，其doInvoker方法可通过
+		return extension.getInvoker(arg0, arg1, arg2);
 ```
 
 JavassistProxyFactory
