@@ -693,6 +693,8 @@ public class HeaderExchanger implements Exchanger {
 
 }
 ```
+- 信息交换层（Exchange）：封装请求响应模式，同步转异步，以Request和Response为中心，扩展接口为Exchanger、ExchangeChannel、ExchangeClient和ExchangeServer。
+- 网络传输层（Transport）：抽象mina和netty为统一接口，以Message为中心，扩展接口为Channel、Transporter、Client、Server和Codec。
 Transporter传输层：采用了SPI的扩展方式，所以提供了Transporter接口，实现了各种扩展，比如netty，mian，grizzly等。默认采用netty方式。
 
 
