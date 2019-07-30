@@ -593,6 +593,7 @@ public class DubboProtocol extends AbstractProtocol {
     
     //发布dubbo服务
     public <T> Exporter<T> export(Invoker<T> invoker) throws RpcException {
+	/获取
         URL url = invoker.getUrl();
         
         // export service.
