@@ -635,7 +635,7 @@ public class DubboProtocol extends AbstractProtocol {
         if (isServer) {
         	ExchangeServer server = serverMap.get(key);
         	if (server == null) {
-                        信息交换层（Exchange）：封装请求响应模式，以Request和Response为中心
+                        //信息交换层（Exchange）：封装请求响应模式，以Request和Response为中心
         		serverMap.put(key, createServer(url));
         	} else {
         		//server支持reset,配合override功能使。
