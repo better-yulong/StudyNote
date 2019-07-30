@@ -606,6 +606,7 @@ public class DubboProtocol extends AbstractProtocol {
         //export an stub service for dispaching event
        //stub为本地存根，用于在客户端做缓存、预处理、参数验证等
         Boolean isStubSupportEvent = url.getParameter(Constants.STUB_EVENT_KEY,Constants.DEFAULT_STUB_EVENT);
+        //是否包含
         Boolean isCallbackservice = url.getParameter(Constants.IS_CALLBACK_SERVICE, false);
         if (isStubSupportEvent && !isCallbackservice){
             String stubServiceMethods = url.getParameter(Constants.STUB_EVENT_METHODS_KEY);
