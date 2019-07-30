@@ -617,7 +617,7 @@ public class DubboProtocol extends AbstractProtocol {
                             "], has set stubproxy support event ,but no stub methods founded."));
                 }
             } else {
-                //设置
+                //保存本地存储信息
                 stubServiceMethodsMap.put(url.getServiceKey(), stubServiceMethods);
             }
         }
