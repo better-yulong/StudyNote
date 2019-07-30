@@ -591,7 +591,7 @@ public class DubboProtocol extends AbstractProtocol {
     
     private static final String IS_CALLBACK_SERVICE_INVOKE = "_isCallBackServiceInvoke";
     
-    //发布服务
+    //发布dubbo服务
     public <T> Exporter<T> export(Invoker<T> invoker) throws RpcException {
         URL url = invoker.getUrl();
         
