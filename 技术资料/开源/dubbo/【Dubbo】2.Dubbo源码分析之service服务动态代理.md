@@ -609,7 +609,7 @@ public class DubboProtocol extends AbstractProtocol {
         //是否是回调服务
         Boolean isCallbackservice = url.getParameter(Constants.IS_CALLBACK_SERVICE, false);
         if (isStubSupportEvent && !isCallbackservice){
-            //
+            //支持本地存根但非回调服务
             String stubServiceMethods = url.getParameter(Constants.STUB_EVENT_METHODS_KEY);
             if (stubServiceMethods == null || stubServiceMethods.length() == 0 ){
                 if (logger.isWarnEnabled()){
