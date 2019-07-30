@@ -599,6 +599,7 @@ public class DubboProtocol extends AbstractProtocol {
         // export service.
         //基于url的对应的serviceGroup、serviceName、serviceVersion、port组装生成服务唯一标识，如 com.aoe.demo.rpc.dubbo.DubboExampleInterf1:20890
         String key = serviceKey(url);
+        //实例化DubboExporter
         DubboExporter<T> exporter = new DubboExporter<T>(invoker, key, exporterMap);
         exporterMap.put(key, exporter);
         
