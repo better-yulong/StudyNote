@@ -693,7 +693,7 @@ public class HeaderExchanger implements Exchanger {
 
 }
 ```
-
+Transporter传输层：采用了SPI的扩展方式，所以提供了Transporter接口，实现了各种扩展，比如netty，mian，grizzly等。默认采用netty方式。
 
 
 ### Dubbo SPI之Protocol
