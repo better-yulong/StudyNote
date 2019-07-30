@@ -673,6 +673,28 @@ public class DubboProtocol extends AbstractProtocol {
     }
 ```
 
+```language
+/**
+ * DefaultMessenger
+ * 
+ * @author william.liangf
+ */
+public class HeaderExchanger implements Exchanger {
+    
+    public static final String NAME = "header";
+
+    public ExchangeClient connect(URL url, ExchangeHandler handler) throws RemotingException {
+        return new HeaderExchangeClient(Transporters.connect(url, new DecodeHandler(new HeaderExchangeHandler(handler))));
+    }
+
+    public ExchangeServer bind(URL url, ExchangeHandler handler) throws RemotingException {
+        return new HeaderExchangeServer(Transporters.bind(url, new DecodeHandler(new HeaderExchangeHandler(handler))));
+    }
+
+}
+```
+
+
 
 ### Dubbo SPI之Protocol
 
