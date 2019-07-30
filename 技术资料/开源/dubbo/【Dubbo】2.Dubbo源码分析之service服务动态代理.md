@@ -697,7 +697,9 @@ public class HeaderExchanger implements Exchanger {
 - 怎么理解呢？个人理解服务发布主要做如下几点：
 1. 基于Url信息动态代理生成Wrapper实例，并使用Dubbo实例bean对象、Url、Wrapper实例实例化Invoker实例（JavassistProxyFactory.getInvoker）；
 2. 基于invoker实例化DubboExpoter实例（默认为Dubbo方式发布服务）并保存至exporterMap（即根据url信息集成的key可最终关联到实例Dubbo服务及方法）
-3. 这点如何理解 ？根据之前分析hessian、SpirngMVC源码来看，前面2点是Service服务信息初始化；但是，涉及到消费者、发布者之前接口调用、信息转换、网络传输呢？这个就应该
+3. 这点如何理解 ？根据之前分析hessian、SpirngMVC源码来看，前面2点是Service服务信息初始化；但是，涉及到消费者、发布者之前接口调用、信息转换、网络传输呢？这个就应该与上面提到的Exchange、Transport相关了。
+
+
 
 ### Dubbo SPI之Protocol
 
