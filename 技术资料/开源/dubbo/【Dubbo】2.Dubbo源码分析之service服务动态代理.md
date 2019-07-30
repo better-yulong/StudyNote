@@ -696,7 +696,8 @@ public class HeaderExchanger implements Exchanger {
 - 网络传输层（Transport）：采用了SPI的扩展方式抽象mina和netty为统一接口，以Message为中心，扩展接口为Channel、Transporter、Client、Server和Codec。比如netty，mian，grizzly等，默认采用netty方式。
 - 怎么理解呢？个人理解服务发布主要做如下几点：
 1. 基于Url信息动态代理生成Wrapper实例，并使用Dubbo实例bean对象、Url、Wrapper实例实例化Invoker实例（JavassistProxyFactory.getInvoker）；
-2. 基于invoker实例化DubboExpoter实例（默认为Dubbo方式发布服务）并保存至exporterMap（即根据url信息集成的key可最终
+2. 基于invoker实例化DubboExpoter实例（默认为Dubbo方式发布服务）并保存至exporterMap（即根据url信息集成的key可最终关联到实例Dubbo服务及方法）
+3. 
 
 ### Dubbo SPI之Protocol
 
