@@ -597,7 +597,7 @@ public class DubboProtocol extends AbstractProtocol {
         URL url = invoker.getUrl();
         
         // export service.
-        //com.aoe.demo.rpc.dubbo.DubboExampleInterf1:20890
+        //基于url的对的 com.aoe.demo.rpc.dubbo.DubboExampleInterf1:20890
         String key = serviceKey(url);
         DubboExporter<T> exporter = new DubboExporter<T>(invoker, key, exporterMap);
         exporterMap.put(key, exporter);
