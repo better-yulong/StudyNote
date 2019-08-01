@@ -72,8 +72,9 @@ Dubbo Customer端dubbo xml配置
             if (name.length() > 3 && name.startsWith("set")
                     && Modifier.isPublic(setter.getModifiers())
                     && setter.getParameterTypes().length == 1) {
-                //获取setInterface第一个参数对应的类型Class，即
+                //获取setInterface第一个参数对应的类型Class，即String
                 Class<?> type = setter.getParameterTypes()[0];
+                //根据方法名
                 String property = StringUtils.camelToSplitName(name.substring(3, 4).toLowerCase() + name.substring(4), "-");
                 props.add(property);
                 Method getter = null;
