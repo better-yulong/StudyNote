@@ -28,10 +28,11 @@ Dubbo Customer端dubbo xml配置
             }
             //根据id:dubboExampleService及beanDefinition，将其注册到上下文（此处为Spring）的registry
             parserContext.getRegistry().registerBeanDefinition(id, beanDefinition);
-            //beanDefinition
+            //为beanDefinition添加id属性及值
             beanDefinition.getPropertyValues().addPropertyValue("id", id);
         }
         if (ProtocolConfig.class.equals(beanClass)) {
+            //分支
             for (String name : parserContext.getRegistry().getBeanDefinitionNames()) {
                 BeanDefinition definition = parserContext.getRegistry().getBeanDefinition(name);
                 PropertyValue property = definition.getPropertyValues().getPropertyValue("protocol");
