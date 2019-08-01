@@ -13,8 +13,9 @@ Dubbo Customer端dubbo xml配置
     private static BeanDefinition parse(Element element, ParserContext parserContext, Class<?> beanClass, boolean required) {
         //实例化默认的beanDefinition 
         RootBeanDefinition beanDefinition = new RootBeanDefinition();
-        //设置beanDefinition对应的
+        //设置beanDefinition对应的BeanClass为ReferenceBean
         beanDefinition.setBeanClass(beanClass);
+       //设置延迟初始化为false
         beanDefinition.setLazyInit(false);
         String id = element.getAttribute("id");
         if ((id == null || id.length() == 0) && required) {
