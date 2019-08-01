@@ -107,7 +107,7 @@ Dubbo Customer端dubbo xml配置
                     	value = value.trim();
                     	if (value.length() > 0) {
                     		if ("registry".equals(property) && RegistryConfig.NO_AVAILABLE.equalsIgnoreCase(value)) {
-                                //属性包含registry且为N/A：即实例化registryConfig ，且设置其为注册中心不可用，此种用于直连；那需要客户端指定address等来连接服务端
+                                //属性包含registry且为N/A：即实例化registryConfig ，且设置其为注册中心不可用，那不会将dubbo服务注册到zk此种用于直连，那需要客户端指定address等来连接服务端
                             	RegistryConfig registryConfig = new RegistryConfig();
                             	registryConfig.setAddress(RegistryConfig.NO_AVAILABLE);
                             	beanDefinition.getPropertyValues().addPropertyValue(property, registryConfig);
