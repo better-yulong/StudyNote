@@ -107,7 +107,7 @@ Dubbo Customer端dubbo xml配置
                     	value = value.trim();
                     	if (value.length() > 0) {
                     		if ("registry".equals(property) && RegistryConfig.NO_AVAILABLE.equalsIgnoreCase(value)) {
-                                //属性包含registry：即实例化registryConfig 
+                                //属性包含registry且为N/A：即实例化registryConfig ，且
                             	RegistryConfig registryConfig = new RegistryConfig();
                             	registryConfig.setAddress(RegistryConfig.NO_AVAILABLE);
                             	beanDefinition.getPropertyValues().addPropertyValue(property, registryConfig);
