@@ -211,5 +211,6 @@ Dubbo Customer端dubbo xml配置
 public class ReferenceBean<T> extends ReferenceConfig<T> implements FactoryBean, ApplicationContextAware, InitializingBean, DisposableBean {}
 ```
 #### 2.1 ApplicationContextAware 接口
-之前有分析过，此处不做过多分析，即ReferenceBean实例化后，因其实现ApplicationContextAware 故会将当前ApplicationContext设置到ReferenceBean实例化
-#### 2.2 DisposableBean接口wn
+之前有分析过，此处不做过多分析，即ReferenceBean实例化后，因其实现ApplicationContextAware 故会将当前ApplicationContext设置到ReferenceBean实例化（即setApplicationContext方法）
+#### 2.2 DisposableBean接口
+因
