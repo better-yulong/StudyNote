@@ -76,7 +76,9 @@ Dubbo Customer端dubbo xml配置
                 Class<?> type = setter.getParameterTypes()[0];
                 //根据方法名转换出标签的属性值（如属性首字母小写转换、多单词-分隔）
                 String property = StringUtils.camelToSplitName(name.substring(3, 4).toLowerCase() + name.substring(4), "-");
+                //添加property至props集合
                 props.add(property);
+         
                 Method getter = null;
                 try {
                     getter = beanClass.getMethod("get" + name.substring(3), new Class<?>[0]);
