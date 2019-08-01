@@ -86,6 +86,7 @@ Dubbo Customer端dubbo xml配置
                 if (getter == null 
                         || ! Modifier.isPublic(getter.getModifiers())
                         || ! type.equals(getter.getReturnType())) {
+                    //确认getter方法、修改符、返回值与set是
                     continue;
                 }
                 if ("parameters".equals(property)) {
