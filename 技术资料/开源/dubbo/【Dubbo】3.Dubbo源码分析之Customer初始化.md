@@ -171,6 +171,7 @@ Dubbo Customer端dubbo xml配置
                                             throw new IllegalStateException("The exported service ref " + value + " must be singleton! Please set the " + value + " bean scope to singleton, eg: <bean id=\"" + value+ "\" scope=\"singleton\" ...>");
                                         }
                                     }
+      
                                     reference = new RuntimeBeanReference(value);
                                 }
 		                        beanDefinition.getPropertyValues().addPropertyValue(property, reference);
