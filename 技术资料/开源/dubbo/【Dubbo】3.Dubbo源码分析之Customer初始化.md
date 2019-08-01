@@ -214,6 +214,7 @@ public class ReferenceBean<T> extends ReferenceConfig<T> implements FactoryBean,
 之前有分析过，此处不做过多分析，即ReferenceBean实例化后，因其实现ApplicationContextAware 故会将当前ApplicationContext设置到ReferenceBean实例化（即setApplicationContext方法）
 #### 2.2 DisposableBean接口
 可用于Spring容器关闭时销毁bean时调用
-#### 2.2 InitializingBean接口
-之前也有分析，其afterPropertiesSet方法可用于在Spring初始化ReferenceBean实例原始bean之后调用完成自定义的初始化工作。类似于之前分析ServiceBean，主要用于对ReferenceBean实例bean的consumer、application、module、registry、monitor等属性的
+#### 2.3 InitializingBean接口
+之前也有分析，其afterPropertiesSet方法可用于在Spring初始化ReferenceBean实例原始bean之后调用完成自定义的初始化工作。类似于之前分析ServiceBean，主要用于对ReferenceBean实例bean的consumer、application、module、registry、monitor等属性的赋值
+#### 2.3 InitializingBean接口
 
