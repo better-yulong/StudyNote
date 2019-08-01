@@ -215,3 +215,4 @@ public class ReferenceBean<T> extends ReferenceConfig<T> implements FactoryBean,
 #### 2.2 DisposableBean接口
 可用于Spring容器关闭时销毁bean时调用
 #### 2.2 InitializingBean接口
+之前也有分析，其afterPropertiesSet方法可用于在
