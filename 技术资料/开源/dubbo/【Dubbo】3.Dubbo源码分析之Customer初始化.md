@@ -123,6 +123,7 @@ Dubbo Customer端dubbo xml配置
                             } else {
                                 //同上，如果属性为
                                 Object reference;
+                               //当前示例即为
                                 if (isPrimitive(type)) {
                                     if ("async".equals(property) && "false".equals(value)
                                             || "timeout".equals(property) && "0".equals(value)
