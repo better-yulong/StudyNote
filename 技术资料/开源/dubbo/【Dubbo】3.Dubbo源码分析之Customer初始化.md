@@ -64,7 +64,7 @@ Dubbo Customer端dubbo xml配置
         ManagedMap parameters = null;
         
         for (Method setter : beanClass.getMethods()) {
-            //遍历beanClass对应的方法，根据set
+            //遍历beanClass对应的方法，根据set方法验证get、is方法；
             String name = setter.getName();
             if (name.length() > 3 && name.startsWith("set")
                     && Modifier.isPublic(setter.getModifiers())
