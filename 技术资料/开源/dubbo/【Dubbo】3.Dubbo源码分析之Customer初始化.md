@@ -112,12 +112,13 @@ Dubbo Customer端dubbo xml配置
                             	registryConfig.setAddress(RegistryConfig.NO_AVAILABLE);
                             	beanDefinition.getPropertyValues().addPropertyValue(property, registryConfig);
                             } else if ("registry".equals(property) && value.indexOf(',') != -1) {
-                                       //属性配置包含多个registry id，则拆分后组装RuntimeBeanReference列表并添加至beanDefinition
-                    			parseMultiRef("registries", value, beanDefinition, parserContext);
+                                 //属性配置包含多个registry id，则拆分后组装RuntimeBeanReference列表并添加至beanDefinition
+                    		parseMultiRef("registries", value, beanDefinition, parserContext);
                             } else if ("provider".equals(property) && value.indexOf(',') != -1) {
-  
+  				//属性配置包含多个providerid，则拆分后组装RuntimeBeanReference列表并添加至beanDefinition
                             	parseMultiRef("providers", value, beanDefinition, parserContext);
                             } else if ("protocol".equals(property) && value.indexOf(',') != -1) {
+                                //属性配置包含多个providerid，则拆分后组装RuntimeBeanReference列表并添加至beanDefinition
                                 parseMultiRef("protocols", value, beanDefinition, parserContext);
                             } else {
                                 //同上，如果属性为
