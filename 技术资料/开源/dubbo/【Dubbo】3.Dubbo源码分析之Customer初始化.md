@@ -11,7 +11,9 @@ Dubbo Customer端dubbo xml配置
     //beanClass参数:class com.alibaba.dubbo.config.spring.ReferenceBean
     @SuppressWarnings("unchecked")
     private static BeanDefinition parse(Element element, ParserContext parserContext, Class<?> beanClass, boolean required) {
+        //实例化默认的beanDefinition 
         RootBeanDefinition beanDefinition = new RootBeanDefinition();
+        //设置beanDefinition对应的
         beanDefinition.setBeanClass(beanClass);
         beanDefinition.setLazyInit(false);
         String id = element.getAttribute("id");
