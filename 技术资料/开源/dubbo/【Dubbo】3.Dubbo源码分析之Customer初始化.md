@@ -204,4 +204,4 @@ Dubbo Customer端dubbo xml配置
     }
 
 ```
-至此，dubbo:reference标签解析
+至此，dubbo:reference标签解析生成ReferenceBean对应的BeanDefinition对象分析完毕。
