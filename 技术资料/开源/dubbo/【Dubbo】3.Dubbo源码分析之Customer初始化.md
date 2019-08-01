@@ -123,7 +123,7 @@ Dubbo Customer端dubbo xml配置
                             } else {
                                 //同上，如果属性为
                                 Object reference;
-                               //当前示例type即为setInterface(String interfaceName)的参数String，其为
+                               //当前示例type即为setInterface(String interfaceName)的参数String，其是Primitive类型
                                 if (isPrimitive(type)) {
                                     if ("async".equals(property) && "false".equals(value)
                                             || "timeout".equals(property) && "0".equals(value)
@@ -134,6 +134,7 @@ Dubbo Customer端dubbo xml配置
                                         // 兼容旧版本xsd中的default值
                                         value = null;
                                     }
+                                    //将
                                     reference = value;
                                 } else if ("protocol".equals(property) 
                                         && ExtensionLoader.getExtensionLoader(Protocol.class).hasExtension(value)
