@@ -26,7 +26,7 @@ Dubbo Customer端dubbo xml配置
             if (parserContext.getRegistry().containsBeanDefinition(id))  {
         		throw new IllegalStateException("Duplicate spring bean id " + id);
             }
-            //使用id:dubboExampleService1
+            //根据id:dubboExampleService及beanDefinition，将其注册到上下文（
             parserContext.getRegistry().registerBeanDefinition(id, beanDefinition);
             beanDefinition.getPropertyValues().addPropertyValue("id", id);
         }
