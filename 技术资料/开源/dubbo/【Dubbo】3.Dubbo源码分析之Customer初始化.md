@@ -4,14 +4,11 @@ Dubbo Customer端dubbo xml配置
     <dubbo:registry address="zookeeper://127.0.0.1:2181" />
 	<dubbo:reference id="dubboExampleService1" interface="com.aoe.demo.rpc.dubbo.DubboExampleInterf1" />
 ```
-class com.alibaba.dubbo.config.spring.ReferenceBean
-
-[async="false", id="dubboExampleService1", interface="com.aoe.demo.rpc.dubbo.DubboExampleInterf1", timeout="0", version="0.0.0"]
 
 ### 一、dubbo:reference标签解析
 ```language
     //element参数：[async="false", id="dubboExampleService1", interface="com.aoe.demo.rpc.dubbo.DubboExampleInterf1", timeout="0", version="0.0.0"]
-    //beanClasscdov:
+    //beanClass参数:class com.alibaba.dubbo.config.spring.ReferenceBean
     @SuppressWarnings("unchecked")
     private static BeanDefinition parse(Element element, ParserContext parserContext, Class<?> beanClass, boolean required) {
         RootBeanDefinition beanDefinition = new RootBeanDefinition();
