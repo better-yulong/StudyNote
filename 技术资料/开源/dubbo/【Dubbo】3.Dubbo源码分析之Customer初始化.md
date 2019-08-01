@@ -66,7 +66,7 @@ Dubbo Customer端dubbo xml配置
         ManagedMap parameters = null;
         
         for (Method setter : beanClass.getMethods()) {
-            //遍历beanClass对应的方法，根据set方法验证get、is方法；并针对完成标签解析（子标签解析）获取属性值，添加至beanDefinition。以及
+            //遍历beanClass对应的方法，根据set方法验证get、is方法；并针对完成标签解析（子标签解析）获取属性值，添加至beanDefinition。以上面dubbo:reference为例分析
             String name = setter.getName();
             if (name.length() > 3 && name.startsWith("set")
                     && Modifier.isPublic(setter.getModifiers())
