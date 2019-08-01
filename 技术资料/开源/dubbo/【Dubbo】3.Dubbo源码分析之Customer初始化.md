@@ -134,7 +134,7 @@ Dubbo Customer端dubbo xml配置
                                         // 兼容旧版本xsd中的default值
                                         value = null;
                                     }
-                                    //将
+                                    //将value值com.aoe.demo.rpc.dubbo.DubboExampleInterf1赋值给reference 
                                     reference = value;
                                 } else if ("protocol".equals(property) 
                                         && ExtensionLoader.getExtensionLoader(Protocol.class).hasExtension(value)
