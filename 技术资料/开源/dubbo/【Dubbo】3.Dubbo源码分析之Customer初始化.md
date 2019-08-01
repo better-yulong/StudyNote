@@ -17,7 +17,7 @@ Dubbo Customer端dubbo xml配置
         beanDefinition.setBeanClass(beanClass);
        //设置延迟初始化为false
         beanDefinition.setLazyInit(false);
-       //获取
+       //获取dubbo:reference id="dubboExampleService1"
         String id = element.getAttribute("id");
          
        //忽略N行代码
@@ -25,7 +25,8 @@ Dubbo Customer端dubbo xml配置
         if (id != null && id.length() > 0) {
             if (parserContext.getRegistry().containsBeanDefinition(id))  {
         		throw new IllegalStateException("Duplicate spring bean id " + id);
-        	}
+            }
+            //使用id:dubboExampleService1
             parserContext.getRegistry().registerBeanDefinition(id, beanDefinition);
             beanDefinition.getPropertyValues().addPropertyValue("id", id);
         }
