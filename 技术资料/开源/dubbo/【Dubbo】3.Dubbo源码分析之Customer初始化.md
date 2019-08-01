@@ -101,7 +101,7 @@ Dubbo Customer端dubbo xml配置
                 } else if ("arguments".equals(property)) {
                     parseArguments(id, element.getChildNodes(), beanDefinition, parserContext);
                 } else {
-                    //上面是根据proterty做针对性处理；而interface则会直接运行至此。获取
+                    //上面是根据proterty做针对性处理；而interface则会直接运行至此。获取interface属性对应的值：即com.aoe.demo.rpc.dubbo.DubboExampleInterf1
                     String value = element.getAttribute(property);
                     if (value != null) {
                     	value = value.trim();
