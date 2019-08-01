@@ -182,6 +182,7 @@ Dubbo Customer端dubbo xml配置
                 }
             }
         }
+        //
         NamedNodeMap attributes = element.getAttributes();
         int len = attributes.getLength();
         for (int i = 0; i < len; i++) {
