@@ -62,6 +62,7 @@ Dubbo Customer端dubbo xml配置
         }
         Set<String> props = new HashSet<String>();
         ManagedMap parameters = null;
+        //遍历
         for (Method setter : beanClass.getMethods()) {
             String name = setter.getName();
             if (name.length() > 3 && name.startsWith("set")
