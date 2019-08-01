@@ -107,6 +107,7 @@ Dubbo Customer端dubbo xml配置
                     	value = value.trim();
                     	if (value.length() > 0) {
                     		if ("registry".equals(property) && RegistryConfig.NO_AVAILABLE.equalsIgnoreCase(value)) {
+           
                             	RegistryConfig registryConfig = new RegistryConfig();
                             	registryConfig.setAddress(RegistryConfig.NO_AVAILABLE);
                             	beanDefinition.getPropertyValues().addPropertyValue(property, registryConfig);
@@ -117,6 +118,7 @@ Dubbo Customer端dubbo xml配置
                             } else if ("protocol".equals(property) && value.indexOf(',') != -1) {
                                 parseMultiRef("protocols", value, beanDefinition, parserContext);
                             } else {
+                                //同上，如果属性为
                                 Object reference;
                                 if (isPrimitive(type)) {
                                     if ("async".equals(property) && "false".equals(value)
