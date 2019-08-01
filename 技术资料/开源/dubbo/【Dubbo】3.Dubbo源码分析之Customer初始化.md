@@ -32,7 +32,7 @@ Dubbo Customer端dubbo xml配置
             beanDefinition.getPropertyValues().addPropertyValue("id", id);
         }
         if (ProtocolConfig.class.equals(beanClass)) {
-            //分支
+            //分支处理ProtocolConfig
             for (String name : parserContext.getRegistry().getBeanDefinitionNames()) {
                 BeanDefinition definition = parserContext.getRegistry().getBeanDefinition(name);
                 PropertyValue property = definition.getPropertyValues().getPropertyValue("protocol");
@@ -44,6 +44,7 @@ Dubbo Customer端dubbo xml配置
                 }
             }
         } else if (ServiceBean.class.equals(beanClass)) {
+            //分支处理ServiceBean
             String className = element.getAttribute("class");
             if(className != null && className.length() > 0) {
                 RootBeanDefinition classDefinition = new RootBeanDefinition();
@@ -53,6 +54,7 @@ Dubbo Customer端dubbo xml配置
                 beanDefinition.getPropertyValues().addPropertyValue("ref", new BeanDefinitionHolder(classDefinition, id + "Impl"));
             }
         } else if (ProviderConfig.class.equals(beanClass)) {
+            
             parseNested(element, parserContext, ServiceBean.class, true, "service", "provider", id, beanDefinition);
         } else if (ConsumerConfig.class.equals(beanClass)) {
             parseNested(element, parserContext, ReferenceBean.class, false, "reference", "consumer", id, beanDefinition);
