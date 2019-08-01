@@ -74,7 +74,7 @@ Dubbo Customer端dubbo xml配置
                     && setter.getParameterTypes().length == 1) {
                 //获取setInterface第一个参数对应的类型Class，即String
                 Class<?> type = setter.getParameterTypes()[0];
-                //根据方法名转换出标签的属性值（如属性首字母小写转换、
+                //根据方法名转换出标签的属性值（如属性首字母小写转换、多单词-分隔）
                 String property = StringUtils.camelToSplitName(name.substring(3, 4).toLowerCase() + name.substring(4), "-");
                 props.add(property);
                 Method getter = null;
