@@ -18,24 +18,9 @@ Dubbo Customer端dubbo xml配置
        //设置延迟初始化为false
         beanDefinition.setLazyInit(false);
         String id = element.getAttribute("id");
-        if ((id == null || id.length() == 0) && required) {
-        	String generatedBeanName = element.getAttribute("name");
-        	if (generatedBeanName == null || generatedBeanName.length() == 0) {
-        	    if (ProtocolConfig.class.equals(beanClass)) {
-        	        generatedBeanName = "dubbo";
-        	    } else {
-        	        generatedBeanName = element.getAttribute("interface");
-        	    }
-        	}
-        	if (generatedBeanName == null || generatedBeanName.length() == 0) {
-        		generatedBeanName = beanClass.getName();
-        	}
-            id = generatedBeanName; 
-            int counter = 2;
-            while(parserContext.getRegistry().containsBeanDefinition(id)) {
-                id = generatedBeanName + (counter ++);
-            }
-        }
+         
+       //q
+    
         if (id != null && id.length() > 0) {
             if (parserContext.getRegistry().containsBeanDefinition(id))  {
         		throw new IllegalStateException("Duplicate spring bean id " + id);
