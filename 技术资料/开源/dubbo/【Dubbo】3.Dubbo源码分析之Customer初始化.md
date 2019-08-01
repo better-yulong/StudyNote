@@ -182,7 +182,7 @@ Dubbo Customer端dubbo xml配置
                 }
             }
         }
-        //
+        //兼容前面未解析到的属性并同步添加至beanDefinition
         NamedNodeMap attributes = element.getAttributes();
         int len = attributes.getLength();
         for (int i = 0; i < len; i++) {
