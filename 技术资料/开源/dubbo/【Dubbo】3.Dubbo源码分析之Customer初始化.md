@@ -118,7 +118,7 @@ Dubbo Customer端dubbo xml配置
   				//属性配置包含多个providerid，则拆分后组装RuntimeBeanReference列表并添加至beanDefinition
                             	parseMultiRef("providers", value, beanDefinition, parserContext);
                             } else if ("protocol".equals(property) && value.indexOf(',') != -1) {
-                                //属性配置包含多个providerid，则拆分后组装RuntimeBeanReference列表并添加至beanDefinition
+                                //属性配置包含多个protocol，则拆分后组装RuntimeBeanReference列表并添加至beanDefinition
                                 parseMultiRef("protocols", value, beanDefinition, parserContext);
                             } else {
                                 //同上，如果属性为
