@@ -112,7 +112,7 @@ Dubbo Customer端dubbo xml配置
                             	registryConfig.setAddress(RegistryConfig.NO_AVAILABLE);
                             	beanDefinition.getPropertyValues().addPropertyValue(property, registryConfig);
                             } else if ("registry".equals(property) && value.indexOf(',') != -1) {
-                                       //属性配置包含多个
+                                       //属性配置包含多个registry，则ud
                     			parseMultiRef("registries", value, beanDefinition, parserContext);
                             } else if ("provider".equals(property) && value.indexOf(',') != -1) {
                             	parseMultiRef("providers", value, beanDefinition, parserContext);
