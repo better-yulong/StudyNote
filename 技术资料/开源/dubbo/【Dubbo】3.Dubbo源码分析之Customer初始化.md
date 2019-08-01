@@ -174,7 +174,7 @@ Dubbo Customer端dubbo xml配置
                                    
                                     reference = new RuntimeBeanReference(value);
                                 }
-                      //将上面isPrimitive
+                      //将上面isPrimitive判断处实例化的reference 添加至beanDefinition
 		      beanDefinition.getPropertyValues().addPropertyValue(property, reference);
                             }
                     	}
