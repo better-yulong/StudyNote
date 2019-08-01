@@ -17,9 +17,10 @@ Dubbo Customer端dubbo xml配置
         beanDefinition.setBeanClass(beanClass);
        //设置延迟初始化为false
         beanDefinition.setLazyInit(false);
+       //获取
         String id = element.getAttribute("id");
          
-       //q
+       //忽略N行代码
     
         if (id != null && id.length() > 0) {
             if (parserContext.getRegistry().containsBeanDefinition(id))  {
