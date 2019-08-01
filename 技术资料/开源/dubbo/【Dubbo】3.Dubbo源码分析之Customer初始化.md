@@ -61,12 +61,12 @@ Dubbo Customer端dubbo xml配置
             parseNested(element, parserContext, ReferenceBean.class, false, "reference", "consumer", id, beanDefinition);
         }
 
-	//各dubbo标签公共属性解析、验证及
+	//各dubbo标签公共属性解析、验证及处理
         Set<String> props = new HashSet<String>();
         ManagedMap parameters = null;
         
         for (Method setter : beanClass.getMethods()) {
-            //遍历beanClass对应的方法，根据set方法验证get、is方法；根据属性
+            //遍历beanClass对应的方法，根据set方法验证get、is方法；并针对完全
             String name = setter.getName();
             if (name.length() > 3 && name.startsWith("set")
                     && Modifier.isPublic(setter.getModifiers())
