@@ -226,5 +226,10 @@ public class ReferenceBean<T> extends ReferenceConfig<T> implements FactoryBean,
     public Class<?> getObjectType() {
         return getInterfaceClass();
     }
+  
+    @Parameter(excluded = true)
+    public boolean isSingleton() {
+        return true;
+    }
 ```
 
