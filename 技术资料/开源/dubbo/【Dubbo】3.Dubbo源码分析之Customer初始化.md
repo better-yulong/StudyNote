@@ -217,4 +217,14 @@ public class ReferenceBean<T> extends ReferenceConfig<T> implements FactoryBean,
 #### 2.3 InitializingBean接口
 之前也有分析，其afterPropertiesSet方法可用于在Spring初始化ReferenceBean实例原始bean之后调用完成自定义的初始化工作。类似于之前分析ServiceBean，主要用于对ReferenceBean实例bean的consumer、application、module、registry、monitor等属性的赋值
 #### 2.3 FactoryBean接口
+```language
+
+    public Object getObject() throws Exception {
+        return get();
+    }
+
+    public Class<?> getObjectType() {
+        return getInterfaceClass();
+    }
+```
 
