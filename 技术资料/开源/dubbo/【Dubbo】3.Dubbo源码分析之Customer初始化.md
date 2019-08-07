@@ -419,6 +419,7 @@ public class ReferenceBean<T> extends ReferenceConfig<T> implements FactoryBean,
 		URL tmpUrl = new URL("temp", "localhost", 0, map);
 		final boolean isJvmRefer;
         if (isInjvm() == null) {
+            //未显示指定暴本地服务则仅暴露
             if (url != null && url.length() > 0) { //指定URL的情况下，不做本地引用
                 isJvmRefer = false;
             } else if (InjvmProtocol.getInjvmProtocol().isInjvmRefer(tmpUrl)) {
