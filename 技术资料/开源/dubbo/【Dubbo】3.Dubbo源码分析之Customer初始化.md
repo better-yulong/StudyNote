@@ -463,7 +463,7 @@ public class ReferenceBean<T> extends ReferenceConfig<T> implements FactoryBean,
                         if (monitorUrl != null) {
                             map.put(Constants.MONITOR_KEY, URL.encode(monitorUrl.toFullString()));
                         }
-                        //根据
+                        //根据全量配置map与us拼装完整urls：[registry://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=rpc-client&dubbo=2.5.3&pid=5660&refer=application%3Drpc-client%26default.group%3Drpc-demo%26default.version%3D1.0.1-aoe%26dubbo%3D2.5.3%26interface%3Dcom.aoe.demo.rpc.dubbo.DubboExampleInterf1%26methods%3DserviceProvider%26pid%3D5660%26revision%3D0.0.1-SNAPSHOT%26side%3Dconsumer%26timestamp%3D1565169597733&registry=zookeeper&timestamp=1565169709392]
                 	 urls.add(u.addParameterAndEncoded(Constants.REFER_KEY, StringUtils.toQueryString(map)));
                     }
             	}
