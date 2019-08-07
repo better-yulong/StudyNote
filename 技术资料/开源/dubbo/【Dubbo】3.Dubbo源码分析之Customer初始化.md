@@ -288,6 +288,7 @@ public class ReferenceBean<T> extends ReferenceConfig<T> implements FactoryBean,
            //检查interfaceClass是否为null且是否为接口；若methods（即MethodConfig）不为空则检查method是否存在（对应<dubbo:method>）
             checkInterfaceAndMethods(interfaceClass, methods);
         }
+        //获取对应
         String resolve = System.getProperty(interfaceName);
         String resolveFile = null;
         if (resolve == null || resolve.length() == 0) {
