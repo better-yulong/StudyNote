@@ -388,5 +388,96 @@ public class ReferenceBean<T> extends ReferenceConfig<T> implements FactoryBean,
         ref = createProxy(map);
     }
 
+    	@SuppressWarnings({ "unchecked", "rawtypes", "deprecation" })
+	private T createProxy(Map<String, String> map) {
+		URL tmpUrl = new URL("temp", "localhost", 0, map);
+		final boolean isJvmRefer;
+        if (isInjvm() == null) {
+            if (url != null && url.length() > 0) { //指定URL的情况下，不做本地引用
+                isJvmRefer = false;
+            } else if (InjvmProtocol.getInjvmProtocol().isInjvmRefer(tmpUrl)) {
+                //默认情况下如果本地有服务暴露，则引用本地服务.
+                isJvmRefer = true;
+            } else {
+                isJvmRefer = false;
+            }
+        } else {
+            isJvmRefer = isInjvm().booleanValue();
+        }
+		
+		if (isJvmRefer) {
+			URL url = new URL(Constants.LOCAL_PROTOCOL, NetUtils.LOCALHOST, 0, interfaceClass.getName()).addParameters(map);
+			invoker = refprotocol.refer(interfaceClass, url);
+            if (logger.isInfoEnabled()) {
+                logger.info("Using injvm service " + interfaceClass.getName());
+            }
+		} else {
+            if (url != null && url.length() > 0) { // 用户指定URL，指定的URL可能是对点对直连地址，也可能是注册中心URL
+                String[] us = Constants.SEMICOLON_SPLIT_PATTERN.split(url);
+                if (us != null && us.length > 0) {
+                    for (String u : us) {
+                        URL url = URL.valueOf(u);
+                        if (url.getPath() == null || url.getPath().length() == 0) {
+                            url = url.setPath(interfaceName);
+                        }
+                        if (Constants.REGISTRY_PROTOCOL.equals(url.getProtocol())) {
+                            urls.add(url.addParameterAndEncoded(Constants.REFER_KEY, StringUtils.toQueryString(map)));
+                        } else {
+                            urls.add(ClusterUtils.mergeUrl(url, map));
+                        }
+                    }
+                }
+            } else { // 通过注册中心配置拼装URL
+            	List<URL> us = loadRegistries(false);
+            	if (us != null && us.size() > 0) {
+                	for (URL u : us) {
+                	    URL monitorUrl = loadMonitor(u);
+                        if (monitorUrl != null) {
+                            map.put(Constants.MONITOR_KEY, URL.encode(monitorUrl.toFullString()));
+                        }
+                	    urls.add(u.addParameterAndEncoded(Constants.REFER_KEY, StringUtils.toQueryString(map)));
+                    }
+            	}
+            	if (urls == null || urls.size() == 0) {
+                    throw new IllegalStateException("No such any registry to reference " + interfaceName  + " on the consumer " + NetUtils.getLocalHost() + " use dubbo version " + Version.getVersion() + ", please config <dubbo:registry address=\"...\" /> to your spring config.");
+                }
+            }
 
+            if (urls.size() == 1) {
+                invoker = refprotocol.refer(interfaceClass, urls.get(0));
+            } else {
+                List<Invoker<?>> invokers = new ArrayList<Invoker<?>>();
+                URL registryURL = null;
+                for (URL url : urls) {
+                    invokers.add(refprotocol.refer(interfaceClass, url));
+                    if (Constants.REGISTRY_PROTOCOL.equals(url.getProtocol())) {
+                        registryURL = url; // 用了最后一个registry url
+                    }
+                }
+                if (registryURL != null) { // 有 注册中心协议的URL
+                    // 对有注册中心的Cluster 只用 AvailableCluster
+                    URL u = registryURL.addParameter(Constants.CLUSTER_KEY, AvailableCluster.NAME); 
+                    invoker = cluster.join(new StaticDirectory(u, invokers));
+                }  else { // 不是 注册中心的URL
+                    invoker = cluster.join(new StaticDirectory(invokers));
+                }
+            }
+        }
+
+        Boolean c = check;
+        if (c == null && consumer != null) {
+            c = consumer.isCheck();
+        }
+        if (c == null) {
+            c = true; // default true
+        }
+        if (c && ! invoker.isAvailable()) {
+            throw new IllegalStateException("Failed to check the status of the service " + interfaceName + ". No provider available for the service " + (group == null ? "" : group + "/") + interfaceName + (version == null ? "" : ":" + version) + " from the url " + invoker.getUrl() + " to the consumer " + NetUtils.getLocalHost() + " use dubbo version " + Version.getVersion());
+        }
+        if (logger.isInfoEnabled()) {
+            logger.info("Refer dubbo service " + interfaceClass.getName() + " from url " + invoker.getUrl());
+        }
+        // 创建服务代理
+        return (T) proxyFactory.getProxy(invoker);
+    }
 ```
