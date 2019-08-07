@@ -411,7 +411,7 @@ public class ReferenceBean<T> extends ReferenceConfig<T> implements FactoryBean,
         }
         //attributes通过系统context进行存储.
         StaticContext.getSystemContext().putAll(attributes);
-        ref = createProxy(map);
+        ref = createProxy(map);//上面已将所有属性整合至map
     }
 
     	@SuppressWarnings({ "unchecked", "rawtypes", "deprecation" })
