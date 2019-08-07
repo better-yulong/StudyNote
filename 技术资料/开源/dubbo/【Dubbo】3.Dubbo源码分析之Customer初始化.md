@@ -475,7 +475,7 @@ public class ReferenceBean<T> extends ReferenceConfig<T> implements FactoryBean,
             if (urls.size() == 1) {
                 //interface com.aoe.demo.rpc.dubbo.DubboExampleInterf1
                 //此处调用根据urls调用的RegistryProtocol.refer方法：其中会实例化ZookeeperRegistry实例、根据接口名称和url组装 RegistryDirectory对象（设置客户端protocol等）
-                //重点1：ZookeeperRegistry.register（完整url）
+                //重点1：ZookeeperRegistry.register（完整url）--实际对应其父类FailbackRegistry的registeryyif 
                 //重点2 directory.subscribe：consumer://100.119.69.10/com.aoe.demo.rpc.dubbo.DubboExampleInterf1?application=rpc-client&default.group=rpc-demo&default.version=1.0.1-aoe&dubbo=2.5.3&interface=com.aoe.demo.rpc.dubbo.DubboExampleInterf1&methods=serviceProvider&pid=5660&revision=0.0.1-SNAPSHOT&side=consumer&timestamp=1565169597733
                 //重点3：添加至cluster
                 invoker = refprotocol.refer(interfaceClass, urls.get(0));
