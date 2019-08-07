@@ -474,6 +474,7 @@ public class ReferenceBean<T> extends ReferenceConfig<T> implements FactoryBean,
 
             if (urls.size() == 1) {
                 //interface com.aoe.demo.rpc.dubbo.DubboExampleInterf1
+                //此处调用根据urls调用的
                 invoker = refprotocol.refer(interfaceClass, urls.get(0));
             } else {
                 List<Invoker<?>> invokers = new ArrayList<Invoker<?>>();
