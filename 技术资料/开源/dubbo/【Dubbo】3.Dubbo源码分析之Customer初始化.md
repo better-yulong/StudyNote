@@ -360,7 +360,7 @@ public class ReferenceBean<T> extends ReferenceConfig<T> implements FactoryBean,
                 monitor = application.getMonitor();
             }
         }
-        //检查application，同时根据系统属性、
+        //检查application，同时根据系统属自自定义变量或者dubbo.properties.file对应的属性文件值
         checkApplication();
         checkStubAndMock(interfaceClass);
         Map<String, String> map = new HashMap<String, String>();
