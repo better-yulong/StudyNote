@@ -263,7 +263,7 @@ public class ReferenceBean<T> extends ReferenceConfig<T> implements FactoryBean,
     	return ref;
     }
 
-        private void init() {
+    private void init() {
 	    if (initialized) {
 	        return;
 	    }
