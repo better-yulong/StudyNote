@@ -272,7 +272,7 @@ public class ReferenceBean<T> extends ReferenceConfig<T> implements FactoryBean,
     	    throw new IllegalStateException("<dubbo:reference interface=\"\" /> interface not allow null!");
     	}
     	// 获取消费者全局配置(当前示例未配置)
-    	checkDefault();//实例化默认ConsumerConfig，并通过反射调用set方法设置ConsumerConfig及其父类AbstractReferenceConfig属性值（基于System.getProterty方式），如check（检查服务提供者是否存在 ）、lazy（延迟创建连接）、reconnect（重连）、stubevent、version、group等
+    	checkDefault();//实例化默认ConsumerConfig（即如若未在xml中显示配置dubbo:consumer标签），并通过反射调用set方法设置ConsumerConfig及其父类AbstractReferenceConfig属性值（基于System.getProterty方式），如check（检查服务提供者是否存在 ）、lazy（延迟创建连接）、reconnect（重连）、stubevent、version、group等
         appendProperties(this);////通过反射调用set方法设置ReferenceConfig及其父类AbstractReferenceConfig属性值（基于System.getProterty方式），如check（检查服务提供者是否存在 ）、lazy（延迟创建连接）、reconnect（重连）、stubevent、version、group等
         if (getGeneric() == null && getConsumer() != null) {
             setGeneric(getConsumer().getGeneric());
