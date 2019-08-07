@@ -234,8 +234,26 @@ public class ReferenceBean<T> extends ReferenceConfig<T> implements FactoryBean,
 ```
 ```language
   //ReferenceConfig
+  	public Class<?> getInterfaceClass() {
+	    if (interfaceClass != null) {
+	        return interfaceClass;
+	    }
+	    if (isGeneric()
+            || (getConsumer() != null && getConsumer().isGeneric())) {
+	        return GenericService.class;
+	    }
+	    try {
+	        if (interfaceName != null && interfaceName.length() > 0) {
+	            this.interfaceClass = Class.forName(interfaceName, true, Thread.currentThread()
+                    .getContextClassLoader());
+	        }
+        } catch (ClassNotFoundException t) {
+            throw new IllegalStateException(t.getMessage(), t);
+        }
+	    return interfaceClass;
+    }
 
-  public synchronized T get() {
+    public synchronized T get() {
         if (destroyed){
             throw new IllegalStateException("Already destroyed!");
         }
