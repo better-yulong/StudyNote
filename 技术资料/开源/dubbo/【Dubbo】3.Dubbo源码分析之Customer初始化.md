@@ -244,4 +244,149 @@ public class ReferenceBean<T> extends ReferenceConfig<T> implements FactoryBean,
     	}
     	return ref;
     }
+
+        private void init() {
+	    if (initialized) {
+	        return;
+	    }
+	    initialized = true;
+    	if (interfaceName == null || interfaceName.length() == 0) {
+    	    throw new IllegalStateException("<dubbo:reference interface=\"\" /> interface not allow null!");
+    	}
+    	// 获取消费者全局配置
+    	checkDefault();
+        appendProperties(this);
+        if (getGeneric() == null && getConsumer() != null) {
+            setGeneric(getConsumer().getGeneric());
+        }
+        if (ProtocolUtils.isGeneric(getGeneric())) {
+            interfaceClass = GenericService.class;
+        } else {
+            try {
+				interfaceClass = Class.forName(interfaceName, true, Thread.currentThread()
+				        .getContextClassLoader());
+			} catch (ClassNotFoundException e) {
+				throw new IllegalStateException(e.getMessage(), e);
+			}
+            checkInterfaceAndMethods(interfaceClass, methods);
+        }
+        String resolve = System.getProperty(interfaceName);
+        String resolveFile = null;
+        if (resolve == null || resolve.length() == 0) {
+	        resolveFile = System.getProperty("dubbo.resolve.file");
+	        if (resolveFile == null || resolveFile.length() == 0) {
+	        	File userResolveFile = new File(new File(System.getProperty("user.home")), "dubbo-resolve.properties");
+	        	if (userResolveFile.exists()) {
+	        		resolveFile = userResolveFile.getAbsolutePath();
+	        	}
+	        }
+	        if (resolveFile != null && resolveFile.length() > 0) {
+	        	Properties properties = new Properties();
+	        	FileInputStream fis = null;
+	        	try {
+	        	    fis = new FileInputStream(new File(resolveFile));
+					properties.load(fis);
+				} catch (IOException e) {
+					throw new IllegalStateException("Unload " + resolveFile + ", cause: " + e.getMessage(), e);
+				} finally {
+				    try {
+                        if(null != fis) fis.close();
+                    } catch (IOException e) {
+                        logger.warn(e.getMessage(), e);
+                    }
+				}
+	        	resolve = properties.getProperty(interfaceName);
+	        }
+        }
+        if (resolve != null && resolve.length() > 0) {
+        	url = resolve;
+        	if (logger.isWarnEnabled()) {
+        		if (resolveFile != null && resolveFile.length() > 0) {
+        			logger.warn("Using default dubbo resolve file " + resolveFile + " replace " + interfaceName + "" + resolve + " to p2p invoke remote service.");
+        		} else {
+        			logger.warn("Using -D" + interfaceName + "=" + resolve + " to p2p invoke remote service.");
+        		}
+    		}
+        }
+        if (consumer != null) {
+            if (application == null) {
+                application = consumer.getApplication();
+            }
+            if (module == null) {
+                module = consumer.getModule();
+            }
+            if (registries == null) {
+                registries = consumer.getRegistries();
+            }
+            if (monitor == null) {
+                monitor = consumer.getMonitor();
+            }
+        }
+        if (module != null) {
+            if (registries == null) {
+                registries = module.getRegistries();
+            }
+            if (monitor == null) {
+                monitor = module.getMonitor();
+            }
+        }
+        if (application != null) {
+            if (registries == null) {
+                registries = application.getRegistries();
+            }
+            if (monitor == null) {
+                monitor = application.getMonitor();
+            }
+        }
+        checkApplication();
+        checkStubAndMock(interfaceClass);
+        Map<String, String> map = new HashMap<String, String>();
+        Map<Object, Object> attributes = new HashMap<Object, Object>();
+        map.put(Constants.SIDE_KEY, Constants.CONSUMER_SIDE);
+        map.put(Constants.DUBBO_VERSION_KEY, Version.getVersion());
+        map.put(Constants.TIMESTAMP_KEY, String.valueOf(System.currentTimeMillis()));
+        if (ConfigUtils.getPid() > 0) {
+            map.put(Constants.PID_KEY, String.valueOf(ConfigUtils.getPid()));
+        }
+        if (! isGeneric()) {
+            String revision = Version.getVersion(interfaceClass, version);
+            if (revision != null && revision.length() > 0) {
+                map.put("revision", revision);
+            }
+
+            String[] methods = Wrapper.getWrapper(interfaceClass).getMethodNames();
+            if(methods.length == 0) {
+                logger.warn("NO method found in service interface " + interfaceClass.getName());
+                map.put("methods", Constants.ANY_VALUE);
+            }
+            else {
+                map.put("methods", StringUtils.join(new HashSet<String>(Arrays.asList(methods)), ","));
+            }
+        }
+        map.put(Constants.INTERFACE_KEY, interfaceName);
+        appendParameters(map, application);
+        appendParameters(map, module);
+        appendParameters(map, consumer, Constants.DEFAULT_KEY);
+        appendParameters(map, this);
+        String prifix = StringUtils.getServiceKey(map);
+        if (methods != null && methods.size() > 0) {
+            for (MethodConfig method : methods) {
+                appendParameters(map, method, method.getName());
+                String retryKey = method.getName() + ".retry";
+                if (map.containsKey(retryKey)) {
+                    String retryValue = map.remove(retryKey);
+                    if ("false".equals(retryValue)) {
+                        map.put(method.getName() + ".retries", "0");
+                    }
+                }
+                appendAttributes(attributes, method, prifix + "." + method.getName());
+                checkAndConvertImplicitConfig(method, map, attributes);
+            }
+        }
+        //attributes通过系统context进行存储.
+        StaticContext.getSystemContext().putAll(attributes);
+        ref = createProxy(map);
+    }
+
+
 ```
