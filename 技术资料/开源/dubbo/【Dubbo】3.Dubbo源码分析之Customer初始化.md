@@ -294,7 +294,7 @@ public class ReferenceBean<T> extends ReferenceConfig<T> implements FactoryBean,
         if (resolve == null || resolve.length() == 0) {
 	        resolveFile = System.getProperty("dubbo.resolve.file");
 	        if (resolveFile == null || resolveFile.length() == 0) {
-                        
+                        //如获取File（
 	        	File userResolveFile = new File(new File(System.getProperty("user.home")), "dubbo-resolve.properties");
 	        	if (userResolveFile.exists()) {
 	        		resolveFile = userResolveFile.getAbsolutePath();
