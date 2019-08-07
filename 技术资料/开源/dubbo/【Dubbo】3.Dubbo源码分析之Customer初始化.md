@@ -301,7 +301,7 @@ public class ReferenceBean<T> extends ReferenceConfig<T> implements FactoryBean,
 	        	}
 	        }
 	        if (resolveFile != null && resolveFile.length() > 0) {
-                        //获取
+                        //获取到dubbo-resolve.properties，加载解析
 	        	Properties properties = new Properties();
 	        	FileInputStream fis = null;
 	        	try {
