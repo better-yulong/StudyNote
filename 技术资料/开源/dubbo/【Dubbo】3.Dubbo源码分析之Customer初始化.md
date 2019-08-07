@@ -360,7 +360,7 @@ public class ReferenceBean<T> extends ReferenceConfig<T> implements FactoryBean,
                 monitor = application.getMonitor();
             }
         }
-        //枪机
+        //检查application，同时根据系统属性、
         checkApplication();
         checkStubAndMock(interfaceClass);
         Map<String, String> map = new HashMap<String, String>();
