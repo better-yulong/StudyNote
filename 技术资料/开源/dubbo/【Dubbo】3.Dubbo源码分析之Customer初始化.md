@@ -234,8 +234,8 @@ public class ReferenceBean<T> extends ReferenceConfig<T> implements FactoryBean,
 ```
 ```language
   //ReferenceConfig
-  
-    public synchronized T get() {
+
+  public synchronized T get() {
         if (destroyed){
             throw new IllegalStateException("Already destroyed!");
         }
