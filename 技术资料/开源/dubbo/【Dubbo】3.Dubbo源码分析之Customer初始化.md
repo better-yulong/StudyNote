@@ -501,10 +501,10 @@ public class ReferenceBean<T> extends ReferenceConfig<T> implements FactoryBean,
 ```
 
 
+### 自定义变量示例
+- 在分析dubbo:reference标签解析对ReferenceConfig实例化时，若未显示在为其配置dubbo:consumer标签属性，则会默认为ReferenceConfig实例的属性consumer属性实例化默认的ConsumerConfig实例（包含如lazy、timeout、reconnect、version、group等），并尝试从系统参数获取对应配置的值通过method.invoke方式反射为ConsumerConfig实例的属性完成赋值，下面即简单对此种方式做下示例（参考：https://www.cnblogs.com/yangmingke/p/6058898.html）
 
-- 在分析dubbo:reference标签解析对ReferenceConfig实例化时，若未显示在为其配置dubbo:consumer标签属性，则会默认为ReferenceConfig实例的属性consumer属性实例化默认的ConsumerConfig实例（包含如lazy、timeout、reconnect、version、group等），并尝试从系统参数获取对应配置的值通过method.invoke方式反射为ConsumerConfig实例的属性完成赋值，下面即简单对此种方式做下示例（参考：https://www.cnblogs.com/yangmingke/p/6058898.html
-
-#### 1.基于Eclipse+Tomcat方式设置属性以便可通过System.getProperty（“XXX”）获取自定义变量
+#### 基于Eclipse+Tomcat方式设置属性以便可通过System.getProperty（“XXX”）获取自定义变量
 1. 打开tomcat server（双击对应server），会显示常用的tomcat 端口号、启动或停止超时时间设置。
 2. General Information中点击Open launch configuration（就面窗口而左上方），可打开"Edit Configuration"窗口。
 3. 选择Arguments，在VM arguments输入框显示：
