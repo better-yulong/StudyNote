@@ -463,7 +463,8 @@ public class ReferenceBean<T> extends ReferenceConfig<T> implements FactoryBean,
                         if (monitorUrl != null) {
                             map.put(Constants.MONITOR_KEY, URL.encode(monitorUrl.toFullString()));
                         }
-                	    urls.add(u.addParameterAndEncoded(Constants.REFER_KEY, StringUtils.toQueryString(map)));
+                        //根据
+                	 urls.add(u.addParameterAndEncoded(Constants.REFER_KEY, StringUtils.toQueryString(map)));
                     }
             	}
             	if (urls == null || urls.size() == 0) {
