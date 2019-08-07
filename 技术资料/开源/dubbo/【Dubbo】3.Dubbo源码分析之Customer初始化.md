@@ -329,7 +329,7 @@ public class ReferenceBean<T> extends ReferenceConfig<T> implements FactoryBean,
         		}
     		}
         }
-        //这部分同dubbo:service，如若当前未显示指定application、module、registries、monitor）则使用consumer、
+        //这部分同dubbo:service，如若当前未显示指定application、module、registries、monitor）则使用consumer等赋值，涉及根据优先级多次赋值
         if (consumer != null) {
             if (application == null) {
                 application = consumer.getApplication();
@@ -360,6 +360,7 @@ public class ReferenceBean<T> extends ReferenceConfig<T> implements FactoryBean,
                 monitor = application.getMonitor();
             }
         }
+        //枪机
         checkApplication();
         checkStubAndMock(interfaceClass);
         Map<String, String> map = new HashMap<String, String>();
