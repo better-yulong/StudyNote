@@ -512,4 +512,4 @@ public class ReferenceBean<T> extends ReferenceConfig<T> implements FactoryBean,
 ```language
 -Dcatalina.base="D:\work\webcontainer\tomcat7" -Dcatalina.home="D:\work\webcontainer\tomcat7" -Dwtp.deploy="D:\work\webcontainer\tomcat7\wtpwebapps" -Djava.endorsed.dirs="D:\work\webcontainer\tomcat7\endorsed" -Ddubbo.consumer.version="1.0.1-aoe" -Ddubbo.consumer.group="rpc-demo"
 ```
-如上在VM arguments后追加-DXXX=****(-D不能省略)，这样就可以通过 System.getProperty（“XXX”）获取****了
+如上在VM arguments后追加-DXXX=****(-D不能省略)，这样就可以通过 System.getProperty（“XXX”）获取****了；同样也可在catalina.bat（catalina.sh）通过
