@@ -473,6 +473,7 @@ public class ReferenceBean<T> extends ReferenceConfig<T> implements FactoryBean,
             }
 
             if (urls.size() == 1) {
+                
                 invoker = refprotocol.refer(interfaceClass, urls.get(0));
             } else {
                 List<Invoker<?>> invokers = new ArrayList<Invoker<?>>();
