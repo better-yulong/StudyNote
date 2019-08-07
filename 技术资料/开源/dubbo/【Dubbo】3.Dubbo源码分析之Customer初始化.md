@@ -420,7 +420,7 @@ public class ReferenceBean<T> extends ReferenceConfig<T> implements FactoryBean,
 		final boolean isJvmRefer;
         if (isInjvm() == null) {
             //未显示指定暴本地服务则仅暴露远程服务
-            if (url != null && url.length() > 0) { //指定URL的情况下，不做本地引用
+            if (url != null && url.length() > 0) { //指定URL的情况下（url对应点对点直连配置），不做本地引用
                 isJvmRefer = false;
             } else if (InjvmProtocol.getInjvmProtocol().isInjvmRefer(tmpUrl)) {
                 //默认情况下如果本地有服务暴露，则引用本地服务.
