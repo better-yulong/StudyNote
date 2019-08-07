@@ -388,7 +388,7 @@ public class ReferenceBean<T> extends ReferenceConfig<T> implements FactoryBean,
             }
         }
 
-     
+        //整合各属性配置到map
         map.put(Constants.INTERFACE_KEY, interfaceName);
         appendParameters(map, application);
         appendParameters(map, module);
