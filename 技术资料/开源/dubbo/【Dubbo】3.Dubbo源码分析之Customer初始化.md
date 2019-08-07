@@ -272,7 +272,7 @@ public class ReferenceBean<T> extends ReferenceConfig<T> implements FactoryBean,
     	    throw new IllegalStateException("<dubbo:reference interface=\"\" /> interface not allow null!");
     	}
     	// 获取消费者全局配置(当前示例未配置)
-    	checkDefault();//通过反射
+    	checkDefault();//默认通过反射获取ConsumerConfig及其父类AbstractReferenceConfig 
         appendProperties(this);
         if (getGeneric() == null && getConsumer() != null) {
             setGeneric(getConsumer().getGeneric());
