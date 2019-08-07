@@ -281,8 +281,7 @@ public class ReferenceBean<T> extends ReferenceConfig<T> implements FactoryBean,
             interfaceClass = GenericService.class;
         } else {
             try {
-				interfaceClass = Class.forName(interfaceName, true, Thread.currentThread()
-				        .getContextClassLoader());
+			interfaceClass = Class.forName(interfaceName, true, Thread.currentThread().getContextClassLoader());
 			} catch (ClassNotFoundException e) {
 				throw new IllegalStateException(e.getMessage(), e);
 			}
