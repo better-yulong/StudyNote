@@ -362,7 +362,7 @@ public class ReferenceBean<T> extends ReferenceConfig<T> implements FactoryBean,
         }
         //检查application，同时根据系统属自自定义变量或者dubbo.properties.file对应的属性文件值多次赋值更新（
         checkApplication();
-         //获取并检查local、stub、mock； 涉及使用Javassist加载localClass
+         //获取并检查local、stub、mock； 涉及使用Javassist加载localClass并验证class
         checkStubAndMock(interfaceClass);
         Map<String, String> map = new HashMap<String, String>();
         Map<Object, Object> attributes = new HashMap<Object, Object>();
