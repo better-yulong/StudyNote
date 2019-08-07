@@ -387,6 +387,8 @@ public class ReferenceBean<T> extends ReferenceConfig<T> implements FactoryBean,
                 map.put("methods", StringUtils.join(new HashSet<String>(Arrays.asList(methods)), ","));
             }
         }
+
+     
         map.put(Constants.INTERFACE_KEY, interfaceName);
         appendParameters(map, application);
         appendParameters(map, module);
