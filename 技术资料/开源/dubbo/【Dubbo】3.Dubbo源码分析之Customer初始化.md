@@ -264,10 +264,10 @@ public class ReferenceBean<T> extends ReferenceConfig<T> implements FactoryBean,
     }
 
     private void init() {
-	    if (initialized) {
-	        return;
-	    }
-	    initialized = true;
+	if (initialized) {
+	    return;
+	}
+	initialized = true;
     	if (interfaceName == null || interfaceName.length() == 0) {
     	    throw new IllegalStateException("<dubbo:reference interface=\"\" /> interface not allow null!");
     	}
