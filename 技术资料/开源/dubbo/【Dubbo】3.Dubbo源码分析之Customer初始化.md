@@ -285,6 +285,7 @@ public class ReferenceBean<T> extends ReferenceConfig<T> implements FactoryBean,
 			} catch (ClassNotFoundException e) {
 				throw new IllegalStateException(e.getMessage(), e);
 			}
+            //检查interfaceClass是否为null且是否为ruk
             checkInterfaceAndMethods(interfaceClass, methods);
         }
         String resolve = System.getProperty(interfaceName);
