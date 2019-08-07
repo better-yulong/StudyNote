@@ -288,12 +288,13 @@ public class ReferenceBean<T> extends ReferenceConfig<T> implements FactoryBean,
            //检查interfaceClass是否为null且是否为接口；若methods（即MethodConfig）不为空则检查method是否存在（对应<dubbo:method>）
             checkInterfaceAndMethods(interfaceClass, methods);
         }
-        //查找并获取接口对应resolve配置，即属性配置文件（-Ddubbo.resolve.file指定映射文件路径，此配置优先级高于<dubbo:reference>中的配置
+        //查找并获取接口对应resolve配置，即属性配置文件（-Ddubbo.resolve.file指定映射文件路径，此配置优先级高于<dubbo:reference>中的配置；2.0以上版本自动加载${user.home}/dubbo-resolve.properties文件不需要配置）
         String resolve = System.getProperty(interfaceName);
         String resolveFile = null;
         if (resolve == null || resolve.length() == 0) {
 	        resolveFile = System.getProperty("dubbo.resolve.file");
 	        if (resolveFile == null || resolveFile.length() == 0) {
+                        
 	        	File userResolveFile = new File(new File(System.getProperty("user.home")), "dubbo-resolve.properties");
 	        	if (userResolveFile.exists()) {
 	        		resolveFile = userResolveFile.getAbsolutePath();
