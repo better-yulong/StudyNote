@@ -329,7 +329,7 @@ public class ReferenceBean<T> extends ReferenceConfig<T> implements FactoryBean,
         		}
     		}
         }
-        //这部分同dubbo:service，如若当前未显示指定application、module、registries  
+        //这部分同dubbo:service，如若当前未显示指定application、module、registries、monitor）则使用consumer、
         if (consumer != null) {
             if (application == null) {
                 application = consumer.getApplication();
