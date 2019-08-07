@@ -285,7 +285,7 @@ public class ReferenceBean<T> extends ReferenceConfig<T> implements FactoryBean,
 			} catch (ClassNotFoundException e) {
 				throw new IllegalStateException(e.getMessage(), e);
 			}
-            //检查interfaceClass是否为null且是否为接口；若methods（即MethodConfig）不为空则检查methodName是否存在（对应
+           //检查interfaceClass是否为null且是否为接口；若methods（即MethodConfig）不为空则检查method是否存在（对应<dubbo:method>）
             checkInterfaceAndMethods(interfaceClass, methods);
         }
         String resolve = System.getProperty(interfaceName);
