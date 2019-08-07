@@ -455,6 +455,7 @@ public class ReferenceBean<T> extends ReferenceConfig<T> implements FactoryBean,
                     }
                 }
             } else { // 通过注册中心配置拼装URL
+                //如us：[registry://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=rpc-client&dubbo=2.5.3&pid=5660&registry=zookeeper&timestamp=1565169709392]
             	List<URL> us = loadRegistries(false);
             	if (us != null && us.size() > 0) {
                 	for (URL u : us) {
