@@ -535,6 +535,28 @@ dubbo://127.0.0.1:20813/com.aoe.demo.rpc.dubbo.DubboExampleInterf1?application=r
 那么回到 invoker = refprotocol.refer(interfaceClass, urls.get(0))，基于dubbo、registry分别分析。
 ##### 2.4.1.1  基于registry分析 refprotocol.refer(interfaceClass, urls.get(0))
 refprotocol根据分析，对应Protocol的SPI实现类实例，无缺省值则实例会Protocol&Adaptiver实例，而其方法会根据Url的protocol值获取Protocol实现类，那么此处即为RegistryProtocol. 
+```language
+  
+    @SuppressWarnings("unchecked")
+	public <T> Invoker<T> refer(Class<T> type, URL url) throws RpcException {
+        url = url.setProtocol(url.getParameter(Constants.REGISTRY_KEY, Constants.DEFAULT_REGISTRY)).removeParameter(Constants.REGISTRY_KEY);
+        Registry registry = registryFactory.getRegistry(url);
+        if (RegistryService.class.equals(type)) {
+        	return proxyFactory.getInvoker((T) registry, type, url);
+        }
+
+        // group="a,b" or group="*"
+        Map<String, String> qs = StringUtils.parseQueryString(url.getParameterAndDecoded(Constants.REFER_KEY));
+        String group = qs.get(Constants.GROUP_KEY);
+        if (group != null && group.length() > 0 ) {
+            if ( ( Constants.COMMA_SPLIT_PATTERN.split( group ) ).length > 1
+                    || "*".equals( group ) ) {
+                return doRefer( getMergeableCluster(), registry, type, url );
+            }
+        }
+        return doRefer(cluster, registry, type, url);
+    }
+```
 
 
 ### 自定义变量示例
