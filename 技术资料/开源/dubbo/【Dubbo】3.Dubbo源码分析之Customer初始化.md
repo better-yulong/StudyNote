@@ -539,7 +539,7 @@ refprotocol根据分析，对应Protocol的SPI实现类实例，无缺省值则�
     //RegistryProtocol
     @SuppressWarnings("unchecked")
 	public <T> Invoker<T> refer(Class<T> type, URL url) throws RpcException {
-        //url toStrin
+        //url实例toString后如上，此即即将Parameters中
         url = url.setProtocol(url.getParameter(Constants.REGISTRY_KEY, Constants.DEFAULT_REGISTRY)).removeParameter(Constants.REGISTRY_KEY);
         Registry registry = registryFactory.getRegistry(url);
         if (RegistryService.class.equals(type)) {
