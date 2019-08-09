@@ -561,7 +561,22 @@ refprotocol根据分析，对应Protocol的SPI实现类实例，无缺省值则�
         return doRefer(cluster, registry, type, url);
     }
 
-    
+        private <T> Invoker<T> doRefer(Cluster cluster, Registry registry, Class<T> type, URL url) {
+        RegistryDirectory<T> directory = new RegistryDirectory<T>(type, url);
+        directory.setRegistry(registry);
+        directory.setProtocol(protocol);
+        URL subscribeUrl = new URL(Constants.CONSUMER_PROTOCOL, NetUtils.getLocalHost(), 0, type.getName(), directory.getUrl().getParameters());
+        if (! Constants.ANY_VALUE.equals(url.getServiceInterface())
+                && url.getParameter(Constants.REGISTER_KEY, true)) {
+            registry.register(subscribeUrl.addParameters(Constants.CATEGORY_KEY, Constants.CONSUMERS_CATEGORY,
+                    Constants.CHECK_KEY, String.valueOf(false)));
+        }
+        directory.subscribe(subscribeUrl.addParameter(Constants.CATEGORY_KEY, 
+                Constants.PROVIDERS_CATEGORY 
+                + "," + Constants.CONFIGURATORS_CATEGORY 
+                + "," + Constants.ROUTERS_CATEGORY));
+        return cluster.join(directory);
+    }
 ```
 
 
