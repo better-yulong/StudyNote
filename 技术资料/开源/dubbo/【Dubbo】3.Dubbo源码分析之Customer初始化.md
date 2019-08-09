@@ -534,7 +534,7 @@ dubbo://127.0.0.1:20813/com.aoe.demo.rpc.dubbo.DubboExampleInterf1?application=r
 ```
 那么回到 invoker = refprotocol.refer(interfaceClass, urls.get(0))，基于dubbo、registry分别分析。
 ##### 2.4.1.1  基于registry分析 refprotocol.refer(interfaceClass, urls.get(0))
-refprotocol根据分析，会基于
+refprotocol根据分析，对应Protocol的SPI实现类实例，因未
 
 
 ### 自定义变量示例
