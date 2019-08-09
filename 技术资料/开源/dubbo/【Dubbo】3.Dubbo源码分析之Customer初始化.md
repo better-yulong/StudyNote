@@ -584,9 +584,10 @@ refprotocol根据分析，对应Protocol的SPI实现类实例，无缺省值则�
 ##### 2.4.1.2 消费者注册到zookeeper分析
 ZookeeperRegistry(父类为FailbackRegistry)的register
 ```language
-    //FailbackRegistry
+    //FailbackRegistry类
     @Override
     public void register(URL url) {
+        //即将url添加至registered
         super.register(url);
         failedRegistered.remove(url);
         failedUnregistered.remove(url);
