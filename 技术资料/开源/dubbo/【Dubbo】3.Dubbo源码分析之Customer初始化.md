@@ -532,7 +532,7 @@ registry://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application
 ```language
 dubbo://127.0.0.1:20813/com.aoe.demo.rpc.dubbo.DubboExampleInterf1?application=rpc-client&default.group=rpc-demo&default.version=1.0.1-aoe&dubbo=2.5.3&interface=com.aoe.demo.rpc.dubbo.DubboExampleInterf1&methods=serviceProvider&pid=9904&revision=0.0.1-SNAPSHOT&side=consumer&timestamp=1565319685624, dubbo://127.0.0.1:20814/com.aoe.demo.rpc.dubbo.DubboExampleInterf1?application=rpc-client&default.group=rpc-demo&default.version=1.0.1-aoe&dubbo=2.5.3&interface=com.aoe.demo.rpc.dubbo.DubboExampleInterf1&methods=serviceProvider&pid=9904&revision=0.0.1-SNAPSHOT&side=consumer&timestamp=1565319685624]
 ```
-那么回到 invoker = refprotocol.refer(interfaceClass, urls.get(0))，基于dubbo、
+那么回到 invoker = refprotocol.refer(interfaceClass, urls.get(0))，基于dubbo、registry分别
 
 
 
