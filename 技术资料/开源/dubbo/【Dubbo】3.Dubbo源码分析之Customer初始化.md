@@ -583,6 +583,38 @@ refprotocol根据分析，对应Protocol的SPI实现类实例，无缺省值则�
 ```
 ##### 2.4.1.2 消费者注册到zookeeper分析
 ZookeeperRegistry(父类为FailbackRegistry)的register
+```language
+    //FailbackRegistry
+    @Override
+    public void register(URL url) {
+        super.register(url);
+        failedRegistered.remove(url);
+        failedUnregistered.remove(url);
+        try {
+            // 向服务器端发送注册请求
+            doRegister(url);
+        } catch (Exception e) {
+            Throwable t = e;
+
+            // 如果开启了启动时检测，则直接抛出异常
+            boolean check = getUrl().getParameter(Constants.CHECK_KEY, true)
+                    && url.getParameter(Constants.CHECK_KEY, true)
+                    && ! Constants.CONSUMER_PROTOCOL.equals(url.getProtocol());
+            boolean skipFailback = t instanceof SkipFailbackWrapperException;
+            if (check || skipFailback) {
+                if(skipFailback) {
+                    t = t.getCause();
+                }
+                throw new IllegalStateException("Failed to register " + url + " to registry " + getUrl().getAddress() + ", cause: " + t.getMessage(), t);
+            } else {
+                logger.error("Failed to register " + url + ", waiting for retry, cause: " + t.getMessage(), t);
+            }
+
+            // 将失败的注册请求记录到失败列表，定时重试
+            failedRegistered.add(url);
+        }
+    }
+```
 
 
 
