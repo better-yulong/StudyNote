@@ -621,6 +621,7 @@ ZookeeperRegistry(父类为FailbackRegistry)的register
    //ZookeeperRegistry类
     protected void doRegister(URL url) {
         try {
+               引得即根据
                zkClient.create(toUrlPath(url), url.getParameter(Constants.DYNAMIC_KEY, true));
         } catch (Throwable e) {
             throw new RpcException("Failed to register " + url + " to zookeeper " + getUrl() + ", cause: " + e.getMessage(), e);
