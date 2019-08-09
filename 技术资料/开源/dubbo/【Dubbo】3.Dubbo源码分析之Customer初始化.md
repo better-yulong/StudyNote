@@ -549,7 +549,7 @@ refprotocol根据分析，对应Protocol的SPI实现类实例，无缺省值则�
 
         // group="a,b" or group="*"
         Map<String, String> qs = StringUtils.parseQueryString(url.getParameterAndDecoded(Constants.REFER_KEY));
-       //获取group属性值，如若group不为空则先getMergeableCluster之后再调用doRefer方法
+       //获取group属性值，如若group不为空则先getMergeableCluster获取MergeableCluster实例再调用doRefer方法
         String group = qs.get(Constants.GROUP_KEY);
         if (group != null && group.length() > 0 ) {
             if ( ( Constants.COMMA_SPLIT_PATTERN.split( group ) ).length > 1
@@ -557,6 +557,7 @@ refprotocol根据分析，对应Protocol的SPI实现类实例，无缺省值则�
                 return doRefer( getMergeableCluster(), registry, type, url );
             }
         }
+        //此处c
         return doRefer(cluster, registry, type, url);
     }
 ```
