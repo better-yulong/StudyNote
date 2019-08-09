@@ -589,7 +589,7 @@ ZookeeperRegistry(父类为FailbackRegistry)的register
     public void register(URL url) {
         //即将url添加至registered集合
         super.register(url);
-        //从failedRegistered、failedUnregistered中移除
+        //从failedRegistered、failedUnregistered中移除ur实例
         failedRegistered.remove(url);
         failedUnregistered.remove(url);
         try {
