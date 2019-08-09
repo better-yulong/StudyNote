@@ -216,7 +216,7 @@ public class ReferenceBean<T> extends ReferenceConfig<T> implements FactoryBean,
 可用于Spring容器关闭时销毁bean时调用
 #### 2.3 InitializingBean接口
 之前也有分析，其afterPropertiesSet方法可用于在Spring初始化ReferenceBean实例原始bean之后调用完成自定义的初始化工作。类似于之前分析ServiceBean，主要用于对ReferenceBean实例bean的consumer、application、module、registry、monitor等属性的赋值
-#### 2.3 FactoryBean接口
+#### 2.4 FactoryBean接口
 ```language
     //FactoryBean
     public Object getObject() throws Exception {
@@ -480,6 +480,7 @@ public class ReferenceBean<T> extends ReferenceConfig<T> implements FactoryBean,
                 //重点3：添加至cluster
                 invoker = refprotocol.refer(interfaceClass, urls.get(0));
             } else {
+                //稍后分析，如“<dubbo:reference id="dubboExampleService1" interface="com.aoe.demo.rpc.dubbo.DubboExampleInterf1"  url="dubbo://127.0.0.1:20813;dubbo://127.0.0.1:20814"  />”url有多个时会运行至此
                 List<Invoker<?>> invokers = new ArrayList<Invoker<?>>();
                 URL registryURL = null;
                 for (URL url : urls) {
@@ -515,6 +516,23 @@ public class ReferenceBean<T> extends ReferenceConfig<T> implements FactoryBean,
         return (T) proxyFactory.getProxy(invoker);
     }
 ```
+#### 2.4.1 refprotocol.refer分析
+dubbo:reference的配置可采用注册中心获取服务接口地址（关联registry），也可通过url方式直连（url显示指定）；而在xml解析生成dubbo:reference生成ReferenceBean时会根据url或registry解析生成dReferenceBean的url的属性值：
+```language
+<dubbo:registry id="local_zk" address="zookeeper://127.0.0.1:2181"></dubbo:registry>
+
+<dubbo:reference id="dubboExampleService1" interface="com.aoe.demo.rpc.dubbo.DubboExampleInterf1" check="false" registry="local_zk"/>
+	
+<dubbo:reference id="dubboExampleService1" interface="com.aoe.demo.rpc.dubbo.DubboExampleInterf1"  url="dubbo://127.0.0.1:20813;dubbo://127.0.0.1:20814"  /> 
+```
+url属性值结合map参数对应的url toString结果：
+```language
+registry://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=rpc-client&dubbo=2.5.3&pid=5660&refer=application%3Drpc-client%26default.group%3Drpc-demo%26default.version%3D1.0.1-aoe%26dubbo%3D2.5.3%26interface%3Dcom.aoe.demo.rpc.dubbo.DubboExampleInterf1%26methods%3DserviceProvider%26pid%3D5660%26revision%3D0.0.1-SNAPSHOT%26side%3Dconsumer%26timestamp%3D1565169597733&registry=zookeeper&timestamp=1565169709392
+```
+```language
+dubbo://127.0.0.1:20813/com.aoe.demo.rpc.dubbo.DubboExampleInterf1?application=rpc-client&default.group=rpc-demo&default.version=1.0.1-aoe&dubbo=2.5.3&interface=com.aoe.demo.rpc.dubbo.DubboExampleInterf1&methods=serviceProvider&pid=9904&revision=0.0.1-SNAPSHOT&side=consumer&timestamp=1565319685624, dubbo://127.0.0.1:20814/com.aoe.demo.rpc.dubbo.DubboExampleInterf1?application=rpc-client&default.group=rpc-demo&default.version=1.0.1-aoe&dubbo=2.5.3&interface=com.aoe.demo.rpc.dubbo.DubboExampleInterf1&methods=serviceProvider&pid=9904&revision=0.0.1-SNAPSHOT&side=consumer&timestamp=1565319685624]
+```
+
 
 
 ### 自定义变量示例
@@ -527,4 +545,4 @@ public class ReferenceBean<T> extends ReferenceConfig<T> implements FactoryBean,
 ```language
 -Dcatalina.base="D:\work\webcontainer\tomcat7" -Dcatalina.home="D:\work\webcontainer\tomcat7" -Dwtp.deploy="D:\work\webcontainer\tomcat7\wtpwebapps" -Djava.endorsed.dirs="D:\work\webcontainer\tomcat7\endorsed" -Ddubbo.consumer.version="1.0.1-aoe" -Ddubbo.consumer.group="rpc-demo"
 ```
-如上在VM arguments后追加-DXXX=****(-D不能省略)，这样就可以通过 System.getProperty（“XXX”）获取****了；同样也可在catalina.bat（catalina.sh）通过JAVA_OPTS来添加自定义变量
+如上在VM arguments后追加-DXXX=****(-D不能省略)，这样就可以通过 System.getProperty（“XXX”）获取****了；同样也可在catalina.bat（catalina.sh）通过JAVA_OPTS来添加自定义变量1. 
