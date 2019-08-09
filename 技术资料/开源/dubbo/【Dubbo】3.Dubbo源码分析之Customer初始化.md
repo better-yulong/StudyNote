@@ -560,6 +560,8 @@ refprotocol根据分析，对应Protocol的SPI实现类实例，无缺省值则�
         //此处cluster为Cluster$Adpative实例
         return doRefer(cluster, registry, type, url);
     }
+
+    
 ```
 
 
