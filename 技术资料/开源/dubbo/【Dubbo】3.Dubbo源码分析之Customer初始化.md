@@ -629,8 +629,12 @@ ZookeeperRegistry(父类为FailbackRegistry)的register
     }
 ```
 zkClient.create(toUrlPath(url), url.getParameter(Constants.DYNAMIC_KEY, true)); 主要为：
-1. toUrlPath(url)基于url实例生成完整的url
+1. toUrlPath(url)基于url实例生成完整的url路径，即对应zk的完整节点路径 ：
+```
 /dubbo/com.aoe.demo.rpc.dubbo.DubboExampleInterf1/consumers/consumer%3A%2F%2F100.119.69.10%2Fcom.aoe.demo.rpc.dubbo.DubboExampleInterf1%3Fapplication%3Drpc-client%26category%3Dconsumers%26check%3Dfalse%26default.group%3Drpc-demo%26default.version%3D1.0.1-aoe%26dubbo%3D2.5.3%26interface%3Dcom.aoe.demo.rpc.dubbo.DubboExampleInterf1%26methods%3DserviceProvider%26pid%3D12928%26revision%3D0.0.1-SNAPSHOT%26side%3Dconsumer%26timestamp%3D1565338372226
+
+```
+
 
 
 ### 自定义变量示例
