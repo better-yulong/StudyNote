@@ -593,7 +593,7 @@ ZookeeperRegistry(父类为FailbackRegistry)的register
         failedRegistered.remove(url);
         failedUnregistered.remove(url);
         try {
-            // 向服务器端发送注册请求
+            // 向服务器端发送注册请求（当前示例为
             doRegister(url);
         } catch (Exception e) {
             Throwable t = e;
