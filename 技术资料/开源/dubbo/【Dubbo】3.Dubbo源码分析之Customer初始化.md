@@ -587,8 +587,9 @@ ZookeeperRegistry(父类为FailbackRegistry)的register
     //FailbackRegistry类
     @Override
     public void register(URL url) {
-        //即将url添加至registered
+        //即将url添加至registered集合
         super.register(url);
+        //从failedRegistered、failedUnregistered中移除
         failedRegistered.remove(url);
         failedUnregistered.remove(url);
         try {
