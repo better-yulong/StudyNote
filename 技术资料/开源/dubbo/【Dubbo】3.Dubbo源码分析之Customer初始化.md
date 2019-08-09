@@ -618,8 +618,14 @@ ZookeeperRegistry(父类为FailbackRegistry)的register
     }
 ```
 ```language
-   //ZookeeperRegistry
-
+   //ZookeeperRegistry类
+    protected void doRegister(URL url) {
+        try {
+        	zkClient.create(toUrlPath(url), url.getParameter(Constants.DYNAMIC_KEY, true));
+        } catch (Throwable e) {
+            throw new RpcException("Failed to register " + url + " to zookeeper " + getUrl() + ", cause: " + e.getMessage(), e);
+        }
+    }
 ```
 
 
