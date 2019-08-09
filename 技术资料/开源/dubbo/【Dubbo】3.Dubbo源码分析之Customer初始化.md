@@ -536,9 +536,10 @@ dubbo://127.0.0.1:20813/com.aoe.demo.rpc.dubbo.DubboExampleInterf1?application=r
 ##### 2.4.1.1  基于registry分析 refprotocol.refer(interfaceClass, urls.get(0))
 refprotocol根据分析，对应Protocol的SPI实现类实例，无缺省值则实例会Protocol&Adaptiver实例，而其方法会根据Url的protocol值获取Protocol实现类，那么此处即为RegistryProtocol. 
 ```language
-  
+    //RegistryProtocol
     @SuppressWarnings("unchecked")
 	public <T> Invoker<T> refer(Class<T> type, URL url) throws RpcException {
+        //url toStrin
         url = url.setProtocol(url.getParameter(Constants.REGISTRY_KEY, Constants.DEFAULT_REGISTRY)).removeParameter(Constants.REGISTRY_KEY);
         Registry registry = registryFactory.getRegistry(url);
         if (RegistryService.class.equals(type)) {
