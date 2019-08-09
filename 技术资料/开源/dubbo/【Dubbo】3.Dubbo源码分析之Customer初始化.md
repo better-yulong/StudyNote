@@ -581,7 +581,7 @@ refprotocol根据分析，对应Protocol的SPI实现类实例，无缺省值则�
         return cluster.join(directory);
     }
 ```
-
+##### 2.4.1.2 消费者注册到zookeep
 ZookeeperRegistry(父类为FailbackRegistry)的register
 
 
