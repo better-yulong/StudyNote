@@ -566,7 +566,7 @@ refprotocol根据分析，对应Protocol的SPI实现类实例，无缺省值则�
         RegistryDirectory<T> directory = new RegistryDirectory<T>(type, url);
         directory.setRegistry(registry);
         directory.setProtocol(protocol);
-        //根据参数实例化其作为
+        //根据参数实例化订阅服务url实例：consumer://100.119.69.10/com.aoe.demo.rpc.dubbo.DubboExampleInterf1?application=rpc-client&check=false&default.group=rpc-demo&default.version=1.0.1-aoe&dubbo=2.5.3&interface=com.aoe.demo.rpc.dubbo.DubboExampleInterf1&methods=serviceProvider&pid=12928&revision=0.0.1-SNAPSHOT&side=consumer&timestamp=1565338372226
         URL subscribeUrl = new URL(Constants.CONSUMER_PROTOCOL, NetUtils.getLocalHost(), 0, type.getName(), directory.getUrl().getParameters());
         if (! Constants.ANY_VALUE.equals(url.getServiceInterface())
                 && url.getParameter(Constants.REGISTER_KEY, true)) {
