@@ -566,7 +566,7 @@ refprotocol根据分析，对应Protocol的SPI实现类实例，无缺省值则�
         RegistryDirectory<T> directory = new RegistryDirectory<T>(type, url);
         directory.setRegistry(registry);
         directory.setProtocol(protocol);
-        //根据参数实例化
+        //根据参数实例化其作为
         URL subscribeUrl = new URL(Constants.CONSUMER_PROTOCOL, NetUtils.getLocalHost(), 0, type.getName(), directory.getUrl().getParameters());
         if (! Constants.ANY_VALUE.equals(url.getServiceInterface())
                 && url.getParameter(Constants.REGISTER_KEY, true)) {
