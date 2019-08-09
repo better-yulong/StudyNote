@@ -562,7 +562,7 @@ refprotocol根据分析，对应Protocol的SPI实现类实例，无缺省值则�
     }
 
    private <T> Invoker<T> doRefer(Cluster cluster, Registry registry, Class<T> type, URL url) {
-        //根据type（即
+        //根据type（即示例发布的接口class、url实例实例化RegistryDirectory对象directory 
         RegistryDirectory<T> directory = new RegistryDirectory<T>(type, url);
         directory.setRegistry(registry);
         directory.setProtocol(protocol);
