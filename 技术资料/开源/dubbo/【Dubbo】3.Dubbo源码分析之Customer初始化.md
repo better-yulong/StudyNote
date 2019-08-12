@@ -639,6 +639,13 @@ invoker可理解为调用器
 
 
 
+引用远程服务：
+1. 当用户调用refer()所返回的Invoker对象的invoke()方法时，协议需相应执行同URL远端export()传入的Invoker对象的invoke()方法。
+2. refer()返回的Invoker由协议实现，协议通常需要在此Invoker中发送远程请求。
+3. 当url中有设置check=false时，连接失败不能抛出异常，并内部自动恢复。
+
+
+
 
 ### 自定义变量示例
 - 在分析dubbo:reference标签解析对ReferenceConfig实例化时，若未显示在为其配置dubbo:consumer标签属性，则会默认为ReferenceConfig实例的属性consumer属性实例化默认的ConsumerConfig实例（包含如lazy、timeout、reconnect、version、group等），并尝试从系统参数获取对应配置的值通过method.invoke方式反射为ConsumerConfig实例的属性完成赋值，下面即简单对此种方式做下示例（参考：https://www.cnblogs.com/yangmingke/p/6058898.html）
@@ -651,3 +658,4 @@ invoker可理解为调用器
 -Dcatalina.base="D:\work\webcontainer\tomcat7" -Dcatalina.home="D:\work\webcontainer\tomcat7" -Dwtp.deploy="D:\work\webcontainer\tomcat7\wtpwebapps" -Djava.endorsed.dirs="D:\work\webcontainer\tomcat7\endorsed" -Ddubbo.consumer.version="1.0.1-aoe" -Ddubbo.consumer.group="rpc-demo"
 ```
 如上在VM arguments后追加-DXXX=****(-D不能省略)，这样就可以通过 System.getProperty（“XXX”）获取****了；同样也可在catalina.bat（catalina.sh）通过JAVA_OPTS来添加自定义变量1. 
+
