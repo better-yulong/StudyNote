@@ -653,8 +653,8 @@ ReferenceBean创建时，会基于其url或者registry属性将其作为消费�
             group = Constants.PATH_SEPARATOR + group;
         }
         this.root = group;
-        //
-        //zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=rpc-client&dubbo=2.5.3&interface=com.alibaba.dubbo.registry.RegistryService&pid=11672&timestamp=1565576932790
+        //zookeeperTransporter对应
+        //url值：zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=rpc-client&dubbo=2.5.3&interface=com.alibaba.dubbo.registry.RegistryService&pid=11672&timestamp=1565576932790
         zkClient = zookeeperTransporter.connect(url);
         zkClient.addStateListener(new StateListener() {
             public void stateChanged(int state) {
