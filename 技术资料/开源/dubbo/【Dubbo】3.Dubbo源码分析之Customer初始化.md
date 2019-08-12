@@ -635,7 +635,7 @@ zkClient.create(toUrlPath(url), url.getParameter(Constants.DYNAMIC_KEY, true)); 
 ```
 2. 基于zkClient实例（ZkclientZookeeperClient），使用步骤1完整节点路径远程写入zk数据（zkClient会嵌套判断/，最终多次调用zk从顶级节点逐个创建）。而之前一直发现有个问题，当前示例为最简化配置，若zookeeper未启动会导致阻塞，应用启动时卡住了。为啥呢？zkClient作为ZookeeperRegistry实例的成员变量，其在ZookeeperRegistry实例化时即会被实例化，那么我们回到ZookeeperRegistry实例化方法看看。
 ##### 2.4.1.3 ZookeeperRegistry实例化分析
-ReferenceBean创建时，会基于其url或者registry属性将其作为消费者注册至注册中心并通过获取调用器invoker实例
+ReferenceBean创建时，会基于其url或者registry属性将其作为消费者注册至注册中心并通过refprotocol.refer(interfaceClass, urls.get(0))（其中refprotocol对应@Adapti）获取调用器invoker实例
 
 
 
