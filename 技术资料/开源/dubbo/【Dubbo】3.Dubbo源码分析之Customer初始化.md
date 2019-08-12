@@ -640,7 +640,7 @@ ReferenceBean创建时，会基于其url或者registry属性将其作为消费�
 1. 当用户调用refer()所返回的Invoker对象的invoke()方法时，协议需相应执行同URL远端export()传入的Invoker对象的invoke()方法。
 2. refer()返回的Invoker由协议实现，协议通常需要在此Invoker中发送远程请求。
 3. 当url中有设置check=false时，连接失败不能抛出异常，并内部自动恢复。
-- 而注册至注册中心，即需要实例化ZookeeperRegistry（通过
+- 而注册至注册中心，即需要实例化ZookeeperRegistry，
 
 
 ### 自定义变量示例
