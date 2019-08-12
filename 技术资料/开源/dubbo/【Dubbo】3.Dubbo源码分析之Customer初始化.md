@@ -635,11 +635,8 @@ zkClient.create(toUrlPath(url), url.getParameter(Constants.DYNAMIC_KEY, true)); 
 ```
 2. 基于zkClient实例（ZkclientZookeeperClient），使用步骤1完整节点路径远程写入zk数据（zkClient会嵌套判断/，最终多次调用zk从顶级节点逐个创建）。而之前一直发现有个问题，当前示例为最简化配置，若zookeeper未启动会导致阻塞，应用启动时卡住了。为啥呢？zkClient作为ZookeeperRegistry实例的成员变量，其在ZookeeperRegistry实例化时即会被实例化，那么我们回到ZookeeperRegistry实例化方法看看。
 ##### 2.4.1.3 ZookeeperRegistry实例化分析
-ReferenceBean创建时，会基于其url或者registry属性将其作为消费者注册至注册中心并通过refprotocol.refer(interfaceClass, urls.get(0))（其中refprotocol对应@Adapti）获取调用器invoker实例
-
-
-
-refprotocol.refer引用远程服务：
+ReferenceBean创建时，会基于其url或者registry属性将其作为消费者注册至注册中心并通过refprotocol.refer(interfaceClass, urls.get(0))（其中refprotocol对应Protocol@Adaptive实例-->RegistryProtocol）获取调用器invoker实例
+refprotocol.refer引用远程服务
 1. 当用户调用refer()所返回的Invoker对象的invoke()方法时，协议需相应执行同URL远端export()传入的Invoker对象的invoke()方法。
 2. refer()返回的Invoker由协议实现，协议通常需要在此Invoker中发送远程请求。
 3. 当url中有设置check=false时，连接失败不能抛出异常，并内部自动恢复。
