@@ -761,7 +761,7 @@ forbidden置为true，置空methodInvokerMap，清空urlInvokerMap（当前实�
 完成invoker实例化之后，基于consumer消费者check设置（如若示显示指定则默认为true，即需验证provider状态），实际主要就是检查上面刚讲的urlInvokerMap是否有可数据。
 ##### 2.4.1.6 服务代理创建(T) proxyFactory.getProxy(invoker)
 完成上述调用器invoker实例化及invoker可用性检查之后，会基于(T) proxyFactory.getProxy(invoker)生成服务代理对象。
-- proxyFactory对应当前文章尾部的ProxyFactory$Adpative 源码，通过其可发现调用的是JavassistProxyFactory实例，通过修改源码将对应生成的Class文件写入磁盘后反编译如下（由于window文件名不区分大小写，Proxy0与proxy0两个class在写入磁盘后
+- proxyFactory对应当前文章尾部的ProxyFactory$Adpative 源码，通过其可发现调用的是JavassistProxyFactory实例，通过修改源码将对应生成的Class文件写入磁盘后反编译如下（由于window文件名不区分大小写，Proxy0与proxy0两个class在写入磁盘后出现覆盖，通过debug方才获取成功
 ```language
 public class JavassistProxyFactory extends AbstractProxyFactory {
 
