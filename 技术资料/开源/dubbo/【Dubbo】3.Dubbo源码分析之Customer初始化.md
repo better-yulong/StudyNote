@@ -821,7 +821,18 @@ public class proxy0
 - 即通过如上源码可发现，ReferenceConfig的getObject返回的实例为：实现了ClassGenerator.DC, EchoService, DubboExampleInterf1 3个接口的实现类，其对应$echo方法（EchoService接口）、serviceProvider方法则是实际调用InvokerInvocationHandler(invoker)的invoke方法（即动态代理方式），其内部由是调用invoke对象（即MockClusterInvoker）的invoke方法
 ```language
      //MockClusterInvoker类
+     public class MockClusterInvoker<T> implements Invoker<T>{
 	
+	private static final Logger logger = LoggerFactory.getLogger(MockClusterInvoker.class);
+
+	private final Directory<T> directory ;
+	
+	private final Invoker<T> invoker;
+
+    public MockClusterInvoker(Directory<T> directory, Invoker<T> invoker) {
+       	this.directory = directory;
+       	this.invoker = invoker;
+    }
 ```
 
 
