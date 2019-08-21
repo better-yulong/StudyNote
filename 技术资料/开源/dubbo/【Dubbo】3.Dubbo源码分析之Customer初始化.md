@@ -818,7 +818,7 @@ public class proxy0
 }
 
 ```
-即通过如上源码可发现，ReferenceConfig的getObject返回的实例为：
+即通过如上源码可发现，ReferenceConfig的getObject返回的实例为：实现了ClassGenerator.DC, EchoService, DubboExampleInterf1 3个接口
 
 
 ###### 服务注册说明：
