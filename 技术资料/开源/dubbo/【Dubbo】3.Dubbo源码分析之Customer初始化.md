@@ -866,7 +866,10 @@ public class proxy0
 	}
 ```
 至此，可总结为：
-1. xml文件解析时会根据其配加载对应
+1. xml文件解析时会根据其配加载对应的class并生成如
+
+
+
 ###### 服务注册说明：
 ZookeeperRegistry的doSubscribe中如若Url值为：
 > provider://100.119.69.44:20890/com.aoe.demo.rpc.dubbo.DubboExampleInterf1?anyhost=true&application=rpc-server&category=configurators&check=false&default.timeout=1000&dubbo=2.5.3&interface=com.aoe.demo.rpc.dubbo.DubboExampleInterf1&methods=serviceProvider&pid=14116&revision=0.0.1-SNAPSHOT&side=provider&timestamp=1565748909199：
