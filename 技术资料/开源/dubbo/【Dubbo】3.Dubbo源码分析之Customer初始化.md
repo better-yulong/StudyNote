@@ -833,7 +833,7 @@ public class proxy0
        	this.directory = directory;
        	this.invoker = invoker;
     }
-     //invoke方法则是根据directory参考，调用FailoverClusterInvoker的invoker方法（因为外层的invoker
+     //invoke方法则是根据directory参考，调用FailoverClusterInvoker的invoker方法（因为外层的invoker实际是MockClusterInvoker对FailoverClusterInvoker的包装
     public Result invoke(Invocation invocation) throws RpcException {
 		Result result = null;
         
