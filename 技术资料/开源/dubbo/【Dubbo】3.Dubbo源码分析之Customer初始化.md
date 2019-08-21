@@ -865,7 +865,7 @@ public class proxy0
         return result;
 	}
 ```
-
+至此，可发现
 
 ###### 服务注册说明：
 ZookeeperRegistry的doSubscribe中如若Url值为：
