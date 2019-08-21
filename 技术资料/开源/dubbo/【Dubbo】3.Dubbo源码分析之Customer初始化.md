@@ -772,6 +772,38 @@ public class JavassistProxyFactory extends AbstractProxyFactory {
     .......
 }
 ```
+```language
+public class proxy0
+  implements ClassGenerator.DC, EchoService, DubboExampleInterf1
+{
+  public static Method[] methods;
+  private InvocationHandler handler;
+  
+  public List serviceProvider(List paramList)
+  {
+    Object[] arrayOfObject = new Object[1];
+    arrayOfObject[0] = paramList;
+    Object localObject = this.handler.invoke(this, methods[0], arrayOfObject);
+    return (List)localObject;
+  }
+  
+  public Object $echo(Object paramObject)
+  {
+    Object[] arrayOfObject = new Object[1];
+    arrayOfObject[0] = paramObject;
+    Object localObject = this.handler.invoke(this, methods[1], arrayOfObject);
+    return (Object)localObject;
+  }
+  
+  public proxy0() {}
+  
+  public proxy0(InvocationHandler paramInvocationHandler)
+  {
+    this.handler = paramInvocationHandler;
+  }
+}
+
+```
 
 
 
