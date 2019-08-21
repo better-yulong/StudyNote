@@ -829,12 +829,11 @@ public class proxy0
 	
 	private final Invoker<T> invoker;
    
-    //
     public MockClusterInvoker(Directory<T> directory, Invoker<T> invoker) {
        	this.directory = directory;
        	this.invoker = invoker;
     }
-    	public Result invoke(Invocation invocation) throws RpcException {
+    public Result invoke(Invocation invocation) throws RpcException {
 		Result result = null;
         
         String value = directory.getUrl().getMethodParameter(invocation.getMethodName(), Constants.MOCK_KEY, Boolean.FALSE.toString()).trim(); 
