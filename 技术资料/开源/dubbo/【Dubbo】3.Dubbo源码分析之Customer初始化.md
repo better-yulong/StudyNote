@@ -781,4 +781,167 @@ ZookeeperRegistry的doSubscribe中如若Url值为：
 ```
 如上在VM arguments后追加-DXXX=****(-D不能省略)，这样就可以通过 System.getProperty（“XXX”）获取****了；同样也可在catalina.bat（catalina.sh）通过JAVA_OPTS来添加自定义变量1. 
 
-### 
+### 基于Javassist动态生成各class源码
+```language
+--------------------------------------------------------
+package com.alibaba.dubbo.rpc;
+
+import com.alibaba.dubbo.common.extension.ExtensionLoader;
+
+public class Protocol$Adpative implements com.alibaba.dubbo.rpc.Protocol {
+	public void destroy() {
+		throw new UnsupportedOperationException(
+				"method public abstract void com.alibaba.dubbo.rpc.Protocol.destroy() of interface com.alibaba.dubbo.rpc.Protocol is not adaptive method!");
+	}
+
+	public int getDefaultPort() {
+		throw new UnsupportedOperationException(
+				"method public abstract int com.alibaba.dubbo.rpc.Protocol.getDefaultPort() of interface com.alibaba.dubbo.rpc.Protocol is not adaptive method!");
+	}
+
+	public com.alibaba.dubbo.rpc.Exporter export(com.alibaba.dubbo.rpc.Invoker arg0)
+			throws com.alibaba.dubbo.rpc.Invoker {
+		if (arg0 == null)
+			throw new IllegalArgumentException("com.alibaba.dubbo.rpc.Invoker argument == null");
+		if (arg0.getUrl() == null)
+			throw new IllegalArgumentException("com.alibaba.dubbo.rpc.Invoker argument getUrl() == null");
+		com.alibaba.dubbo.common.URL url = arg0.getUrl();
+		String extName = (url.getProtocol() == null ? "dubbo" : url.getProtocol());
+		if (extName == null)
+			throw new IllegalStateException("Fail to get extension(com.alibaba.dubbo.rpc.Protocol) name from url("
+					+ url.toString() + ") use keys([protocol])");
+		com.alibaba.dubbo.rpc.Protocol extension = (com.alibaba.dubbo.rpc.Protocol) ExtensionLoader
+				.getExtensionLoader(com.alibaba.dubbo.rpc.Protocol.class).getExtension(extName);
+		return extension.export(arg0);
+	}
+
+	public com.alibaba.dubbo.rpc.Invoker refer(java.lang.Class arg0, com.alibaba.dubbo.common.URL arg1)
+			throws java.lang.Class {
+		if (arg1 == null)
+			throw new IllegalArgumentException("url == null");
+		com.alibaba.dubbo.common.URL url = arg1;
+		String extName = (url.getProtocol() == null ? "dubbo" : url.getProtocol());
+		if (extName == null)
+			throw new IllegalStateException("Fail to get extension(com.alibaba.dubbo.rpc.Protocol) name from url("
+					+ url.toString() + ") use keys([protocol])");
+		com.alibaba.dubbo.rpc.Protocol extension = (com.alibaba.dubbo.rpc.Protocol) ExtensionLoader
+				.getExtensionLoader(com.alibaba.dubbo.rpc.Protocol.class).getExtension(extName);
+		return extension.refer(arg0, arg1);
+	}
+}--------------------------------------------------------package com.alibaba.dubbo.rpc.cluster;import com.alibaba.dubbo.common.extension.ExtensionLoader;
+
+public class Cluster$Adpative implements com.alibaba.dubbo.rpc.cluster.Cluster {
+	public com.alibaba.dubbo.rpc.Invoker join(com.alibaba.dubbo.rpc.cluster.Directory arg0)
+			throws com.alibaba.dubbo.rpc.cluster.Directory {
+		if (arg0 == null)
+			throw new IllegalArgumentException("com.alibaba.dubbo.rpc.cluster.Directory argument == null");
+		if (arg0.getUrl() == null)
+			throw new IllegalArgumentException("com.alibaba.dubbo.rpc.cluster.Directory argument getUrl() == null");
+		com.alibaba.dubbo.common.URL url = arg0.getUrl();
+		String extName = url.getParameter("cluster", "failover");
+		if (extName == null)
+			throw new IllegalStateException(
+					"Fail to get extension(com.alibaba.dubbo.rpc.cluster.Cluster) name from url(" + url.toString()
+							+ ") use keys([cluster])");
+		com.alibaba.dubbo.rpc.cluster.Cluster extension = (com.alibaba.dubbo.rpc.cluster.Cluster) ExtensionLoader
+				.getExtensionLoader(com.alibaba.dubbo.rpc.cluster.Cluster.class).getExtension(extName);
+		return extension.join(arg0);
+	}
+}--------------------------------------------------------package com.alibaba.dubbo.rpc;import com.alibaba.dubbo.common.extension.ExtensionLoader;
+
+public class ProxyFactory$Adpative implements com.alibaba.dubbo.rpc.ProxyFactory {
+	public java.lang.Object getProxy(com.alibaba.dubbo.rpc.Invoker arg0) throws com.alibaba.dubbo.rpc.Invoker {
+		if (arg0 == null)
+			throw new IllegalArgumentException("com.alibaba.dubbo.rpc.Invoker argument == null");
+		if (arg0.getUrl() == null)
+			throw new IllegalArgumentException("com.alibaba.dubbo.rpc.Invoker argument getUrl() == null");
+		com.alibaba.dubbo.common.URL url = arg0.getUrl();
+		String extName = url.getParameter("proxy", "javassist");
+		if (extName == null)
+			throw new IllegalStateException("Fail to get extension(com.alibaba.dubbo.rpc.ProxyFactory) name from url("
+					+ url.toString() + ") use keys([proxy])");
+		com.alibaba.dubbo.rpc.ProxyFactory extension = (com.alibaba.dubbo.rpc.ProxyFactory) ExtensionLoader
+				.getExtensionLoader(com.alibaba.dubbo.rpc.ProxyFactory.class).getExtension(extName);
+		return extension.getProxy(arg0);
+	}
+
+	public com.alibaba.dubbo.rpc.Invoker getInvoker(java.lang.Object arg0, java.lang.Class arg1,
+			com.alibaba.dubbo.common.URL arg2) throws java.lang.Object {
+		if (arg2 == null)
+			throw new IllegalArgumentException("url == null");
+		com.alibaba.dubbo.common.URL url = arg2;
+		String extName = url.getParameter("proxy", "javassist");
+		if (extName == null)
+			throw new IllegalStateException("Fail to get extension(com.alibaba.dubbo.rpc.ProxyFactory) name from url("
+					+ url.toString() + ") use keys([proxy])");
+		com.alibaba.dubbo.rpc.ProxyFactory extension = (com.alibaba.dubbo.rpc.ProxyFactory) ExtensionLoader
+				.getExtensionLoader(com.alibaba.dubbo.rpc.ProxyFactory.class).getExtension(extName);
+		return extension.getInvoker(arg0, arg1, arg2);
+	}
+}--------------------------------------------------------package com.alibaba.dubbo.registry;import com.alibaba.dubbo.common.extension.ExtensionLoader;
+
+public class RegistryFactory$Adpative implements com.alibaba.dubbo.registry.RegistryFactory {
+	public com.alibaba.dubbo.registry.Registry getRegistry(com.alibaba.dubbo.common.URL arg0) {
+		if (arg0 == null)
+			throw new IllegalArgumentException("url == null");
+		com.alibaba.dubbo.common.URL url = arg0;
+		String extName = (url.getProtocol() == null ? "dubbo" : url.getProtocol());
+		if (extName == null)
+			throw new IllegalStateException(
+					"Fail to get extension(com.alibaba.dubbo.registry.RegistryFactory) name from url(" + url.toString()
+							+ ") use keys([protocol])");
+		com.alibaba.dubbo.registry.RegistryFactory extension = (com.alibaba.dubbo.registry.RegistryFactory) ExtensionLoader
+				.getExtensionLoader(com.alibaba.dubbo.registry.RegistryFactory.class).getExtension(extName);
+		return extension.getRegistry(arg0);
+	}
+}--------------------------------------------------------package com.alibaba.dubbo.remoting.zookeeper;import com.alibaba.dubbo.common.extension.ExtensionLoader;
+
+public class ZookeeperTransporter$Adpative implements com.alibaba.dubbo.remoting.zookeeper.ZookeeperTransporter {
+	public com.alibaba.dubbo.remoting.zookeeper.ZookeeperClient connect(com.alibaba.dubbo.common.URL arg0) {
+		if (arg0 == null)
+			throw new IllegalArgumentException("url == null");
+		com.alibaba.dubbo.common.URL url = arg0;
+		String extName = url.getParameter("client", url.getParameter("transporter", "zkclient"));
+		if (extName == null)
+			throw new IllegalStateException(
+					"Fail to get extension(com.alibaba.dubbo.remoting.zookeeper.ZookeeperTransporter) name from url("
+							+ url.toString() + ") use keys([client, transporter])");
+		com.alibaba.dubbo.remoting.zookeeper.ZookeeperTransporter extension = (com.alibaba.dubbo.remoting.zookeeper.ZookeeperTransporter) ExtensionLoader
+				.getExtensionLoader(com.alibaba.dubbo.remoting.zookeeper.ZookeeperTransporter.class)
+				.getExtension(extName);
+		return extension.connect(arg0);
+	}
+}--------------------------------------------------------package com.alibaba.dubbo.rpc.cluster;import com.alibaba.dubbo.common.extension.ExtensionLoader;
+
+public class RouterFactory$Adpative implements com.alibaba.dubbo.rpc.cluster.RouterFactory {
+	public com.alibaba.dubbo.rpc.cluster.Router getRouter(com.alibaba.dubbo.common.URL arg0) {
+		if (arg0 == null)
+			throw new IllegalArgumentException("url == null");
+		com.alibaba.dubbo.common.URL url = arg0;
+		String extName = url.getProtocol();
+		if (extName == null)
+			throw new IllegalStateException(
+					"Fail to get extension(com.alibaba.dubbo.rpc.cluster.RouterFactory) name from url(" + url.toString()
+							+ ") use keys([protocol])");
+		com.alibaba.dubbo.rpc.cluster.RouterFactory extension = (com.alibaba.dubbo.rpc.cluster.RouterFactory) ExtensionLoader
+				.getExtensionLoader(com.alibaba.dubbo.rpc.cluster.RouterFactory.class).getExtension(extName);
+		return extension.getRouter(arg0);
+	}
+}--------------------------------------------------------package com.alibaba.dubbo.rpc.cluster;import com.alibaba.dubbo.common.extension.ExtensionLoader;
+
+public class ConfiguratorFactory$Adpative implements com.alibaba.dubbo.rpc.cluster.ConfiguratorFactory {
+	public com.alibaba.dubbo.rpc.cluster.Configurator getConfigurator(com.alibaba.dubbo.common.URL arg0) {
+		if (arg0 == null)
+			throw new IllegalArgumentException("url == null");
+		com.alibaba.dubbo.common.URL url = arg0;
+		String extName = url.getProtocol();
+		if (extName == null)
+			throw new IllegalStateException(
+					"Fail to get extension(com.alibaba.dubbo.rpc.cluster.ConfiguratorFactory) name from url("
+							+ url.toString() + ") use keys([protocol])");
+		com.alibaba.dubbo.rpc.cluster.ConfiguratorFactory extension = (com.alibaba.dubbo.rpc.cluster.ConfiguratorFactory) ExtensionLoader
+				.getExtensionLoader(com.alibaba.dubbo.rpc.cluster.ConfiguratorFactory.class).getExtension(extName);
+		return extension.getConfigurator(arg0);
+	}
+}
+```
