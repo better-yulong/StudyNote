@@ -781,3 +781,4 @@ ZookeeperRegistry的doSubscribe中如若Url值为：
 ```
 如上在VM arguments后追加-DXXX=****(-D不能省略)，这样就可以通过 System.getProperty（“XXX”）获取****了；同样也可在catalina.bat（catalina.sh）通过JAVA_OPTS来添加自定义变量1. 
 
+### 
