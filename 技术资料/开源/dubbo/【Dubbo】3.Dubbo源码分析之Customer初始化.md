@@ -868,7 +868,7 @@ public class proxy0
 至此，可总结为：
 1. xml文件解析时会根据dubbo:reference加载对应的class并生成如对应的ReferenceConfig的BeanDefinition;即如下完成 beanName：dubboExampleService1 与其对应的ReferenceConfig的BeanDefinition关联。
 > <dubbo:reference id="dubboExampleService1" interface="com.aoe.demo.rpc.dubbo.DubboExampleInterf1"  registry="local_zk"/><!-- check="false" -->
-2.当实现化EntryController时，因其@Autowired private DubboExampleInterf1 dubboExampleService1;需注入实例，那么根据之前分析SpringIOC源码，则可知此时会调用
+2.当实现化EntryController时，因其@Autowired private DubboExampleInterf1 dubboExampleService1;需注入实例，那么根据之前分析SpringIOC源码，则可知此时会调用ReferenceConfig的getObject方法（因为ReferenceConfig实现
 
 
 
