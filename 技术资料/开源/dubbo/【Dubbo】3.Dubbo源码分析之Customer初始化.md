@@ -653,7 +653,7 @@ ReferenceBean创建时，会基于其url或者registry属性将其作为消费�
             group = Constants.PATH_SEPARATOR + group;
         }
         this.root = group;
-        //zookeeperTransporter对应
+        //zookeeperTransporter对应ZookeeperTransporter$Adpative，运行时对应ZkclientZookeeperTransporter
         //url值：zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=rpc-client&dubbo=2.5.3&interface=com.alibaba.dubbo.registry.RegistryService&pid=11672&timestamp=1565576932790
         zkClient = zookeeperTransporter.connect(url);
         zkClient.addStateListener(new StateListener() {
@@ -669,13 +669,110 @@ ReferenceBean创建时，会基于其url或者registry属性将其作为消费�
         });
     }
 ```
+运行时对应ZkclientZookeeperTransporter,其底层仍是对应ZkClient的封装:
+```language
+        //ZookeeperRegistry类
+	public ZkclientZookeeperClient(URL url) {
+		super(url);
+		client = new ZkClient(url.getBackupAddress());
+		client.subscribeStateChanges(new IZkStateListener() {
+			public void handleStateChanged(KeeperState state) throws Exception {
+				ZkclientZookeeperClient.this.state = state;
+				if (state == KeeperState.Disconnected) {
+					stateChanged(StateListener.DISCONNECTED);
+				} else if (state == KeeperState.SyncConnected) {
+					stateChanged(StateListener.CONNECTED);
+				}
+			}
+			public void handleNewSession() throws Exception {
+				stateChanged(StateListener.RECONNECTED);
+			}
+		});
+	}
 
+```
+ZkClient构造方法（可看出，默认连接超时时间为Integer.MAX_VALUE，所以才会导致类似于假死）
+```language
+   //serverstring值为127.0.0.1:2181
+    public ZkClient(String serverstring) {
+        this(serverstring, Integer.MAX_VALUE);
+    }
 
+    public ZkClient(String zkServers, int connectionTimeout) {
+        this(new ZkConnection(zkServers), connectionTimeout);
+    }
+```
+通过验证，当前dubbo源码不未提供zookeeper连接超时参数设置，即使如
+> <dubbo:registry id="local_zk" address="zookeeper://127.0.0.1:2181" timeout="10"></dubbo:registry>
+##### 2.4.1.4 消费者注册
+回到ReferenceBean实例化，因其实现FactoryBean接口，故其实例化时会调用对应getObject方法，而会调用其父类RefrenceConfig类的init()方法，根据上在分析有重要几步：1.RegistryProtocol类refer根据zk的url从registryFactory.getRegistry(url)获取Registry实例（首次需创建ZookeeperRegistry对应bean；其中会合建zkClient检查其联通性）；2.RegistryProtocol类doRefer方法调用registry.register完成注册（实际为ZookeeperRegistry父类FailbackRegistry的register方法），其会调用zkClient写入数据；
+##### 2.4.1.4 消费者服务订阅
+RegistryProtocol类doRefer方法调用registry.register完成注册之后，directory.subscribe()方法
+```language
+    //RegistryDirectory类
+    public void subscribe(URL url) {
+        setConsumerUrl(url);
+        registry.subscribe(url, this);  //最终调用ZookeeperRegistry的doSubscribe方法
+    }
+```
+而RegistryDirectory构造方法中则根据router配置设计其对应的Routers值：1.根据Url实例的router参数routerkey基于ExtensionLoader获取RouterFactory对应的实现类；2.添加默认的MockInvokersSelector（即如若未设置routerkey则Routers仅包含默认的MockInvokersSelector）
+
+- ZkClient实例化时（ZookeeperRegistry实例化会同步实例化ZkClient实例），ZkClient构造方法会同步实例化ZkConnection并同步调用ZkClient的connection方法，在ZkClient的connection方法内主要做这两点处理：1.根据connection对应的zk地址实例化守护线程ZkEventThread并同步启动；2.以Watchers（zookeeper)调用ZkConnection实例的connect方法，其会实例化ZooKeeper；ZooKeeper构造方法内实例化ClientCnxn (非Thread子类）并调用start()方法（start方法内就两行： this.sendThread.start();this.eventThread.start();）；即启动sendThread守护线程、eventThread守护线程。
+- 该部分使用较多的zookeeper-3.3.3.jar包里的类，基于事件监听，zookeeper状态、数据变化会触发将事件并写入waitingEvents（LinkedBlockingQueue：链表实现的有界阻塞队列）。其根据事件类型：stateChanged状态变化（如连接、断开连接）、dataChanged（数据变化）调用同的逻辑处理。
+```language
+    //ZkClient类(处理数据变化事件：WatchedEvent state:SyncConnected type:NodeChildrenChanged path:/dubbo/com.aoe.demo.rpc.dubbo.DubboExampleInterf1/providers）
+    private void processDataOrChildChange(WatchedEvent event) {
+        ///path:dubbo/com.aoe.demo.rpc.dubbo.DubboExampleInterf1/providers
+        final String path = event.getPath();
+
+        if (event.getType() == EventType.NodeChildrenChanged || event.getType() == EventType.NodeCreated || event.getType() == EventType.NodeDeleted) {
+          //_childListener:{/dubbo/com.aoe.demo.rpc.dubbo.DubboExampleInterf1/providers=[com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkclientZookeeperClient$2@10c6c6b], /dubbo/com.aoe.demo.rpc.dubbo.DubboExampleInterf1/routers=[com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkclientZookeeperClient$2@8f6d64], /dubbo/com.aoe.demo.rpc.dubbo.DubboExampleInterf1/configurators=[com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkclientZookeeperClient$2@56ff18]}
+            Set<IZkChildListener> childListeners = _childListener.get(path);
+            if (childListeners != null && !childListeners.isEmpty()) {
+                fireChildChangedEvents(path, childListeners);
+            }
+        }
+
+        if (event.getType() == EventType.NodeDataChanged || event.getType() == EventType.NodeDeleted || event.getType() == EventType.NodeCreated) {
+            Set<IZkDataListener> listeners = _dataListener.get(path);
+            if (listeners != null && !listeners.isEmpty()) {
+                fireDataChangedEvents(event.getPath(), listeners);
+            }
+        }
+    }
+```
+断开连接事件:ZkEvent[State changed to Disconnected sent to com.alibaba.dubbo.remoting.zookeeper.zkclient.ZkclientZookeeperClient$1@1feb2ea]
+连接事件：WatchedEvent state:SyncConnected type:None path:null
+数据变化事件：WatchedEvent state:SyncConnected type:NodeChildrenChanged path:/dubbo/com.aoe.demo.rpc.dubbo.DubboExampleInterf1/providers
+- consumer://100.119.69.44/com.aoe.demo.rpc.dubbo.DubboExampleInterf1?application=rpc-client&category=providers,configurators,routers&default.group=rpc-demo&default.version=1.0.1-aoe&dubbo=2.5.3&interface=com.aoe.demo.rpc.dubbo.DubboExampleInterf1&methods=serviceProvider&pid=13140&revision=0.0.1-SNAPSHOT&side=consumer&timestamp=1565750957716
+根据如上消费者url基于规则装成生成订阅服务依赖的zk节点的节点url：
+```language
+/dubbo/com.aoe.demo.rpc.dubbo.DubboExampleInterf1/providers, /dubbo/com.aoe.demo.rpc.dubbo.DubboExampleInterf1/configurators, /dubbo/com.aoe.demo.rpc.dubbo.DubboExampleInterf1/routers
+```
+遍历节点url从zk获取服务发布信息，如DubboExampleInterf1接口由100.119.69.44 发布，其服务接口完整信息为：
+> [dubbo%3A%2F%2F100.119.69.44%3A20890%2Fcom.aoe.demo.rpc.dubbo.DubboExampleInterf1%3Fanyhost%3Dtrue%26application%3Drpc-server%26default.timeout%3D1000%26dubbo%3D2.5.3%26interface%3Dcom.aoe.demo.rpc.dubbo.DubboExampleInterf1%26methods%3DserviceProvider%26pid%3D11880%26revision%3D0.0.1-SNAPSHOT%26side%3Dprovider%26timestamp%3D1565750298397]
+
+- 在完成如上完成消费者订阅时(ZookeeperRegistry类的doSubscribe方法)，会同上根据消费者url生成服务提供的zk节点路径 （对对应上面的：/dubbo/com.aoe.demo.rpc.dubbo.DubboExampleInterf1/providers及configurators及routers），通过zkClient.addChildListener为其添加子节点Linstener（用于接受zk的dataChange事件)的同时会在其内部调用ZkClient的getChildren获取当前节点的Children列表。
+- 如若Children列表为空则会根据消费者接口Url生成服务提供者Url实例（其protocol为empty，catagory为provider)，之后基于刚封装的empty Url实例列表notify对应的Linster；如若provider、configurators、routers子节点数据此处也会封装（封装时会同步比较消费者Url与从zk获取子节点数据。比如之前消费端rpc-client通过启动系统参数指定了Consumer的gro为rpc-demo；而prc-server发布服务未指定group属性，在获取children节点信息后会与消费端订阅服务的group比对，不一至也会实例化新的empty Url供后面使用）。封装完成则执行到RegistryDirectory的notify方法(其实现了NotifyListener）。
+- RegistryDirectory的notify方法主要完成：1.遍历Urls列表封装empty Url实例至当前RegistryDirectory实例的invokerUrls，封装configurators Url至configuratorUrls，封装routers Url至routerUrls；2.解析configuratorUrls数据至RegistryDirectory实例；3.解析routerUrls数据至RegistryDirectory实例routers; 4.执行内部refreshInvokery方法（即rpc-server未启动之前未找到对应的Provider信息，Url类型为empty，那么此则会将当前RegistryDirectory实例的
+forbidden置为true，置空methodInvokerMap，清空urlInvokerMap（当前实际本来就为null）。而notify还可用于在zk中数据变化如provider下线后消费端面监听后对应处理。
+3. 基于cluster.join(directory)获取调用器（实际调用MockClusterWrapper的join方法）返回MockClusterInvoker实例
+##### 2.4.1.5 服务发布者检测
+完成invoker实例化之后，基于consumer消费者check设置（如若示显示指定则默认为true，即需验证provider状态），实际主要就是检查上面刚讲的urlInvokerMap是否有可数据。
+##### 2.4.1.6 服务代理创建(T) proxyFactory.getProxy(invoker)
+完成上述调用器invoker实例化及invoker可用性检查之后，会基于(T) proxyFactory.getProxy(invoker)生成服务代理对象。
+
+###### 服务注册说明：
+ZookeeperRegistry的doSubscribe中如若Url值为：
+> provider://100.119.69.44:20890/com.aoe.demo.rpc.dubbo.DubboExampleInterf1?anyhost=true&application=rpc-server&category=configurators&check=false&default.timeout=1000&dubbo=2.5.3&interface=com.aoe.demo.rpc.dubbo.DubboExampleInterf1&methods=serviceProvider&pid=14116&revision=0.0.1-SNAPSHOT&side=provider&timestamp=1565748909199：
+则会根据如上Url生成如下zk节点并调用zkClient完成远程写入
+```
+[/dubbo/com.aoe.demo.rpc.dubbo.DubboExampleInterf1/providers, /dubbo/com.aoe.demo.rpc.dubbo.DubboExampleInterf1/configurators, /dubbo/com.aoe.demo.rpc.dubbo.DubboExampleInterf1/routers]
+```
 
 ### 自定义变量示例
 - 在分析dubbo:reference标签解析对ReferenceConfig实例化时，若未显示在为其配置dubbo:consumer标签属性，则会默认为ReferenceConfig实例的属性consumer属性实例化默认的ConsumerConfig实例（包含如lazy、timeout、reconnect、version、group等），并尝试从系统参数获取对应配置的值通过method.invoke方式反射为ConsumerConfig实例的属性完成赋值，下面即简单对此种方式做下示例（参考：https://www.cnblogs.com/yangmingke/p/6058898.html）
-
-#### 基于Eclipse+Tomcat方式设置属性以便可通过System.getProperty（“XXX”）获取自定义变量
+- 基于Eclipse+Tomcat方式设置属性以便可通过System.getProperty（“XXX”）获取自定义变量
 1. 打开tomcat server（双击对应server），会显示常用的tomcat 端口号、启动或停止超时时间设置。
 2. General Information中点击Open launch configuration（就面窗口而左上方），可打开"Edit Configuration"窗口。
 3. 选择Arguments，在VM arguments输入框显示：
