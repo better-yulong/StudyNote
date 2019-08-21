@@ -773,6 +773,20 @@ public class JavassistProxyFactory extends AbstractProxyFactory {
 }
 ```
 ```language
+import java.lang.reflect.InvocationHandler;
+
+public class Proxy0
+  extends Proxy
+  implements ClassGenerator.DC
+{
+  public Object newInstance(InvocationHandler paramInvocationHandler)
+  {
+    return new proxy0(paramInvocationHandler);
+  }
+}
+
+```
+```language
 public class proxy0
   implements ClassGenerator.DC, EchoService, DubboExampleInterf1
 {
