@@ -818,7 +818,7 @@ public class proxy0
 }
 
 ```
-- 即通过如上源码可发现，ReferenceConfig的getObject返回的实例为：实现了ClassGenerator.DC, EchoService, DubboExampleInterf1 3个接口的实现类，其对应$echo方法（EchoService接口）、serviceProvider方法则是实际调用new InvokerInvocationHandler(invoker)的invoke方法（即动态代理方式）。
+- 即通过如上源码可发现，ReferenceConfig的getObject返回的实例为：实现了ClassGenerator.DC, EchoService, DubboExampleInterf1 3个接口的实现类，其对应$echo方法（EchoService接口）、serviceProvider方法则是实际调用InvokerInvocationHandler(invoker)的invoke方法（即动态代理方式），其内部由是调用invoke。
 - 
 
 ###### 服务注册说明：
