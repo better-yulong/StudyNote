@@ -833,6 +833,7 @@ public class proxy0
        	this.directory = directory;
        	this.invoker = invoker;
     }
+     //invoke方法则是根据directory
     public Result invoke(Invocation invocation) throws RpcException {
 		Result result = null;
         
