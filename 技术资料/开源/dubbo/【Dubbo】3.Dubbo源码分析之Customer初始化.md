@@ -870,8 +870,6 @@ public class proxy0
 > <dubbo:reference id="dubboExampleService1" interface="com.aoe.demo.rpc.dubbo.DubboExampleInterf1"  registry="local_zk"/><!-- check="false" -->
 2.当实现化EntryController时，因其@Autowired private DubboExampleInterf1 dubboExampleService1;需注入实例，那么根据之前分析SpringIOC源码，则可知此时会调用ReferenceBean的getObject方法（因为ReferenceBean实现FactoryBean接口），那么就会执行如上源码分析逻辑。
 
-
-
 ###### 服务注册说明：
 ZookeeperRegistry的doSubscribe中如若Url值为：
 > provider://100.119.69.44:20890/com.aoe.demo.rpc.dubbo.DubboExampleInterf1?anyhost=true&application=rpc-server&category=configurators&check=false&default.timeout=1000&dubbo=2.5.3&interface=com.aoe.demo.rpc.dubbo.DubboExampleInterf1&methods=serviceProvider&pid=14116&revision=0.0.1-SNAPSHOT&side=provider&timestamp=1565748909199：
