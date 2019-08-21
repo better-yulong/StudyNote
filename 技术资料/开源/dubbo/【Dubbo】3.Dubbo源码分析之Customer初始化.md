@@ -866,9 +866,9 @@ public class proxy0
 	}
 ```
 至此，可总结为：
-1. xml文件解析时会根据dubbo:reference加载对应的class并生成如对应的ReferenceConfig的BeanDefinition;即如下完成 beanName：dubboExampleService1 与其对应的
+1. xml文件解析时会根据dubbo:reference加载对应的class并生成如对应的ReferenceConfig的BeanDefinition;即如下完成 beanName：dubboExampleService1 与其对应的ReferenceConfig的BeanDefinition关联。
 > <dubbo:reference id="dubboExampleService1" interface="com.aoe.demo.rpc.dubbo.DubboExampleInterf1"  registry="local_zk"/><!-- check="false" -->
-
+2.当实现化
 
 
 
