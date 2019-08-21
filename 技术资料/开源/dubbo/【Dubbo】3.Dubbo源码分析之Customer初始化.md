@@ -866,7 +866,7 @@ public class proxy0
 	}
 ```
 至此，可总结为：
-1. xml文件解析时会根据其配加载对应的class并生成如
+1. xml文件解析时会根据dubbo:reference加载对应的class并生成如
 
 
 
