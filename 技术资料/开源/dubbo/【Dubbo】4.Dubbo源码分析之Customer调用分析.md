@@ -11,5 +11,6 @@ com.alibaba.dubbo.rpc.RpcException: Forbid consumer 100.119.69.44 access service
 	com.aoe.demo.rpc.controller.EntryController.entry(EntryController.java:29)
 
 ```
-另外，结合上一篇笔记Consumer的初始化分析，可知道ReferenceConfig的getObject返回的实例为：实现了ClassGenerator.DC, EchoService, DubboExampleInterf1 3个接口的实现类（proxy0）。
-- 其对应$echo方法（EchoService接口）、serviceProvider方法则是实际调用InvokerInvocationHandler(invoker)的invoke方法（即动态代理方式），其内部由是调用invoke对象（即MockClusterInvoker）的invoke方法
+- 结合上一篇笔记Consumer的初始化分析，可知道ReferenceConfig的getObject返回的实例为：实现了ClassGenerator.DC, EchoService, DubboExampleInterf1 3个接口的实现类（proxy0）。
+- proxy0类对应$echo方法（EchoService接口）、serviceProvider方法则是实际调用InvokerInvocationHandler(invoker)的invoke方法（即动态代理方式），其内部由是调用invoke对象（即MockClusterInvoker）的invoke方法
+- 
