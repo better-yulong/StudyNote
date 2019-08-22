@@ -29,7 +29,7 @@ com.alibaba.dubbo.rpc.RpcException: Forbid consumer 100.119.69.44 access service
                     throw new IllegalStateException("Illegal mock json value in <dubbo:service ... mock=\"" + mock + "\" />");
                 }
             } else {
-                //2.检查mock值是否为default或者true，若是则interfaceClassMock
+                //2.检查mock值是否为default或者true，若是则加载interfaceClassMock；否则直接以mock作为class名称加载
                 Class<?> mockClass = ConfigUtils.isDefault(mock) ? ReflectUtils.forName(interfaceClass.getName() + "Mock") : ReflectUtils.forName(mock);
                 if (! interfaceClass.isAssignableFrom(mockClass)) {
                     throw new IllegalStateException("The mock implemention class " + mockClass.getName() + " not implement interface " + interfaceClass.getName());
