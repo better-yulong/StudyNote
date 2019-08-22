@@ -17,7 +17,7 @@ com.alibaba.dubbo.rpc.RpcException: Forbid consumer 100.119.69.44 access service
 
 ### 一.基于Mock场景分析 
 那么mock怎么配置呢？首先看看ReferenceBean类的父类AbstractMethodConfig，其定义了String类型的mock。而在解析xml时则会根据xml标签mock配置实例化ReferenceBean实例，而在ReferenceBean的间接父类 AbstractInterfaceConfig
-（其是AbstractMethodConfig的子类）中
+（其是AbstractMethodConfig的子类）的checkStubAndMock方法中，会以interface为
         if (ConfigUtils.isNotEmpty(mock)) {
             if (mock.startsWith(Constants.RETURN_PREFIX)) {
                 String value = mock.substring(Constants.RETURN_PREFIX.length());
