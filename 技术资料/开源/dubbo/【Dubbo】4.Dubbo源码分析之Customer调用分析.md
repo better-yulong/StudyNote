@@ -35,7 +35,7 @@ com.alibaba.dubbo.rpc.RpcException: Forbid consumer 100.119.69.44 access service
                     throw new IllegalStateException("The mock implemention class " + mockClass.getName() + " not implement interface " + interfaceClass.getName());
                 }
                 try {
-                    //基于class通过反射
+                    //基于class通过反射获取其番茄
                     mockClass.getConstructor(new Class<?>[0]);
                 } catch (NoSuchMethodException e) {
                     throw new IllegalStateException("No such empty constructor \"public " + mockClass.getSimpleName() + "()\" in mock implemention class " + mockClass.getName());
