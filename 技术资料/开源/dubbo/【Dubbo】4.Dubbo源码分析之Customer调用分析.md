@@ -74,4 +74,4 @@ public class InvokerInvocationHandler implements InvocationHandler {
 
 }
 ```
-因当前验证Mock模式，故无需启动rpc-server应用，
+因当前验证Mock模式，故无需启动rpc-server应用，可配置dubbo:reference的check="false"避免实例化du
