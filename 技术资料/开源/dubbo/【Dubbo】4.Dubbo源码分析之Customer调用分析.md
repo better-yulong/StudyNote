@@ -74,4 +74,4 @@ public class InvokerInvocationHandler implements InvocationHandler {
 
 }
 ```
-因当前验证Mock模式，故无需启动rpc-server应用，可配置dubbo:reference的check="false"避免实例化dubbo ReferenceBean时检查是否有可用的Provider。通过上面的源码分析，如@Autowired private DubboExampleInterf1 dubboExampleService1；时，dubboExampleService1实例为
+因当前验证Mock模式，故无需启动rpc-server应用，可配置dubbo:reference的check="false"避免实例化dubbo ReferenceBean时检查是否有可用的Provider。通过上面的源码分析，如@Autowired private DubboExampleInterf1 dubboExampleService1；时，dubboExampleService1实例为proxy0实例，而
