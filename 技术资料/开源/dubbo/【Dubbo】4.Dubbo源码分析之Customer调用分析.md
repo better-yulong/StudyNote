@@ -11,4 +11,4 @@ com.alibaba.dubbo.rpc.RpcException: Forbid consumer 100.119.69.44 access service
 	com.aoe.demo.rpc.controller.EntryController.entry(EntryController.java:29)
 
 ```
-另外，结合上一篇笔记Consumer的初始化分析，可
+另外，结合上一篇笔记Consumer的初始化分析，可知道：
