@@ -16,7 +16,7 @@ com.alibaba.dubbo.rpc.RpcException: Forbid consumer 100.119.69.44 access service
 - MockClusterInvoker的invoke方法：1.若是非Mock场景则是调用FailoverClusterInvoker（实际为FailoverClusterInvoker父类AbstractClusterInvoker）的invoker方法（因为外层的invoker实际是MockClusterInvoker对FailoverClusterInvoker的包装；2.若是Mock场景则直接调用doMockInvoke方法
 
 ### 一.基于Mock场景分析 
-那么mock怎么配置呢？首先看看ReferenceBean类的父类AbstractMethodConfig，其定义了String类型的mock
+那么mock怎么配置呢？首先看看ReferenceBean类的父类AbstractMethodConfig，其定义了String类型的mock。而在解析xml时则会根据
 
         if (ConfigUtils.isNotEmpty(mock)) {
             if (mock.startsWith(Constants.RETURN_PREFIX)) {
