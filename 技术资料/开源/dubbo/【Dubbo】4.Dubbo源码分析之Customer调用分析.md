@@ -11,4 +11,4 @@ com.alibaba.dubbo.rpc.RpcException: Forbid consumer 100.119.69.44 access service
 	com.aoe.demo.rpc.controller.EntryController.entry(EntryController.java:29)
 
 ```
-另外，结合上一篇笔记Consumer的初始化分析，可知道：
+另外，结合上一篇笔记Consumer的初始化分析，可知道ReferenceConfig的getObject返回的实例为：实现了ClassGenerator.DC, EchoService, DubboExampleInterf1 3个接口的实现类（proxy0）。
