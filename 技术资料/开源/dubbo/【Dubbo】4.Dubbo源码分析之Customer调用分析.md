@@ -20,7 +20,7 @@ com.alibaba.dubbo.rpc.RpcException: Forbid consumer 100.119.69.44 access service
 （其是AbstractMethodConfig的子类）的checkStubAndMock方法中，会以interface为参数完成如下验证：
 ```languag
       if (ConfigUtils.isNotEmpty(mock)) {
-            //1.若mock值为 return1，即此处截取值并通过
+            //1.若mock值为 return1，即此处截取值并通过MockInvoker.parseMockValue返回对应Mock对象（可支持null、
             if (mock.startsWith(Constants.RETURN_PREFIX)) {
                 String value = mock.substring(Constants.RETURN_PREFIX.length());
                 try {
