@@ -84,7 +84,7 @@ public class InvokerInvocationHandler implements InvocationHandler {
 
 }
 ```
-接下来重点分析invoker.invoke(new RpcInvocation(method, args))方法
+接下来重点分析invoker.invoke(new RpcInvocation(method, args))方法，调用dubbo服务的方法代码为：
 ```language
 @RequestMapping("/entry/dubbo")
 	@ResponseBody
@@ -95,6 +95,6 @@ public class InvokerInvocationHandler implements InvocationHandler {
 		return "entry";
 	}
 ```
-
+调用调度，可发现invoker.invoke(new RpcInvocation(method, args))执行时各参数值为：
 method：public abstract java.util.List com.aoe.demo.rpc.dubbo.DubboExampleInterf1.serviceProvider(java.util.List)
 args：parm
