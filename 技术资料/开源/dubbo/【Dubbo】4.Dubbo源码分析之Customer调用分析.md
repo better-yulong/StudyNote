@@ -84,4 +84,4 @@ public class InvokerInvocationHandler implements InvocationHandler {
     return (List)localObject;
   }
 ```
-那么其实际调用逻辑为this.handler.invoke(this, methods[0], arrayOfObject)，
+那么其实际调用逻辑为this.handler.invoke(this, methods[0], arrayOfObject)，那么来看看InvokerInvocationHandler 
