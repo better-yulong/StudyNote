@@ -78,7 +78,7 @@ public class InvokerInvocationHandler implements InvocationHandler {
         if ("equals".equals(methodName) && parameterTypes.length == 1) {
             return invoker.equals(args[0]);
         }
-        
+        //1.invoke方法返回Result对象；2.recreate方法则
         return invoker.invoke(new RpcInvocation(method, args)).recreate();
     }
 
