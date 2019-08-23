@@ -85,5 +85,16 @@ public class InvokerInvocationHandler implements InvocationHandler {
 }
 ```
 接下来重点分析invoker.invoke(new RpcInvocation(method, args))方法
+```language
+@RequestMapping("/entry/dubbo")
+	@ResponseBody
+	public Object entryDubbo(){
+		List<String> params =  new ArrayList<String>();
+		params.add("parm");
+		System.out.println("dubboExampleService1 result0:" + dubboExampleService1.serviceProvider(params).get(0));
+		return "entry";
+	}
+```
+
 method：public abstract java.util.List com.aoe.demo.rpc.dubbo.DubboExampleInterf1.serviceProvider(java.util.List)
 args：parm
