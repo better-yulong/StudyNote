@@ -86,3 +86,4 @@ public class InvokerInvocationHandler implements InvocationHandler {
 ```
 接下来重点分析invoker.invoke(new RpcInvocation(method, args))方法
 method：public abstract java.util.List com.aoe.demo.rpc.dubbo.DubboExampleInterf1.serviceProvider(java.util.List)
+args：parm
