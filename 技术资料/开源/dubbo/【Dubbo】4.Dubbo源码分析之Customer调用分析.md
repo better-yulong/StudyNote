@@ -84,4 +84,4 @@ public class InvokerInvocationHandler implements InvocationHandler {
     return (List)localObject;
   }
 ```
-那么
+那么其实际调用逻辑为this.handler.invoke(this, methods[0], arrayOfObject)，
