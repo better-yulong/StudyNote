@@ -105,6 +105,6 @@ args：参数数组，当前仅包含元素ArrayList对象（其值为parm）
         this.parameterTypes = parameterTypes == null ? new Class<?>[0] : parameterTypes;//参数类型：interface java.util.List
         this.arguments = arguments == null ? new Object[0] : arguments;//参数：[[parm]]
         this.attachments = attachments == null ? new HashMap<String, String>() : attachments;//用于隐式传参，后面的远程调用都会隐式将这些参数发送到服务器端，类似cookie，用于框架集成，不建议常规业务使用
-        this.invoker = invoker;
+        this.invoker = invoker;//默认为null
     }
 ```
