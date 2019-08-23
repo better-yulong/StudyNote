@@ -102,8 +102,8 @@ args：参数数组，当前仅包含元素ArrayList对象（其值为parm）
 ```language
     public RpcInvocation(String methodName, Class<?>[] parameterTypes, Object[] arguments, Map<String, String> attachments, Invoker<?> invoker) {
         this.methodName = methodName; //对应方法名serviceProvider
-        this.parameterTypes = parameterTypes == null ? new Class<?>[0] : parameterTypes;//参数类型：
-        this.arguments = arguments == null ? new Object[0] : arguments;
+        this.parameterTypes = parameterTypes == null ? new Class<?>[0] : parameterTypes;//参数类型：interface java.util.List
+        this.arguments = arguments == null ? new Object[0] : arguments;//参数：
         this.attachments = attachments == null ? new HashMap<String, String>() : attachments;
         this.invoker = invoker;
     }
