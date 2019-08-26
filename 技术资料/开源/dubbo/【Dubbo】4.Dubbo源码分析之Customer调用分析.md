@@ -108,6 +108,5 @@ args：参数数组，当前仅包含元素ArrayList对象（其值为parm）
         this.invoker = invoker;//默认为null
     }
 ```
-封装完成上面的RpcInvocation之后，运行invoker.invoke会间接调用MockClusterInvoker.invoke-->FailoverClusterInvoker.doInvoke-->MockClusterInvoker.doMockInvoke-->
-
+封装完成上面的RpcInvocation之后，运行invoker.invoke会间接调用MockClusterInvoker.invoke-->FailoverClusterInvoker.doInvoke-->MockClusterInvoker.doMockInvoke-->MockInvoker.invoke-->最终基于
 RpcResult
