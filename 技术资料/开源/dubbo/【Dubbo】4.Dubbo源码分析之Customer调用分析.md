@@ -115,7 +115,17 @@ RpcResult完成mock 值的封装并返回。而在Proxy0实例获取到RpcResult
 ### Mock模拟正常业务数据返回
 根据上面的源码分析，可知道mock="retrun XXX"除支持null及基本数据类型外，也可支持普通集合如List、Map等模拟，其会基于Dubbo的JSON工具类解析生成对象，那么结合可得出：
 ```language
+	<dubbo:reference id="dubboExampleService1" interface="com.aoe.demo.rpc.dubbo.DubboExampleInterf1"  registry="local_zk" mock="return ['mock provider result']" check="false"/><!-- 模拟正常list数据返回 -->
+	<dubbo:reference id="dubboExampleService1" interface="com.aoe.demo.rpc.dubbo.DubboExampleInterf1"  registry="local_zk" mock="return null" check="false"/><!-- 模拟mock 返回null对象  -->
+```
+```language
 
+List resultList = new ArrayList<String>();
+		resultList.add("mock provider result");
+		try {
+			System.out.println("resultList" + JSON.json(resultList));  //生成用于Mock的数据['mock provider result']
+		} catch (IOException e) {
+			System.out.println(e);
+		}
 ```
 
-	<dubbo:reference id="dubboExampleService1" interface="com.aoe.demo.rpc.dubbo.DubboExampleInterf1"  registry="local_zk" mock="return ['mock provider result']" check="false"/><
