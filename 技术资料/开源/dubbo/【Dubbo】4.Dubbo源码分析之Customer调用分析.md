@@ -95,7 +95,7 @@ public class InvokerInvocationHandler implements InvocationHandler {
 		return "entry";
 	}
 ```
-调用调度，可发现invoker.invoke(new RpcInvocation(method, args))执行时各参数值为：
+，可发现invoker.invoke(new RpcInvocation(method, args))执行时各参数值为：
   - method：public abstract java.util.List 
   - com.aoe.demo.rpc.dubbo.DubboExampleInterf1.serviceProvider(java.util.List)
 args：参数数组，当前仅包含元素ArrayList对象（其值为parm）
