@@ -109,4 +109,4 @@ args：参数数组，当前仅包含元素ArrayList对象（其值为parm）
     }
 ```
 封装完成上面的RpcInvocation之后，运行invoker.invoke会间接调用MockClusterInvoker.invoke-->FailoverClusterInvoker.doInvoke-->MockClusterInvoker.doMockInvoke-->MockInvoker.invoke-->最终基于
-RpcResult完成mock 值的封装并返回。而在Proxy0实例获取到RpcResult后会调用InvokerInvocationHandler的recreate方法，该方法则会判断是否有异常；若无异常则直接返回
+RpcResult完成mock 值的封装并返回。而在Proxy0实例获取到RpcResult后会调用InvokerInvocationHandler的recreate方法，该方法则会判断是否有异常；若无异常则直接返回RpcResult的result变量（即之前根据mock值null 封装的List对象），
