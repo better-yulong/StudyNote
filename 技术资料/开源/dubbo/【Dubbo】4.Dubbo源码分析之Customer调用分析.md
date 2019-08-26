@@ -108,3 +108,6 @@ args：参数数组，当前仅包含元素ArrayList对象（其值为parm）
         this.invoker = invoker;//默认为null
     }
 ```
+
+
+RpcResult
