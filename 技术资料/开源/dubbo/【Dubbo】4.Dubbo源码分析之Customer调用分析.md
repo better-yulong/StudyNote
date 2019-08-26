@@ -113,5 +113,5 @@ RpcResult完成mock 值的封装并返回。而在Proxy0实例获取到RpcResult
 - 分析Mock过程中，dubbo将Mock分成两种：一种如 mock="force xxx"从定义来看为强制使用mock；除此之外另一种即如mock="return null"此类定义为Fail-mock场景。
 
 ### Mock模拟正常业务数据返回
-根据上面的源码分析，可知道mock="retrun XXX"除支持null及基本数据类型外，也可支持普通
+根据上面的源码分析，可知道mock="retrun XXX"除支持null及基本数据类型外，也可支持普通集合如List、Map等模拟，其会基于Dubbo的JSON工具类解析生成对象，那么结合
 	<dubbo:reference id="dubboExampleService1" interface="com.aoe.demo.rpc.dubbo.DubboExampleInterf1"  registry="local_zk" mock="return ['mock provider result']" check="false"/><!-- check="false" -->
