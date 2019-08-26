@@ -119,7 +119,7 @@ RpcResult完成mock 值的封装并返回。而在Proxy0实例获取到RpcResult
 	<dubbo:reference id="dubboExampleService1" interface="com.aoe.demo.rpc.dubbo.DubboExampleInterf1"  registry="local_zk" mock="return null" check="false"/><!-- 模拟mock 返回null对象  -->
 ```
 ```language
-
+//基于Dubbo的json生成用于模拟结果的result的json数据
 List resultList = new ArrayList<String>();
 		resultList.add("mock provider result");
 		try {
