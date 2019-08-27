@@ -420,7 +420,7 @@ Affect(row-cnt:0) cost in 408 ms.
         `---[1.678851ms] com.sfpay.coreplatform.account.persistence.dao.ITallySerialDao:addTallySerialList() #178
 
 ```
-为什么这么推荐，是因为之前有尝试过多种方法，如
+为什么这么推荐，是因为之前有尝试过多种方法，如框架层面输入对外接口耗时；打
 
 
 
