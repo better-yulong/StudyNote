@@ -404,13 +404,7 @@ $
 
 com.***.Trans**ServiceImpl是接口所在的类
 
-combineTransfer是接口的入口函数(即
-
-
-
-
-
-
+combineTransfer是接口的入口函数(即对应方法名）
 
 
 
