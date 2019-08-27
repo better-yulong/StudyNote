@@ -286,7 +286,7 @@ $ jvm
  VM-NAME                                         OpenJDK 64-Bit Server VM                                                                                               
  VM-VENDOR                                       Oracle Corporation                                                                                                     
  VM-VERSION                                      24.95-b01                                                                                                              
- INPUT-ARGUMENTS                                 -Djava.util.logging.config.file=/tomcat/***/conf/logging.properties                                       
+ INPUT-ARGUMENTS                                 -Djava.util.logging.config.file=/tomcat/xxx/conf/logging.properties                                       
                                                  -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager                                                      
                                                  -Xms2048m                                                                                                              
                                                  -Xmx2048m                                                                                                              
@@ -302,11 +302,11 @@ $ jvm
                                                  -XX:+DisableExplicitGC                                                                                                 
                                                  -Djava.awt.headless=true                                                                                               
                                                  -Djava.endorsed.dirs=/tomcat/xxx/endorsed                                                                 
-                                                 -Dcatalina.base=/tomcat/platform-account                                                                               
-                                                 -Dcatalina.home=/tomcat/platform-account                                                                               
-                                                 -Djava.io.tmpdir=/tomcat/platform-account/temp                                                                         
+                                                 -Dcatalina.base=/tomcat/xxx                                                                               
+                                                 -Dcatalina.home=/tomcat/xxx                                                                               
+                                                 -Djava.io.tmpdir=/tomcat/xxx/temp                                                                         
                                                                                                                                                                         
- CLASS-PATH                                      /tomcat:/tomcat/platform-account/bin/bootstrap.jar:/tomcat/platform-account/bin/tomcat-juli.jar                        
+ CLASS-PATH                                      /tomcat:/tomcat/xxx/bin/bootstrap.jar:/tomcat/platform-account/bin/tomcat-juli.jar                        
  BOOT-CLASS-PATH                                 /usr/lib/jvm/java-1.7.0-openjdk-1.7.0.99.x86_64/jre/lib/resources.jar:/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.99.x86_64/ 
                                                  jre/lib/rt.jar:/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.99.x86_64/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-1.7.0-openjdk- 
                                                  1.7.0.99.x86_64/jre/lib/jsse.jar:/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.99.x86_64/jre/lib/jce.jar:/usr/lib/jvm/java-1.7 
