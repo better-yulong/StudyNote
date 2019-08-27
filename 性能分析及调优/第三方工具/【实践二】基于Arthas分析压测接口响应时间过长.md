@@ -286,7 +286,7 @@ $ jvm
  VM-NAME                                         OpenJDK 64-Bit Server VM                                                                                               
  VM-VENDOR                                       Oracle Corporation                                                                                                     
  VM-VERSION                                      24.95-b01                                                                                                              
- INPUT-ARGUMENTS                                 -Djava.util.logging.config.file=/tomcat/platform-account/conf/logging.properties                                       
+ INPUT-ARGUMENTS                                 -Djava.util.logging.config.file=/tomcat/***/conf/logging.properties                                       
                                                  -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager                                                      
                                                  -Xms2048m                                                                                                              
                                                  -Xmx2048m                                                                                                              
@@ -301,7 +301,7 @@ $ jvm
                                                  -XX:GCTimeRatio=19                                                                                                     
                                                  -XX:+DisableExplicitGC                                                                                                 
                                                  -Djava.awt.headless=true                                                                                               
-                                                 -Djava.endorsed.dirs=/tomcat/platform-account/endorsed                                                                 
+                                                 -Djava.endorsed.dirs=/tomcat/xxx/endorsed                                                                 
                                                  -Dcatalina.base=/tomcat/platform-account                                                                               
                                                  -Dcatalina.home=/tomcat/platform-account                                                                               
                                                  -Djava.io.tmpdir=/tomcat/platform-account/temp                                                                         
