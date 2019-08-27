@@ -391,7 +391,7 @@ Affect(row-cnt:0) cost in 408 ms.
 1. 压测方法入口为TransferServiceImpl的combineTransfer方法，通过 trace -j com.sfpay.coreplatform.account.service.impl.TransferServiceImpl combineTransfer可发现耗时方法为transfer；
 2. 监控transfer方法，trace -j com.sfpay.coreplatform.account.service.impl.TransferServiceImpl transfer可发现耗时方法为doTransfer；
 3. 监控transfer方法，trace -j com.sfpay.coreplatform.account.service.impl.TransferServiceImpl doTransfer 可发现耗时方法为IAccountDao:selectByAccountNoAndLocked()
-持续压测，定位
+持续压测，定位问题方法不到一分钟；而且直观明了
 ```language
 
 `---ts=2019-08-27 16:24:26;thread_name=catalina-exec-8;id=23;is_daemon=true;priority=5;TCCL=org.apache.catalina.loader.WebappClassLoader@eea44aa
