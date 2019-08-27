@@ -35,3 +35,5 @@ ovider.java:193)
 cess；之前在研究TPrfile或者DTrace时也有遇到，不过当时忽略了；此次决定解决。网上资料较多，但并没有找到可解决的。从日志来看涉及两个：1.JAVA_HOME: D:\work\java\jdk；2.Unable to attach to 64-bit pro
 cess.而确认后D:\work\java\jdk确实是64位JDK，具体为什么呢？此处也是突然的灵感：根据之前使用JVisualJVM或者JConsole时，其连接远程JVM进程也有Atttach模式。
 
+### 三级标题
+那Attach机制是什么？说简单点就是jvm提供一种jvm进程间通信的能力，能让一个进程传命令给另外一个进程，并让它执行内部的一些操作，比如说我们为了让另外一个jvm进程把线程dump出来，那么我们跑了一个jstack的进程，然后传了个pid的参数，告诉它要哪个进程进行线程dump，既然是两个进程，那肯定涉及到进程间通信，以及传输协议的定义，比如要执行什么操作，传了什么参数等
