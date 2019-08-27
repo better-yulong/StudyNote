@@ -226,6 +226,9 @@ ID       NAME        GROUP        PRIORITY      STATE    %CPU     TIME     INTER
 Affect(row-cnt:0) cost in 120 ms.
 ```
 ##### 输入thread -n 3会显示当前最忙的3个线程，可以用来排查线程CPU消耗
+```language
+
+```
 
 ##### 输入thread -b 会显示当前处于BLOCKED状态的线程，可以排查线程锁的问题
 
