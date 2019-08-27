@@ -42,6 +42,39 @@ cess.而确认后D:\work\java\jdk确实是64位JDK，具体为什么呢？此处
 ### Arthas问题分析
 回到上面的运行java -jar arthas-boot.jar时报错Unable to attach to 64-bit process。那么原理可简单理解为，java -jar arthas-boot.jar会启动一个JVM进程，而其可基于Attached机制与其他JVM通讯；而之所以报这个错误，是因为两个JVM虚拟机型号不一样（即各JVM进程对应的JDK版本一不样）。于是换成同一样JDK，即可解决
 ```language
+C:\****\Desktop\arthas-packaging-3.1.1-bin>java -jar arthas-boot.jar
+[INFO] arthas-boot version: 3.1.1
+[INFO] Found existing java process, please choose one and hit RETURN.
+* [1]: 2780
+  [2]: 8052 org.apache.zookeeper.server.quorum.QuorumPeerMain
+  [3]: 12664 org.apache.catalina.startup.Bootstrap
+3
+[INFO] arthas home: C:\Users\483879\Desktop\arthas-packaging-3.1.1-bin
+[INFO] Try to attach process 12664
+[INFO] Found java home from System Env JAVA_HOME: D:\work\java\jdk
+[INFO] Attach process 12664 success.
+[INFO] arthas-client connect 127.0.0.1 3658
+  ,---.  ,------. ,--------.,--.  ,--.  ,---.   ,---.
 
+ /  O  \ |  .--. ''--.  .--'|  '--'  | /  O  \ '   .-'
+
+|  .-.  ||  '--'.'   |  |   |  .--.  ||  .-.  |`.  `-.
+
+|  | |  ||  |\  \    |  |   |  |  |  ||  | |  |.-'    |
+
+`--' `--'`--' '--'   `--'   `--'  `--'`--' `--'`-----'
+
+
+
+
+wiki      https://alibaba.github.io/arthas
+
+tutorials https://alibaba.github.io/arthas/arthas-tutorials
+
+version   3.1.1
+
+pid       12664
+
+time      2019-08-27 15:05:22
 ```
 
