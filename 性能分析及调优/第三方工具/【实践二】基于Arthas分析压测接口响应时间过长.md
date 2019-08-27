@@ -394,30 +394,7 @@ Affect(row-cnt:0) cost in 408 ms.
 3. 监控transfer方法，trace -j com.sfpay.coreplatform.account.service.impl.TransferServiceImpl doTransfer 可发现耗时方法为IAccountDao:selectByAccountNoAndLocked()
 持续压测，定位问题方法不到一分钟；而且直观明了，如监控监控transfer方法日志如下：
 ```language
----ts=2019-08-27 16:24:26;thread_name=catalina-exec-8;id=23;is_daemon=true;priority=5;TCCL=org.apache.catalina.loader.WebappClassLoader@eea44aa
-    `---[410.313475ms] com.a.b.c.TransferServiceImpl:doTransfer()
-        +---[0.001565ms] com.a.b.c.dto.Transfer:getPayerAccount() #100
-        +---[1.994626ms] com..a.b.c.IAsyncAccountService:isAsyncAccount() #100
-        +---[0.00146ms] com.sfpay.coreplatform.account.valueobject.dto.Transfer:getPayeeAccount() #104
-        +---[1.772284ms] com.sfpay.coreplatform.account.service.inner.IAsyncAccountService:isAsyncAccount() #104
-        +---[0.001232ms] com.sfpay.coreplatform.account.valueobject.dto.Transfer:getPayerAccount() #107
-        +---[0.001044ms] com.sfpay.coreplatform.account.valueobject.dto.Transfer:getPayeeAccount() #108
-        +---[401.247182ms] com.sfpay.coreplatform.account.persistence.dao.IAccountDao:selectByAccountNoAndLocked() #135
-        +---[0.001748ms] com.sfpay.coreplatform.account.valueobject.dto.Transfer:getAmount() #143
-        +---[0.002254ms] com.sfpay.coreplatform.account.valueobject.tmo.AccountVO:getOverdraftAmountLimit() #143
-        +---[0.001531ms] com.sfpay.coreplatform.account.valueobject.tmo.AccountVO:getFreezeAmount() #143
-        +---[0.004ms] com.sfpay.coreplatform.account.service.impl.TransferServiceImpl:validateBalance() #143
-        +---[9.79E-4ms] com.sfpay.coreplatform.account.valueobject.tmo.AccountVO:getCashAmount() #146
-        +---[0.001305ms] com.sfpay.coreplatform.account.valueobject.dto.Transfer:getAmount() #147
-        +---[0.002095ms] com.sfpay.coreplatform.account.service.impl.TransferServiceImpl:calculateBalance() #147
-        +---[0.001115ms] com.sfpay.coreplatform.account.valueobject.tmo.AccountVO:setCashAmount() #148
-        +---[0.874777ms] com.sfpay.coreplatform.account.persistence.dao.IAccountDao:updateByPrimaryKey() #149
-        +---[1.749246ms] com.sfpay.coreplatform.account.service.inner.IAccountPostingRuleService:generateTallySerials() #165
-        +---[0.009297ms] org.slf4j.Logger:info() #169
-        +---[0.792239ms] com.sfpay.coreplatform.account.service.inner.IDayChangeService:findDate() #171
-        +---[0.001602ms] com.sfpay.coreplatform.account.valueobject.dto.DayChange:getValue() #171
-        +---[min=8.93E-4ms,max=0.001594ms,total=0.002487ms,count=2] com.sfpay.coreplatform.account.valueobject.tmo.TallySerial:setTallyDate() #175
-        `---[1.678851ms] com.sfpay.coreplatform.account.persistence.dao.ITallySerialDao:addTallySerialList() #178
+
 
 ```
 为什么这么推荐，是因为之前有尝试过多种方法，如框架层面输入对外接口耗时；通过各种debug日志协助定位；抑或使用TProfiler工具、DTrace等工具，但效率并不怎么高，而且侵入性较强。
