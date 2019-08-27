@@ -387,7 +387,7 @@ Affect(row-cnt:0) cost in 408 ms.
 ```
 
 #### 1.4 函数耗时监控
-这一步的使用终于明白了Arthas这神器的一
+这一步的使用终于明白了Arthas这神器的强大之外，虽然刚开始用，但真的
 trace -j com.sfpay.coreplatform.account.service.impl.TransferServiceImpl combineTransfer
 trace -j com.sfpay.coreplatform.account.service.impl.TransferServiceImpl transfer
 trace -j com.sfpay.coreplatform.account.service.impl.TransferServiceImpl doTransfer
