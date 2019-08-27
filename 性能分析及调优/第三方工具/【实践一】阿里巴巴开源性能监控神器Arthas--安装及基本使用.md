@@ -38,3 +38,4 @@ cess.而确认后D:\work\java\jdk确实是64位JDK，具体为什么呢？此处
 ### 三级标题
 - 那Attach机制是什么？说简单点就是jvm提供一种jvm进程间通信的能力，能让一个进程传命令给另外一个进程，并让它执行内部的一些操作，比如说我们为了让另外一个jvm进程把线程dump出来，那么我们跑了一个jstack的进程，然后传了个pid的参数，告诉它要哪个进程进行线程dump，既然是两个进程，那肯定涉及到进程间通信，以及传输协议的定义，比如要执行什么操作，传了什么参数等
 - ”Attach Listener”和“Signal Dispatcher”，这两个线程是我们这次要讲的attach机制的关键，Attach Listener这个线程在jvm起来的时候可能并没有的。jvm在启动过程中可能并没有启动Attach Listener这个线程（而线程“Signal Dispatcher”了，顾名思义是处理信号的，这个线程是在jvm启动的时候就会创建的），可以通过jvm参数来启动；Attach Listener 线程是负责接收到外部的命令，而对该命令进行执行的并且把结果返回给发送者。在JVM启动的时候，如果没有指定 +StartAttachListener，该Attach Listener线程是不会启动的。
+- 
