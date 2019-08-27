@@ -89,7 +89,7 @@ uptime         951539s
 ```
 
 #### 1.2 线程监控
-- 输入thread会显示所有线程的状态信息
+##### 输入thread会显示所有线程的状态信息
 ```language
 $ thread
 Threads Total: 129, NEW: 0, RUNNABLE: 31, BLOCKED: 0, WAITING: 7, TIMED_WAITING: 91, TERMINATED: 0     
@@ -225,10 +225,9 @@ ID       NAME        GROUP        PRIORITY      STATE    %CPU     TIME     INTER
 147      pool-3-thread-1       system       5        WAITING       0        0:0      false    false    
 Affect(row-cnt:0) cost in 120 ms.
 ```
+##### 输入thread -n 3会显示当前最忙的3个线程，可以用来排查线程CPU消耗
 
-输入thread -n 3会显示当前最忙的3个线程，可以用来排查线程CPU消耗
-
-输入thread -b 会显示当前处于BLOCKED状态的线程，可以排查线程锁的问题
+- 输入thread -b 会显示当前处于BLOCKED状态的线程，可以排查线程锁的问题
 
 
 
