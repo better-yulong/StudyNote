@@ -387,9 +387,10 @@ Affect(row-cnt:0) cost in 408 ms.
 ```
 
 #### 1.4 函数耗时监控
+这一步君不见 
+trace -j com.sfpay.coreplatform.account.service.impl.TransferServiceImpl combineTransfer
 trace -j com.sfpay.coreplatform.account.service.impl.TransferServiceImpl transfer
-trace -j com.sfpay.coreplatform.account.service.impl.TransferServiceImpl transfer
-trace -j com.sfpay.coreplatform.account.service.impl.TransferServiceImpl transfer
+trace -j com.sfpay.coreplatform.account.service.impl.TransferServiceImpl doTransfer
 ```language
 
 `---ts=2019-08-27 16:24:26;thread_name=catalina-exec-8;id=23;is_daemon=true;priority=5;TCCL=org.apache.catalina.loader.WebappClassLoader@eea44aa
