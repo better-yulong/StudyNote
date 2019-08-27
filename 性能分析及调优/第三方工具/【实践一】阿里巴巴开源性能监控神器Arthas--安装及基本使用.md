@@ -40,4 +40,4 @@ cess.而确认后D:\work\java\jdk确实是64位JDK，具体为什么呢？此处
 - ”Attach Listener”和“Signal Dispatcher”，这两个线程是我们这次要讲的attach机制的关键，Attach Listener这个线程在jvm起来的时候可能并没有的。jvm在启动过程中可能并没有启动Attach Listener这个线程（而线程“Signal Dispatcher”了，顾名思义是处理信号的，这个线程是在jvm启动的时候就会创建的），可以通过jvm参数来启动；Attach Listener 线程是负责接收到外部的命令，而对该命令进行执行的并且把结果返回给发送者。在JVM启动的时候，如果没有指定 +StartAttachListener，该Attach Listener线程是不会启动的。
 
 ### Arthas问题分析
-回到上面的运行java -jar arthas-boot.jar时报错Unable to attach to 64-bit process。那么原理可简单理解为，java -jar arthas-boot.jar会启动一个JVM进程，而其可基于Attached机制与其他
+回到上面的运行java -jar arthas-boot.jar时报错Unable to attach to 64-bit process。那么原理可简单理解为，java -jar arthas-boot.jar会启动一个JVM进程，而其可基于Attached机制与其他JVM通讯；而之所以报这个错误，是因为两个JVM
