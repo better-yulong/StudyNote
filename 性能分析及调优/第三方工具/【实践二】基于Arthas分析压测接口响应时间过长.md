@@ -389,6 +389,15 @@ Affect(row-cnt:0) cost in 408 ms.
 #### 1.4 函数耗时监控
 
 
+```language
+$ trace -j com.***.TransferServiceImpl time
+No class or method is affected, try:
+1. sm CLASS_NAME METHOD_NAME to make sure the method you are tracing actually exists (it might be in your parent class).
+2. reset CLASS_NAME and try again, your method body might be too large.
+3. check arthas log: /tomcat/logs/arthas/arthas.log
+4. visit https://github.com/alibaba/arthas/issues/47 for more details.
+$ 
+```
 
 
 
