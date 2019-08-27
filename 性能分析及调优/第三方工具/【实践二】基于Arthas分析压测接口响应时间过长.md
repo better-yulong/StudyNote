@@ -30,7 +30,7 @@ time      2019-08-27 15:32:28
 
 近期基于业务需要，正好在对交易进行性能测试，其中交易研发同学根据服务调用日志反馈记账接口偶尔处理时长超过200ms，于是此基于此，决定使用Arthas进行定位。
 
-
+#### 1.1 整体dashboard数据
 输入dashboard，会实时展示当前tomcat的多线程状态、Jvm各区域、GC情况等信息；默认会定时刷新。
 ```language
 $ dashboard
@@ -75,10 +75,7 @@ code_cache       8M    9M    48M         18.45%
 cms_perm_gen     42M         256M        256M        16.46%               
 direct     816K        816K        -     100.00%              
 mapped     0K    0K    -     NaN%          
-                 
-                 
-                 
-                 
+                
                  
 Runtime                
 os.name        Linux          
@@ -88,8 +85,32 @@ java.home            /usr/lib/jvm/java-1.7.0-openjdk-1.7.0.99.x86_64/jre
 systemload.average                0.21           
 processors           4              
 uptime         951539s        
-                 
-                 
-                 
-                    
+                   
 ```
+
+#### 1.2 线程监控
+输入thread会显示所有线程的状态信息
+
+输入thread -n 3会显示当前最忙的3个线程，可以用来排查线程CPU消耗
+
+输入thread -b 会显示当前处于BLOCKED状态的线程，可以排查线程锁的问题
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
