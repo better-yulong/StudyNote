@@ -31,4 +31,5 @@ ovider.java:193)
 [ERROR] attach fail, targetPid: 2780
 
 ```
-直接报错如上：
+直接报错如上：com.sun.tools.attach.AttachNotSupportedException: Unable to attach to 64-bit pro
+cess；之前在研究TPrfile或者DTrace时也有遇到，不过当时角力
