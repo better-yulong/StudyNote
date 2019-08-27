@@ -227,9 +227,42 @@ Affect(row-cnt:0) cost in 120 ms.
 ```
 ##### 输入thread -n 3会显示当前最忙的3个线程，可以用来排查线程CPU消耗
 ```language
+$ thread -n 3
+"as-command-execute-daemon" Id=157 cpuUsage=100% RUNNABLE
+    at sun.management.ThreadImpl.dumpThreads0(Native Method)
+    at sun.management.ThreadImpl.getThreadInfo(ThreadImpl.java:440)
+    at com.taobao.arthas.core.command.monitor200.ThreadCommand.processTopBusyThreads(ThreadCommand.java:133)
+    at com.taobao.arthas.core.command.monitor200.ThreadCommand.process(ThreadCommand.java:79)
+    at com.taobao.arthas.core.shell.command.impl.AnnotatedCommandImpl.process(AnnotatedCommandImpl.java:82)
+    at com.taobao.arthas.core.shell.command.impl.AnnotatedCommandImpl.access$100(AnnotatedCommandImpl.java:18)
+    at com.taobao.arthas.core.shell.command.impl.AnnotatedCommandImpl$ProcessHandler.handle(AnnotatedCommandImpl.java:111)
+    at com.taobao.arthas.core.shell.command.impl.AnnotatedCommandImpl$ProcessHandler.handle(AnnotatedCommandImpl.java:108)
+    at com.taobao.arthas.core.shell.system.impl.ProcessImpl$CommandProcessTask.run(ProcessImpl.java:370)
+    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+    at java.lang.Thread.run(Thread.java:745)
 
+    Number of locked synchronizers = 1
+    - java.util.concurrent.ThreadPoolExecutor$Worker@21423662
+
+
+"Reference Handler" Id=2 cpuUsage=0% WAITING on java.lang.ref.Reference$Lock@15cc6d80
+    at java.lang.Object.wait(Native Method)
+    -  waiting on java.lang.ref.Reference$Lock@15cc6d80
+    at java.lang.Object.wait(Object.java:503)
+    at java.lang.ref.Reference$ReferenceHandler.run(Reference.java:133)
+
+
+"Finalizer" Id=3 cpuUsage=0% WAITING on java.lang.ref.ReferenceQueue$Lock@2028f9ae
+    at java.lang.Object.wait(Native Method)
+    -  waiting on java.lang.ref.ReferenceQueue$Lock@2028f9ae
+    at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:135)
+    at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:151)
+    at java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:209)
+
+
+Affect(row-cnt:0) cost in 1038 ms
 ```
-
 ##### 输入thread -b 会显示当前处于BLOCKED状态的线程，可以排查线程锁的问题
 
 
