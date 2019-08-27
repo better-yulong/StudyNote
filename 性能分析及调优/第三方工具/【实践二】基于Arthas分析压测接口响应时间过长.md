@@ -30,8 +30,8 @@ time      2019-08-27 15:32:28
 
 近期基于业务需要，正好在对交易进行性能测试，其中交易研发同学根据服务调用日志反馈记账接口偶尔处理时长超过200ms，于是此基于此，决定使用Arthas进行定位。
 
-#### 1.1 整体dashboard数据
 
+输入dashboard，会实时展示当前tomcat的多线程状态、Jvm各区域、GC情况等信息；默认会定时刷新。
 ```language
 $ dashboard
 ID      NAME             GROUP    PRIORITY      STATE         %CPU    TIME    INTERRUPTED   DAEMON        
