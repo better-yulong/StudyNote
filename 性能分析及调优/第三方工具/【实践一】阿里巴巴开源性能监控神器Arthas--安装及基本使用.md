@@ -77,4 +77,4 @@ pid       12664
 
 time      2019-08-27 15:05:22
 ```
-但实际生产或其他环境，尤其是跨平台是没办法用同一版本JDK（Linux与Windows版本）；所以更多时候是需要避免如Sum/Oracle/OpenJdk/JRockit 等JDK之间使用Attach机制来进行JVM进程间通讯 。
+但实际生产或其他环境，尤其是跨平台是没办法用同一版本JDK（Linux与Windows版本）；所以更多时候是需要避免如Sum/Oracle/OpenJdk/JRockit 等JDK之间使用Attach机制来进行JVM进程间通讯。
