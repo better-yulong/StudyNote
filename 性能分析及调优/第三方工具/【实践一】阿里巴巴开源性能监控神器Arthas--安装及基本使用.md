@@ -1,7 +1,7 @@
 1. https://blog.csdn.net/Testfan_zhou/article/details/92579810
 2. https://alibaba.github.io/arthas/index.html
 
-根据Arthas官网，选择全量安装模式下载arthas-packaging-3.1.1-bin.7z ，解压缩
+根据Arthas官网，选择全量安装模式下载arthas-packaging-3.1.1-bin.7z 并解压缩；以cmd模式进入对应目录，根据文档
 
 
 ```language
