@@ -89,7 +89,7 @@ uptime         951539s
 ```
 
 #### 1.2 线程监控
-输入thread会显示所有线程的状态信息
+- 输入thread会显示所有线程的状态信息
 ```language
 $ thread
 Threads Total: 129, NEW: 0, RUNNABLE: 31, BLOCKED: 0, WAITING: 7, TIMED_WAITING: 91, TERMINATED: 0     
