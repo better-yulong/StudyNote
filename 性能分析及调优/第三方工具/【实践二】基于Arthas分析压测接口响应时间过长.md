@@ -394,7 +394,30 @@ Affect(row-cnt:0) cost in 408 ms.
 3. 监控transfer方法，trace -j com.sfpay.coreplatform.account.service.impl.TransferServiceImpl doTransfer 可发现耗时方法为IAccountDao:selectByAccountNoAndLocked()
 持续压测，定位问题方法不到一分钟；而且直观明了，如监控监控transfer方法日志如下：
 ```language
-
+---ts=2019-08-27 16:24:26;thread_name=catalina-exec-8;id=23;is_daemon=true;priority=5;TCCL=org.apache.catalina.loader.WebappClassLoader@eea44aa
+    `---[410.313475ms] com.a.b.c.service.impl.XXX:doTransfer()
+        +---[0.001565ms] com.a.b.c.valueobject.dto.XXX:getPayerAccount() #100
+        +---[1.994626ms] com.a.b.c.service.inner.XXX:isAsyncAccount() #100
+        +---[0.00146ms] com.a.b.c.valueobject.dto.XXX:getPayeeAccount() #104
+        +---[1.772284ms] com.a.b.c.service.inner.XXX:isAsyncAccount() #104
+        +---[0.001232ms] com.a.b.c.valueobject.dto.XXX:getPayerAccount() #107
+        +---[0.001044ms] com.a.b.c.valueobject.dto.XXX:getPayeeAccount() #108
+        +---[401.247182ms] com.a.b.c.persistence.dao.XXX:selectByAccountNoAndLocked() #135
+        +---[0.001748ms] com.a.b.c.valueobject.dto.XXX:getAmount() #143
+        +---[0.002254ms] com.a.b.c.valueobject.tmo.XXX:getOverdraftAmountLimit() #143
+        +---[0.001531ms] com.a.b.c.valueobject.tmo.XXX:getFreezeAmount() #143
+        +---[0.004ms] com.a.b.c.service.impl.XXX:validateBalance() #143
+        +---[9.79E-4ms] com.a.b.c.valueobject.tmo.XXX:getCashAmount() #146
+        +---[0.001305ms] com.a.b.c.valueobject.dto.XXX:getAmount() #147
+        +---[0.002095ms] com.a.b.c.service.impl.TransferServiceImpl:calculateBalance() #147
+        +---[0.001115ms] com.a.b.c.valueobject.tmo.XXX:setCashAmount() #148
+        +---[0.874777ms] com.a.b.c.persistence.dao.XXX:updateByPrimaryKey() #149
+        +---[1.749246ms] com.a.b.c.service.inner.XXX:generateTallySerials() #165
+        +---[0.009297ms] org.slf4j.Logger:info() #169
+        +---[0.792239ms] com.a.b.c.service.inner.XXX:findDate() #171
+        +---[0.001602ms] com.a.b.c.valueobject.dto.XXX:getValue() #171
+        +---[min=8.93E-4ms,max=0.001594ms,total=0.002487ms,count=2] com.a.b.c.valueobject.tmo.XXX:setTallyDate() #175
+        `---[1.678851ms] com.a.b.c.persistence.dao.XXX:addTallySerialList() #178
 
 ```
 为什么这么推荐，是因为之前有尝试过多种方法，如框架层面输入对外接口耗时；通过各种debug日志协助定位；抑或使用TProfiler工具、DTrace等工具，但效率并不怎么高，而且侵入性较强。
