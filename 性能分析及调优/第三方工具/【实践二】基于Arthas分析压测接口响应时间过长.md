@@ -418,7 +418,9 @@ Affect(row-cnt:0) cost in 408 ms.
         +---[0.001602ms] com.sfpay.coreplatform.account.valueobject.dto.DayChange:getValue() #171
         +---[min=8.93E-4ms,max=0.001594ms,total=0.002487ms,count=2] com.sfpay.coreplatform.account.valueobject.tmo.TallySerial:setTallyDate() #175
         `---[1.678851ms] com.sfpay.coreplatform.account.persistence.dao.ITallySerialDao:addTallySerialList() #178
-Profiler工具
+
+```
+为什么这么推荐，是因为之前有尝试过多种方法，如框架层面输入对外接口耗时；通过各种debug日志协助定位；抑或使用TProfiler工具、DTrace等工具，但整
 
 
 
