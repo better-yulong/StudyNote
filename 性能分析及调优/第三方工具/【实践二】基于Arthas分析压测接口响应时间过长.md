@@ -390,7 +390,7 @@ Affect(row-cnt:0) cost in 408 ms.
 
 
 ```language
-$ trace -j com.***.Trans**ServiceImpl time
+$ trace -j com.***.Trans**ServiceImpl combineTransfer
 No class or method is affected, try:
 1. sm CLASS_NAME METHOD_NAME to make sure the method you are tracing actually exists (it might be in your parent class).
 2. reset CLASS_NAME and try again, your method body might be too large.
@@ -398,6 +398,18 @@ No class or method is affected, try:
 4. visit https://github.com/alibaba/arthas/issues/47 for more details.
 $ 
 ```
+解释：
+
+-j参数可以过滤掉jdk自身的函数
+
+com.***.Trans**ServiceImpl是接口所在的类
+
+combineTransfer是接口的入口函数(即
+
+
+
+
+
 
 
 
