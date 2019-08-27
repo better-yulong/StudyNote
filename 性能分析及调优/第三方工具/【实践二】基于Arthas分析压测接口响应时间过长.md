@@ -390,7 +390,7 @@ Affect(row-cnt:0) cost in 408 ms.
 
 
 ```language
-$ trace -j com.***.TransferServiceImpl time
+$ trace -j com.***.Trans**ServiceImpl time
 No class or method is affected, try:
 1. sm CLASS_NAME METHOD_NAME to make sure the method you are tracing actually exists (it might be in your parent class).
 2. reset CLASS_NAME and try again, your method body might be too large.
