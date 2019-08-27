@@ -401,9 +401,7 @@ $
 解释：
 
 -j参数可以过滤掉jdk自身的函数
-
 com.***.Trans**ServiceImpl是接口所在的类
-
 combineTransfer是接口的入口函数(即对应方法名）
 
 
