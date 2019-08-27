@@ -386,7 +386,7 @@ $ jvm
 Affect(row-cnt:0) cost in 408 ms.
 ```
 
-#### 1.4 jvm监控
+#### 1.4 函数耗时监控
 
 
 
