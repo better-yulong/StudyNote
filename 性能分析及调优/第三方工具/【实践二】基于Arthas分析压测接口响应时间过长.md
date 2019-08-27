@@ -272,7 +272,7 @@ Affect(row-cnt:0) cost in 249 ms.
 ```
 
 #### 1.3 jvm监控
-
+输入jvm，查看jvm详细的性能数据
 ```language
 $ jvm
  RUNTIME                                                                                                                                                                
@@ -386,7 +386,7 @@ $ jvm
 Affect(row-cnt:0) cost in 408 ms.
 ```
 
-
+#### 1.4 jvm监控
 
 
 
