@@ -273,6 +273,118 @@ Affect(row-cnt:0) cost in 249 ms.
 
 #### 1.3 jvm监控
 
+```language
+$ jvm
+ RUNTIME                                                                                                                                                                
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ MACHINE-NAME                                    411@localhost                                                                                                          
+ JVM-START-TIME                                  2019-08-16 15:17:29                                                                                                    
+ MANAGEMENT-SPEC-VERSION                         1.2                                                                                                                    
+ SPEC-NAME                                       Java Virtual Machine Specification                                                                                     
+ SPEC-VENDOR                                     Oracle Corporation                                                                                                     
+ SPEC-VERSION                                    1.7                                                                                                                    
+ VM-NAME                                         OpenJDK 64-Bit Server VM                                                                                               
+ VM-VENDOR                                       Oracle Corporation                                                                                                     
+ VM-VERSION                                      24.95-b01                                                                                                              
+ INPUT-ARGUMENTS                                 -Djava.util.logging.config.file=/tomcat/platform-account/conf/logging.properties                                       
+                                                 -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager                                                      
+                                                 -Xms2048m                                                                                                              
+                                                 -Xmx2048m                                                                                                              
+                                                 -XX:PermSize=256M                                                                                                      
+                                                 -XX:MaxPermSize=256M                                                                                                   
+                                                 -Xss256k                                                                                                               
+                                                 -XX:+UseConcMarkSweepGC                                                                                                
+                                                 -XX:+UseParNewGC                                                                                                       
+                                                 -XX:-CMSParallelRemarkEnabled                                                                                          
+                                                 -XX:ParallelGCThreads=8                                                                                                
+                                                 -XX:MaxTenuringThreshold=10                                                                                            
+                                                 -XX:GCTimeRatio=19                                                                                                     
+                                                 -XX:+DisableExplicitGC                                                                                                 
+                                                 -Djava.awt.headless=true                                                                                               
+                                                 -Djava.endorsed.dirs=/tomcat/platform-account/endorsed                                                                 
+                                                 -Dcatalina.base=/tomcat/platform-account                                                                               
+                                                 -Dcatalina.home=/tomcat/platform-account                                                                               
+                                                 -Djava.io.tmpdir=/tomcat/platform-account/temp                                                                         
+                                                                                                                                                                        
+ CLASS-PATH                                      /tomcat:/tomcat/platform-account/bin/bootstrap.jar:/tomcat/platform-account/bin/tomcat-juli.jar                        
+ BOOT-CLASS-PATH                                 /usr/lib/jvm/java-1.7.0-openjdk-1.7.0.99.x86_64/jre/lib/resources.jar:/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.99.x86_64/ 
+                                                 jre/lib/rt.jar:/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.99.x86_64/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-1.7.0-openjdk- 
+                                                 1.7.0.99.x86_64/jre/lib/jsse.jar:/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.99.x86_64/jre/lib/jce.jar:/usr/lib/jvm/java-1.7 
+                                                 .0-openjdk-1.7.0.99.x86_64/jre/lib/charsets.jar:/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.99.x86_64/jre/lib/rhino.jar:/usr 
+                                                 /lib/jvm/java-1.7.0-openjdk-1.7.0.99.x86_64/jre/lib/jfr.jar:/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.99.x86_64/jre/classe 
+                                                 s                                                                                                                      
+ LIBRARY-PATH                                    /usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib                                                           
+                                                                                                                                                                        
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ CLASS-LOADING                                                                                                                                                          
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ LOADED-CLASS-COUNT                              7238                                                                                                                   
+ TOTAL-LOADED-CLASS-COUNT                        7238                                                                                                                   
+ UNLOADED-CLASS-COUNT                            0                                                                                                                      
+ IS-VERBOSE                                      false                                                                                                                  
+                                                                                                                                                                        
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ COMPILATION                                                                                                                                                            
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ NAME                                            HotSpot 64-Bit Tiered Compilers                                                                                        
+ TOTAL-COMPILE-TIME                              60348(ms)                                                                                                              
+                                                                                                                                                                        
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ GARBAGE-COLLECTORS                                                                                                                                                     
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ ParNew                                          49548/1059030(ms)                                                                                                      
+ [count/time]                                                                                                                                                           
+ ConcurrentMarkSweep                             0/0(ms)                                                                                                                
+ [count/time]                                                                                                                                                           
+                                                                                                                                                                        
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ MEMORY-MANAGERS                                                                                                                                                        
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ CodeCacheManager                                Code Cache                                                                                                             
+                                                                                                                                                                        
+ ParNew                                          Par Eden Space                                                                                                         
+                                                 Par Survivor Space                                                                                                     
+                                                                                                                                                                        
+ ConcurrentMarkSweep                             Par Eden Space                                                                                                         
+                                                 Par Survivor Space                                                                                                     
+                                                 CMS Old Gen                                                                                                            
+                                                 CMS Perm Gen                                                                                                           
+                                                                                                                                                                        
+                                                                                                                                                                        
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ MEMORY                                                                                                                                                                 
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ HEAP-MEMORY-USAGE                               2077753344(1.94 GiB)/2147483648(2.00 GiB)/2077753344(1.94 GiB)/775401976(739.48 MiB)                                   
+ [committed/init/max/used]                                                                                                                                              
+ NO-HEAP-MEMORY-USAGE                            278462464(265.56 MiB)/270991360(258.44 MiB)/318767104(304.00 MiB)/54271784(51.76 MiB)                                  
+ [committed/init/max/used]                                                                                                                                              
+ PENDING-FINALIZE-COUNT                          0                                                                                                                      
+                                                                                                                                                                        
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ OPERATING-SYSTEM                                                                                                                                                       
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ OS                                              Linux                                                                                                                  
+ ARCH                                            amd64                                                                                                                  
+ PROCESSORS-COUNT                                4                                                                                                                      
+ LOAD-AVERAGE                                    0.6                                                                                                                    
+ VERSION                                         2.6.32-642.el6.x86_64                                                                                                  
+                                                                                                                                                                        
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ THREAD                                                                                                                                                                 
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ COUNT                                           127                                                                                                                    
+ DAEMON-COUNT                                    121                                                                                                                    
+ PEAK-COUNT                                      130                                                                                                                    
+ STARTED-COUNT                                   150                                                                                                                    
+ DEADLOCK-COUNT                                  0                                                                                                                      
+                                                                                                                                                                        
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ FILE-DESCRIPTOR                                                                                                                                                        
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ MAX-FILE-DESCRIPTOR-COUNT                       65535                                                                                                                  
+ OPEN-FILE-DESCRIPTOR-COUNT                      135                                                                                                                    
+Affect(row-cnt:0) cost in 408 ms.
+```
 
 
 
