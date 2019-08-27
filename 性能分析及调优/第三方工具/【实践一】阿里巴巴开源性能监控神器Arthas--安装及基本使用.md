@@ -32,4 +32,5 @@ ovider.java:193)
 
 ```
 直接报错如上：com.sun.tools.attach.AttachNotSupportedException: Unable to attach to 64-bit pro
-cess；之前在研究TPrfile或者DTrace时也有遇到，不过当时忽略了；此次决定解决。网上资料较多，但并没有找到可解决的。从日志来看涉及两个：1.JAVA_HOME: D:\work\java\jdk；2.
+cess；之前在研究TPrfile或者DTrace时也有遇到，不过当时忽略了；此次决定解决。网上资料较多，但并没有找到可解决的。从日志来看涉及两个：1.JAVA_HOME: D:\work\java\jdk；2.Unable to attach to 64-bit pro
+cess.而确认后D:\work\java\jdk确实是64位JDK，具体为什么呢？此
