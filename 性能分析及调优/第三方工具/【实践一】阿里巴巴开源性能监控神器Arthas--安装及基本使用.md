@@ -1,9 +1,7 @@
 1. https://blog.csdn.net/Testfan_zhou/article/details/92579810
 2. https://alibaba.github.io/arthas/index.html
 
-根据Arthas官网，选择全量安装模式下载arthas-packaging-3.1.1-bin.7z 并解压缩；以cmd模式进入对应目录，根据文档
-
-
+根据Arthas官网，选择全量安装模式下载arthas-packaging-3.1.1-bin.7z 并解压缩；以cmd模式进入对应目录，根据文档使用arthas-boot.jar，直接用java -jar的方式启动：
 ```language
 C:\Users\***\arthas-packaging-3.1.1-bin>java -jar arthas-boot.jar
 [INFO] arthas-boot version: 3.1.1
@@ -33,3 +31,4 @@ ovider.java:193)
 [ERROR] attach fail, targetPid: 2780
 
 ```
+直接报错如上：
