@@ -90,6 +90,141 @@ uptime         951539s
 
 #### 1.2 线程监控
 输入thread会显示所有线程的状态信息
+```language
+$ thread
+Threads Total: 129, NEW: 0, RUNNABLE: 31, BLOCKED: 0, WAITING: 7, TIMED_WAITING: 91, TERMINATED: 0     
+ID       NAME        GROUP        PRIORITY      STATE    %CPU     TIME     INTERRUPTED   DAEMON        
+17       AsyncAppender-Worker-Thread-5        main    5        WAITING       16       115:14        false    true     
+16       AsyncAppender-Worker-Thread-4        main    5        WAITING       5        31:23    false    true     
+127      catalina-exec-100     main    5        TIMED_WAITING 5        6:32     false    true     
+43       catalina-exec-16      main    5        TIMED_WAITING 5        6:33     false    true     
+30       catalina-exec-3       main    5        TIMED_WAITING 5        6:36     false    true     
+82       catalina-exec-55      main    5        TIMED_WAITING 5        6:31     false    true     
+39       catalina-exec-12      main    5        TIMED_WAITING 4        6:32     false    true     
+57       catalina-exec-30      main    5        TIMED_WAITING 4        6:33     false    true     
+58       catalina-exec-31      main    5        TIMED_WAITING 4        6:33     false    true     
+66       catalina-exec-39      main    5        TIMED_WAITING 4        6:30     false    true     
+31       catalina-exec-4       main    5        TIMED_WAITING 4        6:32     false    true     
+69       catalina-exec-42      main    5        TIMED_WAITING 4        6:32     false    true     
+38       catalina-exec-11      main    5        TIMED_WAITING 1        6:33     false    true     
+44       catalina-exec-17      main    5        TIMED_WAITING 1        6:32     false    true     
+29       catalina-exec-2       main    5        TIMED_WAITING 1        6:35     false    true     
+62       catalina-exec-35      main    5        TIMED_WAITING 1        6:35     false    true     
+65       catalina-exec-38      main    5        TIMED_WAITING 1        6:33     false    true     
+32       catalina-exec-5       main    5        TIMED_WAITING 1        6:33     false    true     
+77       catalina-exec-50      main    5        TIMED_WAITING 1        6:32     false    true     
+81       catalina-exec-54      main    5        TIMED_WAITING 1        6:31     false    true     
+83       catalina-exec-56      main    5        TIMED_WAITING 1        6:33     false    true     
+92       catalina-exec-65      main    5        TIMED_WAITING 1        6:33     false    true     
+102      catalina-exec-75      main    5        TIMED_WAITING 1        6:33     false    true     
+103      catalina-exec-76      main    5        TIMED_WAITING 1        6:29     false    true     
+108      catalina-exec-81      main    5        TIMED_WAITING 1        6:32     false    true     
+120      catalina-exec-93      main    5        TIMED_WAITING 1        6:33     false    true     
+18       AsyncAppender-Worker-Thread-6        main    5        WAITING       0        0:0      false    true     
+19       AsyncAppender-Worker-Thread-7        main    5        WAITING       0        7:38     false    true     
+141      AsyncAppender-Worker-arthas-cache.result. system       9        WAITING       0        0:0      false    true     
+139      Attach Listener       system       9        RUNNABLE      0        0:0      false    true     
+21       ContainerBackgroundProcessor[StandardEngi main    5        TIMED_WAITING 0        1:12     false    true     
+3        Finalizer   system       8        WAITING       0        0:0      false    true     
+11       GC Daemon   system       2        TIMED_WAITING 0        0:0      false    true     
+20       IdleConnectionMonitor      main    5        TIMED_WAITING 0        0:4      false    true     
+12       NioBlockingSelector.BlockPoller-1    main    5        RUNNABLE      0        5:55     false    true     
+13       PoolCleaner[1294508613:1565939850879]     main    5        TIMED_WAITING 0        0:48     false    true     
+2        Reference Handler     system       10       WAITING       0        0:0      false    true     
+5        Signal Dispatcher     system       9        RUNNABLE      0        0:0      false    true     
+25       ajp-bio-8031-Acceptor-0    main    5        RUNNABLE      0        0:0      false    true     
+26       ajp-bio-8031-AsyncTimeout  main    5        TIMED_WAITING 0        0:45     false    true     
+156      as-command-execute-daemon  system       10       RUNNABLE      0        0:0      false    true     
+28       catalina-exec-1       main    5        TIMED_WAITING 0        6:38     false    true     
+37       catalina-exec-10      main    5        TIMED_WAITING 0        6:34     false    true     
+137      catalina-exec-101     main    5        TIMED_WAITING 0        0:16     false    true     
+138      catalina-exec-102     main    5        TIMED_WAITING 0        0:14     false    true     
+152      catalina-exec-103     main    5        TIMED_WAITING 0        0:2      false    true     
+153      catalina-exec-104     main    5        TIMED_WAITING 0        0:2      false    true     
+40       catalina-exec-13      main    5        TIMED_WAITING 0        6:31     false    true     
+41       catalina-exec-14      main    5        TIMED_WAITING 0        6:29     false    true     
+42       catalina-exec-15      main    5        TIMED_WAITING 0        6:30     false    true     
+46       catalina-exec-19      main    5        TIMED_WAITING 0        6:31     false    true     
+47       catalina-exec-20      main    5        TIMED_WAITING 0        6:32     false    true     
+48       catalina-exec-21      main    5        TIMED_WAITING 0        6:33     false    true     
+49       catalina-exec-22      main    5        TIMED_WAITING 0        6:32     false    true     
+50       catalina-exec-23      main    5        TIMED_WAITING 0        6:32     false    true     
+51       catalina-exec-24      main    5        TIMED_WAITING 0        6:35     false    true     
+52       catalina-exec-25      main    5        TIMED_WAITING 0        6:33     false    true     
+53       catalina-exec-26      main    5        TIMED_WAITING 0        6:33     false    true     
+54       catalina-exec-27      main    5        TIMED_WAITING 0        6:30     false    true     
+55       catalina-exec-28      main    5        TIMED_WAITING 0        6:31     false    true     
+56       catalina-exec-29      main    5        TIMED_WAITING 0        6:33     false    true     
+59       catalina-exec-32      main    5        TIMED_WAITING 0        6:31     false    true     
+60       catalina-exec-33      main    5        TIMED_WAITING 0        6:31     false    true     
+61       catalina-exec-34      main    5        TIMED_WAITING 0        6:35     false    true     
+63       catalina-exec-36      main    5        TIMED_WAITING 0        6:32     false    true     
+64       catalina-exec-37      main    5        TIMED_WAITING 0        6:35     false    true     
+67       catalina-exec-40      main    5        TIMED_WAITING 0        6:34     false    true     
+68       catalina-exec-41      main    5        TIMED_WAITING 0        6:32     false    true     
+70       catalina-exec-43      main    5        TIMED_WAITING 0        6:32     false    true     
+71       catalina-exec-44      main    5        TIMED_WAITING 0        6:33     false    true     
+72       catalina-exec-45      main    5        TIMED_WAITING 0        6:32     false    true     
+73       catalina-exec-46      main    5        TIMED_WAITING 0        6:31     false    true     
+74       catalina-exec-47      main    5        TIMED_WAITING 0        6:34     false    true     
+75       catalina-exec-48      main    5        TIMED_WAITING 0        6:33     false    true     
+76       catalina-exec-49      main    5        TIMED_WAITING 0        6:31     false    true     
+78       catalina-exec-51      main    5        TIMED_WAITING 0        6:31     false    true     
+79       catalina-exec-52      main    5        TIMED_WAITING 0        6:34     false    true     
+80       catalina-exec-53      main    5        TIMED_WAITING 0        6:31     false    true     
+84       catalina-exec-57      main    5        TIMED_WAITING 0        6:30     false    true     
+85       catalina-exec-58      main    5        TIMED_WAITING 0        6:34     false    true     
+86       catalina-exec-59      main    5        TIMED_WAITING 0        6:29     false    true     
+33       catalina-exec-6       main    5        TIMED_WAITING 0        6:31     false    true     
+87       catalina-exec-60      main    5        TIMED_WAITING 0        6:30     false    true     
+88       catalina-exec-61      main    5        TIMED_WAITING 0        6:33     false    true     
+89       catalina-exec-62      main    5        TIMED_WAITING 0        6:33     false    true     
+90       catalina-exec-63      main    5        TIMED_WAITING 0        6:30     false    true     
+91       catalina-exec-64      main    5        TIMED_WAITING 0        6:34     false    true     
+93       catalina-exec-66      main    5        TIMED_WAITING 0        6:31     false    true     
+94       catalina-exec-67      main    5        TIMED_WAITING 0        6:34     false    true     
+95       catalina-exec-68      main    5        TIMED_WAITING 0        6:32     false    true     
+96       catalina-exec-69      main    5        TIMED_WAITING 0        6:33     false    true     
+34       catalina-exec-7       main    5        TIMED_WAITING 0        6:33     false    true     
+97       catalina-exec-70      main    5        TIMED_WAITING 0        6:32     false    true     
+98       catalina-exec-71      main    5        TIMED_WAITING 0        6:31     false    true     
+99       catalina-exec-72      main    5        TIMED_WAITING 0        6:31     false    true     
+100      catalina-exec-73      main    5        TIMED_WAITING 0        6:31     false    true     
+101      catalina-exec-74      main    5        TIMED_WAITING 0        6:35     false    true     
+104      catalina-exec-77      main    5        TIMED_WAITING 0        6:32     false    true     
+105      catalina-exec-78      main    5        TIMED_WAITING 0        6:32     false    true     
+35       catalina-exec-8       main    5        TIMED_WAITING 0        6:33     false    true     
+107      catalina-exec-80      main    5        TIMED_WAITING 0        6:35     false    true     
+109      catalina-exec-82      main    5        TIMED_WAITING 0        6:30     false    true     
+110      catalina-exec-83      main    5        TIMED_WAITING 0        6:28     false    true     
+111      catalina-exec-84      main    5        TIMED_WAITING 0        6:32     false    true     
+112      catalina-exec-85      main    5        TIMED_WAITING 0        6:31     false    true     
+113      catalina-exec-86      main    5        TIMED_WAITING 0        6:29     false    true     
+114      catalina-exec-87      main    5        TIMED_WAITING 0        6:32     false    true     
+115      catalina-exec-88      main    5        TIMED_WAITING 0        6:31     false    true     
+116      catalina-exec-89      main    5        TIMED_WAITING 0        6:32     false    true     
+36       catalina-exec-9       main    5        TIMED_WAITING 0        6:33     false    true     
+117      catalina-exec-90      main    5        TIMED_WAITING 0        6:33     false    true     
+118      catalina-exec-91      main    5        TIMED_WAITING 0        6:32     false    true     
+119      catalina-exec-92      main    5        TIMED_WAITING 0        6:31     false    true     
+121      catalina-exec-94      main    5        TIMED_WAITING 0        6:30     false    true     
+122      catalina-exec-95      main    5        TIMED_WAITING 0        6:35     false    true     
+123      catalina-exec-96      main    5        TIMED_WAITING 0        6:32     false    true     
+124      catalina-exec-97      main    5        TIMED_WAITING 0        6:33     false    true     
+125      catalina-exec-98      main    5        TIMED_WAITING 0        6:31     false    true     
+126      catalina-exec-99      main    5        TIMED_WAITING 0        6:32     false    true     
+24       http-nio-8001-Acceptor-0   main    5        RUNNABLE      0        0:46     false    true     
+22       http-nio-8001-ClientPoller-0         main    5        RUNNABLE      0        6:26     false    true     
+23       http-nio-8001-ClientPoller-1         main    5        RUNNABLE      0        6:24     false    true     
+143      job-timeout system       9        TIMED_WAITING 0        0:0      false    true     
+1        main        main    5        RUNNABLE      0        0:1      false    false    
+144      nioEventLoopGroup-2-1      system       10       RUNNABLE      0        0:0      false    false    
+148      nioEventLoopGroup-2-2      system       10       RUNNABLE      0        0:2      false    false    
+145      nioEventLoopGroup-3-1      system       10       RUNNABLE      0        0:0      false    false    
+146      pool-2-thread-1       system       5        TIMED_WAITING 0        0:0      false    false    
+147      pool-3-thread-1       system       5        WAITING       0        0:0      false    false    
+Affect(row-cnt:0) cost in 120 ms.
+```
 
 输入thread -n 3会显示当前最忙的3个线程，可以用来排查线程CPU消耗
 
