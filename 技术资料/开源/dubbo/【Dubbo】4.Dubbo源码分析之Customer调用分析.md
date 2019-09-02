@@ -112,7 +112,7 @@ args：参数数组，当前仅包含元素ArrayList对象（其值为parm）
 RpcResult完成mock 值的封装并返回。而在Proxy0实例获取到RpcResult后会调用InvokerInvocationHandler的recreate方法，该方法则会判断是否有异常；若无异常则直接返回RpcResult的result变量（即之前根据mock值null 封装的List对象），此时就完成了通过Mock返回为null的List对象。
 - 分析Mock过程中，dubbo将Mock分成两种：一种如 mock="force xxx"从定义来看为强制使用mock；除此之外另一种即如mock="return null"此类定义为Fail-mock场景。
 
-### Mock模拟正常业务数据返回
+### 三.Mock模拟正常业务数据返回
 根据上面的源码分析，可知道mock="retrun XXX"除支持null及基本数据类型外，也可支持普通集合如List、Map等模拟，其会基于Dubbo的JSON工具类解析生成对象，那么结合可得出：
 ```language
 	<dubbo:reference id="dubboExampleService1" interface="com.aoe.demo.rpc.dubbo.DubboExampleInterf1"  registry="local_zk" mock="return ['mock provider result']" check="false"/><!-- 模拟正常list数据返回 -->
@@ -128,4 +128,7 @@ List resultList = new ArrayList<String>();
 			System.out.println(e);
 		}
 ```
+
+
+	<dubbo:reference id="dubboExampleService1" interface="com.aoe.demo.rpc.dubbo.DubboExampleInterf1"  mock="com.aoe.demo.rpc.dubbo.DubboExampleInterf1Mock" check="false"/> 
 
