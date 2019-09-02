@@ -11,6 +11,7 @@
   2. 邮箱随便填写，点击Change license即可完成激活。 
 
 ### 三.Eclipse使用JRebel
-Eclipse每次启动后，默认会自动检查JRebel证书，即上面的ReverseProxy本地证件代理每次均需启动，这就是使用破解版的代价
+Eclipse每次启动后，默认会自动检查JRebel证书，即上面的ReverseProxy本地证件代理每次均需启动，这就是使用破解版的代价哈。
+#### 3.1 
 
 
