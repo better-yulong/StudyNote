@@ -14,6 +14,7 @@
 Eclipse每次启动后，默认会自动检查JRebel证书，即上面的ReverseProxy本地证件代理每次均需启动，这就是使用破解版的代价哈；之后进入JRebel--JRebel Configuration界面参考：https://www.jb51.net/softjc/614942.html 完成项目热部署的配置。
 1. 点击Startup,选择Run via IDE，Servers选择你配置的tomcat；
 2. 点击Projects,选择需要JRebel监测的项目; 
-3. 点击Advanced，勾选Miscellaneous下的所有选项（之后会自动重
+3. 点击Advanced，勾选Miscellaneous下的所有选项（之后会自动重启eclipse）
+
 
 
