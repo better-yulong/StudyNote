@@ -135,6 +135,6 @@ List resultList = new ArrayList<String>();
 或者
 <dubbo:reference id="dubboExampleService1" interface="com.aoe.demo.rpc.dubbo.DubboExampleInterf1"  mock="default" check="false"/> 
 ```
-但验证时，发现调用dubbo服务始终报错：com.alibaba.dubbo.rpc.RpcException: No provider available in [invoker :interface com.aoe.demo.rpc.dubbo.DubboExampleInterf1 ->...；一开始纠结了比较久，但通过调试发现，dubbo:reference配置的mock配置仍会调用远程服务；
+但验证时，发现调用dubbo服务始终报错：com.alibaba.dubbo.rpc.RpcException: No provider available in [invoker :interface com.aoe.demo.rpc.dubbo.DubboExampleInterf1 ->...；一开始纠结了比较久，但通过调试发现，dubbo:reference配置的mock配置仍会调用远程服务；至此，仍是花了
 
 
