@@ -128,7 +128,8 @@ List resultList = new ArrayList<String>();
 			System.out.println(e);
 		}
 ```
-
+#### 3.1 MOCK类的验证
+需在
 
 	<dubbo:reference id="dubboExampleService1" interface="com.aoe.demo.rpc.dubbo.DubboExampleInterf1"  mock="com.aoe.demo.rpc.dubbo.DubboExampleInterf1Mock" check="false"/> 
 
