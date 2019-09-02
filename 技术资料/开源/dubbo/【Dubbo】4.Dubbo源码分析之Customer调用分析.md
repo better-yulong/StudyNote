@@ -129,7 +129,12 @@ List resultList = new ArrayList<String>();
 		}
 ```
 #### 3.1 MOCK类的验证
-需在接口的同一jar包中实现对应接口，默认实现类名称为在接口名之后加MOCK后缀（
+需在接口的同一jar包中实现对应接口，默认实现类名称为在接口名之后加MOCK后缀，也可自定义名称 。所以最开始这么配置：
+```	
+<dubbo:reference id="dubboExampleService1" interface="com.aoe.demo.rpc.dubbo.DubboExampleInterf1"  mock="com.aoe.demo.rpc.dubbo.DubboExampleInterf1Mock" check="false"/> 
+或者
+<dubbo:reference id="dubboExampleService1" interface="com.aoe.demo.rpc.dubbo.DubboExampleInterf1"  mock="default" check="false"/> 
+```
+但验证时，发现调用dubbo服务始终报错：com.alibaba.dubbo.rpc.RpcException: No provider available in [invoker :interface com.aoe.demo.rpc.dubbo.DubboExampleInterf1 ->...；一开始纠结了比较久，但通过
 
-	<dubbo:reference id="dubboExampleService1" interface="com.aoe.demo.rpc.dubbo.DubboExampleInterf1"  mock="com.aoe.demo.rpc.dubbo.DubboExampleInterf1Mock" check="false"/> 
 
