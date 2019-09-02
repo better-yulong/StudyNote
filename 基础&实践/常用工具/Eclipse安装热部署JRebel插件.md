@@ -27,7 +27,7 @@ Eclipse每次启动后，默认会自动检查JRebel证书，即上面的Reverse
 		return "entry";
 	}
 ```
-
+代码ctrl+s保存之后，可发现控制台输入日志：2019-09-02 17:00:36 JRebel: Reloading class 'com.aoe.demo.rpc.controller.EntryController'.
 
 
 
