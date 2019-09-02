@@ -17,7 +17,7 @@ Eclipse每次启动后，默认会自动检查JRebel证书，即上面的Reverse
 2. 点击Projects,选择需要JRebel监测的项目; 
 3. 点击Advanced，勾选Miscellaneous下的所有选项（之后会自动重启eclipse）
 #### 3.2 验证
-如之前启动rpc
+如之前启动rpc-client对应的Tomcat，可发现日志中有许多JRebel相关的日志；之后
 
 
 
