@@ -129,7 +129,7 @@ List resultList = new ArrayList<String>();
 		}
 ```
 #### 3.1 MOCK类的验证
-需在接口的同一jar包中实现对应接口，并默认以
+需在接口的同一jar包中实现对应接口，默认实现类名称为在接口名之后加MOCK后缀（
 
 	<dubbo:reference id="dubboExampleService1" interface="com.aoe.demo.rpc.dubbo.DubboExampleInterf1"  mock="com.aoe.demo.rpc.dubbo.DubboExampleInterf1Mock" check="false"/> 
 
