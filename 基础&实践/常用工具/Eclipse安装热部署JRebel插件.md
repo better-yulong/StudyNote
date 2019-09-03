@@ -7,7 +7,7 @@
 - JRebel需要激活码激活（激活参考：https://www.e-learn.cn/content/qita/2354778）。重启Eclipse之后进入JRebel Configuration （或通过show view查找 或者在Open Perspective中查找）；从https://github.com/ilanyu/ReverseProxy/releases（ReverseProxy_windows_amd64.exe
 )下载地址激活软件，并启动（关注端口号）。
 - 在Jrebel Activation Details页面选择"Team URL"：
-  1. 其中Url输入： http://127.0.0.1:8888/574ac103-205f-4fe9-af26-06f9ad914c3d （注意574ac103-205f-4fe9-af26-06f9ad914c3d为Version 4 UUID，因多人使用有可能过期，可在https://www.uuidgenerator.net/ 页面重新重头并替换）
+  1. 其中Url输入： http://127.0.0.1:8888/574ac103-205f-4fe9-af26-06f9ad914c3d （注意574ac103-205f-4fe9-af26-06f9ad914c3d为Version 4 UUID，因多人使用有可能过期，可在https://www.uuidgenerator.net/ 页面重新重生成并替换）
   2. 邮箱随便填写，点击Change license即可完成激活。 
 
 ### 三.Eclipse使用JRebel
