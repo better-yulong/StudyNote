@@ -161,7 +161,7 @@ List resultList = new ArrayList<String>();
 					if (logger.isWarnEnabled()) {
 		        		logger.info("fail-mock: " + invocation.getMethodName() + " fail-mock enabled , url : " +  directory.getUrl(), e);
 		        	}
-                                        /
+                                        /如若服务端处理失败则执行本地Mo
 					result = doMockInvoke(invocation, e);
 				}
 			}
