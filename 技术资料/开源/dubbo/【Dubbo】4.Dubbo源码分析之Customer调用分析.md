@@ -148,12 +148,12 @@ List resultList = new ArrayList<String>();
         	if (logger.isWarnEnabled()) {
         		logger.info("force-mock: " + invocation.getMethodName() + " force-mock enabled , url : " +  directory.getUrl());
         	}
-        	//force:direct mock
+        	//force:direct mock 本地Mock
         	result = doMockInvoke(invocation, null);
         } else {
         	//fail-mock
         	try {
-        		result = this.invoker.invoke(invocation);
+        		result = this.invoker.invoke(invocation);//远程调用（url中会包含customer端mock配置，服务端会根据consumer的mock策略确认是
         	}catch (RpcException e) {
 				if (e.isBiz()) {
 					throw e;
