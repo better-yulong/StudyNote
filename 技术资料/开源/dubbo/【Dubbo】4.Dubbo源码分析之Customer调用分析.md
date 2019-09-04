@@ -142,7 +142,7 @@ List resultList = new ArrayList<String>();
         
         String value = directory.getUrl().getMethodParameter(invocation.getMethodName(), Constants.MOCK_KEY, Boolean.FALSE.toString()).trim(); 
         if (value.length() == 0 || value.equalsIgnoreCase("false")){
-        	//no mock，真实调用（服务端及本地均不Mock
+        	//no mock，真实调用（服务端及本地均不执行Mock）
         	result = this.invoker.invoke(invocation);
         } else if (value.startsWith("force")) {
         	if (logger.isWarnEnabled()) {
