@@ -153,7 +153,7 @@ List resultList = new ArrayList<String>();
         } else {
         	//fail-mock
         	try {
-        		result = this.invoker.invoke(invocation);//远程调用（url中会包含customer端mock配置，服务端会根据consumer的mock策略确认是
+        		result = this.invoker.invoke(invocation);//远程调用（url中会包含customer端mock配置，服务端会根据consumer的mock策略确认是走服务端调用还是服务端Mock
         	}catch (RpcException e) {
 				if (e.isBiz()) {
 					throw e;
