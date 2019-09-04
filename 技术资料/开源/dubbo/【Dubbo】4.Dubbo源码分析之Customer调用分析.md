@@ -136,5 +136,37 @@ List resultList = new ArrayList<String>();
 <dubbo:reference id="dubboExampleService1" interface="com.aoe.demo.rpc.dubbo.DubboExampleInterf1"  mock="default" check="false"/> 
 ```
 但验证时，发现调用dubbo服务始终报错：com.alibaba.dubbo.rpc.RpcException: No provider available in [invoker :interface com.aoe.demo.rpc.dubbo.DubboExampleInterf1 ->...；一开始纠结了比较久，但通过调试发现，dubbo:reference配置的mock配置仍会调用远程服务；至此，仍是花了比较久的时间，于是乎重新梳理了下思路，可如此理解：
+```language
+	public Result invoke(Invocation invocation) throws RpcException {
+		Result result = null;
+        
+        String value = directory.getUrl().getMethodParameter(invocation.getMethodName(), Constants.MOCK_KEY, Boolean.FALSE.toString()).trim(); 
+        if (value.length() == 0 || value.equalsIgnoreCase("false")){
+        	//no mock，
+        	result = this.invoker.invoke(invocation);
+        } else if (value.startsWith("force")) {
+        	if (logger.isWarnEnabled()) {
+        		logger.info("force-mock: " + invocation.getMethodName() + " force-mock enabled , url : " +  directory.getUrl());
+        	}
+        	//force:direct mock
+        	result = doMockInvoke(invocation, null);
+        } else {
+        	//fail-mock
+        	try {
+        		result = this.invoker.invoke(invocation);
+        	}catch (RpcException e) {
+				if (e.isBiz()) {
+					throw e;
+				} else {
+					if (logger.isWarnEnabled()) {
+		        		logger.info("fail-mock: " + invocation.getMethodName() + " fail-mock enabled , url : " +  directory.getUrl(), e);
+		        	}
+					result = doMockInvoke(invocation, e);
+				}
+			}
+        }
+        return result;
+	}
+```
 
 
