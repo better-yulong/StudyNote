@@ -148,7 +148,7 @@ List resultList = new ArrayList<String>();
         	if (logger.isWarnEnabled()) {
         		logger.info("force-mock: " + invocation.getMethodName() + " force-mock enabled , url : " +  directory.getUrl());
         	}
-        	//force:direct mock 强制本地Mock，不走远程调用
+        	//force:direct mock 强制调用doMockInvoke（本地Mock），不走远程调用
         	result = doMockInvoke(invocation, null);
         } else {
         	//fail-mock
