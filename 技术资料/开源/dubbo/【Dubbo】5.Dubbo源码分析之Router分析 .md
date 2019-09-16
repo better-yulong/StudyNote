@@ -28,7 +28,7 @@ AvailableClusterInvoker   AbstractClusterInvoker
 ```language
    
     public Result invoke(final Invocation invocation) throws RpcException {
-
+        //检查当前
         checkWheatherDestoried();
 
         LoadBalance loadbalance;
