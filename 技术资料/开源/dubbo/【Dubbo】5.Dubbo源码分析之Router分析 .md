@@ -19,3 +19,5 @@
             logger.warn("Use random available port(" + port + ") for protocol " + name);
         }
 ```
+看到上面源码想必不需要作
+	<dubbo:protocol name="dubbo" port="-1"></dubbo:protocol>
