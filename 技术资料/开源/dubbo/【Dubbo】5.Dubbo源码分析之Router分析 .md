@@ -23,4 +23,4 @@
 nterf1/providers，确实两个服务提供者均注册成功。
 
 ### 二.Dubbo默认Router
-未指定router配置时，默认zk中接口的providers对应服务
+未指定router配置时，默认zk中接口的providers对应服务提供者信息，consumer对应服务消费者信息，router对应
