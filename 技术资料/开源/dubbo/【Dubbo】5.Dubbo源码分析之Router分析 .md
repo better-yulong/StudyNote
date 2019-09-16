@@ -35,7 +35,7 @@ AvailableClusterInvoker   AbstractClusterInvoker
         //基于invocation值及StaticDirectory（可理解为zk对应节点数据的抽象）获取List<Invoker<T>>，因上面有两个rpc-server节点分别发布了一个服务，故此处会有两个invoker实例。
         List<Invoker<T>> invokers = list(invocation);
         if (invokers != null && invokers.size() > 0) {
-            //获取第一个invoker对应method是否有
+            //获取第一个invoker对应method是否有负载配置（loadbalance ),若没有则使用DEFAULT_LOADBALANCE，即rom
             loadbalance = ExtensionLoader.getExtensionLoader(LoadBalance.class).getExtension(invokers.get(0).getUrl()
                     .getMethodParameter(invocation.getMethodName(),Constants.LOADBALANCE_KEY, Constants.DEFAULT_LOADBALANCE));
         } else {
