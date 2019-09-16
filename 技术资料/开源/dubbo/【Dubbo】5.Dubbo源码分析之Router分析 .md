@@ -58,7 +58,5 @@ AbstractClusterInvoker
         throw new RpcException("No provider available in " + invokers);
     }
 ```
-
-
-
+invocation参数值：
 interface com.aoe.demo.rpc.dubbo.DubboExampleInterf1 -> registry://10.118.239.202:3181/com.alibaba.dubbo.registry.RegistryService?application=rpc-client&backup=10.118.239.202:3182,10.118.239.202:3183&cluster=available&dubbo=2.5.3&pid=5888&refer=application%3Drpc-client%26default.group%3Drpc-demo%26default.version%3D1.0.1-aoe%26dubbo%3D2.5.3%26interface%3Dcom.aoe.demo.rpc.dubbo.DubboExampleInterf1%26methods%3DserviceProvider%26pid%3D5888%26revision%3D0.0.1-SNAPSHOT%26side%3Dconsumer%26timeout%3D1000%26timestamp%3D1568626754368&registry=zookeeper&timestamp=1568626754675
