@@ -5,5 +5,17 @@
 ```language
     //DubboProtocol类
     public static final int DEFAULT_PORT = 20880;
-
+    
+            final int defaultPort = ExtensionLoader.getExtensionLoader(Protocol.class).getExtension(name).getDefaultPort();
+        if (port == null || port == 0) {
+            port = defaultPort;
+        }
+        if (port == null || port <= 0) {
+            port = getRandomPort(name);
+            if (port == null || port < 0) {
+                port = NetUtils.getAvailablePort(defaultPort);
+                putRandomPort(name, port);
+            }
+            logger.warn("Use random available port(" + port + ") for protocol " + name);
+        }
 ```
