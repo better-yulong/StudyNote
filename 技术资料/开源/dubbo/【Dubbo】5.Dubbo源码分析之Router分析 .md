@@ -1,1 +1,1 @@
-为分析dubbo路由源码，于是新建两个tomcat  server，计划同时运行两个rpc-server以便于分析rpc-client请求rpc-server时的路由原理；而在启动时
+为分析dubbo路由源码，于是新建两个tomcat  server，计划同时运行两个rpc-server以便于分析rpc-client请求rpc-server时的路由原理；而在启动时却发现基于原dubbo默认配置，server1启动成功可将服务注册至zookeeper，但
