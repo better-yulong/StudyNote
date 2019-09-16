@@ -1,1 +1,1 @@
-为分析dubbo路由源码，于是新建两个tomcat  server，计划同时运行两个rpc-server
+为分析dubbo路由源码，于是新建两个tomcat  server，计划同时运行两个rpc-server以便于分析rpc-client请求rpc-server时的路由原理；而在启动时
