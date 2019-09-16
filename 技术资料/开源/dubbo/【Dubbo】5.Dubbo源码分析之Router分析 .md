@@ -19,5 +19,6 @@
             logger.warn("Use random available port(" + port + ") for protocol " + name);
         }
 ```
-看到上面源码想必不需要作太多说明：	<dubbo:protocol name="dubbo" port="-1"></dubbo:protocol>，修改后再次验证本地双节点启动。
+看到上面源码想必不需要作太多说明：	<dubbo:protocol name="dubbo" port="-1"></dubbo:protocol>，修改后再次验证本地双节点启动，查看zk：[zk: localhost:2181(CONNECTED) 8] ls /dubbo/com.aoe.demo.rpc.dubbo.DubboExampleI
+nterf1/providers，确实
 
