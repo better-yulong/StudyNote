@@ -32,7 +32,7 @@ AvailableClusterInvoker   AbstractClusterInvoker
         checkWheatherDestoried();
 
         LoadBalance loadbalance;
-        //基于invocation值及StaticDirectory（可理解为zk对应节点数据的抽象）
+        //基于invocation值及StaticDirectory（可理解为zk对应节点数据的抽象）获取List<Invoker<T>>，因上面有两个rpc-server节点分别发布了一个服务，故此处获
         List<Invoker<T>> invokers = list(invocation);
         if (invokers != null && invokers.size() > 0) {
             loadbalance = ExtensionLoader.getExtensionLoader(LoadBalance.class).getExtension(invokers.get(0).getUrl()
