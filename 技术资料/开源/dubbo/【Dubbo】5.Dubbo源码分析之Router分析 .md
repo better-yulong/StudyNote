@@ -32,7 +32,7 @@ AvailableClusterInvoker   AbstractClusterInvoker
         checkWheatherDestoried();
 
         LoadBalance loadbalance;
-        //基于invocation值从
+        //基于invocation值及StaticDirectory（可理解为zk对应节点数据的抽象）
         List<Invoker<T>> invokers = list(invocation);
         if (invokers != null && invokers.size() > 0) {
             loadbalance = ExtensionLoader.getExtensionLoader(LoadBalance.class).getExtension(invokers.get(0).getUrl()
