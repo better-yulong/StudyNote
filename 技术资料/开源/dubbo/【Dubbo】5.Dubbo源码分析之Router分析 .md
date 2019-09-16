@@ -23,4 +23,4 @@
 nterf1/providers，确实两个服务提供者均注册成功。
 
 ### 二.Dubbo默认Router
-未指定router配置时，默认zk中接口的providers对应服务提供者信息，consumer对应服务消费者信息，router对应路收信息（默认为空）。那么 
+未指定router配置时，默认zk中接口的providers对应服务提供者信息，consumer对应服务消费者信息，router对应路收信息（默认为空）。那么如上示例，rpc-client访问rpc-server时究竟会基于怎样的策略路径
