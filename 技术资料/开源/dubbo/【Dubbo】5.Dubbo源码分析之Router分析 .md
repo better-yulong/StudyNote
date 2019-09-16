@@ -49,7 +49,7 @@ AbstractClusterInvoker
 ```language
     //AvailableClusterInvoker类
     public Result doInvoke(Invocation invocation, List<Invoker<T>> invokers, LoadBalance loadbalance) throws RpcException {
-        //是我的幻觉吗？
+        //是我的幻觉吗？怎么感始终是使用的第一个可用的invoker实例
         for (Invoker<T> invoker : invokers) {
             if (invoker.isAvailable()) {
                 return invoker.invoke(invocation);
