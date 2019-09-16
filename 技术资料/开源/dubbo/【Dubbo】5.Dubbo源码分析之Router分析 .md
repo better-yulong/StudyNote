@@ -41,7 +41,7 @@ AvailableClusterInvoker   AbstractClusterInvoker
         } else {
             loadbalance = ExtensionLoader.getExtensionLoader(LoadBalance.class).getExtension(Constants.DEFAULT_LOADBALANCE);
         }
-       //同步
+       //同步请求是空处理；如若为异步请求则会添加invocation id至setAttachment
         RpcUtils.attachInvocationIdIfAsync(getUrl(), invocation);
         return doInvoke(invocation, invokers, loadbalance);
     }
