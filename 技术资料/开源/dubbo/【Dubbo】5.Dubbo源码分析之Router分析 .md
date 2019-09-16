@@ -19,5 +19,5 @@
             logger.warn("Use random available port(" + port + ") for protocol " + name);
         }
 ```
-看到上面源码想必不需要作
-	<dubbo:protocol name="dubbo" port="-1"></dubbo:protocol>
+看到上面源码想必不需要作太多说明：	<dubbo:protocol name="dubbo" port="-1"></dubbo:protocol>，修改后再次验证本地双节点启动。
+
