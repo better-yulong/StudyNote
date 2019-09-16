@@ -28,11 +28,11 @@ AvailableClusterInvoker   AbstractClusterInvoker
 ```language
    
     public Result invoke(final Invocation invocation) throws RpcException {
-        //检查当前
+        //检查当前invoker状态是否为invoker
         checkWheatherDestoried();
 
         LoadBalance loadbalance;
-        
+        //基于invocation值从
         List<Invoker<T>> invokers = list(invocation);
         if (invokers != null && invokers.size() > 0) {
             loadbalance = ExtensionLoader.getExtensionLoader(LoadBalance.class).getExtension(invokers.get(0).getUrl()
