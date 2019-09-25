@@ -113,6 +113,7 @@ FailoverClusterInvoker(AbstractClusterInvoker).invoke(Invocation)，该方法中
         		//重新检查一下
         		checkInvokers(copyinvokers, invocation);
         	}
+            /Random时对应RandomLoadBalance的doSelect方法
             Invoker<T> invoker = select(loadbalance, invocation, copyinvokers, invoked);
             invoked.add(invoker);
             RpcContext.getContext().setInvokers((List)invoked);
