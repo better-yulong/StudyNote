@@ -189,7 +189,8 @@ FailoverClusterInvoker(AbstractClusterInvoker).invoke(Invocation)，该方法中
 
 
 
-### yanr
+### 扩展知识点：
+#### ebt
 <dubbo:service interface="com.aoe.demo.rpc.dubbo.DubboExampleInterf1" mock="com.aoe.demo.rpc.dubbo.DubboExampleInterf1Mock" ref="dubboExampleService1" application="rpc-server"  protocol="dubbo"  version="1.0.1-aoe" group="rpc-demo"></dubbo:service>
 
 
