@@ -173,7 +173,7 @@ FailoverClusterInvoker(AbstractClusterInvoker).invoke(Invocation)，该方法中
 - 如若配置权重，则通过如上方式在总权重生成随机数之后确认获取哪个invoker对象用于系统调用；但个人感觉如若invoker节点非常多，此种方式会相对的消耗过多的CPU资源；但同时也提供一种可根据权重灵活调整负载的方法。
  
 ### 负载算法分析
-
+参考上面的Random源码，可明白在调用
 
 
 ### 扩展知识点：
