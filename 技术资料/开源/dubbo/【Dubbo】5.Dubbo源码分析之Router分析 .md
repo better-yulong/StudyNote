@@ -43,11 +43,10 @@ AbstractClusterInvoker
         }
        //同步请求是空处理；如若为异步请求则会添加invocation id至 Attachment
         RpcUtils.attachInvocationIdIfAsync(getUrl(), invocation);
-        //对应FailoverClusterInvoker的invoker方法
+        //对应FailoverClusterInvoker的doInvoke方法
         return doInvoke(invocation, invokers, loadbalance);
     }
 ```
-
 
 #### 2.1 验证负载策略
 之前为验证mock机制，DubboExampleInterf1 的实现类DubboExampleService1方法serviceProvider会sleep 20秒，以便触发服务端超时的mock机制；同时为便于验证负载分发策略，基于dubbo已提供的工具类在serviceProvider方法中打印出对应接收请求JVM的PID：String.valueOf(ConfigUtils.getPid())。请求时却发现，rpc-client第请求1次，rpc-server两个server均会接受到请求，初步推断是dubbo的失败重试策略；那么取消取serviceProvider方法的sleep逻辑，多次验证后发现基于random时当前这种验证方式也可做到两个server 均衡收到请求？额，这个就和之前代码分析时理解的有差异了。
