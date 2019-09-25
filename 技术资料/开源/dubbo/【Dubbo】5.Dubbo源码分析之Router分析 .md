@@ -191,3 +191,16 @@ FailoverClusterInvoker(AbstractClusterInvoker).invoke(Invocation)，该方法中
 
 <dubbo:service interface="com.aoe.demo.rpc.dubbo.DubboExampleInterf1" mock="com.aoe.demo.rpc.dubbo.DubboExampleInterf1Mock" ref="dubboExampleService1" application="rpc-server"  protocol="dubbo"  version="1.0.1-aoe" group="rpc-demo"></dubbo:service>
 
+
+dubbo%3A%2F%2F100.119.69.1%3A20881%2Fcom.aoe.demo.rpc.dubbo.DubboExampleInterf12
+%3Fanyhost%3Dtrue%26application%3Drpc-server%26default.timeout%3D1000%26dubbo%3D
+2.5.3%26group%3Drpc-demo%26interface%3Dcom.aoe.demo.rpc.dubbo.DubboExampleInterf
+1%26methods%3DserviceProvider%26pid%3D13880%26revision%3D0.0.1-SNAPSHOT%26side%3
+Dprovider%26timestamp%3D1569373873898%26version%3D1.0.1-aoe
+
+dubbo%3A%2F%2F100.119.69.1%3A20881%2Fcom.aoe.demo.rpc.dubbo.DubboExampleInterf1%
+3Fanyhost%3Dtrue%26application%3Drpc-server%26default.timeout%3D1000%26dubbo%3D2
+.5.3%26group%3Drpc-demo%26interface%3Dcom.aoe.demo.rpc.dubbo.DubboExampleInterf1
+%26methods%3DserviceProvider%26mock%3Dcom.aoe.demo.rpc.dubbo.DubboExampleInterf1
+Mock%26pid%3D13880%26revision%3D0.0.1-SNAPSHOT%26side%3Dprovider%26timestamp%3D1
+569373869639%26version%3D1.0.1-aoe
