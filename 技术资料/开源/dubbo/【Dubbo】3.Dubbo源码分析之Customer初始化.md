@@ -491,7 +491,8 @@ public class ReferenceBean<T> extends ReferenceConfig<T> implements FactoryBean,
                 }
                 if (registryURL != null) { // 有 注册中心协议的URL
                     // 对有注册中心的Cluster 只用 AvailableCluster
-                    URL u = registryURL.addParameter(Constants.CLUSTER_KEY, AvailableCluster.NAME); 
+                    URL u = registryURL.addParameter(Constants.CLUSTER_KEY, AvailableCluster.NAME);
+                    //根据上面的循环可知道，如若rpc-client同时 
                     invoker = cluster.join(new StaticDirectory(u, invokers));
                 }  else { // 不是 注册中心的URL
                     invoker = cluster.join(new StaticDirectory(invokers));
