@@ -43,6 +43,7 @@ AbstractClusterInvoker
         }
        //同步请求是空处理；如若为异步请求则会添加invocation id至 Attachment
         RpcUtils.attachInvocationIdIfAsync(getUrl(), invocation);
+        //对应FailoverClusterInvoker的invoker方法
         return doInvoke(invocation, invokers, loadbalance);
     }
 ```
