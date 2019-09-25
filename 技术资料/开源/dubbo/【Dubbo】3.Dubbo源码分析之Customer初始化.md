@@ -492,7 +492,7 @@ public class ReferenceBean<T> extends ReferenceConfig<T> implements FactoryBean,
                 if (registryURL != null) { // 有 注册中心协议的URL
                     // 对有注册中心的Cluster 只用 AvailableCluster
                     URL u = registryURL.addParameter(Constants.CLUSTER_KEY, AvailableCluster.NAME);
-                    //根据上面的循环可知道，如若rpc-client同时向两个zk订阅服信息，即有多个registryURL时会在上面的for循环中生成之个invoker实例，而此得join调用 
+                    //根据上面的循环可知道，如若rpc-client同时向两个zk订阅服信息，即有多个registryURL时会在上面的for循环中生成之个invoker实例，而此处即调用AvailableCluster的join方法获取第一个可用的*斜体*
                     invoker = cluster.join(new StaticDirectory(u, invokers));
                 }  else { // 不是 注册中心的URL
                     invoker = cluster.join(new StaticDirectory(invokers));
@@ -1054,3 +1054,4 @@ public class ConfiguratorFactory$Adpative implements com.alibaba.dubbo.rpc.clust
 	}
 }
 ```
+用于
