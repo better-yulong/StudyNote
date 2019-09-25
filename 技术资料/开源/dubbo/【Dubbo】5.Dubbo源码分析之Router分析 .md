@@ -169,7 +169,7 @@ FailoverClusterInvoker(AbstractClusterInvoker).invoke(Invocation)，该方法中
         return invokers.get(random.nextInt(length));
     }
 ```
-因为上面示例是同时运行两个rpc-server，且并款配置权重，会执行最后一行invokers.get(random.nextInt(length))来随机返回
+因为上面示例是同时运行两个rpc-server，且并款配置权重，会执行最后一行invokers.get(random.nextInt(length))来随机返回invokers中的其中一个（length为2），而由于
 
 
 
