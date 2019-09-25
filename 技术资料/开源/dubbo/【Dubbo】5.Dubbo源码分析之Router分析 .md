@@ -64,3 +64,90 @@ invocation参数值：
 #### 2.1 验证负载策略
 之前为验证mock机制，DubboExampleInterf1 的实现类DubboExampleService1方法serviceProvider会sleep 20秒，以便触发服务端超时的mock机制；同时为便于验证负载分发策略，基于dubbo已提供的工具类在serviceProvider方法中打印出对应接收请求JVM的PID：String.valueOf(ConfigUtils.getPid())。请求时却发现，rpc-client第请求1次，rpc-server两个server均会接受到请求，初步推断是dubbo的失败重试策略；那么取消取serviceProvider方法的sleep逻辑，多次验证后发现基于random时当前这种验证方式也可做到两个server 均衡收到请求？额，这个就和之前代码分析时理解的有差异了。
 ##### 2.1.1 Random负载
+- 1 个rpc-client server，2 个rpc-server实例（通过<dubbo:protocol name="dubbo" port="-1"></dubbo:protocol>可使用随机端口发布dubbo服务，可用于同一台服务器同时运行多个dubbo server而避免出现端口占用）
+- 服务端接口实现类方法部分代码：
+```language
+	List serviceNames = new ArrayList<String>();
+	serviceNames.add("DubboExampleService1:" + String.valueOf(ConfigUtils.getPid()));
+	return serviceNames ;
+```
+- 响应结果：
+```language
+DubboExampleService1 result:DubboExampleService1:10820
+DubboExampleService1 result:DubboExampleService1:8220
+DubboExampleService1 result:DubboExampleService1:8220
+DubboExampleService1 result:DubboExampleService1:8220
+DubboExampleService1 result:DubboExampleService1:10820
+DubboExampleService1 result:DubboExampleService1:10820
+DubboExampleService1 result:DubboExampleService1:10820
+DubboExampleService1 result:DubboExampleService1:10820
+DubboExampleService1 result:DubboExampleService1:8220
+DubboExampleService1 result:DubboExampleService1:8220
+DubboExampleService1 result:DubboExampleService1:8220
+DubboExampleService1 result:DubboExampleService1:10820
+DubboExampleService1 result:DubboExampleService1:10820
+DubboExampleService1 result:DubboExampleService1:8220
+```
+整体来看，2个rpc-server几乎上各占50%，那具体请求是如何分发的呢？
+FailoverClusterInvoker(AbstractClusterInvoker).invoke(Invocation)，该方法中会确认loadbalance方式，若为指定则默认使用Random方式，之后则调用 FailoverClusterInvoker.doInvoke(Invocation, List<Invoker<T>>, LoadBalance)：
+```language
+       @SuppressWarnings({ "unchecked", "rawtypes" })
+    public Result doInvoke(Invocation invocation, final List<Invoker<T>> invokers, LoadBalance loadbalance) throws RpcException {
+    	List<Invoker<T>> copyinvokers = invokers;
+    	checkInvokers(copyinvokers, invocation);
+        //获取retry重试配置，如若示配置则默认为3；如若为负，则设置为1即不重试。
+        int len = getUrl().getMethodParameter(invocation.getMethodName(), Constants.RETRIES_KEY, Constants.DEFAULT_RETRIES) + 1;
+        if (len <= 0) {
+            len = 1;
+        }
+        // retry loop.
+        RpcException le = null; // last exception.
+        List<Invoker<T>> invoked = new ArrayList<Invoker<T>>(copyinvokers.size()); // invoked invokers.
+        Set<String> providers = new HashSet<String>(len);
+        for (int i = 0; i < len; i++) {
+        	//重试时，进行重新选择，避免重试时invoker列表已发生变化.
+        	//注意：如果列表发生了变化，那么invoked判断会失效，因为invoker示例已经改变
+        	if (i > 0) {
+        		checkWheatherDestoried();
+        		copyinvokers = list(invocation);
+        		//重新检查一下
+        		checkInvokers(copyinvokers, invocation);
+        	}
+            Invoker<T> invoker = select(loadbalance, invocation, copyinvokers, invoked);
+            invoked.add(invoker);
+            RpcContext.getContext().setInvokers((List)invoked);
+            try {
+                Result result = invoker.invoke(invocation);
+                if (le != null && logger.isWarnEnabled()) {
+                    logger.warn("Although retry the method " + invocation.getMethodName()
+                            + " in the service " + getInterface().getName()
+                            + " was successful by the provider " + invoker.getUrl().getAddress()
+                            + ", but there have been failed providers " + providers 
+                            + " (" + providers.size() + "/" + copyinvokers.size()
+                            + ") from the registry " + directory.getUrl().getAddress()
+                            + " on the consumer " + NetUtils.getLocalHost()
+                            + " using the dubbo version " + Version.getVersion() + ". Last error is: "
+                            + le.getMessage(), le);
+                }
+                return result;
+            } catch (RpcException e) {
+                if (e.isBiz()) { // biz exception.
+                    throw e;
+                }
+                le = e;
+            } catch (Throwable e) {
+                le = new RpcException(e.getMessage(), e);
+            } finally {
+                providers.add(invoker.getUrl().getAddress());
+            }
+        }
+        throw new RpcException(le != null ? le.getCode() : 0, "Failed to invoke the method "
+                + invocation.getMethodName() + " in the service " + getInterface().getName() 
+                + ". Tried " + len + " times of the providers " + providers 
+                + " (" + providers.size() + "/" + copyinvokers.size() 
+                + ") from the registry " + directory.getUrl().getAddress()
+                + " on the consumer " + NetUtils.getLocalHost() + " using the dubbo version "
+                + Version.getVersion() + ". Last error is: "
+                + (le != null ? le.getMessage() : ""), le != null && le.getCause() != null ? le.getCause() : le);
+    }
+```
