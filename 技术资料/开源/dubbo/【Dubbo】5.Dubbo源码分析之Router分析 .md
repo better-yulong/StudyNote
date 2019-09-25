@@ -140,8 +140,6 @@ FailoverClusterInvoker(AbstractClusterInvoker).invoke(Invocation)，该方法中
     }
 ```
 
-
-
 ```language
     //RandomLoadBalance类
     protected <T> Invoker<T> doSelect(List<Invoker<T>> invokers, URL url, Invocation invocation) {
