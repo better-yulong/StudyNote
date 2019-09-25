@@ -172,6 +172,8 @@ FailoverClusterInvoker(AbstractClusterInvoker).invoke(Invocation)，该方法中
 - 因为上面示例是同时运行两个rpc-server，且并款配置权重，会执行最后一行invokers.get(random.nextInt(length))来随机返回invokers中的其中一个（length为2），而由于此处的random为java.util.Random，实际可认为是为随机算法，即在0、1两个数字之间生成的随机实际也是均匀分布的；通过这种方式来实现整体均衡。
 - 如若配置权重，则通过如上方式在总权重生成随机数之后确认获取哪个invoker对象用于系统调用；但个人感觉如若invoker节点非常多，此种方式会相对的消耗过多的CPU资源；但同时也提供一种可根据权重灵活调整负载的方法。
  
+### 负载算法分析
+
 
 
 ### 扩展知识点：
