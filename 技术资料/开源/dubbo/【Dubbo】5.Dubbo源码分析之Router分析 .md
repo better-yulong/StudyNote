@@ -48,21 +48,11 @@ AbstractClusterInvoker
 ```
 ```language
     //AvailableClusterInvoker类
-    public Result doInvoke(Invocation invocation, List<Invoker<T>> invokers, LoadBalance loadbalance) throws RpcException {
-        //是我的幻觉吗？怎么感始终是使用的第一个可用的invoker实例（后台调试发现，如若rpc-client同时各两个zk去订阅服务信息，此处会获取第一个可用的invoker)
-        for (Invoker<T> invoker : invokers) {
-            if (invoker.isAvailable()) {
-                return invoker.invoke(invocation);
-            }
-        }
-        throw new RpcException("No provider available in " + invokers);
-    }
-
+   //如若rpc-client同时各两个zk去订阅服务信息，此处会获取第一个可用的invoker
     public <T> Invoker<T> join(Directory<T> directory) throws RpcException {
         
         return new AbstractClusterInvoker<T>(directory) {
             public Result doInvoke(Invocation invocation, List<Invoker<T>> invokers, LoadBalance loadbalance) throws RpcException {
- 
                 for (Invoker<T> invoker : invokers) {
                     if (invoker.isAvailable()) {
                         return invoker.invoke(invocation);
