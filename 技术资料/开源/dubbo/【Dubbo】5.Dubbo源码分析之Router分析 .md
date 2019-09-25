@@ -190,7 +190,7 @@ FailoverClusterInvoker(AbstractClusterInvoker).invoke(Invocation)，该方法中
 
 
 ### 扩展知识点：
-#### 服务提供者配置Mock时会同步在zk的/dubbo/
+#### 服务提供者配置Mock时会同时在zk的/dubbo/com.aoe.demo.rpc.dubbo.DubboExampleInterf1/providers中注册两个provider，即两个服务提供者，具体如下（）：
 <dubbo:service interface="com.aoe.demo.rpc.dubbo.DubboExampleInterf1" mock="com.aoe.demo.rpc.dubbo.DubboExampleInterf1Mock" ref="dubboExampleService1" application="rpc-server"  protocol="dubbo"  version="1.0.1-aoe" group="rpc-demo"></dubbo:service>
 
 
