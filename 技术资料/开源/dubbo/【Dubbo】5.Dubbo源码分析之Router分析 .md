@@ -169,7 +169,7 @@ FailoverClusterInvoker(AbstractClusterInvoker).invoke(Invocation)，该方法中
         return invokers.get(random.nextInt(length));
     }
 ```
-因为上面示例是同时运行两个rpc-server，且并款配置权重，会执行最后一行invokers.get(random.nextInt(length))来随机返回invokers中的其中一个（length为2），而由于此处的random为java.util.Random，实际可认为是为随机算法，即在0、1两个数字之间生成的随机实际也是均匀分布的；通过这种方式来实现整体均衡。
+- 因为上面示例是同时运行两个rpc-server，且并款配置权重，会执行最后一行invokers.get(random.nextInt(length))来随机返回invokers中的其中一个（length为2），而由于此处的random为java.util.Random，实际可认为是为随机算法，即在0、1两个数字之间生成的随机实际也是均匀分布的；通过这种方式来实现整体均衡。
 
 
 
