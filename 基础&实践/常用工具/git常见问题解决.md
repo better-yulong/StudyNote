@@ -48,3 +48,7 @@ git clean -nxfd
 git clean -nf
 git clean -nfd
 
+5. git放弃修改，强制覆盖本地代码
+
+
+6. 
