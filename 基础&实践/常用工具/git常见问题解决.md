@@ -48,7 +48,7 @@ git clean -nxfd
 git clean -nf
 git clean -nfd
 
-5. git放弃修改，强制覆盖本地代码
+5. git pull和git fetch的区别
 
 
 6. 
