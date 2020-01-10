@@ -49,6 +49,7 @@ git clean -nf
 git clean -nfd
 
 5. git pull和git fetch的区别
+https://www.cnblogs.com/jing-tian/p/11154485.html
 
-
-6. 
+6.放弃本地修改，强制回退
+https://blog.csdn.net/sayyy/article/details/83895698
