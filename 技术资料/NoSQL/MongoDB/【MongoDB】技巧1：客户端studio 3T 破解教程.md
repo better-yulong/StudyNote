@@ -3,12 +3,13 @@ MongoDB客户端 Studio 3T破解方法（方法一注册表方式验证OK): http
 
 
 - 问题1：
-  <plugin>
+```  
+<plugin>
         <groupId>com.github.veithen.alta</groupId>
         <artifactId>alta-maven-plugin</artifactId>
         <version>0.6.2</version>
         <executions>
-          <execution> 
+          <execution> <!--此处报错：unpack should be executed after packaging: see MDEP-98.-->
             <goals>
               <goal>generate-test-resources</goal>
             </goals>
@@ -23,3 +24,5 @@ MongoDB客户端 Studio 3T破解方法（方法一注册表方式验证OK): http
         </executions>
       </plugin>
       <plugin>
+
+```
