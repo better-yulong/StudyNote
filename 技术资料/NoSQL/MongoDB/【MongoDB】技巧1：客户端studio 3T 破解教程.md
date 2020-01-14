@@ -5,11 +5,10 @@ MongoDB客户端 Studio 3T破解方法（方法一注册表方式验证OK): http
 非常多的工程java文件提示报错，诸如找不到如下类：
 ```
 	import io.netty.util.collection.IntObjectHashMap;
-import io.netty.util.collection.IntObjectMap;
-import io.netty.util.collection.IntObjectMap.PrimitiveEntry;
-
+	import io.netty.util.collection.IntObjectMap;
+	import io.netty.util.collection.IntObjectMap.PrimitiveEntry;
 ```
-
+经发现，整个netty源码工程还真找不到collection包及相关java类，后续了解到实际该类由 netty-common编译时基于动态生成
 - 问题2：
 ```  
 <plugin>
