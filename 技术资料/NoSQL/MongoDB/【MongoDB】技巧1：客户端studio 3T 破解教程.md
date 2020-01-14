@@ -10,7 +10,7 @@ MongoDB客户端 Studio 3T破解方法（方法一注册表方式验证OK): http
 ```
 经发现，整个netty源码工程还真找不到collection包及相关java类，后续了解到实际该类由 netty-common编译时基于groovy-maven-plugin动态生成。于是先行尝试编译构造mvn install common工程，但发现common工程源码报错.
 - 问题2：common 工程报错：Plugin execution not covered by lifecycle configuration
-查询研究许久，最终发现并不需处理，mvn install common工程成功，
+查询研究许久，最终发现并不需处理，mvn install common工程成功。编译成功后target目录的classes目录下会生成io.netty.util.collection 包缺失
 
 - 问题2：
 ```  
