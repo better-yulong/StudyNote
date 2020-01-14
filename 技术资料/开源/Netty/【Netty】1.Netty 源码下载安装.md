@@ -1,4 +1,4 @@
-尝试下载netty源码在Win10环境下导入eclipse学习，但未成功编译生成 io.netty.util.collection 对应的java类及class文件，于是切换至CentOS8，问题解决通过。github源码
+尝试下载netty源码在Win10环境下导入eclipse学习，但未成功编译生成 io.netty.util.collection 对应的java类及class文件，于是切换至CentOS8，问题解决通过。修改及编译后的源码 github：https://github.com/better-yulong/netty.git 。其中common的target目录下有编译生成 io.netty.util.collection 对应的java类及class文件。
 
 - 问题1：
 非常多的工程java文件提示报错，诸如找不到如下类：
@@ -7,7 +7,7 @@
 	import io.netty.util.collection.IntObjectMap;
 	import io.netty.util.collection.IntObjectMap.PrimitiveEntry;
 ```
-经发现，整个netty源码工程还真找不到collection包及相关java类，后续了解到实际该类由 netty-common编译时基于groovy-maven-plugin动态生成。于是先行尝试编译构造mvn install common工程，但发现common工程源码报错.
+经发现，整个netty源码工程还真找不到collection包及相关java类，后续了解到实际该类由 netty-common编译时基于groovy-maven-plugin动态生成。于是先行尝试编译构造mvn install common工程，但发现common工程源码报错。此处为netty的一种技巧性操作，即基于
 - 问题2：common 工程报错：Plugin execution not covered by lifecycle configuration
 查询研究许久，最终发现并不需处理，mvn install common工程成功。编译成功后target目录的classes目录下会生成io.netty.util.collection 包缺失各类的class文件。
 
