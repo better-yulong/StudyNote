@@ -8,7 +8,7 @@ MongoDB客户端 Studio 3T破解方法（方法一注册表方式验证OK): http
 	import io.netty.util.collection.IntObjectMap;
 	import io.netty.util.collection.IntObjectMap.PrimitiveEntry;
 ```
-经发现，整个netty源码工程还真找不到collection包及相关java类，后续了解到实际该类由 netty-common编译时基于动态生成
+经发现，整个netty源码工程还真找不到collection包及相关java类，后续了解到实际该类由 netty-common编译时基于groovy-maven-plugin动态生成。于是先行尝试编译构造mvn install common工程，但common工程源码报错
 - 问题2：
 ```  
 <plugin>
