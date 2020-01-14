@@ -57,4 +57,4 @@ bio 模式下将最大线程数不断调大，直到打满 CPU，这种情况和
 
 鄙人的新书《Tomcat内核设计剖析》已经在京东销售了，有需要的朋友可以购买。感谢各位朋友。
 
-- 参考
+- 其他：https://cloud.tencent.com/developer/article/1488086
