@@ -1,4 +1,4 @@
-
+尝试下载netty源码在Win10环境下导入eclipse学习，但未成功编译生成如下
 - 问题1：
 非常多的工程java文件提示报错，诸如找不到如下类：
 ```
@@ -10,7 +10,7 @@
 - 问题2：common 工程报错：Plugin execution not covered by lifecycle configuration
 查询研究许久，最终发现并不需处理，mvn install common工程成功。编译成功后target目录的classes目录下会生成io.netty.util.collection 包缺失各类的class文件。
 
-- 问题2：
+- 问题3：
 ```  
 <plugin>
         <groupId>com.github.veithen.alta</groupId>
