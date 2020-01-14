@@ -1,4 +1,5 @@
-尝试下载netty源码在Win10环境下导入eclipse学习，但未成功编译生成如下
+尝试下载netty源码在Win10环境下导入eclipse学习，但未成功编译生成 io.netty.util.collection 对应的java类及class文件，于是切换至CentOS8，问题解决通过。github源码
+
 - 问题1：
 非常多的工程java文件提示报错，诸如找不到如下类：
 ```
