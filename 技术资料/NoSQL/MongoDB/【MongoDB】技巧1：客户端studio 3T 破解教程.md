@@ -1,8 +1,9 @@
 MongoDB客户端 Studio 3T破解方法（方法一注册表方式验证OK): https://www.jianshu.com/p/7257f15e2620
 
 
+问题1：
 
-- 问题1：
+- 问题2：
 ```  
 <plugin>
         <groupId>com.github.veithen.alta</groupId>
@@ -26,4 +27,4 @@ MongoDB客户端 Studio 3T破解方法（方法一注册表方式验证OK): http
       <plugin>
 
 ```
-解决办法：查询了许久资料，结果是在execution 之后输入一个空格，保存错误即自动消失。见Dubbohttps://my.oschina.net/z201/blog/745405?utm_source=debugrun&utm_medium=referral
+解决办法：查询了许久资料，结果是在execution 之后输入一个空格，保存错误即自动消失。见Dubbo报错处理：https://my.oschina.net/z201/blog/745405?utm_source=debugrun&utm_medium=referral
