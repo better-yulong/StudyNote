@@ -2,6 +2,13 @@ MongoDB客户端 Studio 3T破解方法（方法一注册表方式验证OK): http
 
 
 问题1：
+非常多的工程java文件提示报错，诸如找不到如下类：
+```
+	import io.netty.util.collection.IntObjectHashMap;
+import io.netty.util.collection.IntObjectMap;
+import io.netty.util.collection.IntObjectMap.PrimitiveEntry;
+
+```
 
 - 问题2：
 ```  
