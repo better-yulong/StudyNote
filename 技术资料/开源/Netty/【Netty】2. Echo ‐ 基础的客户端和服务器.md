@@ -299,11 +299,11 @@ public final class EchoClient {
     }
 }
 ```
-
+原示例比较简单，仅输入连接
 ### 运行结果（Run as Application)
 #### Client端日志
- * 上面代码添加 p.addLast(new LoggingHandler(LogLevel.INFO));发起请求方可打印如下详细日志：
- *
+``` 
+上面代码添加 p.addLast(new LoggingHandler(LogLevel.INFO));发起请求方可打印如下详细日志：
 15:53:34.586 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0x603c24e3] REGISTERED
 15:53:34.588 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0x603c24e3] CONNECT: /127.0.0.1:8007
 15:53:34.591 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0x603c24e3, L:/127.0.0.1:58166 - R:/127.0.0.1:8007] ACTIVE
@@ -317,9 +317,12 @@ public final class EchoClient {
 15:53:34.598 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0x603c24e3, L:/127.0.0.1:58166 - R:/127.0.0.1:8007] CLOSE
 15:53:34.598 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0x603c24e3, L:/127.0.0.1:58166 ! R:/127.0.0.1:8007] INACTIVE
 15:53:34.598 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0x603c24e3, L:/127.0.0.1:58166 ! R:/127.0.0.1:8007] UNREGISTERED
+
+```
+
 #### Server端日志
 ```
-客户端请求后服务接收到“Hello, Netty”日志如下：
+上面代码添加 p.addLast(new LoggingHandler(LogLevel.INFO));客户端请求后服务接收到“Hello, Netty”日志如下：
 18:17:02.052 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0xcf89a579] REGISTERED
 18:17:02.055 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0xcf89a579] BIND: 0.0.0.0/0.0.0.0:8007
 18:17:02.057 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0xcf89a579, L:/0:0:0:0:0:0:0:0:8007] ACTIVE
