@@ -299,7 +299,7 @@ public final class EchoClient {
     }
 }
 ```
-原示例比较简单，请求时内部不友好，修改后Client发送"Hello, Netty",Server端接收后打印，故EchoClientHandler、EchoServerHandler 做两点调整（见注释://fix001-start-byron）：1.EchoClientHandler构造方法的firstMessage 调整为指定出字符串"Hello, Netty"; 2.EchoServerHandler channelRead 
+原示例比较简单，请求时内部不友好，修改后Client发送"Hello, Netty",Server端接收后打印，故EchoClientHandler、EchoServerHandler 做两点调整（见注释://fix001-start-byron）：1.EchoClientHandler构造方法的firstMessage 调整为指定出字符串"Hello, Netty"; 2.EchoServerHandler channelRead调整原直接write为转换成String输出；3.EchoClient、EchoServer添加p.addLast(new LoggingHandler(LogLevel.INFO))用于输出详细日志。
 
 ### 运行结果（Run as Application)
 #### Client端日志
