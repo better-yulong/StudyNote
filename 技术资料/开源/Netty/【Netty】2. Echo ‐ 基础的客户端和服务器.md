@@ -299,7 +299,8 @@ public final class EchoClient {
     }
 }
 ```
-原示例比较简单，请求时内部不友好，修改后Client发送"Hello, Netty",eb
+原示例比较简单，请求时内部不友好，修改后Client发送"Hello, Netty",Server端接收后打印，故EchoClientHandler、EchoServerHandler 做两点调整：
+
 ### 运行结果（Run as Application)
 #### Client端日志
 ``` 
