@@ -1,4 +1,4 @@
-启动实例化，通过如下代码实例化多个数据源并作为dynamicDataSource 注入到Sring容器；同时实例化SqlSessionFactory 时使用包含多个数据源的动态数据源实例，以便于之后运行时getConnection
+启动实例化，通过如下代码实例化多个数据源并作为dynamicDataSource 注入到Sring容器；同时实例化SqlSessionFactory 时使用包含多个数据源的动态数据源实例，以便于之后运行时getConnection时可动态从多个数据源中动态选择。
 ```
 	 */
 	@Bean(name = "dynamicDataSource")
@@ -45,6 +45,7 @@
 
 ```
 
+运行时，某个mybatis的select查询栈信息,getConnection时根据:
 ```
     DynamicDataSource(AbstractRoutingDataSource).determineTargetDataSource() line: 204	--- Spring提供AbstractRoutingDataSource 动态根据determineCurrentLookupKey值获取数据源
 	DynamicDataSource.determineCurrentLookupKey() line: 17	 -- 获取自定义数据源key
