@@ -37,6 +37,7 @@
 ```
 解决办法：查询了许久资料，结果是在execution 之后输入一个空格，保存错误即自动消失。见Dubbo报错处理：https://my.oschina.net/z201/blog/745405?utm_source=debugrun&utm_medium=referral
 
-最终基于CentOS8、Oracle JDK8、Maven、Eclipse 4.14.0
+最终基于CentOS8、Oracle JDK8、Maven 3.6.3、Eclipse 4.14.0 完成Netty本地源码环境的导入，那怎么看源码呢？
+
 - 参考1：《Netty官方文档》设置开发环境（请注意：这个指南并不是用户指南，它是开发 Netty 本身的指南，而不是使用Netty 开发其他程序的指南）：https://yq.aliyun.com/articles/85340
 - 参考2：Netty 分享之动态生成重复性的代码: https://www.jianshu.com/p/9160684f134b
