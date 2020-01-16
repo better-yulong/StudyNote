@@ -45,7 +45,7 @@
 
 ```
 
-运行时，某个mybatis的select查询栈信息,getConnection时根据:
+运行时，某个mybatis的select查询栈信息:
 ```
     DynamicDataSource(AbstractRoutingDataSource).determineTargetDataSource() line: 204	--- Spring提供AbstractRoutingDataSource 动态根据determineCurrentLookupKey值获取数据源
 	DynamicDataSource.determineCurrentLookupKey() line: 17	 -- 获取自定义数据源key
@@ -80,17 +80,17 @@
 	LoginServiceImpl.merchantLogin(LoginDto) line: 59
 
 ```
-	
+getConnection时根据各方法动态指定的index下标来
 
 
 
 
-
+```
 public class DynamicDataSource extends AbstractRoutingDataSource {
 	
 	@Override
 	protected Object determineCurrentLookupKey() {
-		return CountryCodeHolder.getCountryCode().toLowerCase() + "DataSource";
+		return "DataSource" + DBHolder.getIndex;
 	}
 }
 
@@ -107,5 +107,8 @@ Spring提供AbstractRoutingDataSource 用于数据源路由扩展determineTarget
 		}
 		return dataSource;
 	}
+
+```
+
 
 
