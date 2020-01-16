@@ -1,5 +1,4 @@
-启动实例化，通过如下代码实例化多个数据源并作为dynamicDataSource 
-
+启动实例化，通过如下代码实例化多个数据源并作为dynamicDataSource 注入到Sring容器；同时实例化SqlSessionFactory 时使用包含多个数据源的动态数据源实例，以便于之后运行时getConnection
 ```
 	 */
 	@Bean(name = "dynamicDataSource")
