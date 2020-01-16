@@ -300,10 +300,11 @@ public final class EchoClient {
 }
 ```
 
+### 运行结果（Run as Application)
 
-
-
-> 客户端请求后服务接收到“Hello, Netty”日志如下：
+#### Server端日志
+```
+客户端请求后服务接收到“Hello, Netty”日志如下：
 18:17:02.052 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0xcf89a579] REGISTERED
 18:17:02.055 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0xcf89a579] BIND: 0.0.0.0/0.0.0.0:8007
 18:17:02.057 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0xcf89a579, L:/0:0:0:0:0:0:0:0:8007] ACTIVE
@@ -331,4 +332,5 @@ Server received：Hello, Netty
 18:17:13.259 [nioEventLoopGroup-3-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0xd149e4f5, L:/127.0.0.1:8007 ! R:/127.0.0.1:58220] INACTIVE
 18:17:13.259 [nioEventLoopGroup-3-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0xd149e4f5, L:/127.0.0.1:8007 ! R:/127.0.0.1:58220] UNREGISTERED
 
+```
 
