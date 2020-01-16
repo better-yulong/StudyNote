@@ -80,11 +80,7 @@
 	LoginServiceImpl.merchantLogin(LoginDto) line: 59
 
 ```
-getConnection时根据各方法动态指定的index下标来
-
-
-
-
+getConnection时根据各方法动态指定的index下标来动态获取数据源对应的connection
 ```
 public class DynamicDataSource extends AbstractRoutingDataSource {
 	
