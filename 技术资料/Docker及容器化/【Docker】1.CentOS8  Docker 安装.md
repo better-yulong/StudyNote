@@ -74,3 +74,14 @@ pcp-pmda-docker.x86_64                           4.3.0-3.el8                    
 containerd.io.x86_64                                 1.2.0-3.el7 
 ```
 各种尝试 yum install containerd.io-1.2.2-3.el7.x86_64或者及上面提示的dnf --nobest均无解，无奈决定手动下载 containerd.io-1.2.2-3.el7.x86_64.rpm  安装。
+
+
+
+[root@localhost rpm]# rpm -ihv containerd.io-1.2.2-3.el7.x86_64.rpm 
+警告：containerd.io-1.2.2-3.el7.x86_64.rpm: 头V4 RSA/SHA512 Signature, 密钥 ID 621e9f35: NOKEY
+错误：依赖检测失败：
+	runc 与 containerd.io-1.2.2-3.el7.x86_64 冲突
+	runc 被 containerd.io-1.2.2-3.el7.x86_64 取代
+
+
+
