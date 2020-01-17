@@ -68,8 +68,9 @@ pcp-pmda-docker.x86_64                           4.3.0-3.el8                    
   - package containerd.io-1.2.6-3.3.el7.x86_64 is excluded
 (尝试添加 '--skip-broken' 来跳过无法安装的软件包 或 '--nobest' 来不只使用最佳选择的软件包)
 ```
-而通过发现默认适配的版本是1.2.0
+而通过发现默认适配最优的版本是1.2.0
 ```language
 [root@localhost ~]# yum list|grep containerd.io
 containerd.io.x86_64                                 1.2.0-3.el7 
 ```
+containerd.io-1.2.2-3.el7.x86_64
