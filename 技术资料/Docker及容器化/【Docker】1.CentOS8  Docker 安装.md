@@ -52,6 +52,5 @@ pcp-pmda-docker.x86_64                           4.3.0-3.el8                    
 ```
 [root@localhost ~]# yum-config-manager --add-repo  https://download.docker.com/linux/centos/docker-ce.repo
 添加仓库自：https://download.docker.com/linux/centos/docker-ce.repo
-
 ```
 ##### 3.3 安装 Docker Engine-Community
