@@ -12,7 +12,9 @@
 pcp-pmda-docker.x86_64                           4.3.0-3.el8                                            @AppStream
 
 ```
+不太明白  pcp-pmda-docker作用，百度发现其还有类似 pcp-pmda-ngix，貌似用于docker容器运行监控，暂时忽略，初步来看当前环境应该没有安装docker。
 
-不太明白  pcp-pmda-docker作用，百度发现其还有类似 pcp-pmda-ngix，貌似用于docker容器运行监控，暂时忽略。目前来看
-
-#### 3. 卸载旧版本
+#### 3. 安装 Docker Engine-Community
+在新主机上首次安装 Docker Engine-Community 之前，需要设置 Docker 仓库。之后，您可以从仓库安装和更新 Docker。
+- 设置仓库
+安装所需的软件包。yum-utils 提供了 yum-config-manager ，并且 device mapper 存储驱动程序需要 device-mapper-persistent-data 和 lvm2。
