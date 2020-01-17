@@ -18,3 +18,10 @@ pcp-pmda-docker.x86_64                           4.3.0-3.el8                    
 在新主机上首次安装 Docker Engine-Community 之前，需要设置 Docker 仓库。之后，您可以从仓库安装和更新 Docker。
 - 设置仓库
 安装所需的软件包。yum-utils 提供了 yum-config-manager ，并且 device mapper 存储驱动程序需要 device-mapper-persistent-data 和 lvm2。
+```language
+yum install -y yum-utils   device-mapper-persistent-data  lvm2
+上次元数据过期检查：5:45:29 前，执行于 2020年01月17日 星期五 10时14分32秒。
+Package device-mapper-persistent-data-0.7.6-1.el8.x86_64 is already installed.
+Package lvm2-8:2.03.02-6.el8.x86_64 is already installed.
+
+```
