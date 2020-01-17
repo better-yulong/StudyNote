@@ -17,7 +17,7 @@ pcp-pmda-docker.x86_64                           4.3.0-3.el8                    
 
 #### 3. 安装 Docker Engine-Community
 在新主机上首次安装 Docker Engine-Community 之前，需要设置 Docker 仓库。之后，您可以从仓库安装和更新 Docker。
-- 设置仓库
+##### 3.1 安装所需的软件包
 安装所需的软件包。yum-utils 提供了 yum-config-manager ，并且 device mapper 存储驱动程序需要 device-mapper-persistent-data 和 lvm2。
 ```language
 	[root@localhost ~]# yum install -y yum-utils   device-mapper-persistent-data  lvm2
@@ -47,6 +47,11 @@ pcp-pmda-docker.x86_64                           4.3.0-3.el8                    
 > 多次执行 sudo dnf install python2 终于安装python2.7成功（先尝试yum install python2多次报超时；故切换成dnf命令安装 ，另外默认安装的python版本即为2.7.3，也不用担心python2安装成其他低版本）
 - 多次yum install  yum-utils，也多次报Timeout，可能也因为依赖国外镜像网络不稳定相关。切换成 dnf install yum-utils 瞬间就OK了。
 
-- 使用以下命令来设置稳定的仓库。
+##### 3.2设置仓库 
+使用以下命令来设置稳定的仓库。
+```
 [root@localhost ~]# yum-config-manager --add-repo  https://download.docker.com/linux/centos/docker-ce.repo
 添加仓库自：https://download.docker.com/linux/centos/docker-ce.repo
+
+```
+
