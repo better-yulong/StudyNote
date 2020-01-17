@@ -97,6 +97,8 @@ Verifying...                          ################################# [100%]
    1:containerd.io-1.2.2-3.el7        ################################# [100%]
 
 ```
-
-
+之后再次尝试安装docker相关包（同样，网络不稳定，需尝试安装多次）：
+```language
+[root@localhost rpm]# dnf install docker-ce docker-ce-cli
+```
 
