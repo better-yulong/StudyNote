@@ -42,7 +42,7 @@ pcp-pmda-docker.x86_64                           4.3.0-3.el8                    
   conflicting requests
 
 ```
-从报错提示来看，yum-utils
+从报错提示来看，yum-utils 安装时与python版本可能存在
 
 sudo dnf install python2
 
