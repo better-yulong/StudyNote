@@ -73,4 +73,4 @@ pcp-pmda-docker.x86_64                           4.3.0-3.el8                    
 [root@localhost ~]# yum list|grep containerd.io
 containerd.io.x86_64                                 1.2.0-3.el7 
 ```
-yum install containerd.io-1.2.2-3.el7.x86_64
+yum install containerd.io-1.2.2-3.el7.x86_64或者使用上面提示的dnf --nobest均无解，无奈决定手动下载 containerd.io-1.2.2-3.el7.x86_64.rpm  安装。
