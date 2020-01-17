@@ -44,6 +44,10 @@ pcp-pmda-docker.x86_64                           4.3.0-3.el8                    
 ```
 从报错提示来看，yum-utils
 
+sudo dnf install python2
+
+
+
 
 
 http://rpmfind.net/linux/rpm2html/search.php?query=yum-utils&system=centos
