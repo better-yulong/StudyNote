@@ -23,6 +23,22 @@ pcp-pmda-docker.x86_64                           4.3.0-3.el8                    
 	上次元数据过期检查：5:45:29 前，执行于 2020年01月17日 星期五 10时14分32秒。
 	Package device-mapper-persistent-data-0.7.6-1.el8.x86_64 is already installed.
 	Package lvm2-8:2.03.02-6.el8.x86_64 is already installed.
+        问题: package python3-dnf-plugins-core-4.0.8-3.el8.noarch requires python3-hawkey >= 0.34.0, but none of the providers can be installed
+  - package python3-hawkey-0.35.1-8.el8.x86_64 requires libsolv.so.1()(64bit), but none of the providers can be installed
+  - package python3-hawkey-0.35.1-8.el8.x86_64 requires libsolvext.so.1()(64bit), but none of the providers can be installed
+  - package python3-hawkey-0.35.1-8.el8.x86_64 requires libsolv.so.1(SOLV_1.0)(64bit), but none of the providers can be installed
+  - package python3-hawkey-0.35.1-8.el8.x86_64 requires libsolvext.so.1(SOLV_1.0)(64bit), but none of the providers can be installed
+  - package python3-hawkey-0.35.1-9.el8_1.x86_64 requires libsolv.so.1()(64bit), but none of the providers can be installed
+  - package python3-hawkey-0.35.1-9.el8_1.x86_64 requires libsolvext.so.1()(64bit), but none of the providers can be installed
+  - package python3-hawkey-0.35.1-9.el8_1.x86_64 requires libsolv.so.1(SOLV_1.0)(64bit), but none of the providers can be installed
+  - package python3-hawkey-0.35.1-9.el8_1.x86_64 requires libsolvext.so.1(SOLV_1.0)(64bit), but none of the providers can be installed
+  - cannot install both libsolv-0.7.4-3.el8.x86_64 and libsolv-0.6.35-6.el8.x86_64  -- 即此处版本冲突
+  - problem with installed package rpm-ostree-libs-2018.8-2.el8.0.1.x86_64
+  - package rpm-ostree-libs-2018.8-2.el8.0.1.x86_64 requires libsolv.so.0()(64bit), but none of the providers can be installed
+  - package rpm-ostree-libs-2018.8-2.el8.0.1.x86_64 requires libsolv.so.0(SOLV_1.0)(64bit), but none of the providers can be installed
+  - package dnf-plugins-core-4.0.8-3.el8.noarch requires python3-dnf-plugins-core = 4.0.8-3.el8, but none of the providers can be installed
+  - package yum-utils-4.0.8-3.el8.noarch requires dnf-plugins-core = 4.0.8-3.el8, but none of the providers can be installed
+  - conflicting requests
 
 ```
 运行报错提示
