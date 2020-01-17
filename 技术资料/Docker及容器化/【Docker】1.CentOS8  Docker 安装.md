@@ -1,6 +1,7 @@
 参考资料：Docker教程： https://www.runoob.com/docker/centos-docker-install.html
 
-- Docker 支持以下的 64 位 CentOS 版本：CentOS 7CentOS 8 或 更高版本...
+### 一. 环境准备及检查
+1. Docker 支持以下的 64 位 CentOS 版本：CentOS 7CentOS 8 或 更高版本...
  centos-extras 库必须启用。默认情况下，此仓库是启用的，但是如果已禁用它，则需要重新启用它。建议使用 overlay2 存储驱动程序。
 
 - 卸载旧版本
