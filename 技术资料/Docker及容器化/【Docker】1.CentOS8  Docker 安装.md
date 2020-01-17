@@ -54,3 +54,17 @@ pcp-pmda-docker.x86_64                           4.3.0-3.el8                    
 添加仓库自：https://download.docker.com/linux/centos/docker-ce.repo
 ```
 ##### 3.3 安装 Docker Engine-Community
+```language
+[root@localhost ~]# dnf install docker-ce docker-ce-cli containerd.io
+上次元数据过期检查：0:01:34 前，执行于 2020年01月17日 星期五 17时31分56秒。
+错误：
+ 问题: package docker-ce-3:19.03.5-3.el7.x86_64 requires containerd.io >= 1.2.2-3, but none of the providers can be installed
+  - cannot install the best candidate for the job
+  - package containerd.io-1.2.10-3.2.el7.x86_64 is excluded
+  - package containerd.io-1.2.2-3.3.el7.x86_64 is excluded
+  - package containerd.io-1.2.2-3.el7.x86_64 is excluded
+  - package containerd.io-1.2.4-3.1.el7.x86_64 is excluded
+  - package containerd.io-1.2.5-3.1.el7.x86_64 is excluded
+  - package containerd.io-1.2.6-3.3.el7.x86_64 is excluded
+(尝试添加 '--skip-broken' 来跳过无法安装的软件包 或 '--nobest' 来不只使用最佳选择的软件包)
+```
