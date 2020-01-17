@@ -44,8 +44,7 @@
 
 
 ```
-即SqlSessionFactory对应的dataSource为DynamicDataSource实例，而无论为何种数据源，最终都是调用dataSource的getConnection方法，那么DynamicDataSource类对应的getConnection则是正好会调用AbstractRoutingDataSource(该类为抽象类，其抽象方法determineTargetDataSource正好用于各应用)子类的determineTargetDataSource
-运行时，某个mybatis的select查询栈信息:
+即SqlSessionFactory对应的dataSource为DynamicDataSource实例，而无论为何种数据源，最终都是调用dataSource的getConnection方法，那么DynamicDataSource类对应的getConnection则是正好会调用AbstractRoutingDataSource(该类为抽象类，其抽象方法determineTargetDataSource正好用于各应用对应动态数据源选择的自定义实现)子类DynamicDataSource 的determineTargetDataSource。运行时栈日志如下，某个mybatis的select查询栈信息:
 ```
     DynamicDataSource(AbstractRoutingDataSource).determineTargetDataSource() line: 204	--- Spring提供AbstractRoutingDataSource 动态根据determineCurrentLookupKey值获取数据源
 	DynamicDataSource.determineCurrentLookupKey() line: 17	 -- 获取自定义数据源key
