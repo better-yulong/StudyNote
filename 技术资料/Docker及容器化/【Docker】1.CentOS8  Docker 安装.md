@@ -83,7 +83,20 @@ containerd.io.x86_64                                 1.2.0-3.el7
 	runc 被 containerd.io-1.2.2-3.el7.x86_64 取代
 
 ```
-之后参考https://www.cnblogs.com/zjz20/p/11715437.html，卸载runc
-[root@localhost ~]# yum erase runc  （erase等价与remove，删除runc）
+之后参考https://www.cnblogs.com/zjz20/p/11715437.html，卸载runc：
+```[root@localhost ~]# yum erase runc  （erase等价与remove，删除runc）
+
+```
+卸载成功后，再次安装containerd.io终于成功：
+```language
+root@localhost rpm]# rpm -ihv containerd.io-1.2.2-3.el7.x86_64.rpm 
+警告：containerd.io-1.2.2-3.el7.x86_64.rpm: 头V4 RSA/SHA512 Signature, 密钥 ID 621e9f35: NOKEY
+Verifying...                          ################################# [100%]
+准备中...                          ################################# [100%]
+正在升级/安装...
+   1:containerd.io-1.2.2-3.el7        ################################# [100%]
+
+```
+
 
 
