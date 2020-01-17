@@ -45,10 +45,4 @@ pcp-pmda-docker.x86_64                           4.3.0-3.el8                    
 ```
 - 从报错提示来看，yum-utils 安装时与python版本可能存在冲突，百度很久暂无法解决，于是百度yum-utils包并查看其环境依赖，发现：Requires  python(abi) = 2.7（来源http://rpmfind.net/linux/RPM/centos/7.7.1908/x86_64/Packages/yum-utils-1.1.31-52.el7.noarch.html；另外CentOS7 默认安装为Python2.7，而到了CentOS7则将CentOS版本升级到了3.6，可通过python -versio查看），想尝鲜CentOS8，结果这块儿又能坑，不过幸好Python2和Python3完整不兼容，且也可以共存，于是乎决定安装python2:
 > 多次执行 sudo dnf install python2 终于安装python2.7成功（先尝试yum install python2多次报超时；故切换成dnf命令安装 ，另外默认安装的python版本即为2.7.3，也不用担心python2安装成其他低版本）
-- 多次yum install  yum-utils，也多次报Timeout，可能也因为依赖国外镜像网络不稳定相关。切换成 dnf install yum-utils 瞬间就OK了
-
-
-
-
-
-http://rpmfind.net/linux/rpm2html/search.php?query=yum-utils&system=centos
+- 多次yum install  yum-utils，也多次报Timeout，可能也因为依赖国外镜像网络不稳定相关。切换成 dnf install yum-utils 瞬间就OK了。
