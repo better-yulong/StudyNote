@@ -1,6 +1,6 @@
 参考资料：Docker教程： https://www.runoob.com/docker/centos-docker-install.html
 
-### 一. 环境准备及检查
+### 一. 安装准备及环境检查
 #### 1. Docker 支持以下的 64 位 CentOS 版本：CentOS 7CentOS 8 或 更高版本...
  centos-extras 库必须启用。默认情况下，此仓库是启用的，但是如果已禁用它，则需要重新启用它。建议使用 overlay2 存储驱动程序。
 
@@ -13,4 +13,6 @@ pcp-pmda-docker.x86_64                           4.3.0-3.el8                    
 
 ```
 
-不太明白  pcp-pmda-docker作用，百度发 pcp-pmda-ngix
+不太明白  pcp-pmda-docker作用，百度发现其还有类似 pcp-pmda-ngix，貌似用于docker容器运行监控，暂时忽略。目前来看
+
+#### 3. 卸载旧版本
