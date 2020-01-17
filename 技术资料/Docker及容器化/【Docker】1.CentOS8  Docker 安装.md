@@ -26,3 +26,7 @@ pcp-pmda-docker.x86_64                           4.3.0-3.el8                    
 
 ```
 运行报错提示
+
+
+
+http://rpmfind.net/linux/rpm2html/search.php?query=yum-utils&system=centos
