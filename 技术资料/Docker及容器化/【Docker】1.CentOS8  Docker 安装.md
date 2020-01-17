@@ -42,7 +42,7 @@ pcp-pmda-docker.x86_64                           4.3.0-3.el8                    
   conflicting requests
 
 ```
-从报错提示来看，yum-utils 安装时与python版本可能存在冲突，百度很久暂无法解决，于是百度yum-utils包并查看其环境依赖，发现：Requires  python(abi) = 2.7（来源http://rpmfind.net/linux/RPM/centos/7.7.1908/x86_64/Packages/yum-utils-1.1.31-52.el7.noarch.html；另外CentOS7 默认安装为Python2.7，而到了CentOS7则将CentOS版本升级到了3.6，可通过python -versio查看）
+从报错提示来看，yum-utils 安装时与python版本可能存在冲突，百度很久暂无法解决，于是百度yum-utils包并查看其环境依赖，发现：Requires  python(abi) = 2.7（来源http://rpmfind.net/linux/RPM/centos/7.7.1908/x86_64/Packages/yum-utils-1.1.31-52.el7.noarch.html；另外CentOS7 默认安装为Python2.7，而到了CentOS7则将CentOS版本升级到了3.6，可通过python -versio查看），想尝鲜CentOS8，结果这块儿又能坑，不过幸好Python2和Python3完整不兼容，且也可以共存，于是乎决定安装python2:
 
 sudo dnf install python2
 
