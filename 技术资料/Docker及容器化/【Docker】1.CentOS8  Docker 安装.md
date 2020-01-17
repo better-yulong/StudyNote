@@ -73,7 +73,7 @@ pcp-pmda-docker.x86_64                           4.3.0-3.el8                    
 [root@localhost ~]# yum list|grep containerd.io
 containerd.io.x86_64                                 1.2.0-3.el7 
 ```
-各种尝试 yum install containerd.io-1.2.2-3.el7.x86_64或者及上面提示的dnf --nobest均无解，无奈决定手动下载 containerd.io-1.2.2-3.el7.x86_64.rpm  安装。
+各种尝试 yum install containerd.io-1.2.2-3.el7.x86_64或者及上面提示的dnf --nobest均无解，无奈决定手动下载 containerd.io-1.2.2-3.el7.x86_64.rpm 安装（题外话，下载因网络问题各种艰辛，尝试了不下二十次
 
 
 
@@ -83,5 +83,7 @@ containerd.io.x86_64                                 1.2.0-3.el7
 	runc 与 containerd.io-1.2.2-3.el7.x86_64 冲突
 	runc 被 containerd.io-1.2.2-3.el7.x86_64 取代
 
+
+[root@localhost ~]# yum erase runc  （erase等价与remove，删除runc）
 
 
