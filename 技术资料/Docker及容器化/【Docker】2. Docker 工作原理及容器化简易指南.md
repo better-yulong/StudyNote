@@ -13,7 +13,7 @@
 - 到这，您可能已经猜到 Docker 的工作原理了。当您请求 Docker 运行容器时，Docker 会在您的计算机上设置一个资源隔离的环境。然后 Docker 会将打包的应用程序和关联的文件复制到 Namespace 内的文件系统中，此时环境的配置就完成了。之后 Docker 会执行您指定的命令运行应用程序。
 - 简而言之，Docker 通过使用 Linux namespace 和 cgroup（以及其他一些来协调配置容器，将应用程序文件复制到为容器分配的磁盘，然后运行启动命令。Docker 还附带了许多其他用于管理容器的工具，例如：列出正在运行的容器，停止容器，发布容器镜像等许多其他工具。
 
-### 二. Docker&Redis
+### 二. Docker&Redis 镜像下载
 #### 2.1 镜像下载方法
 - 既然上一篇已完成Docker本地环境安装及运行hello-world成功，那么现在就尝试基于Docker运行一个Redis实例。
 - Docker Hub 上有大量的高质量的镜像可以用，这里我们就说一下怎 么获取这些镜像。从 Docker 镜像仓库获取镜像的命令是 docker pull 。其命令格式为： 
@@ -36,7 +36,7 @@
 - 上面的命令中没有给出 Docker 镜像仓库地址，因此将会从 Docker Hub 获取镜 像。而镜像名称是 ubuntu:18.04 ，因此将会获取官方镜像 library/ubuntu 仓库中标签为 18.04 的镜像。 
 - 获取镜像 从下载过程中可以看到我们之前提及的分层存储的概念，镜像是由多层存储所构 成。下载也是一层层的去下载，并非单一文件。下载过程中给出了每一层的 ID 的 前 12 位。并且下载结束后，给出该镜像完整的 sha256 的摘要，以确保下载一 致性。 在使用上面命令的时候，你可能会发现，你所看到的层 ID 以及 sha256 的摘要和 这里的不一样。这是因为官方镜像是一直在维护的，有任何新的 bug，或者版本更 新，都会进行修复再以原来的标签发布，这样可以确保任何使用这个标签的用户可 以获得更安全、更稳定的镜像。 如果从 Docker Hub 下载镜像非常缓慢，可以参照 镜像加速器 一节配置加速器。
 
-#### 2.2 下载Redis镜像
+#### 2.2 下载及管理Redis镜像
 - 既然Docker Hub可以获取常用的各种镜像，那么进入Docker Hub官网：https://hub.docker.com/ ，点击页面导航：Browse Popular Images ，即进入https://hub.docker.com/search?q=&type=image。之后搜索进入 redis镜像页面，可查看到镜像下载及运行所需详细资料，如 "docker pull redis"可下载redis镜像laste镜像，抑或可点击"View Available Tags"查看所有可用的镜像tag用于下载指定版本image（如 docker pull redis:alpine3.11）.
 - 运行：docker pull redis ，然后还是老问题，要么超时要么下载缓慢不忍直视，参考文档配置镜像加速器之后，杠杠的。
 ##### 2.2.1 配置镜像加速器
@@ -148,3 +148,5 @@ Deleted: sha256:5216338b40a7b96416b8b9858974bbe4acc3096ee60acbc4dfb1ee02aecceb10
 ```
 如上删除镜像成功，可通过docker image ls 确认。
 
+### 三. 运行Redis镜像
+上面
