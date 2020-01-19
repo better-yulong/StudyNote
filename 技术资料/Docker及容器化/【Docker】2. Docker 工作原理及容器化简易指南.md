@@ -15,5 +15,5 @@
 
 ### Docker&Redis
 既然上一篇已完成Docker本地环境安装及运行hello-world成功，那么现在就尝试基于Docker运行一个Redis实例。
-
+之前提到过，Docker Hub 上有大量的高质量的镜像可以用，这里我们就说一下怎 么获取这些镜像。
 
