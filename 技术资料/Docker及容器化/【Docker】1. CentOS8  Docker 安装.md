@@ -108,3 +108,53 @@ Docker version 19.03.5, build 633a0ea
 [root@localhost rpm]# docker --version
 Docker version 19.03.5, build 633a0ea
 ```
+
+### 4.运行示例Docker 示例
+检查docker版本号之后尝试运行hello-world示例，但直接失败；原因是安装docker之后，需启用并启动docker服务（systemctl命令）：
+```
+[root@localhost rpm]# docker -v
+Docker version 19.03.5, build 633a0ea
+[root@localhost rpm]# docker --version
+Docker version 19.03.5, build 633a0ea
+[root@localhost rpm]# docker run hello-world
+docker: Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?.
+See 'docker run --help'.
+[root@localhost rpm]# systemctl enable docker
+Created symlink /etc/systemd/system/multi-user.target.wants/docker.service → /usr/lib/systemd/system/docker.service.
+[root@localhost rpm]# systemctl start docker
+[root@localhost rpm]# docker run hello-world
+Unable to find image 'hello-world:latest' locally
+latest: Pulling from library/hello-world
+1b930d010525: Pull complete 
+Digest: sha256:9572f7cdcee8591948c2963463447a53466950b3fc15a247fcad1917ca215a2f
+Status: Downloaded newer image for hello-world:latest
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+
+```
+如日志，出现：
+```language
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+```
+即可认为Docker环境安装成功。
+
