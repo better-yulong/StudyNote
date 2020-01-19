@@ -85,3 +85,22 @@ always：容器退出时总是重启
 - 为容器指定一个名字：docker run -d --name=ubuntu_server ubuntu:latest
 - 容器暴露80端口，并指定宿主机80端口与其通信(: 之前是宿主机端口，之后是容器需暴露的端口)：docker run -d --name=ubuntu_server -p 80:80 ubuntu:latest
 - 指定容器内目录与宿主机目录共享(: 之前是宿主机文件夹，之后是容器需共享的文件夹)：docker run -d --name=ubuntu_server -v /etc/www:/var/www ubuntu:latest
+
+
+
+docker run nginx
+```language
+[root@localhost ~]# docker container ls
+CONTAINER ID        IMAGE               COMMAND                  CREATED              STATUS              PORTS               NAMES
+1ab3fb2220d0        nginx               "nginx -g 'daemon of…"   About a minute ago   Up About a minute   80/tcp              quirky_jennings
+[root@localhost ~]# curl http://localhost:80
+curl: (7) Failed to connect to localhost port 80: 拒绝连接
+[root@localhost ~]# ps -ef|grep nginx
+root      48734  44122  0 16:31 pts/3    00:00:00 docker run nginx
+root      48762  48747  0 16:31 ?        00:00:00 nginx: master process nginx -g daemon off;
+101       48800  48762  0 16:31 ?        00:00:00 nginx: worker process
+root      48900  40611  0 16:33 pts/0    00:00:00 grep --color=auto nginx
+[root@localhost ~]# 
+
+```
+
