@@ -41,8 +41,8 @@
 - 运行：docker pull redis ，然后还是老问题，要么超时要么下载缓慢不忍直视，参考文档配置镜像加速器之后，杠杠的。
 ##### 2.2.1 配置镜像加速器
 国内从 Docker Hub 拉取镜像有时会遇到困难，此时可以配置镜像加速器。国内很 多云服务商都提供了国内加速器服务，例如：
-	- Azure 中国镜像 https://dockerhub.azk8s.cn 阿里云加速器(需登录账号获取) 
-	- 网易云加速器 https://hub-mirror.c.163.com 由于镜像服务可能出现宕机，建议同时配置多个镜像。
+- Azure 中国镜像 https://dockerhub.azk8s.cn 阿里云加速器(需登录账号获取) 
+- 网易云加速器 https://hub-mirror.c.163.com 由于镜像服务可能出现宕机，建议同时配置多个镜像。
 各个镜像站测试结果请 到 docker-practice/docker-registry-cn-mirror-test 查看。 国内各大云服务商均提供了 Docker 镜像加速服务，建议根据运行 Docker 的云 平台选择对应的镜像加速服务，具体请参考官方文档。 
 本节我们以 Azure 中国镜像 https://dockerhub.azk8s.cn 为例进行介绍。 
 ###### Ubuntu 16.04+、Debian 8+、CentOS 7 
