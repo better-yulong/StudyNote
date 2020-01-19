@@ -341,4 +341,5 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 8d8ee9652e3f        hello-world         "/hello"                 4 hours ago         Exited (0) 4 hours ago                          goofy_burnell
  
 ```
-其中第一列CONTAINER ID为容器IDeas，第二列IMAGE即为容器对应镜像名称，第三列COMMAND待定，第四列CREATED为容器创建大致时间，第五列STATUS则为容器状态（如Exit为退出，而Up则为运行状态），第六列PORTS则为容器运行时Redis实例对应
+其中第一列CONTAINER ID为容器IDeas，第二列IMAGE即为容器对应镜像名称，第三列COMMAND待定，第四列CREATED为容器创建大致时间，第五列STATUS则为容器状态（如Exit为退出，而Up则为运行状态），第六列PORTS则为容器运行时Redis实例对应内部端口，第七列NAMES为容器名称。
+
