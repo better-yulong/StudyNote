@@ -21,7 +21,15 @@
 	- Docker 镜像仓库地址：地址的格式一般是 <域名/IP>[:端口号] 。默认地址 是 Docker Hub。 
 	- 仓库名：如之前所说，这里的仓库名是两段式名称，即 <用户名>/<软件名> 。 对于 Docker Hub，如果不给出用户名，则默认为 library ，也就是官方镜 像。 
 - 比如：
-- $ docker pull ubuntu:18.04 
-- 18.04: Pulling from library/ubuntu bf5d46315322: Pull complete 9f13e0ac480c: Pull complete e8988b5b3097: Pull complete 40af181810e7: Pull complete e6f7c7e5c03e: Pull complete Digest: sha256:147913621d9cdea08853f6ba9116c2e27a3ceffecf3b49298 3ae97c3d643fbbe Status: Downloaded newer image for ubuntu:18.04 上面的命令中没有给出 Docker 镜像仓库地址，因此将会从 Docker Hub 获取镜 像。而镜像名称是 ubuntu:18.04 ，因此将会获取官方镜像 library/ubuntu 仓库中标签为 18.04 的镜像。 74
+	- $ docker pull ubuntu:18.04 
+	- 18.04: Pulling from library/ubuntu 
+	- bf5d46315322: Pull complete 
+	- 9f13e0ac480c: Pull complete 
+	- e8988b5b3097: Pull complete 
+	- 40af181810e7: Pull complete 
+	- e6f7c7e5c03e: Pull complete 
+	- Digest: sha256:147913621d9cdea08853f6ba9116c2e27a3ceffecf3b49298 3ae97c3d643fbbe 
+	- Status: Downloaded newer image for ubuntu:18.04 
+	- 上面的命令中没有给出 Docker 镜像仓库地址，因此将会从 Docker Hub 获取镜 像。而镜像名称是 ubuntu:18.04 ，因此将会获取官方镜像 library/ubuntu 仓库中标签为 18.04 的镜像。 74
 获取镜像 从下载过程中可以看到我们之前提及的分层存储的概念，镜像是由多层存储所构 成。下载也是一层层的去下载，并非单一文件。下载过程中给出了每一层的 ID 的 前 12 位。并且下载结束后，给出该镜像完整的 sha256 的摘要，以确保下载一 致性。 在使用上面命令的时候，你可能会发现，你所看到的层 ID 以及 sha256 的摘要和 这里的不一样。这是因为官方镜像是一直在维护的，有任何新的 bug，或者版本更 新，都会进行修复再以原来的标签发布，这样可以确保任何使用这个标签的用户可 以获得更安全、更稳定的镜像。 如果从 Docker Hub 下载镜像非常缓慢，可以参照 镜像加速器 一节配置加速器。
 
