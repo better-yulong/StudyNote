@@ -341,4 +341,4 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 8d8ee9652e3f        hello-world         "/hello"                 4 hours ago         Exited (0) 4 hours ago                          goofy_burnell
  
 ```
-其中第一列
+其中第一列CONTAINER ID为容器IDeas，第二列IMAGE即为容器对应镜像名称，第三列COMMAND待定，第四列CREATED为容器
