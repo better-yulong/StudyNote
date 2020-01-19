@@ -57,7 +57,8 @@
 镜像加速器 注意：如果您之前查看旧教程，修改了 docker.service 文件内容，请去掉 您添加的内容（ --registry-mirror=https://dockerhub.azk8s.cn ）。
 
 ##### 2.2.1 下载Redis 镜像
-
+###### 下载Redis latest镜像
+```
 [root@localhost rpm]# docker pull redis
 Using default tag: latest
 latest: Pulling from library/redis
@@ -70,3 +71,6 @@ c677fde73875: Pull complete
 Digest: sha256:90d44d431229683cadd75274e6fcb22c3e0396d149a8f8b7da9925021ee75c30
 Status: Downloaded newer image for redis:latest
 docker.io/library/redis:latest
+
+```
+
