@@ -287,8 +287,8 @@ docker: Error response from daemon: Conflict. The container name "/redis1" is al
 See 'docker run --help'.
 
 ```
-纳尼？此时 redis1 容器已经停止，但又无法启动同
-
+纳尼？无法启动同名容器，咋整？如若想继续使用 redis1 容器又该如何？
+##### 3.
 ```
 [root@localhost ~]# docker run  redis
 1:C 19 Jan 2020 07:02:35.273 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
