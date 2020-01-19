@@ -318,7 +318,7 @@ docker run --name redis1 redis 中的 --name 参数可指定容器名称，而�
 
 ```
 
-打开另一个Terminal终端，运行docker container ls 可查看运行的容器：
+同时基于--name启动 redis2 实例。最后再打开一个Terminal终端，运行docker container ls 可查看运行的容器（最后一列即为容器name）：
 ```
 [root@localhost ~]# docker container ls
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES
