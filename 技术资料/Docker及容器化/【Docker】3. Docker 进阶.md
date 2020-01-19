@@ -1,4 +1,7 @@
-资料：https://www.runoob.com/docker/docker-cp-command.html
+资料： 
+  - https://www.runoob.com/docker/docker-tutorial.html/docker/docker-cp-command.html
+  - Docker 命令大全:https://www.runoob.com/docker/docker-command-manual.html
+  
 ### 启动ubuntu 容器
 ### 1.1 启动ubuntu容器
 一般可先行docker pull ubuntu方式先行下载镜像，之后基于docker run运行容器；但实例也可直接如下运行，当镜像不存在时，会默认从Docker Hub中下载。
