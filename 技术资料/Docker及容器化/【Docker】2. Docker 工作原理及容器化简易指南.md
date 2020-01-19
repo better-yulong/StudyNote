@@ -89,7 +89,7 @@ docker.io/library/redis:alpine3.11
 ```
 
 #### 2.3 本地镜像管理
-##### 2.3.1 查看本地已下载镜像
+##### 2.3.1 查看本地已下载镜像（即列出之前hello-world及redis两个版本的镜像）
 ```language
 [root@localhost rpm]# docker image ls
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
@@ -98,3 +98,4 @@ redis               latest              9b188f5fb1e6        2 weeks ago         
 hello-world         latest              fce289e99eb9        12 months ago       1.84kB
 
 ```
+##### 2.3.1 删除本地已下载镜像（docker image -options
