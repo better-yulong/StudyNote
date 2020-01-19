@@ -147,3 +147,4 @@ Commercial support is available at
 [root@localhost ~]# 
 
 ```
+同时在宿主机使用firefox访问：http://localhost:80 也可正常打开非常熟悉的nginx默认主页。
