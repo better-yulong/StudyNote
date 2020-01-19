@@ -356,5 +356,5 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 8d8ee9652e3f        hello-world         "/hello"                 4 hours ago         Exited (0) 4 hours ago                          goofy_burnell
 
 ```
-可发现，新建启动容器时，如期CTRL+C退出则容器自动退出运行态；
+可发现，新建启动容器时，如期CTRL+C退出则容器自动退出运行态；而使用 docker container start redis2 重新启动已有容器则启动后直接进入后台运行。那么此种状态的容器又该如何停止呢？根据上面的docker container --help即可
 
