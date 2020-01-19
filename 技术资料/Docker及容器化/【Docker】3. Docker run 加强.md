@@ -109,7 +109,7 @@ root      48900  40611  0 16:33 pts/0    00:00:00 grep --color=auto nginx
 73fac46b4fabfd637b3fe5955f9b21fabf0c80542dac3572b66c9aa099ee3912
 
 ```
-
+容器状态及验证：
 ```language
 [root@localhost ~]# docker container ls
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                NAMES
