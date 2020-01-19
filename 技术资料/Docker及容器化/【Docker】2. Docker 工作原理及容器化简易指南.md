@@ -1,5 +1,5 @@
 - 参考资料：https://www.sdnlab.com/23388.html
-- Docker —— 从入门到实践: https://yeasy.gitbooks.io/docker_practice/content/cases/os/alpine.html
+- Docker —— 从入门到实践: https://yeasy.gitbooks.io/docker_practice/content/cases/os/alpine.html 或 StudyNote-Resource
 
 ### 一. 什么是容器？
 - 容器提供了在计算机上的隔离环境中安装和运行应用程序的方法。在容器内运行的应用程序仅可使用于为该容器分配的资源，例如：CPU，内存，磁盘，进程空间，用户，网络，卷等。在使用有限的容器资源的同时，并不与其他容器冲突。您可以将容器视为简易计算机上运行应用程序的隔离沙箱。
