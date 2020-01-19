@@ -288,7 +288,8 @@ See 'docker run --help'.
 
 ```
 纳尼？无法启动同名容器，咋整？如若想继续使用 redis1 容器又该如何？
-##### 3.
+#### 3.2
+docker run --name redis1 redis 中的 --name 参数可指定容器名称，而同一镜像的容器名称具有唯一性，如期
 ```
 [root@localhost ~]# docker run  redis
 1:C 19 Jan 2020 07:02:35.273 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
