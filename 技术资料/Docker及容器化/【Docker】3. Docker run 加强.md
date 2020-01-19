@@ -15,6 +15,7 @@ Status: Downloaded newer image for ubuntu:latest
 51bce5d0f79f6a64477b7d16e062e362191a5ed2f08947cb5c1730198efffdab
 
 ```
+对于未显示指定name的container,m
 Docker run 参数详解：
 ```
 命令格式：docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
