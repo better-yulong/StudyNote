@@ -37,4 +37,4 @@
 - 获取镜像 从下载过程中可以看到我们之前提及的分层存储的概念，镜像是由多层存储所构 成。下载也是一层层的去下载，并非单一文件。下载过程中给出了每一层的 ID 的 前 12 位。并且下载结束后，给出该镜像完整的 sha256 的摘要，以确保下载一 致性。 在使用上面命令的时候，你可能会发现，你所看到的层 ID 以及 sha256 的摘要和 这里的不一样。这是因为官方镜像是一直在维护的，有任何新的 bug，或者版本更 新，都会进行修复再以原来的标签发布，这样可以确保任何使用这个标签的用户可 以获得更安全、更稳定的镜像。 如果从 Docker Hub 下载镜像非常缓慢，可以参照 镜像加速器 一节配置加速器。
 
 #### 2.2 下载Redis镜像
-既然Docker Hub可以获取常用的各种镜像，那么进入Docker Hub官网：https://hub.docker.com/ ，点击页面导航：Browse Popular Images ，即进入https://hub.docker.com/search?q=&type=image。
+既然Docker Hub可以获取常用的各种镜像，那么进入Docker Hub官网：https://hub.docker.com/ ，点击页面导航：Browse Popular Images ，即进入https://hub.docker.com/search?q=&type=image。之后搜索进入 redis镜像页面，可查看到镜像下载及运行所需详细资料：
