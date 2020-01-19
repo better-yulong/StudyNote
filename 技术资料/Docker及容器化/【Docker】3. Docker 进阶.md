@@ -188,23 +188,21 @@ OPTIONS说明：
 runoob@runoob:~$ docker exec -it mynginx /bin/sh /root/runoob.sh
 http://www.runoob.com/
 ```
-
 在容器 mynginx 中开启一个交互模式的终端:
 ```
 runoob@runoob:~$ docker exec -i -t  mynginx /bin/bash
 root@b1a0703e41e7:/#
 ```
-
 也可以通过 docker ps -a 命令查看已经在运行的容器，然后使用容器 ID 进入容器。
-
-查看已经在运行的容器 ID：
-
+- 查看已经在运行的容器 ID：
+```
 # docker ps -a 
 ...
 9df70f9a0714        openjdk             "/usercode/script.sh…" 
 ...
+```
+
+
 第一列的 9df70f9a0714 就是容器 ID。
-
-通过 exec 命令对指定的容器执行 bash:
-
-# docker exec -it 9df70f9a0714 /bin/bash
+- 通过 exec 命令对指定的容器执行 bash:
+> # docker exec -it 9df70f9a0714 /bin/bas
