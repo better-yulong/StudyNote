@@ -373,11 +373,11 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 ```language
 [root@localhost ~]# docker run --name redis3 -d redis
 446ed4bf89722605c6ff261581d76dccc2e7ab8ebf1bf3c0d65a399873ef4aaf
-
 ```
 
+
 #### 3.4 Redis容器高级扩展
-##### 五级标题start with persistent storage
+##### start with persistent storage
 ```
 $ docker run --name some-redis -d redis redis-server --appendonly yes
 ```
