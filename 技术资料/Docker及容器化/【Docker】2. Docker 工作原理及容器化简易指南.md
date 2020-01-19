@@ -119,3 +119,20 @@ hello-world         latest              fce289e99eb9        12 months ago       
 
 ```
 ##### 2.3.1 删除本地已下载镜像
+```language
+[root@localhost rpm]# docker image rm redis
+Untagged: redis:latest
+Untagged: redis@sha256:90d44d431229683cadd75274e6fcb22c3e0396d149a8f8b7da9925021ee75c30
+Deleted: sha256:9b188f5fb1e6e1c7b10045585cb386892b2b4e1d31d62e3688c6fa8bf9fd32b5
+Deleted: sha256:fe7afb618c11b8be098a10564a9a1682f83915bfdbaaa5af48791950d418b2d5
+Deleted: sha256:3a284ce371b3431ba30071057478e2db8fc096232b1a84f092c4df9e06a4a3e4
+Deleted: sha256:4396548b331d1b748c8ba1542f8da54e0a8b84102d8205440aac61e3941bdf71
+Deleted: sha256:c80de70938af062d3c273f9925641ec672fe182a796bb4a096a37963c92e071a
+Deleted: sha256:e807dfe0532b9dae274911841bab81588e9e34591a5b809b8da39471fb75fdbd
+Deleted: sha256:556c5fb0d91b726083a8ce42e2faaed99f11bc68d3f70e2c7bbce87e7e0b3e10
+
+```
+如上未指定镜像tag标记，则默认删除其latest标记对应的镜像文件，如期需删除指定版本，则：
+```language
+
+```
