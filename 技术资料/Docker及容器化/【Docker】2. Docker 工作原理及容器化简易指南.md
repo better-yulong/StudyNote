@@ -288,8 +288,8 @@ See 'docker run --help'.
 
 ```
 纳尼？无法启动同名容器，咋整？如若想继续使用 redis1 容器又该如何？
-#### 3.2
-docker run --name redis1 redis 中的 --name 参数可指定容器名称，而同一镜像的容器名称具有唯一性，如期
+#### 3.2 启动多个Redis
+docker run --name redis1 redis 中的 --name 参数可指定容器名称，而同一镜像的容器名称具有唯一性； 而如若不指定name又如何呢？
 ```
 [root@localhost ~]# docker run  redis
 1:C 19 Jan 2020 07:02:35.273 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
@@ -304,6 +304,20 @@ docker run --name redis1 redis 中的 --name 参数可指定容器名称，而�
 
 
 ```
+```language
+[root@localhost ~]# docker run redis
+1:C 19 Jan 2020 07:06:46.154 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+1:C 19 Jan 2020 07:06:46.154 # Redis version=5.0.7, bits=64, commit=00000000, modified=0, pid=1, just started
+1:C 19 Jan 2020 07:06:46.154 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+1:M 19 Jan 2020 07:06:46.170 * Running mode=standalone, port=6379.
+1:M 19 Jan 2020 07:06:46.171 # WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+1:M 19 Jan 2020 07:06:46.171 # Server initialized
+1:M 19 Jan 2020 07:06:46.171 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+1:M 19 Jan 2020 07:06:46.171 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo never > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled.
+1:M 19 Jan 2020 07:06:46.171 * Ready to accept connections
+
+```
+
 打开另一个Terminal终端，运行：
 ```
 [root@localhost ~]# docker container ls
