@@ -1,6 +1,6 @@
 资料： 
-  - https://www.runoob.com/docker/docker-tutorial.html/docker/docker-cp-command.html
-  - Docker 命令大全:https://www.runoob.com/docker/docker-command-manual.html
+  - Docker 教程: https://www.runoob.com/docker/docker-tutorial.html
+  - Docker 命令大全: https://www.runoob.com/docker/docker-command-manual.html
   
 ### 启动ubuntu 容器
 ### 1.1 启动ubuntu容器
@@ -170,3 +170,5 @@ OPTIONS说明：
 > docker cp /www/runoob 96f7f14e99ab:/www
 将容器96f7f14e99ab的/www目录拷贝到主机的/tmp目录中。
 > docker cp  96f7f14e99ab:/www /tmp/
+
+Docker exec 命令
