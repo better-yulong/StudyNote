@@ -287,5 +287,5 @@ docker: Error response from daemon: Conflict. The container name "/redis1" is al
 See 'docker run --help'.
 
 ```
-
+纳尼？此时 redis1 容器已经
 
