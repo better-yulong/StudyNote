@@ -89,3 +89,12 @@ docker.io/library/redis:alpine3.11
 ```
 
 #### 2.3 本地镜像管理
+##### 2.3.1 查看本地已下载镜像
+```language
+[root@localhost rpm]# docker image ls
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+redis               alpine3.11          b68707e68547        26 hours ago        29.8MB
+redis               latest              9b188f5fb1e6        2 weeks ago         98.2MB
+hello-world         latest              fce289e99eb9        12 months ago       1.84kB
+
+```
