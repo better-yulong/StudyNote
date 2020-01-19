@@ -103,8 +103,8 @@ Verifying...                          ################################# [100%]
 ```
 历经许久，终于安装成功。
 ```language
-	[root@localhost rpm]# docker -v
-	Docker version 19.03.5, build 633a0ea
-	[root@localhost rpm]# docker --version
-	Docker version 19.03.5, build 633a0ea
+[root@localhost rpm]# docker -v
+Docker version 19.03.5, build 633a0ea
+[root@localhost rpm]# docker --version
+Docker version 19.03.5, build 633a0ea
 ```
