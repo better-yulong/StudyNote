@@ -356,5 +356,18 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 8d8ee9652e3f        hello-world         "/hello"                 4 hours ago         Exited (0) 4 hours ago                          goofy_burnell
 
 ```
-可发现，新建启动容器时，如期CTRL+C退出则容器自动退出运行态；而使用 docker container start redis2 重新启动已有容器则启动后直接进入后台运行。那么此种状态的容器又该如何停止呢？根据上面的docker container --help即可
+可发现，新建启动容器时，如期CTRL+C退出则容器自动退出运行态；而使用 docker container start redis2 重新启动已有容器则启动后直接进入后台运行。那么此种状态的容器又该如何停止呢？根据上面的docker container --help即可轻松明白。
+```language
+[root@localhost ~]# docker container stop redis2
+redis2
+[root@localhost ~]# docker container ls  -a
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                      PORTS               NAMES
+373aa0f57dd7        redis               "docker-entrypoint.s…"   15 minutes ago      Exited (0) 5 seconds ago                        redis2
+0ed4fa468c95        redis               "docker-entrypoint.s…"   19 minutes ago      Up 19 minutes               6379/tcp            priceless_chandrasekhar
+4a245bacd2ff        redis               "docker-entrypoint.s…"   23 minutes ago      Up 23 minutes               6379/tcp            angry_wilson
+084bd37d255c        redis               "docker-entrypoint.s…"   32 minutes ago      Exited (0) 29 minutes ago                       redis1
+8d8ee9652e3f        hello-world         "/hello"                 4 hours ago         Exited (0) 4 hours ago                          goofy_burnell
+
+```
+
 
