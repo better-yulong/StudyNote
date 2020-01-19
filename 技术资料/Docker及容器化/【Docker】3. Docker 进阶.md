@@ -203,4 +203,4 @@ root@b1a0703e41e7:/#
 ```
 第一列的 9df70f9a0714 就是容器 ID。
 - 通过 exec 命令对指定的容器执行 bash:
-> #docker exec -it 9df70f9a0714 /bin/bas
+> docker exec -it 9df70f9a0714 /bin/bas
