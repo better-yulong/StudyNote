@@ -322,6 +322,8 @@ docker run --name redis1 redis 中的 --name 参数可指定容器名称，而�
 ```
 [root@localhost ~]# docker container ls
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES
-4a245bacd2ff        redis               "docker-entrypoint.s…"   12 seconds ago      Up 8 seconds        6379/tcp            angry_wilson
+373aa0f57dd7        redis               "docker-entrypoint.s…"   15 seconds ago      Up 12 seconds       6379/tcp            redis2
+0ed4fa468c95        redis               "docker-entrypoint.s…"   4 minutes ago       Up 4 minutes        6379/tcp            priceless_chandrasekhar
+4a245bacd2ff        redis               "docker-entrypoint.s…"   8 minutes ago       Up 8 minutes        6379/tcp            angry_wilson
 
 ```
