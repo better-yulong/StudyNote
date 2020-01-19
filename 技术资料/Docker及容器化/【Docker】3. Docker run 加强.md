@@ -104,3 +104,6 @@ root      48900  40611  0 16:33 pts/0    00:00:00 grep --color=auto nginx
 
 ```
 
+
+root@localhost ~]# docker run -d -p 80:80 nginx
+73fac46b4fabfd637b3fe5955f9b21fabf0c80542dac3572b66c9aa099ee3912
