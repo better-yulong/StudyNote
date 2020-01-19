@@ -369,5 +369,11 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 8d8ee9652e3f        hello-world         "/hello"                 4 hours ago         Exited (0) 4 hours ago                          goofy_burnell
 
 ```
+那如若想新建启动的容器即以后台模式运行呢？其实也简单：
+```language
+[root@localhost ~]# docker run --name redis3 -d redis
+446ed4bf89722605c6ff261581d76dccc2e7ab8ebf1bf3c0d65a399873ef4aaf
+
+```
 
 
