@@ -134,5 +134,17 @@ Deleted: sha256:556c5fb0d91b726083a8ce42e2faaed99f11bc68d3f70e2c7bbce87e7e0b3e10
 ```
 如上未指定镜像tag标记，则默认删除其latest标记对应的镜像文件，如期需删除指定版本，则：
 ```language
+[root@localhost rpm]# docker image rm redis:alpine3.11
+Untagged: redis:alpine3.11
+Untagged: redis@sha256:cb9783b1c39bb34f8d6572406139ab325c4fac0b28aaa25d5350495637bb2f76
+Deleted: sha256:b68707e68547e636f2544e9283f02beed46d536f644573c8b35c368f9abbe078
+Deleted: sha256:acd9269c24b16b344128cf4e650d279ec513a8f780e6c5a8f9a178c65de29e04
+Deleted: sha256:db13aece52c4640f7d2604cecd55a5d19062326eb3dbb73954b8cf25850e666f
+Deleted: sha256:36fdba8170f9fe2ea6ce2dce4eed3502e925d2f64dd5b0977e3a4219e0563d17
+Deleted: sha256:db7132f0597427fa3f6e0cab947fbf58e1a4e9aaa26216c40bdea5fa9772c7fa
+Deleted: sha256:0632cca2bb6b87a9f38a5a61b26a4bdcf4c064608516502d6984386712078377
+Deleted: sha256:5216338b40a7b96416b8b9858974bbe4acc3096ee60acbc4dfb1ee02aecceb10
 
 ```
+如上删除镜像成功，可通过docker image ls 确认。
+
