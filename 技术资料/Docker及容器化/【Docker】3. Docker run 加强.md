@@ -103,7 +103,7 @@ root      48900  40611  0 16:33 pts/0    00:00:00 grep --color=auto nginx
 [root@localhost ~]# 
 
 ```
-可发现nginx实例已正常运行，通过docker container ls可发现容器运行，Nginx实例使用默认端口80接受http请求，但是使用curl http://localhost:80 却无法正常访问。原因系docker容器运行时会在
+可发现nginx实例已正常运行，通过docker container ls可发现容器运行，Nginx实例使用默认端口80接受http请求，但是使用curl http://localhost:80 却无法正常访问。原因系docker容器运行时会基于进程完成资源隔离，而此处的80端口也仅为容器内部端口；如若需在宿主机访问容器内部资源，则需使用各种方式将容器内资源暴露至
 
 
 root@localhost ~]# docker run -d -p 80:80 nginx
