@@ -102,3 +102,9 @@ Verifying...                          ################################# [100%]
 [root@localhost rpm]# dnf install docker-ce docker-ce-cli
 ```
 历经许久，终于安装成功。
+```language
+	[root@localhost rpm]# docker -v
+	Docker version 19.03.5, build 633a0ea
+	[root@localhost rpm]# docker --version
+	Docker version 19.03.5, build 633a0ea
+```
