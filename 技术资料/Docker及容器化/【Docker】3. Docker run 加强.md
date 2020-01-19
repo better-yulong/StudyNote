@@ -1,6 +1,6 @@
 
 ### ubuntu 容器
-### 运行ubuntu容器
+### 1.1 运行ubuntu容器
 一般可先行docker pull ubuntu方式先行下载镜像，之后基于docker run运行容器；但实例也可直接如下运行，当镜像不存在时，会默认从Docker Hub中下载。
 ```
 [root@localhost ~]# docker run -i -t -d ubuntu:latest
@@ -15,8 +15,24 @@ Status: Downloaded newer image for ubuntu:latest
 51bce5d0f79f6a64477b7d16e062e362191a5ed2f08947cb5c1730198efffdab
 
 ```
-对于未显示指定name的container,m
-Docker run 参数详解：
+对于未显示指定name的container,那么如何停止呢？先ls查看运行容器列表，之后可通过name或者container id停止：
+```language
+[root@localhost ~]# docker container ls
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES
+51bce5d0f79f        ubuntu:latest       "/bin/bash"              19 minutes ago      Up 19 minutes                           eloquent_hypatia
+446ed4bf8972        redis               "docker-entrypoint.s…"   53 minutes ago      Up 53 minutes       6379/tcp            redis3
+0ed4fa468c95        redis               "docker-entrypoint.s…"   About an hour ago   Up About an hour    6379/tcp            priceless_chandrasekhar
+4a245bacd2ff        redis               "docker-entrypoint.s…"   About an hour ago   Up About an hour    6379/tcp            angry_wilson
+[root@localhost ~]# dokcer container stop ubuntu
+bash: dokcer: 未找到命令...
+相似命令是： 'docker'
+[root@localhost ~]# docker container stop ubuntu
+Error response from daemon: No such container: ubuntu
+[root@localhost ~]# docker container stop 51bce5d0f79f
+51bce5d0f79f
+```
+
+### 1.2 Docker run 参数详解：
 ```
 命令格式：docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
 Usage: Run a command in a new container
