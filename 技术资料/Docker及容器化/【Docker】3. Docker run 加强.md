@@ -103,7 +103,7 @@ root      48900  40611  0 16:33 pts/0    00:00:00 grep --color=auto nginx
 [root@localhost ~]# 
 
 ```
-可发现
+可发现nginx实例已正常运行，通过docker container ls可发现容器运行，且对应Nginx默认端口80已
 
 
 root@localhost ~]# docker run -d -p 80:80 nginx
