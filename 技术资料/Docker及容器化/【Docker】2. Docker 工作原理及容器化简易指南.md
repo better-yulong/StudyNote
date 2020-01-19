@@ -330,5 +330,5 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 
 #### 3.3 容器启动高级应用
 - 启动容器有两种方式，一种是基于镜像新建一个容器并启动，另外一个是将在终止 状态（ stopped ）的容器重新启动。 因为 Docker 的容器实在太轻量级了，很多时候用户都是随时删除和新创建容器。而上面即是新建启动，而容器该重新启动呢？
-那么首先需要知道结合 docker container --help 及 docker container ls --help 
+那么首先需要知道可重启启动的容器名称标识，而上面的 docker conatiner ls仅能列出运行态的容器。那么结合 docker container --help 及 docker container ls --help  则可知道如下即可查看 
 
