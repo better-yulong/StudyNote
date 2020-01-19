@@ -287,10 +287,26 @@ docker: Error response from daemon: Conflict. The container name "/redis1" is al
 See 'docker run --help'.
 
 ```
-纳尼？此时 redis1 容器已经停止，但
+纳尼？此时 redis1 容器已经停止，但又无法启动同
+
+```
+[root@localhost ~]# docker run  redis
+1:C 19 Jan 2020 07:02:35.273 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+1:C 19 Jan 2020 07:02:35.273 # Redis version=5.0.7, bits=64, commit=00000000, modified=0, pid=1, just started
+1:C 19 Jan 2020 07:02:35.273 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+1:M 19 Jan 2020 07:02:35.275 * Running mode=standalone, port=6379.
+1:M 19 Jan 2020 07:02:35.275 # WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+1:M 19 Jan 2020 07:02:35.275 # Server initialized
+1:M 19 Jan 2020 07:02:35.275 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+1:M 19 Jan 2020 07:02:35.275 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo never > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled.
+1:M 19 Jan 2020 07:02:35.275 * Ready to accept connections
 
 
-
+```
+打开另一个Terminal终端，运行：
+```
 [root@localhost ~]# docker container ls
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES
 4a245bacd2ff        redis               "docker-entrypoint.s…"   12 seconds ago      Up 8 seconds        6379/tcp            angry_wilson
+
+```
