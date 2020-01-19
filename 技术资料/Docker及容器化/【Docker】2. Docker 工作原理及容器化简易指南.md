@@ -266,9 +266,9 @@ Options:
 ```
 
 #### 3.1 基于Docker启动一个Redis实例
---name参数应该是指定container名称，此处为redis1,运行基本命令，
+--name参数应该是指定container名称，此处为redis1,运行：
 ```language
-docker run --name redis1 redis
+[root@localhost ~]# docker run --name redis1 redis
 1:C 19 Jan 2020 06:53:51.773 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
 1:C 19 Jan 2020 06:53:51.773 # Redis version=5.0.7, bits=64, commit=00000000, modified=0, pid=1, just started
 1:C 19 Jan 2020 06:53:51.773 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
