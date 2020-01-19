@@ -1,7 +1,7 @@
 
 ### ubuntu 容器
 ### 运行ubuntu容器
-一般可先行docker pull ubuntu方式先行下载镜像，之后基于docker run运行容器；但实例也可直接如下运行，当镜像不存在时，会默认从Docker Hub
+一般可先行docker pull ubuntu方式先行下载镜像，之后基于docker run运行容器；但实例也可直接如下运行，当镜像不存在时，会默认从Docker Hub中下载。
 ```
 [root@localhost ~]# docker run -i -t -d ubuntu:latest
 Unable to find image 'ubuntu:latest' locally
