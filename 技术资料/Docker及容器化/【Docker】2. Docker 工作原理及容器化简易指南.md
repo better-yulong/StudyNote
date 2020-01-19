@@ -341,5 +341,20 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 8d8ee9652e3f        hello-world         "/hello"                 4 hours ago         Exited (0) 4 hours ago                          goofy_burnell
  
 ```
-其中第一列CONTAINER ID为容器IDeas，第二列IMAGE即为容器对应镜像名称，第三列COMMAND待定，第四列CREATED为容器创建大致时间，第五列STATUS则为容器状态（如Exit为退出，而Up则为运行状态），第六列PORTS则为容器运行时Redis实例对应内部端口，第七列NAMES为容器名称。
+其中第一列CONTAINER ID为容器IDeas，第二列IMAGE即为容器对应镜像名称，第三列COMMAND待定，第四列CREATED为容器创建大致时间，第五列STATUS则为容器状态（如Exit为退出，而Up则为运行状态），第六列PORTS则为容器运行时Redis实例对应内部端口，第七列NAMES为容器名称。那么：
+```language
+[root@localhost ~]# docker container start redis2
+redis2
+```
+```language
+[root@localhost ~]# docker container ls  -a
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                      PORTS               NAMES
+373aa0f57dd7        redis               "docker-entrypoint.s…"   12 minutes ago      Up 17 seconds               6379/tcp            redis2
+0ed4fa468c95        redis               "docker-entrypoint.s…"   16 minutes ago      Up 16 minutes               6379/tcp            priceless_chandrasekhar
+4a245bacd2ff        redis               "docker-entrypoint.s…"   20 minutes ago      Up 20 minutes               6379/tcp            angry_wilson
+084bd37d255c        redis               "docker-entrypoint.s…"   29 minutes ago      Exited (0) 26 minutes ago                       redis1
+8d8ee9652e3f        hello-world         "/hello"                 4 hours ago         Exited (0) 4 hours ago                          goofy_burnell
+
+```
+可发现，新建启动容器时，如期CTRL+C退出则容器自动退出运行态；
 
