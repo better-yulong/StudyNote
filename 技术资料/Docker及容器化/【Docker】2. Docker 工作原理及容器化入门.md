@@ -326,7 +326,7 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 0ed4fa468c95        redis               "docker-entrypoint.s…"   4 minutes ago       Up 4 minutes        6379/tcp            priceless_chandrasekhar
 4a245bacd2ff        redis               "docker-entrypoint.s…"   8 minutes ago       Up 8 minutes        6379/tcp            angry_wilson
 ```
-既然同时运行有多个Redis实例，那么为什么不会如之前在物理机或者虚拟机会出现端口占用呢？原因可简单理解为每个Contanier容器基于Linux Namespace会资源隔离，
+既然同时运行有多个Redis实例，那么为什么不会如之前在物理机或者虚拟机会出现端口占用呢？原因可简单理解为每个Contanier容器基于Linux Namespace会资源隔离，每个Dockers容器有各自独立使用且内部自分配的资源，即Container容器自身也有内部端口。
 #### 3.3 容器启动高级应用
 - 启动容器有两种方式，一种是基于镜像新建一个容器并启动，另外一个是将在终止 状态（ stopped ）的容器重新启动。 因为 Docker 的容器实在太轻量级了，很多时候用户都是随时删除和新创建容器。而上面即是新建启动，而容器该重新启动呢？
 那么首先需要知道可重启启动的容器名称标识，而上面的 docker conatiner ls仅能列出运行态的容器。那么结合 docker container --help 及 docker container ls --help  则可知道如下即可查看所有状态的container容器：
