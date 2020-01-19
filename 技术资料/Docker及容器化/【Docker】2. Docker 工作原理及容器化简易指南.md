@@ -288,7 +288,7 @@ See 'docker run --help'.
 
 ```
 纳尼？无法启动同名容器，咋整？如若想继续使用 redis1 容器又该如何？
-#### 3.2 启动多个Redis容器。
+#### 3.2 启动多个Redis容器
 docker run --name redis1 redis 中的 --name 参数可指定容器名称，而同一镜像的容器名称具有唯一性。那想要运行多个Redis容器实例，目前看可行的是每次运行指定不没看过的name即可；而如若不指定name又如何呢？分别在两个Terminal终端启动Redis容器：
 ```
 [root@localhost ~]# docker run  redis
@@ -327,3 +327,5 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 4a245bacd2ff        redis               "docker-entrypoint.s…"   8 minutes ago       Up 8 minutes        6379/tcp            angry_wilson
 
 ```
+
+#### 3.3 容器复用
