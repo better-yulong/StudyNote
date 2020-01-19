@@ -86,8 +86,8 @@ always：容器退出时总是重启
 - 容器暴露80端口，并指定宿主机80端口与其通信(: 之前是宿主机端口，之后是容器需暴露的端口)：docker run -d --name=ubuntu_server -p 80:80 ubuntu:latest
 - 指定容器内目录与宿主机目录共享(: 之前是宿主机文件夹，之后是容器需共享的文件夹)：docker run -d --name=ubuntu_server -v /etc/www:/var/www ubuntu:latest
 
-
-
+#### 2.1 启动Nginx实例并实现端口映射
+##### 2.1.1 默认方式启动nginx容器
 docker run nginx
 ```language
 [root@localhost ~]# docker container ls
@@ -103,7 +103,45 @@ root      48900  40611  0 16:33 pts/0    00:00:00 grep --color=auto nginx
 [root@localhost ~]# 
 
 ```
+可发现
 
 
 root@localhost ~]# docker run -d -p 80:80 nginx
 73fac46b4fabfd637b3fe5955f9b21fabf0c80542dac3572b66c9aa099ee3912
+```language
+[root@localhost ~]# docker container ls
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                NAMES
+73fac46b4fab        nginx               "nginx -g 'daemon of…"   36 seconds ago      Up 34 seconds       0.0.0.0:80->80/tcp   thirsty_matsumoto
+[root@localhost ~]# ps -ef|grep nginx
+root      49007  48991  0 16:34 ?        00:00:00 nginx: master process nginx -g daemon off;
+101       49041  49007  0 16:34 ?        00:00:00 nginx: worker process
+root      49065  40611  0 16:34 pts/0    00:00:00 grep --color=auto nginx
+[root@localhost ~]# curl http://localhost:80
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+    body {
+        width: 35em;
+        margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif;
+    }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.</p>
+
+<p>For online documentation and support please refer to
+<a href="http://nginx.org/">nginx.org</a>.<br/>
+Commercial support is available at
+<a href="http://nginx.com/">nginx.com</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
+[root@localhost ~]# 
+
+```
