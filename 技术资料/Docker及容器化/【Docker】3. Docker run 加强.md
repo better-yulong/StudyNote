@@ -81,4 +81,7 @@ always：容器退出时总是重启
 
 ```
 
-### 二. docker run -it指令
+### 二. docker run 示例
+- 为容器指定一个名字：docker run -d --name=ubuntu_server ubuntu:latest
+- 容器暴露80端口，并指定宿主机80端口与其通信(: 之前是宿主机端口，之后是容器需暴露的端口)：docker run -d --name=ubuntu_server -p 80:80 ubuntu:latest
+- 指定容器内目录与宿主机目录共享(: 之前是宿主机文件夹，之后是容器需共享的文件夹)：docker run -d --name=ubuntu_server -v /etc/www:/var/www ubuntu:latest
