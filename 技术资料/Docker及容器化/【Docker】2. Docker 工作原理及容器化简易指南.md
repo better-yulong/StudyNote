@@ -375,6 +375,8 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 446ed4bf89722605c6ff261581d76dccc2e7ab8ebf1bf3c0d65a399873ef4aaf
 ```
 
+#### 3.3 docker run 扩展
+
 
 #### 3.4 Redis容器高级扩展
 ##### start with persistent storage
