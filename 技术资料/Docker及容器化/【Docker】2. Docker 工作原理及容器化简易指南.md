@@ -74,3 +74,18 @@ docker.io/library/redis:latest
 
 ```
 ###### 下载Redis alpine3.11镜像
+```language
+[root@localhost rpm]# docker pull redis:alpine3.11
+alpine3.11: Pulling from library/redis
+c9b1b535fdd9: Pull complete 
+8dd5e7a0ba4a: Pull complete 
+e20c1cdf5aef: Pull complete 
+f06a0c1e566e: Pull complete 
+230b5c8df708: Pull complete 
+0cb9ac88f5bf: Pull complete 
+Digest: sha256:cb9783b1c39bb34f8d6572406139ab325c4fac0b28aaa25d5350495637bb2f76
+Status: Downloaded newer image for redis:alpine3.11
+docker.io/library/redis:alpine3.11
+```
+
+#### 2.3 本地镜像管理
