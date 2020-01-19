@@ -54,6 +54,5 @@
 	$ sudo systemctl daemon-reload 
 	$ sudo systemctl restart docker 
 ```
-
 镜像加速器 注意：如果您之前查看旧教程，修改了 docker.service 文件内容，请去掉 您添加的内容（ --registry-mirror=https://dockerhub.azk8s.cn ）。
 
