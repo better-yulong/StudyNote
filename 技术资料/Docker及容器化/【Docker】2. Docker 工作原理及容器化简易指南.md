@@ -38,4 +38,6 @@
 
 #### 2.2 下载Redis镜像
 - 既然Docker Hub可以获取常用的各种镜像，那么进入Docker Hub官网：https://hub.docker.com/ ，点击页面导航：Browse Popular Images ，即进入https://hub.docker.com/search?q=&type=image。之后搜索进入 redis镜像页面，可查看到镜像下载及运行所需详细资料，如 "docker pull redis"可下载redis镜像laste镜像，抑或可点击"View Available Tags"查看所有可用的镜像tag用于下载指定版本image.
-- 运行：docker pull redis ，然后还是老问题，要么超时要么下载缓慢不忍直视，
+- 运行：docker pull redis ，然后还是老问题，要么超时要么下载缓慢不忍直视，参考文档配置镜像加速器之后，杠杠的。
+##### 2.2.1 配置镜像加速器
+
