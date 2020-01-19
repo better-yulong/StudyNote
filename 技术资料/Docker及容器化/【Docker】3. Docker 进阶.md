@@ -1,4 +1,4 @@
-
+资料：https://www.runoob.com/docker/docker-cp-command.html
 ### 启动ubuntu 容器
 ### 1.1 启动ubuntu容器
 一般可先行docker pull ubuntu方式先行下载镜像，之后基于docker run运行容器；但实例也可直接如下运行，当镜像不存在时，会默认从Docker Hub中下载。
@@ -153,22 +153,17 @@ Commercial support is available at
 - docker cp :用于容器与主机之间的数据拷贝。
 
 #### 3.1 语法
-```docker cp [OPTIONS] CONTAINER:SRC_PATH DEST_PATH|-
-docker cp [OPTIONS] SRC_PATH|- CONTAINER:DEST_PATH
-
 ```
-
+docker cp [OPTIONS] CONTAINER:SRC_PATH DEST_PATH|-
+docker cp [OPTIONS] SRC_PATH|- CONTAINER:DEST_PATH
+```
 OPTIONS说明：
-
--L :保持源目标中的链接
+> -L :保持源目标中的链接
 
 #### 3.2 实例
 将主机/www/runoob目录拷贝到容器96f7f14e99ab的/www目录下。
-
-docker cp /www/runoob 96f7f14e99ab:/www/
+> docker cp /www/runoob 96f7f14e99ab:/www/
 将主机/www/runoob目录拷贝到容器96f7f14e99ab中，目录重命名为www。
-
-docker cp /www/runoob 96f7f14e99ab:/www
+> docker cp /www/runoob 96f7f14e99ab:/www
 将容器96f7f14e99ab的/www目录拷贝到主机的/tmp目录中。
-
-docker cp  96f7f14e99ab:/www /tmp/
+> docker cp  96f7f14e99ab:/www /tmp/
