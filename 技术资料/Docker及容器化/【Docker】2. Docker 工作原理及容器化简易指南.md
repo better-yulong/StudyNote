@@ -280,5 +280,12 @@ Options:
 1:M 19 Jan 2020 06:53:51.790 * Ready to accept connections
 
 ```
+Terminal终端CTRL+C退出后，再次运行，可发现
+```language
+[root@localhost ~]# docker run --name redis1 redis
+docker: Error response from daemon: Conflict. The container name "/redis1" is already in use by container "084bd37d255cb8b167816a32058c763edd8f4661781dc45e3d65a7a4c47f6526". You have to remove (or rename) that container to be able to reuse that name.
+See 'docker run --help'.
+
+```
 
 
