@@ -89,6 +89,26 @@ docker.io/library/redis:alpine3.11
 ```
 
 #### 2.3 本地镜像管理
+```language
+[root@localhost rpm]# docker image --help
+Usage:	docker image COMMAND
+Manage images
+Commands:
+  build       Build an image from a Dockerfile
+  history     Show the history of an image
+  import      Import the contents from a tarball to create a filesystem image
+  inspect     Display detailed information on one or more images
+  load        Load an image from a tar archive or STDIN
+  ls          List images
+  prune       Remove unused images
+  pull        Pull an image or a repository from a registry
+  push        Push an image or a repository to a registry
+  rm          Remove one or more images
+  save        Save one or more images to a tar archive (streamed to STDOUT by default)
+  tag         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE
+
+Run 'docker image COMMAND --help' for more information on a command.
+```
 ##### 2.3.1 查看本地已下载镜像（即列出之前hello-world及redis两个版本的镜像）
 ```language
 [root@localhost rpm]# docker image ls
@@ -98,4 +118,4 @@ redis               latest              9b188f5fb1e6        2 weeks ago         
 hello-world         latest              fce289e99eb9        12 months ago       1.84kB
 
 ```
-##### 2.3.1 删除本地已下载镜像（docker image -options
+##### 2.3.1 删除本地已下载镜像
