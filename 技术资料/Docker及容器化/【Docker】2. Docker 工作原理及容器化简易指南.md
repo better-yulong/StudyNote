@@ -330,5 +330,15 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 
 #### 3.3 容器启动高级应用
 - 启动容器有两种方式，一种是基于镜像新建一个容器并启动，另外一个是将在终止 状态（ stopped ）的容器重新启动。 因为 Docker 的容器实在太轻量级了，很多时候用户都是随时删除和新创建容器。而上面即是新建启动，而容器该重新启动呢？
-那么首先需要知道可重启启动的容器名称标识，而上面的 docker conatiner ls仅能列出运行态的容器。那么结合 docker container --help 及 docker container ls --help  则可知道如下即可查看 
-
+那么首先需要知道可重启启动的容器名称标识，而上面的 docker conatiner ls仅能列出运行态的容器。那么结合 docker container --help 及 docker container ls --help  则可知道如下即可查看所有状态的container容器：
+```
+[root@localhost ~]# docker container ls  -a
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                      PORTS               NAMES
+373aa0f57dd7        redis               "docker-entrypoint.s…"   6 minutes ago       Exited (0) 2 minutes ago                        redis2
+0ed4fa468c95        redis               "docker-entrypoint.s…"   10 minutes ago      Up 10 minutes               6379/tcp            priceless_chandrasekhar
+4a245bacd2ff        redis               "docker-entrypoint.s…"   14 minutes ago      Up 14 minutes               6379/tcp            angry_wilson
+084bd37d255c        redis               "docker-entrypoint.s…"   23 minutes ago      Exited (0) 20 minutes ago                       redis1
+8d8ee9652e3f        hello-world         "/hello"                 4 hours ago         Exited (0) 4 hours ago                          goofy_burnell
+ 
+```
+其中第一列
