@@ -101,4 +101,4 @@ Verifying...                          ################################# [100%]
 ```language
 [root@localhost rpm]# dnf install docker-ce docker-ce-cli
 ```
-
+历经许久，终于安装成功。
