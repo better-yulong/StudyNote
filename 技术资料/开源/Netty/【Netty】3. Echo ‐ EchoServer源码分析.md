@@ -60,7 +60,7 @@ SSL相关暂未验证，此处也暂不分析，后续另行分析。
         b.group(bossGroup, workerGroup)
 	......
 ```
-bossGroup、workerGroup 均是
+bossGroup、workerGroup 均是NioEventLoopGroup的实例，但区别在于参数nThread参数值不同。
 ```language
     // MultithreadEventLoopGroup 类
     private static final int DEFAULT_EVENT_LOOP_THREADS;
@@ -82,6 +82,7 @@ bossGroup、workerGroup 均是
     }
 
 ```
+NioEventLoopGroup的构造方法中，nThreads 值为0时（即workerGroup ）时会根据
 ```language
     //MultithreadEventExecutorGroup类（其是MultithreadEventLoopGroup 直接父类）
     protected MultithreadEventExecutorGroup(int nThreads, Executor executor,
