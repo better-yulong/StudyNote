@@ -82,7 +82,7 @@ SSL相关暂未验证，此处也暂不分析，后续另行分析。
 
 ```
 ```language
-    //MultithreadEventExecutorGroup类（其是MultithreadEventLoopGroup 直接父类
+    //MultithreadEventExecutorGroup类（其是MultithreadEventLoopGroup 直接父类）
     protected MultithreadEventExecutorGroup(int nThreads, Executor executor,
                                             EventExecutorChooserFactory chooserFactory, Object... args) {
         if (nThreads <= 0) {
