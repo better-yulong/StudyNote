@@ -93,7 +93,8 @@ nThreads为上面参数赋值，executor值为null，
         }
 
         if (executor == null) {
-            //1.即使用默认ThreadFactory实例参数创建ThreadPerTaskExecutor实例，即全线线程池Executor，
+            //1.即使用默认ThreadFactory实例参数创建ThreadPerTaskExecutor实例，即全线线程池Executor。
+            其优先级为最高且每次有任务提交则直接创建新线程处理。
             executor = new ThreadPerTaskExecutor(newDefaultThreadFactory());
         }
 
