@@ -60,6 +60,7 @@ SSL相关暂未验证，此处也暂不分析，后续另行分析。
         b.group(bossGroup, workerGroup)
 	......
 ```
+bossGroup、workerGroup 均是
 ```language
     // MultithreadEventLoopGroup 类
     private static final int DEFAULT_EVENT_LOOP_THREADS;
