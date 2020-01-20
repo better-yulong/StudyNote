@@ -82,7 +82,7 @@ bossGroup、workerGroup 均是NioEventLoopGroup的实例，但区别在于参数
     }
 
 ```
-NioEventLoopGroup的构造方法中，nThreads 值为0时（即workerGroup ）时会根据系统参数io.netty.eventLoopThreads或者可用CPU处理器*2来确定
+NioEventLoopGroup的构造方法中，nThreads 值为0时（即workerGroup ）时会根据系统参数io.netty.eventLoopThreads或者可用CPU处理器*2来确定nThreads 的值；而bossGroup则直接赋值nThreads 为1.
 ```language
     //MultithreadEventExecutorGroup类（其是MultithreadEventLoopGroup 直接父类）
     protected MultithreadEventExecutorGroup(int nThreads, Executor executor,
