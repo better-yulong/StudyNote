@@ -1,4 +1,6 @@
-- 参考资料：Lambda表达式详解https://www.cnblogs.com/haixiang/p/11029639.html
+- 参考资料：
+	- Lambda表达式详解https://www.cnblogs.com/haixiang/p/11029639.html
+	- java8新特性：利用Lambda处理List集合： https://www.cnblogs.com/JoeyWong/p/9600109.html
 - Lambda 表达式是 JDK8 的一个新特性，可以取代大部分的匿名内部类，写出更优雅的 Java 代码，尤其在集合的遍历和其他集合操作中，可以极大地优化代码结构。
 
 ### 简单示例
