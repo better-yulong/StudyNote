@@ -93,6 +93,7 @@ nThreads为上面参数赋值，executor值为null，
         }
 
         if (executor == null) {
+            //1.即
             executor = new ThreadPerTaskExecutor(newDefaultThreadFactory());
         }
 
