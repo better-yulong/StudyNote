@@ -52,3 +52,11 @@ public final class EchoServer {
 ```
 SSL相关暂未验证，此处也暂不分析，后续另行分析。
 ### 一. EventLoop
+```language
+ 	EventLoopGroup bossGroup = new NioEventLoopGroup(1);
+        EventLoopGroup workerGroup = new NioEventLoopGroup();
+        ......
+	ServerBootstrap b = new ServerBootstrap();
+        b.group(bossGroup, workerGroup)
+	......
+```
