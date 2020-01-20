@@ -1,1 +1,2 @@
 Redis中8种数据结构的底层数据结构源码详解： https://stor.51cto.com/art/201910/605032.htm
+容量预期：http://www.redis.cn/redis_memory/  https://blog.csdn.net/qq_34292044/article/details/80543949 https://blog.csdn.net/roadmore/article/details/38177225
