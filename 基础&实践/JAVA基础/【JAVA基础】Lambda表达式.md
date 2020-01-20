@@ -11,4 +11,28 @@ public interface DemoInterf1 {
 }
 
 ```
-#### Lamdba
+#### Lamdba简单示例
+```language
+public class Test{
+    public boolean someLibraryMethod() {
+        return true;
+    }
+    public static void main(String[] args) {
+    	DemoInterf1 demoInterf1 = (String c,int b) -> {
+    		System.out.println("NoReturnNoParam");
+    		return "abc";
+    	};
+    	
+    	System.out.println(demoInterf1.objBuilder("a",1));
+    	
+    	
+    	DemoInterf1 demoInterf2 = (c,b) -> {
+    		System.out.println("NoReturnNoParam");
+    		return "abc";
+    	};
+    	
+    	System.out.println(demoInterf2.objBuilder("?",1));
+	}
+}
+```
+详细可查阅页首参考资料
