@@ -233,4 +233,15 @@ odePic() #136  （红色显示，该方法执行时间占比过长）  执行时
         +---[7.0E-4ms] com.***.config.LogoConfig:getBorderColor() #328
         `---[0.0266ms] org.slf4j.Logger:info() #332
 
+切换到父方法分析：
+`---ts=2020-05-13 16:49:55;thread_name=XNIO-2 task-54;id=71;is_daemon=false;priority=5;TCCL=sun.misc.Launcher$AppClassLoader@18b4aac2
+    `---[21.4896ms] com.***.service.impl.AbcCodeServiceImpl:generateCodePic()
+        +---[2.8097ms] com.***.service.impl.AbcCodeServiceImpl:createQRCodePic() #204
+        +---[0.1305ms] com.***.service.impl.AbcCodeServiceImpl:addLogo2QRCode() #205
+        +---[0.1679ms] com.***.service.impl.AbcCodeServiceImpl:pressText() #206
+        +---[0.1214ms] com.***.service.impl.AbcCodeServiceImpl:pressText() #207
+        +---[17.7372ms] javax.imageio.ImageIO:write() #211
+        `---[0.0406ms] org.slf4j.Logger:info() #212
+
+现在
  
