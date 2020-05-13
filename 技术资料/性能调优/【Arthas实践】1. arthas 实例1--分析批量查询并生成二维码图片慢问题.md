@@ -166,4 +166,20 @@ odePic() #136  （红色显示，该方法执行时间占比过长）
 odePic() #136  （红色显示，该方法执行时间占比过长）  执行时间过长。
 
 
+再次监控 trace com.****.merchant.service.impl.AbcServiceImpl generateCodePic  ，发现结果如下：
+`---ts=2020-05-13 10:31:45;thread_name=XNIO-2 task-23;id=3f;is_daemon=false;priority=5;TCCL=sun.misc.Launcher$AppClassLoader@18b4aac2
+    `---[79.6039ms] com.transsnet.palmpay.offline.merchant.service.impl.CollectionCodeServiceImpl:generateCodePic()
+        +---[16.974ms] com.transsnet.palmpay.offline.merchant.service.impl.CollectionCodeServiceImpl:createQRCodePic() #203
+        +---[23.5487ms] com.transsnet.palmpay.offline.merchant.service.impl.CollectionCodeServiceImpl:addLogo2QRCode() #204
+        +---[18.9098ms] com.transsnet.palmpay.offline.merchant.service.impl.CollectionCodeServiceImpl:pressText() #205
+        `---[20.0809ms] com.transsnet.palmpay.offline.merchant.service.impl.CollectionCodeServiceImpl:pressText() #206
+
+`---ts=2020-05-13 10:31:45;thread_name=XNIO-2 task-23;id=3f;is_daemon=false;priority=5;TCCL=sun.misc.Launcher$AppClassLoader@18b4aac2
+    `---[80.0009ms] com.transsnet.palmpay.offline.merchant.service.impl.CollectionCodeServiceImpl:generateCodePic()
+        +---[17.2176ms] com.transsnet.palmpay.offline.merchant.service.impl.CollectionCodeServiceImpl:createQRCodePic() #203
+        +---[23.4798ms] com.transsnet.palmpay.offline.merchant.service.impl.CollectionCodeServiceImpl:addLogo2QRCode() #204
+        +---[19.2752ms] com.transsnet.palmpay.offline.merchant.service.impl.CollectionCodeServiceImpl:pressText() #205
+        `---[19.925ms] com.transsnet.palmpay.offline.merchant.service.impl.CollectionCodeServiceImpl:pressText() #206
+
+
 
