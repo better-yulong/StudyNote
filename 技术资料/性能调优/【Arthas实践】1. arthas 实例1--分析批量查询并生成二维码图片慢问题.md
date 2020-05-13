@@ -181,4 +181,5 @@ odePic() #136  （红色显示，该方法执行时间占比过长）  执行时
         +---[19.2752ms] com.***.service.impl.AbcServiceImpl:pressText() #205
         `---[19.925ms] com.***.service.impl.AbcServiceImpl:pressText() #206
 
-可发现内部4个方法执行时间都非常长，而红色提示： AbcServiceImpl:addLogo2QRCode  方法则始终所花时间最长。但如果想
+可发现内部4个方法执行时间都非常长，而红色提示： AbcServiceImpl:addLogo2QRCode 方法则始终所花时间最长。但如果想减少整体执行时间，则还需要往下分析。
+
