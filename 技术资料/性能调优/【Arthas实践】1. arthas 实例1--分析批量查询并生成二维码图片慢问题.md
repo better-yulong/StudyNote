@@ -183,3 +183,30 @@ odePic() #136  （红色显示，该方法执行时间占比过长）  执行时
 
 可发现内部4个方法执行时间都非常长，而红色提示： AbcServiceImpl:addLogo2QRCode 方法则始终所花时间最长。但如果想减少整体执行时间，则还需要往下分析。
 
+
+
+`---ts=2020-05-13 11:48:49;thread_name=XNIO-2 task-48;id=5a;is_daemon=false;priority=5;TCCL=sun.misc.Launcher$AppClassLoader@18b4aac2
+    `---[23.415ms] com.***e.impl.AbcServiceImpl:addLogo2QRCode()
+        +---[1.169ms] javax.imageio.ImageIO:read() #318
+        +---[7.1518ms] javax.imageio.ImageIO:read() #322
+        +---[0.0011ms] com.***.LogoConfig:getLogoPart() #324
+        +---[3.0E-4ms] com.***.LogoConfig:getLogoPart() #325
+        +---[9.0E-4ms] com.***.LogoConfig:getBorder() #334
+        +---[4.0E-4ms] com.***.LogoConfig:getBorderColor() #335
+        +---[14.6963ms] javax.imageio.ImageIO:write() #340
+        `---[0.0445ms] org.slf4j.Logger:info() #343
+
+`---ts=2020-05-13 11:48:50;thread_name=XNIO-2 task-48;id=5a;is_daemon=false;priority=5;TCCL=sun.misc.Launcher$AppClassLoader@18b4aac2
+    `---[23.4341ms] com.***e.impl.AbcServiceImpl:addLogo2QRCode()
+        +---[1.1841ms] javax.imageio.ImageIO:read() #318
+        +---[7.0887ms] javax.imageio.ImageIO:read() #322
+        +---[9.0E-4ms] com.***.LogoConfig:getLogoPart() #324
+        +---[3.0E-4ms] com.***.LogoConfig:getLogoPart() #325
+        +---[6.0E-4ms] com.***.LogoConfig:getBorder() #334
+        +---[4.0E-4ms] com.***.LogoConfig:getBorderColor() #335
+        +---[14.7828ms] javax.imageio.ImageIO:write() #340
+        `---[0.0402ms] org.slf4j.Logger:info() #343
+
+
+
++---[7.0887ms] javax.imageio.ImageIO:read() #322      +---[14.7828ms] javax.imageio.ImageIO:write() #340
