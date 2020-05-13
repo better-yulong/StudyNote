@@ -130,4 +130,5 @@ options——查看或设置Arthas全局开关
 
 [arthas@14132]$
 
+执行  [arthas@14132]$ monitor com.****.merchant.service.impl.AbcServiceImpl batchExport  之后，同时调用 batchExport方法，等待一段时间后结果
 
