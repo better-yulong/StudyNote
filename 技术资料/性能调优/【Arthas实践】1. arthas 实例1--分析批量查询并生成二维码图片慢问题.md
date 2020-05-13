@@ -158,10 +158,12 @@ Affect(class-cnt:1 , method-cnt:1) cost in 129 ms.
         +---[min=7.0E-4ms,max=0.0079ms,total=0.2668ms,count=200] org.apache.commons.lang.StringUtils:isEmpty() #136
         +---[min=3.0E-4ms,max=0.224ms,total=0.7063ms,count=600] com.***.merchant.model.PicCode:getCodeId() #136
         +---[min=78.139ms,max=181.0064ms,total=16993.2396ms,count=200] com.****.merchant.service.impl.AbcServiceImpl:generateC
-odePic() #136
+odePic() #136  （红色显示，该方法执行时间占比过长）
         +---[0.0143ms] org.slf4j.Logger:info() #139
         `---[111.1347ms] com.***.merchant.utils.ZipUtils:toZip() #146
 
+结果可发现方法方法：         +---[min=78.139ms,max=181.0064ms,total=16993.2396ms,count=200] com.****.merchant.service.impl.AbcServiceImpl:generateC
+odePic() #136  （红色显示，该方法执行时间占比过长）  执行时间过长。
 
 
 
