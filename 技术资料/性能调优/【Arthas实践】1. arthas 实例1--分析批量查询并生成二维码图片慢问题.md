@@ -14,6 +14,38 @@ d:\>java -jar arthas-boot.jar
   [2]: 8980 org.springframework.ide.vscode.boot.app.BootLanguagServerBootApp
   [3]: 9028 D:\Program
   [4]: 11980 D:\work\ide\eclipse\\plugins/org.eclipse.equinox.launcher_1.5.400.v20190515-0925.jar
+输入1，选择监控第1个java进程：
+1
+[INFO] Start download arthas from remote server: https://maven.aliyun.com/repository/public/com/taobao/arthas/arthas-packaging/3.2.0/arthas-packaging-3.2.0-bi
+n.zip
+[INFO] File size: 10.82 MB, downloaded size: 1.09 MB, downloading ...
+[INFO] File size: 10.82 MB, downloaded size: 2.21 MB, downloading ...
+[INFO] File size: 10.82 MB, downloaded size: 3.34 MB, downloading ...
+[INFO] File size: 10.82 MB, downloaded size: 4.47 MB, downloading ...
+[INFO] File size: 10.82 MB, downloaded size: 5.59 MB, downloading ...
+[INFO] File size: 10.82 MB, downloaded size: 6.72 MB, downloading ...
+[INFO] File size: 10.82 MB, downloaded size: 7.85 MB, downloading ...
+[INFO] File size: 10.82 MB, downloaded size: 8.98 MB, downloading ...
+[INFO] File size: 10.82 MB, downloaded size: 10.11 MB, downloading ...
+[INFO] Download arthas success.
+[INFO] arthas home: C:\Users\M70CLJL1\.arthas\lib\3.2.0\arthas
+[INFO] Try to attach process 14132
+[INFO] Found java home from System Env JAVA_HOME: D:\Program Files\Java\jdk1.8.0_231
+[INFO] Attach process 14132 success.
+[INFO] arthas-client connect 127.0.0.1 3658
+  ,---.  ,------. ,--------.,--.  ,--.  ,---.   ,---.  
+ /  O  \ |  .--. ''--.  .--'|  '--'  | /  O  \ '   .-' 
+|  .-.  ||  '--'.'   |  |   |  .--.  ||  .-.  |`.  `-. 
+|  | |  ||  |\  \    |  |   |  |  |  ||  | |  |.-'    |
+`--' `--'`--' '--'   `--'   `--'  `--'`--' `--'`-----' 
+                                                       
 
+wiki      https://alibaba.github.io/arthas
+tutorials https://alibaba.github.io/arthas/arthas-tutorials
+version   3.2.0
+pid       14132
+time      2020-05-13 10:12:16
+
+[arthas@14132]$
 
 
