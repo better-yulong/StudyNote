@@ -91,3 +91,43 @@ time      2020-05-13 10:12:16
  profiler     Async Profiler. https://github.com/jvm-profiling-tools/async-profiler
  stop         Stop/Shutdown Arthas server and exit the console.
 
+
+
+monitor/watch/trace相关
+请注意，这些命令，都通过字节码增强技术来实现的，会在指定类的方法中插入一些切面来实现数据统计和观测，因此在线上、预发使用时，请尽量明确需要观测的类、方法以及条件，诊断结束要执行或将增强过的类执行 命令。
+
+monitor——方法执行监控
+watch——方法执行数据观测
+trace——方法内部调用路径，并输出方法路径上的每个节点上耗时
+stack——输出当前方法被调用的调用路径
+tt——方法执行数据的时空隧道，记录下指定方法每次调用的入参和返回信息，并能对这些不同的时间下调用进行观测
+options
+options——查看或设置Arthas全局开关
+
+命令行执行：
+[arthas@14132]$ monitor -help
+ USAGE:                                                                                                                                                     
+   monitor [-c <value>] [-h] [-n <value>] [-E <value>] class-pattern method-pattern
+
+ SUMMARY:                                                                                                                                                   
+   Monitor method execution statistics, e.g. total/success/failure count, average rt, fail rate, etc.
+                                                                                                                                                            
+ Examples:                                                                                                                                                  
+   monitor org.apache.commons.lang.StringUtils isBlank
+   monitor org.apache.commons.lang.StringUtils isBlank -c 5
+   monitor -E org\.apache\.commons\.lang\.StringUtils isBlank
+                                                                                                                                                            
+ WIKI:                                                                                                                                                      
+   https://alibaba.github.io/arthas/monitor
+
+ OPTIONS:                                                                                                                                                   
+ -c, --cycle <value>                                 The monitor interval (in seconds), 60 seconds by default
+ -h, --help                                          this help
+ -n, --limits <value>                                Threshold of execution times
+ -E, --regex <value>                                 Enable regular expression to match (wildcard matching by default)
+ <class-pattern>                                     Path and classname of Pattern Matching
+ <method-pattern>                                    Method of Pattern Matching
+
+[arthas@14132]$
+
+
