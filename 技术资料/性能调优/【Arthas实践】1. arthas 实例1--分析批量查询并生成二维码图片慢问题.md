@@ -167,3 +167,18 @@ odePic() #136  （红色显示，该方法执行时间占比过长）  执行时
 
 
 再次监控 trace com.****.merchant.service.impl.AbcServiceImpl generateCodePic  ，发现结果如下：
+`---ts=2020-05-13 10:31:45;thread_name=XNIO-2 task-23;id=3f;is_daemon=false;priority=5;TCCL=sun.misc.Launcher$AppClassLoader@18b4aac2
+    `---[79.6039ms] com.***.service.impl.AbcServiceImpl:generateCodePic()
+        +---[16.974ms] com.***.service.impl.AbcServiceImpl:createQRCodePic() #203
+        +---[23.5487ms] com.***.service.impl.AbcServiceImpl:addLogo2QRCode() #204
+        +---[18.9098ms] com.***.service.impl.AbcServiceImpl:pressText() #205
+        `---[20.0809ms] com.***.service.impl.AbcServiceImpl:pressText() #206
+
+`---ts=2020-05-13 10:31:45;thread_name=XNIO-2 task-23;id=3f;is_daemon=false;priority=5;TCCL=sun.misc.Launcher$AppClassLoader@18b4aac2
+    `---[80.0009ms] com.***.service.impl.AbcServiceImpl:generateCodePic()
+        +---[17.2176ms] com.***.service.impl.AbcServiceImpl:createQRCodePic() #203
+        +---[23.4798ms] com.***.service.impl.AbcServiceImpl:addLogo2QRCode() #204
+        +---[19.2752ms] com.***.service.impl.AbcServiceImpl:pressText() #205
+        `---[19.925ms] com.***.service.impl.AbcServiceImpl:pressText() #206
+
+可发现内部4个方法执行时间都非常长，而红色提示： AbcServiceImpl:addLogo2QRCode  方法则始终所花时间最长。但如果想
