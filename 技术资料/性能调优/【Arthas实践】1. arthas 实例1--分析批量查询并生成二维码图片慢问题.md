@@ -7,5 +7,13 @@
 
 ### 二.实践
 
+d:\>java -jar arthas-boot.jar
+[INFO] arthas-boot version: 3.2.0
+[INFO] Found existing java process, please choose one and input the serial number of the process, eg : 1. Then hit ENTER.
+* [1]: 14132 com.***.Application
+  [2]: 8980 org.springframework.ide.vscode.boot.app.BootLanguagServerBootApp
+  [3]: 9028 D:\Program
+  [4]: 11980 D:\work\ide\eclipse\\plugins/org.eclipse.equinox.launcher_1.5.400.v20190515-0925.jar
+
 
 
