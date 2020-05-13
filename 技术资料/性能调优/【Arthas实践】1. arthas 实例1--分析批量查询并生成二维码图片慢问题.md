@@ -243,5 +243,15 @@ odePic() #136  （红色显示，该方法执行时间占比过长）  执行时
         +---[17.7372ms] javax.imageio.ImageIO:write() #211
         `---[0.0406ms] org.slf4j.Logger:info() #212
 
-现在慢的方法主要就是 javax.imageio.ImageIO:write() #211 
+现在慢的方法主要就是 javax.imageio.ImageIO:write() #211 。此时写入的图片是PNG格式，而调整成 JPEG格式后结果如下：
+`---ts=2020-05-13 16:52:51;thread_name=XNIO-2 task-10;id=38;is_daemon=false;priority=5;TCCL=sun.misc.Launcher$AppClassLoader@18b4aac2
+    `---[10.8664ms] com.***.service.impl.AbcCodeServiceImpl:generateCodePic()
+        +---[3.0305ms] com.***.service.impl.AbcCodeServiceImpl:createQRCodePic() #204
+        +---[0.1269ms] com.***.service.impl.AbcCodeServiceImpl:addLogo2QRCode() #205
+        +---[0.1879ms] com.***.service.impl.AbcCodeServiceImpl:pressText() #206
+        +---[0.1425ms] com.***.service.impl.AbcCodeServiceImpl:pressText() #207
+        +---[6.8575ms] javax.imageio.ImageIO:write() #211
+        `---[0.0444ms] org.slf4j.Logger:info() #212
+
+小知识点： JPEG图片生成要比PNG
  
