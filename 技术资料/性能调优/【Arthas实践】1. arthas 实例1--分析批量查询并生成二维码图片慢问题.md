@@ -139,6 +139,29 @@ Affect(class-cnt:1 , method-cnt:1) cost in 171 ms.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
  2020-05-13 10:22:20  com.****.merchant.service.impl.AbcServiceImpl batchExport  1      1        0     17730.41    0.00%
 
+使用 trace 命令分析对应方法内部各方法执行时间：
+[arthas@14132]$ trace com.****.merchant.service.impl.AbcServiceImpl batchExport
+Press Q or Ctrl+C to abort.
+Affect(class-cnt:1 , method-cnt:1) cost in 129 ms.
+`---ts=2020-05-13 10:25:36;thread_name=XNIO-2 task-50;id=5d;is_daemon=false;priority=5;TCCL=sun.misc.Launcher$AppClassLoader@18b4aac2
+    `---[18037.4857ms] com.****.merchant.service.impl.AbcServiceImpl:batchExport()
+        +---[0.0131ms] org.springframework.data.domain.Sort:<init>() #112
+        +---[102.8094ms] com.***.merchant.dao.PicCodeDao:queryPicCodes() #113
+        +---[min=0.0013ms,max=0.0084ms,total=0.0111ms,count=3] com.***.nosql.mongo.bean.PageResult:getList() #114
+        +---[0.0018ms] com.***.nosql.mongo.bean.PageResult:getList() #120
+        +---[0.0251ms] com.***.util.DateUtil:format() #121
+        +---[0.0122ms] com.***.util.RandomUtils:randomStr() #121
+        +---[min=9.0E-4ms,max=0.0132ms,total=0.275ms,count=200] com.***.merchant.model.PicCode:setStatus() #132
+        +---[min=6.0E-4ms,max=0.0054ms,total=0.1964ms,count=200] com.***.merchant.model.PicCode:setExportTime() #133
+        +---[min=1.5699ms,max=5.0556ms,total=780.6569ms,count=200] com.***.merchant.dao.PicCodeDao:updateByByCoded() #134
+        +---[min=0.0012ms,max=0.0382ms,total=0.5144ms,count=200] com.***.merchant.model.PicCode:getBranchId() #136
+        +---[min=7.0E-4ms,max=0.0079ms,total=0.2668ms,count=200] org.apache.commons.lang.StringUtils:isEmpty() #136
+        +---[min=3.0E-4ms,max=0.224ms,total=0.7063ms,count=600] com.***.merchant.model.PicCode:getCodeId() #136
+        +---[min=78.139ms,max=181.0064ms,total=16993.2396ms,count=200] com.****.merchant.service.impl.AbcServiceImpl:generateC
+odePic() #136
+        +---[0.0143ms] org.slf4j.Logger:info() #139
+        `---[111.1347ms] com.***.merchant.utils.ZipUtils:toZip() #146
+
 
 
 
