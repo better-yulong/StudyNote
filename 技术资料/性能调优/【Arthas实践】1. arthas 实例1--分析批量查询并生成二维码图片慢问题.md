@@ -243,5 +243,5 @@ odePic() #136  （红色显示，该方法执行时间占比过长）  执行时
         +---[17.7372ms] javax.imageio.ImageIO:write() #211
         `---[0.0406ms] org.slf4j.Logger:info() #212
 
-现在
+现在慢的方法主要就是 javax.imageio.ImageIO:write() #211 
  
