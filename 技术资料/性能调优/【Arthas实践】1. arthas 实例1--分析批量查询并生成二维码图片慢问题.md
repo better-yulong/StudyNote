@@ -6,7 +6,7 @@
 2. 之后参考： https://www.jianshu.com/p/4e711a780aa3  从地址 https://alibaba.github.io/arthas/arthas-boot.jar 下载arthas-boot.jar 后执行 java -jar arthas-boot.jar 运行成功。
 
 ### 二.实践
-
+说明：后续实践参考资料 https://www.jianshu.com/p/4e711a780aa3 。
 d:\>java -jar arthas-boot.jar
 [INFO] arthas-boot version: 3.2.0
 [INFO] Found existing java process, please choose one and input the serial number of the process, eg : 1. Then hit ENTER.
@@ -48,4 +48,46 @@ time      2020-05-13 10:12:16
 
 [arthas@14132]$
 
+命令行输入 help 查看帮助信息：
+[arthas@14132]$ help
+ NAME         DESCRIPTION
+ help         Display Arthas Help
+ keymap       Display all the available keymap for the specified connection.
+ sc           Search all the classes loaded by JVM
+ sm           Search the method of classes loaded by JVM
+ classloader  Show classloader info
+ jad          Decompile class
+ getstatic    Show the static field of a class
+ monitor      Monitor method execution statistics, e.g. total/success/failure count, average rt, fail rate, etc.
+ stack        Display the stack trace for the specified class and method
+ thread       Display thread info, thread stack
+ trace        Trace the execution time of specified method invocation.
+ watch        Display the input/output parameter, return object, and thrown exception of specified method invocation
+ tt           Time Tunnel
+ jvm          Display the target JVM information
+ perfcounter  Display the perf counter infornation.
+ ognl         Execute ognl expression.
+ mc           Memory compiler, compiles java files into bytecode and class files in memory.
+ redefine     Redefine classes. @see Instrumentation#redefineClasses(ClassDefinition...)
+ dashboard    Overview of target jvm's thread, memory, gc, vm, tomcat info.
+ dump         Dump class byte array from JVM
+ heapdump     Heap dump
+ options      View and change various Arthas options
+ cls          Clear the screen
+ reset        Reset all the enhanced classes
+ version      Display Arthas version
+ session      Display current session information
+ sysprop      Display, and change the system properties.
+ sysenv       Display the system env.
+ vmoption     Display, and update the vm diagnostic options.
+ logger       Print logger info, and update the logger level
+ history      Display command history
+ cat          Concatenate and print files
+ echo         write arguments to the standard output
+ pwd          Return working directory name
+ mbean        Display the mbean information
+ grep         grep command for pipes.
+ tee          tee command for pipes.
+ profiler     Async Profiler. https://github.com/jvm-profiling-tools/async-profiler
+ stop         Stop/Shutdown Arthas server and exit the console.
 
