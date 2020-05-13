@@ -130,5 +130,15 @@ options——查看或设置Arthas全局开关
 
 [arthas@14132]$
 
-执行  [arthas@14132]$ monitor com.****.merchant.service.impl.AbcServiceImpl batchExport  之后，同时调用 batchExport方法，等待一段时间后结果
+执行  [arthas@14132]$ monitor com.****.merchant.service.impl.AbcServiceImpl batchExport  之后，同时调用 batchExport方法，等待一段时间后结果如下：
+[arthas@14132]$ monitor com.****.merchant.service.impl.AbcServiceImpl batchExport
+Press Q or Ctrl+C to abort.
+Affect(class-cnt:1 , method-cnt:1) cost in 171 ms.
+ timestamp            class                                                                          method       total  success  fail  avg-rt(ms)  fail-rat
+                                                                                                                                                    e       
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 2020-05-13 10:22:20  com.****.merchant.service.impl.AbcServiceImpl batchExport  1      1        0     17730.41    0.00%
+
+
+
 
