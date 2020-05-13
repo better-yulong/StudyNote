@@ -253,5 +253,5 @@ odePic() #136  （红色显示，该方法执行时间占比过长）  执行时
         +---[6.8575ms] javax.imageio.ImageIO:write() #211
         `---[0.0444ms] org.slf4j.Logger:info() #212
 
-小知识点： JPEG图片生成要比PNG
+小知识点： JPEG图片生成要比PNG图片生成快很多，但同时JPEG 图片的大小则差不多是PNG图片的2倍，总归是有代价的，PNG需要。
  
