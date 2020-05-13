@@ -215,9 +215,9 @@ odePic() #136  （红色显示，该方法执行时间占比过长）  执行时
 还真可以：
 1. 由 MatrixToImageWriter.writeToFile 调整为  MatrixToImageWriter.toBufferedImage ，即每次处理图片生成对象均为 BufferedImage 对象，而不是直接存储到文件File文件；
 2. 多步骤处理图片，也不是 ImageIO:read() 从 File 读取，而是基于前一步返回的 BufferedImage 对象 ；直到最后一步才写入文件。
-3. Logo图片由每次
+3. Logo图片由每次读取也调整为使用 BufferedImage  循环使用。
 
-再次验证，快了不只一
+再次验证，快了不只一星半点
     `---[0.1569ms] com.***.service.impl.CollectionCodeServiceImpl:addLogo2QRCode()
         +---[0.0024ms] com.***.config.LogoConfig:getLogoPart() #317
         +---[4.0E-4ms] com.***.config.LogoConfig:getLogoPart() #318
